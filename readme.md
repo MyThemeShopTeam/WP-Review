@@ -1,6 +1,6 @@
 # WP Review by MyThemeShop
 
-[Official Download Page](https://wordpress.org/plugins/wp-review/)
+Official Download Page [https://wordpress.org/plugins/wp-review/](https://wordpress.org/plugins/wp-review/)
 
 WordPress plugin to create reviews! Choose from stars, percentages or points for review scores. Supports Retina Display, translation ready, WPMU & Unlimited Color Schemes.
 
