@@ -1,0 +1,37 @@
+.wp-review-field label {
+	width: 15%;
+	display: inline-block;
+	*display: inline;
+	*zoom: 1;
+}
+
+.wp-review-field select {
+	width: 15em;
+}
+
+.wp-review-field .wp-color-result {
+	margin: 0;
+}
+
+.wp-review-item th {
+	text-align: left;
+}
+
+.has-border-bottom {
+	border-bottom: 1px solid #ddd;
+	margin-bottom: 20px;
+	padding-bottom: 20px;
+}
+
+.review-total {
+	text-align: right;
+}
+
+.wp-picker-holder {
+	position: absolute;
+	z-index: 9;
+}
+
+#wp-review-item .review-value-incorrect {
+  border-color: #F00;
+}
