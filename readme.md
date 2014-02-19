@@ -1,5 +1,7 @@
 # WP Review by MyThemeShop
 
+[Official Download Page](https://wordpress.org/plugins/wp-review/)
+
 WordPress plugin to create reviews! Choose from stars, percentages or points for review scores. Supports Retina Display, translation ready, WPMU & Unlimited Color Schemes.
 
 This plugin is an easy yet powerful way to review content easily. If you're a blogger, you probably occasionally review or rank products, services, tools, recipes, or other content on your site. This plugin is a customizable and lightweight way to create reviews, using stars, percentage or point rating, and it includes support for translation, WPMU, Google snippets and unlimited colors. Just install it and follow the simple configuration instructions to place it in your desired location.
