@@ -35,14 +35,3 @@
 #wp-review-item .review-value-incorrect {
   border-color: #F00;
 }
-
-#wp_review_shortcode_hint_field span {
-    color: #777;
-    font-style: italic;
-    display: block;
-    margin-left: 116px;
-    margin-top: 2px;
-}
-#wp_review_shortcode_hint {
-    width: 94px;
-}

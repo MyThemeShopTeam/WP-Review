@@ -2,7 +2,7 @@
 /**
  * File for registering meta box.
  *
- * @since     2.0
+ * @since     1.0
  * @copyright Copyright (c) 2013, MyThemesShop
  * @author    MyThemesShop
  * @license   http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
@@ -20,57 +20,53 @@ add_action( 'save_post', 'wp_review_save_postdata', 10, 2 );
  * @since 1.0
  */
 function wp_review_add_meta_boxes() {
-    $post_types = get_post_types( array('public' => true), 'names' );
-    $excluded_post_types = array('attachment');
-    
-    foreach ($post_types as $post_type) {
-        if (!in_array($post_type, $excluded_post_types)) {
-        	add_meta_box(
-        		'wp-review-metabox-review',
-        		__( 'Review', 'wp-review' ),
-        		'wp_review_render_meta_box_review_options',
-        		$post_type,
-        		'normal',
-        		'high'
-        	);
-        
-        	add_meta_box(
-        		'wp-review-metabox-item',
-        		__( 'Review Item', 'wp-review' ),
-        		'wp_review_render_meta_box_item',
-        		$post_type,
-        		'normal',
-        		'high'
-        	);
-        	
-        	add_meta_box(
-        		'wp-review-metabox-heading',
-        		__( 'Review Heading', 'wp-review' ),
-        		'wp_review_render_meta_box_heading',
-        		$post_type,
-        		'normal',
-        		'high'
-        	);
-        	
-        	add_meta_box(
-        		'wp-review-metabox-desc',
-        		__( 'Review Description', 'wp-review' ),
-        		'wp_review_render_meta_box_desc',
-        		$post_type,
-        		'normal',
-        		'high'
-        	);
-        	
-        	add_meta_box(
-        		'wp-review-metabox-userReview',
-        		__( 'User Reviews', 'wp-review' ),
-        		'wp_review_render_meta_box_userReview',
-        		$post_type,
-        		'normal',
-        		'high'
-        	);
-        }
-    }
+
+	add_meta_box(
+		'wp-review-metabox-review',
+		__( 'Review', 'wp-review' ),
+		'wp_review_render_meta_box_review_options',
+		'post',
+		'normal',
+		'high'
+	);
+
+	add_meta_box(
+		'wp-review-metabox-item',
+		__( 'Review Item', 'wp-review' ),
+		'wp_review_render_meta_box_item',
+		'post',
+		'normal',
+		'high'
+	);
+	
+	add_meta_box(
+		'wp-review-metabox-heading',
+		__( 'Review Heading', 'wp-review' ),
+		'wp_review_render_meta_box_heading',
+		'post',
+		'normal',
+		'high'
+	);
+	
+	add_meta_box(
+		'wp-review-metabox-desc',
+		__( 'Review Description', 'wp-review' ),
+		'wp_review_render_meta_box_desc',
+		'post',
+		'normal',
+		'high'
+	);
+	
+	add_meta_box(
+		'wp-review-metabox-userReview',
+		__( 'User Reviews', 'wp-review' ),
+		'wp_review_render_meta_box_userReview',
+		'post',
+		'normal',
+		'high'
+	);
+
+
 }
 
 /**
@@ -108,7 +104,14 @@ function wp_review_render_meta_box_review_options( $post ) {
  */
 function wp_review_render_meta_box_item( $post ) {
 	global $post;
-    $defaultColors = get_option('wp_review_default_colors');
+
+	$defaultColors = array(
+		'review_color' => '#1e73be',
+		'font_color' => '#555555',
+		'bg_color1' => '#e7e7e7',
+		'bg_color2' => '#ffffff',
+		'border_color' => '#e7e7e7'
+	);
 
 	/* Add an nonce field so we can check for it later. */
 	wp_nonce_field( basename( __FILE__ ), 'wp-review-item-nonce' ); 
@@ -134,14 +137,7 @@ function wp_review_render_meta_box_item( $post ) {
 		<select name="wp_review_location" id="wp_review_location">
 			<option value="bottom" <?php selected( $location, 'bottom' ); ?>><?php _e( 'After Content', 'wp-review' ) ?></option>
 			<option value="top" <?php selected( $location, 'top' ); ?>><?php _e( 'Before Content', 'wp-review' ) ?></option>
-            <option value="custom" <?php selected( $location, 'custom' ); ?>><?php _e( 'Custom (use shortcode)', 'wp-review' ) ?></option>
 		</select>
-	</p>
-    
-    <p class="wp-review-field" id="wp_review_shortcode_hint_field">
-		<label for="wp_review_shortcode_hint"></label>
-		<input id="wp_review_shortcode_hint" type="text" value="[wp-review]" readonly="readonly" />
-        <span><?php _e('Copy &amp; paste this shortcode in the content.', 'wp-review') ?></span>
 	</p>
 
 	<p class="wp-review-field">
