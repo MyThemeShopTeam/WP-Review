@@ -17,10 +17,10 @@ Did you always want to increase the user interaction on your website by rating p
 **WP Review plugin** is an easy yet powerful way to review content easily, without affecting the speed of your site. If you're a blogger, you probably occasionally review or rank products, services, tools, recipes, or other content on your site. WP Review plugin is a customizable and lightweight way to create reviews, using stars, percentage or point rating, and it includes support for translation, WPMU, Google rich snippets and unlimited colors. Just install it and follow the simple configuration instructions to place it in your desired location.
 
 = Live Demos =
-<blockquote>See WP Review in action on our demo pages:
-<a href="http://demo.mythemeshop.com/spike-gaming/2014/03/12/the-12-most-inspirational-female-characters-in-games/" target="_blank">Star Review Type</a>,
-<a href="http://demo.mythemeshop.com/spike-wedding/2014/03/13/top-10-wedding-guest-complaints/" target="_blank">Point Review Type</a>,
-<a href="http://demo.mythemeshop.com/spike-health/2014/02/27/high-calorie-foods-you-should-never-eat-before-going-to-bed/" target="_blank">Percentage Review Type</a></blockquote>
+See WP Review in action on our demo pages:
+* <a href="http://demo.mythemeshop.com/spike-gaming/2014/03/12/the-12-most-inspirational-female-characters-in-games/" target="_blank">Star Review Type</a>
+* <a href="http://demo.mythemeshop.com/spike-wedding/2014/03/13/top-10-wedding-guest-complaints/" target="_blank">Point Review Type</a>
+* <a href="http://demo.mythemeshop.com/spike-health/2014/02/27/high-calorie-foods-you-should-never-eat-before-going-to-bed/" target="_blank">Percentage Review Type</a>
 
 = Why WP Review from <a href="http://mythemeshop.com">MyThemeShop</a>: =
 * Fastest review plugin.
