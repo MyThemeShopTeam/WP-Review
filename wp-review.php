@@ -1,9 +1,9 @@
 <?php
 /**
- * Plugin Name: WP Review by MyThemeShop
+ * Plugin Name: WP Review
  * Plugin URI: http://mythemeshop.com/
  * Description: Easily create custom review content.
- * Version: 1.0
+ * Version: 2.0
  * Author: MyThemesShop
  * Author URI: http://mythemeshop.com/
  *
@@ -94,7 +94,8 @@ function wp_review_includes_libraries() {
 }
 
 function wp_review_activation(){
-    /* Loads activation functions */	
+    /* Loads activation functions */
+    require_once( plugin_dir_path( __FILE__ ) . '/includes/functions.php' );
 	require_once( plugin_dir_path( __FILE__ ) . '/admin/activation.php' );
 }
 ?>
