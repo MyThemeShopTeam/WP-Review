@@ -1,32 +1,57 @@
 <?php
 ob_start();
 /**
- * Front-end functions for this plugin.
+ * WP Review
  *
- * @since     1.0
+ * @since     2.0
  * @copyright Copyright (c) 2013, MyThemesShop
  * @author    MyThemesShop
  * @license   http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  */
 
 /* Display the meta box data below 'the_content' hook. */
-add_filter( 'the_content', 'wp_review_display_data' );
+add_filter( 'the_content', 'wp_review_inject_data' );
 
 /* Custom review color. */
 add_action( 'wp_head', 'wp_review_color_output', 20 );
 
-/*Get review with Ajax*/
+/* Get review with Ajax */
 add_action('wp_ajax_mts_review_get_review', 'mts_review_get_review');
 add_action('wp_ajax_nopriv_mts_review_get_review', 'mts_review_get_review');
 
+/* Show with shortcode */
+add_shortcode('wp-review', 'wp_review_get_data');
+add_shortcode('wp-review-total', 'wp_review_total_shortcode');
+
+// image sizes for the widgets
+//add_image_size( 'wp_review_big', 320, 200, true ); 
+//add_image_size( 'wp_review_small', 65, 65, true ); 
 
 /**
- * Display the meta box data.
+ * Set new default colors for the WP Review meta boxes.
+ * Passed array doesn't have to contain all values,
+ * it is possible to change values separately, eg.
+ *  wp_review_set_default_colors( array( 'font_color' => '#222222' ) );
+ * 
+ * To be used in themes & plugins.
  *
  * @since 1.0
- * @link  http://pippinsplugins.com/playing-nice-with-the-content-filter/
+ * 
  */
-function wp_review_display_data( $content ) {
+function wp_review_set_default_colors( $colors = array() ) {
+    $current_colors = get_option('wp_review_default_colors', $defaultColors);
+    $colors = wp_parse_args($colors, $current_colors);
+    update_option('wp_review_default_colors', $colors);
+}
+
+
+/**
+ * Get the meta box data.
+ *
+ * @since 1.0
+ * 
+ */
+function wp_review_get_data() {
 	global $post;
 	global $blog_id;
 
@@ -36,7 +61,6 @@ function wp_review_display_data( $content ) {
 	$items       = get_post_meta( $post->ID, 'wp_review_item', true );
 	$type        = get_post_meta( $post->ID, 'wp_review_type', true );
 	$total       = get_post_meta( $post->ID, 'wp_review_total', true );
-	$location    = get_post_meta( $post->ID, 'wp_review_location', true );
 	$allowUsers  = get_post_meta( $post->ID, 'wp_review_userReview', true );
 
 	/* Define a custom class for bar type. */
@@ -46,12 +70,20 @@ function wp_review_display_data( $content ) {
 	} elseif ( 'percentage' == $type ) {
 		$class = 'percentage-point';
 	}
-
+    $post_types = get_post_types( array('public' => true), 'names' );
+    $excluded_post_types = array('attachment');
+    $allowed_post_types = array();
+    foreach ($post_types as $i => $post_type) {
+        if (!in_array($post_type, $excluded_post_types)) {
+            $allowed_post_types[] = $post_type;
+        }
+    }
+    
 	/**
 	 * Add the custom data from the meta box to the main query an
 	 * make sure the hook only apply on single post.
 	 */
-	if ( $type != '' && is_single()  && is_main_query() ) {
+	if ( $type != '' && is_singular($allowed_post_types) && is_main_query() ) {
 		
 
 			$review = '<div id="review" class="review-wrapper ' . $class . '" >';
@@ -87,11 +119,11 @@ function wp_review_display_data( $content ) {
 							$review .= '<li>';
 								
 								if ( 'point' == $type ) {
-									$review .= '<span>' . wp_filter_post_kses( $item['wp_review_item_title'] ) . ' - ' . $item['wp_review_item_star'] . '</span>';
+									$review .= '<span>' . wp_kses_post( $item['wp_review_item_title'] ) . ' - ' . $item['wp_review_item_star'] . '</span>';
 								} elseif( 'percentage' == $type ) {
-									$review .= '<span>' . wp_filter_post_kses( $item['wp_review_item_title'] ) . ' - ' . $item['wp_review_item_star'] . '%' . '</span>';
+									$review .= '<span>' . wp_kses_post( $item['wp_review_item_title'] ) . ' - ' . $item['wp_review_item_star'] . '%' . '</span>';
 								} else {
-									$review .= '<span>' . wp_filter_post_kses( $item['wp_review_item_title'] ) . '</span>';
+									$review .= '<span>' . wp_kses_post( $item['wp_review_item_title'] ) . '</span>';
 								}
 
 							$review .= '<div class="review-star">';
@@ -128,7 +160,7 @@ function wp_review_display_data( $content ) {
 				if ( $desc ) {
 						$review .= '<div class="review-desc" >';
 						$review .= '<p class="review-summary-title"><strong>' . __( 'Summary', 'mts-review' ) . '</strong></p>';
-						$review .= wp_filter_post_kses( wpautop( $desc ) );
+						$review .= wp_kses_post( wpautop( $desc ) );
 						$review .= '</div><!-- .review-desc -->';
 						
 				}//**END IF HAS DESCRIPTION**
@@ -137,6 +169,8 @@ function wp_review_display_data( $content ) {
 							
 							if ( 'percentage' == $type ) {
 								$review .= '<span class="review-total-box"><span itemprop="review">' . $total . '</span> <i class="percentage-icon">%</i>' . '</span>';
+							} elseif ( 'point' == $type ) {
+								$review .= '<span class="review-total-box" itemprop="review">' . $total . '/'.__('10','mts-review').'</span></span>';
 							} else {
 								$review .= '<span class="review-total-box" itemprop="review">' . $total . '</span></span>';
 							}							
@@ -249,19 +283,84 @@ function wp_review_display_data( $content ) {
 
 				$review .= '</div><!-- #review -->';
 
-			if ( 'bottom' == $location ) {
-				return $content .= $review;
-			} else {
-				return $review .= $content;
-			}
-
-		
- 
+                return $review;
 	} else {
-		return $content;
+		return '';
 	}
+}
 
+function wp_review_inject_data( $content ) {
+    global $post;
+	$location = get_post_meta( $post->ID, 'wp_review_location', true );
+    if (empty($location) || $location == 'custom') {
+        return $content;
+    }
+    
+    $review = wp_review_get_data();
+    if ( 'bottom' == $location ) {
+		return $content .= $review;
+	} elseif ( 'top' == $location ) {
+		return $review .= $content;
+	} else {
+        return $content;
+	}
+}
 
+/**
+ * Retrieve only total rating.
+ * To be used on archive pages, etc.
+ *
+ * @since 1.0
+ * 
+ */
+function wp_review_show_total($echo = true, $class = 'review-total-only') {
+    global $post;
+    $type = get_post_meta( $post->ID, 'wp_review_type', true );
+	$total = get_post_meta( $post->ID, 'wp_review_total', true );
+    $review = '';
+    
+    if (!empty($type) && !empty($total)) {
+        wp_enqueue_style( 'wp_review-style', trailingslashit( WP_REVIEW_ASSETS ) . 'css/wp-review.css', array(), '1.0', 'all' );
+        
+        $review = '<div class="review-type-'.$type.' '.esc_attr($class).'"> ';
+    	
+    	if ( 'percentage' == $type ) {
+    		$review .= '<span class="review-total-box"><span itemprop="review">' . $total . '</span> <i class="percentage-icon">%</i>' . '</span>';
+    	} elseif ( 'point' == $type ) {
+    		$review .= '<span class="review-total-box" itemprop="review">' . $total . '</span>/'.__('10','mts-review').'</span>';
+    	} else {
+    	    // star
+    		$review .= '<div class="review-total-star">';
+    			$review .= '<div class="review-result-wrapper">';
+    			$review .= '<i class="mts-icon-star"></i>';
+    			$review .= '<i class="mts-icon-star"></i>';
+    			$review .= '<i class="mts-icon-star"></i>';
+    			$review .= '<i class="mts-icon-star"></i>';
+    			$review .= '<i class="mts-icon-star"></i>';
+    				$review .= '<div class="review-result" style="width:' . $total*22 . '%;">';
+    				$review .= '<i class="mts-icon-star"></i>';
+    				$review .= '<i class="mts-icon-star"></i>';
+    				$review .= '<i class="mts-icon-star"></i>';
+    				$review .= '<i class="mts-icon-star"></i>';
+    				$review .= '<i class="mts-icon-star"></i>';
+    				$review .= '</div><!-- .review-result -->';
+    			$review .= '</div><!-- .review-result-wrapper -->';
+    		$review .= '</div><!-- .review-star -->';
+    	}
+    								
+        $review .= '</div>';
+    }
+    
+    if ($echo)
+        echo $review;
+    else
+        return $review;
+}
+function wp_review_total_shortcode($atts, $content) {
+    if (empty($atts['class']))
+        $atts['class'] = 'review-total-only review-total-shortcode';
+    
+    return wp_review_show_total(false, $atts['class']);
 }
 
 function mts_get_post_reviews( $post_id ){
@@ -379,4 +478,5 @@ function mts_review_get_review(){
 	else echo 'MTS_REVIEW_DB_ERROR';
 	exit;
 }
+
 ?>

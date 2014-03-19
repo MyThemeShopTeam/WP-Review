@@ -26,7 +26,8 @@ $(document).ready(function() {
 	$('#wp-review-metabox-heading').hide();
 	$('#wp-review-metabox-desc').hide();
 	$('#wp-review-metabox-userReview').hide();
-
+    $('#wp_review_shortcode_hint_field').hide();
+    
 	$('#wp_review_type').on( 'change', function() {
 
 		$('#wp-review-metabox-item').toggle( $(this).val() != '' );
@@ -72,6 +73,16 @@ $(document).ready(function() {
 		$('#wp-review-metabox-desc').show();
 		$('#wp-review-metabox-userReview').show();
 	}
+    
+    $('#wp_review_location').on('change', function() {
+        $('#wp_review_shortcode_hint_field').toggle($(this).val() == 'custom');
+    });
+    $('#wp_review_shortcode_hint').click(function() {
+        $(this).select();
+    });
+    if ($('#wp_review_location').val() == 'custom') {
+        $('#wp_review_shortcode_hint_field').show();
+    }
 
 	/**
 	 * Review total

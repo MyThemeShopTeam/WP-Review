@@ -22,4 +22,15 @@ die(var_dump($e));*/
 	dbDelta( $my_stat_sql );
 }
 mts_create_review_tables();
+
+// set default colors
+$defaultColors = array(
+	'review_color' => '#1e73be',
+	'font_color' => '#555555',
+	'bg_color1' => '#e7e7e7',
+	'bg_color2' => '#ffffff',
+	'border_color' => '#e7e7e7'
+);
+wp_review_set_default_colors($defaultColors);
+
 ?>

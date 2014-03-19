@@ -67,16 +67,15 @@
 
 .review-total-wrapper {
   float: right;
-  width: 21.8%;
   margin: 0;
   margin-right: 0;
-  padding-right: 10px;
+  padding-right: 0;
   position: relative;
   -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;
+  margin-right: 20px;
 }
 
 .review-total-wrapper span.review-total-box {
-  border: 1px solid #e7e7e7;
   border-top: 0;
   border-bottom: 0;
   border-left: 0;
@@ -84,7 +83,7 @@
   display: block;
   font-size: 40px;
   font-weight: 700;
-  text-align: center;
+  text-align: right;
   margin: 0;
   padding: 35px 0 20px;
   width: 100%;
@@ -102,7 +101,7 @@
   position: relative;
   margin-top: 5px;
   margin: 5px auto 15px auto;
-  width: 112px;
+  float: right;
 }
 
 .review-total-star.allowed-to-rate{margin-top:-10px;}
@@ -125,7 +124,7 @@
 
 .review-star {
   position: absolute;
-  right: 10px;
+  right: 20px;
   top: 10px;
 }
 
@@ -185,13 +184,44 @@
   margin-bottom: 0;
 }
 
-
+/**
+ * Basic styling for wp_review_display_total
+ */
+.review-total-only {
+	padding: 3px 10px;
+	background: rgba(0, 0, 0, 0.6);
+	color:#fff;
+	font-size:13px;
+    display: inline-block;
+}
+.review-total-only .percentage-icon {
+    font-size: inherit;
+    top: 0;
+}
+.review-total-only .review-type-star {
+	font-size:12px;
+    padding: 3px 6px;
+}
+.review-total-only .review-total-star {
+	font-size:12px;
+    margin: 0;
+}
+.review-total-only .review-result-wrapper i {
+    color: #FFF !important;
+    opacity: 0.50;
+    filter: alpha(opacity=50);
+}
+.review-total-only .review-result-wrapper .review-result i {
+    opacity: 1;
+    filter: alpha(opacity=100);
+}
+ 
 /**
  * Users review area
  */
 .user-review-area{ border-top: 1px solid #e7e7e7; /*border: none;*/ margin-top: -1.5em; overflow: hidden; padding: 10px; position: relative; clear: both;}
-.user-total-wrapper{float: left; width: 75%; margin:0;  }
-.review-total-star.allowed-to-rate{float: right; margin:0;}
+.user-total-wrapper{float: left;  margin:0;  }
+.review-total-star.allowed-to-rate{float: right; margin:0;margin-right: 10px;}
 .user-total-wrapper .user-review-title{/*font-size: 20px;*/ font-weight: bold;margin:0;}
 .user-total-wrapper #mts-user-reviews-total{/*font-size: 20px;*/}
 /*.user-total-wrapper small{font-size:16px;}*/
@@ -219,12 +249,12 @@
   display: inline-block;
   text-decoration: inherit;
   width: 1em;
-  margin-right: .2em;
+  margin-right: 0;
   text-align: center;
   font-variant: normal;
   text-transform: none;
   line-height: 1em;
-  margin-left: .2em;
+  margin-left: 2px;
 }
  
 .mts-icon-star:before { content: '\e800'; }
@@ -378,9 +408,9 @@
 }
 @media screen and (max-width:470px) {
   .review-desc { padding: 4%; width: 100%;}
-  .review-total-wrapper { width: 100%;}
+  .review-total-wrapper { width: 100%; margin-right: 0;}
   .review-total-wrapper span.review-total-box { padding: 10px 0 20px; text-align: left; padding-left: 10px;}
-  .review-total-star { position: absolute; right: 10px; top: 5px;}
+  .review-total-star { position: absolute; right: 20px; top: 5px;}
   .user-total-wrapper{width: 96%;}
   .review-total-star.allowed-to-rate{position: relative; right: auto;left: 0;float: left;}
 
