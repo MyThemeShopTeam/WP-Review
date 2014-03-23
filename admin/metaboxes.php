@@ -86,16 +86,19 @@ function wp_review_render_meta_box_review_options( $post ) {
 
 	/* Retrieve an existing value from the database. */
 	$type = get_post_meta( $post->ID, 'wp_review_type', true );
+    
+    $available_types = apply_filters('wp_review_metabox_types', array('star' => __('Star', 'wp-review'), 'point' => __('Point', 'wp-review'), 'percentage' => __('Percentage', 'wp-review')));
 ?>
 	
 	<p class="wp-review-field">
 		<label for="wp_review_type"><?php _e( 'Review Type', 'wp-review' ); ?></label>
 		<select name="wp_review_type" id="wp_review_type">
 			<option value=""><?php _e( 'No Review', 'wp-review' ) ?></option>
-			<option value="star" <?php selected( $type, 'star' ); ?>><?php _e( 'Star', 'wp-review' ) ?></option>
-			<option value="point" <?php selected( $type, 'point' ); ?>><?php _e( 'Point', 'wp-review' ) ?></option>
-			<option value="percentage" <?php selected( $type, 'percentage' ); ?>><?php _e( 'Percentage', 'wp-review' ) ?></option>
+            <?php foreach ($available_types as $available_type => $label) { ?>
+                <option value="<?php echo $available_type; ?>" <?php selected( $type, $available_type ); ?>><?php echo $label; ?></option>
+            <?php } ?>
 		</select>
+        <span id="wp_review_id_hint">Review ID: <strong><?php echo $post->ID; ?></strong></span>
 	</p>
 
 	<?php
@@ -107,9 +110,22 @@ function wp_review_render_meta_box_review_options( $post ) {
  * @since 1.0
  */
 function wp_review_render_meta_box_item( $post ) {
-	global $post;
-    $defaultColors = get_option('wp_review_default_colors');
-
+    $defaultColors = apply_filters('wp_review_default_colors', array(
+    	'color' => '#1e73be',
+    	'fontcolor' => '#555555',
+    	'bgcolor1' => '#e7e7e7',
+    	'bgcolor2' => '#ffffff',
+    	'bordercolor' => '#e7e7e7'
+    ));
+    $defaultLocation = apply_filters('wp_review_default_location', 'bottom');
+    
+    $defaultCriteria = apply_filters('wp_review_default_criteria', array());
+    $defaultItems = array();
+    foreach ($defaultCriteria as $item) {
+        $defaultItems[] = array( 'wp_review_item_title' => $item, 'wp_review_item_star' => '');
+    }
+    
+    
 	/* Add an nonce field so we can check for it later. */
 	wp_nonce_field( basename( __FILE__ ), 'wp-review-item-nonce' ); 
 
@@ -121,15 +137,26 @@ function wp_review_render_meta_box_item( $post ) {
 	$bgcolor1  = get_post_meta( $post->ID, 'wp_review_bgcolor1', true );
 	$bgcolor2  = get_post_meta( $post->ID, 'wp_review_bgcolor2', true );
 	$bordercolor  = get_post_meta( $post->ID, 'wp_review_bordercolor', true );
-	if( $color == '' ) $color = $defaultColors['review_color'];
-	if( $fontcolor == '' ) $fontcolor = $defaultColors['font_color'];
-	if( $bgcolor1 == '' ) $bgcolor1 = $defaultColors['bg_color1'];
-	if( $bgcolor2 == '' ) $bgcolor2 = $defaultColors['bg_color2'];
-	if( $bordercolor == '' ) $bordercolor = $defaultColors['border_color'];
-
+    if ( $items == '' ) $items = $defaultItems;
+	if( $color == '' ) $color = $defaultColors['color'];
+    if( $location == '' ) $location = $defaultLocation;
+	if( $fontcolor == '' ) $fontcolor = $defaultColors['fontcolor'];
+	if( $bgcolor1 == '' ) $bgcolor1 = $defaultColors['bgcolor1'];
+	if( $bgcolor2 == '' ) $bgcolor2 = $defaultColors['bgcolor2'];
+	if( $bordercolor == '' ) $bordercolor = $defaultColors['bordercolor'];
+    
+    $fields = array(
+        'location' => true, 
+        'color' => true, 
+        'fontcolor' => true, 
+        'bgcolor1' => true, 
+        'bgcolor2' => true, 
+        'bordercolor' => true
+    );
+    $displayed_fields = apply_filters('wp_review_metabox_item_fields', $fields);
 ?>
 
-	<p class="wp-review-field">
+	<p class="wp-review-field"<?php if (empty($displayed_fields['location'])) echo ' style="display: none;"'; ?>>
 		<label for="wp_review_location"><?php _e( 'Review Location', 'wp-review' ); ?></label>
 		<select name="wp_review_location" id="wp_review_location">
 			<option value="bottom" <?php selected( $location, 'bottom' ); ?>><?php _e( 'After Content', 'wp-review' ) ?></option>
@@ -144,27 +171,27 @@ function wp_review_render_meta_box_item( $post ) {
         <span><?php _e('Copy &amp; paste this shortcode in the content.', 'wp-review') ?></span>
 	</p>
 
-	<p class="wp-review-field">
+	<p class="wp-review-field"<?php if (empty($displayed_fields['color'])) echo ' style="display: none;"'; ?>>
 		<label for="wp_review_color"><?php _e( 'Review Color', 'wp-review' ); ?></label>
 		<input type="text" class="wp-review-color" name="wp_review_color" value="<?php echo $color; ?>" />
 	</p>
 
-	<p class="wp-review-field">
+	<p class="wp-review-field"<?php if (empty($displayed_fields['fontcolor'])) echo ' style="display: none;"'; ?>>
 		<label for="wp_review_fontcolor"><?php _e( 'Font Color', 'wp-review' ); ?></label>
 		<input type="text" class="wp-review-color" name="wp_review_fontcolor" id ="wp_review_fontcolor" value="<?php echo $fontcolor; ?>" />
 	</p>
 
-	<p class="wp-review-field">
+	<p class="wp-review-field"<?php if (empty($displayed_fields['bgcolor1'])) echo ' style="display: none;"'; ?>>
 		<label for="wp_review_bgcolor1"><?php _e( 'Heading Background Color', 'wp-review' ); ?></label>
 		<input type="text" class="wp-review-color" name="wp_review_bgcolor1" id ="wp_review_bgcolor1" value="<?php echo $bgcolor1; ?>" />
 	</p>
 
-	<p class="wp-review-field">
+	<p class="wp-review-field"<?php if (empty($displayed_fields['bgcolor2'])) echo ' style="display: none;"'; ?>>
 		<label for="wp_review_bgcolor2"><?php _e( 'Background Color', 'wp-review' ); ?></label>
 		<input type="text" class="wp-review-color" name="wp_review_bgcolor2" id="wp_review_bgcolor2" value="<?php echo $bgcolor2; ?>" />
 	</p>
 
-	<p class="wp-review-field">
+	<p class="wp-review-field"<?php if (empty($displayed_fields['bordercolor'])) echo ' style="display: none;"'; ?>>
 		<label for="wp_review_bordercolor"><?php _e( 'Border Color', 'wp-review' ); ?></label>
 		<input type="text" class="wp-review-color" name="wp_review_bordercolor" id="wp_review_bordercolor" value="<?php echo $bordercolor; ?>" />
 	</p>
@@ -181,7 +208,7 @@ function wp_review_render_meta_box_item( $post ) {
 		</thead>
 
 		<tbody>
-			<?php if ( $items ) : ?>
+			<?php if ( !empty($items) ) : ?>
 		 
 				<?php foreach ( $items as $item ) { ?>
 
@@ -190,7 +217,7 @@ function wp_review_render_meta_box_item( $post ) {
 							<input type="text" class="widefat" name="wp_review_item_title[]" value="<?php if( !empty( $item['wp_review_item_title'] ) ) echo esc_attr( $item['wp_review_item_title'] ); ?>" />
 						</td>
 						<td>
-							<input type="text" class="widefat review-star" name="wp_review_item_star[]" value="<?php if ( !empty ($item['wp_review_item_star'] ) ) echo $item['wp_review_item_star']; ?>" />
+							<input type="text" min="1" step="1" autocomplete="off" class="widefat review-star" name="wp_review_item_star[]" value="<?php if ( !empty ($item['wp_review_item_star'] ) ) echo $item['wp_review_item_star']; ?>" />
 						</td>
 						<td><a class="button remove-row" href="#"><?php _e( 'Delete', 'wp-review' ); ?></a></td>
 					</tr>
@@ -201,7 +228,7 @@ function wp_review_render_meta_box_item( $post ) {
 				
 				<tr>
 					<td><input type="text" class="widefat" name="wp_review_item_title[]" /></td>
-					<td><input type="text" class="widefat review-star" name="wp_review_item_star[]" /></td>
+					<td><input type="text" min="1" step="1" autocomplete="off" class="widefat review-star" name="wp_review_item_star[]" /></td>
 					<td><a class="button remove-row" href="#"><?php _e( 'Delete', 'wp-review' ); ?></a></td>
 				</tr>
 
@@ -210,7 +237,7 @@ function wp_review_render_meta_box_item( $post ) {
 			<!-- empty hidden one for jQuery -->
 			<tr class="empty-row screen-reader-text">
 				<td><input type="text" class="widefat" name="wp_review_item_title[]" /></td>
-				<td><input type="text" class="widefat" name="wp_review_item_star[]" /></td>
+				<td><input type="text" min="1" step="1" autocomplete="off" class="widefat" name="wp_review_item_star[]" /></td>
 				<td><a class="button remove-row" href="#"><?php _e( 'Delete', 'wp-review' ); ?></a></td>
 			</tr>
 

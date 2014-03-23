@@ -2,8 +2,8 @@
 /**
  * Plugin Name: WP Review
  * Plugin URI: http://mythemeshop.com/
- * Description: Create reviews! Choose from stars, percentages or points for review scores. Supports Retina Display, WPMU & Unlimited Color Schemes.
- * Version: 2.0
+ * Description: Easily create custom review content.
+ * Version: 3.0
  * Author: MyThemesShop
  * Author URI: http://mythemeshop.com/
  *
@@ -88,6 +88,9 @@ function wp_review_includes_libraries() {
 	/* Loads the front-end functions. */	
 	require_once( WP_REVIEW_INCLUDES . 'functions.php' );
 
+	/* Loads the widget. */	
+	require_once( WP_REVIEW_INCLUDES . 'widget.php' );
+
 	/* Loads the enqueue functions. */
 	require_once( WP_REVIEW_INCLUDES . 'enqueue.php' );
 
@@ -95,7 +98,7 @@ function wp_review_includes_libraries() {
 
 function wp_review_activation(){
     /* Loads activation functions */
-    require_once( plugin_dir_path( __FILE__ ) . '/includes/functions.php' );
+    //require_once( plugin_dir_path( __FILE__ ) . '/includes/functions.php' );
 	require_once( plugin_dir_path( __FILE__ ) . '/admin/activation.php' );
 }
 ?>

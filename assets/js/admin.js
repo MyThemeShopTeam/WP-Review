@@ -27,6 +27,7 @@ $(document).ready(function() {
 	$('#wp-review-metabox-desc').hide();
 	$('#wp-review-metabox-userReview').hide();
     $('#wp_review_shortcode_hint_field').hide();
+    $('#wp_review_id_hint').hide();
     
 	$('#wp_review_type').on( 'change', function() {
 
@@ -34,6 +35,7 @@ $(document).ready(function() {
 		$('#wp-review-metabox-heading').toggle( $(this).val() != '' );
 		$('#wp-review-metabox-desc').toggle( $(this).val() != '' );
 		$('#wp-review-metabox-userReview').toggle( $(this).val() != '' );	
+        $('#wp_review_id_hint').toggle( $(this).val() != '' );
 
 		if ( $(this).val() == 'point' ) {
 			$('.dynamic-text').text('Points (1-10)');
@@ -73,6 +75,10 @@ $(document).ready(function() {
 		$('#wp-review-metabox-desc').show();
 		$('#wp-review-metabox-userReview').show();
 	}
+    
+    if ( $('#wp_review_type option:selected').val() != '' ) {
+        $('#wp_review_id_hint').show();
+    }
     
     $('#wp_review_location').on('change', function() {
         $('#wp_review_shortcode_hint_field').toggle($(this).val() == 'custom');

@@ -46,3 +46,6 @@
 #wp_review_shortcode_hint {
     width: 94px;
 }
+#wp_review_id_hint {
+    margin-left: 8px;
+}

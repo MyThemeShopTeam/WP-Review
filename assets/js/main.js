@@ -12,12 +12,12 @@ jQuery(document).ready(function($){
 		$('.review-total-star.allowed-to-rate .review-result-wrapper').hide();
 		$('.mts-review-wait-msg').show();
 		var blogID = $('#blog_id').val();
-		var userIP = $('#mts-userIP').val();
+		var token = $('#token').val();
 		var post_id = $('#post_id').val();
 		var user_id = $('#user_id').val();		
 		var review = $(this).attr('data-input-value');
 		$.ajax ({
-			data: {action: 'mts_review_get_review', post_id: post_id, user_id: user_id, ip: userIP, review: review},
+			data: {action: 'mts_review_get_review', post_id: post_id, user_id: user_id, nonce: token, review: review},
 			type: 'post',
 			url: ajaxurl,
 			success: function( response ){								

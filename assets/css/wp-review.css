@@ -6,6 +6,7 @@
   border: 1px solid #e7e7e7;
   margin-bottom: 1.5em;
   overflow: hidden;
+  clear: both;
 }
 
 .review-title {
@@ -23,7 +24,7 @@
 
 .review-list li {
   border-bottom: 1px solid #e7e7e7;
-  padding: 10px;
+  padding: 10px 15px;
   position: relative;
   list-style: none;
 }
@@ -43,7 +44,7 @@
 .review-desc {
   float: left;
   width: 75%;
-  padding: 2%;
+  padding: 10px 15px;
   -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;
 }
 
@@ -72,7 +73,7 @@
   padding-right: 0;
   position: relative;
   -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;
-  margin-right: 20px;
+  margin-right: 15px;
 }
 
 .review-total-wrapper span.review-total-box {
@@ -124,7 +125,7 @@
 
 .review-star {
   position: absolute;
-  right: 20px;
+  right: 15px;
   top: 10px;
 }
 
@@ -188,22 +189,23 @@
  * Basic styling for wp_review_display_total
  */
 .review-total-only {
-	padding: 3px 10px;
-	background: rgba(0, 0, 0, 0.6);
-	color:#fff;
-	font-size:13px;
-    display: inline-block;
+  padding: 3px 10px;
+  background: rgba(0, 0, 0, 0.6);
+  color:#fff;
+  font-size:13px;
+    
+  display: inline-block;
 }
 .review-total-only .percentage-icon {
     font-size: inherit;
     top: 0;
 }
 .review-total-only .review-type-star {
-	font-size:12px;
+  font-size:12px;
     padding: 3px 6px;
 }
 .review-total-only .review-total-star {
-	font-size:12px;
+  font-size:12px;
     margin: 0;
 }
 .review-total-only .review-result-wrapper i {
@@ -219,9 +221,9 @@
 /**
  * Users review area
  */
-.user-review-area{ border-top: 1px solid #e7e7e7; /*border: none;*/ margin-top: -1.5em; overflow: hidden; padding: 10px; position: relative; clear: both;}
+.user-review-area{ border-top: 1px solid #e7e7e7; margin-top: -1.5em; overflow: hidden; padding: 10px 15px; position: relative; clear: both;}
 .user-total-wrapper{float: left;  margin:0;  }
-.review-total-star.allowed-to-rate{float: right; margin:0;margin-right: 10px;}
+.review-total-star.allowed-to-rate{float: right; margin:0;}
 .user-total-wrapper .user-review-title{/*font-size: 20px;*/ font-weight: bold;margin:0;}
 .user-total-wrapper #mts-user-reviews-total{/*font-size: 20px;*/}
 /*.user-total-wrapper small{font-size:16px;}*/

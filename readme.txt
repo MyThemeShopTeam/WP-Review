@@ -4,7 +4,7 @@ Creator's website link: http://mythemeshop.com/
 Tags: review, wp review, rating, wp rating, user rating, google rating, star rating, product review
 Requires at least: 3.0.1
 Tested up to: 3.9
-Stable tag: 2.0
+Stable tag: 3.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -27,6 +27,7 @@ See WP Review in action on our demo pages:
 * Stars, percentage and point rating system.
 * Supports Google Rich Snippets(schema.org)
 * 100% Fluid Responsive.
+* Included tabbed widget to show recent reviews and popular reviews.
 * WP Multisite and Multiuser (WPMU / WPMS / WordPress MU) compatible.
 * Design it as you want, unlimited color options.
 * Translation Ready.
@@ -39,6 +40,7 @@ See WP Review in action on our demo pages:
 * Minimalist, lightweight, and efficient code means that your users won’t notice any hiccups.
 * Position it above or below the content with ease and no coding.
 * Supports Shortcode `[wp-review]` to show review anywhere in post.
+* Developer friendly.
 
 = Support =
 We will do our best to provide support through the WordPress forums. However, all plugin support is provided in our forum. If you have not registered yet, you can do so here: <a href="https://mythemeshop.com/go/signup/index/c/free">https://mythemeshop.com/go/signup/index/c/free</a>. After searching the knowledge base and forum if you are still stuck, feel free to open a new thread, and a member of our support team will be happy to help. Cheers!<br>
@@ -49,6 +51,8 @@ Yes, this plugin is so developer friendly, so you could use it with any theme yo
 
 Show average review in your theme using below function:
 `<?php if (function_exists('wp_review_show_total')) wp_review_show_total(); ?>`
+
+You can find full list of the available filters here <a href="" target="_blank"></a>, a theme developer can decide to set fixed colors for the reviews, and hide selected (or all) color fields in the metabox, to keep it simple for the end user.
 
 GitHub link: <a href="https://github.com/MyThemeShop/WP-Review-by-MyThemeShop">https://github.com/MyThemeShop/WP-Review-by-MyThemeShop</a>
 
@@ -74,11 +78,22 @@ Please disable all plugins and check if rating is working properly. Then you can
 
 1. Plugin Options
 2. Plugin Options 2
-3. Star Review type
-4. Point Review type
-5. Percentage Review type
+3. Review Widget
+4. Star Review type
+5. Point Review type
+6. Percentage Review type
 
 == Changelog ==
+
+= 3.0 =
+* Major security updates
+* New AJAXified Tab widget for Popular and Recent reviews, try it, you gonna love it.
+* Language file updated fully.
+* Added a nonce (a security token) to ensure that the user actually voted from the review
+* More developer possibilities
+* Added filters for developers. Using a filter is much better than a function for setting the default colors.
+* Compatible with WordPress 3.9 Beta
+* Plugin will support the widget customizer coming up in WordPress 3.9
 
 = 2.0 =
 * Fixed the, `'` switching in to `/` issue (<a href="http://bit.ly/PFMGAq">http://bit.ly/PFMGAq</a>)

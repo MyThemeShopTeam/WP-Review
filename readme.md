@@ -19,6 +19,7 @@ See WP Review in action on our demo pages:
 * Supports Google Rich Snippets(schema.org)
 * 100% Fluid Responsive.
 * WP Multisite and Multiuser (WPMU / WPMS / WordPress MU) compatible.
+* Included tabbed widget to show recent reviews and popular reviews.
 * Design it as you want, unlimited color options.
 * Translation Ready.
 * Reviews are displayed to visitors in a friendly format.
@@ -30,6 +31,7 @@ See WP Review in action on our demo pages:
 * Minimalist, lightweight, and efficient code means that your users won’t notice any hiccups.
 * Position it above or below the content with ease and no coding.
 * Supports Shortcode [wp-review] to show review anywhere in post.
+* Developer friendly.
 
 ## Developer Zone
 
@@ -39,6 +41,10 @@ Show average review in your theme using below function:
 
 ```<?php if (function_exists('wp_review_show_total')) wp_review_show_total(); ?>```
 
+You can find full list of the available filters in **filter-list.php** file, a theme developer can decide to set fixed colors for the reviews, and hide selected (or all) color fields in the metabox, to keep it simple for the end user.
+
+If you have new feature suggession or found any bug, please open new thread in Issues section.
+
 ## Connect with Us
 
-Consider following us on [Google+](https://plus.google.com/+Mythemeshop/), [Twitter](https://twitter.com/MyThemeShopTeam), and [Facebook](https://www.facebook.com/MyThemeShop).
+Consider following us on [Google+](https://plus.google.com/+Mythemeshop/), [Twitter](https://twitter.com/MyThemeShopTeam) and [Facebook](https://www.facebook.com/MyThemeShop).
