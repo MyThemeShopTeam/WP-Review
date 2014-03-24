@@ -1,5 +1,7 @@
 # WP Review by MyThemeShop
 
+Official Download Page [https://wordpress.org/plugins/wp-review/](https://wordpress.org/plugins/wp-review/)
+
 Did you always want to increase the user interaction on your website by rating products/services/anything? We at [MyThemeShop] (http://mythemeshop.com/) understand your need, & created a premium Review plugin. We are now distributing it for FREE to give back to the WordPress community. We have been given so much by the WordPress community, it's time to give back.
 
 **WP Review plugin** is an easy yet powerful way to review content easily, without affecting the speed of your site. If you're a blogger, you probably occasionally review or rank products, services, tools, recipes, or other content on your site. WP Review plugin is a customizable and lightweight way to create reviews, using stars, percentage or point rating, and it includes support for translation, WPMU, Google rich snippets and unlimited colors. Just install it and follow the simple configuration instructions to place it in your desired location.
