@@ -101,7 +101,7 @@ function wp_review_get_data() {
 							$review .= '<li>';
 								
 								if ( 'point' == $type ) {
-									$review .= '<span>' . wp_kses_post( $item['wp_review_item_title'] ) . ' - ' . $item['wp_review_item_star'] . '/10</span>';
+									$review .= '<span>' . wp_kses_post( $item['wp_review_item_title'] ) . ' - ' . $item['wp_review_item_star'] . '/'.__('10','mts-review').'</span>';
 								} elseif( 'percentage' == $type ) {
 									$review .= '<span>' . wp_kses_post( $item['wp_review_item_title'] ) . ' - ' . $item['wp_review_item_star'] . '%' . '</span>';
 								} else {
@@ -125,7 +125,7 @@ function wp_review_get_data() {
 									$review .= '<i class="mts-icon-star"></i>';
 									$review .= '</div><!-- .review-result -->';
 								} elseif ( 'point' == $type ) {
-									$review .= '<div class="review-result" style="width:' . $result . '%;">' . $item['wp_review_item_star'] . '/10</div>';
+									$review .= '<div class="review-result" style="width:' . $result . '%;">' . $item['wp_review_item_star'] . '/'.__('10','mts-review').'</div>';
 								} else {
 									$review .= '<div class="review-result" style="width:' . $result . '%;">' . $item['wp_review_item_star'] . '</div>';
 								}
@@ -151,10 +151,10 @@ function wp_review_get_data() {
 							
 							if ( 'percentage' == $type ) {
 								$review .= '<span class="review-total-box"><span itemprop="review">' . $total . '</span> <i class="percentage-icon">%</i>' . '</span>';
-							} 
-
-							if ( 'point' == $type ) {
-								$review .= '<span class="review-total-box" itemprop="review">' . $total . '/10</span></span>';
+							} elseif ( 'point' == $type ) {
+								$review .= '<span class="review-total-box" itemprop="review">' . $total . '/'.__('10','mts-review').'</span></span>';
+							} else {
+								$review .= '<span class="review-total-box" itemprop="review">' . $total . '</span></span>';
 							}							
 
 							if ( 'star' == $type ) {
@@ -320,7 +320,7 @@ function wp_review_show_total($echo = true, $class = 'review-total-only') {
     	if ( 'percentage' == $type ) {
     		$review .= '<span class="review-total-box"><span itemprop="review">' . $total . '</span> <i class="percentage-icon">%</i>' . '</span>';
     	} elseif ( 'point' == $type ) {
-    		$review .= '<span class="review-total-box" itemprop="review">' . $total . '/10</span></span>';
+    		$review .= '<span class="review-total-box" itemprop="review">' . $total . '/'.__('10','mts-review').'</span></span>';
     	} else {
     	    // star
     		$review .= '<div class="review-total-star">';
