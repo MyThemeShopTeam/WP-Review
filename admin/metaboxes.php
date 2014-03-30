@@ -21,7 +21,7 @@ add_action( 'save_post', 'wp_review_save_postdata', 10, 2 );
  */
 function wp_review_add_meta_boxes() {
     $post_types = get_post_types( array('public' => true), 'names' );
-    $excluded_post_types = array('attachment');
+    $excluded_post_types = apply_filters('wp_review_excluded_post_types', array('attachment'));
     
     foreach ($post_types as $post_type) {
         if (!in_array($post_type, $excluded_post_types)) {

@@ -53,7 +53,7 @@ function wp_review_get_data() {
 		$class = 'percentage-point';
 	}
     $post_types = get_post_types( array('public' => true), 'names' );
-    $excluded_post_types = array('attachment');
+    $excluded_post_types = apply_filters('wp_review_excluded_post_types', array('attachment'));
     $allowed_post_types = array();
     foreach ($post_types as $i => $post_type) {
         if (!in_array($post_type, $excluded_post_types)) {
@@ -63,7 +63,7 @@ function wp_review_get_data() {
     
 	/**
 	 * Add the custom data from the meta box to the main query an
-	 * make sure the hook only apply on single post.
+	 * make sure the hook only apply on allowed post types
 	 */
 	if ( $type != '' && is_singular($allowed_post_types) && is_main_query() ) {
 		
@@ -265,7 +265,8 @@ function wp_review_get_data() {
 			
 
 				$review .= '</div><!-- #review -->';
-
+                
+                $review = apply_filters('wp_review_get_data', $review, $post->ID, $type, $total, $items);
                 return $review;
 	} else {
 		return '';
@@ -342,6 +343,8 @@ function wp_review_show_total($echo = true, $class = 'review-total-only') {
     								
         $review .= '</div>';
     }
+    
+    $review = apply_filters('wp_review_show_total', $review, $post->ID, $type, $total);
     
     if ($echo)
         echo $review;

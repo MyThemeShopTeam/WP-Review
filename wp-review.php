@@ -3,7 +3,7 @@
  * Plugin Name: WP Review
  * Plugin URI: http://mythemeshop.com/
  * Description: Easily create custom review content.
- * Version: 3.0
+ * Version: 3.1
  * Author: MyThemesShop
  * Author URI: http://mythemeshop.com/
  *
