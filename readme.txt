@@ -85,6 +85,10 @@ Please disable all plugins and check if rating is working properly. Then you can
 
 == Changelog ==
 
+= 3.1 =
+Fixed average star rating number issue.
+Added New filter to exclude post types.
+
 = 3.0 =
 * Major security updates
 * New AJAXified Tab widget for Popular and Recent reviews, try it, you gonna love it.

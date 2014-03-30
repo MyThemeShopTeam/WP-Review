@@ -5,19 +5,25 @@ You can use these filterns in your theme in funtions.php file
 and set different default settings.
 */
 
+// Set default colors for new reviews
+function new_default_review_colors($colors) {
+    $colors = array(
+        'color' => '#1E73BE',
+        'fontcolor' => '#555',
+        'bgcolor1' => '#E7E7E7',
+        'bgcolor2' => '#fff',
+        'bordercolor' => '#e7e7e7'
+    );
+  return $colors;
+}
+add_filter( 'wp_review_default_colors', 'new_default_review_colors' );
+
 // Set colors for ALL displayed reviews
 function mts_new_review_colors($colors, $id) {
   $colors['bgcolor1'] = '#ff0000';
   return $colors;
 }
 add_filter( 'wp_review_colors', 'mts_new_review_colors', 10, 2 );
- 
-// Set default colors for new reviews
-function mts_new_default_review_colors($colors) {
-  $colors['bgcolor1'] = '#ff0000';
-  return $colors;
-}
-add_filter( 'wp_review_default_colors', 'mts_new_default_review_colors' );
  
 // Set location for ALL displayed reviews
 function mts_new_review_location($position, $id) {
