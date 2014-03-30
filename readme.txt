@@ -88,6 +88,7 @@ Please disable all plugins and check if rating is working properly. Then you can
 = 3.1 =
 Fixed average star rating number issue.
 Added New filter to exclude post types.
+Updated filter list.
 
 = 3.0 =
 * Major security updates
