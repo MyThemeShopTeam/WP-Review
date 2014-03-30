@@ -1,3 +1,8 @@
+/*-----------------------------------
+/* WP Review Plugin by MyThemeShop
+/* mythemeshop.com
+/*----------------------------------*/
+
 function wp_review_tab_loadTabContent(tab_name, page_num, container, args_obj) {
     
     var container = jQuery(container);

@@ -1,3 +1,8 @@
+/*-----------------------------------
+/* WP Review Plugin by MyThemeShop
+/* mythemeshop.com
+/*----------------------------------*/
+
 jQuery(document).ready(function($){
 	$('.review-total-star.allowed-to-rate.has-not-rated-yet a').hover(function(){
 		$(this).addClass( "hovered" ).prevAll().addClass( "hovered" );
