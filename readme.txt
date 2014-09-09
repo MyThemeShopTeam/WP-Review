@@ -1,14 +1,14 @@
 === WP Review ===
 Contributors: mythemeshop
-Creator's website link: http://mythemeshop.com/
+Creator's website link: http://mythemeshop.com/plugins/wp-review/
 Tags: review, wp review, rating, wp rating, user rating, google rating, star rating, product review
 Requires at least: 3.0.1
-Tested up to: 3.9
-Stable tag: 3.1
+Tested up to: 4.0
+Stable tag: 3.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Create reviews! Choose from stars, percentages or points for review scores. Supports Retina Display, WPMU & Unlimited Color Schemes.
+Create reviews! Choose from Stars, Percentages or Points for review scores. Supports Retina Display, WPMU & Unlimited Color Schemes.
 
 == Description ==
 
@@ -18,15 +18,18 @@ Did you always want to increase the user interaction on your website by rating p
 
 = Live Demos =
 See WP Review in action on our demo pages:
-* <a href="http://demo.mythemeshop.com/spike-gaming/2014/03/12/the-12-most-inspirational-female-characters-in-games/" target="_blank">Star Review Type</a>
-* <a href="http://demo.mythemeshop.com/spike-wedding/2014/03/13/top-10-wedding-guest-complaints/" target="_blank">Point Review Type</a>
-* <a href="http://demo.mythemeshop.com/spike-health/2014/02/27/high-calorie-foods-you-should-never-eat-before-going-to-bed/" target="_blank">Percentage Review Type</a>
+* <a href="http://demo.mythemeshop.com/point/fatebuntur-stoici-haec-omnia-dicta-esse-praeclare/" target="_blank">Star Review Type</a>
+* <a href="http://demo.mythemeshop.com/point/modo-etiam-paulum-ad-dexteram-de-via-declinavi/" target="_blank">Point Review Type</a>
+* <a href="http://demo.mythemeshop.com/point/sed-nonne-merninisti-licere-mihi-ista-probare/" target="_blank">Percentage Review Type</a>
 
 = Why WP Review from <a href="http://mythemeshop.com">MyThemeShop</a>: =
 * Fastest review plugin.
 * Stars, percentage and point rating system.
 * Supports Google Rich Snippets(schema.org)
 * 100% Fluid Responsive.
+* Option to set Global Position.
+* Option to change Global Colors.
+* Option to change individual review Colors and Positions.
 * Included tabbed widget to show recent reviews and popular reviews.
 * WP Multisite and Multiuser (WPMU / WPMS / WordPress MU) compatible.
 * Design it as you want, unlimited color options.
@@ -40,7 +43,7 @@ See WP Review in action on our demo pages:
 * Minimalist, lightweight, and efficient code means that your users won’t notice any hiccups.
 * Position it above or below the content with ease and no coding.
 * Supports Shortcode `[wp-review]` to show review anywhere in post.
-* Developer friendly.
+* Developer friendly - Useful filters are included! So you can use it in your themes.
 
 = Support =
 We will do our best to provide support through the WordPress forums. However, all plugin support is provided in our forum. If you have not registered yet, you can do so here: <a href="https://mythemeshop.com/go/signup/index/c/free">https://mythemeshop.com/go/signup/index/c/free</a>. After searching the knowledge base and forum if you are still stuck, feel free to open a new thread, and a member of our support team will be happy to help. Cheers!<br>
@@ -52,7 +55,7 @@ Yes, this plugin is so developer friendly, so you could use it with any theme yo
 Show average review in your theme using below function:
 `<?php if (function_exists('wp_review_show_total')) wp_review_show_total(); ?>`
 
-You can find full list of the available filters here <a href="" target="_blank"></a>, a theme developer can decide to set fixed colors for the reviews, and hide selected (or all) color fields in the metabox, to keep it simple for the end user.
+You can find full list of the available filters here <a href="https://github.com/MyThemeShop/WP-Review-by-MyThemeShop/blob/master/filter-list.php" target="_blank">https://github.com/MyThemeShop/WP-Review-by-MyThemeShop/blob/master/filter-list.php</a>.
 
 GitHub link: <a href="https://github.com/MyThemeShop/WP-Review-by-MyThemeShop">https://github.com/MyThemeShop/WP-Review-by-MyThemeShop</a>
 
@@ -76,19 +79,38 @@ Please disable all plugins and check if rating is working properly. Then you can
 
 == Screenshots ==
 
-1. Plugin Options
-2. Plugin Options 2
-3. Review Widget
-4. Star Review type
-5. Point Review type
-6. Percentage Review type
+1. Options Panel
+2. Plugin Options
+3. Plugin Options 2
+4. Review Widget
+5. Star Review type
+6. Point Review type
+7. Percentage Review type
 
 == Changelog ==
 
+= 3.2 =
+* Added Options Panel for Global Option
+* Added option to set Global Colors.
+* Added option to Global position.
+* Added option to add Global Features.
+* Added option to change review description title (Summary).
+* Added option to hide Description and Total Rating.
+* Added option to add your own Total Score.
+* Fixed schema tag issue in wp_review_show_total()
+* Fixed jQuery issue.
+* Fixed post preview issue.
+* Fixed conflict with Redux Framework, Visual Composer and Mailpoet.
+* Added New Filters.
+* Updated No Preview thumbnail.
+* Merged Star and Loader icon files in one.
+* Fixed many small bugs.
+* Optimized code for better performance.
+
 = 3.1 =
-Fixed average star rating number issue.
-Added New filter to exclude post types.
-Updated filter list.
+* Fixed average star rating number issue.
+* Added New filter to exclude post types.
+* Updated filter list.
 
 = 3.0 =
 * Major security updates

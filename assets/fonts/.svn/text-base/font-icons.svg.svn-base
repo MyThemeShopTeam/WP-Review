@@ -1,0 +1,13 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg">
+<metadata>Copyright (C) 2014 by original authors @ fontello.com</metadata>
+<defs>
+<font id="font-icons" horiz-adv-x="1000" >
+<font-face font-family="font-icons" font-weight="400" font-stretch="normal" units-per-em="1000" ascent="850" descent="-150" />
+<missing-glyph horiz-adv-x="1000" />
+<glyph glyph-name="star" unicode="&#xe800;" d="m0 489q0 21 31 26l280 40 126 254q11 23 27 23t28-23l125-254 280-40q32-5 32-26 0-12-15-27l-203-197 48-279q1-4 1-12 0-11-6-19t-17-9q-10 0-22 7l-251 132-250-132q-13-7-23-7-11 0-17 9t-6 19q0 4 1 12l48 279-203 197q-14 15-14 27z" horiz-adv-x="928.6" />
+<glyph glyph-name="spin3" unicode="&#xe801;" d="m494 850c-266 0-483-210-494-472-1-19 13-20 13-20l84 0c16 0 19 10 19 18 10 199 176 358 378 358 107 0 205-45 273-118l-58-57c-11-12-11-27 5-31l247-50c21-5 46 11 37 44l-58 227c-2 9-16 22-29 13l-65-60c-89 91-214 148-352 148z m409-508c-16 0-19-10-19-18-10-199-176-358-377-358-108 0-205 45-274 118l59 57c10 12 10 27-5 31l-248 50c-21 5-46-11-37-44l58-227c2-9 16-22 30-13l64 60c89-91 214-148 353-148 265 0 482 210 493 473 1 18-13 19-13 19l-84 0z" horiz-adv-x="1000" />
+</font>
+</defs>
+</svg>
