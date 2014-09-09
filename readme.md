@@ -1,8 +1,8 @@
 # WP Review by MyThemeShop
 Made with <3 from MyThemeShop LLC
 
-Pro Version [https://mythemeshop.com/plugins/wp-review-pro/](https://mythemeshop.com/plugins/wp-review-pro/)
-Official Download Page [https://wordpress.org/plugins/wp-review/](https://wordpress.org/plugins/wp-review/)
+* Pro Version [https://mythemeshop.com/plugins/wp-review-pro/](https://mythemeshop.com/plugins/wp-review-pro/)
+* Official Download Page [https://wordpress.org/plugins/wp-review/](https://wordpress.org/plugins/wp-review/)
 
 Did you always want to increase the user interaction on your website by rating products/services/anything? We at [MyThemeShop] (http://mythemeshop.com/) understand your need, & created a premium Review plugin. We are now distributing it for FREE to give back to the WordPress community. We have been given so much by the WordPress community, it's time to give back.
 
@@ -37,7 +37,7 @@ See WP Review in action on our demo pages:
 * Support for adding your own custom fields.
 * Minimalist, lightweight, and efficient code means that your users won’t notice any hiccups.
 * Position it above or below the content with ease and no coding.
-* Supports Shortcode [wp-review] to show review anywhere in post.
+* Supports Shortcode `[wp-review]` to show review anywhere in post.
 * Developer friendly - Useful filters are included! So you can use it in your themes.
 
 ## Developer Zone
@@ -58,9 +58,9 @@ If you have new feature suggession or found any bug, please open new thread in I
 
 Consider following us on [Google+](https://plus.google.com/+Mythemeshop/), [Twitter](https://twitter.com/MyThemeShopTeam) and [Facebook](https://www.facebook.com/MyThemeShop).
 
-## Changelog
+### Changelog
 
-### 3.2
+#### 3.2
 * Added Options Panel for Global Option
 * Added option to set Global Colors.
 * Added option to Global position.
@@ -78,12 +78,12 @@ Consider following us on [Google+](https://plus.google.com/+Mythemeshop/), [Twit
 * Fixed many small bugs.
 * Optimized code for better performance.
 
-### 3.1
+#### 3.1
 * Fixed average star rating number issue.
 * Added New filter to exclude post types.
 * Updated filter list.
 
-### 3.0
+#### 3.0
 * Major security updates
 * New AJAXified Tab widget for Popular and Recent reviews, try it, you gonna love it.
 * Language file updated fully.
@@ -93,7 +93,7 @@ Consider following us on [Google+](https://plus.google.com/+Mythemeshop/), [Twit
 * Compatible with WordPress 3.9 Beta
 * Plugin will support the widget customizer coming up in WordPress 3.9
 
-### 2.0
+#### 2.0
 * Fixed the, `'` switching in to `/` issue ([http://bit.ly/PFMGAq](http://bit.ly/PFMGAq))
 * Added `[wp-review]` shortcode to show the ratings anywhere in the content.
 * Added an option to not show review automatically in the Review Location dropdown.
@@ -102,5 +102,5 @@ Consider following us on [Google+](https://plus.google.com/+Mythemeshop/), [Twit
 * For Developers Added the default colors which appear in the meta boxes are now stored in an option. It can be modified directly with `update_option()`, or using the new `wp_review_set_default_colors()` function, which is also called on plugin activation to set the plugin's default colors.
 * Made small CSS and responsive improvements.
 
-### 1.0
+#### 1.0
 * Official plugin release.
