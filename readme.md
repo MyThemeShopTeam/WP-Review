@@ -60,6 +60,11 @@ Consider following us on [Google+](https://plus.google.com/+Mythemeshop/), [Twit
 
 ### Changelog
 
+#### 3.2.1
+* Fixed error appearing when plugin settings weren't saved.
+* Fixed JS issues.
+* Fixed Tabbed Widget issue.
+
 #### 3.2
 * Added Options Panel for Global Option
 * Added option to set Global Colors.

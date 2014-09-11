@@ -61,7 +61,7 @@ function wp_review_get_data() {
 	$colors['bordercolor']  = get_post_meta( $post->ID, 'wp_review_bordercolor', true );
 	$colors['total'] = get_post_meta( $post->ID, 'wp_review_total', true );
     
-    if (!$colors['custom_colors']) {
+    if (!$colors['custom_colors'] && !empty($options['colors']) && is_array($options['colors'])) {
 		$colors = array_merge($colors, $options['colors']);
 	}
     $colors = apply_filters('wp_review_colors', $colors, $post->ID);
@@ -357,7 +357,7 @@ function wp_review_show_total($echo = true, $class = 'review-total-only') {
 	$colors['bordercolor']  = get_post_meta( $post->ID, 'wp_review_bordercolor', true );
 	$colors['total'] = get_post_meta( $post->ID, 'wp_review_total', true );
     
-    if (!$colors['custom_colors']) {
+    if (!$colors['custom_colors'] && !empty($options['colors']) && is_array($options['colors'])) {
 		$colors = array_merge($colors, $options['colors']);
 	}
     $colors = apply_filters('wp_review_colors', $colors, $post->ID);
@@ -392,10 +392,6 @@ function wp_review_show_total($echo = true, $class = 'review-total-only') {
     	}
     								
         $review .= '</div>';
-
-        $review .= '<style type="text/css">';
-        	$review .= '.wp-review-total-'.$post->ID.' i, .wp-review-total-'.$post->ID.' .review-total-box { color: '.$colors['color'].' }';
-        $review .= '</style>';
     }
     
     $review = apply_filters('wp_review_show_total', $review, $post->ID, $type, $total);

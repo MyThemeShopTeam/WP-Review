@@ -4,7 +4,7 @@ Creator's website link: http://mythemeshop.com/plugins/wp-review/
 Tags: review, wp review, rating, wp rating, user rating, google rating, star rating, product review
 Requires at least: 3.0.1
 Tested up to: 4.0
-Stable tag: 3.2
+Stable tag: 3.2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -88,6 +88,11 @@ Please disable all plugins and check if rating is working properly. Then you can
 7. Percentage Review type
 
 == Changelog ==
+
+= 3.2.1 =
+- Fixed error appearing when plugin settings weren't saved.
+- Fixed JS issues.
+- Fixed Tabbed Widget issue.
 
 = 3.2 =
 * Added Options Panel for Global Option

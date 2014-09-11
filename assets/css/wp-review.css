@@ -2,7 +2,7 @@
 * Plugin Name: WP Review
 * Plugin URI: http://mythemeshop.com/plugins/wp-review/
 * Description: Create reviews! Choose from Stars, Percentages or Points for review scores. Supports Retina Display, WPMU & Unlimited Color Schemes.
-* Version: 3.2
+* Version: 3.2.1
 * Author: MyThemesShop
 * Author URI: http://mythemeshop.com/
 */
@@ -26,7 +26,7 @@
 .review-total-star.allowed-to-rate.has-not-rated-yet a { cursor: pointer }
 .review-total-star.allowed-to-rate.has-not-rated-yet:hover .review-result { opacity: 0; filter: alpha(opacity=0); display: none; }
 .review-total-star.allowed-to-rate.has-not-rated-yet a:hover > i { opacity: 1; filter: alpha(opacity=1); }
-.review-total-star.allowed-to-rate a.hovered i { opacity: 1; filter: alpha(opacity=1); }
+.review-total-star.allowed-to-rate a.hovered i { opacity: 1!important; filter: alpha(opacity=1)!important; }
 .mts-review-wait-msg { display: none }
 .review-total { position: absolute; top: 0px; left: 0px; height: 16px; z-index: 99; text-indent: -9999px; }
 .review-star { position: absolute; right: 15px; top: 10px; }
@@ -83,7 +83,6 @@
 .review-type-circle.latestPost-review-wrapper, .review-type-circle.wp-review-on-thumbnail { height: 35px ; background: #fff;}
 .latestPost-review-wrapper .wp-review-circle-rating, .wp-review-on-thumbnail .wp-review-circle-rating { font-size: 11px !important; }
 .review-type-circle.review-total-only, .review-type-circle.wp-review-show-total { padding-top: 6px; }
-.latestPost-review-wrapper i, .latestPost-review-wrapper span { color: #FFF!important; }
 /**
  * Font icon
  */
