@@ -1,9 +1,6 @@
 /* 
 * Plugin Name: WP Review
 * Plugin URI: http://mythemeshop.com/plugins/wp-review/
-* Description: Create reviews! Choose from stars, percentages or points for review scores. Supports Retina Display, WPMU & Unlimited Color Schemes.
-* Author: MyThemesShop
-* Author URI: http://mythemeshop.com/
 */
 
 jQuery(document).ready(function($){
@@ -39,7 +36,7 @@ jQuery(document).ready(function($){
 					$('.review-total-star.allowed-to-rate a, .review-total-star.allowed-to-rate a').off();
 					$('.review-total-wrapper span.review-total-box.hidden').removeClass('hidden').show();
 					var starsWidth = response[0] *20;
-					$('.review-total-star .review-result').css('width', starsWidth+'%');
+					$('.user-review-area .review-result').css('width', starsWidth+'%');
 
 					$('.wp-review-comment-field.allowed-to-rate').removeClass('allowed-to-rate').find('.review-result').css('width', starsWidth+'%');
 				}				

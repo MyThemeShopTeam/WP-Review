@@ -1,3 +1,7 @@
+/* 
+* Plugin Name: WP Review
+* Plugin URI: http://mythemeshop.com/plugins/wp-review/
+*/
 jQuery(document).on('click', function(e) {
     var $this = jQuery(e.target);
     var $form = $this.closest('.wp_review_tab_options_form');

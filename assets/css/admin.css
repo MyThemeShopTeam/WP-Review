@@ -1,9 +1,6 @@
 /* 
 * Plugin Name: WP Review
 * Plugin URI: http://mythemeshop.com/plugins/wp-review/
-* Description: Create reviews! Choose from Stars, Percentages or Points for review scores. Supports Retina Display, WPMU & Unlimited Color Schemes.
-* Author: MyThemesShop
-* Author URI: http://mythemeshop.com/
 */
 .wp-review-field label { width: 15%; display: inline-block; *display: inline; *zoom: 1; }
 .wp-review-field select { width: 15em }
