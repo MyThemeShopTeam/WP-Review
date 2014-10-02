@@ -27,6 +27,8 @@ class wp_review_tab_widget extends WP_Widget {
 		);        
 		// CSS     
 		wp_register_style('wp_review_tab_widget', trailingslashit( WP_REVIEW_ASSETS ).'css/wp-review-tab-widget.css', true);
+		wp_register_style( 'wp_review-style', trailingslashit( WP_REVIEW_ASSETS ) . 'css/wp-review.css', array(), '1.1', 'all' );
+		wp_register_script( 'wp_review-js', trailingslashit( WP_REVIEW_ASSETS ) . 'js/main.js', array('jquery'), '1.1', true );
     }  
     	
 	function form( $instance ) {
@@ -184,8 +186,9 @@ class wp_review_tab_widget extends WP_Widget {
 	function widget( $args, $instance ) {	
 		extract($args, EXTR_SKIP);     
 		extract($instance, EXTR_SKIP);    
+		wp_enqueue_script('wp_review-js'); 
+		wp_enqueue_style('wp_review-style');
 		wp_enqueue_script('wp_review_tab_widget'); 
-		wp_enqueue_style( 'wp_review-style', trailingslashit( WP_REVIEW_ASSETS ) . 'css/wp-review.css', array(), '1.0', 'all' );
         wp_enqueue_style('wp_review_tab_widget');  
 		if (empty($tabs)) $tabs = array('recent' => 1, 'toprated' => 1);    
 		$tabs_count = count($tabs);     
