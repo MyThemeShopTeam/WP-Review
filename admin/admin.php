@@ -17,8 +17,8 @@ add_action( 'admin_enqueue_scripts', 'wp_review_admin_style' );
  * @since 1.0
  */
 function wp_review_admin_style( $hook_suffix ) {
-	wp_enqueue_style( 'wp-review-admin-style', WP_REVIEW_ASSETS . 'css/admin.css' );
-	wp_enqueue_script( 'wp-review-admin-script', WP_REVIEW_ASSETS . 'js/admin.js', array( 'wp-color-picker', 'jquery' ), false, true );
+	wp_enqueue_style( 'wp-review-admin-style', WP_REVIEW_ASSETS . 'css/admin.css', array(), WP_REVIEW_PLUGIN_VERSION );
+	wp_enqueue_script( 'wp-review-admin-script', WP_REVIEW_ASSETS . 'js/admin.js', array( 'wp-color-picker', 'jquery' ), WP_REVIEW_PLUGIN_VERSION, true );
 
 	/* Load the color picker dependencies style. */
 	wp_enqueue_style( 'wp-color-picker' );

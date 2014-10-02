@@ -231,11 +231,13 @@ function wpreview_settings_page() {
 
 			</form>
 		</div>
+		<?php if (!apply_filters( 'wp_review_remove_branding', false )) : ?>
 		<div id="col-left" style="float: right">
 			<a href="https://mythemeshop.com/plugins/wp-review-pro/" target="_blank">
 				<img src="<?php echo trailingslashit( WP_REVIEW_ASSETS ); ?>/images/wp-review-pro.jpg">
 			</a>
 		</div>
+		<?php endif; ?>
 	</div>
 </div>
 <?php }

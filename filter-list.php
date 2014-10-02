@@ -74,4 +74,7 @@ $new_options = array(
 );
 if ( function_exists( 'wp_review_theme_defaults' )) wp_review_theme_defaults( $new_options );
 
+// Remove banner from options page
+add_filter( 'wp_review_remove_branding', '__return_true' );
+
 ?>

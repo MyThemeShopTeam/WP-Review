@@ -363,7 +363,7 @@ function wp_review_show_total($echo = true, $class = 'review-total-only') {
     $colors = apply_filters('wp_review_colors', $colors, $post->ID);
 
     if (!empty($type) && (!empty($total) || $total === '0')) {
-        wp_enqueue_style( 'wp_review-style', trailingslashit( WP_REVIEW_ASSETS ) . 'css/wp-review.css', array(), '1.1', 'all' );
+        wp_enqueue_style( 'wp_review-style', trailingslashit( WP_REVIEW_ASSETS ) . 'css/wp-review.css', array(), WP_REVIEW_PLUGIN_VERSION, 'all' );
 
         $review = '<div class="review-type-'.$type.' '.esc_attr($class).' wp-review-show-total wp-review-total-'.$post->ID.'"> ';
     	

@@ -15,20 +15,20 @@ class wp_review_tab_widget extends WP_Widget {
 		$this->WP_Widget('wp_review_tab_widget', __('WP Review Widget', 'wp-review'), $widget_ops, $control_ops);
     }	
     function wp_review_tab_admin_scripts($hook) {
-        wp_register_script('wp_review_tab_widget_admin', trailingslashit( WP_REVIEW_ASSETS ).'js/wp-review-tab-widget-admin.js', array('jquery'));  
+        wp_register_script('wp_review_tab_widget_admin', trailingslashit( WP_REVIEW_ASSETS ).'js/wp-review-tab-widget-admin.js', array('jquery'), WP_REVIEW_PLUGIN_VERSION);  
         wp_enqueue_script('wp_review_tab_widget_admin');
     }
     function wp_review_tab_register_scripts() { 
 		// JS
         wp_enqueue_script('jquery');
-		wp_register_script('wp_review_tab_widget', trailingslashit( WP_REVIEW_ASSETS ).'js/wp-review-tab-widget.js', array('jquery'));     
+		wp_register_script('wp_review_tab_widget', trailingslashit( WP_REVIEW_ASSETS ).'js/wp-review-tab-widget.js', array('jquery'), WP_REVIEW_PLUGIN_VERSION);     
 		wp_localize_script( 'wp_review_tab_widget', 'wp_review_tab',         
 			array( 'ajax_url' => admin_url( 'admin-ajax.php' )) 
 		);        
 		// CSS     
-		wp_register_style('wp_review_tab_widget', trailingslashit( WP_REVIEW_ASSETS ).'css/wp-review-tab-widget.css', true);
-		wp_register_style( 'wp_review-style', trailingslashit( WP_REVIEW_ASSETS ) . 'css/wp-review.css', array(), '1.1', 'all' );
-		wp_register_script( 'wp_review-js', trailingslashit( WP_REVIEW_ASSETS ) . 'js/main.js', array('jquery'), '1.1', true );
+		wp_register_style('wp_review_tab_widget', trailingslashit( WP_REVIEW_ASSETS ).'css/wp-review-tab-widget.css', array(), WP_REVIEW_PLUGIN_VERSION);
+		wp_register_style( 'wp_review-style', trailingslashit( WP_REVIEW_ASSETS ) . 'css/wp-review.css', array(), WP_REVIEW_PLUGIN_VERSION, 'all' );
+		wp_register_script( 'wp_review-js', trailingslashit( WP_REVIEW_ASSETS ) . 'js/main.js', array('jquery'), WP_REVIEW_PLUGIN_VERSION, true );
     }  
     	
 	function form( $instance ) {

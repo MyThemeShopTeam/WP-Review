@@ -26,8 +26,8 @@ function wp_review_enqueue() {
 		$type = get_post_meta( $post->ID, 'wp_review_type', true );
 
 		if ( $type != '' ){
-			wp_enqueue_style( 'wp_review-style', trailingslashit( WP_REVIEW_ASSETS ) . 'css/wp-review.css', array(), '1.1', 'all' );
-			wp_enqueue_script( 'wp_review-js', trailingslashit( WP_REVIEW_ASSETS ) . 'js/main.js', array('jquery'), '1.1', true );
+			wp_enqueue_style( 'wp_review-style', trailingslashit( WP_REVIEW_ASSETS ) . 'css/wp-review.css', array(), WP_REVIEW_PLUGIN_VERSION, 'all' );
+			wp_enqueue_script( 'wp_review-js', trailingslashit( WP_REVIEW_ASSETS ) . 'js/main.js', array('jquery'), WP_REVIEW_PLUGIN_VERSION, true );
 			?>
 			<script type="text/javascript">
 			var ajaxurl = '<?php echo admin_url('admin-ajax.php'); ?>';
