@@ -99,6 +99,16 @@ function wp_review_get_data() {
 
 
 				/* Review item. */
+				if ( 'star' == $type ) {
+					$bestresult = '<meta itemprop="best" content="5"/>';
+					$best = '5';
+				} elseif( 'point' == $type ) {
+					$bestresult = '<meta itemprop="best" content="10"/>';
+					$best = '10';
+				} else { // percentage
+					$bestresult = '<meta itemprop="best" content="100"/>';
+					$best = '100';
+				}
 				if ( $items ) {
 					$review .= '<ul class="review-list">';
 						foreach( $items as $item ) {
@@ -108,16 +118,10 @@ function wp_review_get_data() {
 
 							if ( 'star' == $type ) {
 								$result = $item['wp_review_item_star'] * 20;
-								$bestresult = '<meta itemprop="best" content="5"/>';
-								$best = '5';
 							} elseif( 'point' == $type ) {
 								$result = $item['wp_review_item_star'] * 10;
-								$bestresult = '<meta itemprop="best" content="10"/>';
-								$best = '10';
 							} else { // percentage
 								$result = $item['wp_review_item_star'] * 100 / 100;
-								$bestresult = '<meta itemprop="best" content="100"/>';
-								$best = '100';
 							}
 
 							$review .= '<li>';
@@ -307,7 +311,7 @@ function wp_review_inject_data( $content ) {
     
 	$location = apply_filters('wp_review_location', $location, $post->ID);
 
-    if (empty($location) || $location == 'custom') {
+    if (empty($location) || $location == 'custom' || ! is_main_query() || ! in_the_loop()) {
         return $content;
     }
     $review = wp_review_get_data();
