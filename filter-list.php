@@ -74,7 +74,59 @@ $new_options = array(
 );
 if ( function_exists( 'wp_review_theme_defaults' )) wp_review_theme_defaults( $new_options );
 
-// Remove banner from options page
-add_filter( 'wp_review_remove_branding', '__return_true' );
+/**
+ * Editing/overriding the review box template
+ * 
+ * Create a 'wp-review' directory in your (child) theme folder, 
+ * and make a copy there of /wp-review/box-templates/default.php
+ * to override it. 
+ * 
+ * Use different file name to add new template, which can be applied using filter:
+ * 
+ */
+add_filter( 'wp_review_get_box_template', 'mts_wp_review_select_box_template', 10, 2 );
+function mts_wp_review_select_box_template( $template, $post_id ) {
+  // Change box template for specific post
+  if ( $post_id == '128' ) {
+    $template = 'new-box.php'; 
+    // "new-box.php" must be present in one of the template path folders (see below)
+  }
+  return $template;
+}
 
-?>
+/**
+ * Template Path Directories
+ * 
+ * By default the plugin looks for box templates in:
+ * 1. wp-review/box-templates
+ * 2. theme_dir/wp-review
+ * 3. childtheme_dir/wp-review
+ * 4... Use filter to add more
+ *
+ */
+add_filter( 'wp_review_box_template_paths', 'mts_wp_review_add_template_path', 10, 1 );
+function mts_wp_review_add_template_path( $paths  ) {
+  // Add a new path where we look for review box template files
+  // The $paths holds default paths in reversed 
+  $paths[] = '/absolute/path/to/additional/templates/dir';
+  return $paths;
+}
+
+/**
+ * Add new rating types with wp_review_register_rating_type()
+ * 
+ * Refer to existing rating template files, e.g. 
+ * point-output.php, point-input.php
+ */
+add_action( 'init', 'wp_review_register_additional_rating_types' );
+function wp_review_register_additional_rating_types() {
+  wp_review_register_rating_type( 'star10', array(
+    'label' => __('10 Stars', 'wp-review'),
+    'max' => 10,
+    'decimals' => 1,
+    'value_text' => __('%s Stars', 'wp-review'),
+    'value_text_singular' => __('%s Star', 'wp-review'),
+    'input_template' => WP_REVIEW_DIR . 'rating-types/star10-input.php', // Replace with path to input template
+    'output_template' => WP_REVIEW_DIR . 'rating-types/star10-output.php', // Replace with path to output template
+  ) );
+}

@@ -20,20 +20,18 @@ add_action( 'wp_head', 'wp_review_ie7' );
  * @since 1.0
  */
 function wp_review_enqueue() {
-	global $post;
-	if(is_singular()) {
-		/* Retrieve the meta box data. */
-		$type = get_post_meta( $post->ID, 'wp_review_type', true );
 
-		if ( $type != '' ){
-			wp_enqueue_style( 'wp_review-style', trailingslashit( WP_REVIEW_ASSETS ) . 'css/wp-review.css', array(), WP_REVIEW_PLUGIN_VERSION, 'all' );
-			wp_enqueue_script( 'wp_review-js', trailingslashit( WP_REVIEW_ASSETS ) . 'js/main.js', array('jquery'), WP_REVIEW_PLUGIN_VERSION, true );
-			?>
-			<script type="text/javascript">
-			var ajaxurl = '<?php echo admin_url('admin-ajax.php'); ?>';
-			</script>
-			<?php
-		}
+	wp_register_style( 'wp_review-style', trailingslashit( WP_REVIEW_ASSETS ) . 'css/wp-review.css', array(), WP_REVIEW_PLUGIN_VERSION, 'all' );
+	
+	wp_register_script( 'wp_review-js', trailingslashit( WP_REVIEW_ASSETS ) . 'js/main.js', array( 'jquery' ), WP_REVIEW_PLUGIN_VERSION, true );
+	wp_localize_script( 'wp_review-js', 'wpreview', array(
+		'ajaxurl' => admin_url('admin-ajax.php')
+	) );
+
+	
+	if ( is_singular() ) {
+		wp_enqueue_style( 'wp_review-style' );
+		wp_enqueue_script( 'wp_review-js' );
 	}
 }
 

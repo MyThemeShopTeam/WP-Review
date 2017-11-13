@@ -3,26 +3,31 @@ Contributors: mythemeshop
 Creator's website link: http://mythemeshop.com/plugins/wp-review/
 Tags: review, wp review, rating, wp rating, user rating, google rating, star rating, product review
 Requires at least: 3.0.1
-Tested up to: 4.0
-Stable tag: 3.2.5
+Tested up to: 4.8
+Stable tag: 4.0.10
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Create reviews! Choose from Stars, Percentages or Points for review scores. Supports Retina Display, WPMU & Unlimited Color Schemes.
 
 == Description ==
+[youtube https://www.youtube.com/watch?v=IvJUHKNYAMc]
 
-Did you always want to increase the user interaction on your website by rating products/services/anything? We at <a href="http://mythemeshop.com/">MyThemeShop</a> understand your need, & created a premium Review plugin. We are now distributing it for FREE to give back to the WordPress community. We have been given so much by the WordPress community, it's time to give back.
+= Complete Setup Tutorial =
+[youtube https://www.youtube.com/watch?v=NzMe-QY_WZY]
 
-**WP Review plugin** is an easy yet powerful way to review content easily, without affecting the speed of your site. If you're a blogger, you probably occasionally review or rank products, services, tools, recipes, or other content on your site. WP Review plugin is a customizable and lightweight way to create reviews, using stars, percentage or point rating, and it includes support for translation, WPMU, Google rich snippets and unlimited colors. Just install it and follow the simple configuration instructions to place it in your desired location.
+Did you always want to increase the user interaction on your website by rating products/services/anything? We at <a rel="nofollow" href="http://mythemeshop.com/">MyThemeShop</a> understand your need, & created a premium Review plugin. We are now distributing it for FREE to give back to the WordPress community. We have been given so much by the WordPress community, it's time to give back.
 
-= Live Demos =
-See WP Review in action on our demo pages:
-* <a href="http://demo.mythemeshop.com/point/fatebuntur-stoici-haec-omnia-dicta-esse-praeclare/" target="_blank">Star Review Type</a>
-* <a href="http://demo.mythemeshop.com/point/modo-etiam-paulum-ad-dexteram-de-via-declinavi/" target="_blank">Point Review Type</a>
-* <a href="http://demo.mythemeshop.com/point/sed-nonne-merninisti-licere-mihi-ista-probare/" target="_blank">Percentage Review Type</a>
+**WP Review plugin** is an easy yet powerful way to review content easily, without affecting the speed of your site. If you're a blogger, you probably occasionally review or rank products, services, tools, recipes, or other content on your site. <a rel="nofollow" href="https://mythemeshop.com/plugins/wp-review/">WP Review plugin</a> is a customizable and lightweight way to create reviews, using stars, percentage or point rating, and it includes support for translation, WPMU, Google rich snippets and unlimited colors. Just install it and follow the simple configuration instructions to place it in your desired location.
 
-= Why WP Review from <a href="http://mythemeshop.com">MyThemeShop</a>: =
+Check the live demos of different Review types offered
+* <a rel="nofollow" href="http://demo.mythemeshop.com/point/fatebuntur-stoici-haec-omnia-dicta-esse-praeclare/"><strong>Star Review</strong></a>
+* <a rel="nofollow" href="http://demo.mythemeshop.com/point/modo-etiam-paulum-ad-dexteram-de-via-declinavi/"><strong>Point Review</strong></a>
+* <a rel="nofollow" href="http://demo.mythemeshop.com/point/sed-nonne-merninisti-licere-mihi-ista-probare/"><strong>Percentage Review</strong></a>
+
+You can also check <a rel="nfollow" href="https://mythemeshop.com/plugins/wp-review-pro/">WP Review Pro</a> which is one of the best <a rel="nofollow" href="https://mythemeshop.com/plugins/">Premium WordPress Plugins</a> for creating extraordinary reviews on your <a rel="nofollow" href="https://mythemeshop.com/blog/">WordPress blog</a> and website.
+
+= Why WP Review from <a rel="nofollow" href="http://mythemeshop.com/">MyThemeShop</a>: =
 * Fastest review plugin.
 * Stars, percentage and point rating system.
 * Supports Google Rich Snippets(schema.org)
@@ -33,6 +38,7 @@ See WP Review in action on our demo pages:
 * Included tabbed widget to show recent reviews and popular reviews.
 * WP Multisite and Multiuser (WPMU / WPMS / WordPress MU) compatible.
 * Design it as you want, unlimited color options.
+* Easily use it in both Free and <a rel="nofollow" href="https://mythemeshop.com/themes/">Premium WordPress Themes.
 * Translation Ready.
 * Reviews are displayed to visitors in a friendly format.
 * Completely customizable, including which fields to ask for, require, and show.
@@ -40,14 +46,17 @@ See WP Review in action on our demo pages:
 * Works with caching plugins and all majority of themes.
 * Easy to modify the CSS to better fit your theme style.
 * Support for adding your own custom fields.
-* Minimalist, lightweight, and efficient code means that your users won’t notice any hiccups.
+* Minimalist, lightweight, and efficient code means that your users wonít notice any hiccups.
 * Position it above or below the content with ease and no coding.
-* Supports Shortcode `[wp-review]` to show review anywhere in post.
+* Supports Shortcode [wp-review] to show review anywhere in post.
 * Developer friendly - Useful filters are included! So you can use it in your themes.
 
 = Support =
-We will do our best to provide support through the WordPress forums. However, all plugin support is provided in our forum. If you have not registered yet, you can do so here: <a href="https://mythemeshop.com/go/signup/index/c/free">https://mythemeshop.com/go/signup/index/c/free</a>. After searching the knowledge base and forum if you are still stuck, feel free to open a new thread, and a member of our support team will be happy to help. Cheers!<br>
-Support link: <a href="http://community.mythemeshop.com/forum/free/plugin-support">http://community.mythemeshop.com/forum/free/plugin-support</a>
+All support for this plugin is provided through our forums. If you have not registered yet, you can do so for FREE by <a rel="nofollow" href="https://mythemeshop.com/#signup">**signing up**</a> on our website. 
+
+You can also check our <a rel="nofollow" href="https://mythemeshop.com/wordpress-101/">WordPress Training videos</a> 
+
+If you still feel stuck, please feel free to open a new thread on our <a rel="nofollow" href="https://community.mythemeshop.com/forum/11-free-plugin-support/">Support Forum</a>. A member of our support team will be happy to help.
 
 = Developer Zone =
 Yes, this plugin is so developer friendly, so you could use it with any theme you develop. Define default CSS, custom position, one line integration in your theme's code.
@@ -55,12 +64,16 @@ Yes, this plugin is so developer friendly, so you could use it with any theme yo
 Show average review in your theme using below function:
 `<?php if (function_exists('wp_review_show_total')) wp_review_show_total(); ?>`
 
-You can find full list of the available filters here <a href="https://github.com/MyThemeShop/WP-Review-by-MyThemeShop/blob/master/filter-list.php" target="_blank">https://github.com/MyThemeShop/WP-Review-by-MyThemeShop/blob/master/filter-list.php</a>.
+You can find full list of the available filters here https://github.com/MyThemeShop/WP-Review-by-MyThemeShop/blob/master/filter-list.php.
 
-GitHub link: <a href="https://github.com/MyThemeShop/WP-Review-by-MyThemeShop">https://github.com/MyThemeShop/WP-Review-by-MyThemeShop</a>
+GitHub link: https://github.com/MyThemeShop/WP-Review-by-MyThemeShop
+
+You can also use the WP Review plugin for creating product reviews and pair it up with a <a rel="nofollow" href="https://mythemeshop.com/theme-category/wordpress-ecommerce-themes/">WordPress Ecommerce Theme</a> to increase the trust of new users on your website.
+
 
 = Feedback =
-If you like this plugin, then please leave us a good rating and review.<br> Consider following us on <a rel="author" href="https://plus.google.com/+Mythemeshop/">Google+</a>, <a href="https://twitter.com/MyThemeShopTeam">Twitter</a>, and <a href="https://www.facebook.com/MyThemeShop">Facebook</a>
+If you like this plugin, then please consider leaving us a good rating and a review feedback</a>.
+If would like, you can follow us on <a rel="nofollow" href="https://plus.google.com/+Mythemeshop/">Google+</a>, <a rel="nofollow" href="https://twitter.com/MyThemeShopTeam">Twitter</a>, and <a rel="nofollow" href="https://www.facebook.com/MyThemeShop">Facebook</a>
 
 == Installation ==
 
@@ -88,6 +101,84 @@ Please disable all plugins and check if rating is working properly. Then you can
 7. Percentage Review type
 
 == Changelog ==
+
+= 4.0.10 =
+* Fixed shortcode attribute-related PHP warnings
+
+= 4.0.9 =
+* Fixed color picker issue in the Theme Customizer
+
+= 4.0.8 =
+* Improved support for older PHP versions
+
+= 4.0.7 =
+* Fixed widget title issue
+
+= 4.0.6 =
+* Embedded full video tutorial
+
+= 4.0.5 =
+* Fixed: final rating can now be entered manually again
+* Fixed: removed unneeded code related to circle review type
+
+= 4.0.4 =
+* Fixed: backlink option is not enabled by default anymore. Sorry about that!
+
+= 4.0.3 =
+* Fixed decimals issue in Point reviews
+* Fixed bug preventing reviews to appear on Pages
+
+= 4.0.2 =
+* Added back missing Widget Title field
+
+= 4.0.1 =
+* Replaced anonymous functions for compatibility with older PHP versions
+* Added optional backlink
+* Removed unneeded Review Links metabox
+
+= 4.0 =
+* Huge code improvement and optimization
+* Choose any rating type for user reviews (user reviews were restricted to stars before)
+* View and edit user ratings from the WordPress dashboard
+* Added Drag & Drop for Review Items
+* Added Rating Column on 'Posts' page
+* For developers: Review box templates - Create custom review box templates
+* For developers: Rating type templates - Create custom rating types
+* Various bug fixes and improvements
+* NOTE: After updating the plugin, existing user ratings must be migrated in Settings > WP Review Pro > Migrate Ratings
+
+= 3.3.5 =
+* Fixed spelling mistake in notification
+
+= 3.3.4 =
+* Fixed notification closing issue
+
+= 3.3.3 =
+* Fixed function conflict with WP Subscribe Plugin
+
+= 3.3.2 =
+* Switched to PHP 5 style constructor method for the widget class
+
+= 3.3.1 =
+* Rating stars are showing on search engine results page
+
+= 3.3 =
+* Fixed Google structured data testing tool errors and warnings
+
+= 3.2.9 =
+* Fixed star rating issue on small screens.
+
+= 3.2.8 =
+* Removed extra closing span tag in markup
+* Added Title option for widget
+
+= 3.2.7 =
+* Added Title Length option for widget
+* Added Filter to control default title length
+
+= 3.2.6 =
+* Added optional 'id' parameter for shortcode
+* Added filter to modify style output
 
 = 3.2.5 =
 * Added loading animation in widget

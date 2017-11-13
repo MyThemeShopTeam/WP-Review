@@ -44,15 +44,6 @@ function wp_review_add_meta_boxes() {
         	);
         	
         	add_meta_box(
-        		'wp-review-metabox-heading',
-        		__( 'Review Heading', 'wp-review' ),
-        		'wp_review_render_meta_box_heading',
-        		$post_type,
-        		'normal',
-        		'high'
-        	);
-        	
-        	add_meta_box(
         		'wp-review-metabox-desc',
         		__( 'Review Description', 'wp-review' ),
         		'wp_review_render_meta_box_desc',
@@ -79,26 +70,34 @@ function wp_review_add_meta_boxes() {
  * @since 1.0
  */
 function wp_review_render_meta_box_review_options( $post ) {
-	global $post;
+	global $post, $wp_review_rating_types;
 
 	/* Add an nonce field so we can check for it later. */
 	wp_nonce_field( basename( __FILE__ ), 'wp-review-review-options-nonce' );
 
 	/* Retrieve an existing value from the database. */
 	$type = get_post_meta( $post->ID, 'wp_review_type', true );
-    
-    $available_types = apply_filters('wp_review_metabox_types', array('star' => __('Star', 'wp-review'), 'point' => __('Point', 'wp-review'), 'percentage' => __('Percentage', 'wp-review')));
+	$schema = wp_review_get_review_schema( $post->ID );
+	$heading = get_post_meta( $post->ID, 'wp_review_heading', true );
+    //$available_types = apply_filters('wp_review_metabox_types', wp_review_get_review_types() );
+    $available_types = wp_review_get_rating_types();
+	$schemas = apply_filters( 'wp_review_schema_types', array() );
 ?>
 	
 	<p class="wp-review-field">
 		<label for="wp_review_type"><?php _e( 'Review Type', 'wp-review' ); ?></label>
 		<select name="wp_review_type" id="wp_review_type">
 			<option value=""><?php _e( 'No Review', 'wp-review' ) ?></option>
-            <?php foreach ($available_types as $available_type => $label) { ?>
-                <option value="<?php echo $available_type; ?>" <?php selected( $type, $available_type ); ?>><?php echo $label; ?></option>
+            <?php foreach ($available_types as $available_type_name => $available_type) { ?>
+                <option value="<?php echo $available_type_name; ?>" data-max="<?php echo $available_type['max']; ?>" data-decimals="<?php echo $available_type['decimals']; ?>" <?php selected( $type, $available_type_name ); ?>><?php echo $available_type['label']; ?></option>
             <?php } ?>
 		</select>
         <span id="wp_review_id_hint">Review ID: <strong><?php echo $post->ID; ?></strong></span>
+	</p>
+
+	<p class="wp-review-field" id="wp_review_heading_group">
+		<label><?php _e( 'Review Heading', 'wp-review' ); ?></label>
+		<input type="text" name="wp_review_heading" id="wp_review_heading" value="<?php _e( $heading ); ?>" />
 	</p>
 
 	<?php
@@ -133,6 +132,9 @@ function wp_review_render_meta_box_item( $post ) {
 	/* Retrieve an existing value from the database. */
 	$custom_colors   = get_post_meta( $post->ID, 'wp_review_custom_colors', true );
 	$custom_location = get_post_meta( $post->ID, 'wp_review_custom_location', true );
+	$custom_width = get_post_meta( $post->ID, 'wp_review_custom_width', true );
+	$custom_author = get_post_meta( $post->ID, 'wp_review_custom_author', true );
+
 
 	$items     = get_post_meta( $post->ID, 'wp_review_item', true ); 
 	$color     = get_post_meta( $post->ID, 'wp_review_color', true );
@@ -141,6 +143,9 @@ function wp_review_render_meta_box_item( $post ) {
 	$bgcolor1  = get_post_meta( $post->ID, 'wp_review_bgcolor1', true );
 	$bgcolor2  = get_post_meta( $post->ID, 'wp_review_bgcolor2', true );
 	$bordercolor  = get_post_meta( $post->ID, 'wp_review_bordercolor', true );
+	$align     = get_post_meta( $post->ID, 'wp_review_align', true ); 
+	$width     = get_post_meta( $post->ID, 'wp_review_width', true );
+	$author    = get_post_meta( $post->ID, 'wp_review_author', true ); 
     if ( $items == '' ) $items = $defaultItems;
 	if( $color == '' ) $color = ( ! empty($options['colors']['color'] ) ? $options['colors']['color'] : $defaultColors['color']);
     if( $location == '' ) $location = ( ! empty($options['location'] ) ? $options['location'] : $defaultLocation);
@@ -148,6 +153,9 @@ function wp_review_render_meta_box_item( $post ) {
 	if( $bgcolor1 == '' ) $bgcolor1 = ( ! empty($options['colors']['bgcolor1'] ) ? $options['colors']['bgcolor1'] : $defaultColors['bgcolor1']);
 	if( $bgcolor2 == '' ) $bgcolor2 = ( ! empty($options['colors']['bgcolor2'] ) ? $options['colors']['bgcolor2'] : $defaultColors['bgcolor2']);
 	if( $bordercolor == '' ) $bordercolor = ( ! empty($options['colors']['bordercolor'] ) ? $options['colors']['bordercolor'] : $defaultColors['bordercolor']);
+    if ( empty( $width )) $width = 100;
+    if ( empty( $align )) $align = 'left';
+    if ( !$author ) $author = '';
 
     $fields = array(
         'location' => true, 
@@ -158,6 +166,8 @@ function wp_review_render_meta_box_item( $post ) {
         'bordercolor' => true,
         'custom_colors' => true,
         'custom_location' => true,
+        'width' => true,
+        'align' => true
     );
     $displayed_fields = apply_filters('wp_review_metabox_item_fields', $fields);
 ?>
@@ -167,8 +177,9 @@ function wp_review_render_meta_box_item( $post ) {
 
 		<thead>
 			<tr>
-				<th width="80%"><?php _e( 'Feature Name', 'wp-review' ); ?></th>
-				<th width="10%" class="dynamic-text"><?php _e( 'Star (1-5)', 'wp-review' ); ?></th>
+				<th width="3%"></th>
+				<th width="70%"><?php _e( 'Feature Name', 'wp-review' ); ?></th>
+				<th width="17%" class="dynamic-text"><?php _e( 'Star (1-5)', 'wp-review' ); ?></th>
 				<th width="10%"></th>
 			</tr>
 		</thead>
@@ -179,6 +190,9 @@ function wp_review_render_meta_box_item( $post ) {
 				<?php foreach ( $items as $item ) { ?>
 
 					<tr>
+						<td class="handle">
+							<span class="dashicons dashicons-menu"></span>
+						</td>
 						<td>
 							<input type="text" class="widefat" name="wp_review_item_title[]" value="<?php if( !empty( $item['wp_review_item_title'] ) ) echo esc_attr( $item['wp_review_item_title'] ); ?>" />
 						</td>
@@ -193,6 +207,7 @@ function wp_review_render_meta_box_item( $post ) {
 			<?php else : ?>
 				
 				<tr>
+					<td class="handle"><span class="dashicons dashicons-menu"></span></td>
 					<td><input type="text" class="widefat" name="wp_review_item_title[]" /></td>
 					<td><input type="text" min="1" step="1" autocomplete="off" class="widefat review-star" name="wp_review_item_star[]" /></td>
 					<td><a class="button remove-row" href="#"><?php _e( 'Delete', 'wp-review' ); ?></a></td>
@@ -202,7 +217,8 @@ function wp_review_render_meta_box_item( $post ) {
 		 
 			<!-- empty hidden one for jQuery -->
 			<tr class="empty-row screen-reader-text">
-				<td><input type="text" class="widefat" name="wp_review_item_title[]" /></td>
+				<td class="handle"><span class="dashicons dashicons-menu"></span></td>
+				<td><input type="text" class="widefat focus-on-add" name="wp_review_item_title[]" /></td>
 				<td><input type="text" min="1" step="1" autocomplete="off" class="widefat" name="wp_review_item_star[]" /></td>
 				<td><a class="button remove-row" href="#"><?php _e( 'Delete', 'wp-review' ); ?></a></td>
 			</tr>
@@ -213,8 +229,8 @@ function wp_review_render_meta_box_item( $post ) {
 	
 	<table width="100%">
 		<tr>
-			<td width="80%"><a id="add-row" class="button" href="#"><?php _e( 'Add another', 'wp-review' ) ?></a></td>
-			<td width="10%">
+			<td width="73%"><a class="add-row button" data-target="#wp-review-item" href="#"><?php _e( 'Add another', 'wp-review' ) ?></a></td>
+			<td width="17%">
 				<input type="text" class="widefat wp-review-total" name="wp_review_total" value="<?php echo get_post_meta( $post->ID, 'wp_review_total', true ); ?>" />
 			</td>
 			<td width="10%"><?php _e( 'Total', 'wp-review' ); ?></td>
@@ -222,9 +238,8 @@ function wp_review_render_meta_box_item( $post ) {
 	</table>
 
 	<p class="wp-review-field">
-		<label for="wp_review_custom_location"><?php _e( 'Custom Location', 'wp-review' ); ?></label>
-		<input type="hidden" name="wp_review_custom_location" id="wp_review_custom_location_unchecked" value="" />
 		<input name="wp_review_custom_location" id="wp_review_custom_location" type="checkbox" value="1" <?php echo (! empty($custom_location) ? 'checked ' : ''); ?> />
+		<label for="wp_review_custom_location"><?php _e( 'Custom Location', 'wp-review' ); ?></label>
 	</p>
     <div class="wp-review-location-options"<?php if (empty($custom_location)) echo ' style="display: none;"'; ?>>
 		<p class="wp-review-field">
@@ -237,14 +252,13 @@ function wp_review_render_meta_box_item( $post ) {
 		</p>
 		<p class="wp-review-field" id="wp_review_shortcode_hint_field">
 			<label for="wp_review_shortcode_hint"></label>
-			<input id="wp_review_shortcode_hint" type="text" value="[wp-review]" readonly="readonly" />
+			<input id="wp_review_shortcode_hint" type="text" value='[wp-review id="<?php echo trim( $_GET['post'] ); ?>"]' readonly="readonly" />
 	        <span><?php _e('Copy &amp; paste this shortcode in the content.', 'wp-review') ?></span>
 		</p>
 	</div>
 	<p class="wp-review-field">
-		<label for="wp_review_custom_colors"><?php _e( 'Custom Colors', 'wp-review' ); ?></label>
-		<input type="hidden" name="wp_review_custom_colors" id="wp_review_custom_colors_unchecked" value="" />
 		<input name="wp_review_custom_colors" id="wp_review_custom_colors" type="checkbox" value="1" <?php echo (! empty($custom_colors) ? 'checked ' : ''); ?>/>
+		<label for="wp_review_custom_colors"><?php _e( 'Custom Colors', 'wp-review' ); ?></label>
 	</p>
     <div class="wp-review-color-options"<?php if (empty($custom_colors)) echo ' style="display: none;"'; ?>>
 
@@ -273,26 +287,6 @@ function wp_review_render_meta_box_item( $post ) {
 			<input type="text" class="wp-review-color" name="wp_review_bordercolor" id="wp_review_bordercolor" value="<?php echo $bordercolor; ?>" />
 		</p>
 	</div>
-
-	<?php
-}
-
-/**
- * Render the meta box.
- *
- * @since 1.0
- */
-function wp_review_render_meta_box_heading( $post ) {
-	/* Add an nonce field so we can check for it later. */
-	wp_nonce_field( basename( __FILE__ ), 'wp-review-heading-nonce' ); 
-	
-	/* Retrieve an existing value from the database. */
-	$heading = get_post_meta( $post->ID, 'wp_review_heading', true );	
-	?>
-	<p class="wp-review-field">
-		<label><?php _e( 'Review Heading', 'wp-review' ); ?></label>
-		<input type="text" name="wp_review_heading" id="wp_review_heading" value="<?php _e( $heading ); ?>" />
-	</p>
 	<?php
 }
  
@@ -337,24 +331,35 @@ function wp_review_render_meta_box_desc( $post ) {
 function wp_review_render_meta_box_userReview( $post ) {
 	/* Add an nonce field so we can check for it later. */
 	wp_nonce_field( basename( __FILE__ ), 'wp-review-userReview-nonce' ); 
-	
-	/* Retrieve an existing value from the database. */
-	$userReviews = get_post_meta( $post->ID, 'wp_review_userReview', true );	
-	$enabled = false;	
-	if( is_array( $userReviews ) && $userReviews[0] == 1 ) $enabled = true;
+	$enabled = wp_review_get_user_rating_setup( $post->ID );
 
+	$type = get_post_meta( $post->ID, 'wp_review_user_review_type', true );
+	if (! $type ) {
+		$type = 'star';
+	}
+	//$available_types = apply_filters('wp_review_metabox_user_rating_types', wp_review_get_review_types( 'user' ) );
+	$available_types = wp_review_get_rating_types();
 	?>
-	
+
 	<p class="wp-review-field">
-		<label for="wp-review-userReview-disable"> <?php _e( 'Disabled', 'wp-review' ); ?>
-			<input type="radio" name="wp_review_userReview[]" id="wp-review-userReview-disable" class="wp-review-userReview-options" value="0" <?php echo !$enabled ? 'checked' : ''; ?> />
-		</label>
-		
-		<label for="wp-review-userReview-enable"> <?php _e( 'Enabled', 'wp-review' ); ?>
-			<input type="radio" name="wp_review_userReview[]" id="wp-review-userReview-enable" class="wp-review-userReview-options" value="1" <?php echo $enabled ? 'checked' : ''; ?> />
-		</label>
+		<input type="radio" name="wp_review_userReview" id="wp-review-userReview-disable" value="<?php echo WP_REVIEW_REVIEW_DISABLED; ?>" <?php checked( WP_REVIEW_REVIEW_DISABLED, $enabled ); ?> />
+		<label for="wp-review-userReview-disable"> <?php _e( 'Disabled', 'wp-review' ); ?></label>
 	</p>
-	
+	<p class="wp-review-field">
+		<input type="radio" name="wp_review_userReview" id="wp-review-userReview-visitor" value="<?php echo WP_REVIEW_REVIEW_VISITOR_ONLY; ?>" <?php checked( WP_REVIEW_REVIEW_VISITOR_ONLY, $enabled ); ?> />
+		<label for="wp-review-userReview-visitor"> <?php _e( 'Enabled', 'wp-review' ); ?>
+	</p>
+	<p class="wp-review-field" id="wp_review_rating_type">
+		<label for="rating_type"><?php _e( 'User Rating Type', 'wp-review' ); ?></label>
+		<select name="wp_review_user_review_type" id="rating_type">
+			<?php foreach ($available_types as $available_type_name => $available_type) {
+				// skip ones that only have output template
+				if ( ! $available_type['user_rating'] ) continue; ?>
+                <option value="<?php echo $available_type_name; ?>" <?php selected( $type, $available_type_name ); ?>><?php echo $available_type['label']; ?></option>
+            <?php } ?>
+		</select>
+		<span class="edit-ratings-notice"><?php _e( 'Note: If you are changing user rating type and post already has user ratings, please edit or remove existing ratings if needed.', 'wp-review' ); ?></span>
+	</p>
 	<?php
 }
 
@@ -369,9 +374,6 @@ function wp_review_save_postdata( $post_id, $post ) {
 		return;
 
 	if ( !isset( $_POST['wp-review-item-nonce'] ) || !wp_verify_nonce( $_POST['wp-review-item-nonce'], basename( __FILE__ ) ) )
-		return;
-
-	if ( !isset( $_POST['wp-review-heading-nonce'] ) || !wp_verify_nonce( $_POST['wp-review-heading-nonce'], basename( __FILE__ ) ) )
 		return;
 	
 	if ( !isset( $_POST['wp-review-desc-nonce'] ) || !wp_verify_nonce( $_POST['wp-review-desc-nonce'], basename( __FILE__ ) ) )
@@ -394,22 +396,28 @@ function wp_review_save_postdata( $post_id, $post ) {
 	}
 
 	$meta = array(
-		'wp_review_custom_location' => $_POST['wp_review_custom_location'],
-		'wp_review_custom_colors' => $_POST['wp_review_custom_colors'],
-		'wp_review_custom_width' => $_POST['wp_review_custom_width'],
-		'wp_review_location' => $_POST['wp_review_location'],
-		'wp_review_type'     => $_POST['wp_review_type'],
-		'wp_review_heading'     => $_POST['wp_review_heading'],
-		'wp_review_desc_title'     => $_POST['wp_review_desc_title'],
-		'wp_review_desc'     => $_POST['wp_review_desc'],
-		'wp_review_hide_desc'     => $_POST['wp_review_hide_desc'],
-		'wp_review_userReview'     => $_POST['wp_review_userReview'],
-		'wp_review_total'    => $_POST['wp_review_total'],
-		'wp_review_color'    => $_POST['wp_review_color'],
-		'wp_review_fontcolor'    => $_POST['wp_review_fontcolor'],
-		'wp_review_bgcolor1'    => $_POST['wp_review_bgcolor1'],
-		'wp_review_bgcolor2'    => $_POST['wp_review_bgcolor2'],
-		'wp_review_bordercolor' => $_POST['wp_review_bordercolor'],
+		'wp_review_custom_location' => filter_input( INPUT_POST, 'wp_review_custom_location', FILTER_SANITIZE_STRING ),
+		'wp_review_custom_colors' => filter_input( INPUT_POST, 'wp_review_custom_colors', FILTER_SANITIZE_STRING ),
+		'wp_review_custom_width' => filter_input( INPUT_POST, 'wp_review_custom_width', FILTER_SANITIZE_STRING ),
+		'wp_review_custom_author' => filter_input( INPUT_POST, 'wp_review_custom_author', FILTER_SANITIZE_STRING ),
+		'wp_review_location' => filter_input( INPUT_POST, 'wp_review_location', FILTER_SANITIZE_STRING ),
+		'wp_review_type'     => filter_input( INPUT_POST, 'wp_review_type', FILTER_SANITIZE_STRING ),
+		'wp_review_heading'     => filter_input( INPUT_POST, 'wp_review_heading', FILTER_SANITIZE_STRING ),
+		'wp_review_desc_title'     => filter_input( INPUT_POST, 'wp_review_desc_title', FILTER_SANITIZE_STRING ),
+		'wp_review_desc'     => wp_kses_post( $_POST['wp_review_desc'] ),
+		'wp_review_hide_desc'     => filter_input( INPUT_POST, 'wp_review_hide_desc', FILTER_SANITIZE_STRING ),
+		'wp_review_userReview'     => filter_input( INPUT_POST, 'wp_review_userReview', FILTER_SANITIZE_STRING ),
+		'wp_review_total'    => filter_input( INPUT_POST, 'wp_review_total', FILTER_SANITIZE_STRING ),
+		'wp_review_color'    => filter_input( INPUT_POST, 'wp_review_color', FILTER_SANITIZE_STRING ),
+		'wp_review_fontcolor'    => filter_input( INPUT_POST, 'wp_review_fontcolor', FILTER_SANITIZE_STRING ),
+		'wp_review_bgcolor1'    => filter_input( INPUT_POST, 'wp_review_bgcolor1', FILTER_SANITIZE_STRING ),
+		'wp_review_bgcolor2'    => filter_input( INPUT_POST, 'wp_review_bgcolor2', FILTER_SANITIZE_STRING ),
+		'wp_review_bordercolor' => filter_input( INPUT_POST, 'wp_review_bordercolor', FILTER_SANITIZE_STRING ),
+		'wp_review_width'    => filter_input( INPUT_POST, 'wp_review_width', FILTER_SANITIZE_STRING ),
+		'wp_review_align'    => filter_input( INPUT_POST, 'wp_review_align', FILTER_SANITIZE_STRING ),
+		'wp_review_author'    => filter_input( INPUT_POST, 'wp_review_author', FILTER_SANITIZE_STRING ),
+		'wp_review_schema' => filter_input( INPUT_POST, 'wp_review_schema', FILTER_SANITIZE_STRING ),
+		'wp_review_user_review_type' => filter_input( INPUT_POST, 'wp_review_user_review_type', FILTER_SANITIZE_STRING ),
 	);
 
 	foreach ( $meta as $meta_key => $new_meta_value ) {
@@ -418,7 +426,7 @@ function wp_review_save_postdata( $post_id, $post ) {
 		$meta_value = get_post_meta( $post_id, $meta_key, true );
 
 		/* If there is no new meta value but an old value exists, delete it. */
-		if ( current_user_can( 'delete_post_meta', $post_id, $meta_key ) && '' === $new_meta_value && $meta_value )
+		if ( current_user_can( 'delete_post_meta', $post_id, $meta_key ) && empty( $new_meta_value ) && $meta_value )
 			delete_post_meta( $post_id, $meta_key, $meta_value );
 
 		/* If a new meta value was added and there was no previous value, add it. */
@@ -475,4 +483,13 @@ add_action( 'edit_form_after_title', 'add_input_debug_preview' );
 function add_input_debug_preview() {
    echo '<input type="hidden" name="debug_preview" value="debug_preview">';
 }
+
+function wp_review_default_schema_types( $types ) {
+	$default = array(
+		'Thing' => __( 'Thing (Default)', 'wp-review' ),
+	);
+
+	return array_merge( $types, $default );
+}
+add_filter( 'wp_review_schema_types', 'wp_review_default_schema_types' );
 ?>

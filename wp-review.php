@@ -3,16 +3,9 @@
  * Plugin Name: WP Review
  * Plugin URI: http://mythemeshop.com/plugins/wp-review/
  * Description: Create reviews! Choose from stars, percentages or points for review scores. Supports Retina Display, WPMU and Unlimited Color Schemes.
- * Version: 3.2.5
+ * Version: 4.0.10
  * Author: MyThemesShop
  * Author URI: http://mythemeshop.com/
- *
- * This program is free software; you can redistribute it and/or modify it under the terms of the GNU 
- * General Public License version 2, as published by the Free Software Foundation.  You may NOT assume 
- * that you can use any other version of the GPL.
- *
- * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without 
- * even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  *
  * @since     1.0
  * @copyright Copyright (c) 2013, MyThemesShop
@@ -22,18 +15,19 @@
 
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;
-// WP Review activated?
-if ( ! defined( 'MTS_WP_REVIEW_DB_TABLE' ) ) {
 
+// WP Review Pro activated?
+if ( ! defined( 'MTS_WP_REVIEW_DB_TABLE' )) {
+	
 	/* Plugin version */
-	define( 'WP_REVIEW_PLUGIN_VERSION', '3.2.5' );
-
+	define( 'WP_REVIEW_PLUGIN_VERSION', '4.0.6' );
+	
 	/* Sets the custom db table name. */
 	define( 'MTS_WP_REVIEW_DB_TABLE', 'mts_wp_reviews' );
 		
 	/* When plugin is activated */
 	register_activation_hook( __FILE__, 'wp_review_activation' );
-
+	add_action('admin_init', 'wp_review_settings_redirect');
 
 	/* Defines constants used by the plugin. */
 	add_action( 'plugins_loaded', 'wp_review_constants', 1 );
@@ -68,6 +62,14 @@ if ( ! defined( 'MTS_WP_REVIEW_DB_TABLE' ) ) {
 
 		/* Sets plugin base 'directory/file.php' */
 		define( 'WP_REVIEW_PLUGIN_BASE', plugin_basename(__FILE__) );
+
+		define( 'WP_REVIEW_COMMENT_TYPE_VISITOR', 'wp_review_visitor' );
+
+		define( 'WP_REVIEW_VISITOR_RATING_METAKEY', 'wp_review_visitor_rating' );
+
+		/* Keys for user review permissions */
+		define( 'WP_REVIEW_REVIEW_DISABLED', '0' );
+		define( 'WP_REVIEW_REVIEW_VISITOR_ONLY', '2' );
 
 	}
 
@@ -109,8 +111,18 @@ if ( ! defined( 'MTS_WP_REVIEW_DB_TABLE' ) ) {
 
 	function wp_review_activation(){
 	    /* Loads activation functions */
-	    //require_once( plugin_dir_path( __FILE__ ) . '/includes/functions.php' );
-		require_once( plugin_dir_path( __FILE__ ) . '/admin/activation.php' );
+	    add_option('wp_review_do_activation_redirect', true);
+	    update_option('wp_review_activated', time());
 	}
+
+	function wp_review_settings_redirect() {
+	    if (get_option('wp_review_do_activation_redirect', false)) {
+	        delete_option('wp_review_do_activation_redirect');
+	         wp_redirect('options-general.php?page=wp-review%2Fadmin%2Foptions.php#help');
+	         exit;
+	    }
+	}
+
 }
+
 ?>

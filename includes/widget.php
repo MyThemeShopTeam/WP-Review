@@ -12,27 +12,26 @@ class wp_review_tab_widget extends WP_Widget {
 		
 		$widget_ops = array('classname' => 'widget_wp_review_tab', 'description' => __('Display Reviews in tabbed format.', 'wp-review'));
 		$control_ops = array('width' => 200, 'height' => 350);
-		$this->WP_Widget('wp_review_tab_widget', __('WP Review Widget', 'wp-review'), $widget_ops, $control_ops);
+		parent::__construct('wp_review_tab_widget', __('WP Review Widget', 'wp-review'), $widget_ops, $control_ops);
     }	
     function wp_review_tab_admin_scripts($hook) {
-        wp_register_script('wp_review_tab_widget_admin', trailingslashit( WP_REVIEW_ASSETS ).'js/wp-review-tab-widget-admin.js', array('jquery'), WP_REVIEW_PLUGIN_VERSION);  
+        wp_register_script('wp_review_tab_widget_admin', trailingslashit( WP_REVIEW_ASSETS ).'js/wp-review-tab-widget-admin.js', array('jquery'));  
         wp_enqueue_script('wp_review_tab_widget_admin');
     }
     function wp_review_tab_register_scripts() { 
 		// JS
-        wp_enqueue_script('jquery');
-		wp_register_script('wp_review_tab_widget', trailingslashit( WP_REVIEW_ASSETS ).'js/wp-review-tab-widget.js', array('jquery'), WP_REVIEW_PLUGIN_VERSION);     
+        //wp_enqueue_script('jquery');
+		wp_register_script( 'wp_review_tab_widget', trailingslashit( WP_REVIEW_ASSETS ).'js/wp-review-tab-widget.js', array('jquery'));     
 		wp_localize_script( 'wp_review_tab_widget', 'wp_review_tab',         
 			array( 'ajax_url' => admin_url( 'admin-ajax.php' )) 
-		);        
+		);
 		// CSS     
-		wp_register_style('wp_review_tab_widget', trailingslashit( WP_REVIEW_ASSETS ).'css/wp-review-tab-widget.css', array(), WP_REVIEW_PLUGIN_VERSION);
-		wp_register_style( 'wp_review-style', trailingslashit( WP_REVIEW_ASSETS ) . 'css/wp-review.css', array(), WP_REVIEW_PLUGIN_VERSION, 'all' );
-		wp_register_script( 'wp_review-js', trailingslashit( WP_REVIEW_ASSETS ) . 'js/main.js', array('jquery'), WP_REVIEW_PLUGIN_VERSION, true );
+		wp_register_style('wp_review_tab_widget', trailingslashit( WP_REVIEW_ASSETS ).'css/wp-review-tab-widget.css', true);
     }  
     	
 	function form( $instance ) {
 		$instance = wp_parse_args( (array) $instance, array( 
+			'widget_title' => '',
             'tabs' => array('toprated' => 1, 'recent' => 1, 'mostvoted' => 0, 'custom' => 0), 
             'tab_order' => array('toprated' => 1, 'recent' => 2, 'mostvoted' => 3, 'custom' => 4), 
             'tab_titles' => array('toprated' => __('Top Rated'), 'recent' => __('Recent'), 'mostvoted' => __('Most Voted'), 'custom' => __('Editor\'s choice')), 
@@ -42,11 +41,19 @@ class wp_review_tab_widget extends WP_Widget {
             'comment_num' => '5',
             'thumb_size' => 'small', 
             'show_date' => 1,
-            'custom_reviews' => ''
+            'custom_reviews' => '',
+            'title_length' => apply_filters( 'wpt_title_length_default', '15' ) 
         ));
+        
 		extract($instance);
 		?>
         <div class="wp_review_tab_options_form">
+
+        <p>
+			<label for="<?php echo $this->get_field_id( 'widget_title' ); ?>"><?php _e( 'Title:','mythemeshop' ); ?></label> 
+			<input class="widefat" id="<?php echo $this->get_field_id( 'widget_title' ); ?>" name="<?php echo $this->get_field_name( 'widget_title' ); ?>" type="text" value="<?php echo esc_attr( $widget_title ); ?>" />
+		</p>
+
         <h4><?php _e('Select Tabs', 'wp-review'); ?></h4>
         
 		<div class="wp_review_tab_select_tabs">
@@ -92,6 +99,15 @@ class wp_review_tab_widget extends WP_Widget {
 			<label for="<?php echo $this->get_field_id('post_num'); ?>"><?php _e('Number of reviews to show:', 'wp-review'); ?>
 				<br />
 				<input id="<?php echo $this->get_field_id('post_num'); ?>" name="<?php echo $this->get_field_name('post_num'); ?>" type="number" min="1" step="1" value="<?php echo $post_num; ?>" />
+			</label>
+		</p>
+
+		<p>
+			<label for="<?php echo $this->get_field_id('title_length'); ?>"><?php _e('Title length (words):', 'mts_wpt'); ?>
+				<br />
+				<!-- dummy input so that WP doesn't pick up title_length as title -->
+				<input id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="" style="display: none;" />
+				<input id="<?php echo $this->get_field_id('title_length'); ?>" name="<?php echo $this->get_field_name('title_length'); ?>" type="number" min="1" step="1" value="<?php echo $title_length; ?>" />
 			</label>
 		</p>
 				
@@ -171,25 +187,32 @@ class wp_review_tab_widget extends WP_Widget {
 	}	
 	
 	function update( $new_instance, $old_instance ) {	
-		$instance = $old_instance;    
-		$instance['tabs'] = $new_instance['tabs'];          
+		$instance = $old_instance;
+		$instance['widget_title'] = strip_tags( $new_instance['widget_title'] );
+		$instance['tabs'] = $new_instance['tabs'];
         $instance['tab_order'] = $new_instance['tab_order'];
         $instance['tab_titles'] = wp_kses_post($new_instance['tab_titles']);
-        $instance['review_type'] = $new_instance['review_type'];        
-		$instance['allow_pagination'] = $new_instance['allow_pagination'];	
+        $instance['review_type'] = $new_instance['review_type'];
+		$instance['allow_pagination'] = $new_instance['allow_pagination'];
 		$instance['post_num'] = $new_instance['post_num'];
+		$instance['title_length'] = $new_instance['title_length'];
 		$instance['thumb_size'] = $new_instance['thumb_size'];
 		$instance['show_date'] = $new_instance['show_date'];
-        $instance['custom_reviews'] = $new_instance['custom_reviews']; 
+        $instance['custom_reviews'] = $new_instance['custom_reviews'];
+
 		return $instance;	
 	}	
 	function widget( $args, $instance ) {	
-		extract($args, EXTR_SKIP);     
-		extract($instance, EXTR_SKIP);    
-		wp_enqueue_script('wp_review-js'); 
-		wp_enqueue_style('wp_review-style');
-		wp_enqueue_script('wp_review_tab_widget'); 
-        wp_enqueue_style('wp_review_tab_widget');  
+		extract($args, EXTR_SKIP); 
+		extract($instance, EXTR_SKIP);
+		$widget_title = apply_filters( 'widget_title', $widget_title );
+		wp_enqueue_script( 'wp_review_tab_widget' );
+		wp_enqueue_script( 'wp_review-js' );
+		wp_enqueue_style( 'wp_review-style' );
+        wp_enqueue_style( 'wp_review_tab_widget' );
+		wp_localize_script( 'wp_review-js', 'wpreview', array(
+			'ajaxurl' => admin_url('admin-ajax.php')
+		) );
 		if (empty($tabs)) $tabs = array('recent' => 1, 'toprated' => 1);    
 		$tabs_count = count($tabs);     
 		if ($tabs_count <= 1) {       
@@ -208,7 +231,8 @@ class wp_review_tab_widget extends WP_Widget {
         array_multisort($tab_order, $available_tabs);
         
 		?>	
-		<?php echo $before_widget; ?>	
+		<?php echo $before_widget;
+		if ( ! empty( $widget_title ) ) echo $before_title . $widget_title . $after_title; ?>	
 		<div class="wp_review_tab_widget_content" id="<?php echo $widget_id; ?>_content">		
 			<ul class="wp-review-tabs <?php echo "has-$tabs_count-"; ?>tabs">
                 <?php foreach ($available_tabs as $tab => $label) : ?>
@@ -251,7 +275,7 @@ class wp_review_tab_widget extends WP_Widget {
 		?>  
 		<script type="text/javascript">  
 			jQuery(function($) {    
-				$('#<?php echo $widget_id; ?>_content').data('args', <?php echo json_encode($instance); ?>);  
+				$('#<?php echo $widget_id; ?>_content').data('args', <?php echo wp_json_encode($instance); ?>);  
 			});  
 		</script>  
 		<?php echo $after_widget; ?>
@@ -259,26 +283,24 @@ class wp_review_tab_widget extends WP_Widget {
 	}  
 	
     function get_most_voted($limit = 20){
-        global $wpdb;
-        $limit = intval($limit);
-    	$table_name = $wpdb->prefix . MTS_WP_REVIEW_DB_TABLE;
-    	if (function_exists('is_multisite') && is_multisite()) {$table_name = $wpdb->base_prefix . MTS_WP_REVIEW_DB_TABLE;}
-    	
-    	global $blog_id;
-    	
-        $ids = array();
-        $reviews = $wpdb->get_results("
-            SELECT post_id, COUNT(*) AS magnitude 
-            FROM $table_name
-            WHERE blog_id = $blog_id 
-            GROUP BY post_id 
-            ORDER BY magnitude DESC
-            LIMIT $limit
-        ");
-        foreach ($reviews as $review) {
-            $ids[] = $review->post_id;
-        }
-        return $ids;
+	    $comments = get_comments( array(
+		    'type__in' => array( WP_REVIEW_COMMENT_TYPE_VISITOR ),
+
+	    ) );
+
+	    $args = array(
+		    'orderby'   => 'meta_value_num',
+		    'meta_key'  => 'wp_review_review_count',
+		    'fields' => 'ids',
+		    'posts_per_page' => $limit,
+	    );
+
+	    $posts = new WP_Query( $args );
+	    if ( $posts->have_posts() ) {
+		    return $posts->posts;
+	    }
+
+	    return array();
     }
     
 	function ajax_wp_review_tab_widget_content() {     
@@ -314,6 +336,9 @@ class wp_review_tab_widget extends WP_Widget {
         if (in_array($args['review_type'], array('star', 'point', 'percentage'))) {
             $review_type = $args['review_type'];
         }
+		
+		$title_length = ! empty($args['title_length']) ? $args['title_length'] : apply_filters( 'wpt_title_length_default', '15' );
+
         
 		switch ($tab) {
 			case "toprated":      
@@ -430,8 +455,8 @@ class wp_review_tab_widget extends WP_Widget {
 						</div>
 					</a>
 					<div class="title-right">
-						<div class="entry-title"><a title="<?php the_title(); ?>" href="<?php the_permalink() ?>"><?php echo get_the_title(); ?></div></a>
-						<?php wp_review_show_total(true, 'review-total-only '.$thumb_size.'-thumb'); ?>
+						<div class="entry-title"><a title="<?php the_title(); ?>" href="<?php the_permalink() ?>"><?php echo $this->post_title( $title_length ); ?></div></a>
+						<?php wp_review_show_total(true, 'review-total-only '.$thumb_size.'-thumb', null, array('in_widget' => true)); ?>
 	                    <?php if ( $show_date ) : ?>	
 							<div class="wp-review-tab-postmeta">								
 								<?php the_time('M j, Y'); ?>		
@@ -463,6 +488,17 @@ class wp_review_tab_widget extends WP_Widget {
 		<input type="hidden" class="page_num" name="page_num" value="<?php echo $page; ?>" />    
 		<?php   
 	}
+    function post_title($limit = 15) {
+    	  $limit++;
+          $title = explode(' ', get_the_title(), $limit);
+          if (count($title)>=$limit) {
+            array_pop($title);
+            $title = implode(" ",$title).'...';
+          } else {
+            $title = implode(" ",$title);
+          }
+          return $title;
+    }
     function truncate($str, $length = 24) {
         if (mb_strlen($str) > $length) {
             return mb_substr($str, 0, $length).'...';
@@ -471,5 +507,10 @@ class wp_review_tab_widget extends WP_Widget {
         }
     }
 }
-add_action( 'widgets_init', create_function( '', 'register_widget( "wp_review_tab_widget" );' ) );
+
+function wpreview_register_widget() {
+	register_widget( "wp_review_tab_widget" );
+}
+add_action( 'widgets_init', 'wpreview_register_widget' );
+
 ?>
