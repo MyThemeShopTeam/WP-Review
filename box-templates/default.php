@@ -77,7 +77,11 @@ if ($review['add_backlink']) {
 			 ?>
 				<li>
 					<span><?php echo wp_kses_post( $item['wp_review_item_title'] ); ?><?php echo $value_text; ?></span>
-					<?php echo wp_review_rating( $item['wp_review_item_star'] ); ?>
+					<?php 
+					if( isset( $item['wp_review_item_star'] )) { 
+						echo wp_review_rating( $item['wp_review_item_star'] );
+					}
+					?>
 				</li>
 			<?php endforeach; ?>
 		</ul>
