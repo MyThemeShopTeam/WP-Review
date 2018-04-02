@@ -3,7 +3,7 @@
  * Plugin Name: WP Review
  * Plugin URI: http://mythemeshop.com/plugins/wp-review/
  * Description: Create reviews! Choose from stars, percentages or points for review scores. Supports Retina Display, WPMU and Unlimited Color Schemes.
- * Version: 4.0.10
+ * Version: 4.0.11
  * Author: MyThemesShop
  * Author URI: http://mythemeshop.com/
  *
@@ -12,19 +12,18 @@
  * @author    MyThemesShop
  * @license   http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  */
-
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 // WP Review Pro activated?
 if ( ! defined( 'MTS_WP_REVIEW_DB_TABLE' )) {
-	
+
 	/* Plugin version */
-	define( 'WP_REVIEW_PLUGIN_VERSION', '4.0.6' );
-	
+	define( 'WP_REVIEW_PLUGIN_VERSION', '4.0.11' );
+
 	/* Sets the custom db table name. */
 	define( 'MTS_WP_REVIEW_DB_TABLE', 'mts_wp_reviews' );
-		
+
 	/* When plugin is activated */
 	register_activation_hook( __FILE__, 'wp_review_activation' );
 	add_action('admin_init', 'wp_review_settings_redirect');
@@ -58,7 +57,7 @@ if ( ! defined( 'MTS_WP_REVIEW_DB_TABLE' )) {
 		define( 'WP_REVIEW_INCLUDES', WP_REVIEW_DIR . trailingslashit( 'includes' ) );
 
 		/* Sets the path to the `assets` directory. */
-		define( 'WP_REVIEW_ASSETS', WP_REVIEW_URI . trailingslashit( 'assets' ) );	
+		define( 'WP_REVIEW_ASSETS', WP_REVIEW_URI . trailingslashit( 'assets' ) );
 
 		/* Sets plugin base 'directory/file.php' */
 		define( 'WP_REVIEW_PLUGIN_BASE', plugin_basename(__FILE__) );
@@ -95,10 +94,10 @@ if ( ! defined( 'MTS_WP_REVIEW_DB_TABLE' )) {
 		/* Loads the meta boxes. */
 		require_once( WP_REVIEW_ADMIN . 'metaboxes.php' );
 
-		/* Loads the front-end functions. */	
+		/* Loads the front-end functions. */
 		require_once( WP_REVIEW_INCLUDES . 'functions.php' );
 
-		/* Loads the widget. */	
+		/* Loads the widget. */
 		require_once( WP_REVIEW_INCLUDES . 'widget.php' );
 
 		/* Loads the enqueue functions. */

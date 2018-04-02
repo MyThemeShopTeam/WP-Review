@@ -1,10 +1,10 @@
-=== WP Review ===
+﻿=== WP Review ===
 Contributors: mythemeshop
 Creator's website link: http://mythemeshop.com/plugins/wp-review/
 Tags: review, wp review, rating, wp rating, user rating, google rating, star rating, product review
 Requires at least: 4.0
-Tested up to: 4.8.3
-Stable tag: 4.0.10
+Tested up to: 4.9.4
+Stable tag: 4.0.11
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -101,6 +101,8 @@ Please disable all plugins and check if rating is working properly. Then you can
 7. Percentage Review type
 
 == Changelog ==
+= v4.0.11 (Mar 20, 2018) =
+* Fixed PHP warnings and errors
 
 = v4.0.10 (May 23, 2017) =
 * Fixed shortcode attribute-related PHP warnings
