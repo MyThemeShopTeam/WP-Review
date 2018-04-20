@@ -1,10 +1,10 @@
-﻿=== WP Review ===
+=== WP Review ===
 Contributors: mythemeshop
 Creator's website link: http://mythemeshop.com/plugins/wp-review/
 Tags: review, wp review, rating, wp rating, user rating, google rating, star rating, product review
 Requires at least: 4.0
 Tested up to: 4.9.5
-Stable tag: 4.0.11
+Stable tag: 4.0.12
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -102,9 +102,12 @@ Please disable all plugins and check if rating is working properly. Then you can
 
 == Changelog ==
 
-= v4.0.11 (Apr 21, 2018) =
+= v4.0.12 (Apr 21, 2018) =
 * Fixed PHP warnings and errors
-* Fixed Compatibility with PHP 7.2
+* Improved code and PHP 7.2 compatibility
+
+= v4.0.11 (Dec 11, 2017) =
+* Prevent review-related post fields from getting added when the post has no review
 
 = v4.0.10 (May 23, 2017) =
 * Fixed shortcode attribute-related PHP warnings
