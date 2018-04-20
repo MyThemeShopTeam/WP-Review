@@ -14,18 +14,18 @@
 
 /*
  *	Available items in $review array:
- *	
- *		'post_id', 
+ *
+ *		'post_id',
 		'type',
-		'heading', 
-		'author', 
-		'items', 
-		'hide_desc', 
-		'desc', 
-		'desc_title', 
-		'total', 
-		'colors', 
-		'schema', 
+		'heading',
+		'author',
+		'items',
+		'hide_desc',
+		'desc',
+		'desc_title',
+		'total',
+		'colors',
+		'schema',
 		'links',
 		'user_review',
 		'user_review_type',
@@ -33,7 +33,7 @@
 		'user_review_count',
 		'user_has_reviewed',
 		'add_backlink'
- * 
+ *
  */
 
 // Exit if accessed directly
@@ -77,8 +77,8 @@ if ($review['add_backlink']) {
 			 ?>
 				<li>
 					<span><?php echo wp_kses_post( $item['wp_review_item_title'] ); ?><?php echo $value_text; ?></span>
-					<?php 
-					if( isset( $item['wp_review_item_star'] )) { 
+					<?php
+					if( isset( $item['wp_review_item_star'] )) {
 						echo wp_review_rating( $item['wp_review_item_star'] );
 					}
 					?>
@@ -116,7 +116,7 @@ if ($review['add_backlink']) {
 			<div class="user-total-wrapper">
 				<span class="user-review-title"><?php _e( 'User Rating', 'wp-review' ); ?></span>
 				<span class="review-total-box">
-					<?php 
+					<?php
 					$usertotal_text = $review['user_review_total'];
 					if ($review['user_review_type'] != 'star') {
 						$usertotal_text = sprintf( $wp_review_rating_types[$review['user_review_type']]['value_text'], $review['user_review_total'] );
@@ -133,7 +133,7 @@ if ($review['add_backlink']) {
 <?php if ($review['add_backlink']) : ?>
 	<?php echo wp_review_get_backlink(); ?>
 <?php endif; ?>
-<?php 
+<?php
 $colors = $review['colors'];
 $color_output = <<<EOD
 
