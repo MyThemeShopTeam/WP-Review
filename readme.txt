@@ -52,9 +52,9 @@ You can also check <a rel="nfollow" href="https://mythemeshop.com/plugins/wp-rev
 * Developer friendly - Useful filters are included! So you can use it in your themes.
 
 = Support =
-All support for this plugin is provided through our forums. If you have not registered yet, you can do so for FREE by <a rel="nofollow" href="https://mythemeshop.com/#signup">**signing up**</a> on our website. 
+All support for this plugin is provided through our forums. If you have not registered yet, you can do so for FREE by <a rel="nofollow" href="https://mythemeshop.com/#signup">**signing up**</a> on our website.
 
-You can also check our <a rel="nofollow" href="https://mythemeshop.com/wordpress-101/">WordPress Training videos</a> 
+You can also check our <a rel="nofollow" href="https://mythemeshop.com/wordpress-101/">WordPress Training videos</a>
 
 If you still feel stuck, please feel free to open a new thread on our <a rel="nofollow" href="https://community.mythemeshop.com/forum/11-free-plugin-support/">Support Forum</a>. A member of our support team will be happy to help.
 
@@ -101,8 +101,10 @@ Please disable all plugins and check if rating is working properly. Then you can
 7. Percentage Review type
 
 == Changelog ==
-= v4.0.11 (Mar 20, 2018) =
+
+= v4.0.11 (Apr 21, 2018) =
 * Fixed PHP warnings and errors
+* Fixed Compatibility with PHP 7.2
 
 = v4.0.10 (May 23, 2017) =
 * Fixed shortcode attribute-related PHP warnings
