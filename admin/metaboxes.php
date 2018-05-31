@@ -382,7 +382,7 @@ function wp_review_save_postdata( $post_id, $post ) {
 	if ( !isset( $_POST['wp-review-userReview-nonce'] ) || !wp_verify_nonce( $_POST['wp-review-userReview-nonce'], basename( __FILE__ ) ) )
 		return;
 
-	if ( empty( $_POST['wp_review_type'] ) ) {
+	if ( !isset( $_POST['wp_review_type'] ) ) {
 		return;
 	}
 
