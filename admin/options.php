@@ -296,7 +296,7 @@ function wpreview_settings_page() {
 			</p>
 
 			<p class="submit">
-		    	<a href="https://mythemeshop.com/#login" target="_blank" class="button-primary"><?php _e('Get Support for Free') ?></a>
+		    	<a href="https://mythemeshop.com/#login" target="_blank" class="button-primary"><?php _e('Get Support') ?></a>
 		    </p>
 		</div>
 
