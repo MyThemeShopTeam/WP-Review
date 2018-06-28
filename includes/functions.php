@@ -1352,8 +1352,8 @@ function wp_review_admin_notice() {
     /* Only show the notice 2 days after plugin activation */
     if ( ! get_user_meta($user_id, 'wp_review_ignore_notice') && time() >= (get_option( 'wp_review_activated', 0 ) + (2 * 24 * 60 * 60)) ) {
         echo '<div class="updated notice-info wp-review-notice" id="wpreview-notice" style="position:relative;">';
-			printf(__('<p>Like WP Review plugin? You will LOVE <a target="_blank" href="https://mythemeshop.com/plugins/wp-review-pro/?utm_source=WP+Review&utm_medium=Notification+Link&utm_content=WP+Review+Pro+LP&utm_campaign=WordPressOrg"><strong>WP Review Pro!</strong></a></p><a class="notice-dismiss" href="%1$s"></a>'), '?wp_review_admin_notice_ignore=0');
-			echo "</div>";
+		printf(__('<p>Like WP Review plugin? You will LOVE <a target="_blank" href="https://mythemeshop.com/plugins/wp-review-pro/?utm_source=WP+Review&utm_medium=Notification+Link&utm_content=WP+Review+Pro+LP&utm_campaign=WordPressOrg"><strong>WP Review Pro!</strong></a></p><a class="notice-dismiss" href="%1$s"></a>', 'wp-review'), '?wp_review_admin_notice_ignore=0');
+		echo "</div>";
     }
 
     /* Other notice appears right after activating */
@@ -1362,8 +1362,10 @@ function wp_review_admin_notice() {
 		$views = get_option('wp_review_notice_views', 0);
 		update_option( 'wp_review_notice_views', ($views + 1) );
         echo '<div class="updated notice-info wp-review-notice" id="wpreview-notice2" style="position:relative;">';
-			printf(__('<p>Thank you for trying WP Review. We hope you will like it.</p><a class="notice-dismiss" href="%1$s"></a>'), '?wp_review_admin_notice_ignore=1');
-			echo "</div>";
+        echo '<p>';
+			_e('Thank you for trying WP Review. We hope you will like it.', 'wp-review');
+		echo '</p><a class="notice-dismiss" href="%1$s"></a>';
+		echo "</div>";
     }
 }
 
