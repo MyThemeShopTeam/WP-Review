@@ -4,7 +4,7 @@ Creator's website link: http://mythemeshop.com/plugins/wp-review/
 Tags: review, wp review, rating, wp rating, user rating, google rating, star rating, product review
 Requires at least: 4.0
 Tested up to: 4.9.6
-Stable tag: 4.0.15
+Stable tag: 4.0.16
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -101,6 +101,9 @@ Please disable all plugins and check if rating is working properly. Then you can
 7. Percentage Review type
 
 == Changelog ==
+
+= v4.0.16 (June 30, 2018) =
+* Updated admin notices
 
 = v4.0.15 (June 28, 2018) =
 * Changed admin notices

@@ -1351,35 +1351,33 @@ function wp_review_admin_notice() {
     /* Check that the user hasn't already clicked to ignore the message */
     /* Only show the notice 2 days after plugin activation */
     if ( ! get_user_meta($user_id, 'wp_review_ignore_notice') && time() >= (get_option( 'wp_review_activated', 0 ) + (2 * 24 * 60 * 60)) ) {
-        echo '<div class="updated notice-info wp-review-notice" id="wpreview-notice" style="position:relative;">';
-		printf(__('<p>Like WP Review plugin? You will LOVE <a target="_blank" href="https://mythemeshop.com/plugins/wp-review-pro/?utm_source=WP+Review&utm_medium=Notification+Link&utm_content=WP+Review+Pro+LP&utm_campaign=WordPressOrg"><strong>WP Review Pro!</strong></a></p><a class="notice-dismiss" href="%1$s"></a>', 'wp-review'), '?wp_review_admin_notice_ignore=0');
-		echo "</div>";
+			echo '<div class="updated notice-info wp-review-notice" id="wpreview-notice" style="position:relative;">';
+			echo __('<p>Like WP Review plugin? You will LOVE <a target="_blank" href="https://mythemeshop.com/plugins/wp-review-pro/?utm_source=WP+Review&utm_medium=Notification+Link&utm_content=WP+Review+Pro+LP&utm_campaign=WordPressOrg"><strong>WP Review Pro!</strong></a></p><a class="notice-dismiss wpreview-notice-dismiss" data-ignore="0" href="#"></a>', 'wp-review');
+			echo "</div>";
     }
 
     /* Other notice appears right after activating */
     /* And it gets hidden after showing 3 times */
-    if ( ! get_user_meta($user_id, 'wp_review_ignore_notice_2') && get_option('wp_review_notice_views', 0) < 3 ) {
-		$views = get_option('wp_review_notice_views', 0);
-		update_option( 'wp_review_notice_views', ($views + 1) );
-        echo '<div class="updated notice-info wp-review-notice" id="wpreview-notice2" style="position:relative;">';
-        echo '<p>';
+    if ( ! get_user_meta($user_id, 'wp_review_ignore_notice_2') && get_option('wp_review_notice_views', 0) < 3 && get_option( 'wp_review_activated', 0 ) ) {
+			$views = get_option('wp_review_notice_views', 0);
+			update_option( 'wp_review_notice_views', ($views + 1) );
+			echo '<div class="updated notice-info wp-review-notice" id="wpreview-notice2" style="position:relative;">';
+			echo '<p>';
 			_e('Thank you for trying WP Review. We hope you will like it.', 'wp-review');
-		echo '</p><a class="notice-dismiss" href="%1$s"></a>';
-		echo "</div>";
+			echo '</p><a class="notice-dismiss wpreview-notice-dismiss" data-ignore="1"></a>';
+			echo "</div>";
     }
 }
 
-add_action('admin_init', 'wp_review_admin_notice_ignore');
-
-function wp_review_admin_notice_ignore() {
-    global $current_user;
-    $user_id = $current_user->ID;
-    /* If user clicks to ignore the notice, add that to their user meta */
-    if ( isset($_GET['wp_review_admin_notice_ignore']) ) {
-    	if ( '0' == $_GET['wp_review_admin_notice_ignore'] ) {
-    		add_user_meta($user_id, 'wp_review_ignore_notice', '1', true);
-    	} elseif ( '1' == $_GET['wp_review_admin_notice_ignore'] ) {
-    		add_user_meta($user_id, 'wp_review_ignore_notice_2', '1', true);
-    	}
-    }
-}
+add_action('wp_ajax_mts_dismiss_wpreview_notice', function(){
+  global $current_user;
+  $user_id = $current_user->ID;
+  /* If user clicks to ignore the notice, add that to their user meta */
+  if ( isset($_POST['dismiss']) ) {
+  	if ( '0' == $_POST['dismiss'] ) {
+  		add_user_meta($user_id, 'wp_review_ignore_notice', '1', true);
+  	} elseif ( '1' == $_POST['dismiss'] ) {
+  		add_user_meta($user_id, 'wp_review_ignore_notice_2', '1', true);
+  	}
+  }
+});
