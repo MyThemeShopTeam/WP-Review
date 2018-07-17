@@ -105,6 +105,7 @@ Please disable all plugins and check if rating is working properly. Then you can
 = v4.0.17 (July 17, 2018) =
 * Fixed Banner alignment issue on settings page
 * Fixed Single page settings JS console error
+* Removed margin from icon which was causing to break the design
 
 = v4.0.16 (June 30, 2018) =
 * Updated admin notices
