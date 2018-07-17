@@ -29,6 +29,15 @@ function wp_review_admin_style( $hook_suffix ) {
 		true
 	);
 
+	wp_localize_script(
+		'wp-review-admin-script',
+		'wprVars',
+		array(
+			'ratingPermissionsCommentOnly' => WP_REVIEW_REVIEW_COMMENT_ONLY,
+			'ratingPermissionsBoth'        => WP_REVIEW_REVIEW_ALLOW_BOTH,
+		)
+	);
+
 	wp_enqueue_style(
 		'wp-review-admin-ui-css',
 		'//ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/themes/smoothness/jquery-ui.css',

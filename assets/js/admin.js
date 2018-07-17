@@ -230,7 +230,7 @@ jQuery(document).ready(function($) {
 	$('[name=wp_review_userReview]').change(function(e){
 		var val = $(this).val();
 		var $type = $('#wp_review_comment_rating_type');
-		if(ratingPermissions.commentOnly === val || ratingPermissions.both === val){
+		if(wprVars.ratingPermissionsCommentOnly === val || wprVars.ratingPermissionsBoth === val){
 			$type.show();
 		} else {
 			$type.hide();
