@@ -323,9 +323,6 @@ function wpreview_settings_page() {
 		<?php endif; ?>
 
 		</div>
-		
-
-	    
 
 	</form>
 </div>

@@ -196,3 +196,13 @@ h4.wp-review-comment-title {
     width: 16px;
     height: 16px;
 }
+
+.wp-review-admin-options #col-left {
+    width: 32%;
+}
+
+@media screen and (max-width: 782px) {
+    .wp-review-admin-options #col-left {
+        width: 100%;
+    }
+}
