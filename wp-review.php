@@ -9,16 +9,17 @@
  * Text Domain: wp-review
  *
  * @since     1.0
+ * @package   WP_Review
  * @copyright Copyright (c) 2013, MyThemesShop
  * @author    MyThemesShop
  * @license   http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  */
 
-// Exit if accessed directly
+// Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 // WP Review Pro activated?
-if ( ! defined( 'MTS_WP_REVIEW_DB_TABLE' )) {
+if ( ! defined( 'MTS_WP_REVIEW_DB_TABLE' ) ) {
 
 	/* Plugin version */
 	define( 'WP_REVIEW_PLUGIN_VERSION', '4.0.17' );
@@ -28,7 +29,7 @@ if ( ! defined( 'MTS_WP_REVIEW_DB_TABLE' )) {
 
 	/* When plugin is activated */
 	register_activation_hook( __FILE__, 'wp_review_activation' );
-	add_action('admin_init', 'wp_review_settings_redirect');
+	add_action( 'admin_init', 'wp_review_settings_redirect' );
 
 	/* Defines constants used by the plugin. */
 	add_action( 'plugins_loaded', 'wp_review_constants', 1 );
@@ -62,7 +63,7 @@ if ( ! defined( 'MTS_WP_REVIEW_DB_TABLE' )) {
 		define( 'WP_REVIEW_ASSETS', WP_REVIEW_URI . trailingslashit( 'assets' ) );
 
 		/* Sets plugin base 'directory/file.php' */
-		define( 'WP_REVIEW_PLUGIN_BASE', plugin_basename(__FILE__) );
+		define( 'WP_REVIEW_PLUGIN_BASE', plugin_basename( __FILE__ ) );
 
 		define( 'WP_REVIEW_COMMENT_TYPE_VISITOR', 'wp_review_visitor' );
 
@@ -112,20 +113,18 @@ if ( ! defined( 'MTS_WP_REVIEW_DB_TABLE' )) {
 
 	}
 
-	function wp_review_activation(){
-	    /* Loads activation functions */
-	    add_option('wp_review_do_activation_redirect', true);
-	    update_option('wp_review_activated', time());
+	function wp_review_activation() {
+		/* Loads activation functions */
+		add_option( 'wp_review_do_activation_redirect', true );
+		update_option( 'wp_review_activated', time() );
 	}
 
 	function wp_review_settings_redirect() {
-	    if (get_option('wp_review_do_activation_redirect', false)) {
-	        delete_option('wp_review_do_activation_redirect');
-	         wp_redirect('options-general.php?page=wp-review%2Fadmin%2Foptions.php#help');
-	         exit;
-	    }
+		if ( get_option( 'wp_review_do_activation_redirect', false ) ) {
+			delete_option( 'wp_review_do_activation_redirect' );
+			wp_redirect( 'options-general.php?page=WP-Review%2Fadmin%2Foptions.php#help' );
+			exit;
+		}
 	}
 
 }
-
-?>
