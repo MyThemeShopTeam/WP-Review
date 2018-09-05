@@ -821,7 +821,7 @@
 		 */
 		getInfo : function() {
 			return {
-				longname : 'WP Review Pro Buttons',
+				longname : 'WP Review Buttons',
 				author : 'MTS',
 				authorurl : 'https://mythemeshop.com',
 				version : '3.0.0'
@@ -830,5 +830,5 @@
 	});
 
 	// Register plugin
-	tinymce.PluginManager.add( 'wp_review_pro', tinymce.plugins.WPReviewPro );
+	tinymce.PluginManager.add( 'wp_review', tinymce.plugins.WPReviewPro );
 })( tinymce, wpreview, jQuery );

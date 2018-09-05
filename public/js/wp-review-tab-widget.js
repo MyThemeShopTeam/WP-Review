@@ -1,6 +1,6 @@
 /*
-* Plugin Name: WP Review Pro
-* Plugin URI: http://mythemeshop.com/plugins/wp-review-pro/
+* Plugin Name: WP Review
+* Plugin URI: http://mythemeshop.com/plugins/wp-review/
 * Description: Create reviews! Choose from Stars, Percentages, Circles or Points for review scores. Supports Retina Display, WPMU & Unlimited Color Schemes.
 * Author: MyThemesShop
 * Author URI: http://mythemeshop.com/

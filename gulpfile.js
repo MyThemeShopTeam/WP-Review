@@ -58,30 +58,11 @@ gulp.task('admin-sass', function() {
 		.pipe(gulp.dest('admin/assets/css'));
 });
 
-gulp.task('sass-no-maps', function() {
-	return gulp
-		.src('public/sass/*.scss')
-		.pipe(sass(sassOptions).on('error', sass.logError))
-		.pipe(autoprefixer())
-		.pipe(removeEmptyLines())
-		.pipe(gulp.dest('public/css'));
-});
-
-gulp.task('admin-sass-no-maps', function() {
-	return gulp
-		.src('admin/assets/sass/*.scss')
-		.pipe(sass(sassOptions).on('error', sass.logError))
-		.pipe(autoprefixer())
-		.pipe(removeEmptyLines())
-		.pipe(gulp.dest('admin/assets/css'));
-});
-
 gulp.task('zip', function() {
 	return gulp
 		.src(zipSrc, { base: '../' })
-		.pipe(zip('wp-review-pro.zip'))
+		.pipe(zip('wp-review.zip'))
 		.pipe(gulp.dest('../'));
 });
 
-gulp.task('dev', ['sass', 'admin-sass']);
-gulp.task('default', ['sass-no-maps', 'admin-sass-no-maps']);
+gulp.task('default', ['sass', 'admin-sass']);

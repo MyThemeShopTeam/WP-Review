@@ -69,11 +69,11 @@ function wp_review_render_meta_box_review_options( $post ) {
 	<div class="js-tabs wpr-tabs">
 		<div class="nav-tab-wrapper tab-titles">
 			<a href="#review-box" class="nav-tab tab-title nav-tab-active"><?php esc_html_e( 'Review Box', 'wp-review' ); ?></a>
-			<?php if(!wp_review_network_option('hide_popup_box_') && current_user_can('wp_review_popup')) { ?>
+			<?php if ( ! wp_review_network_option( 'hide_popup_box_' ) && current_user_can( 'wp_review_popup' ) ) { ?>
 				<a href="#popup" class="nav-tab tab-title"><?php esc_html_e( 'Popup', 'wp-review' ); ?></a>
 			<?php } ?>
-			<?php if(! wp_review_network_option('hide_notification_bar_') && current_user_can('wp_review_notification_bar')) { ?>
-			<a href="#hello-bar" class="nav-tab tab-title"><?php esc_html_e( 'Notification Bar', 'wp-review' ); ?></a>
+			<?php if ( ! wp_review_network_option( 'hide_notification_bar_' ) && current_user_can( 'wp_review_notification_bar' ) ) { ?>
+				<a href="#hello-bar" class="nav-tab tab-title"><?php esc_html_e( 'Notification Bar', 'wp-review' ); ?></a>
 			<?php } ?>
 		</div>
 

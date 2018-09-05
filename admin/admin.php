@@ -17,7 +17,7 @@
  * @param string $hook_suffix Admin page hook suffix.
  */
 function wp_review_admin_style( $hook_suffix ) {
-	if ( ! in_array( $hook_suffix, array( 'post-new.php', 'edit-comments.php', 'post.php', 'edit.php', 'widgets.php', 'settings_page_wp-review-pro' ) ) ) {
+	if ( ! in_array( $hook_suffix, array( 'post-new.php', 'edit-comments.php', 'post.php', 'edit.php', 'widgets.php', 'settings_page_wp-review/admin/options' ) ) ) {
 		return;
 	}
 
@@ -36,6 +36,7 @@ function wp_review_admin_style( $hook_suffix ) {
 	wp_enqueue_script( 'magnificPopup', WP_REVIEW_ASSETS . 'js/jquery.magnific-popup.min.js', array( 'jquery' ), '1.1.0', true );
 
 	wp_enqueue_media();
+	add_thickbox();
 
 	$api_key = wp_review_option( 'google_api_key' );
 	if ( ! empty( $api_key ) && ( ! wp_review_option( 'dequeue_map_backend' ) || 'widgets.php' === $hook_suffix ) ) {
@@ -59,18 +60,18 @@ function wp_review_admin_style( $hook_suffix ) {
 		'wp-review-admin-script',
 		WP_REVIEW_URI . 'admin/assets/js/admin.js',
 		array(
-		    'wp-color-picker',
-            'jquery',
-            'jquery-ui-core',
-            'jquery-ui-slider',
-            'jquery-ui-sortable',
-            'jquery-ui-datepicker',
-            'wp-util',
-            'wp-review-rating-inputs',
-            'js-cookie',
-            'magnificPopup',
-            'imagesloaded',
-        ),
+			'wp-color-picker',
+			'jquery',
+			'jquery-ui-core',
+			'jquery-ui-slider',
+			'jquery-ui-sortable',
+			'jquery-ui-datepicker',
+			'wp-util',
+			'wp-review-rating-inputs',
+			'js-cookie',
+			'magnificPopup',
+			'imagesloaded',
+		),
 		'3.0.0',
 		true
 	);
@@ -107,14 +108,14 @@ function wp_review_admin_style( $hook_suffix ) {
 			'searchTerm'                   => __( 'Search term', 'wp-review' ),
 			'searchLocation'               => __( 'Search location', 'wp-review' ),
 			'limit'                        => __( 'Limit', 'wp-review' ),
-			'searchRadius'								 => __( 'Radius', 'wp-review' ),
-			'searchCategories'						 => __( 'Categories', 'wp-review' ),
-			'searchLocale'								 => __( 'Locale', 'wp-review' ),
-			'searchOffset'								 => __( 'Offset', 'wp-review' ),
-			'sort_by'											 => __( 'SortBy', 'wp-review' ),
-			'searchPrice'												 => __( 'Price range', 'wp-review' ),
-			'open_now'										 => __( 'Open now', 'wp-review' ),
-			'attributes'									 => __( 'Attributes', 'wp-review' ),
+			'searchRadius'                 => __( 'Radius', 'wp-review' ),
+			'searchCategories'             => __( 'Categories', 'wp-review' ),
+			'searchLocale'                 => __( 'Locale', 'wp-review' ),
+			'searchOffset'                 => __( 'Offset', 'wp-review' ),
+			'sort_by'                      => __( 'SortBy', 'wp-review' ),
+			'searchPrice'                  => __( 'Price range', 'wp-review' ),
+			'open_now'                     => __( 'Open now', 'wp-review' ),
+			'attributes'                   => __( 'Attributes', 'wp-review' ),
 			'businessId'                   => __( 'Business ID', 'wp-review' ),
 			'locationLookup'               => __( 'Location lookup', 'wp-review' ),
 			'placeId'                      => __( 'Place ID', 'wp-review' ),
@@ -210,7 +211,7 @@ function wp_review_get_icons() {
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $icons List of icons. View file `wp-review-pro/admin/font-awesome-icons.php
+	 * @param array $icons List of icons. View file `wp-review/admin/font-awesome-icons.php
 	 */
 	return apply_filters( 'wp_review_icons', $icons );
 }
@@ -432,11 +433,11 @@ function wp_review_print_select_options( $options, $value ) {
  * @return array
  */
 function wpreview_plugin_settings_link( $links ) {
-	$hide = wp_review_network_option('hide_global_options_');
-	if(!$hide) {
+	$hide = wp_review_network_option( 'hide_global_options_' );
+	if ( ! $hide ) {
 		$dir = explode( '/', WP_REVIEW_PLUGIN_BASE );
 		$dir = $dir[0];
-		$settings_link = '<a href="options-general.php?page=wp-review-pro">' . __( 'Settings', 'wp-review' ) . '</a>';
+		$settings_link = '<a href="options-general.php?page=wp-review/admin/options.php">' . __( 'Settings', 'wp-review' ) . '</a>';
 		array_unshift( $links, $settings_link );
 	}
 	return $links;
@@ -464,7 +465,7 @@ add_filter( 'mce_buttons', 'wp_review_editor_buttons' );
  * @return array
  */
 function wp_review_editor_js( $plugin_array ) {
-	$plugin_array['wp_review_pro'] = WP_REVIEW_URI . 'admin/assets/js/editor-plugin.js';
+	$plugin_array['wp_review'] = WP_REVIEW_URI . 'admin/assets/js/editor-plugin.js';
 	return $plugin_array;
 }
 add_filter( 'mce_external_plugins', 'wp_review_editor_js' );
@@ -582,3 +583,26 @@ function wp_review_import_options( $code ) {
 	}
 	return update_option( 'wp_review_options', $options );
 }
+
+
+/**
+ * Prints the Pro version popup.
+ */
+function wp_review_print_pro_popup() {
+	?>
+	<a class="hidden thickbox wp-review-pro-popup" href="#TB_inline?width=400&height=200&inlineId=wp-review-pro-popup-notice" title="<?php esc_attr_e( 'Buy WP Review Pro', 'wp-review' ); ?>">click</a>
+	<div id="wp-review-pro-popup-notice" class="hidden">
+		<img class="pro-image" src="<?php echo esc_url( WP_REVIEW_URI . 'admin/assets/images/wp-review-pro.jpg' ); ?>" />
+		<h2 class="pro-notice-header"><?php esc_html_e( 'Like WP Review Plugin? You will LOVE WP Review Pro!', 'wp-review' ); ?></h2>
+		<p>TODO: change this description</p>
+		<a class="button-primary" href="https://mythemeshop.com/plugins/wp-review-pro/" target="_blank"><?php esc_html_e( 'Buy WP Review Pro', 'wp-review' ); ?></a>
+	</div>
+
+	<style>
+		#TB_ajaxContent .popup-desc, #TB_ajaxContent .popup-desc img { height: 100%; }
+		#wp-review-pro-notice-header { margin: 1em 0; font-size: 1.3em; }
+		#TB_ajaxContent .pro-image { width: 150px; float: right; margin: 10px; }
+	</style>
+	<?php
+}
+add_action( 'admin_footer', 'wp_review_print_pro_popup' );

@@ -2030,28 +2030,32 @@ function wp_review_migrate_notice() {
 	// Migrate.
 	global $wpdb, $current_user;
 	$user_id = $current_user->ID;
-	if ( get_user_meta($user_id, 'wp_review_migrate_notice_ignore') )
+	if ( get_user_meta( $user_id, 'wp_review_migrate_notice_ignore' ) ) {
 		return;
+	}
 
 	$has_migrated = get_option( 'wp_review_has_migrated', false );
-	if ($has_migrated)
+	if ( $has_migrated ) {
 		return;
+	}
 
 	$current_blog_id = get_current_blog_id();
 	$total_rows = 0;
 	$rows_left = 0;
 	$migrated_rows = get_option( 'wp_review_migrated_rows', 0 );
-	if ( ! $has_migrated && $wpdb->get_var("SHOW TABLES LIKE '{$wpdb->base_prefix}mts_wp_reviews'") == "{$wpdb->base_prefix}mts_wp_reviews") {
+	if ( ! $has_migrated && $wpdb->get_var("SHOW TABLES LIKE '{$wpdb->base_prefix}mts_wp_reviews'") == "{$wpdb->base_prefix}mts_wp_reviews" ) {
 		// Table exists and not migrated (fully) yet
-		$total_rows = $wpdb->get_var( 'SELECT COUNT(*) FROM '.$wpdb->base_prefix.'mts_wp_reviews WHERE blog_id = '.$current_blog_id );
+		$total_rows = $wpdb->get_var( 'SELECT COUNT(*) FROM ' . $wpdb->base_prefix . 'mts_wp_reviews WHERE blog_id = ' . $current_blog_id );
 		$rows_left = $total_rows - $migrated_rows;
 	}
 
-	if (!$rows_left)
+	if ( ! $rows_left ) {
 		return;
+	}
 	?>
 	<div class="updated notice-info wp-review-notice">
-		<p><?php printf(__( 'Thank you for updating WP Review Pro. Your existing user ratings will show up after importing them in %s.', 'wp-review' ), '<a href="'.admin_url( 'options-general.php?page=wp-review-pro%2Fadmin%2Foptions.php#migrate' ).'">'.__('Settings &gt; WP Review Pro &gt; Migrate Ratings', 'wp-review').'</a>'); ?></p><a class="notice-dismiss" href="<?php echo esc_url(add_query_arg('wp_review_migrate_notice_ignore', '1')); ?>"></a>
+		<p><?php printf( __( 'Thank you for updating WP Review Pro. Your existing user ratings will show up after importing them in %s.', 'wp-review' ), '<a href="' . admin_url( 'options-general.php?page=wp-review-pro%2Fadmin%2Foptions.php#migrate' ) . '">' . __( 'Settings &gt; WP Review Pro &gt; Migrate Ratings', 'wp-review' ) . '</a>' ); ?></p>
+		<a class="notice-dismiss" href="<?php echo esc_url( add_query_arg( 'wp_review_migrate_notice_ignore', '1' ) ); ?>"></a>
 	</div>
 	<?php
 }

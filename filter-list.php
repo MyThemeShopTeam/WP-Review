@@ -360,7 +360,7 @@ add_filter( 'wp_review_get_user_review_type', 'mts_wp_review_get_user_review_typ
  * Editing/overriding the review box template
  *
  * Create a 'wp-review' directory in your (child) theme folder,
- * and make a copy there of /wp-review-pro/box-templates/default.php
+ * and make a copy there of /wp-review/box-templates/default.php
  * to override it.
  *
  * Use different file name to add new template, which can be applied using filter:
@@ -380,7 +380,7 @@ add_filter( 'wp_review_get_box_template', 'mts_wp_review_select_box_template', 1
  * Template Path Directories
  *
  * By default the plugin looks for box templates in:
- * 1. wp-review-pro/box-templates
+ * 1. wp-review/box-templates
  * 2. theme_dir/wp-review
  * 3. childtheme_dir/wp-review
  * 4... Use filter to add more

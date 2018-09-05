@@ -7,7 +7,7 @@ class WP_Review_Importer_Yasr implements WP_Review_Importer_Interface {
 		$plugin_dir = dirname( $plugin_pathname );
 
 		if ( ! defined( 'YASR_VERSION_NUM' ) ) {
-			throw new Exception( sprintf( __( 'The plugin %s needs to be installed and activated before importing into WP Review Pro.', 'wp-review' ), 'Yet Another Stars Rating' ) );
+			throw new Exception( sprintf( __( 'The plugin %s needs to be installed and activated before importing into WP Review.', 'wp-review' ), 'Yet Another Stars Rating' ) );
 		}
 
 		include_once WP_REVIEW_DIR . '../' . $plugin_dir . '/lib/yasr-db-functions.php';

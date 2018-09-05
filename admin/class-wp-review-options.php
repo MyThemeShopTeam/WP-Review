@@ -33,14 +33,14 @@ class WP_Review_Options {
 	 */
 	public function register_menu() {
 
-		$hide = wp_review_network_option('hide_global_options_');
+		$hide = wp_review_network_option( 'hide_global_options_' );
 
-		if(!$hide) {
+		if ( ! $hide ) {
 			$this->hook = add_options_page(
-				__( 'WP Review Pro', 'wp-review' ),
-				__( 'WP Review Pro', 'wp-review' ),
+				__( 'WP Review', 'wp-review' ),
+				__( 'WP Review', 'wp-review' ),
 				'wp_review_global_options',
-				'wp-review-pro',
+				'wp-review/admin/options.php',
 				array( $this, 'render' )
 			);
 
@@ -79,10 +79,10 @@ class WP_Review_Options {
 
 			foreach($capabilities as $role => $capability) {
 				$role = get_role( $role );
-	
+
 				$role_capabilities = $role->capabilities;
 				foreach($default_caps as $key => $default_cap) {
-					
+
 					if(isset($capability[$key])) {
 						$role->add_cap( $key );
 					} else {
@@ -145,7 +145,7 @@ class WP_Review_Options {
 		$tabs = $this->get_tabs();
 		?>
 		<div class="wrap wp-review">
-			<h1><?php esc_html_e( 'WP Review Pro Settings', 'wp-review' ); ?></h1>
+			<h1><?php esc_html_e( 'WP Review Settings', 'wp-review' ); ?></h1>
 
 			<form method="post" action="options.php">
 				<?php settings_fields( 'wpreview-settings-group' ); ?>

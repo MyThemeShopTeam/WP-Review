@@ -39,7 +39,7 @@ function wp_review_print_demo_importer_popup() {
 	</div>
 	<?php
 }
-add_action( 'admin_footer-settings_page_wp-review-pro', 'wp_review_print_demo_importer_popup' );
+add_action( 'admin_footer-settings_page_wp-review/admin/options', 'wp_review_print_demo_importer_popup' );
 
 /**
  * AJAX handler for demo importer.
