@@ -1,0 +1,75 @@
+@import "util";
+
+.hello-bar {
+	padding-top: 5px;
+	padding-bottom: 5px;
+	background-size: cover;
+	position: relative;
+	z-index: 1000;
+	overflow: hidden;
+
+	&--floating {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		z-index: 10000;
+	}
+
+	&__text {
+		float: left;
+		margin-top: 10px;
+	}
+
+	&--bottom {
+		bottom: 0;
+		top: auto;
+	}
+
+	&__container {
+		margin: 0 auto;
+		padding: 0 20px;
+	}
+
+	&__button {
+		padding: 5px 15px;
+		text-decoration: none;
+		box-shadow: none;
+		float: right;
+		border-radius: 3px;
+		margin: 5px 0;
+	}
+
+	&__right {
+		float: right;
+
+		> div { display: inline-block; }
+	}
+
+	&__price {
+		margin-right: 10px;
+		margin-top: 10px;
+	}
+
+	&__star-rating {
+		margin-right: 10px;
+		.review-result-wrapper i, .review-result-wrapper img.wp-review-image { opacity: 0.6; }
+		.review-result-wrapper .review-result i, .review-result-wrapper .review-result img.wp-review-image { opacity: 1; }
+	}
+}
+
+body.has-hello-bar {
+	transition: padding-top 0.3s ease;
+}
+
+body.admin-bar .hello-bar--top.hello-bar--floating {
+	top: 46px;
+
+	@media screen and (min-width: 48.9375em) {
+		top: 32px;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	.hello-bar__text, .hello-bar__right { width: 100%; }
+}

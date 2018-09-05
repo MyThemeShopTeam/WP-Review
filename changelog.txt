@@ -1,0 +1,602 @@
+v3.1.2 (Aig 07, 2018)
+-----------------------------
+- Made plugin compatible with Rank Math.
+
+
+v3.1.1 (June 26, 2018)
+-----------------------------
+- Fixed invalid array warnings issues
+
+
+v3.1.0 (June 18, 2018)
+-----------------------------
+- WooCommerce Integration
+- Improved Yelp review widget & shortcode
+- Fixed: User star ratings distored
+- Added a text along with star ratings
+- Added custom image support for ratings
+- Fixed WPML compatibility issue
+- Fixed RTL issue
+- Added Multisite options
+- Added Role Manager option
+- Added compatibility with Members plugin for Role Management
+- Added new layout inspired by Facebook
+- Added review id to wp_review_desc, wp_review_pros & wp_review_cons filter
+- Added thumbnail selection option while inserting image in Schema details
+
+
+v3.0.9 (May 28, 2018)
+-----------------------------
+- Added wp-review-posts and wp_review_posts shortcode
+- Added editor button for all shortcodes
+- Added option to show reviews count in widget instead of date
+- Hide schema data if review total is 0
+- Changed precision of star and point rating
+
+
+v3.0.8 (May 09, 2018)
+-----------------------------
+- Made plugin GDPR compliant.
+
+
+v3.0.7 (May 08, 2018)
+-----------------------------
+- Fixed Yelp Reviews tab link
+- Fixed Google Reviews tab link
+- Fixed Facebook Reviews tab link
+- Fixed PHP Warning on star rating and improved code
+
+
+v3.0.6 (May 02, 2018)
+-----------------------------
+- Added decimal value support in rating score.
+
+
+v3.0.5 (May 01, 2018)
+-----------------------------
+- Added ability to control single or multiple comment reviews for each user (Option name: Allow multiple reviews per account)
+
+v3.0.4 (Apr 30, 2018)
+-----------------------------
+- Fixed image lightbox conflict with themes
+- Fix PHP notice when use Thing schema
+- Added rich snippet for Google, Facebook & Yelp Reviews
+- Added missing fields to Store schema
+- Added rating schema to WooCommerce Product schema
+- Added Verified purchase tag to WooCommerce product review
+- Optimized js loading in backend
+
+
+v3.0.3 (Apr 22, 2018)
+-----------------------------
+- Fixed 'Registered Image Sizes' option saving issue
+- Moved 'Display Schema Data in the Box' option below Schema Dropdown
+
+
+v3.0.2 (Apr 20, 2018)
+-----------------------------
+- Fixed few Schema validation errors
+- Fixed schema issue in the Zine template
+- Fixed one typo error
+- Moved 'Approve Ratings' option from Default tab to General tab and renamed it
+
+
+v3.0.1 (Apr 16, 2018)
+-----------------------------
+- Fixed box templates dropdown doesn't show properly in global options
+- Optimized css files
+- Updated demo content
+
+
+v3.0 (Apr 16, 2018)
+-----------------------------
+Note: This is a major update, before updating, please backup you database and old plugin files.
+For all the new features please visit https://mythemeshop.com/plugins/wp-review-pro/
+- Complete plugin overhaul
+- Added new review type ‘Thumbs up & down’
+- Added 16 Unique Box Templates designs
+- Added option to enable user rating for each feature
+- Added option to enable each feature in the comment form
+- Added Notification Bar for showing reviews
+- Added Comparison table Shortcode
+- Added related Reviews Popup
+- Added 9 new custom Widgets
+- Added Pros & Cons Section
+- Added support for Google Places Reviews
+- Added support for Yelp Reviews
+- Added support for Facebook Page reviews
+- Added deep WooCommerce Integration
+- Added Advanced Options Panel
+- Added more filters (https://mythemeshop.com/knowledge-base/filter-list/)
+- Added one click demo import
+- Added option to import ratings from other plugins
+-- Import ‘Yet Another Stars Ratings’
+-- Import ‘Author hReview’ reviews
+-- Import ‘WP Rich Snippets’ reviews
+-- Import from ‘Reviews’ Plugin
+-- Import from ‘WP Product Review’
+-- Import from ‘GD Rating System’
+- Added option to enable embed code
+- Added support for custom icons (675 icons included!)
+- Added many minor improvements under the hood
+- Optimized code for better performance
+
+
+v2.2.9 (Sep 28, 2017)
+-----------------------------
+- Fixed Circle rating alignment issue
+- Fixed RTL issue in IE and Firefox
+- Added an option to change empty review color
+- Added an option to just enter 1 total rating without features
+- Added latest user reviews tab in widget
+- Added filters to widget queries
+- Fixed empty pagination issue
+
+Files updated:
+- filter-list.php
+- admin/metaboxes.php
+- admin/options.php
+- assets/css/wp-review.css
+- includes/comments.php
+- includes/functions.php
+- rating-types/percentage-input.js
+- rating-types/percentage-input.php
+- rating-types/percentage-output.php
+- rating-types/point-input.js
+- rating-types/point-input.php
+- rating-types/point-output.php
+- rating-types/star-input.php
+- rating-types/star-output.php
+- admin\metaboxes.php
+- assets\css\admin.css
+- assets\js\admin.js
+- includes\widget.php
+- includes\functions.php
+- assets\js\wp-review-tab-widget.js
+- assets\js\wp-review-tab-widget-admin.js
+- assets\css\wp-review-tab-widget.css
+
+
+v2.2.8 (Sep 20, 2017)
+-----------------------------
+- Added "Text Domain" and "Domain Path" plugin headers
+
+Files updated:
+- wp-review.php
+
+
+v2.2.7 (Aug 14, 2017)
+-----------------------------
+- Fixed content appearing at the end of review descriptions
+
+Files updated:
+- box-templates/default.php
+- includes/functions.php
+- wp-review.php
+
+
+v2.2.6 (Aug 04, 2017)
+-----------------------------
+- Fixed Require A Rating bug
+- Displayed review rating when hide_desc is true
+- Fixed PHP 5.2 compatibility issue
+- Enabled embed of youtube url in review description
+- Added worst-value 0
+
+Files updated:
+- assets/css/wp-review.css
+- box-templates/default.php
+- changelog.txt
+- includes/comments.php
+- includes/functions.php
+- wp-review.php
+
+
+v2.2.5 (Aug 01, 2017)
+-----------------------------
+- Added circle option in widget
+- Disabled visitor rating for user if set in options that only registered user can rate.
+- Fixed : Can't Reply to Comments Without Adding a Rating from The Backend
+- Removed list style bullets
+
+Files updated:
+- includes/widget.php
+- wp-review.php
+
+
+v2.2.4 (May 18, 2017)
+-----------------------------
+- Fix: Don't let users vote when using wp_review_show_total()
+
+Files updated:
+- includes/functions.php
+- wp-review.php
+
+
+v2.2.3 (Apr 10, 2017)
+-----------------------------
+- Fix: Invalid comment count on widgets when viewing a single post
+
+Files updated:
+- includes/comments.php
+- wp-review.php
+
+
+v2.2.2 (Apr 10, 2017)
+-----------------------------
+- Fix: only load admin CSS on specific pages
+
+Files updated:
+- admin/admin.php
+- wp-review.php
+
+
+v2.2.1 (Mar 30, 2017)
+-----------------------------
+- Fix undefined index notice in the post editor
+
+Files updated:
+- admin/metaboxes.php
+- wp-review.php
+
+
+v2.2.0 (Mar 28, 2017)
+-----------------------------
+- Add "name" property to itemReviewed if "Thing" schema item type is selected
+
+Files updated:
+- includes/functions.php
+- wp-review.php
+
+
+v2.1.9 (Mar 21, 2017)
+-----------------------------
+- Fix "missing argument" notice in the comment submission form.
+
+Files updated:
+- includes/comments.php
+- wp-review.php
+
+
+v2.1.8 (Feb 16, 2017)
+-----------------------------
+- Updating the styling of the review box.
+
+NOTE: If you have a customized box template, you will need to update your box template with the new one from the plugin directory.
+
+Files updated:
+- assets/css/wp-review.css
+- box-templates/default.php
+- rating-types/circle-input.js
+- rating-types/circle-output.js
+- wp-review.php
+
+
+v2.1.7 (Jan 27, 2017)
+-----------------------------
+- Improved internationalization
+
+Files updated:
+- includes/comments.php
+- languages/wp-review.pot
+- wp-review.php
+
+
+v2.1.6 (Jan 05, 2017)
+-----------------------------
+- Fix issue with shortcode not showing the ratings of review items on a another posts
+
+Files updated:
+- box-templates/default.php
+- wp-review.php
+
+
+v2.1.5 (Oct 24, 2016)
+-----------------------------
+- Changes on Settings page
+- Review headings do not default to the post title anymore when the field is empty but a filter is available to restore old functionality
+- Improvements in post editor meta box
+- CSS improvements
+
+Files Updated:
+- wp-review.php
+- box-templates/default.php
+- admin/options.php
+- assets/js/admin.js
+- assets/css/wp-review.css
+- includes/functions.php
+
+
+v2.1.4 (Aug 15, 2016)
+-----------------------------
+- Added missing localization string
+- Updated language files ( added .pot file and removed .po/.mo files )
+
+Files Updated:
+- wp-review.php
+- includes/comments.php
+- compat/comments.php
+- languages/
+
+
+v2.1.3 (Aug 6, 2016)
+-----------------------------
+- Updated language files
+
+Files Updated:
+- wp-review.php
+- languages/default.po
+- languages/default.mo
+
+
+v2.1.2 (Aug 4, 2016)
+-----------------------------
+- Fixed review through comments issue on pages
+
+Files Updated:
+- wp-review.php
+- includes/comments.php
+
+
+v2.1.1 (Jul 7, 2016)
+-----------------------------
+- Fixed "Review Schema" option in Default tab
+- Added missing fields in WebSite Schema type
+
+Files Updated:
+- wp-review.php
+- admin/options.php
+- admin/metaboxes.php
+
+
+v2.1.0 (Jul 6, 2016)
+-----------------------------
+- Moved schema.org inline markup to json-dl type ( PLEASE UPDATE YOUR default.php TEMPLATE IN THEMES )
+- Added options for each schema type except "Thing"
+- Added option to display schema type data inside review box
+- Added option to choose which rating to show on SERPs
+- Added custom comments template to provide the way to easily fix theme conflicts
+- Fixed comments count number issue
+- Fixed RTL percentage and point inputs
+- Fixed unclosed p tag in feedback section markup
+- Fixed issue where comment review rating cache was not updating when a comment rating was edited
+- Other fixes and improvements
+
+Files Updated:
+- wp-review.php
+- admin/options.php
+- admin/metaboxes.php
+- box-templates/default.php
+- includes/functions.php
+- includes/comments.php
+- assets/css/wp-review.css
+- rating-types/percentage-input.js
+- rating-types/point-input.js
+
+
+v2.0.9 (Mar 5, 2016)
+-----------------------------
+- Fixed decimals issue in Point type reviews
+- Fixed bug preventing reviews from showing on Pages
+
+Files Updated:
+- wp-review.php
+- includes/functions.php
+
+
+v2.0.8 (Mar 1, 2016)
+-----------------------------
+- Replaced anonymous functions for compatiblity with older PHP versions
+
+Files Updated:
+- wp-review.php
+- admin/options.php
+- includes/widget.php
+- includes/functions.php
+
+
+v2.0.7 (Feb 29, 2016)
+-----------------------------
+- Added option to change comments rating color
+
+Files Updated:
+- wp-review.php
+- admin/options.php
+- includes/comments.php
+- assets/js/admin.js
+- assets/css/admin.css
+
+
+v2.0.6 (Feb 27, 2016)
+-----------------------------
+- Added option to choose whether to show Autor, Visitors or Comments total rating on thumbnails
+- Fixed issue with "wp-review-visitor-rating" shortcode
+- Added "wp-review-comments-rating" shortcode
+- Added option to show/hide Comments total rating to review box
+- User rating and comment rating comment type moderations are respected in total ratings now
+- Fixed issue where avatar wasn't showing inside review comment type
+- Added "comment" CSS class to review comment type item to match the style of normal comment
+- Allowed html tags in review description
+- Added RTL support
+- Updated language files
+- Fixed possible jQuery Appear script conflicts
+- Other fixes and  improvements
+
+
+v2.0.5 (Feb 23, 2016)
+-----------------------------
+- Fixed issue with "wp-review" shortcode with passed id
+
+Files Updated:
+- wp-review.php
+- includes/functions.php
+
+
+v2.0.4 (Feb 17, 2016)
+-----------------------------
+- Added option to extend comment form with new fields instead of replacing all fields
+- Fixed issue with comment reviews getting enabled by default
+
+Files Updated:
+- wp-review.php
+- includes/comments.php
+- includes/options.php
+
+
+v2.0.3 (Feb 16, 2016)
+-----------------------------
+- Improved review comments listing in admin
+
+Files Updated:
+- wp-review.php
+- includes/comments.php
+
+
+v2.0.2 (Feb 16, 2016)
+-----------------------------
+- Fixed: removed numeric value of star rating from review box
+- Fixed: visitor rating edit issue
+- Fixed issue where user ratings couldn't be disabled
+- Fixed minor CSS issues
+- Added: Quick Edit for comment ratings & visitor ratings
+- Added dashboard notice about migrating ratings after updating
+
+Files Updated:
+- wp-review.php
+- includes/functions.php
+- includes/comments.php
+- box-templates/default.php
+- assets/css/wp-review.css
+- assets/css/admin.css
+
+
+v2.0.1 (Feb 15, 2016)
+-----------------------------
+- Fixed some CSS related bugs
+
+Files Updated:
+- assets/css/wp-review.css
+
+
+v2.0 (Feb 15, 2016)
+-----------------------------
+- Huge code improvement and optimization
+- Added Option to define Review Schema (Ex: Book, Movie, Product etc)
+- Choose any rating type for user reviews (user reviews were restricted to stars before)
+- User ratings can now be managed from WP dashboard
+- Now it is possible to enable/disable comment reviews and visitor ratings separately
+- Added Review feedback (like/dislike) for comment reviews
+- Added global option 'Restrict rating to registered users only'
+- Added global option 'Require a rating when commenting'
+- Added global option for controlling User Ratings
+- Added Drag & Drop for Review Items
+- Added Review Links fields (Add Buttons in the Review Box)
+- Added Rating Column on 'Posts' page
+
+For Developers:
+- Introducing Review box templates — Create custom review box templates
+- Introducing Rating type templates — Create custom Rating Types
+
+NOTE: After updating the plugin, existing user ratings must be migrated in Settings > WP Review Pro > Migrate Ratings
+
+
+v1.1.1 (Dec 23, 2015)
+-----------------------------
+- Added check to prevent 0-star user ratings
+
+Files updated:
+- wp-review.php
+- includes/functions.php
+- includes/comments.php
+
+
+v1.1.0 (Oct 7, 2015)
+-----------------------------
+- Fixed SSL error in dashboard
+- Added ability to change review author
+- Updated language files
+
+Files updated:
+- wp-review.php
+- admin/admin.php
+- admin/metaboxes.php
+- includes/functions.php
+- assets/js/admin.js
+- languages/default.po
+- languages/default.mo
+
+
+v1.0.10 (Aug 27, 2015)
+----------------------------------
+- Fixed warning: changed widget constructor method
+
+Files changed:
+- wp-review.php
+- includes/widget.php
+
+
+v1.0.9 (May 1, 2015)
+----------------------------------
+- Fixed Google structured data testing tool errors and warnings
+- Rating stars are showing on search engine results page
+
+Files changed:
+- wp-review.php
+- includes/functions.php
+
+
+v1.0.8 (March 14, 2015)
+----------------------------------
+- Fixed Google structured data testing tool errors and warnings
+
+Files changed:
+- wp-review.php
+- includes/functions.php
+
+
+v1.0.7 (October 20, 2014)
+----------------------------------
+- Added Title Length option for widget
+- Added Filter to control default title length
+
+
+v1.0.6 (October 3, 2014)
+----------------------------------
+- Added optional 'id' parameter for shortcode
+- Added filter to modify style output
+
+
+v1.0.5 (October 1, 2014)
+----------------------------------
+- Added loading animation in widget
+- Fixed minor bug in user ratings
+- Fixed minor bug in comments rating feature
+
+
+v1.0.4 (October 1, 2014)
+----------------------------------
+- Fixed text from review box appearing in widgets
+- Fixed PHP notice on reviews with only total rating and no criteria
+- Added version to enqueue functions
+
+
+v1.0.3 (September 13, 2014)
+----------------------------------
+- Fixed missing stars in widget
+
+
+v1.0.2 (September 11, 2014)
+----------------------------------
+- Fixed invalid header issue
+
+
+v1.0.1 (September 11, 2014)
+----------------------------------
+- Fixed error appearing when plugin settings weren't saved.
+- Fixed JS issues
+- Fixed Tabbed widget issue
+
+
+v1.0 (September 10, 2014)
+----------------------------------
+- Plugin Released
