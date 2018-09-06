@@ -506,9 +506,18 @@ $form_field = new WP_Review_Form_Field();
 			<div class="wp-review-field-option">
 				<div id="wp_review_box_template_wrapper">
 					<select name="wp_review_options[box_template]" id="wp_review_box_template">
-						<?php foreach ( $review_templates as $key => $value ) : ?>
-							<option value="<?php echo esc_attr( $key ); ?>" <?php selected( $key, $box_template ); ?>><?php echo esc_html( $value['title'] ); ?></option>
-						<?php endforeach; ?>
+						<?php
+						foreach ( $review_templates as $key => $value ) {
+							$disabled = 'default' !== $key && 'aqua' !== $key;
+							printf(
+								'<option value="%1$s" %2$s %3$s>%4$s</option>',
+								esc_attr( $key ),
+								selected( $key, $box_template, false ),
+								$disabled ? 'disabled' : '',
+								esc_html( $value['title'] )
+							);
+						}
+						?>
 					</select>
 
 					<div id="wp_review_box_template_preview" style="display: none;">
