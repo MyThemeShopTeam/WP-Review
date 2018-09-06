@@ -79,9 +79,20 @@ function wp_review_render_meta_box_review_options( $post ) {
 				<div class="wp-review-field-option">
 					<select id="wp_review_type">
 						<option value="none" <?php selected( $type, 'none' ); ?>><?php esc_html_e( 'No review', 'wp-review' ); ?></option>
-						<?php foreach ( $available_types as $available_type_name => $available_type ) : ?>
-							<option value="<?php echo esc_attr( $available_type_name ); ?>" data-max="<?php echo intval( $available_type['max'] ); ?>" data-decimals="<?php echo esc_attr( $available_type['decimals'] ); ?>" <?php selected( $type, $available_type_name ); ?>><?php echo esc_html( $available_type['label'] ); ?></option>
-						<?php endforeach; ?>
+						<?php
+						foreach ( $available_types as $key => $available_type ) {
+							$disabled = 'circle' === $key || 'thumbs' === $key;
+							printf(
+								'<option value="%1$s" data-max="%2$s" data-decimals="%3$s" %4$s %5$s>%6$s</option>',
+								esc_attr( $key ),
+								intval( $available_type['max'] ),
+								intval( $available_type['decimals'] ),
+								selected( $type, $key, false ),
+								$disabled ? 'disabled' : '',
+								esc_html( $available_type['label'] )
+							);
+						}
+						?>
 					</select>
 					<input type="hidden" name="wp_review_type" value="<?php echo esc_attr( $type_post_value ); ?>">
 

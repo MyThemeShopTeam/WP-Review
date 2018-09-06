@@ -744,14 +744,20 @@ function wp_review_render_meta_box_userReview( $post ) {
 			<div class="wp-review-field-option">
 				<select name="wp_review_user_review_type" id="rating_type">
 					<?php
-					foreach ( $available_types as $available_type_name => $available_type ) {
+					foreach ( $available_types as $key => $available_type ) {
 						// Skip ones that only have output template.
 						if ( ! $available_type['user_rating'] ) {
 							continue;
 						}
-						?>
-						<option value="<?php echo esc_attr( $available_type_name ); ?>" <?php selected( $type, $available_type_name ); ?>><?php echo esc_html( $available_type['label'] ); ?></option>
-						<?php
+
+						$disabled = 'circle' === $key || 'thumbs' === $key;
+						printf(
+							'<option value="%1$s" %2$s %3$s>%4$s</option>',
+							esc_attr( $key ),
+							selected( $type, $key, false ),
+							$disabled ? 'disabled' : '',
+							esc_html( $available_type['label'] )
+						);
 					}
 					?>
 				</select>

@@ -166,6 +166,8 @@ $available_types = apply_filters( 'wp_review_metabox_types', array(
 	'star'       => __( 'Star', 'wp-review' ),
 	'point'      => __( 'Point', 'wp-review' ),
 	'percentage' => __( 'Percentage', 'wp-review' ),
+	'circle'     => __( 'Circle', 'wp-review' ),
+	'thumbs'     => __( 'Thumbs', 'wp-review' ),
 ));
 
 $form_field = new WP_Review_Form_Field();
@@ -707,13 +709,21 @@ $form_field = new WP_Review_Form_Field();
 				<select name="wp_review_options[review_type]" id="wp_review_type">
 					<option value="none" <?php selected( $review_type, 'none' ); ?>><?php esc_html_e( 'No Review', 'wp-review' ); ?></option>
 					<?php
-					foreach ( $review_types as $key => $value ) :
+					foreach ( $review_types as $key => $value ) {
 						if ( ! isset( $available_types[ $key ] ) ) {
 							continue;
 						}
-						?>
-						<option value="<?php echo esc_attr( $key ); ?>" <?php selected( $review_type, $key ); ?>><?php echo esc_html( $value['label'] ); ?></option>
-					<?php endforeach; ?>
+
+						$disabled = 'circle' === $key || 'thumbs' === $key;
+						printf(
+							'<option value="%1$s" %2$s %3$s>%4$s</option>',
+							esc_attr( $key ),
+							selected( $review_type, $key, false ),
+							$disabled ? 'disabled' : '',
+							esc_html( $value['label'] )
+						);
+					}
+					?>
 				</select>
 			</div>
 		</div>

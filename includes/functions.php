@@ -984,6 +984,26 @@ function wp_review_register_default_rating_types() {
 		'input_template'      => WP_REVIEW_DIR . 'rating-types/percentage-input.php',
 		'output_template'     => WP_REVIEW_DIR . 'rating-types/percentage-output.php',
 	) );
+
+	wp_review_register_rating_type( 'circle', array(
+		'label'               => __( 'Circle', 'wp-review' ),
+		'max'                 => 100,
+		'decimals'            => 2,
+		'value_text'          => _x( '%s', 'circle rating value text', 'wp-review' ),
+		'value_text_singular' => _x( '%s', 'circle rating value text singular', 'wp-review' ),
+		'input_template'      => WP_REVIEW_DIR . 'rating-types/circle-input.php',
+		'output_template'     => WP_REVIEW_DIR . 'rating-types/circle-output.php',
+	) );
+
+	wp_review_register_rating_type( 'thumbs', array(
+		'label'               => __( 'Thumbs', 'wp-review' ),
+		'max'                 => 100,
+		'decimals'            => 0,
+		'value_text'          => _x( '%s/100', 'thumbs rating value text', 'wp-review' ),
+		'value_text_singular' => _x( '%s/100', 'thumbs rating value text singular', 'wp-review' ),
+		'input_template'      => WP_REVIEW_DIR . 'rating-types/thumbs-input.php',
+		'output_template'     => WP_REVIEW_DIR . 'rating-types/thumbs-output.php',
+	) );
 }
 add_action( 'init', 'wp_review_register_default_rating_types' );
 
