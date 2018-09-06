@@ -859,14 +859,16 @@ $form_field = new WP_Review_Form_Field();
 					<?php esc_html_e( 'Visitor Rating Only', 'wp-review' ); ?>
 				</label>
 				<br>
-				<label>
-					<input type="radio" name="wp_review_options[default_user_review_type]" id="wp-review-userReview-comment" value="<?php echo esc_attr( WP_REVIEW_REVIEW_COMMENT_ONLY ); ?>" <?php checked( WP_REVIEW_REVIEW_COMMENT_ONLY, $default_user_review_type ); ?> />
+				<label class="wp-review-disabled">
+					<input type="radio" name="wp_review_options[default_user_review_type]" id="wp-review-userReview-comment" value="<?php echo esc_attr( WP_REVIEW_REVIEW_COMMENT_ONLY ); ?>" <?php checked( WP_REVIEW_REVIEW_COMMENT_ONLY, $default_user_review_type ); ?> disabled />
 					<?php esc_html_e( 'Comment Rating Only', 'wp-review' ); ?>
+					<?php wp_review_print_pro_text( true ); ?>
 				</label>
 				<br>
-				<label>
-					<input type="radio" name="wp_review_options[default_user_review_type]" id="wp-review-userReview-both" value="<?php echo esc_attr( WP_REVIEW_REVIEW_ALLOW_BOTH ); ?>" <?php checked( WP_REVIEW_REVIEW_ALLOW_BOTH, $default_user_review_type ); ?> />
+				<label class="wp-review-disabled">
+					<input type="radio" name="wp_review_options[default_user_review_type]" id="wp-review-userReview-both" value="<?php echo esc_attr( WP_REVIEW_REVIEW_ALLOW_BOTH ); ?>" <?php checked( WP_REVIEW_REVIEW_ALLOW_BOTH, $default_user_review_type ); ?> disabled />
 					<?php esc_html_e( 'Both', 'wp-review' ); ?>
+					<?php wp_review_print_pro_text( true ); ?>
 				</label>
 			</div>
 		</div>

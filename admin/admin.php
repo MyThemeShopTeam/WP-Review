@@ -588,9 +588,12 @@ function wp_review_import_options( $code ) {
 
 /**
  * Prints pro text.
+ *
+ * @param bool $strip_br Strip `<br>` tag.
  */
-function wp_review_print_pro_text() {
-	echo '<br><small class="wp-review-pro-text">' . esc_html__( 'Pro feature', 'wp-review' ) . '</small>';
+function wp_review_print_pro_text( $strip_br = false ) {
+	$br = ! $strip_br ? '<br>' : '';
+	echo $br . '<small class="wp-review-pro-text">' . esc_html__( 'Pro feature', 'wp-review' ) . '</small>'; // WPCS: xss ok.
 }
 
 

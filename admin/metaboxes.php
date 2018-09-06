@@ -718,16 +718,18 @@ function wp_review_render_meta_box_userReview( $post ) {
 		</p>
 
 		<p>
-			<label>
-				<input type="radio" name="wp_review_userReview" id="wp-review-userReview-comment" value="<?php echo esc_attr( WP_REVIEW_REVIEW_COMMENT_ONLY ); ?>" <?php checked( WP_REVIEW_REVIEW_COMMENT_ONLY, $enabled ); ?> />
+			<label class="wp-review-disabled">
+				<input type="radio" name="wp_review_userReview" id="wp-review-userReview-comment" value="<?php echo esc_attr( WP_REVIEW_REVIEW_COMMENT_ONLY ); ?>" <?php checked( WP_REVIEW_REVIEW_COMMENT_ONLY, $enabled ); ?> disabled />
 				<?php esc_html_e( 'Comment Rating Only', 'wp-review' ); ?>
+				<?php wp_review_print_pro_text( true ); ?>
 			</label>
 		</p>
 
 		<p>
-			<label>
-				<input type="radio" name="wp_review_userReview" id="wp-review-userReview-both" value="<?php echo esc_attr( WP_REVIEW_REVIEW_ALLOW_BOTH ); ?>" <?php checked( WP_REVIEW_REVIEW_ALLOW_BOTH, $enabled ); ?> />
+			<label class="wp-review-disabled">
+				<input type="radio" name="wp_review_userReview" id="wp-review-userReview-both" value="<?php echo esc_attr( WP_REVIEW_REVIEW_ALLOW_BOTH ); ?>" <?php checked( WP_REVIEW_REVIEW_ALLOW_BOTH, $enabled ); ?> disabled/>
 				<?php esc_html_e( 'Both', 'wp-review' ); ?>
+				<?php wp_review_print_pro_text( true ); ?>
 			</label>
 		</p>
 	</div>
@@ -798,70 +800,6 @@ function wp_review_render_meta_box_userReview( $post ) {
 				?>
 			</div>
 		</div>
-	</div>
-
-	<?php $hidden = in_array( $enabled, array( WP_REVIEW_REVIEW_DISABLED, WP_REVIEW_REVIEW_VISITOR_ONLY ) ) ? 'hidden' : ''; ?>
-	<div class="show-if-comment <?php echo esc_attr( $hidden ); ?>">
-		<div class="wp-review-field">
-			<div class="wp-review-field-label">
-				<label><?php esc_html_e( 'Hide Comments Rating in Review Box', 'wp-review' ); ?></label>
-			</div>
-
-			<div class="wp-review-field-option">
-				<?php
-				$form_field->render_switch( array(
-					'id'    => 'wp_review_hide_comments_total',
-					'name'  => 'wp_review_hide_comments_total',
-					'value' => $hide_comments_total,
-				) );
-				?>
-			</div>
-		</div>
-
-		<div class="wp-review-field">
-			<div class="wp-review-field-label">
-				<label for="wp_review_comment_pros_cons"><?php esc_html_e( 'Include Pros/Cons in comment reviews', 'wp-review' ); ?></label>
-				<?php wp_review_print_pro_text(); ?>
-			</div>
-
-			<div class="wp-review-field-option">
-				<span class="wp-review-disabled wp-review-disabled-select">
-					<select name="wp_review_comment_pros_cons" id="wp_review_comment_pros_cons" disabled>
-						<option value=""><?php esc_html_e( 'Use global options', 'wp-review' ); ?></option>
-						<option value="yes"><?php esc_html_e( 'Yes', 'wp-review' ); ?></option>
-						<option value="no"><?php esc_html_e( 'No', 'wp-review' ); ?></option>
-					</select>
-				</span>
-			</div>
-		</div>
-
-		<?php if ( 'product' === $post->post_type) { ?>
-			<div class="wp-review-field">
-				<div class="wp-review-field-label">
-					<label for="wp_review_comment_image"><?php esc_html_e( 'Include Image in comment reviews', 'wp-review' ); ?></label>
-				</div>
-
-				<div class="wp-review-field-option">
-					<select name="wp_review_comment_image" id="wp_review_comment_image">
-						<option value="yes" <?php selected( $comment_image, 'yes' ); ?>><?php esc_html_e( 'Yes', 'wp-review' ); ?></option>
-						<option value="no" <?php selected( $comment_image, 'no' ); ?>><?php esc_html_e( 'No', 'wp-review' ); ?></option>
-					</select>
-				</div>
-			</div>
-
-			<div class="wp-review-field">
-				<div class="wp-review-field-label">
-					<label for="wp_review_comment_product_desc"><?php esc_html_e( 'Product Matches the Description', 'wp-review' ); ?></label>
-				</div>
-
-				<div class="wp-review-field-option">
-					<select name="wp_review_comment_product_desc" id="wp_review_comment_product_desc">
-						<option value="yes" <?php selected( $comment_matches, 'yes' ); ?>><?php esc_html_e( 'Yes', 'wp-review' ); ?></option>
-						<option value="no" <?php selected( $comment_matches, 'no' ); ?>><?php esc_html_e( 'No', 'wp-review' ); ?></option>
-					</select>
-				</div>
-			</div>
-		<?php } ?>
 	</div>
 
 	<div class="wp-review-field">
