@@ -264,7 +264,6 @@ ob_start();
 	.wp-review-<?php echo $review['post_id']; ?>.review-wrapper .user-review-title {
 		color: inherit;
 	}
-	.wp-review-<?php echo $review['post_id']; ?>.review-wrapper .user-review-area .review-circle { height: 32px; }
 </style>
 <?php
 $color_output = ob_get_clean();

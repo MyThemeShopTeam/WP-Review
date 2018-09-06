@@ -956,24 +956,12 @@ function wp_review_comment_rating_items( $rating_items, $comment ) {
 			$value_text = ' - <span>' . sprintf( $rating_type['value_text'], $value ) . '</span>';
 		}
 
-		$circle_width = '';
-		$circle_height = '';
-		if ( is_admin() ) {
-			$circle_width = 48;
-			$circle_height = 48;
-			$circle_display_input = false;
-		}
-
-		set_query_var( 'rating', compact( 'value', 'type', 'args', 'comment_rating', 'post_id', 'color', 'colors', 'circle_width', 'circle_height', 'circle_display_input' ) );
+		set_query_var( 'rating', compact( 'value', 'type', 'args', 'comment_rating', 'post_id', 'color', 'colors' ) );
 		$output .= '<li>';
 		ob_start();
 		load_template( $template, false );
 		$output .= ob_get_clean();
-		if ( 'thumbs' !== $type ) {
-			$output .= '<span>' . wp_kses_post( $item['wp_review_item_title'] ) . $value_text . '</span>';
-		} else {
-			$output .= '<span>' . wp_kses_post( $item['wp_review_item_title'] ) . '</span>';
-		}
+		$output .= '<span>' . wp_kses_post( $item['wp_review_item_title'] ) . $value_text . '</span>';
 		$output .= '</li>';
 	}
 	return '<div class="wpr-user-features-rating 115 wp-review-usercomment-rating-' . $type . '"><ul class="features-rating-list review-list">' . $output . '</ul></div>';
@@ -1006,14 +994,6 @@ function wp_review_comment_rating( $value, $comment_id = null, $args = array() )
 
 	$colors = wp_review_get_colors( $post_id );
 
-	$circle_width = '';
-	$circle_height = '';
-
-	// Override if is_admin().
-	if ( is_admin() ) {
-		$circle_width = 48;
-		$circle_height = 48;
-	}
 	$color = $colors['color'];
 	// don't allow higher rating than max.
 	if ( $value > $rating_type['max'] ) {
@@ -1022,7 +1002,7 @@ function wp_review_comment_rating( $value, $comment_id = null, $args = array() )
 	$template = $rating_type['output_template'];
 	$comment_rating = true;
 	$args['show_one'] = true;
-	set_query_var( 'rating', compact( 'value', 'type', 'args', 'comment_rating', 'post_id', 'color', 'colors', 'circle_width', 'circle_height' ) );
+	set_query_var( 'rating', compact( 'value', 'type', 'args', 'comment_rating', 'post_id', 'color', 'colors' ) );
 	ob_start();
 	load_template( $template, false );
 	$review = '<div class="wp-review-usercomment-rating wp-review-usercomment-rating-' . $type . '">' . ob_get_contents() . '</div>';

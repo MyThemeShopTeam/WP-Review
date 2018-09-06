@@ -63,9 +63,7 @@
 				change: function( ev, ui ) {
 					var color = ui.color.toString();
 					_this.$( '.wpr-star-input-wrapper' ).css({ color: color });
-					_this.$( '.input-star[data-type="circle"]' ).trigger( 'configure', { fgColor: color, inputColor: color } );
 					_this.$( '.wpr-input-wrapper.ui-slider .ui-slider-range' ).css({ backgroundColor: color });
-					_this.$( '.thumbs-up-icon' ).css({ color: color });
 					_this.model.set( 'wp_review_item_color', color );
 				}
 			});
@@ -74,9 +72,7 @@
 				change: function( ev, ui ) {
 					var color = ui.color.toString();
 					_this.$( '.wpr-star-input-wrapper .stars-bg' ).css({ color: color });
-					_this.$( '.input-star[data-type="circle"]' ).trigger( 'configure', { bgColor: color } );
 					_this.$( '.wpr-input-wrapper.ui-slider' ).css({ backgroundColor: color });
-					_this.$( '.thumbs-down-icon' ).css({ color: color });
 					_this.model.set( 'wp_review_item_inactive_color', color );
 				}
 			});
@@ -101,31 +97,6 @@
 						callback: function( value ) {
 							validateValue( value, 0, wprVars.reviewTypes.star.max );
 							_this.model.set( 'wp_review_item_star', value );
-						}
-					});
-					break;
-
-				case 'circle':
-					this.$( '.input-star' ).wprCircleInput({
-						width: 50,
-						displayInput: false,
-						ready: function( options ) {
-							var $input = $( '<input type="text" size="4" class="input-star-display">' ),
-								_this = this;
-							$input.val( this.val() );
-							this.closest( '.col-2' ).next().append( $input );
-
-							$input.on( 'change', function() {
-								var value = $( this ).val();
-								validateValue( value, 0, wprVars.reviewTypes.circle.max );
-								_this.val( value ).trigger( 'change' );
-							});
-						},
-						callback: function( value ) {
-							value = Math.round( value );
-							validateValue( value, 0, wprVars.reviewTypes.circle.max );
-							_this.model.set( 'wp_review_item_star', value );
-							this.closest( '.col-2' ).next().find( '.input-star-display' ).val( value );
 						}
 					});
 					break;
@@ -155,17 +126,6 @@
 						}
 					});
 					break;
-
-				case 'thumbs':
-					this.$( '.thumbs-input' ).on( 'input propertychange', function() {
-						var up, down, value;
-						up = parseInt( _this.$( '.thumbs-up-input' ).val() || 0 );
-						down = parseInt( _this.$( '.thumbs-down-input' ).val() || 0 );
-						value = 100 * up / ( up + down );
-						value = Math.round( value * 10 ) / 10;
-						_this.model.set( 'wp_review_item_star', value );
-						_this.$( '.input-star' ).val( value );
-					});
 			}
 
 			this.$el.attr( 'data-id', this.model.get( 'id' ) );

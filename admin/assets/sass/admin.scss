@@ -203,10 +203,6 @@
 	}
 }
 
-.thumbs-down-icon {
-	color: #ccc;
-}
-
 /*---------------------------
  *       Options page
  *--------------------------*/
@@ -465,23 +461,6 @@ textarea#wp-review-migrate-log {
 .column-wp_review_comment_rating .no-rating {
 	color: #aaa;
 	font-style: italic;
-}
-.column-wp_review_rating .rating-thumbs-output .wpr-thumbs-button {
-	width: 100%;
-	text-align: left;
-}
-.column-wp_review_rating .review-thumbs .wpr-thumbs-button.wpr-thumbs-down-button .wpr-thumbs-icon {
-	border-radius: 4px;
-}
-.column-wp_review_rating .review-thumbs .wpr-thumbs-button.wpr-thumbs-up-button .wpr-thumbs-icon {
-	float: left;
-	margin-left: 0;
-	margin-right: 5px;
-	border-right: 1px solid rgba(0, 0, 0, 0.1);
-	border-radius: 4px;
-}
-.column-wp_review_rating .review-thumbs .wpr-thumbs-rating-value {
-	line-height: 25px;
 }
 #editwpreview {
 	overflow: hidden;

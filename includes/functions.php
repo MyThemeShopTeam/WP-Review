@@ -225,7 +225,7 @@ function wp_review_show_total( $echo = true, $class = 'review-total-only', $post
 		case 'author':
 			$total = get_post_meta( $post_id, 'wp_review_total', true );
 
-			if ( in_array( $type, array( 'point', 'percentage', 'thumbs' ) ) ) {
+			if ( in_array( $type, array( 'point', 'percentage' ) ) ) {
 				$rating = sprintf( $wp_review_rating_types[ $type ]['value_text'], $total );
 			} else {
 				$rating = wp_review_rating( $total, $post_id, $args );
@@ -984,26 +984,6 @@ function wp_review_register_default_rating_types() {
 		'input_template'      => WP_REVIEW_DIR . 'rating-types/percentage-input.php',
 		'output_template'     => WP_REVIEW_DIR . 'rating-types/percentage-output.php',
 	) );
-
-	wp_review_register_rating_type( 'circle', array(
-		'label'               => __( 'Circle', 'wp-review' ),
-		'max'                 => 100,
-		'decimals'            => 2,
-		'value_text'          => _x( '%s', 'circle rating value text', 'wp-review' ),
-		'value_text_singular' => _x( '%s', 'circle rating value text singular', 'wp-review' ),
-		'input_template'      => WP_REVIEW_DIR . 'rating-types/circle-input.php',
-		'output_template'     => WP_REVIEW_DIR . 'rating-types/circle-output.php',
-	) );
-
-	wp_review_register_rating_type( 'thumbs', array(
-		'label'               => __( 'Thumbs', 'wp-review' ),
-		'max'                 => 100,
-		'decimals'            => 0,
-		'value_text'          => _x( '%s/100', 'thumbs rating value text', 'wp-review' ),
-		'value_text_singular' => _x( '%s/100', 'thumbs rating value text singular', 'wp-review' ),
-		'input_template'      => WP_REVIEW_DIR . 'rating-types/thumbs-input.php',
-		'output_template'     => WP_REVIEW_DIR . 'rating-types/thumbs-output.php',
-	) );
 }
 add_action( 'init', 'wp_review_register_default_rating_types' );
 
@@ -1390,7 +1370,7 @@ function wp_review_visitor_feature_rating( $post_id = null, $args = array() ) {
 				$rating_output .= '</div>';
 			}
 
-			if ( ! in_array( $type, array( 'star', 'thumbs', 'circle' ) ) && $user_has_reviewed ) {
+			if ( ! in_array( $type, array( 'star' ) ) && $user_has_reviewed ) {
 				$title_output .= '<span>' . wp_kses_post( $feature['wp_review_item_title'] . $value_text ) . '</span>';
 			} else {
 				$title_output .= '<span>' . wp_kses_post( $feature['wp_review_item_title'] ) . '</span>';
@@ -1444,9 +1424,6 @@ function wp_review_user_comments_rating( $post_id = null, $args = array() ) {
 		$value = '0.0';
 	}
 
-	if ( 'thumbs' === $type ) {
-		return '<div class="review-thumbs">' . $value . '</div>';
-	}
 	return wp_review_rating( $value, $post_id, $args ); // Return just output template.
 }
 
@@ -1865,8 +1842,6 @@ function wp_review_post_list_column_content( $column_name, $post_id ) {
 		$total = get_post_meta( $post_id, 'wp_review_total', true );
 		if ( $total ) {
 			$args = array(
-				'circle_width' => 45,
-				'circle_height' => 45,
 				'bar_text_color_from' => 'inactive_color',
 			);
 			echo wp_review_rating( $total, $post_id, $args );
@@ -3368,15 +3343,7 @@ if ( ! function_exists( 'wp_review_data_exporter' ) ) {
 						foreach ( $items as $item_id => $item ) {
 							if ( isset( $rating_items[ $item_id ] ) ) {
 								$value = $rating_items[ $item_id ];
-								if ( 'thumbs' == $type ) {
-									if ( ! $value ) {
-										$review_ratings[ $item['wp_review_item_title'] ] = 'Down';
-									} else {
-										$review_ratings[ $item['wp_review_item_title'] ] = 'Up';
-									}
-								} else {
-									$review_ratings[ $item['wp_review_item_title'] ] = $rating_items[ $item_id ] . ' of ' . $rating_type['max'];
-								}
+								$review_ratings[ $item['wp_review_item_title'] ] = $rating_items[ $item_id ] . ' of ' . $rating_type['max'];
 							}
 						}
 						if ( ! empty( $review_ratings ) ) {

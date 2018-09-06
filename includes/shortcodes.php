@@ -69,9 +69,6 @@ function wp_review_total_shortcode( $atts ) {
 
 	$args = array(
 		'shortcode' => true,
-		'circle_width' => 100,
-		'circle_height' => 100,
-		'circle_display_input' => true,
 	);
 
 	if ( 'product-rating' === $atts['context'] ) {

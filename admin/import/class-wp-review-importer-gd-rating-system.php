@@ -73,7 +73,7 @@ class WP_Review_Importer_GD_Rating_System implements WP_Review_Importer_Interfac
 		$method = $this->get_item_meta( $item->item_id, 'posts-integration_method', 'stars-rating' );
 		$ratings = $this->get_ratings( $item );
 		$last_type = 'star';
-		// print_r( $ratings ); return;
+
 		foreach ( $ratings as $rating ) {
 			if ( $rating->method !== $method ) {
 				continue;
@@ -87,10 +87,6 @@ class WP_Review_Importer_GD_Rating_System implements WP_Review_Importer_Interfac
 				case 'slider-rating':
 					$this->import_percentage_rating( $item, $rating );
 					$last_type = 'percentage';
-					continue;
-				case 'thumbs-ratings':
-					$this->import_thumbs_rating( $item, $rating );
-					$last_type = 'thumbs';
 					continue;
 			}
 		}
@@ -164,21 +160,6 @@ class WP_Review_Importer_GD_Rating_System implements WP_Review_Importer_Interfac
 		$vote = $this->get_rating_meta( $rating->log_id, 'vote' );
 		$rating->value = floatval( $vote ) / floatval( $max ) * 100;
 		$rating->type = 'percentage';
-		return $this->insert_rating( $item->id, $rating );
-	}
-
-
-	/**
-	 * Imports percentage rating.
-	 *
-	 * @param object $item   Post item.
-	 * @param object $rating Rating data.
-	 * @return int|false
-	 */
-	protected function import_thumbs_rating( $item, $rating ) {
-		$vote = $this->get_rating_meta( $rating->log_id, 'vote' );
-		$rating->value = intval( $vote ) > 0 ? 100 : 0;
-		$rating->type = 'thumbs';
 		return $this->insert_rating( $item->id, $rating );
 	}
 

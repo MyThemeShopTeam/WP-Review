@@ -262,7 +262,6 @@ function wp_review_ajax_load_reviews() {
 						if ( $in_widget ) {
 							$args = array(
 								'in_widget'      => $in_widget,
-								'circle_size'    => 20,
 								'color'          => '#fff',
 								'inactive_color' => '#dedcdc',
 							);

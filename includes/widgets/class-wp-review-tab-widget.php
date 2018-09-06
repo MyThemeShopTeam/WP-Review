@@ -293,7 +293,6 @@ class WP_Review_Tab_Widget extends WP_Widget {
 		wp_enqueue_script( 'jquery-knob' );
 		wp_enqueue_script( 'wp_review-js' );
 		wp_enqueue_style( 'wp_review-style' );
-		wp_enqueue_script( 'wp-review-circle-output', trailingslashit( WP_REVIEW_URI ) . 'rating-types/circle-output.js', array( 'jquery' ) );
 		wp_enqueue_style( 'wp_review_tab_widget' );
 
 		if ( empty( $tabs ) ) {
@@ -467,7 +466,6 @@ class WP_Review_Tab_Widget extends WP_Widget {
 								<?php
 								$rating_args = array(
 									'in_widget'      => true,
-									'circle_size'    => 20,
 									'color'          => '#fff',
 									'inactive_color' => '#dedcdc',
 								);
@@ -536,7 +534,6 @@ class WP_Review_Tab_Widget extends WP_Widget {
 							<?php
 							$rating_args = array(
 								'in_widget'      => true,
-								'circle_size'    => 20,
 								'color'          => '#fff',
 								'inactive_color' => '#dedcdc',
 							);

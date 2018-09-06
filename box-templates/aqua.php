@@ -79,7 +79,7 @@ if ( ! empty( $review['fontfamily'] ) ) : ?>
 
 	<?php wp_review_load_template( 'global/partials/review-schema.php', compact( 'review' ) ); ?>
 
-	<?php if ( ! empty( $review['total'] && ! $review['hide_desc'] && 'thumbs' != $review['type'] ) ) :
+	<?php if ( ! empty( $review['total'] && ! $review['hide_desc'] ) ) :
 		$total_text = $review['total'];
 		if ( 'star' != $review['type'] ) {
 			$total_text = sprintf( $rating_types[ $review['type'] ]['value_text'], $total_text );
@@ -292,14 +292,6 @@ ob_start();
 	.wp-review-<?php echo $review['post_id']; ?>.wp-review-star-type .wpr-user-features-rating .review-list {
 		width: 100%;
 	}
-	.wp-review-<?php echo $review['post_id']; ?>.wp-review-thumbs-type .review-list li {
-		width: 100%;
-		padding: 12px 30px;
-	}
-	.wp-review-<?php echo $review['post_id']; ?>.wp-review-circle-type .review-list li {
-		width: 100%;
-		padding: 10px 30px;
-	}
 	.wp-review-<?php echo $review['post_id']; ?>.wp-review-point-type .review-list li,
 	.wp-review-<?php echo $review['post_id']; ?>.wp-review-percentage-type .review-list li {
 		width: 100%;
@@ -425,24 +417,12 @@ ob_start();
         margin-bottom: 6px;
 	}
 	.wp-review-<?php echo $review['post_id']; ?>.review-wrapper .review-list .wp-review-user-feature-rating-star .review-result { letter-spacing: -2.2px; }
-	.wp-review-<?php echo $review['post_id']; ?>.review-wrapper.wp-review-circle-type .review-total-wrapper {
-		padding: 20px 0;
-	}
-	.wp-review-<?php echo $review['post_id']; ?>.review-wrapper.wp-review-circle-type .review-total-wrapper .review-circle.review-total {
-		margin: 0 auto;
-		padding-top: 10px;
-		clear: both;
-	}
 	.wp-review-<?php echo $review['post_id']; ?> .review-total-wrapper .review-point.review-total,
 	.wp-review-<?php echo $review['post_id']; ?> .review-total-wrapper .review-percentage.review-total {
 		width: 70%;
 		display: inline-block;
 		margin: 20px auto 0 auto;
 	}
-	.wp-review-<?php echo $review['post_id']; ?>.review-wrapper.wp-review-circle-type .review-total-wrapper > .review-total-box {
-		display: block;
-	}
-	.wp-review-<?php echo $review['post_id']; ?>.review-wrapper.wp-review-circle-type .review-total-wrapper > .review-total-box > div { display: none; }
 	.wp-review-<?php echo $review['post_id']; ?>.review-wrapper .review-total-wrapper span.review-total-box {
 		float: left;
 		text-align: center;
@@ -456,8 +436,7 @@ ob_start();
 	}
 	.wp-review-<?php echo $review['post_id']; ?>.review-wrapper.wp-review-point-type .review-total-wrapper span.review-total-box,
 	.wp-review-<?php echo $review['post_id']; ?>.review-wrapper.wp-review-percentage-type .review-total-wrapper span.review-total-box,
-	.wp-review-<?php echo $review['post_id']; ?>.review-wrapper .wpr-user-features-rating .review-list,
-	.wp-review-<?php echo $review['post_id']; ?>.review-wrapper.wp-review-thumbs-type .review-list {
+	.wp-review-<?php echo $review['post_id']; ?>.review-wrapper .wpr-user-features-rating .review-list {
 		width: 100%;
 	}
 	.wp-review-<?php echo $review['post_id']; ?>.review-wrapper .wpr-user-features-rating .review-list li {
@@ -483,17 +462,8 @@ ob_start();
 		border: 0;
 		margin-top: 3px;
 	}
-	.wp-review-<?php echo $review['post_id']; ?>.review-wrapper.wp-review-circle-type .user-total-wrapper h5.user-review-title {
-		margin-top: 12px;
-	}
-	.wp-review-<?php echo $review['post_id']; ?>.review-wrapper.wp-review-circle-type .user-total-wrapper span.user-review-title {
-		margin-top: 4px;
-	}
 	.wp-review-<?php echo $review['post_id']; ?>.review-wrapper .reviewed-item {
 		padding: 30px;
-	}
-	.wp-review-<?php echo $review['post_id']; ?>.review-wrapper.wp-review-circle-type .review-total-wrapper > .review-total-box {
-		display: block;
 	}
 	.wp-review-<?php echo $review['post_id']; ?>.review-wrapper .user-review-area .review-percentage,
 	.wp-review-<?php echo $review['post_id']; ?>.review-wrapper .user-review-area .review-point {
@@ -524,10 +494,6 @@ ob_start();
 		width: calc(100% - 60px);
 		border-radius: 3px;
 	}
-	.wp-review-<?php echo $review['post_id']; ?>.review-wrapper .user-review-area .review-circle,
-	.wp-review-<?php echo $review['post_id']; ?>.review-wrapper .review-list .review-circle,
-	.wp-review-<?php echo $review['post_id']; ?>.review-wrapper .review-circle .review-result-wrapper { height: 32px; }
-	.wp-review-<?php echo $review['post_id']; ?>.review-wrapper .review-list .wp-review-user-rating .review-circle { height: 50px; }
 	@media screen and (max-width:570px) {
 		.wp-review-<?php echo $review['post_id']; ?>.review-wrapper .review-list {
 			width: 100%;

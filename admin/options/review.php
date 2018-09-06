@@ -166,8 +166,6 @@ $available_types = apply_filters( 'wp_review_metabox_types', array(
 	'star'       => __( 'Star', 'wp-review' ),
 	'point'      => __( 'Point', 'wp-review' ),
 	'percentage' => __( 'Percentage', 'wp-review' ),
-	'circle'     => __( 'Circle', 'wp-review' ),
-	'thumbs'     => __( 'Thumbs', 'wp-review' ),
 ));
 
 $form_field = new WP_Review_Form_Field();

@@ -275,30 +275,6 @@ function wp_review_render_meta_box_item( $post ) {
 		</div>
 	</script>
 
-	<script type="text/html" id="tmpl-wpr-review-item-thumbs-rating">
-		<div class="setting-row">
-			<div class="col-1">
-				<label for="wpr-review-item-star-{{ data.id }}"><?php esc_html_e( 'Feature Score', 'wp-review' ); ?></label>
-			</div>
-
-			<div class="col-2">
-				<span>
-					<i class="fa fa-thumbs-up thumbs-icon thumbs-up-icon" style="color: {{ data.wp_review_item_color }}"></i>
-					<input type="number" min="0" step="1" size="4" name="wp_review_item_positive[]" class="small-text thumbs-input thumbs-up-input" value="{{ data.wp_review_item_positive }}">
-				</span>
-
-				<span>
-					<i class="fa fa-thumbs-down thumbs-icon thumbs-down-icon" style="color: {{ data.wp_review_item_inactive_color }}"></i>
-					<input type="number" min="0" step="1" size="4" name="wp_review_item_negative[]" class="small-text thumbs-input thumbs-down-input" value="{{ data.wp_review_item_negative }}">
-				</span>
-			</div>
-
-			<div class="col-3">
-				<input type="text" id="wpr-review-item-star-{{ data.id }}" name="wp_review_item_star[]" class="input-star" value="{{ data.wp_review_item_star }}" data-type="{{ data.type }}" data-color="{{ data.wp_review_item_color }}" size="4" readonly>
-			</div>
-		</div>
-	</script>
-
 	<div class="wp-review-field">
 		<div class="wp-review-field-label">
 			<label><?php esc_html_e( 'Hide Features', 'wp-review' ); ?></label>

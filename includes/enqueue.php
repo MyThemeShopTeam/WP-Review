@@ -41,9 +41,6 @@ function wp_review_enqueue() {
 
 	wp_register_script( 'stacktable', WP_REVIEW_ASSETS . 'js/stacktable.js', array( 'jquery' ), false, true );
 
-	wp_register_script( 'wp-review-circle-output', WP_REVIEW_URI . 'rating-types/circle-output.js', array( 'jquery-knob' ), '3.0.8', true );
-	wp_register_script( 'wp-review-circle-input', WP_REVIEW_URI . 'rating-types/circle-input.js', array( 'jquery-knob' ), '3.0.8', true );
-
 	wp_register_script( 'wp_review-js', WP_REVIEW_ASSETS . 'js/main.js', array( 'stacktable', 'wp_review-jquery-appear', 'magnificPopup', 'js-cookie', 'wp-review-exit-intent', 'wp-util' ), WP_REVIEW_PLUGIN_VERSION, true );
 
 	wp_localize_script( 'wp_review-js', 'wpreview', array(

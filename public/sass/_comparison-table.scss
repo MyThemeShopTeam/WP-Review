@@ -20,8 +20,8 @@
 		background: #f9f9f9;
 	}
 
-	tr:nth-child(even) { 
-		background: #fff; 
+	tr:nth-child(even) {
+		background: #fff;
 	}
 
 	thead tr {
@@ -87,24 +87,10 @@
 	}
 
 	.review-percentage .review-result, .review-point .review-result { height: 100%; }
-	
+
 	.review-total-only {
-		background: transparent!important;
-		color: inherit!important;
+		background: transparent !important;
+		color: inherit !important;
 		padding: 0;
-	}
-	
-	.features-col {
-		.review-thumbs + span {
-			display: block;
-			width: 100%;
-		}
-	
-		.rating-thumbs-output .wpr-thumbs-button {
-			width: 100%;
-			text-align: left;
-		}
-	
-		.rating-thumbs-output .wpr-thumbs-button .wpr-thumbs-icon {float: left;margin: 0 5px 5px 0;border-right: 1px solid rgba(0, 0, 0, 0.1)!important;border-radius: 4px!important;}
 	}
 }

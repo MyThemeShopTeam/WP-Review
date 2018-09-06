@@ -194,8 +194,7 @@ textarea#wp_review_comment_pros, textarea#wp_review_comment_cons { height: 100px
 .review-star .review-result-wrapper img.wp-review-image {max-width: 20px; max-height: 20px; display: inline-block; opacity: 0.6;}
 .wp-review-usercomment-rating-star .review-result-wrapper img {opacity: 0.6;}
 .wp-review-usercomment-rating-star .review-result-wrapper .review-result img {opacity: 1;}
-.review-star .wpr-count {margin-left: 3px;vertical-align: top;}
-.review-circle .review-result-wrapper { height: 100%; }
+.review-star .wpr-count { margin-left: 3px; vertical-align: top; }
 .review-result-wrapper i, .review-result-wrapper img.wp-review-image {
 	font-style: normal;
 	font-size: 16px;
@@ -432,70 +431,6 @@ textarea#wp_review_comment_pros, textarea#wp_review_comment_cons { height: 100px
 }
 
 /**
- * Thumbs
- */
-.review-thumbs, .wp-review-user-feature-rating-thumbs {
-	.review-list &,
-	.user-review-area & {
-		float: right;
-	}
-}
-
-.review-thumbs, .wp-review-user-feature-rating-thumbs {
-	display: inline-block;
-
-	.review-result-wrapper {
-		font-size: unset;
-		height: unset;
-	}
-
-	.wpr-thumbs-button {
-		display: inline-block;
-		text-decoration: none;
-		border: 0;
-		text-align: right;
-		float: right;
-
-		&.wpr-thumbs-up-button {
-			.wpr-thumbs-icon {
-				border-radius: 4px 0 0 4px;
-				border-right: 0;
-			}
-		}
-
-		&.wpr-thumbs-down-button {
-			text-align: left;
-
-			.wpr-thumbs-icon {
-				float: left;
-				margin-left: 0;
-				margin-right: 5px;
-				border-radius: 0 4px 4px 0;
-			}
-		}
-
-		.wpr-thumbs-icon {
-			border: 1px solid rgba(0, 0, 0, 0.1);
-			background: rgba(255, 255, 255, 0.3);
-			padding: 0 10px;
-			color: #333;
-			border-radius: 4px;
-			float: right;
-			margin-left: 5px;
-		}
-	}
-}
-
-.rating-thumbs-output {
-	.wpr-thumbs-button {
-		min-width: 80px;
-	}
-}
-.latestPost-review-wrapper .rating-thumbs-output .wpr-thumbs-button {
-	min-width: auto;
-}
-
-/**
  * Twenty series themes compatibilty
  */
 .entry-content .review-wrapper {
@@ -643,14 +578,6 @@ textarea#wp_review_comment_pros, textarea#wp_review_comment_cons { height: 100px
 .wp-review-comment-title { font-size: 18px; }
 .comment-text-inner { clear: both }
 .comment {
-	.review-thumbs .wpr-thumbs-button {
-		min-width: auto;
-	}
-	.review-thumbs .wpr-thumbs-button .wpr-thumbs-icon {
-		margin: 0;
-		border: 1px solid rgba(0, 0, 0, 0.1);
-		border-radius: 2px;
-	}
 	.review-list li {
 		margin-bottom: 0;
 	}
@@ -853,26 +780,6 @@ form.wp-review-comment-form > div, #commentform.wp-review-comment-form > div {
 			color: #fff!important;
 			i,  img.wp-review-image { opacity: 1; }
 		}
-	}
-}
-.review-type-thumbs.latestPost-review-wrapper {
-	padding: 8px;
-	line-height: 1;
-
-	.rating-wrapper {
-		.review-result-wrapper { line-height: 23px; }
-		vertical-align: middle;
-	}
-	.wpr-thumbs-icon {
-		line-height: 20px;
-		font-size: 10px;
-	}
-	.wpr-thumbs-icon i {
-		font-size: 10px;
-		color: #fff!important;
-	}
-	.wpr-thumbs-icon.wpr-thumbs-down-icon i {
-		opacity: 0.7;
 	}
 }
 .widget .wp-review-show-total .review-star, .widget .wp-review-user-rating .review-star {
