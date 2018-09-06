@@ -5,135 +5,6 @@
  * @package WP_Review
  */
 
-/**
- * Removes WooCommerce hook.
- */
-function wp_review_wc_remove_hook() {
-	if ( wp_review_option( 'replace_wc_rating' ) ) {
-		remove_action( 'comments_template', array( 'WC_Template_Loader', 'comments_template_loader' ) );
-	}
-}
-add_action( 'init', 'wp_review_wc_remove_hook' );
-
-
-if ( wp_review_option( 'replace_wc_rating' ) ) {
-	/**
-	 * Output the product rating.
-	 */
-	function woocommerce_template_single_rating() {
-		if ( post_type_supports( 'product', 'comments' ) ) {
-			echo do_shortcode( '[wp-review-total id="' . get_the_ID() . '" class="wp-review-product-rating review-total-only review-total-shortcode" context="product-rating"]' );
-		}
-	}
-
-
-	/**
-	 * Uses our comment ratings count for product review count.
-	 *
-	 * @param  int    $count   Review count.
-	 * @param  object $product Product object.
-	 * @return int
-	 */
-	function wp_review_wc_product_review_count( $count, $product ) {
-		$comment_ratings = mts_get_post_comments_reviews( $product->get_id() );
-		return $comment_ratings['count'];
-	}
-	add_filter( 'woocommerce_product_get_review_count', 'wp_review_wc_product_review_count', 10, 2 );
-
-
-	/**
-	 * Uses our comment ratings total for product avg rating.
-	 *
-	 * @param  int    $value   Avg rating.
-	 * @param  object $product Product object.
-	 * @return int
-	 */
-	function wp_review_wc_product_average_rating( $value, $product ) {
-		$comment_ratings = mts_get_post_comments_reviews( $product->get_id() );
-		return $comment_ratings['rating'];
-	}
-	add_filter( 'woocommerce_product_get_average_rating', 'wp_review_wc_product_average_rating', 10, 2 );
-
-
-	/**
-	 * Adds our rating schema to product schema.
-	 *
-	 * @param  array  $markup  Product schema markup.
-	 * @param  object $product Product object.
-	 * @return array
-	 */
-	function wp_review_wc_product_schema( $markup, $product ) {
-		$rating_schema = wp_review_get_rating_schema( $product->get_id() );
-		switch ( $rating_schema ) {
-			case 'author':
-				$rating_value = floatval( get_post_meta( $product->get_id(), 'wp_review_total', true ) );
-				$rating_type = wp_review_get_post_review_type( $product->get_id() );
-				$rating_type = wp_review_get_rating_type_data( $rating_type );
-				$best_rating = $rating_type['max'];
-
-				if ( isset( $markup['aggregateRating']['reviewCount'] ) ) {
-					unset( $markup['aggregateRating']['reviewCount'] );
-				}
-				$markup['aggregateRating']['ratingValue'] = get_post_meta( $product->get_id(), 'wp_review_total', true );
-				break;
-
-			case 'visitors':
-				$visitors_rating = mts_get_post_reviews( $product->get_id() );
-				$rating_value = $visitors_rating['rating'];
-				$review_count = $visitors_rating['count'];
-				$rating_type = wp_review_get_post_user_review_type( $product->get_id() );
-				$rating_type = wp_review_get_rating_type_data( $rating_type );
-				$best_rating = $rating_type['max'];
-				break;
-
-			case 'comments':
-				$rating_type = wp_review_get_post_user_review_type( $product->get_id() );
-				$rating_type = wp_review_get_rating_type_data( $rating_type );
-				$markup['aggregateRating']['bestRating'] = $rating_type['max'];
-				return $markup;
-				break;
-		}
-
-		if ( ! $rating_value ) {
-			if ( isset( $markup['aggregateRating'] ) ) {
-				unset( $markup['aggregateRating'] );
-			}
-			return $markup;
-		}
-
-		$markup['aggregateRating']['ratingValue'] = $rating_value;
-		$markup['aggregateRating']['bestRating'] = $best_rating;
-		if ( isset( $review_count ) ) {
-			$markup['aggregateRating']['reviewCount'] = $review_count;
-		}
-
-		return $markup;
-	}
-	add_filter( 'woocommerce_structured_data_product', 'wp_review_wc_product_schema', 10, 2 );
-
-
-	/**
-	 * Adds verified class to comment.
-	 *
-	 * @since 3.0.4
-	 *
-	 * @param array  $classes    An array of comment classes.
-     * @param string $class      A comma-separated list of additional classes added to the list.
-     * @param int    $comment_id The comment id.
-	 * @return array
-	 */
-	function wp_review_wc_comment_class( $classes, $class, $comment_id ) {
-		if ( intval( get_comment_meta( $comment_id, 'verified', true ) ) ) {
-			$classes[] = 'verified';
-		}
-		return $classes;
-	}
-	add_filter( 'comment_class', 'wp_review_wc_comment_class', 10, 3 );
-}
-
-
-add_filter( 'woocommerce_admin_reports', 'add_admin_reports');
-
 function add_admin_reports( $reports ) {
 	$reports['wp-reviews'] = array(
 		'title'   => __( 'WP Reviews', 'wp-review' ),
@@ -161,6 +32,8 @@ function add_admin_reports( $reports ) {
 
 	return $reports;
 }
+add_filter( 'woocommerce_admin_reports', 'add_admin_reports');
+
 
 function get_most_reviews_admin_report() {
 /**
@@ -249,7 +122,7 @@ function get_most_reviews_admin_report() {
 					}
 					}
 				}
-				
+
 
 				if(!empty($ratings_data)) {
 
@@ -263,11 +136,11 @@ function get_most_reviews_admin_report() {
 							} else if('lowest_rating' === $_GET['report']) {
 								return ($a < $b) ? -1 : 1;
 							}
-						});	
+						});
 					}
 
 
-				
+
 					foreach($ratings_data as $rating_data) { ?>
 							<tr>
 								<td><?php echo esc_html( $rating_data['title'] ); ?></td>

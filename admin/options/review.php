@@ -268,14 +268,15 @@ $form_field = new WP_Review_Form_Field();
 			<div class="wp-review-field">
 				<div class="wp-review-field-label">
 					<label><?php esc_html_e( 'Replace WooCommerce rating', 'wp-review' ); ?></label>
+					<?php wp_review_print_pro_text(); ?>
 				</div>
 
 				<div class="wp-review-field-option">
 					<?php
 					$form_field->render_switch( array(
-						'id'    => 'wp_review_replace_wc_rating',
-						'name'  => 'wp_review_options[replace_wc_rating]',
-						'value' => ! empty( $options['replace_wc_rating'] ),
+						'id'       => 'wp_review_replace_wc_rating',
+						'name'     => 'wp_review_options[replace_wc_rating]',
+						'disabled' => true,
 					) );
 					?>
 				</div>
