@@ -855,15 +855,18 @@ input.wpr-switch__off:checked + label, input.wpr-switch__off:checked + label:hov
 		left: 0;
 		right: 0;
 		bottom: 0;
-		background-color: rgba(255,255,255,0.7);
 		z-index: 100;
 	}
 
-	&.wp-review-disabled-select {
+	&.wp-review-disabled-select,
+	&.wp-review-disabled-color {
 		display: inline-block;
+	}
 
+	&.wpr-switch,
+	&.wp-review-disabled-color {
 		&:before {
-			background-color: transparent;
+			background-color: rgba(255,255,255,0.7);
 		}
 	}
 }
