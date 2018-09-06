@@ -24,8 +24,6 @@ class WP_Review_Options {
 	public function init() {
 		add_action( 'admin_menu', array( $this, 'register_menu' ) );
 		add_action( 'admin_init', array( $this, 'register_settings' ) );
-
-
 	}
 
 	/**
@@ -72,18 +70,18 @@ class WP_Review_Options {
 	 */
 	public function register_settings() {
 
-		if(isset($_POST['wp_review_capabilities']) && !empty(['wp_review_capabilities'])) {
+		if ( isset( $_POST['wp_review_capabilities'] ) && ! empty( $_POST['wp_review_capabilities'] ) ) {
 
 			$capabilities = $_POST['wp_review_capabilities'];
 			$default_caps = wp_review_get_capabilities();
 
-			foreach($capabilities as $role => $capability) {
+			foreach ( $capabilities as $role => $capability ) {
 				$role = get_role( $role );
 
 				$role_capabilities = $role->capabilities;
-				foreach($default_caps as $key => $default_cap) {
+				foreach ( $default_caps as $key => $default_cap ) {
 
-					if(isset($capability[$key])) {
+					if ( isset( $capability[ $key ] ) ) {
 						$role->add_cap( $key );
 					} else {
 						$role->remove_cap( $key );
@@ -103,14 +101,60 @@ class WP_Review_Options {
 	 */
 	protected function get_tabs() {
 		$tabs_content = array(
-			'review' => array('title' => __( 'Global', 'wp-review' ), 'icon'	=> 'cogs', 'capability' => 'wp_review_global_options', 'multisite_enabled' => 'hide_global_options_'),
-			'popup'	=>	array('title' => __( 'Popup', 'wp-review' ), 'icon'	=> 'sticky-note', 'capability' => 'wp_review_popup', 'multisite_enabled' => 'hide_general_popup_'),
-			'hello-bar' => array('title' => __( 'Notification Bar', 'wp-review' ), 'icon'	=> 'warning', 'capability' => 'wp_review_notification_bar', 'multisite_enabled' => 'hide_general_bar_'),
-			'yelp' => array('title' => __( 'Yelp Reviews', 'wp-review' ), 'icon'	=> 'yelp', 'capability' => 'wp_review_yelp_reviews', 'multisite_enabled' => 'hide_yelp_reviews_'),
-			'google' => array('title' => __( 'Google Reviews', 'wp-review' ), 'icon'	=> 'google', 'capability' => 'wp_review_google_reviews', 'multisite_enabled' => 'hide_google_reviews_'),
-			'facebook' => array('title' => __( 'Facebook Reviews', 'wp-review' ), 'icon'	=> 'facebook', 'capability' => 'wp_review_facebook_reviews', 'multisite_enabled' => 'hide_facebook_reviews_'),
-			'role-manager' => array('title' => __( 'Role Manager', 'wp-review' ), 'icon'	=> 'user', 'capability' => 'administrator', 'multisite_enabled' => 'hide_role_manager_'),
-			'import' => array('title' => __( 'Import Reviews', 'wp-review' ), 'icon'	=> 'download', 'capability' => 'wp_review_import_reviews', 'multisite_enabled' => 'hide_import_'),
+			'review'       => array(
+				'title'             => __( 'Global', 'wp-review' ),
+				'icon'              => 'cogs',
+				'capability'        => 'wp_review_global_options',
+				'multisite_enabled' => 'hide_global_options_',
+			),
+			'popup'        => array(
+				'title'             => __( 'Popup', 'wp-review' ),
+				'icon'              => 'sticky-note',
+				'capability'        => 'wp_review_popup',
+				'multisite_enabled' => 'hide_general_popup_',
+			),
+			'hello-bar'    => array(
+				'title'             => __( 'Notification Bar', 'wp-review' ),
+				'icon'              => 'warning',
+				'capability'        => 'wp_review_notification_bar',
+				'multisite_enabled' => 'hide_general_bar_',
+			),
+			'yelp'         => array(
+				'title'             => __( 'Yelp Reviews', 'wp-review' ),
+				'icon'              => 'yelp',
+				'capability'        => 'wp_review_yelp_reviews',
+				'multisite_enabled' => 'hide_yelp_reviews_',
+			),
+			'google'       => array(
+				'title'             => __( 'Google Reviews', 'wp-review' ),
+				'icon'              => 'google',
+				'capability'        => 'wp_review_google_reviews',
+				'multisite_enabled' => 'hide_google_reviews_',
+			),
+			'facebook'     => array(
+				'title'             => __( 'Facebook Reviews', 'wp-review' ),
+				'icon'              => 'facebook',
+				'capability'        => 'wp_review_facebook_reviews',
+				'multisite_enabled' => 'hide_facebook_reviews_',
+			),
+			'role-manager' => array(
+				'title'             => __( 'Role Manager', 'wp-review' ),
+				'icon'              => 'user',
+				'capability'        => 'administrator',
+				'multisite_enabled' => 'hide_role_manager_',
+			),
+			'import'       => array(
+				'title'             => __( 'Import Reviews', 'wp-review' ),
+				'icon'              => 'download',
+				'capability'        => 'wp_review_import_reviews',
+				'multisite_enabled' => 'hide_import_',
+			),
+			'help'         => array(
+				'title'             => __( 'Help', 'wp-review' ),
+				'icon'              => 'question-circle',
+				'capability'        => 'manage_options',
+				'multisite_enabled' => 'hide_help_',
+			),
 		);
 
 		$tabs = array();
