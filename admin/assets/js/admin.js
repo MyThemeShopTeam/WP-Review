@@ -848,24 +848,14 @@ jQuery(document).ready(function($) {
 	if ($('#wp_review_location').val() == 'custom') {
 		$('#wp_review_shortcode_hint_field').show();
 	}
-	$('#wp_review_width').on('change', function() {
-		var value = parseInt($(this).val());
-		if (value < 100) {
-			$('.wp-review-align-options').show();
-		} else {
-			$('.wp-review-align-options').hide();
-		}
-		$("#wp-review-width-slider").slider("value", parseInt(value));
-	});
-	$("#wp-review-width-slider").slider({
-		range: "min",
-		value: $('#wp_review_width').val(),
+
+	$( '#wp-review-width-slider' ).slider({
+		range: 'min',
+		value: $( '#wp_review_width' ).val(),
 		step: 1,
 		min: 1,
 		max: 100,
-		slide: function(event, ui) {
-			$("#wp_review_width").val(ui.value).trigger('change');
-		}
+		disabled: true
 	});
 
 	$('.wp-review-userReview-options').change(function(event) {

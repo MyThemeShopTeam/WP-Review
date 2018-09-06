@@ -124,7 +124,6 @@ function wp_review_render_meta_box_item( $post ) {
 	$custom_colors   = get_post_meta( $post->ID, 'wp_review_custom_colors', true );
 	$custom_location = get_post_meta( $post->ID, 'wp_review_custom_location', true );
 	$disable_features = get_post_meta( $post->ID, 'wp_review_disable_features', true );
-	$custom_width = get_post_meta( $post->ID, 'wp_review_custom_width', true );
 
 	$items = wp_review_get_review_items( $post->ID );
 	if ( '' === $items ) {
@@ -142,8 +141,6 @@ function wp_review_render_meta_box_item( $post ) {
 	$bgcolor1  = get_post_meta( $post->ID, 'wp_review_bgcolor1', true );
 	$bgcolor2  = get_post_meta( $post->ID, 'wp_review_bgcolor2', true );
 	$bordercolor = get_post_meta( $post->ID, 'wp_review_bordercolor', true );
-	$align     = get_post_meta( $post->ID, 'wp_review_align', true );
-	$width     = get_post_meta( $post->ID, 'wp_review_width', true );
 
 	$fontfamily = get_post_meta( $post->ID, 'wp_review_fontfamily', true );
 	if ( '' === $fontfamily ) {
@@ -174,12 +171,6 @@ function wp_review_render_meta_box_item( $post ) {
 	if ( '' == $bordercolor ) {
 		$bordercolor = ! empty( $global_colors['bordercolor'] ) ? $global_colors['bordercolor'] : '';
 	}
-	if ( empty( $width ) ) {
-		$width = 100;
-	}
-	if ( empty( $align ) ) {
-		$align = 'left';
-	}
 
 	$fields = array(
 		'location' => true,
@@ -193,8 +184,6 @@ function wp_review_render_meta_box_item( $post ) {
 		'custom_colors' => true,
 		'custom_location' => true,
 		'disable_features' => true,
-		'width' => true,
-		'align' => true,
 	);
 	$displayed_fields = apply_filters( 'wp_review_metabox_item_fields', $fields );
 
@@ -508,39 +497,12 @@ function wp_review_render_meta_box_item( $post ) {
 		<div class="wp-review-field-option">
 			<?php
 			$form_field->render_switch( array(
-				'id'    => 'wp_review_custom_width',
-				'name'  => 'wp_review_custom_width',
-				'value' => $custom_width,
+				'id'       => 'wp_review_custom_width',
+				'name'     => 'wp_review_custom_width',
+				'disabled' => true,
 			) );
 			?>
 		</div>
-	</div>
-
-	<div class="wp-review-width-options"<?php if ( empty( $custom_width ) ) echo ' style="display: none;"'; ?>>
-
-		<div class="wp-review-field">
-			<div class="wp-review-field-label">
-				<label for="wp_review_width"><?php esc_html_e( 'Review Box Width', 'wp-review' ); ?></label>
-			</div>
-
-			<div class="wp-review-field-option">
-				<input type="number" min="1" max="100" step="1" name="wp_review_width" id="wp_review_width" value="<?php echo intval( $width ); ?>" /> %
-				<div id="wp-review-width-slider"></div>
-
-				<p class="wp-review-align-options"<?php if ( 100 == $width ) echo ' style="display: none;"'; ?>>
-					<label for="wp-review-align-left" style="margin-right: 30px;">
-						<input type="radio" name="wp_review_align" id="wp-review-align-left" value="left" <?php checked( $align, 'left' ); ?> />
-						<?php esc_html_e( 'Align Left', 'wp-review' ); ?>
-					</label>
-
-					<label for="wp-review-align-right">
-						<input type="radio" name="wp_review_align" id="wp-review-align-right" value="right" <?php checked( $align, 'right' ); ?> />
-						<?php esc_html_e( 'Align Right', 'wp-review' ); ?>
-					</label>
-				</p>
-			</div>
-		</div>
-
 	</div>
 	<?php
 }
@@ -1063,7 +1025,6 @@ function wp_review_save_postdata( $post_id, $post ) {
 		'wp_review_disable_features'       => filter_input( INPUT_POST, 'wp_review_disable_features', FILTER_SANITIZE_STRING ),
 		'wp_review_custom_location'        => filter_input( INPUT_POST, 'wp_review_custom_location', FILTER_SANITIZE_STRING ),
 		'wp_review_custom_colors'          => filter_input( INPUT_POST, 'wp_review_custom_colors', FILTER_SANITIZE_STRING ),
-		'wp_review_custom_width'           => filter_input( INPUT_POST, 'wp_review_custom_width', FILTER_SANITIZE_STRING ),
 		'wp_review_custom_author'          => filter_input( INPUT_POST, 'wp_review_custom_author', FILTER_SANITIZE_STRING ),
 		'wp_review_location'               => filter_input( INPUT_POST, 'wp_review_location', FILTER_SANITIZE_STRING ),
 		'wp_review_type'                   => filter_input( INPUT_POST, 'wp_review_type', FILTER_SANITIZE_STRING ),
@@ -1085,8 +1046,6 @@ function wp_review_save_postdata( $post_id, $post ) {
 		'wp_review_bgcolor2'               => filter_input( INPUT_POST, 'wp_review_bgcolor2', FILTER_SANITIZE_STRING ),
 		'wp_review_bordercolor'            => filter_input( INPUT_POST, 'wp_review_bordercolor', FILTER_SANITIZE_STRING ),
 		'wp_review_fontfamily'             => filter_input( INPUT_POST, 'wp_review_fontfamily', FILTER_SANITIZE_STRING ),
-		'wp_review_width'                  => filter_input( INPUT_POST, 'wp_review_width', FILTER_SANITIZE_STRING ),
-		'wp_review_align'                  => filter_input( INPUT_POST, 'wp_review_align', FILTER_SANITIZE_STRING ),
 		'wp_review_author'                 => filter_input( INPUT_POST, 'wp_review_author', FILTER_SANITIZE_STRING ),
 		'wp_review_schema'                 => filter_input( INPUT_POST, 'wp_review_schema', FILTER_SANITIZE_STRING ),
 		'wp_review_rating_schema'          => filter_input( INPUT_POST, 'wp_review_rating_schema', FILTER_SANITIZE_STRING ),

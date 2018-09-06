@@ -352,6 +352,6 @@ input.wpr-switch__off:checked + label, input.wpr-switch__off:checked + label:hov
 
 .wp-review-disabled.wp-review-disabled-select, .wp-review-disabled.wp-review-disabled-color { display: inline-block; }
 
-.wp-review-disabled.wpr-switch:before, .wp-review-disabled.wp-review-disabled-color:before { background-color: rgba(255, 255, 255, 0.7); }
+.wp-review-disabled.wpr-switch:before, .wp-review-disabled.wp-review-disabled-color:before, .wp-review-disabled.wp-review-disabled-slider:before { background-color: rgba(255, 255, 255, 0.7); }
 
 /*# sourceMappingURL=../sourcemaps/admin.css.map */

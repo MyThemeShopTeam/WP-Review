@@ -1543,20 +1543,8 @@ function wp_review_get_review_data( $post_id = null, $args = array() ) {
 	$colors = wp_review_get_colors( $post_id );
 	$data['colors'] = $colors;
 
-	$width = get_post_meta( $post_id, 'wp_review_width', true );
-	if ( empty( $width ) ) {
-		$width = 100;
-	}
-	$align = get_post_meta( $post_id, 'wp_review_align', true );
-	if ( empty( $align ) ) {
-		$align = 'left';
-	}
-	if ( ! $colors['custom_width'] ) {
-		$width = ! empty( $options['width'] ) ? $options['width'] : 100;
-		$align = ! empty( $options['align'] ) ? $options['align'] : 'left';
-	}
-	$data['width'] = $width;
-	$data['align'] = $align;
+	$data['width'] = 100;
+	$data['align'] = 'left';
 
 	$data['enable_embed'] = get_post_meta( $post_id, 'wp_review_enable_embed', true );
 	if ( '' === $data['enable_embed'] ) {
@@ -1751,18 +1739,8 @@ function wp_review_get_review_box( $post_id = null ) {
 		"wp-review-{$review_data['type']}-type",
 		"wp-review-{$template_id}-template",
 		'delay-animation',
+		'wp-review-box-full-width',
 	);
-
-	if ( isset( $review_data['width'] ) && $review_data['width'] < 100 ) {
-		$classes[] = 'wp-review-box-floating';
-		if ( isset( $review_data['align'] ) && 'right' === $review_data['align'] ) {
-			$classes[] = 'wp-review-box-float-right';
-		} else {
-			$classes[] = 'wp-review-box-float-left';
-		}
-	} else {
-		$classes[] = 'wp-review-box-full-width';
-	}
 
 	$review_data['css_classes'] = $css_classes;
 

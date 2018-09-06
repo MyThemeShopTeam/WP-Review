@@ -104,8 +104,6 @@ $fontcolor = ! empty( $options['colors']['fontcolor'] ) ? $options['colors']['fo
 $bgcolor1  = ! empty( $options['colors']['bgcolor1'] ) ? $options['colors']['bgcolor1'] : '';
 $bgcolor2  = ! empty( $options['colors']['bgcolor2'] ) ? $options['colors']['bgcolor2'] : '';
 $bordercolor  = ! empty( $options['colors']['bordercolor'] ) ? $options['colors']['bordercolor'] : '';
-$width = wp_review_option( 'width', 100 );
-$align = wp_review_option( 'align' );
 
 $force_user_ratings = wp_review_option( 'force_user_ratings' );
 $custom_comment_colors = ! empty( $options['custom_comment_colors'] );
@@ -153,9 +151,6 @@ if ( '' == $bordercolor ) {
 if ( empty( $width ) ) {
 	$width = 100;
 }
-if ( empty( $align ) ) {
-	$align = 'left';
-}
 
 $fields = array(
 	'location' => true,
@@ -167,8 +162,6 @@ $fields = array(
 	'bordercolor' => true,
 	'custom_colors' => true,
 	'custom_location' => true,
-	'width' => true,
-	'align' => true,
 );
 
 $displayed_fields = apply_filters( 'wp_review_metabox_item_fields', $fields );
@@ -607,23 +600,12 @@ $form_field = new WP_Review_Form_Field();
 		<div class="wp-review-field">
 			<div class="wp-review-field-label">
 				<label for="wp_review_width"><?php esc_html_e( 'Review Box Width', 'wp-review' ); ?></label>
+				<?php wp_review_print_pro_text(); ?>
 			</div>
 
-			<div class="wp-review-field-option">
-				<input type="number" min="1" max="100" step="1" name="wp_review_options[width]" id="wp_review_width" value="<?php echo esc_attr( $width ); ?>" /> %
+			<div class="wp-review-field-option wp-review-disabled wp-review-disabled-slider">
+				<input type="number" min="1" max="100" step="1" name="wp_review_options[width]" id="wp_review_width" value="100" disabled /> %
 				<div id="wp-review-width-slider"></div>
-
-				<p class="wp-review-align-options"<?php if ( 100 == $width ) echo ' style="display: none;"'; ?>>
-					<label for="wp-review-align-left" style="margin-right: 30px;">
-						<input type="radio" name="wp_review_options[align]" id="wp-review-align-left" value="left" <?php checked( $align, 'left' ); ?> />
-						<?php esc_html_e( 'Align Left', 'wp-review' ); ?>
-					</label>
-
-					<label for="wp-review-align-right">
-						<input type="radio" name="wp_review_options[align]" id="wp-review-align-right" value="right" <?php checked( $align, 'right' ); ?> />
-						<?php esc_html_e( 'Align Right', 'wp-review' ); ?>
-					</label>
-				</p>
 			</div>
 		</div>
 

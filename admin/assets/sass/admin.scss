@@ -864,7 +864,8 @@ input.wpr-switch__off:checked + label, input.wpr-switch__off:checked + label:hov
 	}
 
 	&.wpr-switch,
-	&.wp-review-disabled-color {
+	&.wp-review-disabled-color,
+	&.wp-review-disabled-slider {
 		&:before {
 			background-color: rgba(255,255,255,0.7);
 		}
