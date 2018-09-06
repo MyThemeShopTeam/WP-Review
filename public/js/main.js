@@ -302,36 +302,6 @@ jQuery(document).ready(function($) {
 
 	}
 
-
-	var $commentFeedback = $('.wp-review-feedback');
-	$commentFeedback.on('click', 'a', function(e){
-		var $this = $(this);
-
-		e.preventDefault();
-
-		if ( $this.hasClass('voted') || $this.siblings().hasClass('voted') || $commentFeedback.hasClass('processing') ) return;
-
-		$.ajax({
-			type: 'POST',
-			url: wpreview.ajaxurl,
-			beforeSend: function(){
-				$commentFeedback.addClass('processing');
-			},
-			data: { action: 'mts_review_feedback', isHelpful: $this.data('value'), commentId: $this.data('comment-id') },
-			success: function(data){
-				$this.closest('.wp-review-feedback').find('a').removeClass('voted');
-				$this.addClass('voted').find('.feedback-count').text('('+data+')');
-			},
-			error: function(jqXHR){
-				alert(jqXHR.responseText);
-			},
-			complete: function() {
-				$commentFeedback.removeClass('processing');
-			}
-		});
-	});
-
-
 	/*
 		Add class to comment form
 	 */

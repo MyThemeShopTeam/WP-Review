@@ -13,9 +13,6 @@
 add_action( 'wp_ajax_wp_review_rate', 'wp_review_ajax_rate' );
 add_action( 'wp_ajax_nopriv_wp_review_rate', 'wp_review_ajax_rate' );
 
-add_action( 'wp_ajax_mts_review_feedback', 'mts_review_feedback' );
-add_action( 'wp_ajax_nopriv_mts_review_feedback', 'mts_review_feedback' );
-
 add_action( 'wp_ajax_wp_review_migrate_ratings', 'wp_review_ajax_migrate_ratings' );
 
 add_action( 'wp_ajax_wp-review-load-reviews', 'wp_review_ajax_load_reviews' );
@@ -36,7 +33,7 @@ add_action( 'wp_ajax_nopriv_wpr-upload-comment-image', 'wp_review_upload_comment
  */
 
 function wp_review_upload_comment_image() {
-	
+
 	$files = array_filter( $_FILES['files'] );
 	$attachment_id = '';
 	if( !empty($files) ) {
@@ -135,36 +132,6 @@ function wp_review_ajax_rate() {
 	);
 	wp_review_visitor_rate( $post_id, $review_data );
 	exit;
-}
-
-
-function mts_review_feedback() {
-	$is_helpful = filter_input( INPUT_POST, 'isHelpful' );
-	$comment_id = absint( filter_input( INPUT_POST, 'commentId', FILTER_SANITIZE_NUMBER_INT ) );
-	$comment = get_comment( $comment_id );
-	$error_msg = __( 'Invalid comment ID.', 'wp-review' );
-	if ( $comment > 0 && wp_review_allow_comment_feedback( $comment->comment_post_ID ) ) {
-		$user_ip = wp_review_get_user_ip();
-
-		if ( 'yes' === $is_helpful ) {
-			$key = 'wp_review_comment_helpful';
-			$group = 'wp_review_voted_h';
-		} else {
-			$key = 'wp_review_comment_unhelpful';
-			$group = 'wp_review_voted_uh';
-		}
-
-		if ( ! in_array( $user_ip, get_comment_meta( $comment_id, 'wp_review_voted_h' ) ) &&
-			 ! in_array( $user_ip, get_comment_meta( $comment_id, 'wp_review_voted_uh' ) ) ) {
-			$val = absint( get_comment_meta( $comment_id, $key, true ) );
-			update_comment_meta( $comment_id, $key, ++$val );
-			add_comment_meta( $comment_id, $group, $user_ip );
-			wp_die( $val );
-		}
-		$error_msg = __( 'You already gave feedback.', 'wp-review' );
-	}
-	header( 'Bad Request', true, 400 );
-	wp_die( $error_msg );
 }
 
 

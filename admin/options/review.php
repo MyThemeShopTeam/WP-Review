@@ -377,14 +377,15 @@ $form_field = new WP_Review_Form_Field();
 		<div class="wp-review-field">
 			<div class="wp-review-field-label">
 				<label><?php esc_html_e( 'Allow comment feedback (helpful/unhelpful)', 'wp-review' ); ?></label>
+				<?php wp_review_print_pro_text(); ?>
 			</div>
 
 			<div class="wp-review-field-option">
 				<?php
 				$form_field->render_switch( array(
-					'id'    => 'wp_review_allow_comment_feedback',
-					'name'  => 'wp_review_options[allow_comment_feedback]',
-					'value' => ! empty( $options['allow_comment_feedback'] ),
+					'id'       => 'wp_review_allow_comment_feedback',
+					'name'     => 'wp_review_options[allow_comment_feedback]',
+					'disabled' => true,
 				) );
 				?>
 			</div>

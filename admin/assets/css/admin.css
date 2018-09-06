@@ -312,10 +312,6 @@ h4.wp-review-comment-title { margin-top: 0; margin-bottom: 1em; }
 
 .wpr-switch label:last-of-type { border-radius: 0 3px 3px 0; border-left: 0; font-weight: normal; }
 
-.wpr-switch.wp-review-disabled { position: relative; cursor: pointer; }
-
-.wpr-switch.wp-review-disabled:before { content: " "; display: block; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(255, 255, 255, 0.7); z-index: 100; }
-
 input.wpr-switch__on:checked + label, input.wpr-switch__off:checked + label { background: #0085ba; border-color: #0073aa #006799 #006799; box-shadow: 0 1px 0 #006799; color: #fff; text-decoration: none; text-shadow: 0 -1px 1px #006799, 1px 0 1px #006799, 0 1px 1px #006799, -1px 0 1px #006799; margin-bottom: 2px; }
 
 input.wpr-switch__on:checked + label:hover, input.wpr-switch__off:checked + label:hover { background: #008ec2; border-color: #006799; color: #fff; }
@@ -349,5 +345,13 @@ input.wpr-switch__off:checked + label, input.wpr-switch__off:checked + label:hov
 .wp-review-subsite-wrapper { display: none; }
 
 .wp-review-pro-text { color: #00cc66; }
+
+.wp-review-disabled { position: relative; cursor: pointer; }
+
+.wp-review-disabled:before { content: " "; display: block; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(255, 255, 255, 0.7); z-index: 100; }
+
+.wp-review-disabled.wp-review-disabled-select { display: inline-block; }
+
+.wp-review-disabled.wp-review-disabled-select:before { background-color: transparent; }
 
 /*# sourceMappingURL=../sourcemaps/admin.css.map */

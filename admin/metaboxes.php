@@ -753,7 +753,6 @@ function wp_review_render_meta_box_userReview( $post ) {
 	$hide_visitors_rating = get_post_meta( $post->ID, 'wp_review_hide_visitors_rating', true );
 	$user_feature_rate = get_post_meta( $post->ID, 'wp_review_user_can_rate_feature', true );
 	$product_price = wp_review_get_product_price( $post->ID );
-	$allow_comment_feedback = get_post_meta( $post->ID, 'wp_review_allow_comment_feedback', true );
 	$comment_pros_cons = get_post_meta( $post->ID, 'wp_review_comment_pros_cons', true );
 	$comment_image = get_post_meta( $post->ID, 'wp_review_comment_image', true );
 	$comment_matches = get_post_meta( $post->ID, 'wp_review_comment_product_desc', true );
@@ -924,17 +923,21 @@ function wp_review_render_meta_box_userReview( $post ) {
 	<div class="wp-review-field">
 		<div class="wp-review-field-label">
 			<label for="wp_review_allow_comment_feedback"><?php esc_html_e( 'Comment Feedback (helpful/unhelpful)', 'wp-review' ); ?></label>
+			<?php wp_review_print_pro_text(); ?>
 		</div>
 
 		<div class="wp-review-field-option">
-			<select name="wp_review_allow_comment_feedback" id="wp_review_allow_comment_feedback" value="<?php echo esc_attr( $allow_comment_feedback ); ?>">
-				<option value=""><?php esc_html_e( 'Use global options', 'wp-review' ); ?></option>
-				<option value="yes" <?php selected( $allow_comment_feedback, 'yes' ); ?>><?php esc_html_e( 'Yes', 'wp-review' ); ?></option>
-				<option value="no" <?php selected( $allow_comment_feedback, 'no' ); ?>><?php esc_html_e( 'No', 'wp-review' ); ?></option>
-			</select>
+			<span class="wp-review-disabled wp-review-disabled-select">
+				<select name="wp_review_allow_comment_feedback" id="wp_review_allow_comment_feedback" value="<?php echo esc_attr( $allow_comment_feedback ); ?>" disabled>
+					<option value=""><?php esc_html_e( 'Use global options', 'wp-review' ); ?></option>
+					<option value="yes"><?php esc_html_e( 'Yes', 'wp-review' ); ?></option>
+					<option value="no"><?php esc_html_e( 'No', 'wp-review' ); ?></option>
+				</select>
+			</span>
 		</div>
 	</div>
-	<?php if (current_user_can( 'wp_review_purge_visitor_ratings' ) ) { ?>
+
+	<?php if ( current_user_can( 'wp_review_purge_visitor_ratings' ) ) { ?>
 		<p style="margin-top: 50px;">
 			<button
 				type="button"
@@ -947,7 +950,8 @@ function wp_review_render_meta_box_userReview( $post ) {
 			<span class="description"><?php esc_html_e( 'Click to remove all visitor ratings of this post.', 'wp-review' ); ?></span>
 		</p>
 	<?php } ?>
-	<?php if (current_user_can( 'wp_review_purge_comment_ratings' ) ) { ?>
+
+	<?php if ( current_user_can( 'wp_review_purge_comment_ratings' ) ) { ?>
 		<p>
 			<button
 				type="button"
@@ -1077,7 +1081,6 @@ function wp_review_save_postdata( $post_id, $post ) {
 		'wp_review_box_template'           => filter_input( INPUT_POST, 'wp_review_box_template', FILTER_SANITIZE_STRING ),
 		'wp_review_hello_bar'              => isset($_POST['wp_review_hello_bar']) ? wp_unslash( $_POST['wp_review_hello_bar'] ) : '',
 		'wp_review_popup'                  => isset($_POST['wp_review_popup']) ? wp_unslash( $_POST['wp_review_popup'] ) : '',
-		'wp_review_allow_comment_feedback' => filter_input( INPUT_POST, 'wp_review_allow_comment_feedback', FILTER_SANITIZE_STRING ),
 		'wp_review_enable_embed'           => filter_input( INPUT_POST, 'wp_review_enable_embed', FILTER_SANITIZE_STRING ),
 		'wp_review_comment_pros_cons'      => filter_input( INPUT_POST, 'wp_review_comment_pros_cons', FILTER_SANITIZE_STRING ),
 		'wp_review_comment_image'					 => filter_input( INPUT_POST, 'wp_review_comment_image', FILTER_SANITIZE_STRING ),
