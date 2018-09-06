@@ -1223,10 +1223,6 @@ function wp_review_rating( $value, $post_id = null, $args = array() ) {
 	$rating_type = wp_review_get_rating_type_data( $type );
 
 	$colors = wp_review_get_colors( $post_id );
-	if ( ! empty( $args['comment_rating'] ) && ! empty( $colors['custom_comment_colors'] ) ) {
-		$colors['color'] = $colors['comment_color'];
-		$colors['inactive_color'] = $colors['comment_inactive_color'];
-	}
 	$colors = array_merge( $colors, $args );
 
 	if ( ! empty( $args['bar_text_color_from'] ) && isset( $colors[ $args['bar_text_color_from'] ] ) ) {
@@ -1659,10 +1655,6 @@ function wp_review_get_colors( $post_id ) {
 			}
 		}
 	}
-
-	$colors['custom_comment_colors'] = (bool) wp_review_option( 'custom_comment_colors', false );
-	$colors['comment_color'] = wp_review_option( 'comment_color' );
-	$colors['comment_inactive_color'] = wp_review_option( 'comment_inactive_color' );
 
 	return apply_filters( 'wp_review_colors', $colors, $post_id );
 }

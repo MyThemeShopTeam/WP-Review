@@ -890,10 +890,6 @@ function wp_review_comment_rating_input( $args = array() ) {
 	$comment_rating = true;
 
 	$colors = wp_review_get_colors( $post_id );
-	if ( ! empty( $colors['custom_comment_colors'] ) ) {
-		$colors['color'] = $colors['comment_color'];
-		$colors['inactive_color'] = $colors['comment_inactive_color'];
-	}
 	$color = $colors['color'];
 
 	set_query_var( 'rating', compact( 'value', 'post_id', 'comment_rating', 'args', 'color', 'colors' ) );
@@ -1009,10 +1005,6 @@ function wp_review_comment_rating( $value, $comment_id = null, $args = array() )
 	$rating_type = wp_review_get_rating_type_data( $type );
 
 	$colors = wp_review_get_colors( $post_id );
-	if ( ! empty( $colors['custom_comment_colors'] ) ) {
-		$colors['color'] = $colors['comment_color'];
-		$colors['inactive_color'] = $colors['comment_inactive_color'];
-	}
 
 	$circle_width = '';
 	$circle_height = '';

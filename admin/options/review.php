@@ -106,10 +106,6 @@ $bgcolor2  = ! empty( $options['colors']['bgcolor2'] ) ? $options['colors']['bgc
 $bordercolor  = ! empty( $options['colors']['bordercolor'] ) ? $options['colors']['bordercolor'] : '';
 
 $force_user_ratings = wp_review_option( 'force_user_ratings' );
-$custom_comment_colors = ! empty( $options['custom_comment_colors'] );
-
-$comment_color  = wp_review_option( 'comment_color', '#FFB300' );
-$comment_inactive_color  = wp_review_option( 'comment_inactive_color' );
 
 $rating_icon = wp_review_option( 'rating_icon', apply_filters( 'wp_review_default_rating_icon', 'fa fa-star' ) );
 $rating_image = wp_review_option( 'rating_image' );
@@ -635,38 +631,17 @@ $form_field = new WP_Review_Form_Field();
 				<span class="description">
 					<?php esc_html_e( 'Use different color for ratings in comments', 'wp-review' ); ?>
 				</span>
+				<?php wp_review_print_pro_text(); ?>
 			</div>
 
 			<div class="wp-review-field-option">
 				<?php
 				$form_field->render_switch( array(
-					'id'    => 'wp_review_custom_comment_colors',
-					'name'  => 'wp_review_options[custom_comment_colors]',
-					'value' => $custom_comment_colors,
+					'id'       => 'wp_review_custom_comment_colors',
+					'name'     => 'wp_review_options[custom_comment_colors]',
+					'disabled' => true,
 				) );
 				?>
-			</div>
-		</div>
-
-		<div class="wp-review-comment-color" id="wp_review_comment_color_wrapper"<?php if ( ! $custom_comment_colors ) echo ' style="display: none;"'; ?>>
-			<div class="wp-review-field">
-				<div class="wp-review-field-label">
-					<label for="wp_review_color"><?php esc_html_e( 'Comment Review Color', 'wp-review' ); ?></label>
-				</div>
-
-				<div class="wp-review-field-option">
-					<span><input type="text" class="wp-review-color" name="wp_review_options[comment_color]" id="wp_review_comment_color" value="<?php echo esc_attr( $comment_color ); ?>" data-default-color="<?php echo esc_attr( $comment_color ); ?>"></span>
-				</div>
-			</div>
-
-			<div class="wp-review-field">
-				<div class="wp-review-field-label">
-					<label for="wp_review_comment_inactive_color"><?php esc_html_e( 'Comment Inactive Review Color', 'wp-review' ); ?></label>
-				</div>
-
-				<div class="wp-review-field-option">
-					<input type="text" id="wp_review_comment_inactive_color" class="wp-review-color" name="wp_review_options[comment_inactive_color]" value="<?php echo esc_attr( $comment_inactive_color ); ?>" data-default-color="<?php echo esc_attr( $comment_inactive_color ); ?>">
-				</div>
 			</div>
 		</div>
 
