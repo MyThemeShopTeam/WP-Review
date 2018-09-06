@@ -173,8 +173,6 @@ $fields = array(
 
 $displayed_fields = apply_filters( 'wp_review_metabox_item_fields', $fields );
 
-$record_ratings_by = wp_review_option( 'record_ratings_by', 'ip' );
-
 $available_types = apply_filters( 'wp_review_metabox_types', array(
 	'star'       => __( 'Star', 'wp-review' ),
 	'point'      => __( 'Point', 'wp-review' ),
@@ -394,13 +392,16 @@ $form_field = new WP_Review_Form_Field();
 		<div class="wp-review-field">
 			<div class="wp-review-field-label">
 				<label for="wp_review_record_ratings_by"><?php esc_html_e( 'Record User Ratings', 'wp-review' ); ?></label>
+				<?php wp_review_print_pro_text(); ?>
 			</div>
 
 			<div class="wp-review-field-option">
-				<select name="wp_review_options[record_ratings_by]" id="wp_review_record_ratings_by">
-					<option value="ip"><?php esc_html_e( 'Based on IP address', 'wp-review' ); ?></option>
-					<option value="cookie" <?php selected( 'cookie', $record_ratings_by ); ?>><?php esc_html_e( 'Based on browser cookie', 'wp-review' ); ?></option>
-				</select>
+				<span class="wp-review-disabled wp-review-disabled-select">
+					<select name="wp_review_options[record_ratings_by]" id="wp_review_record_ratings_by" disabled>
+						<option value="ip"><?php esc_html_e( 'Based on IP address', 'wp-review' ); ?></option>
+						<option value="cookie"><?php esc_html_e( 'Based on browser cookie', 'wp-review' ); ?></option>
+					</select>
+				</span>
 			</div>
 		</div>
 
