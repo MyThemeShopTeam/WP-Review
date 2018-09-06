@@ -108,7 +108,6 @@ function wp_review_get_custom_layout_data( $post_id ) {
 		'bgcolor1'       => get_post_meta( $post_id, 'wp_review_bgcolor1', true ),
 		'bgcolor2'       => get_post_meta( $post_id, 'wp_review_bgcolor2', true ),
 		'bordercolor'    => get_post_meta( $post_id, 'wp_review_bordercolor', true ),
-		'fontfamily'     => get_post_meta( $post_id, 'wp_review_fontfamily', true ),
 	);
 	return $data;
 }
@@ -1592,12 +1591,6 @@ function wp_review_get_review_data( $post_id = null, $args = array() ) {
 	$data['user_has_reviewed'] = $user_has_reviewed;
 	$data['hide_visitors_rating'] = get_post_meta( $post_id, 'wp_review_hide_visitors_rating', true );
 	$data['hide_comments_rating'] = get_post_meta( $post_id, 'wp_review_hide_comments_total', true );
-
-	$fontfamily = get_post_meta( $post_id, 'wp_review_fontfamily', true );
-	if ( ! $colors['custom_colors'] || '' === $fontfamily ) {
-		$fontfamily = wp_review_option( 'fontfamily', '1' );
-	}
-	$data['fontfamily'] = intval( $fontfamily );
 
 	$hide_user_reviews = wp_review_network_option('hide_user_reviews_');
 	if($hide_user_reviews) {

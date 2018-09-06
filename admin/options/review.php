@@ -615,14 +615,15 @@ $form_field = new WP_Review_Form_Field();
 				<span class="description">
 					<?php _e( 'Many templates use Google Font, select <code>No</code> to use default theme font.', 'wp-review' ); ?>
 				</span>
+				<?php wp_review_print_pro_text(); ?>
 			</div>
 
 			<div class="wp-review-field-option">
 				<?php
 				$form_field->render_switch( array(
-					'id'    => 'wp_review_fontfamily',
-					'name'  => 'wp_review_options[fontfamily]',
-					'value' => wp_review_option( 'fontfamily', true ),
+					'id'       => 'wp_review_fontfamily',
+					'name'     => 'wp_review_options[fontfamily]',
+					'disabled' => true,
 				) );
 				?>
 			</div>

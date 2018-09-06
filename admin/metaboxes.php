@@ -142,13 +142,6 @@ function wp_review_render_meta_box_item( $post ) {
 	$bgcolor2  = get_post_meta( $post->ID, 'wp_review_bgcolor2', true );
 	$bordercolor = get_post_meta( $post->ID, 'wp_review_bordercolor', true );
 
-	$fontfamily = get_post_meta( $post->ID, 'wp_review_fontfamily', true );
-	if ( '' === $fontfamily ) {
-		$fontfamily = wp_review_option( 'fontfamily', true );
-	} else {
-		$fontfamily = intval( $fontfamily );
-	}
-
 	if ( ! $color ) {
 		$color = ! empty( $global_colors['color'] ) ? $global_colors['color'] : '';
 	}
@@ -475,14 +468,15 @@ function wp_review_render_meta_box_item( $post ) {
 		<div class="wp-review-field"<?php if ( empty( $displayed_fields['fontfamily'] ) ) echo ' style="display: none;"'; ?>>
 			<div class="wp-review-field-label">
 				<label><?php esc_html_e( 'Google Font', 'wp-review' ); ?></label>
+				<?php wp_review_print_pro_text(); ?>
 			</div>
 
 			<div class="wp-review-field-option">
 				<?php
 				$form_field->render_switch( array(
-					'id'    => 'wp_review_fontfamily',
-					'name'  => 'wp_review_fontfamily',
-					'value' => $fontfamily,
+					'id'       => 'wp_review_fontfamily',
+					'name'     => 'wp_review_fontfamily',
+					'disabled' => true,
 				) );
 				?>
 			</div>
@@ -1045,7 +1039,6 @@ function wp_review_save_postdata( $post_id, $post ) {
 		'wp_review_bgcolor1'               => filter_input( INPUT_POST, 'wp_review_bgcolor1', FILTER_SANITIZE_STRING ),
 		'wp_review_bgcolor2'               => filter_input( INPUT_POST, 'wp_review_bgcolor2', FILTER_SANITIZE_STRING ),
 		'wp_review_bordercolor'            => filter_input( INPUT_POST, 'wp_review_bordercolor', FILTER_SANITIZE_STRING ),
-		'wp_review_fontfamily'             => filter_input( INPUT_POST, 'wp_review_fontfamily', FILTER_SANITIZE_STRING ),
 		'wp_review_author'                 => filter_input( INPUT_POST, 'wp_review_author', FILTER_SANITIZE_STRING ),
 		'wp_review_schema'                 => filter_input( INPUT_POST, 'wp_review_schema', FILTER_SANITIZE_STRING ),
 		'wp_review_rating_schema'          => filter_input( INPUT_POST, 'wp_review_rating_schema', FILTER_SANITIZE_STRING ),
