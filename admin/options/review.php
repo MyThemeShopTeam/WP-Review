@@ -286,14 +286,15 @@ $form_field = new WP_Review_Form_Field();
 		<div class="wp-review-field">
 			<div class="wp-review-field-label">
 				<label><?php esc_html_e( 'Disable Map Script in the Backend', 'wp-review' ); ?></label>
+				<?php wp_review_print_pro_text(); ?>
 			</div>
 
 			<div class="wp-review-field-option">
 				<?php
 				$form_field->render_switch( array(
-					'id'    => 'wp_review_dequeue_map_backend',
-					'name'  => 'wp_review_options[dequeue_map_backend]',
-					'value' => ! empty( $options['dequeue_map_backend'] ),
+					'id'       => 'wp_review_dequeue_map_backend',
+					'name'     => 'wp_review_options[dequeue_map_backend]',
+					'disabled' => true,
 				) );
 				?>
 			</div>

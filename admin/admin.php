@@ -40,7 +40,7 @@ function wp_review_admin_style( $hook_suffix ) {
 	add_thickbox();
 
 	$api_key = wp_review_option( 'google_api_key' );
-	if ( ! empty( $api_key ) && ( ! wp_review_option( 'dequeue_map_backend' ) || 'widgets.php' === $hook_suffix ) ) {
+	if ( ! empty( $api_key ) ) {
 		wp_register_script( 'google-maps', 'https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=' . $api_key, array(), false, true );
 		wp_enqueue_script( 'google-maps' );
 	}
