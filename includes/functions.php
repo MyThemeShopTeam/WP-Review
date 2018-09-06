@@ -811,7 +811,7 @@ function wp_review_get_review_schema( $post_id ) {
 	$schemas = wp_review_schema_types();
 
 	if ( empty( $schema ) || ! isset( $schemas[ $schema ] ) ) {
-		$schema = wp_review_option( 'default_schema_type', 'Thing' );
+		$schema = 'Thing';
 	}
 
 	return $schema;
