@@ -24,8 +24,6 @@ function wp_review_enqueue() {
 	$rating_types = wp_review_get_rating_types();
 
 	// Register.
-	wp_register_style( 'fontawesome', WP_REVIEW_ASSETS . 'css/font-awesome.min.css', array(), '4.7.0' );
-
 	wp_register_style( 'wp-review-popup', WP_REVIEW_ASSETS . 'css/popup.css', array(), '3.0.0' );
 
 	wp_register_style( 'magnificPopup', WP_REVIEW_ASSETS . 'css/magnific-popup.css', array(), '1.1.0' );
@@ -57,7 +55,6 @@ function wp_review_enqueue() {
 
 
 	// Enqueue.
-	wp_enqueue_style( 'fontawesome' );
 	wp_enqueue_script( 'js-cookie' );
 	wp_enqueue_script( 'wp_review-js' );
 	wp_enqueue_script( 'stacktable' );

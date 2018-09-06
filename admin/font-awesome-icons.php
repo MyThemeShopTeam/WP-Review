@@ -7,6 +7,7 @@
  */
 
 return array(
+	'fa fa-star' => array( 'unicode' => '\f005', 'name' => 'Star' ),
 	'fa fa-500px' => array( 'unicode' => '\f26e', 'name' => '500px' ),
 	'fa fa-address-book' => array( 'unicode' => '\f2b9', 'name' => 'Address book' ),
 	'fa fa-address-book-o' => array( 'unicode' => '\f2ba', 'name' => 'Address book o' ),
@@ -545,7 +546,6 @@ return array(
 	'fa fa-square-o' => array( 'unicode' => '\f096', 'name' => 'Square o' ),
 	'fa fa-stack-exchange' => array( 'unicode' => '\f18d', 'name' => 'Stack exchange' ),
 	'fa fa-stack-overflow' => array( 'unicode' => '\f16c', 'name' => 'Stack overflow' ),
-	'fa fa-star' => array( 'unicode' => '\f005', 'name' => 'Star' ),
 	'fa fa-star-half' => array( 'unicode' => '\f089', 'name' => 'Star half' ),
 	'fa fa-star-half-o' => array( 'unicode' => '\f123', 'name' => 'Star half o' ),
 	'fa fa-star-o' => array( 'unicode' => '\f006', 'name' => 'Star o' ),

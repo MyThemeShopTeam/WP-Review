@@ -2331,7 +2331,7 @@ function wp_review_get_ldjson_data( $type, $data, $review ) {
  * @return string
  */
 function wp_review_get_rating_icon() {
-	return wp_review_option( 'rating_icon', apply_filters( 'wp_review_default_rating_icon', 'fa fa-star' ) );
+	return 'mts-icon-star';
 }
 
 /**

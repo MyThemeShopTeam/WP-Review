@@ -645,7 +645,7 @@ $form_field = new WP_Review_Form_Field();
 			</div>
 		</div>
 
-		<div class="wp-review-field  wp-review-rating-icon <?php if($rating_image) echo 'hide'; ?>">
+		<div class="wp-review-field wp-review-rating-icon <?php if ( $rating_image ) echo 'hide'; ?>">
 			<div class="wp-review-field-label">
 				<label for="wp_review_rating_icon"><?php esc_html_e( 'Rating icon', 'wp-review' ); ?></label>
 			</div>
@@ -656,9 +656,10 @@ $form_field = new WP_Review_Form_Field();
 					$icons = wp_review_get_icons();
 					foreach ( $icons as $name => $icon ) {
 						printf(
-							'<option value="%1$s" data-icon="%1$s" %2$s>%3$s</option>',
+							'<option value="%1$s" data-icon="%1$s" %2$s %3$s>%4$s</option>',
 							esc_attr( $name ),
 							selected( $rating_icon, $name, false ),
+							'fa fa-star' !== $name ? 'disabled' : '',
 							esc_html( $icon['name'] )
 						);
 					}
