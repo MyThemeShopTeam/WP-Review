@@ -250,14 +250,15 @@ $form_field = new WP_Review_Form_Field();
 		<div class="wp-review-field">
 			<div class="wp-review-field-label">
 				<label><?php esc_html_e( 'Enable User rating in old posts', 'wp-review' ); ?></label>
+				<?php wp_review_print_pro_text(); ?>
 			</div>
 
 			<div class="wp-review-field-option">
 				<?php
 				$form_field->render_switch( array(
-					'id'    => 'wp_review_global_user_rating',
-					'name'  => 'wp_review_options[global_user_rating]',
-					'value' => ! empty( $options['global_user_rating'] ),
+					'id'       => 'wp_review_global_user_rating',
+					'name'     => 'wp_review_options[global_user_rating]',
+					'disabled' => true,
 				) );
 				?>
 			</div>

@@ -808,7 +808,7 @@ add_filter( 'admin_comment_types_dropdown', 'wp_review_add_to_comment_table_drop
  * 3 - Both
  */
 function wp_review_get_user_rating_setup( $post_id ) {
-	$default = wp_review_option( 'global_user_rating', false ) ? WP_REVIEW_REVIEW_VISITOR_ONLY : WP_REVIEW_REVIEW_DISABLED;
+	$default = WP_REVIEW_REVIEW_DISABLED;
 	$user_reviews = (int) get_post_meta( $post_id, 'wp_review_userReview', true );
 	$enabled = ! $user_reviews ? $default : $user_reviews;
 	if ( is_array( $user_reviews ) ) {
@@ -1123,10 +1123,6 @@ function wp_review_get_post_review_type( $post_id = null ) {
 		$type = wp_review_option( 'review_type', 'none' );
 	}
 
-	if ( wp_review_option( 'global_user_rating', false ) && ( ! $type || 'none' === $type ) ) {
-		$type = 'star';
-	}
-
 	$rating_types = wp_review_get_rating_types();
 
 	if ( 'none' === $type ) {
@@ -1159,9 +1155,6 @@ function wp_review_get_post_user_review_type( $post_id = null ) {
 	}
 
 	$type = get_post_meta( $post_id, 'wp_review_user_review_type', true );
-	if ( ! $type && wp_review_option( 'global_user_rating' ) ) {
-		$type = 'star';
-	}
 
 	$user_rating_setup = wp_review_get_user_rating_setup( $post_id );
 	$user_reviews = in_array( $user_rating_setup, array( WP_REVIEW_REVIEW_VISITOR_ONLY, WP_REVIEW_REVIEW_COMMENT_ONLY, WP_REVIEW_REVIEW_ALLOW_BOTH ) );
@@ -2517,10 +2510,6 @@ function wp_review_get_rating_schema( $post_id ) {
 function wp_review_is_hidden_desc( $post_id ) {
 	$hide_desc = get_post_meta( $post_id, 'wp_review_hide_desc', true );
 
-	// if ( '' === $hide_desc && wp_review_option( 'global_user_rating', false ) ) {
-	//  $hide_desc = true;
-	// }
-
 	return $hide_desc;
 }
 
@@ -2819,15 +2808,6 @@ function wp_review_get_reviews_query( $type, $options ) {
 			'value'   => $options['review_type'],
 		);
 
-		if ( 'star' === $options['review_type'] && wp_review_option( 'global_user_rating' ) ) {
-			// Post setting is none but enable user rating in old post.
-			$meta_query[] = array(
-				'key'     => 'wp_review_type',
-				'compare' => '==',
-				'value'   => 'none',
-			);
-		}
-
 		if ( wp_review_option( 'review_type' ) === $options['review_type'] ) {
 			// Is post setting is not set and default review type is not none.
 			$meta_query[] = array(
@@ -2837,13 +2817,12 @@ function wp_review_get_reviews_query( $type, $options ) {
 			);
 		}
 	} else {
-		if ( ! wp_review_option( 'global_user_rating' ) ) {
-			$meta_query[] = array(
-				'key'     => 'wp_review_type',
-				'compare' => '!=',
-				'value'   => 'none',
-			);
-		}
+		$meta_query[] = array(
+			'key'     => 'wp_review_type',
+			'compare' => '!=',
+			'value'   => 'none',
+		);
+
 		if ( 'none' === wp_review_option( 'review_type' ) || ! wp_review_option( 'review_type' ) ) {
 			$meta_query[] = array(
 				'key'     => 'wp_review_type',

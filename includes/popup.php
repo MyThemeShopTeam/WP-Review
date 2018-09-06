@@ -145,13 +145,11 @@ function wp_review_popup_get_query( $config ) {
 
 	$meta_query = array();
 
-	if ( ! wp_review_option( 'global_user_rating' ) ) {
-		$meta_query[] = array(
-			'key'     => 'wp_review_type',
-			'value'   => 'none',
-			'compare' => '!=',
-		);
-	}
+	$meta_query[] = array(
+		'key'     => 'wp_review_type',
+		'value'   => 'none',
+		'compare' => '!=',
+	);
 
 	if ( 'none' === wp_review_option( 'review_type' ) || ! wp_review_option( 'review_type' ) ) {
 		$meta_query[] = array(

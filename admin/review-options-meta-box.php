@@ -22,14 +22,7 @@ function wp_review_render_meta_box_review_options( $post ) {
 		// Default value when create post.
 		$type_post_value = wp_review_option( 'review_type', 'none' );
 	}
-	$options = get_option( 'wp_review_options', array() );
-
-	$global_user_rating = isset($options['global_user_rating']) ? $options['global_user_rating'] : false;
-	if ( $global_user_rating && ( ! $type_post_value || 'none' === $type_post_value ) ) {
-		$type = 'star';
-	} else {
-		$type = $type_post_value;
-	}
+	$type = $type_post_value;
 
 	$schema = wp_review_get_review_schema( $post->ID );
 	$schema_data = get_post_meta( $post->ID, 'wp_review_schema_options', true );
@@ -37,7 +30,7 @@ function wp_review_render_meta_box_review_options( $post ) {
 
 	$heading = get_post_meta( $post->ID, 'wp_review_heading', true );
 	$rating_schema = wp_review_get_rating_schema( $post->ID );
-	//$available_types = apply_filters('wp_review_metabox_types', wp_review_get_review_types() );
+	// $available_types = apply_filters('wp_review_metabox_types', wp_review_get_review_types() );
 	$available_types = wp_review_get_rating_types();
 	$schemas = wp_review_schema_types();
 	$enable_embed = get_post_meta( $post->ID, 'wp_review_enable_embed', true );
