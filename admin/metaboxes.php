@@ -753,7 +753,6 @@ function wp_review_render_meta_box_userReview( $post ) {
 	$hide_visitors_rating = get_post_meta( $post->ID, 'wp_review_hide_visitors_rating', true );
 	$user_feature_rate = get_post_meta( $post->ID, 'wp_review_user_can_rate_feature', true );
 	$product_price = wp_review_get_product_price( $post->ID );
-	$comment_pros_cons = get_post_meta( $post->ID, 'wp_review_comment_pros_cons', true );
 	$comment_image = get_post_meta( $post->ID, 'wp_review_comment_image', true );
 	$comment_matches = get_post_meta( $post->ID, 'wp_review_comment_product_desc', true );
 
@@ -872,16 +871,20 @@ function wp_review_render_meta_box_userReview( $post ) {
 		<div class="wp-review-field">
 			<div class="wp-review-field-label">
 				<label for="wp_review_comment_pros_cons"><?php esc_html_e( 'Include Pros/Cons in comment reviews', 'wp-review' ); ?></label>
+				<?php wp_review_print_pro_text(); ?>
 			</div>
 
 			<div class="wp-review-field-option">
-				<select name="wp_review_comment_pros_cons" id="wp_review_comment_pros_cons">
-					<option value=""><?php esc_html_e( 'Use global options', 'wp-review' ); ?></option>
-					<option value="yes" <?php selected( $comment_pros_cons, 'yes' ); ?>><?php esc_html_e( 'Yes', 'wp-review' ); ?></option>
-					<option value="no" <?php selected( $comment_pros_cons, 'no' ); ?>><?php esc_html_e( 'No', 'wp-review' ); ?></option>
-				</select>
+				<span class="wp-review-disabled wp-review-disabled-select">
+					<select name="wp_review_comment_pros_cons" id="wp_review_comment_pros_cons" disabled>
+						<option value=""><?php esc_html_e( 'Use global options', 'wp-review' ); ?></option>
+						<option value="yes"><?php esc_html_e( 'Yes', 'wp-review' ); ?></option>
+						<option value="no"><?php esc_html_e( 'No', 'wp-review' ); ?></option>
+					</select>
+				</span>
 			</div>
 		</div>
+
 		<?php if ( 'product' === $post->post_type) { ?>
 			<div class="wp-review-field">
 				<div class="wp-review-field-label">
@@ -910,6 +913,7 @@ function wp_review_render_meta_box_userReview( $post ) {
 			</div>
 		<?php } ?>
 	</div>
+
 	<div class="wp-review-field">
 		<div class="wp-review-field-label">
 			<label for="wp_review_product_price"><?php esc_html_e( 'Product Price', 'wp-review' ); ?></label>
@@ -928,7 +932,7 @@ function wp_review_render_meta_box_userReview( $post ) {
 
 		<div class="wp-review-field-option">
 			<span class="wp-review-disabled wp-review-disabled-select">
-				<select name="wp_review_allow_comment_feedback" id="wp_review_allow_comment_feedback" value="<?php echo esc_attr( $allow_comment_feedback ); ?>" disabled>
+				<select name="wp_review_allow_comment_feedback" id="wp_review_allow_comment_feedback" disabled>
 					<option value=""><?php esc_html_e( 'Use global options', 'wp-review' ); ?></option>
 					<option value="yes"><?php esc_html_e( 'Yes', 'wp-review' ); ?></option>
 					<option value="no"><?php esc_html_e( 'No', 'wp-review' ); ?></option>
@@ -1079,12 +1083,11 @@ function wp_review_save_postdata( $post_id, $post ) {
 		'wp_review_user_review_type'       => filter_input( INPUT_POST, 'wp_review_user_review_type', FILTER_SANITIZE_STRING ),
 		'wp_review_product_price'          => filter_input( INPUT_POST, 'wp_review_product_price', FILTER_SANITIZE_STRING ),
 		'wp_review_box_template'           => filter_input( INPUT_POST, 'wp_review_box_template', FILTER_SANITIZE_STRING ),
-		'wp_review_hello_bar'              => isset($_POST['wp_review_hello_bar']) ? wp_unslash( $_POST['wp_review_hello_bar'] ) : '',
-		'wp_review_popup'                  => isset($_POST['wp_review_popup']) ? wp_unslash( $_POST['wp_review_popup'] ) : '',
+		'wp_review_hello_bar'              => isset( $_POST['wp_review_hello_bar'] ) ? wp_unslash( $_POST['wp_review_hello_bar'] ) : '',
+		'wp_review_popup'                  => isset( $_POST['wp_review_popup'] ) ? wp_unslash( $_POST['wp_review_popup'] ) : '',
 		'wp_review_enable_embed'           => filter_input( INPUT_POST, 'wp_review_enable_embed', FILTER_SANITIZE_STRING ),
-		'wp_review_comment_pros_cons'      => filter_input( INPUT_POST, 'wp_review_comment_pros_cons', FILTER_SANITIZE_STRING ),
-		'wp_review_comment_image'					 => filter_input( INPUT_POST, 'wp_review_comment_image', FILTER_SANITIZE_STRING ),
-		'wp_review_comment_product_desc'	 => filter_input( INPUT_POST, 'wp_review_comment_product_desc', FILTER_SANITIZE_STRING ),
+		'wp_review_comment_image'          => filter_input( INPUT_POST, 'wp_review_comment_image', FILTER_SANITIZE_STRING ),
+		'wp_review_comment_product_desc'   => filter_input( INPUT_POST, 'wp_review_comment_product_desc', FILTER_SANITIZE_STRING ),
 	);
 
 	$default_colors = wp_review_option( 'colors', array() );

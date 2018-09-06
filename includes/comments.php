@@ -208,31 +208,23 @@ function wp_review_comment_fields_replace( $fields ) {
 		<p class="wp-review-comment-form-comment">
 			<textarea id="comment" name="comment" cols="45" rows="8" aria-required="true" placeholder="<?php esc_attr_e( 'Review Text*', 'wp-review' ); ?>"></textarea>
 		</p>
-		<?php if ( wp_review_show_comment_pros_cons( $post->ID ) ) : ?>
-			<p class="wp-review-comment-form-pros">
-				<textarea id="wp_review_comment_pros" name="wp_review_comment_pros" cols="45" rows="8" aria-required="true" placeholder="<?php esc_attr_e( 'Review Pros', 'wp-review' ); ?>"></textarea>
-			</p>
-			<p class="wp-review-comment-form-cons">
-				<textarea id="wp_review_comment_cons" name="wp_review_comment_cons" cols="45" rows="8" aria-required="true" placeholder="<?php esc_attr_e( 'Review Cons', 'wp-review' ); ?>"></textarea>
-			</p>
 		<?php
-		endif;
-	
-		if(function_exists('is_product') && is_product()) {
+
+		if ( function_exists( 'is_product' ) && is_product() ) {
 			$comment_image = get_post_meta( $post->ID, 'wp_review_comment_image', true );
 			$comment_matches = get_post_meta( $post->ID, 'wp_review_comment_product_desc', true );
-		?>
-			<?php if('yes' === $comment_matches) { ?>
+			?>
+			<?php if ( 'yes' === $comment_matches ) { ?>
 				<p class="wp-review-comment-form-qualifier">
-					<label><?php echo apply_filters('wp_review_comment_qualifier', __('Does Product Matches the Description?', 'wp-review')); ?></label>
+					<label><?php echo apply_filters( 'wp_review_comment_qualifier', __( 'Does Product Matches the Description?', 'wp-review' ) ); ?></label>
 					<select id="wp_review_comment_qualifier" name="wp_review_comment_qualifier">
-						<option value=""><?php echo apply_filters('wp_review_comment_qualifier', __('Does Product Matches the Description?', 'wp-review')); ?></option>
-						<option value="yes"><?php _e('Yes', 'wp-review') ?></option>
-						<option value="no"><?php _e('No', 'wp-review') ?></option>
+						<option value=""><?php echo apply_filters( 'wp_review_comment_qualifier', __( 'Does Product Matches the Description?', 'wp-review' ) ); ?></option>
+						<option value="yes"><?php _e( 'Yes', 'wp-review' ); ?></option>
+						<option value="no"><?php _e( 'No', 'wp-review' ); ?></option>
 					</select>
 				</p>
 			<?php }
-			if('yes' === $comment_image) { ?>
+			if ( 'yes' === $comment_image ) { ?>
 				<div class="wp-review-comment-form-photo">
 					<label><?php _e('Atach a photo', 'wp-review'); ?></label>
 					<p class="wp-review-comment-attachment-url wp-review-comment-img-field">
@@ -285,15 +277,7 @@ function wp_review_comment_fields_extend() {
 			</div>
 		</div>
 
-		<?php if ( wp_review_show_comment_pros_cons( $post->ID ) ) : ?>
-			<p class="wp-review-comment-form-pros">
-				<textarea id="wp_review_comment_pros" name="wp_review_comment_pros" cols="45" rows="8" aria-required="true" placeholder="<?php esc_attr_e( 'Review Pros', 'wp-review' ); ?>"></textarea>
-			</p>
-			<p class="wp-review-comment-form-cons">
-				<textarea id="wp_review_comment_cons" name="wp_review_comment_cons" cols="45" rows="8" aria-required="true" placeholder="<?php esc_attr_e( 'Review Cons', 'wp-review' ); ?>"></textarea>
-			</p>
 		<?php
-		endif;
 		if(function_exists('is_product') && is_product()) {
 			$comment_image = apply_filters('wpr_comment_image_field', get_post_meta( $post->ID, 'wp_review_comment_image', true ));
 			$comment_matches = apply_filters('wpr_comment_product_desc', get_post_meta( $post->ID, 'wp_review_comment_product_desc', true ));
@@ -386,27 +370,6 @@ function wp_review_comment_meta_box_fields( $comment ) {
 		<?php endforeach; ?>
 	<?php endif; ?>
 
-	<?php if ( wp_review_show_comment_pros_cons( $comment->comment_post_ID ) ) :
-		$pros_cons = wp_review_get_comment_pros_cons( $comment_id );
-		?>
-		<div class="wp-review-field">
-			<div class="wp-review-field-label">
-				<label for="wp_review_comment_pros"><?php esc_html_e( 'Review pros', 'wp-review' ); ?></label>
-			</div>
-			<div class="wp-review-field-option">
-				<textarea name="wp_review_comment_pros" id="wp_review_comment_pros"><?php echo esc_textarea( $pros_cons['pros'] ); ?></textarea>
-			</div>
-		</div>
-
-		<div class="wp-review-field">
-			<div class="wp-review-field-label">
-				<label for="wp_review_comment_cons"><?php esc_html_e( 'Review cons', 'wp-review' ); ?></label>
-			</div>
-			<div class="wp-review-field-option">
-				<textarea name="wp_review_comment_cons" id="wp_review_comment_cons"><?php echo esc_textarea( $pros_cons['cons'] ); ?></textarea>
-			</div>
-		</div>
-	<?php endif; ?>
 	<?php
 	$comment_qualifier = get_comment_meta( $comment_id, 'wp_review_comment_qualifier', true );
 	$comment_image = get_comment_meta( $comment_id, 'wp_review_comment_attachment_url', true );
@@ -614,29 +577,12 @@ function wp_review_comment_add_title_to_text( $text, $comment = null ) {
 			$rating_html = wp_review_comment_rating( $rating, $comment_id );
 		}
 
-		// Pros and cons.
-		$show_pros_cons = wp_review_show_comment_pros_cons( $comment->comment_post_ID );
-		$pros_cons = wp_review_get_comment_pros_cons( $comment_id );
-		if ( $show_pros_cons && $pros_cons['pros'] && $pros_cons['cons'] ) {
-			ob_start();
-			?>
-			<p><strong><?php esc_html_e( 'Pros', 'wp-review' ); ?></strong></p>
-			<div><?php echo wpautop( $pros_cons['pros'] ); ?></div>
-			<p><strong><?php esc_html_e( 'Cons', 'wp-review' ); ?></strong></p>
-			<div><?php echo wpautop( $pros_cons['cons'] ); ?></div>
-			<?php
-			$text .= ob_get_clean();
-		}
-
 		$rating_data = wp_review_get_comment_feature_rating_data( $comment );
 		$rating_data = array_values( $rating_data );
 		$text .= '<div id="inline-commentreview-' . $comment_id . '" class="hidden">';
 		$text .= '<input type="hidden" class="comment-review-title" value="' . esc_attr( $title ) . '">';
 		$text .= '<input type="hidden" class="comment-review-rating" value="' . esc_attr( $rating ) . '">';
 		$text .= '<input type="hidden" class="comment-review-type" value="' . esc_attr( get_comment_type( $comment_id ) ) . '">';
-		$text .= '<input type="hidden" class="comment-review-show-pros-cons" value="' . intval( $show_pros_cons ) . '">';
-		$text .= '<input type="hidden" class="comment-review-pros" value="' . esc_attr( $pros_cons['pros'] ) . '">';
-		$text .= '<input type="hidden" class="comment-review-cons" value="' . esc_attr( $pros_cons['cons'] ) . '">';
 		if ( $rating_data ) {
 			$text .= '<input type="hidden" class="comment-review-feature-rating" value="' . esc_attr( wp_json_encode( $rating_data ) ) . '">';
 		}
@@ -666,60 +612,22 @@ function wp_review_comment_add_title_to_text( $text, $comment = null ) {
 			$review .= wp_review_comment_rating( $rating, $comment_id );
 		}
 
-		//Comment Qualifier
+		// Comment Qualifier.
 		$comment_qualifier = get_comment_meta( $comment_id, 'wp_review_comment_qualifier', true );
-		if($comment_qualifier) {
-			$review .= '<div class="wp-review-comment-qualifier"><strong>'.apply_filters('wp_review_comment_qualifier', __('Does Product Matches the Description?', 'wp-review')).'</strong> '.ucwords($comment_qualifier).'</div>';
+		if ( $comment_qualifier ) {
+			$review .= '<div class="wp-review-comment-qualifier"><strong>' . apply_filters( 'wp_review_comment_qualifier', __( 'Does Product Matches the Description?', 'wp-review' ) ) . '</strong> ' . ucwords( $comment_qualifier ) . '</div>';
 		}
 
-		//Comment Image
+		// Comment Image.
 		$comment_image = get_comment_meta( $comment_id, 'wp_review_comment_attachment_url', true );
-		if(!$comment_image) {
+		if ( ! $comment_image ) {
 			$comment_image_id = get_comment_meta( $comment_id, 'wp_review_comment_attachment_src', true );
-			if($comment_image_id) $comment_image = wp_get_attachment_url($comment_image_id);
+			if ( $comment_image_id ) {
+				$comment_image = wp_get_attachment_url( $comment_image_id );
+			}
 		}
-		if($comment_image) {
-			$review .= '<div class="wp-review-usercomment-image"><img src="'.esc_url($comment_image).'" /></div>';
-		}
-
-		// Pros and cons.
-		$show_pros_cons = wp_review_show_comment_pros_cons( $comment->comment_post_ID );
-		$pros_cons = wp_review_get_comment_pros_cons( $comment_id );
-		if ( $show_pros_cons && $pros_cons['pros'] && $pros_cons['cons'] ) {
-			ob_start();
-			?>
-			<div class="review-pros-cons">
-				<div class="review-pros">
-					<p class="mb-5"><strong><?php esc_html_e( 'Pros', 'wp-review' ); ?></strong></p>
-					<ul><?php echo wp_review_nl2list( $pros_cons['pros'] ); ?></ul>
-				</div><!-- End .review-pros -->
-
-				<div class="review-cons">
-					<p class="mb-5"><strong><?php esc_html_e( 'Cons', 'wp-review' ); ?></strong></p>
-					<ul><?php echo wp_review_nl2list( $pros_cons['cons'] ); ?></ul>
-				</div><!-- End .review-cons -->
-			</div><!-- End .review-pros-cons -->
-			<?php
-			$text .= ob_get_clean();
-		}
-
-		/*
-		 * user can give review feedback (useful or not)
-		 */
-		if ( wp_review_allow_comment_feedback( $comment->comment_post_ID ) ) {
-			$user_ip = wp_review_get_user_ip();
-			$voted_helpful = get_comment_meta( $comment->comment_ID, 'wp_review_voted_h' );
-			$voted_unhelpful = get_comment_meta( $comment->comment_ID, 'wp_review_voted_uh' );
-			$helpful = absint( get_comment_meta( $comment->comment_ID, 'wp_review_comment_helpful', true ) );
-			$unhelpful = absint( get_comment_meta( $comment->comment_ID, 'wp_review_comment_unhelpful', true ) );
-
-			$feedback = '<p class="wp-review-feedback">';
-			$feedback .= __( 'Did you find this review helpful?', 'wp-review' ) . ' ';
-			$feedback .= '<a class="review-btn' . ( in_array( $user_ip, $voted_helpful ) ? ' voted' : '' ) . '" data-value="yes" data-comment-id="' . $comment->comment_ID . '" href="#"><i class="fa fa-thumbs-up"></i> ' . __( 'Yes', 'wp-review' );
-			$feedback .= ( $helpful > 0 ? ( ' <span class="feedback-count">(' . $helpful . ')</span>' ) : ' <span class="feedback-count"></span>' ) . '</a>';
-			$feedback .= '<a class="review-btn' . ( in_array( $user_ip, $voted_unhelpful ) ? ' voted' : '' ) . '" data-value="no" data-comment-id="' . $comment->comment_ID . '" href="#"><i class="fa fa-thumbs-down"></i> ' . __( 'No', 'wp-review' );
-			$feedback .= ( $unhelpful > 0 ? ( ' <span class="feedback-count">(' . $unhelpful . ')</span>' ) : ' <span class="feedback-count"></span>' ) . '</a>';
-			$feedback .= '</p>';
+		if ( $comment_image ) {
+			$review .= '<div class="wp-review-usercomment-image"><img src="' . esc_url( $comment_image ) . '" /></div>';
 		}
 	}
 

@@ -440,14 +440,15 @@ $form_field = new WP_Review_Form_Field();
 		<div class="wp-review-field">
 			<div class="wp-review-field-label">
 				<label><?php esc_html_e( 'Include Pros/Cons in comment reviews', 'wp-review' ); ?></label>
+				<?php wp_review_print_pro_text(); ?>
 			</div>
 
 			<div class="wp-review-field-option">
 				<?php
 				$form_field->render_switch( array(
-					'id'    => 'wp_review_comment_pros_cons',
-					'name'  => 'wp_review_options[comment_pros_cons]',
-					'value' => ! empty( $options['comment_pros_cons'] ),
+					'id'       => 'wp_review_comment_pros_cons',
+					'name'     => 'wp_review_options[comment_pros_cons]',
+					'disabled' => true,
 				) );
 				?>
 			</div>

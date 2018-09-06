@@ -1134,21 +1134,6 @@ function wp_review_get_post_box_template( $post_id ) {
 	return apply_filters( 'wp_review_get_box_template', $template, $post_id );
 }
 
-/**
- * Checks if show comment review pros/cons.
- *
- * @since 3.0.0
- *
- * @param int $post_id Post ID.
- * @return bool
- */
-function wp_review_show_comment_pros_cons( $post_id ) {
-	$comment_pros_cons = get_post_meta( $post_id, 'wp_review_comment_pros_cons', true );
-	if ( ! $comment_pros_cons ) {
-		return wp_review_option( 'comment_pros_cons' );
-	}
-	return 'yes' === $comment_pros_cons;
-}
 
 function wp_review_locate_box_template( $template_name, $return_full_path = true ) {
 	// We look for box templates in:
@@ -2888,27 +2873,6 @@ add_action( 'init', 'wp_review_embed_output', 20 );
 
 
 /**
- * Checks if allow comment feedback (thumbs up/down).
- *
- * @since 3.0.0
- *
- * @param int $post_id Post ID.
- * @return bool
- */
-function wp_review_allow_comment_feedback( $post_id = null ) {
-	if ( ! $post_id ) {
-		$post_id = get_the_ID();
-	}
-
-	$meta_value = get_post_meta( $post_id, 'wp_review_allow_comment_feedback', true );
-	if ( $meta_value ) {
-		return 'yes' === $meta_value;
-	}
-	return wp_review_option( 'allow_comment_feedback' );
-}
-
-
-/**
  * Shows spinner icon.
  *
  * @since 3.0.0
@@ -3087,22 +3051,6 @@ function wp_review_visitor_rate( $post_id, $rating_data ) {
 	$output['html'] = wp_review_rating( $post_reviews['rating'], $post_id, array( 'user_rating' => true ) );
 	echo wp_json_encode( $output );
 	exit;
-}
-
-
-/**
- * Gets comment pros and cons.
- *
- * @since 3.0.0
- *
- * @param int $comment_id Comment ID.
- * @return array
- */
-function wp_review_get_comment_pros_cons( $comment_id ) {
-	return array(
-		'pros' => get_comment_meta( $comment_id, 'wp_review_comment_pros', true ),
-		'cons' => get_comment_meta( $comment_id, 'wp_review_comment_cons', true ),
-	);
 }
 
 
@@ -3435,10 +3383,6 @@ if ( ! function_exists( 'wp_review_data_exporter' ) ) {
 			'comment_rating'    => __( 'Comment Rating', 'wp-review' ),
 			'features_rating'   => __( 'Features Ratings', 'wp-review' ),
 			'comment_title'     => __( 'Comment Title', 'wp-review' ),
-			'comment_pros'      => __( 'Comment Pros', 'wp-review' ),
-			'comment_cons'      => __( 'Comment Cons', 'wp-review' ),
-			'comment_helpful'   => __( 'Comment Voted Helpful', 'wp-review' ),
-			'comment_unhelpful' => __( 'Comment Voted Unhelpful', 'wp-review' ),
 		);
 		foreach ( (array) $comments as $comment ) {
 			$comment_data_to_export = array();
@@ -3462,7 +3406,7 @@ if ( ! function_exists( 'wp_review_data_exporter' ) ) {
 							if ( isset( $rating_items[ $item_id ] ) ) {
 								$value = $rating_items[ $item_id ];
 								if ( 'thumbs' == $type ) {
-									if( ! $value ) {
+									if ( ! $value ) {
 										$review_ratings[ $item['wp_review_item_title'] ] = 'Down';
 									} else {
 										$review_ratings[ $item['wp_review_item_title'] ] = 'Up';
@@ -3473,7 +3417,7 @@ if ( ! function_exists( 'wp_review_data_exporter' ) ) {
 							}
 						}
 						if ( ! empty( $review_ratings ) ) {
-							foreach( $review_ratings as $review_title => $review_value ) {
+							foreach ( $review_ratings as $review_title => $review_value ) {
 								$comment_data_to_export[] = array(
 									'name'  => $review_title,
 									'value' => $review_value,
