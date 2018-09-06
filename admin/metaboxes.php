@@ -969,7 +969,6 @@ function wp_review_save_postdata( $post_id, $post ) {
 		'wp_review_box_template'           => filter_input( INPUT_POST, 'wp_review_box_template', FILTER_SANITIZE_STRING ),
 		'wp_review_hello_bar'              => isset( $_POST['wp_review_hello_bar'] ) ? wp_unslash( $_POST['wp_review_hello_bar'] ) : '',
 		'wp_review_popup'                  => isset( $_POST['wp_review_popup'] ) ? wp_unslash( $_POST['wp_review_popup'] ) : '',
-		'wp_review_enable_embed'           => filter_input( INPUT_POST, 'wp_review_enable_embed', FILTER_SANITIZE_STRING ),
 		'wp_review_comment_image'          => filter_input( INPUT_POST, 'wp_review_comment_image', FILTER_SANITIZE_STRING ),
 		'wp_review_comment_product_desc'   => filter_input( INPUT_POST, 'wp_review_comment_product_desc', FILTER_SANITIZE_STRING ),
 	);
@@ -1004,10 +1003,6 @@ function wp_review_save_postdata( $post_id, $post ) {
 
 	foreach ( $meta as $meta_key => $new_meta_value ) {
 		$new_meta_value = wp_review_normalize_option_value( $new_meta_value );
-
-		if ( 'wp_review_enable_embed' === $meta_key && wp_review_option( 'enable_embed' ) == $new_meta_value ) {
-			$new_meta_value = '';
-		}
 
 		if ( false === $new_meta_value ) {
 			$new_meta_value = '0';

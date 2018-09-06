@@ -114,10 +114,6 @@ textarea#wp_review_comment_pros, textarea#wp_review_comment_cons { height: 100px
 
 .review-total-wrapper { float: right; padding-right: 0; clear: both; position: relative; box-sizing: border-box; padding: 10px 15px 20px 15px; }
 
-.review-embed-code { clear: both; padding: 7px 15px 15px; font-size: 14px; box-sizing: border-box; }
-
-.review-embed-code #wp_review_embed_code { font-size: 14px; width: 100%; padding: 10px; box-sizing: border-box; border: 0; background: rgba(0, 0, 0, 0.05); }
-
 .rtl .review-total-wrapper { float: left; }
 
 .review-total-wrapper span.review-total-box { border: 0; display: block; font-size: 40px; font-weight: 700; text-align: right; margin: 0; padding: 35px 0 20px; width: 100%; box-sizing: border-box; overflow: hidden; }
@@ -622,8 +618,6 @@ form.wp-review-comment-form > div, #commentform.wp-review-comment-form > div { w
 [data-wp-review-tabs] .tab-title button { box-shadow: none; padding: 8px 15px; background-color: rgba(0, 0, 0, 0.15); outline: 0; float: left; border: 0; color: inherit; cursor: pointer; font-size: inherit; }
 
 [data-wp-review-tabs] .tab-title.active a { background-color: rgba(255, 255, 255, 0.45); }
-
-.wpr-embed-page { background-color: #fff; }
 
 .wp-review-user-feature-rating-circle { float: right; }
 

@@ -79,10 +79,10 @@ function wp_review_get_post_hello_bar( $post_id, $merge_default = true ) {
  * @return array
  */
 function wp_review_get_hello_bar_config() {
-	
+
 	$config = wp_review_hello_bar_option();
 	$config = wp_parse_args( $config, wp_review_hello_bar_defaults() );
-	
+
 	if(is_multisite()) {
 		if(wp_review_switch_to_main('hide_general_bar_')) {
 			$config['enable'] = false;
@@ -113,10 +113,6 @@ function wp_review_get_hello_bar_config() {
  * Shows notification bar.
  */
 function wp_review_show_hello_bar() {
-
-	if ( wp_review_is_embed() ) {
-		return;
-	}
 
 	$config = wp_review_get_hello_bar_config();
 	if ( ! $config['enable'] ) {

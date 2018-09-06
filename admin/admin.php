@@ -507,36 +507,6 @@ add_action( 'admin_footer', 'wp_review_fb_js_sdk' );
 
 
 /**
- * Processes option value before saving.
- *
- * @since 3.0.0
- *
- * @param  array $new_options New option value.
- * @return array
- */
-function wp_review_process_option_value( $new_options ) {
-	// Adds empty value to checkbox options which default is checked.
-	$new_options['embed_show_title'] = isset( $new_options['embed_show_title'] ) ? $new_options['embed_show_title'] : '';
-	$new_options['embed_show_thumbnail'] = isset( $new_options['embed_show_thumbnail'] ) ? $new_options['embed_show_thumbnail'] : '';
-	$new_options['embed_show_excerpt'] = isset( $new_options['embed_show_excerpt'] ) ? $new_options['embed_show_excerpt'] : '';
-	$new_options['embed_show_rating_box'] = isset( $new_options['embed_show_rating_box'] ) ? $new_options['embed_show_rating_box'] : '';
-	$new_options['embed_show_credit'] = isset( $new_options['embed_show_credit'] ) ? $new_options['embed_show_credit'] : '';
-
-	// Normalize option value.
-	foreach ( $new_options as $key => $value ) {
-		$new_options[ $key ] = wp_review_normalize_option_value( $value );
-	}
-
-	$new_options['exit_intent'] = isset( $new_options['exit_intent'] );
-
-	return $new_options;
-}
-add_filter( 'pre_update_option_wp_review_options', 'wp_review_process_option_value' );
-add_filter( 'pre_update_option_wp_review_popup', 'wp_review_process_option_value' );
-add_filter( 'pre_update_option_wp_review_hello_bar', 'wp_review_process_option_value' );
-
-
-/**
  * Normalizes option value
  * Convert string as 'true' and 'false' to boolean value.
  *

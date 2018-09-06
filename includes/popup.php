@@ -277,9 +277,6 @@ function wp_review_popup_get_query( $config ) {
  * @return string
  */
 function wp_review_popup( $config, $echo = true ) {
-	if ( wp_review_is_embed() ) {
-		return;
-	}
 
 	$classes = array( 'wpr-popup', 'mfp-hide' );
 

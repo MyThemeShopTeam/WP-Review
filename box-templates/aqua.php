@@ -53,8 +53,6 @@ $rating_types = wp_review_get_rating_types();
 
 $classes = implode( ' ', $review['css_classes'] );
 
-$is_embed = wp_review_is_embed();
-
 if ( ! empty( $review['fontfamily'] ) ) : ?>
 	<link href="https://fonts.googleapis.com/css?family=Comfortaa:400,700" rel="stylesheet">
 	<style type="text/css">
@@ -134,7 +132,7 @@ if ( ! empty( $review['fontfamily'] ) ) : ?>
 		</ul>
 	<?php endif; ?>
 
-	<?php if ( ! $is_embed && $review['user_review'] && ! $review['hide_visitors_rating'] ) : ?>
+	<?php if ( $review['user_review'] && ! $review['hide_visitors_rating'] ) : ?>
 		<?php if ( ! wp_review_user_can_rate_features( $review['post_id'] ) ) : ?>
 			<div class="user-review-area visitors-review-area">
 				<?php echo wp_review_user_rating( $review['post_id'] ); ?>
@@ -157,7 +155,7 @@ if ( ! empty( $review['fontfamily'] ) ) : ?>
 		<?php endif; ?>
 	<?php endif; // $review['user_review'] ?>
 
-	<?php if ( ! $is_embed && $review['comments_review'] && ! $review['hide_comments_rating'] ) : ?>
+	<?php if ( $review['comments_review'] && ! $review['hide_comments_rating'] ) : ?>
 		<div class="user-review-area comments-review-area">
 			<?php echo wp_review_user_comments_rating( $review['post_id'] ); ?>
 			<div class="user-total-wrapper">
@@ -208,13 +206,6 @@ if ( ! empty( $review['fontfamily'] ) ) : ?>
 	<?php endif; ?>
 
 	<?php wp_review_load_template( 'global/partials/review-links.php', compact( 'review' ) ); ?>
-
-	<?php if ( ! $is_embed && ! empty( $review['enable_embed'] ) ) : ?>
-		<div class="review-embed-code">
-			<label for="wp_review_embed_code"><?php esc_html_e( 'Embed code', 'wp-review' ); ?></label>
-			<textarea id="wp_review_embed_code" rows="2" cols="40" readonly onclick="this.select()"><?php echo esc_textarea( wp_review_get_embed_code( $review['post_id'] ) ); ?></textarea>
-		</div>
-	<?php endif; ?>
 </div>
 
 <?php
@@ -471,7 +462,6 @@ ob_start();
 		float: right;
 		margin-top: -2px;
 	}
-	.wp-review-<?php echo $review['post_id']; ?>.review-wrapper .review-embed-code { padding: 10px 30px 15px; }
 	.wp-review-<?php echo $review['post_id']; ?>.review-wrapper,
 	.wp-review-<?php echo $review['post_id']; ?> .review-title,
 	.wp-review-<?php echo $review['post_id']; ?> .review-list li,
@@ -511,7 +501,6 @@ ob_start();
 		.wp-review-<?php echo $review['post_id']; ?>.review-wrapper .reviewed-item,
 		.wp-review-<?php echo $review['post_id']; ?>.review-wrapper .review-desc,
 		.wp-review-<?php echo $review['post_id']; ?>.review-wrapper .user-review-area,
-		.wp-review-<?php echo $review['post_id']; ?>.review-wrapper .review-embed-code,
 		.wp-review-<?php echo $review['post_id']; ?>.review-wrapper .review-pros-cons .review-pros,
 		.wp-review-<?php echo $review['post_id']; ?>.review-wrapper .review-pros-cons .review-cons { padding: 15px; }
 		.wp-review-<?php echo $review['post_id']; ?>.review-wrapper .review-pros-cons > div > div { padding: 15px; padding-top: 0; }

@@ -33,11 +33,6 @@ function wp_review_render_meta_box_review_options( $post ) {
 	// $available_types = apply_filters('wp_review_metabox_types', wp_review_get_review_types() );
 	$available_types = wp_review_get_rating_types();
 	$schemas = wp_review_schema_types();
-	$enable_embed = get_post_meta( $post->ID, 'wp_review_enable_embed', true );
-	if ( '' === $enable_embed ) {
-		$enable_embed = wp_review_option( 'enable_embed' );
-	}
-	$enable_embed = intval( $enable_embed );
 
 	$custom_author = get_post_meta( $post->ID, 'wp_review_custom_author', true );
 	$author = get_post_meta( $post->ID, 'wp_review_author', true );
@@ -207,29 +202,17 @@ function wp_review_render_meta_box_review_options( $post ) {
 				<div class="wp-review-field">
 					<div class="wp-review-field-label">
 						<label><?php esc_html_e( 'Show Embed Code', 'wp-review' ); ?></label>
+						<?php wp_review_print_pro_text(); ?>
 					</div>
 
 					<div class="wp-review-field-option">
 						<?php
 						$form_field->render_switch( array(
-							'id'    => 'wp_review_enable_embed',
-							'name'  => 'wp_review_enable_embed',
-							'value' => $enable_embed,
+							'id'       => 'wp_review_enable_embed',
+							'name'     => 'wp_review_enable_embed',
+							'disabled' => true,
 						) );
 						?>
-					</div>
-				</div>
-
-				<?php $hidden = $enable_embed ? '' : 'hidden'; ?>
-				<div id="wp_review_embed_code_wrapper" class="<?php echo esc_attr( $hidden ); ?>">
-					<div class="wp-review-field">
-						<div class="wp-review-field-label">
-							<label for="wp_review_embed_code" style="vertical-align: top;"><?php esc_html_e( 'Embed code', 'wp-review' ); ?></label>
-						</div>
-
-						<div class="wp-review-field-option">
-							<textarea id="wp_review_embed_code" rows="2" cols="40" readonly onclick="this.select()"><?php echo esc_textarea( wp_review_get_embed_code( $post->ID ) ); ?></textarea>
-						</div>
 					</div>
 				</div>
 			</div>

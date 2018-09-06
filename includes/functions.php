@@ -1538,12 +1538,6 @@ function wp_review_get_review_data( $post_id = null, $args = array() ) {
 	$data['width'] = 100;
 	$data['align'] = 'left';
 
-	$data['enable_embed'] = get_post_meta( $post_id, 'wp_review_enable_embed', true );
-	if ( '' === $data['enable_embed'] ) {
-		$data['enable_embed'] = wp_review_option( 'enable_embed' );
-	}
-	$data['enable_embed'] = intval( $data['enable_embed'] );
-
 	/*
 	$post_types = get_post_types( array( 'public' => true ), 'names' );
 	$excluded_post_types = apply_filters( 'wp_review_excluded_post_types', array( 'attachment' ) );
@@ -2785,49 +2779,6 @@ function wp_review_star_rating( $value, $args = array() ) {
 	$template = mts_get_template_path( 'star', 'star-output' );
 	include $template;
 }
-
-
-/**
- * Gets embed code.
- *
- * @since 3.0.0
- *
- * @param  int $review_id Review ID.
- * @return string
- */
-function wp_review_get_embed_code( $review_id ) {
-	$url = home_url( '/' );
-	$url = add_query_arg( 'wp_review_id', $review_id, $url );
-	return '<iframe frameborder="0" width="500" height="500" src="' . $url . '"></iframe>';
-}
-
-
-/**
- * Checks if is embed page.
- *
- * @since 3.0.0
- *
- * @return bool
- */
-function wp_review_is_embed() {
-	return wp_review_option( 'enable_embed' ) && ! empty( $_GET['wp_review_id'] ) && wp_review_is_enable( $_GET['wp_review_id'] ); // WPCS: sanitization ok.
-}
-
-
-/**
- * Shows embed output if have request.
- *
- * @since 3.0.0
- */
-function wp_review_embed_output() {
-	if ( ! wp_review_is_embed() ) {
-		return;
-	}
-	$post = get_post( $_GET['wp_review_id'] ); // WPCS: sanitization ok.
-	wp_review_load_template( 'global/embed.php', compact( 'post' ) );
-	die();
-}
-add_action( 'init', 'wp_review_embed_output', 20 );
 
 
 /**

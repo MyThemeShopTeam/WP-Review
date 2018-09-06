@@ -254,22 +254,6 @@ textarea#wp_review_comment_pros, textarea#wp_review_comment_cons { height: 100px
 	padding: 10px 15px 20px 15px;
 }
 
-.review-embed-code {
-	clear: both;
-	padding: 7px 15px 15px;
-	font-size: 14px;
-	box-sizing: border-box;
-
-	#wp_review_embed_code {
-		font-size: 14px;
-		width: 100%;
-		padding: 10px;
-		box-sizing: border-box;
-		border: 0;
-		background: rgba(0, 0, 0, 0.05);
-	}
-}
-
 .rtl .review-total-wrapper { float: left }
 .review-total-wrapper span.review-total-box {
 	border: 0;
@@ -1212,10 +1196,6 @@ form.wp-review-comment-form > div, #commentform.wp-review-comment-form > div {
 			}
 		}
 	}
-}
-
-.wpr-embed-page {
-	background-color: #fff;
 }
 
 .wp-review-user-feature-rating-circle {

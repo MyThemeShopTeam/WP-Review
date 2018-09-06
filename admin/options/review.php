@@ -117,12 +117,6 @@ $box_template_img = ! empty( $review_templates[ $box_template ] ) ? $review_temp
 $review_types = wp_review_get_rating_types();
 $review_type = wp_review_option( 'review_type', 'none' );
 
-$embed_show_title = wp_review_option( 'embed_show_title', 1 );
-$embed_show_thumbnail = wp_review_option( 'embed_show_thumbnail', 1 );
-$embed_show_excerpt = wp_review_option( 'embed_show_excerpt', 1 );
-$embed_show_rating_box = wp_review_option( 'embed_show_rating_box', 1 );
-$embed_show_credit = wp_review_option( 'embed_show_credit', 1 );
-
 if ( '' == $items ) {
 	$items = $default_items;
 }
@@ -881,14 +875,15 @@ $form_field = new WP_Review_Form_Field();
 		<div class="wp-review-field">
 			<div class="wp-review-field-label">
 				<label><?php esc_html_e( 'Enable Embed', 'wp-review' ); ?></label>
+				<?php wp_review_print_pro_text(); ?>
 			</div>
 
 			<div class="wp-review-field-option">
 				<?php
 				$form_field->render_switch( array(
-					'id'    => 'wp_review_enable_embed',
-					'name'  => 'wp_review_options[enable_embed]',
-					'value' => wp_review_option( 'enable_embed' ),
+					'id'       => 'wp_review_enable_embed',
+					'name'     => 'wp_review_options[enable_embed]',
+					'disabled' => true,
 				) );
 				?>
 			</div>
@@ -897,14 +892,15 @@ $form_field = new WP_Review_Form_Field();
 		<div class="wp-review-field">
 			<div class="wp-review-field-label">
 				<label><?php esc_html_e( 'Show Title', 'wp-review' ); ?></label>
+				<?php wp_review_print_pro_text(); ?>
 			</div>
 
 			<div class="wp-review-field-option">
 				<?php
 				$form_field->render_switch( array(
-					'id'    => 'wp_review_embed_show_title',
-					'name'  => 'wp_review_options[embed_show_title]',
-					'value' => wp_review_option( 'embed_show_title', true ),
+					'id'       => 'wp_review_embed_show_title',
+					'name'     => 'wp_review_options[embed_show_title]',
+					'disabled' => true,
 				) );
 				?>
 			</div>
@@ -913,14 +909,15 @@ $form_field = new WP_Review_Form_Field();
 		<div class="wp-review-field">
 			<div class="wp-review-field-label">
 				<label><?php esc_html_e( 'Show Thumbnail', 'wp-review' ); ?></label>
+				<?php wp_review_print_pro_text(); ?>
 			</div>
 
 			<div class="wp-review-field-option">
 				<?php
 				$form_field->render_switch( array(
-					'id'    => 'wp_review_embed_show_thumbnail',
-					'name'  => 'wp_review_options[embed_show_thumbnail]',
-					'value' => wp_review_option( 'embed_show_thumbnail', true ),
+					'id'       => 'wp_review_embed_show_thumbnail',
+					'name'     => 'wp_review_options[embed_show_thumbnail]',
+					'disabled' => true,
 				) );
 				?>
 			</div>
@@ -929,14 +926,15 @@ $form_field = new WP_Review_Form_Field();
 		<div class="wp-review-field">
 			<div class="wp-review-field-label">
 				<label><?php esc_html_e( 'Show Excerpt', 'wp-review' ); ?></label>
+				<?php wp_review_print_pro_text(); ?>
 			</div>
 
 			<div class="wp-review-field-option">
 				<?php
 				$form_field->render_switch( array(
-					'id'    => 'wp_review_embed_show_excerpt',
-					'name'  => 'wp_review_options[embed_show_excerpt]',
-					'value' => wp_review_option( 'embed_show_excerpt', true ),
+					'id'       => 'wp_review_embed_show_excerpt',
+					'name'     => 'wp_review_options[embed_show_excerpt]',
+					'disabled' => true,
 				) );
 				?>
 			</div>
@@ -945,14 +943,15 @@ $form_field = new WP_Review_Form_Field();
 		<div class="wp-review-field">
 			<div class="wp-review-field-label">
 				<label><?php esc_html_e( 'Show Rating Box', 'wp-review' ); ?></label>
+				<?php wp_review_print_pro_text(); ?>
 			</div>
 
 			<div class="wp-review-field-option">
 				<?php
 				$form_field->render_switch( array(
-					'id'    => 'wp_review_embed_show_rating_box',
-					'name'  => 'wp_review_options[embed_show_rating_box]',
-					'value' => wp_review_option( 'embed_show_rating_box', true ),
+					'id'       => 'wp_review_embed_show_rating_box',
+					'name'     => 'wp_review_options[embed_show_rating_box]',
+					'disabled' => true,
 				) );
 				?>
 			</div>
@@ -961,14 +960,15 @@ $form_field = new WP_Review_Form_Field();
 		<div class="wp-review-field">
 			<div class="wp-review-field-label">
 				<label><?php esc_html_e( 'Show Credit', 'wp-review' ); ?></label>
+				<?php wp_review_print_pro_text(); ?>
 			</div>
 
 			<div class="wp-review-field-option">
 				<?php
 				$form_field->render_switch( array(
-					'id'    => 'wp_review_embed_show_credit',
-					'name'  => 'wp_review_options[embed_show_credit]',
-					'value' => wp_review_option( 'embed_show_credit', true ),
+					'id'       => 'wp_review_embed_show_credit',
+					'name'     => 'wp_review_options[embed_show_credit]',
+					'disabled' => true,
 				) );
 				?>
 			</div>

@@ -351,14 +351,6 @@
 			}
 		});
 
-		// Embed.
-		$( '#wp_review_enable_embed' ).on( 'switch-on', function() {
-			$('#wp_review_embed_code_wrapper').show();
-		});
-		$( '#wp_review_enable_embed' ).on( 'switch-off', function() {
-			$('#wp_review_embed_code_wrapper').hide();
-		});
-
 		// Custom location.
 		$( '#wp_review_custom_location' ).on( 'switch-on', function() {
 			$('.wp-review-location-options').show();
