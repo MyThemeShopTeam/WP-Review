@@ -296,13 +296,6 @@
 	};
 
 	wpreview.pluginOptions = function() {
-		// Show on thumbnail option.
-		$( '#wp_review_show_on_thumbnails' ).on( 'switch-on', function() {
-			$( '.wp-review-thumbnail-options' ).show();
-		});
-		$( '#wp_review_show_on_thumbnails' ).on( 'switch-off', function() {
-			$( '.wp-review-thumbnail-options' ).hide();
-		});
 
 		// Popup option.
 		$( 'div#wp_review_popup_enable' ).on( 'switch-on', function() {
@@ -811,6 +804,13 @@
 				$this.scrollTop(0);
 				return prevent();
 			}
+		});
+
+		// Pro feature popup.
+		$( document ).on( 'click', '.wp-review-disabled', function( ev ) {
+			ev.preventDefault();
+
+			$( '#wp-review-pro-popup' ).trigger( 'click' );
 		});
 	});
 })( jQuery, window.google || null, Cookies );

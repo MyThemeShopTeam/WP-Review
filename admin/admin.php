@@ -6,6 +6,7 @@
  * @copyright Copyright (c) 2013, MyThemesShop
  * @author    MyThemesShop
  * @license   http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+ * @package   WP_Review
  */
 
 /**
@@ -586,11 +587,19 @@ function wp_review_import_options( $code ) {
 
 
 /**
+ * Prints pro text.
+ */
+function wp_review_print_pro_text() {
+	echo '<br><small class="wp-review-pro-text">' . esc_html__( 'Pro feature', 'wp-review' ) . '</small>';
+}
+
+
+/**
  * Prints the Pro version popup.
  */
 function wp_review_print_pro_popup() {
 	?>
-	<a class="hidden thickbox wp-review-pro-popup" href="#TB_inline?width=400&height=200&inlineId=wp-review-pro-popup-notice" title="<?php esc_attr_e( 'Buy WP Review Pro', 'wp-review' ); ?>">click</a>
+	<a id="wp-review-pro-popup" class="hidden thickbox" href="#TB_inline?width=400&height=200&inlineId=wp-review-pro-popup-notice" title="<?php esc_attr_e( 'Buy WP Review Pro', 'wp-review' ); ?>">click</a>
 	<div id="wp-review-pro-popup-notice" class="hidden">
 		<img class="pro-image" src="<?php echo esc_url( WP_REVIEW_URI . 'admin/assets/images/wp-review-pro.jpg' ); ?>" />
 		<h2 class="pro-notice-header"><?php esc_html_e( 'Like WP Review Plugin? You will LOVE WP Review Pro!', 'wp-review' ); ?></h2>

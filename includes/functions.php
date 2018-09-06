@@ -118,31 +118,14 @@ function wp_review_get_custom_layout_data( $post_id ) {
 add_image_size( 'wp_review_large', 320, 200, true );
 add_image_size( 'wp_review_small', 65, 65, true );
 
-//Filter to add custom images sizes in Thumbnail selection box
-add_filter( 'image_size_names_choose', function($sizes) {
-	return array_merge( $sizes, apply_filters('wp_review_custom_image_sizes', array(
-		'wp_review_small' => __('WP Review Small', 'wp-review'),
-		'wp_review_large' => __('WP Review Small', 'wp-review'),
+// Filter to add custom images sizes in Thumbnail selection box.
+add_filter( 'image_size_names_choose', function( $sizes ) {
+	return array_merge( $sizes, apply_filters( 'wp_review_custom_image_sizes', array(
+		'wp_review_small' => __( 'WP Review Small', 'wp-review' ),
+		'wp_review_large' => __( 'WP Review Small', 'wp-review' ),
 	)));
 });
 
-if ( wp_review_option( 'show_on_thumbnails' ) ) {
-	function wp_review_image_html( $html, $post_id, $post_image_id, $size, $attr ) {
-		if ( ! empty( $GLOBALS['in_widget'] ) ) {
-			return $html; // Don't apply this option in widget.
-		}
-		$image_sizes = wp_review_option( 'image_sizes' );
-		if ( $image_sizes && is_array( $image_sizes ) && in_array( $size, $image_sizes ) ) {
-			$args = array(
-				'color' => '#fff',
-				'inactive_color' => '#dedcdc',
-			);
-			$html = '<div class="wp-review-thumbnail-wrapper">' . $html . wp_review_show_total( false, 'wp-review-on-thumbnail', $post_id, $args ) . '</div>';
-		}
-		return $html;
-	}
-	add_filter( 'post_thumbnail_html', 'wp_review_image_html', 10, 5 );
-}
 
 /**
  * Get the meta box data.
@@ -235,7 +218,7 @@ function wp_review_show_total( $echo = true, $class = 'review-total-only', $post
 		$args['inactive_color'] = '#dedcdc';
 	}
 
-	$show_on_thumbnails_type = wp_review_option( 'show_on_thumbnails_type', 'author' );
+	$show_on_thumbnails_type = 'author';
 	$show_on_thumbnails_type = apply_filters( 'wp_review_thumbnails_total', $show_on_thumbnails_type, $post_id, $args ); // Will override option.
 
 	$rating = $total = '';

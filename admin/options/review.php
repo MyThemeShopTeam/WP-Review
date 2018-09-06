@@ -104,9 +104,6 @@ $fontcolor = ! empty( $options['colors']['fontcolor'] ) ? $options['colors']['fo
 $bgcolor1  = ! empty( $options['colors']['bgcolor1'] ) ? $options['colors']['bgcolor1'] : '';
 $bgcolor2  = ! empty( $options['colors']['bgcolor2'] ) ? $options['colors']['bgcolor2'] : '';
 $bordercolor  = ! empty( $options['colors']['bordercolor'] ) ? $options['colors']['bordercolor'] : '';
-$show_on_thumbnails = wp_review_option( 'show_on_thumbnails' );
-$show_on_thumbnails_type = wp_review_option( 'show_on_thumbnails_type', 'author' );
-$image_sizes_selected = ! is_array( wp_review_option( 'image_sizes') ) ? array() : wp_review_option( 'image_sizes');
 $width = wp_review_option( 'width', 100 );
 $align = wp_review_option( 'align' );
 
@@ -236,47 +233,17 @@ $form_field = new WP_Review_Form_Field();
 		<div class="wp-review-field">
 			<div class="wp-review-field-label">
 				<label><?php esc_html_e( 'Add total rating to thumbnails', 'wp-review' ); ?></label>
+				<?php wp_review_print_pro_text(); ?>
 			</div>
 
 			<div class="wp-review-field-option">
 				<?php
 				$form_field->render_switch( array(
-					'id'    => 'wp_review_show_on_thumbnails',
-					'name'  => 'wp_review_options[show_on_thumbnails]',
-					'value' => $show_on_thumbnails,
+					'id'       => 'wp_review_show_on_thumbnails',
+					'name'     => 'wp_review_options[show_on_thumbnails]',
+					'disabled' => true,
 				) );
 				?>
-			</div>
-		</div>
-
-		<div class="wp-review-field wp-review-thumbnail-options"<?php if ( empty( $show_on_thumbnails ) ) echo ' style="display: none;"'; ?>>
-			<div class="wp-review-field-label">
-				<label for="wp_review_show_on_thumbnails_type"><?php esc_html_e( 'Rating to show: ', 'wp-review' ); ?></label>
-			</div>
-
-			<div class="wp-review-field-option">
-				<select name="wp_review_options[show_on_thumbnails_type]" id="wp_review_show_on_thumbnails_type">
-					<option value="author" <?php selected( $show_on_thumbnails_type, 'author' ); ?>><?php esc_html_e( 'Author total', 'wp-review' ); ?></option>
-					<option value="visitors" <?php selected( $show_on_thumbnails_type, 'visitors' ); ?>><?php esc_html_e( 'Visitors total', 'wp-review' ); ?></option>
-					<option value="comments" <?php selected( $show_on_thumbnails_type, 'comments' ); ?>><?php esc_html_e( 'Comments total', 'wp-review' ); ?></option>
-				</select>
-			</div>
-
-			<div class="wp-review-field-label" style="padding-top: 1em;">
-				<strong><?php esc_html_e( 'Registered image sizes: ', 'wp-review' ); ?></strong>
-			</div>
-
-			<div class="wp-review-field-option">
-				<ul>
-					<?php
-					$image_sizes = wp_review_get_all_image_sizes();
-					foreach ( $image_sizes as $size => $params ) { ?>
-						<li>
-							<input name="wp_review_options[image_sizes][]" id="wp_review_thumbnail_<?php echo esc_attr( $size ); ?>" type="checkbox" value="<?php echo esc_attr( $size ); ?>" <?php echo ( in_array( $size, $image_sizes_selected ) ? 'checked' : '' ); ?> />
-							<label for="wp_review_thumbnail_<?php echo esc_attr( $size ); ?>"><?php echo esc_html( $size . ' ( ' . $params['width'] . 'x' . $params['height'] . ' ) ' ); ?></label>
-						</li>
-					<?php } ?>
-				</ul>
 			</div>
 		</div>
 

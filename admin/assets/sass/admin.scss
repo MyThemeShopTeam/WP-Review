@@ -673,7 +673,7 @@ h4.wp-review-comment-title {
     padding: 3px;
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
     background: #fff;
-    
+
     &.loading {
         background: #eee url(../images/loading.svg) no-repeat center center;
 
@@ -682,7 +682,7 @@ h4.wp-review-comment-title {
         }
     }
 }
-#wp_review_box_template_img, 
+#wp_review_box_template_img,
 #wp_review_box_template_preview_img {
     max-width: 414px;
     height: auto;
@@ -736,6 +736,23 @@ h4.wp-review-comment-title {
             border-left: 0;
             font-weight: normal;
         }
+    }
+
+    &.wp-review-disabled {
+    	position: relative;
+    	cursor: pointer;
+
+    	&:before {
+			content: " ";
+			display: block;
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background-color: rgba(255,255,255,0.7);
+			z-index: 100;
+    	}
     }
 }
 
@@ -837,4 +854,8 @@ input.wpr-switch__off:checked + label, input.wpr-switch__off:checked + label:hov
 
 .wp-review-subsite-wrapper {
     display: none;
+}
+
+.wp-review-pro-text {
+	color: #00cc66;
 }

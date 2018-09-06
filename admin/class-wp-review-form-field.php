@@ -26,10 +26,15 @@ class WP_Review_Form_Field {
 			'off_label' => _x( 'No', 'switch label', 'wp-review' ),
 			'value'     => 0,
 			'echo'      => true,
+			'disabled'  => false,
 		) );
 		$switch_id = $args['id'] ? $args['id'] : 'wpr-switch-' . mt_rand( 100, 999 );
 		$switch_name = $args['name'] ? $args['name'] : $switch_id;
 		$value = intval( $args['value'] );
+
+		if ( $args['disabled'] ) {
+			$args['class'] .= ' wp-review-disabled';
+		}
 		ob_start();
 		?>
 		<div id="<?php echo esc_attr( $switch_id ); ?>" class="wpr-switch <?php echo esc_attr( $args['class'] ); ?>">
