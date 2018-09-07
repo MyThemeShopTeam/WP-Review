@@ -8,21 +8,6 @@
 ( function( $, wpreview, Cookies ) {
 	"use strict";
 
-	wpreview.initNotificationBar = function() {
-		// Add class to body.
-		if ( $( '#hello-bar' ).length ) {
-			$( 'body' ).addClass( 'has-hello-bar' );
-		}
-
-		// Move notification bar to after open body tag if is not floating top.
-		$( '#hello-bar.hello-bar--top:not(.hello-bar--floating)' ).prependTo( 'body' );
-
-		// Add padding top for body.
-		if ( $( '#hello-bar.hello-bar--top.hello-bar--floating' ).length ) {
-			$( 'body' ).css({ paddingTop: $( '#hello-bar' ).height() + 10 });
-		}
-	};
-
 	wpreview.getAnimateDuration = function( animation ) {
 		if ( ! animation ) {
 			return 0;
@@ -123,7 +108,6 @@
 	};
 
 	$( document ).ready( function() {
-		wpreview.initNotificationBar();
 		wpreview.ajaxReviewsLoading();
 		wpreview.initResponsiveTable();
 		wpreview.addVerifiedPurchase();

@@ -227,6 +227,7 @@
 	};
 
 	wpreview.initTabs = function() {
+		console.log( 'initTabs' );
 		wpreview.tabs({
 			wrapper: '.js-tabs',
 			title: '.tab-title',
@@ -297,23 +298,6 @@
 
 	wpreview.pluginOptions = function() {
 
-		// Hello bar enable.
-		$( '#wp_review_hello_bar_enable' ).on( 'switch-on', function() {
-			$( '.hide-if-hello-bar-disable' ).fadeIn();
-		});
-		$( '#wp_review_hello_bar_enable' ).on( 'switch-off', function() {
-			$( '.hide-if-hello-bar-disable' ).fadeOut();
-		});
-
-		// Hello bar location.
-		$( '#wp_review_hello_bar_location' ).on( 'change', function() {
-			if ( 'bottom' == $( this ).val() ) {
-				$( '#wp-review-field-hello-bar-floating' ).fadeOut();
-			} else {
-				$( '#wp-review-field-hello-bar-floating' ).fadeIn();
-			}
-		});
-
 		// Custom comment color.
 		$( '#wp_review_custom_comment_colors' ).on( 'switch-on', function() {
 			$('#wp_review_comment_color_wrapper').show();
@@ -324,15 +308,6 @@
 	};
 
 	wpreview.pluginMetaBoxes = function() {
-
-		// Hello bar.
-		$( '#wp_review_hello_bar_override' ).on( 'change', function() {
-			if ( $( this ).prop( 'checked' ) ) {
-				$( '#wp_review_hello_bar_overridden_settings' ).fadeIn();
-			} else {
-				$( '#wp_review_hello_bar_overridden_settings' ).fadeOut();
-			}
-		});
 
 		// Custom location.
 		$( '#wp_review_custom_location' ).on( 'switch-on', function() {
@@ -952,15 +927,6 @@ jQuery(document).ready(function($) {
 
 	$( '.wpr-datepicker' ).datepicker({
 		dateFormat: 'yy-mm-dd',
-	});
-
-	$( 'select#wp_review_hello_bar_enable' ).on( 'change', function() {
-		var value = $( this ).val();
-		if ( 'custom' == value ) {
-			$( '#wp-review-hello-bar-options' ).fadeIn();
-		} else {
-			$( '#wp-review-hello-bar-options' ).fadeOut();
-		}
 	});
 
 	if ( typeof wp !== 'undefined' && wp.media && wp.media.editor) {

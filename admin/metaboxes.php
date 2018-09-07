@@ -967,7 +967,6 @@ function wp_review_save_postdata( $post_id, $post ) {
 		'wp_review_user_review_type'       => filter_input( INPUT_POST, 'wp_review_user_review_type', FILTER_SANITIZE_STRING ),
 		'wp_review_product_price'          => filter_input( INPUT_POST, 'wp_review_product_price', FILTER_SANITIZE_STRING ),
 		'wp_review_box_template'           => filter_input( INPUT_POST, 'wp_review_box_template', FILTER_SANITIZE_STRING ),
-		'wp_review_hello_bar'              => isset( $_POST['wp_review_hello_bar'] ) ? wp_unslash( $_POST['wp_review_hello_bar'] ) : '',
 		'wp_review_comment_image'          => filter_input( INPUT_POST, 'wp_review_comment_image', FILTER_SANITIZE_STRING ),
 		'wp_review_comment_product_desc'   => filter_input( INPUT_POST, 'wp_review_comment_product_desc', FILTER_SANITIZE_STRING ),
 	);
@@ -982,12 +981,6 @@ function wp_review_save_postdata( $post_id, $post ) {
 
 	if ( $meta['wp_review_inactive_color'] === $default_inactive ) {
 		$meta['wp_review_inactive_color'] = '';
-	}
-
-	if ( is_array( $meta['wp_review_hello_bar'] ) ) {
-		foreach ( $meta['wp_review_hello_bar'] as $key => $value ) {
-			$meta['wp_review_hello_bar'][ $key ] = wp_review_normalize_option_value( $value );
-		}
 	}
 
 	if ( ! $meta['wp_review_type'] ) {

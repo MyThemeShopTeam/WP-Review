@@ -1207,7 +1207,6 @@ form.wp-review-comment-form > div, #commentform.wp-review-comment-form > div {
 }
 
 @import "tab-widget";
-@import "hello-bar";
 
 /* WooCommerce */
 .wp-review-product-rating {
@@ -1243,22 +1242,6 @@ form.wp-review-comment-form > div, #commentform.wp-review-comment-form > div {
 #commentform.wp-review-comment-form .comment-form-cookies-consent label {margin-left: 8px;}
 
 body.rtl {
-	.hello-bar__container {
-		.hello-bar__text {
-			float: right;
-		}
-		.hello-bar__right {
-			float: left;
-			.hello-bar__price, .hello-bar__star-rating {
-				margin-right: 0;
-				margin-left: 10px;
-			}
-			.hello-bar__button {
-				float: left;
-			}
-		}
-	}
-
 	.review-wrapper {
 		.review-star .wpr-count {
 			margin-left: 0;

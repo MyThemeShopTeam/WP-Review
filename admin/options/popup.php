@@ -5,8 +5,6 @@
  * @package WP_Review
  */
 
-$options = wp_review_popup_option();
-$options = wp_parse_args( $options, wp_review_popup_defaults() );
 ?>
 <div class="wp-review-field">
 	<div class="wp-review-field-label">
@@ -131,7 +129,7 @@ $options = wp_parse_args( $options, wp_review_popup_defaults() );
 
 		<div class="wp-review-field-option">
 			<span class="wp-review-disabled inline-block has-bg">
-				<select name="wp_review_popup[queryby]" id="wp_review_popup_queryby" value="<?php echo esc_attr( $options['queryby'] ); ?>">
+				<select name="wp_review_popup[queryby]" id="wp_review_popup_queryby">
 					<option value="category"><?php esc_html_e( 'From category', 'wp-review' ); ?></option>
 					<option value="tag"><?php esc_html_e( 'From tag', 'wp-review' ); ?></option>
 					<option value="review_type"><?php esc_html_e( 'From review type', 'wp-review' ); ?></option>
@@ -183,7 +181,7 @@ $options = wp_parse_args( $options, wp_review_popup_defaults() );
 
 		<div class="wp-review-field-option">
 			<span class="wp-review-disabled inline-block has-bg">
-				<select name="wp_review_popup[orderby]" id="wp_review_popup_orderby" value="<?php echo esc_attr( $options['orderby'] ); ?>">
+				<select name="wp_review_popup[orderby]" id="wp_review_popup_orderby">
 					<option value="random"><?php esc_html_e( 'Random', 'wp-review' ); ?></option>
 					<option value="popular"><?php esc_html_e( 'Most popular', 'wp-review' ); ?></option>
 					<option value="rated"><?php esc_html_e( 'Most rated', 'wp-review' ); ?></option>

@@ -698,40 +698,6 @@ form.wp-review-comment-form > div, #commentform.wp-review-comment-form > div { w
 
 .title-right { overflow: hidden; }
 
-.review-list li:after, .wp-reviews-list .item:after, .wp-reviews-list .reviews-pagination:after, .wpr-businesses:after, [data-ui-tabs] .ui-tabs-nav:after, [data-wp-review-tabs] .tab-titles:after { content: " "; display: block; height: 0; visibility: hidden; clear: both; }
-
-.hello-bar { padding-top: 5px; padding-bottom: 5px; background-size: cover; position: relative; z-index: 1000; overflow: hidden; }
-
-.hello-bar--floating { position: fixed; top: 0; left: 0; width: 100%; z-index: 10000; }
-
-.hello-bar__text { float: left; margin-top: 10px; }
-
-.hello-bar--bottom { bottom: 0; top: auto; }
-
-.hello-bar__container { margin: 0 auto; padding: 0 20px; }
-
-.hello-bar__button { padding: 5px 15px; text-decoration: none; box-shadow: none; float: right; border-radius: 3px; margin: 5px 0; }
-
-.hello-bar__right { float: right; }
-
-.hello-bar__right > div { display: inline-block; }
-
-.hello-bar__price { margin-right: 10px; margin-top: 10px; }
-
-.hello-bar__star-rating { margin-right: 10px; }
-
-.hello-bar__star-rating .review-result-wrapper i, .hello-bar__star-rating .review-result-wrapper img.wp-review-image { opacity: 0.6; }
-
-.hello-bar__star-rating .review-result-wrapper .review-result i, .hello-bar__star-rating .review-result-wrapper .review-result img.wp-review-image { opacity: 1; }
-
-body.has-hello-bar { transition: padding-top 0.3s ease; }
-
-body.admin-bar .hello-bar--top.hello-bar--floating { top: 46px; }
-
-@media screen and (min-width: 48.9375em) { body.admin-bar .hello-bar--top.hello-bar--floating { top: 32px; } }
-
-@media screen and (max-width: 600px) { .hello-bar__text, .hello-bar__right { width: 100%; } }
-
 /* WooCommerce */
 .wp-review-product-rating { margin-bottom: 10px; }
 
@@ -758,14 +724,6 @@ body.admin-bar .hello-bar--top.hello-bar--floating { top: 46px; }
 #commentform.wp-review-comment-form .comment-form-cookies-consent input { width: auto; height: auto; }
 
 #commentform.wp-review-comment-form .comment-form-cookies-consent label { margin-left: 8px; }
-
-body.rtl .hello-bar__container .hello-bar__text { float: right; }
-
-body.rtl .hello-bar__container .hello-bar__right { float: left; }
-
-body.rtl .hello-bar__container .hello-bar__right .hello-bar__price, body.rtl .hello-bar__container .hello-bar__right .hello-bar__star-rating { margin-right: 0; margin-left: 10px; }
-
-body.rtl .hello-bar__container .hello-bar__right .hello-bar__button { float: left; }
 
 body.rtl .review-wrapper .review-star .wpr-count { margin-left: 0; margin-right: 3px; }
 
