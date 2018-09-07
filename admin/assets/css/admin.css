@@ -203,7 +203,7 @@ textarea#wp-review-migrate-log { width: 600px; max-width: 100%; height: 200px; d
 
 #wp-review-settings-tab-contents .settings-tab-general { display: block; }
 
-.pros-cons-title { max-width: 25%; margin-bottom: -28px; }
+.pros-cons-title { max-width: 25%; }
 
 .column-wp_review_rating, .column-wp_review_comment_rating { text-align: center; position: relative; width: 110px; }
 

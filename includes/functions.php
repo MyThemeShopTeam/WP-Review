@@ -1458,23 +1458,6 @@ add_filter( 'wp_review_desc', 'wpautop' );
 add_filter( 'wp_review_desc', 'shortcode_unautop' );
 add_filter( 'wp_review_desc', 'do_shortcode', 11 );
 
-add_filter( 'wp_review_pros', array( $wp_embed, 'run_shortcode' ), 8 );
-add_filter( 'wp_review_pros', array( $wp_embed, 'autoembed' ), 8 );
-add_filter( 'wp_review_pros', 'wptexturize' );
-add_filter( 'wp_review_pros', 'convert_smilies', 20 );
-add_filter( 'wp_review_pros', 'wpautop' );
-add_filter( 'wp_review_pros', 'shortcode_unautop' );
-add_filter( 'wp_review_pros', 'do_shortcode', 11 );
-
-add_filter( 'wp_review_cons', array( $wp_embed, 'run_shortcode' ), 8 );
-add_filter( 'wp_review_cons', array( $wp_embed, 'autoembed' ), 8 );
-add_filter( 'wp_review_cons', 'wptexturize' );
-add_filter( 'wp_review_cons', 'convert_smilies', 20 );
-add_filter( 'wp_review_cons', 'wpautop' );
-add_filter( 'wp_review_cons', 'shortcode_unautop' );
-add_filter( 'wp_review_cons', 'do_shortcode', 11 );
-
-
 /**
  * Gets review data.
  *
@@ -1503,8 +1486,6 @@ function wp_review_get_review_data( $post_id = null, $args = array() ) {
 	$data['desc_title'] = $desc_title;
 
 	$data['desc'] = get_post_meta( $post_id, 'wp_review_desc', true );
-	$data['pros'] = get_post_meta( $post_id, 'wp_review_pros', true );
-	$data['cons'] = get_post_meta( $post_id, 'wp_review_cons', true );
 
 	$data['product_price'] = wp_review_get_product_price( $post_id );
 
@@ -1576,7 +1557,6 @@ function wp_review_get_review_data( $post_id = null, $args = array() ) {
 	$data['user_review_positive'] = $user_review_positive;
 	$data['user_review_negative'] = $user_review_negative;
 	$data['user_has_reviewed'] = $user_has_reviewed;
-	$data['hide_visitors_rating'] = get_post_meta( $post_id, 'wp_review_hide_visitors_rating', true );
 	$data['hide_comments_rating'] = get_post_meta( $post_id, 'wp_review_hide_comments_total', true );
 
 	$hide_user_reviews = wp_review_network_option('hide_user_reviews_');
@@ -2788,20 +2768,6 @@ function wp_review_star_rating( $value, $args = array() ) {
  */
 function wp_review_spinner() {
 	echo '<span class="animate-spin fa fa-spinner"></span>';
-}
-
-
-/**
- * Checks if user car rate features.
- *
- * @since 3.0.0
- *
- * @param int    $post_id Post ID.
- * @param string $type    Comment rating type. Accepts `visitor` as default or `comment`.
- * @return bool
- */
-function wp_review_user_can_rate_features( $post_id, $type = 'visitor' ) {
-	return get_post_meta( $post_id, 'wp_review_user_can_rate_feature', true );
 }
 
 

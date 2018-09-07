@@ -27,15 +27,6 @@ class WP_Review_Importer_WPRichSnippets implements WP_Review_Importer_Interface 
 				update_post_meta( $post->ID, 'wp_review_desc', $desc );
 			}
 
-			if ( $pros = $post->_wprs_post_pros ) {
-				update_post_meta( $post->ID, 'wp_review_pros', $pros );
-			}
-
-			if ( $cons = $post->_wprs_post_cons ) {
-				update_post_meta( $post->ID, '_wprs_post_cons', $cons );
-			}
-
-
 			switch ( strtolower( $post->_wprs_post_review_type ) ) {
 				case 'votes':
 					$this->import_votes( $post );

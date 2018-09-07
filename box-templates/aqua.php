@@ -132,27 +132,23 @@ if ( ! empty( $review['fontfamily'] ) ) : ?>
 		</ul>
 	<?php endif; ?>
 
-	<?php if ( $review['user_review'] && ! $review['hide_visitors_rating'] ) : ?>
-		<?php if ( ! wp_review_user_can_rate_features( $review['post_id'] ) ) : ?>
-			<div class="user-review-area visitors-review-area">
-				<?php echo wp_review_user_rating( $review['post_id'] ); ?>
-				<div class="user-total-wrapper">
-					<h5 class="user-review-title"><?php esc_html_e( 'User Review', 'wp-review' ); ?></h5>
-					<span class="review-total-box">
-						<?php
-						$usertotal_text = $review['user_review_total'];
-						if ( 'star' != $review['user_review_type'] ) {
-							$usertotal_text = sprintf( $rating_types[ $review['user_review_type'] ]['value_text'], $review['user_review_total'] );
-						}
-						?>
-						<span class="wp-review-user-rating-total"><?php echo esc_html( $usertotal_text ); ?></span>
-						<small>(<span class="wp-review-user-rating-counter"><?php echo esc_html( $review['user_review_count'] ); ?></span> <?php echo esc_html( _n( 'vote', 'votes', $review['user_review_count'], 'wp-review' ) ); ?>)</small>
-					</span>
-				</div>
+	<?php if ( $review['user_review'] ) : ?>
+		<div class="user-review-area visitors-review-area">
+			<?php echo wp_review_user_rating( $review['post_id'] ); ?>
+			<div class="user-total-wrapper">
+				<h5 class="user-review-title"><?php esc_html_e( 'User Review', 'wp-review' ); ?></h5>
+				<span class="review-total-box">
+					<?php
+					$usertotal_text = $review['user_review_total'];
+					if ( 'star' != $review['user_review_type'] ) {
+						$usertotal_text = sprintf( $rating_types[ $review['user_review_type'] ]['value_text'], $review['user_review_total'] );
+					}
+					?>
+					<span class="wp-review-user-rating-total"><?php echo esc_html( $usertotal_text ); ?></span>
+					<small>(<span class="wp-review-user-rating-counter"><?php echo esc_html( $review['user_review_count'] ); ?></span> <?php echo esc_html( _n( 'vote', 'votes', $review['user_review_count'], 'wp-review' ) ); ?>)</small>
+				</span>
 			</div>
-		<?php else : ?>
-			<?php echo wp_review_visitor_feature_rating( $review['post_id'], array( 'title_first' => false ) ); ?>
-		<?php endif; ?>
+		</div>
 	<?php endif; // $review['user_review'] ?>
 
 	<?php if ( $review['comments_review'] && ! $review['hide_comments_rating'] ) : ?>
@@ -187,20 +183,6 @@ if ( ! empty( $review['fontfamily'] ) ) : ?>
 				<?php // echo do_shortcode( shortcode_unautop( wp_kses_post( wpautop( $review['desc'] ) ) ) ); ?>
 				<?php echo apply_filters( 'wp_review_desc', $review['desc'], $review['post_id'] ); ?>
 			</div>
-
-			<?php if ( $review['pros'] || $review['cons'] ) : ?>
-				<div class="review-pros-cons wpr-flex wpr-flex-wrap">
-					<div class="review-pros wpr-col-1-2 pr-10">
-						<p class="mb-5"><strong><?php esc_html_e( 'Pros', 'wp-review' ); ?></strong></p>
-						<?php echo apply_filters( 'wp_review_pros', $review['pros'], $review['post_id'] ); ?>
-					</div>
-
-					<div class="review-cons wpr-col-1-2 pl-10">
-						<p class="mb-5"><strong><?php esc_html_e( 'Cons', 'wp-review' ); ?></strong></p>
-						<?php echo apply_filters( 'wp_review_cons', $review['cons'], $review['post_id'] ); ?>
-					</div>
-				</div>
-			<?php endif; ?>
 		<?php endif; ?>
 
 	<?php endif; ?>

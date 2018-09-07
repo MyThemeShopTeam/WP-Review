@@ -132,31 +132,6 @@ add_filter( 'wp_review_desc', 'mts_wp_review_desc', 10, 2 );
 
 
 /**
- * Filters review pros content.
- *
- * @param  string $pros Review pros.
- * @return string
- */
-function mts_wp_review_pros( $pros, $review_id = '' ) {
-	$pros .= '<br>Lorem ipsum';
-	return $pros;
-}
-add_filter( 'wp_review_pros', 'mts_wp_review_pros', 10, 2 );
-
-
-/**
- * Filters review cons content.
- *
- * @param  string $cons Review cons.
- * @return string
- */
-function mts_wp_review_cons( $cons, $review_id = '' ) {
-	$cons .= '<br>Lorem ipsum';
-	return $cons;
-}
-add_filter( 'wp_review_cons', 'mts_wp_review_cons', 10, 2 );
-
-/**
  * Changes color css output for all templates.
  *
  * @param  string $output    CSS output, includes `<style` tag.

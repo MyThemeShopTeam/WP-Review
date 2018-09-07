@@ -123,7 +123,6 @@ function wp_review_render_meta_box_item( $post ) {
 	/* Retrieve an existing value from the database. */
 	$custom_colors   = get_post_meta( $post->ID, 'wp_review_custom_colors', true );
 	$custom_location = get_post_meta( $post->ID, 'wp_review_custom_location', true );
-	$disable_features = get_post_meta( $post->ID, 'wp_review_disable_features', true );
 
 	$items = wp_review_get_review_items( $post->ID );
 	if ( '' === $items ) {
@@ -196,7 +195,7 @@ function wp_review_render_meta_box_item( $post ) {
 	<input type="hidden" id="wpr-review-global-inactive-color-value" value="<?php echo esc_attr( $global_inactive_color ); ?>">
 	<input type="hidden" id="wpr-review-items-data" value="<?php echo esc_attr( wp_json_encode( $items ) ); ?>">
 
-	<div id="wpr-review-items-app"<?php if ( $disable_features ) echo ' style="display: none;"'; ?>>
+	<div id="wpr-review-items-app">
 		<input type="hidden" id="wpr-review-type-2" value="">
 		<div class="wpr-review-items"></div>
 
@@ -245,9 +244,12 @@ function wp_review_render_meta_box_item( $post ) {
 		<div class="setting-row">
 			<div class="col-1">
 				<label for="wpr-review-item-color-{{ data.id }}"><?php esc_html_e( 'Feature Color', 'wp-review' ); ?></label>
+				<?php wp_review_print_pro_text(); ?>
 			</div>
 			<div class="col-2">
-				<input type="text" id="wpr-review-item-color-{{ data.id }}" name="wp_review_item_color[]" class="input-color" value="{{ data.wp_review_item_color }}" data-default-color="{{ data.wp_review_item_color }}">
+				<span class="wp-review-disabled inline-block has-bg">
+					<input type="text" id="wpr-review-item-color-{{ data.id }}" name="wp_review_item_color[]" class="input-color" value="{{ data.wp_review_item_color }}" data-default-color="{{ data.wp_review_item_color }}" disabled>
+				</span>
 			</div>
 		</div>
 	</script>
@@ -256,9 +258,12 @@ function wp_review_render_meta_box_item( $post ) {
 		<div class="setting-row">
 			<div class="col-1">
 				<label for="wpr-review-item-inactive-color-{{ data.id }}"><?php esc_html_e( 'Inactive Color', 'wp-review' ); ?></label>
+				<?php wp_review_print_pro_text(); ?>
 			</div>
 			<div class="col-2">
-				<input type="text" id="wpr-review-item-inactive-color-{{ data.id }}" name="wp_review_item_inactive_color[]" class="input-inactive-color" value="{{ data.wp_review_item_inactive_color }}" data-default-color="{{ data.wp_review_item_inactive_color }}">
+				<span class="wp-review-disabled inline-block has-bg">
+					<input type="text" id="wpr-review-item-inactive-color-{{ data.id }}" name="wp_review_item_inactive_color[]" class="input-inactive-color" value="{{ data.wp_review_item_inactive_color }}" data-default-color="{{ data.wp_review_item_inactive_color }}" disabled>
+				</span>
 			</div>
 		</div>
 	</script>
@@ -278,14 +283,15 @@ function wp_review_render_meta_box_item( $post ) {
 	<div class="wp-review-field">
 		<div class="wp-review-field-label">
 			<label><?php esc_html_e( 'Hide Features', 'wp-review' ); ?></label>
+			<?php wp_review_print_pro_text(); ?>
 		</div>
 
 		<div class="wp-review-field-option">
 			<?php
 			$form_field->render_switch( array(
-				'id'    => 'wp_review_disable_features',
-				'name'  => 'wp_review_disable_features',
-				'value' => $disable_features,
+				'id'       => 'wp_review_disable_features',
+				'name'     => 'wp_review_disable_features',
+				'disabled' => true,
 			) );
 			?>
 		</div>
@@ -490,8 +496,6 @@ function wp_review_render_meta_box_desc( $post ) {
 
 	/* Retrieve existing values from the database. */
 	$desc = get_post_meta( $post->ID, 'wp_review_desc', true );
-	$pros = get_post_meta( $post->ID, 'wp_review_pros', true );
-	$cons = get_post_meta( $post->ID, 'wp_review_cons', true );
 	$desc_title = get_post_meta( $post->ID, 'wp_review_desc_title', true );
 	if ( ! $desc_title ) {
 		$desc_title = __( 'Summary', 'wp-review' );
@@ -538,45 +542,57 @@ function wp_review_render_meta_box_desc( $post ) {
 
 		<div class="wpr-flex wpr-flex-wrap border-box">
 			<div class="wpr-col-1-2 pr-10">
-				<p class="pros-cons-title"><strong><?php esc_html_e( 'Pros', 'wp-review' ); ?></strong></p>
-				<?php
-				/* Display wp editor field. */
-				wp_editor(
-					$pros,
-					'wp_review_pros',
-					array(
-						'tinymce'       => array(
-							'toolbar1' => 'bold,italic,underline,bullist,numlist,separator,separator,link,unlink,undo,redo,removeformat',
-							'toolbar2' => '',
-							'toolbar3' => '',
-						),
-						'quicktags'     => true,
-						'media_buttons' => false,
-						'textarea_rows' => 6,
-					)
-				);
-				?>
+				<p class="pros-cons-title">
+					<strong><?php esc_html_e( 'Pros', 'wp-review' ); ?></strong>
+					<?php wp_review_print_pro_text(); ?>
+				</p>
+
+				<span class="wp-review-disabled inline-block has-bg">
+					<?php
+					/* Display wp editor field. */
+					wp_editor(
+						'',
+						'wp_review_pros',
+						array(
+							'tinymce'       => array(
+								'toolbar1' => 'bold,italic,underline,bullist,numlist,separator,separator,link,unlink,undo,redo,removeformat',
+								'toolbar2' => '',
+								'toolbar3' => '',
+							),
+							'quicktags'     => true,
+							'media_buttons' => false,
+							'textarea_rows' => 6,
+						)
+					);
+					?>
+				</span>
 			</div>
 
 			<div class="wpr-col-1-2 pl-10">
-				<p class="pros-cons-title"><strong><?php esc_html_e( 'Cons', 'wp-review' ); ?></strong></p>
-				<?php
-				/* Display wp editor field. */
-				wp_editor(
-					$cons,
-					'wp_review_cons',
-					array(
-						'tinymce'       => array(
-							'toolbar1' => 'bold,italic,underline,bullist,numlist,separator,separator,link,unlink,undo,redo,removeformat',
-							'toolbar2' => '',
-							'toolbar3' => '',
-						),
-						'quicktags'     => true,
-						'media_buttons' => false,
-						'textarea_rows' => 6,
-					)
-				);
-				?>
+				<p class="pros-cons-title">
+					<strong><?php esc_html_e( 'Cons', 'wp-review' ); ?></strong>
+					<?php wp_review_print_pro_text(); ?>
+				</p>
+
+				<span class="wp-review-disabled inline-block has-bg">
+					<?php
+					/* Display wp editor field. */
+					wp_editor(
+						'',
+						'wp_review_cons',
+						array(
+							'tinymce'       => array(
+								'toolbar1' => 'bold,italic,underline,bullist,numlist,separator,separator,link,unlink,undo,redo,removeformat',
+								'toolbar2' => '',
+								'toolbar3' => '',
+							),
+							'quicktags'     => true,
+							'media_buttons' => false,
+							'textarea_rows' => 6,
+						)
+					);
+					?>
+				</span>
 			</div>
 		</div>
 	</div>
@@ -584,14 +600,15 @@ function wp_review_render_meta_box_desc( $post ) {
 	<div class="wp-review-field">
 		<div class="wp-review-field-label">
 			<label><?php esc_html_e( 'Hide Description, Pros/Cons & Total Rating', 'wp-review' ); ?></label>
+			<?php wp_review_print_pro_text(); ?>
 		</div>
 
 		<div class="wp-review-field-option">
 			<?php
 			$form_field->render_switch( array(
-				'id'    => 'wp_review_hide_desc',
-				'name'  => 'wp_review_hide_desc',
-				'value' => wp_review_is_hidden_desc( $post->ID ),
+				'id'       => 'wp_review_hide_desc',
+				'name'     => 'wp_review_hide_desc',
+				'disabled' => true,
 			) );
 			?>
 		</div>
@@ -694,8 +711,6 @@ function wp_review_render_meta_box_userReview( $post ) {
 	//$available_types = apply_filters( 'wp_review_metabox_user_rating_types', wp_review_get_review_types( 'user' ) );
 	$available_types = wp_review_get_rating_types();
 	$hide_comments_total = get_post_meta( $post->ID, 'wp_review_hide_comments_total', true );
-	$hide_visitors_rating = get_post_meta( $post->ID, 'wp_review_hide_visitors_rating', true );
-	$user_feature_rate = get_post_meta( $post->ID, 'wp_review_user_can_rate_feature', true );
 	$product_price = wp_review_get_product_price( $post->ID );
 	$comment_image = get_post_meta( $post->ID, 'wp_review_comment_image', true );
 	$comment_matches = get_post_meta( $post->ID, 'wp_review_comment_product_desc', true );
@@ -772,13 +787,16 @@ function wp_review_render_meta_box_userReview( $post ) {
 		<div class="wp-review-field">
 			<div class="wp-review-field-label">
 				<label><?php esc_html_e( 'User can:', 'wp-review' ); ?></label>
+				<?php wp_review_print_pro_text(); ?>
 			</div>
 
 			<div class="wp-review-field-option">
-				<select name="wp_review_user_can_rate_feature" id="wp_review_user_can_rate_feature">
-					<option value=""><?php echo esc_html_e( 'Give Overall Rating', 'wp-review' ); ?></option>
-					<option value="1" <?php selected( $user_feature_rate, '1' ); ?>><?php echo esc_html_e( 'Rate Each Feature', 'wp-review' ); ?></option>
-				</select>
+				<span class="wp-review-disabled inline-block">
+					<select name="wp_review_user_can_rate_feature" id="wp_review_user_can_rate_feature" disabled>
+						<option value=""><?php echo esc_html_e( 'Give Overall Rating', 'wp-review' ); ?></option>
+						<option value="1"><?php echo esc_html_e( 'Rate Each Feature', 'wp-review' ); ?></option>
+					</select>
+				</span>
 			</div>
 		</div>
 	</div>
@@ -788,14 +806,15 @@ function wp_review_render_meta_box_userReview( $post ) {
 		<div class="wp-review-field">
 			<div class="wp-review-field-label">
 				<label><?php esc_html_e( 'Hide Visitors Rating in Review Box', 'wp-review' ); ?></label>
+				<?php wp_review_print_pro_text(); ?>
 			</div>
 
 			<div class="wp-review-field-option">
 				<?php
 				$form_field->render_switch( array(
-					'id'    => 'wp_review_hide_visitors_rating',
-					'name'  => 'wp_review_hide_visitors_rating',
-					'value' => $hide_visitors_rating,
+					'id'       => 'wp_review_hide_visitors_rating',
+					'name'     => 'wp_review_hide_visitors_rating',
+					'disabled' => true,
 				) );
 				?>
 			</div>
@@ -945,13 +964,9 @@ function wp_review_save_postdata( $post_id, $post ) {
 		'wp_review_heading'                => filter_input( INPUT_POST, 'wp_review_heading', FILTER_SANITIZE_STRING ),
 		'wp_review_desc_title'             => filter_input( INPUT_POST, 'wp_review_desc_title', FILTER_SANITIZE_STRING ),
 		'wp_review_desc'                   => ! empty( $_POST['wp_review_desc'] ) ? wp_kses_post( wp_unslash( $_POST['wp_review_desc'] ) ) : '',
-		'wp_review_pros'                   => ! empty( $_POST['wp_review_pros'] ) ? wp_kses_post( wp_unslash( $_POST['wp_review_pros'] ) ) : '',
-		'wp_review_cons'                   => ! empty( $_POST['wp_review_cons'] ) ? wp_kses_post( wp_unslash( $_POST['wp_review_cons'] ) ) : '',
 		'wp_review_hide_desc'              => filter_input( INPUT_POST, 'wp_review_hide_desc', FILTER_SANITIZE_STRING ),
 		'wp_review_userReview'             => filter_input( INPUT_POST, 'wp_review_userReview', FILTER_SANITIZE_STRING ),
 		'wp_review_hide_comments_total'    => filter_input( INPUT_POST, 'wp_review_hide_comments_total', FILTER_SANITIZE_STRING ),
-		'wp_review_hide_visitors_rating'   => filter_input( INPUT_POST, 'wp_review_hide_visitors_rating', FILTER_SANITIZE_STRING ),
-		'wp_review_user_can_rate_feature'  => filter_input( INPUT_POST, 'wp_review_user_can_rate_feature', FILTER_SANITIZE_STRING ),
 		'wp_review_total'                  => filter_input( INPUT_POST, 'wp_review_total', FILTER_SANITIZE_STRING ),
 		'wp_review_color'                  => filter_input( INPUT_POST, 'wp_review_color', FILTER_SANITIZE_STRING ),
 		'wp_review_inactive_color'         => filter_input( INPUT_POST, 'wp_review_inactive_color', FILTER_SANITIZE_STRING ),

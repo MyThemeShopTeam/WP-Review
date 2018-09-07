@@ -76,12 +76,6 @@ class WP_Review_Importer_WP_Product_Review implements WP_Review_Importer_Interfa
 		$heading = get_post_meta( $post_id, 'cwp_rev_product_name', true );
 		update_post_meta( $post_id, 'wp_review_heading', $heading );
 
-		$pros = get_post_meta( $post_id, 'wppr_pros', true ) ? get_post_meta( $post_id, 'wppr_pros', true ) : array();
-		update_post_meta( $post_id, 'wp_review_pros', implode( "\n", $pros ) );
-
-		$cons = get_post_meta( $post_id, 'wppr_cons', true ) ? get_post_meta( $post_id, 'wppr_cons', true ) : array();
-		update_post_meta( $post_id, 'wp_review_cons', implode( "\n", $cons ) );
-
 		$their_items = get_post_meta( $post_id, 'wppr_options', true ) ? get_post_meta( $post_id, 'wppr_options', true ) : array();
 		$our_items = array();
 		foreach ( $their_items as $item ) {

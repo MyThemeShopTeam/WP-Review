@@ -182,9 +182,7 @@ foreach ( $sites as $site ) {
 		$hide_in_posts = wp_review_option( 'hide_ratings_in_posts_' . $site->blog_id );
 
 		$hide_review_links = wp_review_option( 'hide_review_links_' . $site->blog_id );
-		$hide_review_desc = wp_review_option( 'hide_review_description_' . $site->blog_id );
 		$hide_user_reviews = wp_review_option( 'hide_user_reviews_' . $site->blog_id );
-		$hide_features = wp_review_option( 'hide_features_' . $site->blog_id );
 		?>
 		<div class="wp-review-multisite-posts-options">
 			<div class="wp-review-field">
@@ -244,14 +242,15 @@ foreach ( $sites as $site ) {
 			<div class="wp-review-field">
 				<div class="wp-review-field-label">
 					<label><?php esc_html_e( 'Hide Features', 'wp-review' ); ?></label>
+					<?php wp_review_print_pro_text(); ?>
 				</div>
 
 				<div class="wp-review-field-option">
 					<?php
 					$form_field->render_switch( array(
-						'id'    => 'wp_review_hide_features__' . $site->blog_id,
-						'name'  => 'wp_review_options[hide_features_' . $site->blog_id . ']',
-						'value' => ! empty( $hide_features ),
+						'id'       => 'wp_review_hide_features__' . $site->blog_id,
+						'name'     => 'wp_review_options[hide_features_' . $site->blog_id . ']',
+						'disabled' => true,
 					) );
 					?>
 				</div>
@@ -276,14 +275,15 @@ foreach ( $sites as $site ) {
 			<div class="wp-review-field">
 				<div class="wp-review-field-label">
 					<label><?php esc_html_e( 'Hide Review Description, Pros/Cons & Total Rating', 'wp-review' ); ?></label>
+					<?php wp_review_print_pro_text(); ?>
 				</div>
 
 				<div class="wp-review-field-option">
 					<?php
 					$form_field->render_switch( array(
-						'id'    => 'wp_review_hide_review_description__' . $site->blog_id,
-						'name'  => 'wp_review_options[hide_review_description_' . $site->blog_id . ']',
-						'value' => ! empty( $hide_review_desc ),
+						'id'       => 'wp_review_hide_review_description__' . $site->blog_id,
+						'name'     => 'wp_review_options[hide_review_description_' . $site->blog_id . ']',
+						'disabled' => true,
 					) );
 					?>
 				</div>

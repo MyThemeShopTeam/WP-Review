@@ -69,26 +69,6 @@ class WP_Review_Options {
 	 * Registers settings.
 	 */
 	public function register_settings() {
-
-		if ( isset( $_POST['wp_review_capabilities'] ) && ! empty( $_POST['wp_review_capabilities'] ) ) {
-
-			$capabilities = $_POST['wp_review_capabilities'];
-			$default_caps = wp_review_get_capabilities();
-
-			foreach ( $capabilities as $role => $capability ) {
-				$role = get_role( $role );
-
-				$role_capabilities = $role->capabilities;
-				foreach ( $default_caps as $key => $default_cap ) {
-
-					if ( isset( $capability[ $key ] ) ) {
-						$role->add_cap( $key );
-					} else {
-						$role->remove_cap( $key );
-					}
-				}
-			}
-		}
 		register_setting( 'wpreview-settings-group', 'wp_review_options' );
 	}
 

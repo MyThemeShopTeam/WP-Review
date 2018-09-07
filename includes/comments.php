@@ -162,11 +162,7 @@ function wp_review_comment_fields_replace( $fields ) {
 	}
 	//echo '<!-- '.print_r($fields,1).' -->'; return $fields;
 
-	if ( ! wp_review_user_can_rate_features( $post->ID, 'comment' ) ) {
-		$review_rating = wp_review_comment_rating_input();
-	} else {
-		$review_rating = wp_review_visitor_feature_rating( $post->ID, array( 'type' => 'comment' ) );
-	}
+	$review_rating = wp_review_comment_rating_input();
 
 	$review_add_fields = array(
 		'review_title' => '<div class="wp-review-comment-form-title"><input id="author" type="text" name="wp_review_comment_title" class="wp-review-comment-title-field-input" size="30" id="wp-review-comment-title-field" placeholder="' . esc_attr__( 'Review Title', 'wp-review' ) . '" value="" /></div>',
@@ -269,11 +265,7 @@ function wp_review_comment_fields_extend() {
 
 		<div class="wp-review-comment-field wp-review-comment-rating-<?php echo esc_attr( $type ); ?>-wrapper">
 			<div class="wp-review-comment-field-inner" >
-				<?php if ( ! wp_review_user_can_rate_features( $post->ID, 'comment' ) ) : ?>
-					<?php echo wp_review_comment_rating_input(); ?>
-				<?php else : ?>
-					<?php echo wp_review_visitor_feature_rating( $post->ID, array( 'type' => 'comment' ) ); ?>
-				<?php endif; ?>
+				<?php echo wp_review_comment_rating_input(); ?>
 			</div>
 		</div>
 
