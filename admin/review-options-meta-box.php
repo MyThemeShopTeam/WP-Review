@@ -24,18 +24,10 @@ function wp_review_render_meta_box_review_options( $post ) {
 	}
 	$type = $type_post_value;
 
-	$schema = wp_review_get_review_schema( $post->ID );
-	$schema_data = get_post_meta( $post->ID, 'wp_review_schema_options', true );
-	$show_schema_data = get_post_meta( $post->ID, 'wp_review_show_schema_data', true );
-
 	$heading = get_post_meta( $post->ID, 'wp_review_heading', true );
-	$rating_schema = wp_review_get_rating_schema( $post->ID );
 	// $available_types = apply_filters('wp_review_metabox_types', wp_review_get_review_types() );
 	$available_types = wp_review_get_rating_types();
 	$schemas = wp_review_schema_types();
-
-	$custom_author = get_post_meta( $post->ID, 'wp_review_custom_author', true );
-	$author = get_post_meta( $post->ID, 'wp_review_author', true );
 
 	$form_field = new WP_Review_Form_Field();
 	?>
@@ -102,7 +94,7 @@ function wp_review_render_meta_box_review_options( $post ) {
 					<div class="wp-review-field-option">
 						<select name="wp_review_schema" id="wp_review_schema">
 							<?php foreach ( $schemas as $key => $arr ) : ?>
-								<option value="<?php echo esc_attr( $key ); ?>" <?php selected( $key, $schema ); ?> disabled><?php echo esc_html( $arr['label'] ); ?></option>
+								<option value="<?php echo esc_attr( $key ); ?>" disabled><?php echo esc_html( $arr['label'] ); ?></option>
 							<?php endforeach; ?>
 						</select>
 					</div>

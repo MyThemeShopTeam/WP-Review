@@ -710,10 +710,7 @@ function wp_review_render_meta_box_userReview( $post ) {
 	}
 	//$available_types = apply_filters( 'wp_review_metabox_user_rating_types', wp_review_get_review_types( 'user' ) );
 	$available_types = wp_review_get_rating_types();
-	$hide_comments_total = get_post_meta( $post->ID, 'wp_review_hide_comments_total', true );
 	$product_price = wp_review_get_product_price( $post->ID );
-	$comment_image = get_post_meta( $post->ID, 'wp_review_comment_image', true );
-	$comment_matches = get_post_meta( $post->ID, 'wp_review_comment_product_desc', true );
 
 	$form_field = new WP_Review_Form_Field();
 	?>
@@ -793,8 +790,8 @@ function wp_review_render_meta_box_userReview( $post ) {
 			<div class="wp-review-field-option">
 				<span class="wp-review-disabled inline-block">
 					<select name="wp_review_user_can_rate_feature" id="wp_review_user_can_rate_feature" disabled>
-						<option value=""><?php echo esc_html_e( 'Give Overall Rating', 'wp-review' ); ?></option>
-						<option value="1"><?php echo esc_html_e( 'Rate Each Feature', 'wp-review' ); ?></option>
+						<option value=""><?php esc_html_e( 'Give Overall Rating', 'wp-review' ); ?></option>
+						<option value="1"><?php esc_html_e( 'Rate Each Feature', 'wp-review' ); ?></option>
 					</select>
 				</span>
 			</div>
@@ -955,7 +952,6 @@ function wp_review_save_postdata( $post_id, $post ) {
 	}
 
 	$meta = array(
-		'wp_review_disable_features'       => filter_input( INPUT_POST, 'wp_review_disable_features', FILTER_SANITIZE_STRING ),
 		'wp_review_custom_location'        => filter_input( INPUT_POST, 'wp_review_custom_location', FILTER_SANITIZE_STRING ),
 		'wp_review_custom_colors'          => filter_input( INPUT_POST, 'wp_review_custom_colors', FILTER_SANITIZE_STRING ),
 		'wp_review_custom_author'          => filter_input( INPUT_POST, 'wp_review_custom_author', FILTER_SANITIZE_STRING ),
@@ -966,7 +962,6 @@ function wp_review_save_postdata( $post_id, $post ) {
 		'wp_review_desc'                   => ! empty( $_POST['wp_review_desc'] ) ? wp_kses_post( wp_unslash( $_POST['wp_review_desc'] ) ) : '',
 		'wp_review_hide_desc'              => filter_input( INPUT_POST, 'wp_review_hide_desc', FILTER_SANITIZE_STRING ),
 		'wp_review_userReview'             => filter_input( INPUT_POST, 'wp_review_userReview', FILTER_SANITIZE_STRING ),
-		'wp_review_hide_comments_total'    => filter_input( INPUT_POST, 'wp_review_hide_comments_total', FILTER_SANITIZE_STRING ),
 		'wp_review_total'                  => filter_input( INPUT_POST, 'wp_review_total', FILTER_SANITIZE_STRING ),
 		'wp_review_color'                  => filter_input( INPUT_POST, 'wp_review_color', FILTER_SANITIZE_STRING ),
 		'wp_review_inactive_color'         => filter_input( INPUT_POST, 'wp_review_inactive_color', FILTER_SANITIZE_STRING ),
@@ -978,12 +973,9 @@ function wp_review_save_postdata( $post_id, $post ) {
 		'wp_review_schema'                 => filter_input( INPUT_POST, 'wp_review_schema', FILTER_SANITIZE_STRING ),
 		'wp_review_rating_schema'          => filter_input( INPUT_POST, 'wp_review_rating_schema', FILTER_SANITIZE_STRING ),
 		'wp_review_show_schema_data'       => filter_input( INPUT_POST, 'wp_review_show_schema_data', FILTER_SANITIZE_STRING ),
-		'wp_review_comment_rating_type'    => filter_input( INPUT_POST, 'wp_review_comment_rating_type', FILTER_SANITIZE_STRING ),
 		'wp_review_user_review_type'       => filter_input( INPUT_POST, 'wp_review_user_review_type', FILTER_SANITIZE_STRING ),
 		'wp_review_product_price'          => filter_input( INPUT_POST, 'wp_review_product_price', FILTER_SANITIZE_STRING ),
 		'wp_review_box_template'           => filter_input( INPUT_POST, 'wp_review_box_template', FILTER_SANITIZE_STRING ),
-		'wp_review_comment_image'          => filter_input( INPUT_POST, 'wp_review_comment_image', FILTER_SANITIZE_STRING ),
-		'wp_review_comment_product_desc'   => filter_input( INPUT_POST, 'wp_review_comment_product_desc', FILTER_SANITIZE_STRING ),
 	);
 
 	$default_colors = wp_review_option( 'colors', array() );
