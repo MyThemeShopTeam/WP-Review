@@ -13,130 +13,6 @@
 		return output;
 	};
 
-	var getFacebookReviewsButton = function( editor ) {
-		return {
-			text: wprVars.facebookReviews,
-			onclick: function() {
-				var dialog = editor.windowManager.open({
-					title: wprVars.facebookReviews,
-					body: [
-						{
-							type: 'textbox',
-							name: 'page_id',
-							label: wprVars.pageId,
-							classes: 'wpr-fb-page-id'
-						},
-						{
-							type: 'textbox',
-							name: 'limit',
-							label: wprVars.limit,
-							value: 5
-						}
-					],
-					buttons: [
-						{
-							id: 'wpr-insert-shortcode',
-							classes: 'widget btn primary first abs-layout-item',
-							text: wprVars.insert,
-							onclick: function() {
-								var $button, $container, $pageId, pageId;
-								$button = this.$el;
-
-								function showMessage( message, type ) {
-									if ( ! type ) {
-										type = 'error';
-									}
-									$button.closest( '.mce-foot' ).before( '<div class="mce-message ' + type + '">' + message + '</div>' );
-								}
-
-								function removeMessage() {
-									$button.closest( '.mce-foot' ).prev( '.mce-message' ).remove();
-								}
-
-								function generateToken( pageId, accessToken, opts ) {
-									wp.ajax.send( 'wp-review-generate-fb-page-token', {
-										type: 'post',
-										data: {
-											page_id: pageId,
-											user_token: accessToken,
-											_wpnonce: wprVars.generateFBTokenNonce
-										},
-										error: function( response ) {
-											if ( typeof opts.error === 'function' ) {
-												opts.error( response );
-											}
-										},
-										success: function( response ) {
-											if ( typeof opts.success === 'function' ) {
-												opts.success( response );
-											}
-										}
-									});
-								}
-
-								$button.addClass( 'mce-disabled' );
-								removeMessage();
-
-								pageId = $( '.mce-wpr-fb-page-id' ).val();
-								if ( ! pageId ) {
-									showMessage( wprVars.emptyFBPageId );
-									return;
-								}
-
-								if ( typeof FB == 'undefined' ) {
-									showMessage( wprVars.fbIsNotLoaded );
-									return;
-								}
-
-								function onLoginSuccess( data ) {
-									generateToken( pageId, data.authResponse.accessToken, {
-										success: function( response ) {
-											// showMessage( response, 'success' );
-											$button.removeClass( 'mce-disabled' );
-											dialog.submit();
-										},
-										error: function( response ) {
-											showMessage( response );
-											$button.removeClass( 'mce-disabled' );
-										},
-									});
-								}
-
-								FB.getLoginStatus( function( response ) {
-									if ( response.status === 'connected' ) {
-										onLoginSuccess( response );
-										return;
-									}
-
-									FB.login( function( response ) {
-										if ( response.status !== 'connected' ) {
-											console.log( 'Can not login' );
-											return;
-										}
-										onLoginSuccess( response );
-									}, { scope: 'manage_pages,pages_show_list' } );
-								} );
-							}
-						},
-						{
-							id: 'wpr-cancel-shortcode',
-							text: wprVars.cancel,
-							onclick: function() {
-								dialog.close();
-							}
-						}
-					],
-					onsubmit: function( e ) {
-						var name = 'wp-review-facebook-reviews',
-							attrs = e.data;
-
-						editor.insertContent( getShortcode( name, attrs ) );
-					}
-				});
-			}
-		};
-	};
-
 	var getComparisonTableButton = function( editor ) {
 		return {
 			text: wprVars.comparisonTable,
@@ -456,7 +332,6 @@
 					getReviewTotalButton( ed ),
 					getVisitorRatingButton( ed ),
 					getCommentsRatingButton( ed ),
-					getFacebookReviewsButton( ed ),
 					getComparisonTableButton( ed )
 				]
 			});

@@ -5,10 +5,6 @@
  * @package WP_Review
  */
 
-$app_id = wp_review_option( 'facebook_app_id' );
-$app_secret = wp_review_option( 'facebook_app_secret' );
-$user_token = wp_review_option( 'facebook_user_token' );
-$user_id = wp_review_option( 'facebook_user_id' );
 ?>
 <div class="wp-review-field no-flex">
 	<?php
@@ -23,20 +19,26 @@ $user_id = wp_review_option( 'facebook_user_id' );
 <div class="wp-review-field">
 	<div class="wp-review-field-label">
 		<label for="wp_review_facebook_app_id"><?php esc_html_e( 'App ID', 'wp-review' ); ?></label>
+		<?php wp_review_print_pro_text(); ?>
 	</div>
 
 	<div class="wp-review-field-option">
-		<input name="wp_review_options[facebook_app_id]" id="wp_review_facebook_app_id" type="text" value="<?php echo esc_attr( $app_id ); ?>" class="all-options">
+		<span class="wp-review-disabled inline-block large-text">
+			<input name="wp_review_options[facebook_app_id]" id="wp_review_facebook_app_id" type="text" class="widefat" disabled>
+		</span>
 	</div>
 </div>
 
 <div class="wp-review-field">
 	<div class="wp-review-field-label">
 		<label for="wp_review_facebook_app_secret"><?php esc_html_e( 'App secret', 'wp-review' ); ?></label>
+		<?php wp_review_print_pro_text(); ?>
 	</div>
 
 	<div class="wp-review-field-option">
-		<input name="wp_review_options[facebook_app_secret]" id="wp_review_facebook_app_secret" class="large-text" type="password" value="<?php echo esc_attr( $app_secret ); ?>" class="all-options">
+		<span class="wp-review-disabled inline-block large-text">
+			<input name="wp_review_options[facebook_app_secret]" id="wp_review_facebook_app_secret" class="widefat" type="password" disabled>
+		</span>
 	</div>
 </div>
 

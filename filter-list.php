@@ -780,35 +780,6 @@ function mts_wpt_title_length_default( $length ) {
 }
 add_filter( 'wpt_title_length_default', 'mts_wpt_title_length_default' );
 
-/**
- * Allow changing schema markup for Facebook page.
- *
- * @since 3.0.4
- *
- * @param array $markup Schema markup.
- * @param array $page   Page data.
- */
-function mts_wp_review_facebook_page_schema_markup( $markup, $page ) {
-	// Change markup here.
-	return $markup;
-}
-add_filter( 'wp_review_facebook_page_schema_markup', 'mts_wp_review_facebook_page_schema_markup', 10, 2 );
-
-/**
- * Allow changing schema markup for Facebook page review.
- *
- * @since 3.0.4
- *
- * @param array $markup Schema markup.
- * @param array $review Review data.
- * @param array $page   Page data.
- */
-function mts_wp_review_facebook_page_review_schema_markup( $markup, $review, $page ) {
-	// Change markup here.
-	return $markup;
-}
-add_filter( 'wp_review_facebook_page_review_schema_markup', 'mts_wp_review_facebook_page_review_schema_markup', 10, 3 );
-
 printf( '<script type="application/ld+json">%s</script>', wp_json_encode( $markup ) );
 
 // Set the review options in your theme

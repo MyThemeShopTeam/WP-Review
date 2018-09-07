@@ -3022,89 +3022,6 @@ function wp_review_nl2list( $str ) {
 
 
 /**
- * Shows Facebook page schema.
- *
- * @since 3.0.4
- *
- * @param array $page Page data.
- */
-function wp_review_facebook_page_schema( $page ) {
-	if ( empty( $page->overall_star_rating ) ) {
-		return;
-	}
-	$markup = array(
-		'@context' => 'http://schema.org',
-		'@type'    => 'Place',
-		'name'     => $page->name,
-		'url'      => "https://facebook.com/{$page->id}",
-		'aggregateRating' => array(
-			'@type'       => 'AggregateRating',
-			'ratingValue' => $page->overall_star_rating,
-			'ratingCount' => $page->rating_count,
-			'bestRating'  => 5,
-		),
-	);
-
-	/**
-	 * Allow changing schema markup for Facebook page.
-	 *
-	 * @since 3.0.4
-	 *
-	 * @param array $markup Schema markup.
-	 * @param array $page   Page data.
-	 */
-	$markup = apply_filters( 'wp_review_facebook_page_schema_markup', $markup, $page );
-
-	printf( '<script type="application/ld+json">%s</script>', wp_json_encode( $markup ) );
-}
-
-
-/**
- * Shows Facebook page review schema.
- *
- * @since 3.0.4
- *
- * @param object $review Review data.
- * @param array  $page   Page data.
- */
-function wp_review_facebook_page_review_schema( $review, $page ) {
-	$markup = array(
-		'@context'   => 'http://schema.org',
-		'@type'      => 'Review',
-		'reviewBody' => $review->review_text,
-		'author'     => array(
-			'@type' => 'Person',
-			'name'  => ! empty( $review->reviewer ) ? $review->reviewer->name : '',
-			'image' => ! empty( $review->reviewer ) ? wp_review_fb_user_avatar_url( $review->reviewer->id ) : '',
-		),
-		'itemReviewed' => array(
-			'@type' => 'Place',
-			'name'  => $page->name,
-			'url'   => "https://facebook.com/{$page->id}",
-		),
-		'reviewRating' => array(
-			'@type'       => 'Rating',
-			'ratingValue' => $review->rating,
-			'bestRating'  => 5,
-		),
-	);
-
-	/**
-	 * Allow changing schema markup for Facebook page review.
-	 *
-	 * @since 3.0.4
-	 *
-	 * @param array $markup Schema markup.
-	 * @param array $review Review data.
-	 * @param array $page   Page data.
-	 */
-	$markup = apply_filters( 'wp_review_facebook_page_review_schema_markup', $markup, $review, $page );
-
-	printf( '<script type="application/ld+json">%s</script>', wp_json_encode( $markup ) );
-}
-
-
-/**
  * Normalizes the rating value base on rating type.
  *
  * @since 3.0.6
@@ -3265,7 +3182,6 @@ function wp_review_network_option($key) {
 function wp_review_get_capabilities() {
 	return array(
 		'wp_review_global_options'        => esc_html__( 'Global Options', 'wp-review' ),
-		'wp_review_facebook_reviews'      => esc_html__( 'Facebook Reviews', 'wp-review' ),
 		'wp_review_import_reviews'        => esc_html__( 'Import Reviews', 'wp-review' ),
 		'wp_review_single_page'           => esc_html__( 'Single Page Settings', 'wp-review' ),
 		'wp_review_features'              => esc_html__( 'Review Features', 'wp-review' ),

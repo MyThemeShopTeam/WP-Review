@@ -18,8 +18,6 @@ add_action( 'wp_ajax_wp_review_migrate_ratings', 'wp_review_ajax_migrate_ratings
 add_action( 'wp_ajax_wp-review-load-reviews', 'wp_review_ajax_load_reviews' );
 add_action( 'wp_ajax_nopriv_wp-review-load-reviews', 'wp_review_ajax_load_reviews' );
 
-add_action( 'wp_ajax_wp-review-generate-fb-page-token', 'wp_review_ajax_generate_fb_page_token' );
-
 add_action( 'wp_ajax_wpr-visitor-features-rating', 'wp_review_ajax_visitor_features_rating' );
 add_action( 'wp_ajax_nopriv_wpr-visitor-features-rating', 'wp_review_ajax_visitor_features_rating' );
 
@@ -331,34 +329,6 @@ function wp_review_extra_info( $post_id, $extra_info, array $args = array() ) {
 		?>
 	</div> <!-- End .<?php echo esc_attr( $args['class'] ); ?>-->
 	<?php
-}
-
-
-/**
- * Ajax handler for generating FB page token.
- *
- * @since 3.0.0
- */
-function wp_review_ajax_generate_fb_page_token() {
-	check_ajax_referer( 'wp_review_generate_fb_page_token' );
-	if ( empty( $_POST['page_id'] ) ) {
-		wp_send_json_error( __( 'Empty page ID', 'wp-review' ) );
-	}
-	if ( empty( $_POST['user_token'] ) ) {
-		wp_send_json_error( __( 'Empty user token', 'wp-review' ) );
-	}
-
-	$page_id = sanitize_text_field( wp_unslash( $_POST['page_id'] ) );
-	$user_token = sanitize_text_field( wp_unslash( $_POST['user_token'] ) );
-	$fb_api = new WP_Review_Facebook_API();
-	$token = $fb_api->generate_page_token( $page_id, $user_token );
-
-	if ( is_wp_error( $token ) ) {
-		wp_send_json_error( $token->get_error_message() );
-	}
-
-	set_transient( "wp_review_fb_page_token_{$page_id}", $token );
-	wp_send_json_success( __( 'Generated token successfully', 'wp-review' ) );
 }
 
 

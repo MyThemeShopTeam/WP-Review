@@ -68,118 +68,6 @@
 		}
 	};
 
-	wpreview.generateFbAccessToken = function( options ) {
-		var defaults;
-		defaults = {
-			container: 'form', // Container element.
-			pageId: '.wpr-fb-page-id', // Page ID input.
-			button: '.wpr-fb-generate' // Generate token button
-		};
-		options = $.extend( {}, defaults, options );
-
-		function onError( $button, message ) {
-			if ( typeof options.error === 'function' ) {
-				options.error.call( $button, message );
-			}
-		}
-
-		function onSuccess( $button, message ) {
-			if ( typeof options.success === 'function' ) {
-				options.success.call( $button, message );
-			}
-		}
-
-		function onComplete( $button, message ) {
-			if ( typeof options.complete === 'function' ) {
-				options.complete.call( $button, message );
-			}
-		}
-
-		function generateToken( pageId, accessToken, opts ) {
-			wp.ajax.send( 'wp-review-generate-fb-page-token', {
-				type: 'post',
-				data: {
-					page_id: pageId,
-					user_token: accessToken,
-					_wpnonce: wprVars.generateFBTokenNonce
-				},
-				error: function( response ) {
-					if ( typeof opts.error === 'function' ) {
-						opts.error( response );
-					}
-				},
-				success: function( response ) {
-					if ( typeof opts.success === 'function' ) {
-						opts.success( response );
-					}
-				}
-			});
-		}
-
-		function onClickGenerate( ev ) {
-			ev.preventDefault();
-			var $button, $container, $pageId, pageId;
-			$button = $( this );
-			$container = $button.closest( options.container );
-			if ( ! $container.length ) {
-				return;
-			}
-			$pageId = $container.find( options.pageId );
-			if ( ! $pageId.length ) {
-				return;
-			}
-
-			if ( typeof options.prepare === 'function' ) {
-				options.prepare.call( $button );
-			}
-
-			if ( typeof FB == 'undefined' ) {
-				onError( $button, wprVars.fbIsNotLoaded );
-				return;
-			}
-
-			pageId = $pageId.val();
-			if ( ! pageId ) {
-				onError( $button, wprVars.emptyFBPageId );
-				return;
-			}
-
-			function onLoginSuccess( data ) {
-				generateToken( pageId, data.authResponse.accessToken, {
-					success: function( response ) {
-						onSuccess( $button, response );
-						onComplete( $button, response );
-					},
-					error: function( response ) {
-						onError( $button, response );
-						onComplete( $button, response );
-					},
-				});
-			}
-
-			FB.getLoginStatus( function( response ) {
-				if ( response.status === 'connected' ) {
-					onLoginSuccess( response );
-					return;
-				}
-
-				FB.login( function( response ) {
-					if ( response.status !== 'connected' ) {
-						console.log( 'Can not login' );
-						return;
-					}
-					onLoginSuccess( response );
-				}, { scope: 'manage_pages,pages_show_list' } );
-			} );
-		}
-
-		if ( options.button instanceof $ ) {
-			options.button.on( 'click', onClickGenerate );
-		} else {
-			$( document ).on( 'click', options.button, onClickGenerate );
-		}
-	};
-
 	wpreview.initTabs = function() {
 		console.log( 'initTabs' );
 		wpreview.tabs({
@@ -211,27 +99,6 @@
 				Cookies.set( 'wpr-last-htab', tab );
 			}
 		});
-	};
-
-	wpreview.initFbAccessTokenGeneration = function() {
-		if ( $( 'body.wp-admin.widgets-php' ).length ) {
-			wpreview.generateFbAccessToken({
-				container: '.wpr-fb-page',
-				prepare: function() {
-					this.prop( 'disabled', true );
-					this.next( '.description' ).remove();
-				},
-				error: function( message ) {
-					this.after( '<span class="description error">' + message + '</span>' );
-				},
-				success: function( message ) {
-					this.after( '<span class="description success">' + message + '</span>' );
-				},
-				complete: function() {
-					this.prop( 'disabled', false );
-				}
-			});
-		}
 	};
 
 	wpreview.pluginOptions = function() {
@@ -611,7 +478,6 @@
 	$( document ).ready( function() {
 		wpreview.initSelect2();
 		wpreview.initTabs();
-		wpreview.initFbAccessTokenGeneration();
 		wpreview.pluginOptions();
 		wpreview.pluginMetaBoxes();
 		wpreview.boxTemplatesSelect();

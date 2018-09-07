@@ -237,8 +237,6 @@ h4.wp-review-comment-title { margin-top: 0; margin-bottom: 1em; }
 
 .wpr-tabs .tab-title.nav-tab-active { background-color: #fff; border-bottom-color: #fff; }
 
-.pac-container { z-index: 999999; }
-
 .wpr-box-template-images { display: flex; flex-wrap: wrap; }
 
 .wpr-box-template-images .wpr-box-template-image { flex: 0 0 50%; display: block; outline: 0; box-shadow: none; text-decoration: none; text-align: center; color: #333; font-weight: 700; margin-bottom: 5px; }

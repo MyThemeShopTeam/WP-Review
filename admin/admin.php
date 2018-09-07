@@ -116,10 +116,7 @@ function wp_review_admin_style( $hook_suffix ) {
 			'establishments'               => __( 'Establishments', 'wp-review' ),
 			'addresses'                    => __( 'Addresses', 'wp-review' ),
 			'geocodes'                     => __( 'Geocodes', 'wp-review' ),
-			'facebookReviews'              => __( 'Facebook reviews', 'wp-review' ),
 			'pageId'                       => __( 'Page ID', 'wp-review' ),
-			'emptyFBPageId'                => __( 'Page ID must not be empty', 'wp-review' ),
-			'fbIsNotLoaded'                => __( 'Facebook API is not loaded', 'wp-review' ),
 			'generateToken'                => __( 'Generate token', 'wp-review' ),
 			'comparisonTable'              => __( 'Comparison table', 'wp-review' ),
 			'reviewIds'                    => __( 'Review IDs (separate by commas)', 'wp-review' ),
@@ -149,7 +146,6 @@ function wp_review_admin_style( $hook_suffix ) {
 			'cancel'                       => __( 'Cancel', 'wp-review' ),
 			'reviewTypes'                  => wp_review_get_rating_types(),
 			'globalReviewType'             => wp_review_option( 'review_type', 'none' ),
-			'generateFBTokenNonce'         => wp_create_nonce( 'wp_review_generate_fb_page_token' ),
 			'assetsUrl'                    => WP_REVIEW_ASSETS,
 			'boxTemplates'                 => wp_review_get_box_templates(),
 			'purgeRatingsNonce'            => wp_create_nonce( 'wpr_purge_ratings' ),
@@ -458,40 +454,6 @@ function wp_review_editor_js( $plugin_array ) {
 	return $plugin_array;
 }
 add_filter( 'mce_external_plugins', 'wp_review_editor_js' );
-
-
-/**
- * Embeds Facebook JS SDK.
- *
- * @since 3.0.0
- */
-function wp_review_fb_js_sdk() {
-	$app_id = wp_review_option( 'facebook_app_id' );
-	if ( ! $app_id ) {
-		return;
-	}
-	?>
-	<script>
-		window.fbAsyncInit = function() {
-			FB.init({
-				appId            : '<?php echo esc_js( $app_id ); ?>',
-				autoLogAppEvents : true,
-				xfbml            : true,
-				version          : 'v<?php echo WP_REVIEW_GRAPH_API_VERSION; ?>'
-			});
-		};
-
-		(function(d, s, id){
-			var js, fjs = d.getElementsByTagName(s)[0];
-			if (d.getElementById(id)) {return;}
-			js = d.createElement(s); js.id = id;
-			js.src = "https://connect.facebook.net/en_US/sdk.js";
-			fjs.parentNode.insertBefore(js, fjs);
-		}(document, 'script', 'facebook-jssdk'));
-	</script>
-	<?php
-}
-add_action( 'admin_footer', 'wp_review_fb_js_sdk' );
 
 
 /**

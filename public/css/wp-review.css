@@ -1,4 +1,4 @@
-.review-list li:after, .wp-reviews-list .item:after, .wp-reviews-list .reviews-pagination:after, .wpr-businesses:after, [data-ui-tabs] .ui-tabs-nav:after, [data-wp-review-tabs] .tab-titles:after { content: " "; display: block; height: 0; visibility: hidden; clear: both; }
+.review-list li:after, .wp-reviews-list .item:after, .wp-reviews-list .reviews-pagination:after, [data-ui-tabs] .ui-tabs-nav:after, [data-wp-review-tabs] .tab-titles:after { content: " "; display: block; height: 0; visibility: hidden; clear: both; }
 
 .review-wrapper { border: 1px solid #e7e7e7; margin-bottom: 30px; clear: both; box-sizing: border-box; }
 
@@ -554,54 +554,6 @@ form.wp-review-comment-form > div, #commentform.wp-review-comment-form > div { w
 .wp-reviews-list .reviews-pagination a { margin: 0 15px; }
 
 .wp-reviews-list .reviews-pagination .next { float: right; }
-
-/*--------------------------- Yelp shortcodes --------------------------*/
-.wpr-businesses .business { display: flex; border: 1px solid #ccc; border-radius: 3px; margin-bottom: 10px; }
-
-.wpr-businesses .business:last-of-type { margin-bottom: 0; }
-
-.wpr-businesses .business-image { flex: 0 0 90px; border-right: 1px solid #ccc; }
-
-.wpr-businesses .business-image a, .wpr-businesses .business-image img { box-shadow: none; border: 0; }
-
-.wpr-businesses .business-image img { display: block; }
-
-.wpr-businesses .business-data { flex: auto; padding: 5px 5px 5px 10px; background: #fff; }
-
-.wpr-businesses .business-name { font-weight: 700; color: #D32323; margin-bottom: 8px; }
-
-.wpr-businesses .business-name a, .wpr-businesses .business-name a:hover, .wpr-businesses .business-name a:focus { color: inherit !important; text-decoration: none; box-shadow: none; border: 0; }
-
-.wpr-businesses .review-count { color: #777; font-size: 0.8em; display: block; }
-
-.wpr-businesses .yelp-logo { height: 30px; width: auto; float: right; }
-
-.widget .widget_wp_review_yelp_business .business { background: #fff; }
-
-.widget .wpr-place-reviews { background: #fff; border: 1px solid #e4e4e4; }
-
-.widget .wpr-place-reviews .place-review { padding: 10px 15px; border-bottom: 1px solid #e4e4e4; border-top: 0; }
-
-.widget .wpr-place-reviews .place-review:last-of-type { border-bottom: 0; }
-
-.widget .wpr-place-reviews .place-review:last-of-type + img { display: none; }
-
-/*--------------------------- Google place reviews --------------------------*/
-.wpr-place-reviews .place-name { font-weight: 700; }
-
-.wpr-place-reviews .place-review { padding: 1em 0; border-top: 1px solid #ddd; }
-
-.wpr-place-reviews .review-image { float: left; max-width: 62px; margin-right: 10px; }
-
-.wpr-place-reviews .review-data { margin-bottom: 5px; }
-
-.wpr-place-reviews .review-data .reviewer-name { margin-top: -2px; margin-bottom: 4px; font-weight: bold; }
-
-.wpr-place-reviews .review-data .reviewer-name a { border: 0; }
-
-.wpr-place-reviews .review-rating { color: #999; font-size: 0.8em; }
-
-.wpr-place-reviews .review-text { overflow: hidden; }
 
 [data-ui-tabs] .ui-tabs-nav { list-style: none; padding: 0 30px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.1); margin: 10px 0; }
 
