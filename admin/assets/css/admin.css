@@ -1,3 +1,5 @@
+#wp-review-pro-popup-notice:after { content: " "; display: block; height: 0; visibility: hidden; clear: both; }
+
 .border-box, .wpr-box-template-images { box-sizing: border-box; }
 
 .border-box *, .wpr-box-template-images * { box-sizing: border-box; }

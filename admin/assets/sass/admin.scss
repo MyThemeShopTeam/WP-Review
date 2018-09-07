@@ -838,6 +838,8 @@ input.wpr-switch__off:checked + label, input.wpr-switch__off:checked + label:hov
 }
 
 #wp-review-pro-popup-notice {
+	@extend %clear-float-after;
+
 	position: relative;
 	background: #FFF;
 	padding: 20px;
