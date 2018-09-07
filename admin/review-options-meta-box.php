@@ -29,6 +29,10 @@ function wp_review_render_meta_box_review_options( $post ) {
 	$available_types = wp_review_get_rating_types();
 	$schemas = wp_review_schema_types();
 
+	$rating_schema = wp_review_get_rating_schema( $post->ID );
+	$custom_author = get_post_meta( $post->ID, 'wp_review_custom_author', true );
+	$author        = get_post_meta( $post->ID, 'wp_review_author', true );
+
 	$form_field = new WP_Review_Form_Field();
 	?>
 
@@ -94,28 +98,50 @@ function wp_review_render_meta_box_review_options( $post ) {
 					<div class="wp-review-field-option">
 						<select name="wp_review_schema" id="wp_review_schema">
 							<?php foreach ( $schemas as $key => $arr ) : ?>
-								<option value="<?php echo esc_attr( $key ); ?>" disabled><?php echo esc_html( $arr['label'] ); ?></option>
+								<option value="<?php echo esc_attr( $key ); ?>" <?php selected( $key, 'Thing' ); ?> disabled><?php echo esc_html( $arr['label'] ); ?></option>
 							<?php endforeach; ?>
 						</select>
 					</div>
 				</div>
 
 				<div id="wp_review_schema_type_options_wrap">
-
 					<div class="wp-review-field" id="wp_review_schema_rating_group">
 						<div class="wp-review-field-label">
 							<label for="wp_review_rating_schema"><?php esc_html_e( 'Rating Schema', 'wp-review' ); ?></label>
-							<?php wp_review_print_pro_text(); ?>
+						</div>
+						<div class="wp-review-field-option">
+							<select name="wp_review_rating_schema" id="wp_review_rating_schema">
+								<option value="author" <?php selected( 'author', $rating_schema ); ?>><?php esc_html_e( 'Author Review Rating', 'wp-review' ); ?></option>
+								<option value="visitors" <?php selected( 'visitors', $rating_schema ); ?>><?php esc_html_e( 'Visitors Aggregate Rating (if enabled)', 'wp-review' ); ?></option>
+								<option value="comments" <?php selected( 'comments', $rating_schema ); ?> disabled><?php esc_html_e( 'Comments Reviews Aggregate Rating (if enabled)', 'wp-review' ); ?></option>
+							</select>
+						</div>
+					</div>
+					<div id="wp_review_schema_author_wrapper"<?php if ( 'author' !== $rating_schema ) echo ' style="display: none;"'; ?>>
+						<div class="wp-review-field">
+							<div class="wp-review-field-label">
+								<label><?php esc_html_e( 'Custom Author', 'wp-review' ); ?></label>
+							</div>
+							<div class="wp-review-field-option">
+								<?php
+								$form_field->render_switch( array(
+									'id'    => 'wp_review_custom_author',
+									'name'  => 'wp_review_custom_author',
+									'value' => $custom_author,
+								) );
+								?>
+							</div>
 						</div>
 
-						<div class="wp-review-field-option">
-							<span class="wp-review-disabled inline-block">
-								<select name="wp_review_rating_schema" id="wp_review_rating_schema" disabled>
-									<option value="author"><?php esc_html_e( 'Author Review Rating', 'wp-review' ); ?></option>
-									<option value="visitors"><?php esc_html_e( 'Visitors Aggregate Rating (if enabled)', 'wp-review' ); ?></option>
-									<option value="comments"><?php esc_html_e( 'Comments Reviews Aggregate Rating (if enabled)', 'wp-review' ); ?></option>
-								</select>
-							</span>
+						<div class="wp-review-author-options"<?php if ( empty( $custom_author ) ) echo ' style="display: none;"'; ?>>
+							<div class="wp-review-field">
+								<div class="wp-review-field-label">
+									<label for="wp_review_author"><?php esc_html_e( 'Review Author', 'wp-review' ); ?></label>
+								</div>
+								<div class="wp-review-field-option">
+									<input type="text" name="wp_review_author" id="wp_review_author" value="<?php echo esc_attr( $author ); ?>">
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>

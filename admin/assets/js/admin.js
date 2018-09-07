@@ -69,7 +69,6 @@
 	};
 
 	wpreview.initTabs = function() {
-		console.log( 'initTabs' );
 		wpreview.tabs({
 			wrapper: '.js-tabs',
 			title: '.tab-title',
@@ -552,7 +551,7 @@
 		});
 
 		// Pro feature popup.
-		$( document ).on( 'click', '.wp-review-disabled', function( ev ) {
+		$( document ).on( 'click', '.wp-review-disabled, option[disabled]', function( ev ) {
 			ev.preventDefault();
 
 			$.magnificPopup.open({
@@ -561,7 +560,6 @@
 					type: 'inline'
 				}
 			});
-			// $( '#wp-review-pro-popup' ).trigger( 'click' );
 		});
 	});
 })( jQuery, Cookies );
