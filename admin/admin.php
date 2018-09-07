@@ -522,19 +522,13 @@ function wp_review_print_pro_text( $strip_br = false ) {
  */
 function wp_review_print_pro_popup() {
 	?>
-	<a id="wp-review-pro-popup" class="hidden thickbox" href="#TB_inline?width=400&height=200&inlineId=wp-review-pro-popup-notice" title="<?php esc_attr_e( 'Buy WP Review Pro', 'wp-review' ); ?>">click</a>
-	<div id="wp-review-pro-popup-notice" class="hidden">
+	<div id="wp-review-pro-popup-notice" class="mfp-hide">
+		<h1><?php esc_html_e( 'Buy WP Review Pro', 'wp-review' ); ?></h1>
 		<img class="pro-image" src="<?php echo esc_url( WP_REVIEW_URI . 'admin/assets/images/wp-review-pro.jpg' ); ?>" />
 		<h2 class="pro-notice-header"><?php esc_html_e( 'Like WP Review Plugin? You will LOVE WP Review Pro!', 'wp-review' ); ?></h2>
 		<p>TODO: change this description</p>
 		<a class="button-primary" href="https://mythemeshop.com/plugins/wp-review-pro/" target="_blank"><?php esc_html_e( 'Buy WP Review Pro', 'wp-review' ); ?></a>
 	</div>
-
-	<style>
-		#TB_ajaxContent .popup-desc, #TB_ajaxContent .popup-desc img { height: 100%; }
-		#wp-review-pro-notice-header { margin: 1em 0; font-size: 1.3em; }
-		#TB_ajaxContent .pro-image { width: 150px; float: right; margin: 10px; }
-	</style>
 	<?php
 }
 add_action( 'admin_footer', 'wp_review_print_pro_popup' );

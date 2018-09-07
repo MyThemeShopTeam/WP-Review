@@ -831,7 +831,23 @@ input.wpr-switch__off:checked + label, input.wpr-switch__off:checked + label:hov
 		display: inline-block;
 	}
 
+	&.wpr-switch,
 	&.has-bg {
 		opacity: 0.3;
+	}
+}
+
+#wp-review-pro-popup-notice {
+	position: relative;
+	background: #FFF;
+	padding: 20px;
+	width: auto;
+	max-width: 630px;
+	margin: 20px auto;
+
+	.pro-image {
+		width: 150px;
+		float: right;
+		margin: 10px;
 	}
 }

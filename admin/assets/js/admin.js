@@ -555,7 +555,13 @@
 		$( document ).on( 'click', '.wp-review-disabled', function( ev ) {
 			ev.preventDefault();
 
-			$( '#wp-review-pro-popup' ).trigger( 'click' );
+			$.magnificPopup.open({
+				items: {
+					src: '#wp-review-pro-popup-notice',
+					type: 'inline'
+				}
+			});
+			// $( '#wp-review-pro-popup' ).trigger( 'click' );
 		});
 	});
 })( jQuery, Cookies );
