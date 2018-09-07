@@ -5,7 +5,7 @@
 * Author: MyThemesShop
 * Author URI: http://mythemeshop.com/
 */
-( function( $, google, Cookies ) {
+( function( $, Cookies ) {
 	"use strict";
 
 	var wpreview = window.wpreview = window.wpreview || {};
@@ -66,52 +66,6 @@
 		} else {
 			$( options.wrapper ).find( options.title + ':eq(0)' ).click();
 		}
-	};
-
-	wpreview.locationLookup = function( el, options ) {
-		if ( ! google || ! el ) {
-			return;
-		}
-
-		var defaults, $container, $type, $placeId, autocomplete;
-		defaults = {
-			container: 'form', // Container element.
-			type: '.wpr-place-type', // Place type element.
-			placeId: '.wpr-place-id' // Place ID element.
-		};
-
-		options = $.extend( {}, defaults, options );
-
-		$container = $( el ).closest( options.container );
-		$type = $container.find( options.type );
-		$placeId = $container.find( options.placeId );
-		autocomplete = new google.maps.places.Autocomplete( el );
-
-		$type.on( 'change', function() {
-			var type = $( this ).val();
-			autocomplete.setTypes( [ type ] );
-			$( el ).val( '' );
-			$placeId.val( '' );
-		});
-
-		google.maps.event.addListener( autocomplete, 'place_changed', function() {
-			var place = autocomplete.getPlace();
-
-			if ( ! place.place_id ) {
-				alert( 'No place reference found for this location.' );
-				return false;
-			}
-
-			// Set place ID hidden input value.
-			$placeId.val( place.place_id ).trigger( 'change' );
-		});
-
-		// Tame the enter key to not save the widget while using the autocomplete input.
-		$( el ).keydown( function ( ev ) {
-			if ( ev.which == 13 ) {
-				return false;
-			}
-		});
 	};
 
 	wpreview.generateFbAccessToken = function( options ) {
@@ -257,22 +211,6 @@
 				Cookies.set( 'wpr-last-htab', tab );
 			}
 		});
-	};
-
-	wpreview.initLocationLookup = function() {
-		if ( $( 'body.wp-admin.widgets-php' ).length ) {
-			var $inputs = $( '.wpr-location-lookup' );
-			$inputs.each( function( index ) {
-				wpreview.locationLookup( $inputs[ index ] );
-			});
-
-			$( document ).ajaxSuccess( function ( e, xhr, settings ) {
-				var $inputs = $( '.wpr-location-lookup' );
-				$inputs.each( function( index ) {
-					wpreview.locationLookup( $inputs[ index ] );
-				});
-			});
-		}
 	};
 
 	wpreview.initFbAccessTokenGeneration = function() {
@@ -673,7 +611,6 @@
 	$( document ).ready( function() {
 		wpreview.initSelect2();
 		wpreview.initTabs();
-		wpreview.initLocationLookup();
 		wpreview.initFbAccessTokenGeneration();
 		wpreview.pluginOptions();
 		wpreview.pluginMetaBoxes();
@@ -755,7 +692,7 @@
 			$( '#wp-review-pro-popup' ).trigger( 'click' );
 		});
 	});
-})( jQuery, window.google || null, Cookies );
+})( jQuery, Cookies );
 
 jQuery(document).ready(function($) {
 

@@ -514,11 +514,6 @@ h4.wp-review-comment-title {
 	border-bottom-color: #fff;
 }
 
-// Fix google places autocomplete z-index
-.pac-container {
-	z-index: 999999;
-}
-
 .wpr-box-template-images {
 	@extend .border-box;
 

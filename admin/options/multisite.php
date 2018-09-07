@@ -36,7 +36,6 @@ foreach ( $sites as $site ) {
 	if ( ! is_main_site( $site->blog_id ) ) {
 		$hide_options = wp_review_option( 'hide_global_options_' . $site->blog_id );
 		$hide_fb = wp_review_option( 'hide_facebook_reviews_' . $site->blog_id );
-		$hide_google = wp_review_option( 'hide_google_reviews_' . $site->blog_id );
 
 		$hide_role_manager = wp_review_option( 'hide_role_manager_' . $site->blog_id );
 		$hide_import = wp_review_option( 'hide_import_' . $site->blog_id );
@@ -131,14 +130,15 @@ foreach ( $sites as $site ) {
 			<div class="wp-review-field">
 				<div class="wp-review-field-label">
 					<label><?php esc_html_e( 'Hide Google Reviews', 'wp-review' ); ?></label>
+					<?php wp_review_print_pro_text(); ?>
 				</div>
 
 				<div class="wp-review-field-option">
 					<?php
 					$form_field->render_switch( array(
-						'id'    => 'wp_review_hide_google_reviews_' . $site->blog_id,
-						'name'  => 'wp_review_options[hide_google_reviews_' . $site->blog_id . ']',
-						'value' => ! empty( $hide_google ),
+						'id'       => 'wp_review_hide_google_reviews_' . $site->blog_id,
+						'name'     => 'wp_review_options[hide_google_reviews_' . $site->blog_id . ']',
+						'disabled' => true,
 					) );
 					?>
 				</div>

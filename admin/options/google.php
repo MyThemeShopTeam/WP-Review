@@ -5,15 +5,17 @@
  * @package WP_Review
  */
 
-$api_key = wp_review_option( 'google_api_key' );
 ?>
 <div class="wp-review-field">
 	<div class="wp-review-field-label">
 		<label for="wp_review_google_api_key"><?php esc_html_e( 'API Key', 'wp-review' ); ?></label>
+		<?php wp_review_print_pro_text(); ?>
 	</div>
 
 	<div class="wp-review-field-option">
-		<input name="wp_review_options[google_api_key]" id="wp_review_google_api_key" class="large-text" type="password" value="<?php echo esc_attr( $api_key ); ?>" class="all-options">
+		<span class="wp-review-disabled inline-block large-text">
+			<input name="wp_review_options[google_api_key]" id="wp_review_google_api_key" class="widefat" type="password" disabled>
+		</span>
 	</div>
 
 	<span class="description">

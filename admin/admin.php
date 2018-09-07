@@ -39,12 +39,6 @@ function wp_review_admin_style( $hook_suffix ) {
 	wp_enqueue_media();
 	add_thickbox();
 
-	$api_key = wp_review_option( 'google_api_key' );
-	if ( ! empty( $api_key ) ) {
-		wp_register_script( 'google-maps', 'https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=' . $api_key, array(), false, true );
-		wp_enqueue_script( 'google-maps' );
-	}
-
 	wp_enqueue_script( 'jquery-knob', WP_REVIEW_ASSETS . 'js/jquery.knob.min.js', array( 'jquery' ), '1.2.12', true );
 
 	wp_register_script( 'js-cookie', WP_REVIEW_ASSETS . 'js/js.cookie.min.js', array(), '2.1.4', true );
@@ -117,9 +111,7 @@ function wp_review_admin_style( $hook_suffix ) {
 			'businessId'                   => __( 'Business ID', 'wp-review' ),
 			'locationLookup'               => __( 'Location lookup', 'wp-review' ),
 			'placeId'                      => __( 'Place ID', 'wp-review' ),
-			'googlePlaceReviews'           => __( 'Google place reviews', 'wp-review' ),
 			'placeType'                    => __( 'Place type', 'wp-review' ),
-			'googleReviewNum'              => __( 'Number of reviews (Max allowed 5)', 'wp-review' ),
 			'all'                          => __( 'All', 'wp-review' ),
 			'establishments'               => __( 'Establishments', 'wp-review' ),
 			'addresses'                    => __( 'Addresses', 'wp-review' ),

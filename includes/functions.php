@@ -3022,52 +3022,6 @@ function wp_review_nl2list( $str ) {
 
 
 /**
- * Shows Google Place Review schema.
- *
- * @since 3.0.4
- *
- * @param array $review Review data.
- * @param array $place  Place data.
- */
-function wp_review_google_place_review_schema( $review, $place ) {
-	$markup = array(
-		'@context'   => 'http://schema.org',
-		'@type'      => 'Review',
-		'reviewBody' => $review['text'],
-		'author'     => array(
-			'@type' => 'Person',
-			'name'  => $review['author_name'],
-			'url'   => $review['author_url'],
-			'image' => $review['profile_photo_url'],
-		),
-		'itemReviewed' => array(
-			'@type' => 'Place',
-			'name'  => $place['name'],
-			'url'   => $place['url'],
-		),
-		'reviewRating' => array(
-			'@type' => 'Rating',
-			'ratingValue' => $review['rating'],
-			'bestRating'  => 5,
-		),
-	);
-
-	/**
-	 * Allow changing schema markup for Google place review.
-	 *
-	 * @since 3.0.4
-	 *
-	 * @param array $markup Schema markup.
-	 * @param array $review Review data.
-	 * @param array $place  Place data.
-	 */
-	$markup = apply_filters( 'wp_review_google_place_review_schema_markup', $markup, $review, $place );
-
-	printf( '<script type="application/ld+json">%s</script>', wp_json_encode( $markup ) );
-}
-
-
-/**
  * Shows Facebook page schema.
  *
  * @since 3.0.4
@@ -3311,7 +3265,6 @@ function wp_review_network_option($key) {
 function wp_review_get_capabilities() {
 	return array(
 		'wp_review_global_options'        => esc_html__( 'Global Options', 'wp-review' ),
-		'wp_review_google_reviews'        => esc_html__( 'Google Reviews', 'wp-review' ),
 		'wp_review_facebook_reviews'      => esc_html__( 'Facebook Reviews', 'wp-review' ),
 		'wp_review_import_reviews'        => esc_html__( 'Import Reviews', 'wp-review' ),
 		'wp_review_single_page'           => esc_html__( 'Single Page Settings', 'wp-review' ),

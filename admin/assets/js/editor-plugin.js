@@ -13,82 +13,6 @@
 		return output;
 	};
 
-	var getGooglePlaceReviewsButton = function( editor ) {
-		return {
-			text: wprVars.googlePlaceReviews,
-			onclick: function() {
-				var dialog = editor.windowManager.open({
-					title: wprVars.googlePlaceReviews,
-					body: [
-						{
-							type: 'selectbox',
-							label: wprVars.placeType,
-							classes: 'wpr-place-type',
-							options: [ 'all', 'establishment', 'address', 'geocode' ]
-						},
-						{
-							type: 'textbox',
-							label: wprVars.locationLookup,
-							classes: 'wpr-location-lookup'
-						},
-						{
-							type: 'textbox',
-							name: 'place_id',
-							classes: 'wpr-place-id',
-							hidden: true
-						},
-						{
-							type: 'listbox',
-							name: 'review_num',
-							label: wprVars.googleReviewNum,
-							values: [
-								{ text: 1, value: 1 },
-								{ text: 2, value: 2 },
-								{ text: 3, value: 3 },
-								{ text: 4, value: 4 },
-								{ text: 5, value: 5 }
-							],
-							value: 5
-						}
-					],
-					buttons: [
-						{
-							id: 'wpr-insert-shortcode',
-							classes: 'widget btn primary first abs-layout-item',
-							text: wprVars.insert,
-							onclick: function( e ) {
-								dialog.submit();
-							}
-						},
-						{
-							id: 'wpr-cancel-shortcode',
-							text: wprVars.cancel,
-							onclick: function() {
-								dialog.close();
-							}
-						}
-					],
-					onOpen: function( e ) {
-						var $inputs = $( '.mce-wpr-location-lookup' );
-						$inputs.each( function( index, el ) {
-							wpreview.locationLookup( $inputs[ index ], {
-								container: '.mce-panel', // Container element.
-								type: '.mce-wpr-place-type', // Place type element.
-								placeId: '.mce-wpr-place-id' // Place ID element.
-							});
-						});
-					},
-					onsubmit: function( e ) {
-						var name = 'wp-review-google-place-reviews',
-							attrs = e.data;
-
-						editor.insertContent( getShortcode( name, attrs ) );
-					}
-				});
-			}
-		};
-	};
-
 	var getFacebookReviewsButton = function( editor ) {
 		return {
 			text: wprVars.facebookReviews,
@@ -532,7 +456,6 @@
 					getReviewTotalButton( ed ),
 					getVisitorRatingButton( ed ),
 					getCommentsRatingButton( ed ),
-					getGooglePlaceReviewsButton( ed ),
 					getFacebookReviewsButton( ed ),
 					getComparisonTableButton( ed )
 				]
