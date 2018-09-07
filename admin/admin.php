@@ -529,6 +529,10 @@ function wp_review_print_pro_popup() {
 		<p>TODO: change this description</p>
 		<a class="button-primary" href="https://mythemeshop.com/plugins/wp-review-pro/" target="_blank"><?php esc_html_e( 'Buy WP Review Pro', 'wp-review' ); ?></a>
 	</div>
+
+	<style>
+		.mfp-hide { display: none !important; }
+	</style>
 	<?php
 }
 add_action( 'admin_footer', 'wp_review_print_pro_popup' );
