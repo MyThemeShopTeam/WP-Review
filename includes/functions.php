@@ -2060,7 +2060,7 @@ function wp_review_get_schema_review_rating( $review, $nested_item = false ) {
 
 function wp_review_get_schema_user_rating( $review, $nested_item = false ) {
 
-	if ( !$nested_item && in_array( $review['schema'], apply_filters( 'wp_review_schema_force_nested_user_rating_types', array('SoftwareApplication', 'Recipe') ) ) ) return; // Requires nested aggregateRating
+	if ( ! $nested_item && in_array( $review['schema'], apply_filters( 'wp_review_schema_force_nested_user_rating_types', array( 'SoftwareApplication', 'Recipe' ) ) ) ) return; // Requires nested aggregateRating.
 
 	global $wp_review_rating_types;
 
@@ -2068,8 +2068,8 @@ function wp_review_get_schema_user_rating( $review, $nested_item = false ) {
 		$item_reviewed = wp_review_get_schema_nested_item_args( $review );
 	} else {
 		$item_reviewed = array(
-			"@type" => "Thing",
-			"name" => esc_html( wp_review_get_reviewed_item_name( $review ) )
+			'@type' => 'Thing',
+			'name'  => esc_html( wp_review_get_reviewed_item_name( $review ) ),
 		);
 	}
 
@@ -2082,7 +2082,7 @@ function wp_review_get_schema_user_rating( $review, $nested_item = false ) {
 			'@context'     => 'http://schema.org',
 			'@type'        => 'aggregateRating',
 			'itemReviewed' => $item_reviewed,
-			'ratingValue'  => $total,
+			'ratingValue'  => wp_review_normalize_rating_value( $total, $review['type'] ),
 			'bestRating'   => $wp_review_rating_types[ $review['user_review_type'] ]['max'],
 			'ratingCount'  => $count,
 		);
@@ -2120,10 +2120,10 @@ function wp_review_get_schema_nested_user_rating_args( $review ) {
 	$args = array();
 	if ( 0 < (int) $review['user_review_count'] ) {
 		$args = array(
-			"@type"    => "aggregateRating",
-			"ratingValue" => $review['user_review_total'],
-			"bestRating" => $wp_review_rating_types[ $review['user_review_type'] ]['max'],
-			"ratingCount" => $review['user_review_count']
+			'@type'       => 'aggregateRating',
+			'ratingValue' => wp_review_normalize_rating_value( $review['user_review_total'], $review['type'] ),
+			'bestRating'  => $wp_review_rating_types[ $review['user_review_type'] ]['max'],
+			'ratingCount' => $review['user_review_count']
 		);
 	}
 
