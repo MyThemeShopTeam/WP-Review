@@ -379,7 +379,7 @@ $form_field = new WP_Review_Form_Field();
 			</div>
 
 			<div class="wp-review-field-option">
-				<span class="wp-review-disabled wp-review-disabled-select">
+				<span class="wp-review-disabled inline-block">
 					<select name="wp_review_options[record_ratings_by]" id="wp_review_record_ratings_by" disabled>
 						<option value="ip"><?php esc_html_e( 'Based on IP address', 'wp-review' ); ?></option>
 						<option value="cookie"><?php esc_html_e( 'Based on browser cookie', 'wp-review' ); ?></option>
@@ -539,7 +539,7 @@ $form_field = new WP_Review_Form_Field();
 				</div>
 
 				<div class="wp-review-field-option">
-					<span class="wp-review-disabled wp-review-disabled-color">
+					<span class="wp-review-disabled inline-block has-bg">
 						<input type="text" id="wp_review_inactive_color" class="wp-review-color" name="wp_review_options[colors][inactive_color]" value="<?php echo esc_attr( $inactive_color ); ?>" data-default-color="<?php echo esc_attr( $inactive_color ); ?>" disabled>
 					</span>
 				</div>
@@ -593,7 +593,7 @@ $form_field = new WP_Review_Form_Field();
 				<?php wp_review_print_pro_text(); ?>
 			</div>
 
-			<div class="wp-review-field-option wp-review-disabled wp-review-disabled-slider">
+			<div class="wp-review-field-option wp-review-disabled has-bg">
 				<input type="number" min="1" max="100" step="1" name="wp_review_options[width]" id="wp_review_width" value="100" disabled /> %
 				<div id="wp-review-width-slider"></div>
 			</div>

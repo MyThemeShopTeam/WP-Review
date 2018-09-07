@@ -401,7 +401,7 @@ function wp_review_render_meta_box_item( $post ) {
 			</div>
 
 			<div class="wp-review-field-option">
-				<span class="wp-review-disabled wp-review-disabled-color">
+				<span class="wp-review-disabled inline-block has-bg">
 					<input type="text" id="wp_review_inactive_color" class="wp-review-color" name="wp_review_inactive_color" value="<?php echo esc_attr( $inactive_color ); ?>" data-default-color="<?php echo esc_attr( $inactive_color ); ?>" disabled>
 				</span>
 			</div>
@@ -835,7 +835,7 @@ function wp_review_render_meta_box_userReview( $post ) {
 		</div>
 
 		<div class="wp-review-field-option">
-			<span class="wp-review-disabled wp-review-disabled-select">
+			<span class="wp-review-disabled inline-block">
 				<select name="wp_review_allow_comment_feedback" id="wp_review_allow_comment_feedback" disabled>
 					<option value=""><?php esc_html_e( 'Use global options', 'wp-review' ); ?></option>
 					<option value="yes"><?php esc_html_e( 'Yes', 'wp-review' ); ?></option>
