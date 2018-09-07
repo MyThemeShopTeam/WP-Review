@@ -1068,11 +1068,7 @@ function wp_review_save_review_items_data( $post_id ) {
 	if ( ! empty( $_POST['wp_review_item_title'] ) ) {
 		$title = $_POST['wp_review_item_title'];
 		$star  = $_POST['wp_review_item_star'];
-		$color = $_POST['wp_review_item_color'];
-		$inactive_color = $_POST['wp_review_item_inactive_color'];
 		$ids   = $_POST['wp_review_item_id'];
-		$positive = isset( $_POST['wp_review_item_positive'] ) ? $_POST['wp_review_item_positive'] : array();
-		$negative = isset( $_POST['wp_review_item_negative'] ) ? $_POST['wp_review_item_negative'] : array();
 		$new   = array();
 
 		$count = count( $title );
@@ -1092,23 +1088,6 @@ function wp_review_save_review_items_data( $post_id ) {
 			if ( ! empty( $title[ $i ] ) ) {
 				$new[ $i ]['wp_review_item_title'] = sanitize_text_field( wp_unslash( $title[ $i ] ) );
 			}
-
-			$should_save = ! empty( $color[ $i ] ) && $color[ $i ] !== $global_color && ( ! $custom_colors || $color[ $i ] !== $post_color );
-			if ( $should_save ) {
-				$new[ $i ]['wp_review_item_color'] = sanitize_text_field( wp_unslash( $color[ $i ] ) );
-			} else {
-				$new[ $i ]['wp_review_item_color'] = '';
-			}
-
-			$should_save = ! empty( $inactive_color[ $i ] ) && $inactive_color[ $i ] !== $global_inactive && ( ! $custom_colors || $inactive_color[ $i ] !== $post_inactive_color );
-			if ( $should_save ) {
-				$new[ $i ]['wp_review_item_inactive_color'] = sanitize_text_field( wp_unslash( $inactive_color[ $i ] ) );
-			} else {
-				$new[ $i ]['wp_review_item_inactive_color'] = '';
-			}
-
-			$new[ $i ]['wp_review_item_positive'] = ! empty( $positive[ $i ] ) ? absint( $positive[ $i ] ) : 0;
-			$new[ $i ]['wp_review_item_negative'] = ! empty( $negative[ $i ] ) ? absint( $negative[ $i ] ) : 0;
 		}
 
 		if ( ! empty( $new ) && $new != $old ) {
