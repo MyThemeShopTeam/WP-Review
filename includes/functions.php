@@ -3068,86 +3068,6 @@ function wp_review_google_place_review_schema( $review, $place ) {
 
 
 /**
- * Shows Yelp schema.
- *
- * @since 3.0.4
- *
- * @param array $business Business data.
- */
-function wp_review_yelp_schema( $business ) {
-	$markup = array(
-		'@context' => 'http://schema.org',
-		'@type'    => 'Place',
-		'name'     => $business['name'],
-		'url'      => $business['url'],
-		'aggregateRating' => array(
-			'@type'       => 'AggregateRating',
-			'ratingValue' => $business['rating'],
-			'ratingCount' => $business['review_count'],
-			'bestRating'  => 5,
-		),
-	);
-
-	/**
-	 * Allow changing schema markup for Yelp.
-	 *
-	 * @since 3.0.4
-	 *
-	 * @param array $markup   Schema markup.
-	 * @param array $business Business data.
-	 */
-	$markup = apply_filters( 'wp_review_yelp_schema_markup', $markup, $business );
-
-	printf( '<script type="application/ld+json">%s</script>', wp_json_encode( $markup ) );
-}
-
-
-/**
- * Shows Yelp review schema.
- *
- * @since 3.0.4
- *
- * @param array $review   Review data.
- * @param array $business Business data.
- */
-function wp_review_yelp_review_schema( $review, $business ) {
-	$markup = array(
-		'@context'   => 'http://schema.org',
-		'@type'      => 'Review',
-		'reviewBody' => $review['text'],
-		'author'     => array(
-			'@type' => 'Person',
-			'name'  => $review['user']['name'],
-			'image' => $review['user']['image_url'],
-		),
-		'itemReviewed' => array(
-			'@type' => 'Place',
-			'name'  => $business['name'],
-			'url'   => $business['url'],
-		),
-		'reviewRating' => array(
-			'@type'       => 'Rating',
-			'ratingValue' => $review['rating'],
-			'bestRating'  => 5,
-		),
-	);
-
-	/**
-	 * Allow changing schema markup for Yelp review.
-	 *
-	 * @since 3.0.4
-	 *
-	 * @param array $markup   Schema markup.
-	 * @param array $review   Review data.
-	 * @param array $business Business data.
-	 */
-	$markup = apply_filters( 'wp_review_yelp_review_schema_markup', $markup, $review, $business );
-
-	printf( '<script type="application/ld+json">%s</script>', wp_json_encode( $markup ) );
-}
-
-
-/**
  * Shows Facebook page schema.
  *
  * @since 3.0.4
@@ -3391,8 +3311,6 @@ function wp_review_network_option($key) {
 function wp_review_get_capabilities() {
 	return array(
 		'wp_review_global_options'        => esc_html__( 'Global Options', 'wp-review' ),
-		'wp_review_notification_bar'      => esc_html__( 'Notification bar', 'wp-review' ),
-		'wp_review_yelp_reviews'          => esc_html__( 'Yelp Reviews', 'wp-review' ),
 		'wp_review_google_reviews'        => esc_html__( 'Google Reviews', 'wp-review' ),
 		'wp_review_facebook_reviews'      => esc_html__( 'Facebook Reviews', 'wp-review' ),
 		'wp_review_import_reviews'        => esc_html__( 'Import Reviews', 'wp-review' ),
@@ -3402,7 +3320,7 @@ function wp_review_get_capabilities() {
 		'wp_review_description'           => esc_html__( 'Review Description, Pros/Cons and Total Rating', 'wp-review' ),
 		'wp_review_user_reviews'          => esc_html__( 'User Reviews', 'wp-review' ),
 		'wp_review_purge_visitor_ratings' => esc_html__( 'Purge Visitor Ratings', 'wp-review' ),
-		'wp_review_purge_comment_ratings' => esc_html__( 'Purge Comment Ratings', 'wp-review' )
+		'wp_review_purge_comment_ratings' => esc_html__( 'Purge Comment Ratings', 'wp-review' ),
 	);
 }
 

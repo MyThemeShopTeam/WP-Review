@@ -7,9 +7,6 @@
  */
 
 require_once( WP_REVIEW_INCLUDES . 'shortcodes/class-wp-review-comparison-table-shortcode.php' );
-require_once( WP_REVIEW_INCLUDES . 'shortcodes/class-wp-review-yelp-search-shortcode.php' );
-require_once( WP_REVIEW_INCLUDES . 'shortcodes/class-wp-review-yelp-business-shortcode.php' );
-require_once( WP_REVIEW_INCLUDES . 'shortcodes/class-wp-review-yelp-business-reviews-shortcode.php' );
 require_once( WP_REVIEW_INCLUDES . 'shortcodes/class-wp-review-google-place-reviews-shortcode.php' );
 require_once( WP_REVIEW_INCLUDES . 'shortcodes/class-wp-review-facebook-reviews-shortcode.php' );
 require_once( WP_REVIEW_INCLUDES . 'shortcodes/class-wp-review-posts-shortcode.php' );

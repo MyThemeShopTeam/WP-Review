@@ -796,21 +796,6 @@ function mts_wp_review_google_place_review_schema_markup( $markup, $review, $pag
 add_filter( 'wp_review_google_place_review_schema_markup', 'mts_wp_review_google_place_review_schema_markup', 10, 3 );
 
 /**
- * Allow changing schema markup for Yelp review.
- *
- * @since 3.0.4
- *
- * @param array $markup   Schema markup.
- * @param array $review   Review data.
- * @param array $business Business data.
- */
-function mts_wp_review_yelp_review_schema_markup( $markup, $review, $business ) {
-	// Change markup here.
-	return $markup;
-}
-add_filter( 'wp_review_yelp_review_schema_markup', 'mts_wp_review_yelp_review_schema_markup', 10, 3 );
-
-/**
  * Allow changing schema markup for Facebook page.
  *
  * @since 3.0.4
@@ -840,20 +825,6 @@ function mts_wp_review_facebook_page_review_schema_markup( $markup, $review, $pa
 add_filter( 'wp_review_facebook_page_review_schema_markup', 'mts_wp_review_facebook_page_review_schema_markup', 10, 3 );
 
 printf( '<script type="application/ld+json">%s</script>', wp_json_encode( $markup ) );
-
-/**
- * Allow changing schema markup for Yelp.
- *
- * @since 3.0.4
- *
- * @param array $markup   Schema markup.
- * @param array $business Business data.
- */
-function mts_wp_review_yelp_schema_markup( $markup, $business ) {
-	// Change markup here.
-	return $markup;
-}
-add_filter( 'wp_review_yelp_schema_markup', 'mts_wp_review_yelp_schema_markup', 10, 2 );
 
 // Set the review options in your theme
 // These will be set as the global options for the plugin upon theme activation

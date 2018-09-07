@@ -35,8 +35,6 @@
 foreach ( $sites as $site ) {
 	if ( ! is_main_site( $site->blog_id ) ) {
 		$hide_options = wp_review_option( 'hide_global_options_' . $site->blog_id );
-		$hide_bar = wp_review_option( 'hide_general_bar_' . $site->blog_id );
-		$hide_yelp = wp_review_option( 'hide_yelp_reviews_' . $site->blog_id );
 		$hide_fb = wp_review_option( 'hide_facebook_reviews_' . $site->blog_id );
 		$hide_google = wp_review_option( 'hide_google_reviews_' . $site->blog_id );
 
@@ -83,14 +81,15 @@ foreach ( $sites as $site ) {
 			<div class="wp-review-field">
 				<div class="wp-review-field-label">
 					<label><?php esc_html_e( 'Hide Notification Bar', 'wp-review' ); ?></label>
+					<?php wp_review_print_pro_text(); ?>
 				</div>
 
 				<div class="wp-review-field-option">
 					<?php
 					$form_field->render_switch( array(
-						'id'    => 'wp_review_hide_general_bar_' . $site->blog_id,
-						'name'  => 'wp_review_options[hide_general_bar_' . $site->blog_id . ']',
-						'value' => ! empty( $hide_bar ),
+						'id'       => 'wp_review_hide_general_bar_' . $site->blog_id,
+						'name'     => 'wp_review_options[hide_general_bar_' . $site->blog_id . ']',
+						'disabled' => true,
 					) );
 					?>
 				</div>
@@ -99,14 +98,15 @@ foreach ( $sites as $site ) {
 			<div class="wp-review-field">
 				<div class="wp-review-field-label">
 					<label><?php esc_html_e( 'Hide Yelp Reviews', 'wp-review' ); ?></label>
+					<?php wp_review_print_pro_text(); ?>
 				</div>
 
 				<div class="wp-review-field-option">
 					<?php
 					$form_field->render_switch( array(
-						'id'    => 'wp_review_hide_yelp_reviews_' . $site->blog_id,
-						'name'  => 'wp_review_options[hide_yelp_reviews_' . $site->blog_id . ']',
-						'value' => ! empty( $hide_yelp ),
+						'id'       => 'wp_review_hide_yelp_reviews_' . $site->blog_id,
+						'name'     => 'wp_review_options[hide_yelp_reviews_' . $site->blog_id . ']',
+						'disabled' => true,
 					) );
 					?>
 				</div>
@@ -182,8 +182,6 @@ foreach ( $sites as $site ) {
 		<?php
 		$hide_in_posts = wp_review_option( 'hide_ratings_in_posts_' . $site->blog_id );
 
-		$hide_bar = wp_review_option( 'hide_notification_bar_' . $site->blog_id );
-
 		$hide_review_links = wp_review_option( 'hide_review_links_' . $site->blog_id );
 		$hide_review_desc = wp_review_option( 'hide_review_description_' . $site->blog_id );
 		$hide_user_reviews = wp_review_option( 'hide_user_reviews_' . $site->blog_id );
@@ -230,14 +228,15 @@ foreach ( $sites as $site ) {
 			<div class="wp-review-field">
 				<div class="wp-review-field-label">
 					<label><?php esc_html_e( 'Hide Notification Bar', 'wp-review' ); ?></label>
+					<?php wp_review_print_pro_text(); ?>
 				</div>
 
 				<div class="wp-review-field-option">
 					<?php
 					$form_field->render_switch( array(
-						'id'    => 'wp_review_hide_notification_bar__' . $site->blog_id,
-						'name'  => 'wp_review_options[hide_notification_bar_' . $site->blog_id . ']',
-						'value' => ! empty( $hide_bar ),
+						'id'       => 'wp_review_hide_notification_bar__' . $site->blog_id,
+						'name'     => 'wp_review_options[hide_notification_bar_' . $site->blog_id . ']',
+						'disabled' => true,
 					) );
 					?>
 				</div>

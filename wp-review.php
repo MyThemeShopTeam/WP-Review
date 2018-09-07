@@ -137,7 +137,6 @@ if ( ! function_exists( 'wp_review_includes_libraries' ) ) :
 
 		/* Loads the front-end functions. */
 		require_once( WP_REVIEW_INCLUDES . 'functions.php' );
-		require_once( WP_REVIEW_INCLUDES . 'yelp.php' );
 		require_once( WP_REVIEW_INCLUDES . 'facebook.php' );
 
 		/* Loads ajax handles. */
