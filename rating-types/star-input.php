@@ -39,7 +39,7 @@ $wrapper_selector = '#' . $id;
 	<div class="review-result-wrapper">
 		<?php
 		for ( $i = 1; $i <= 5; $i++ ) {
-			if($rating_image) {
+			if ( $rating_image ) {
 				printf(
 					'<span class="wpr-has-image" data-input-value="%1$s" title="%1$s/5"><img src="%2$s" class="wp-review-image" /></span>',
 					esc_attr( $i ),
@@ -49,22 +49,21 @@ $wrapper_selector = '#' . $id;
 				printf(
 					'<span data-input-value="%1$s" title="%1$s/5"><i class="%2$s"></i></span>',
 					esc_attr( $i ),
-					esc_attr($rating_icon)
+					esc_attr( $rating_icon )
 				);
 			}
-			
 		}
 		?>
 		<div class="review-result" style="width:<?php echo esc_attr( $rating['value'] * 20 ); ?>%;">
-			<?php for ( $i = 1; $i <= 5; $i++ ) :
-				if($rating_image) {
-					echo '<img src="'.esc_url($rating_image).'" class="wp-review-image" />';
-				} else {
-			?>
-				<i class="<?php echo esc_attr( $rating_icon ); ?>"></i>
 			<?php
-			}
-		endfor; ?>
+			for ( $i = 1; $i <= 5; $i++ ) :
+				if ( $rating_image ) {
+					echo '<img src="' . esc_url( $rating_image ) . '" class="wp-review-image" />';
+				} else {
+					echo '<i class="' . esc_attr( $rating_icon ) . '"></i>';
+				}
+			endfor;
+			?>
 		</div>
 	</div>
 	<input type="hidden" class="wp-review-user-rating-val" name="wp-review-user-rating-val" value="<?php echo esc_attr( $rating['value'] ); ?>" />

@@ -261,8 +261,6 @@ textarea#wp_review_comment_pros, textarea#wp_review_comment_cons { height: 100px
 
 .wp-review-user-rating .review-result-wrapper span:hover i, .wp-review-user-rating .review-result-wrapper span:hover img.wp-review-image, .wp-review-user-rating .review-result-wrapper span.active i, .wp-review-user-rating .review-result-wrapper span.active img.wp-review-image { opacity: 1 !important; }
 
-.wp-review-user-rating .review-result-wrapper .review-result { letter-spacing: -2px; }
-
 .wp-review-user-rating .review-result-wrapper .review-result i, .wp-review-user-rating .review-result-wrapper .review-result img.wp-review-image { padding-left: 4px; }
 
 .wp-review-user-rating.has-rated .review-result-wrapper:hover .review-result { display: block; }
@@ -406,11 +404,6 @@ form.wp-review-comment-form > div, #commentform.wp-review-comment-form > div { w
 .review-type-star.latestPost-review-wrapper .review-result-wrapper .review-result i, .review-type-star.latestPost-review-wrapper .review-result-wrapper .review-result img.wp-review-image { opacity: 1; }
 
 .widget .wp-review-show-total .review-star, .widget .wp-review-user-rating .review-star { position: relative; top: 0; right: 0; }
-
-/** Animation */
-.review-wrapper .review-result { transition: width 2s ease; }
-
-.review-wrapper.delay-animation .review-result { width: 0% !important; transition: none; }
 
 /* Spin Animation For Loader */
 .animate-spin { -webkit-animation: spin 1s infinite linear; animation: spin 1s infinite linear; display: inline-block; }

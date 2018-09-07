@@ -1694,7 +1694,6 @@ function wp_review_get_review_box( $post_id = null ) {
 		"wp-review-{$review_data['post_id']}",
 		"wp-review-{$review_data['type']}-type",
 		"wp-review-{$template_id}-template",
-		'delay-animation',
 		'wp-review-box-full-width',
 	);
 

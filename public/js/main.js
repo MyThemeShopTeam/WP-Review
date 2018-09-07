@@ -62,43 +62,6 @@
 		});
 	};
 
-	wpreview.featuresRating = function( $wrapper ) {
-		var data = $wrapper.data();
-		if ( ! data.rating ) {
-			return;
-		}
-		data.action = 'wpr-visitor-features-rating';
-
-		$.ajax ({
-			beforeSend: function() {
-				$wrapper.addClass( 'wp-review-loading' );
-			},
-			data: data,
-			type: 'post',
-			url: wpreview.ajaxurl,
-			success: function( response ) {
-				$wrapper.removeClass( 'wp-review-loading' );
-				if ( typeof response != 'object' ) {
-					response = JSON.parse( response );
-				}
-				if ( 'ok' != response.status ) {
-					console.error( response );
-					return;
-				}
-				response.html = response.html.replace( 'delay-animation', '' );
-				$wrapper.closest( '#review' ).replaceWith( response.html );
-
-				Cookies.set( 'wpr_visitor_has_reviewed_post_' + data.post_id, 1, {
-					expires: 315360000000 // 10 years.
-				});
-			},
-			error: function( response ) {
-				$wrapper.removeClass( 'wp-review-loading' );
-				console.log( response );
-			}
-		});
-	};
-
 	wpreview.initResponsiveTable = function() {
 		$( '.comparison-table' ).stacktable();
 	};
@@ -152,7 +115,7 @@ jQuery(document).ready(function($) {
 	});
 
 	// animate
-	if ($('.review-wrapper').length) {
+	/*if ($('.review-wrapper').length) {
 		$('.review-wrapper').wpr_appear().on('wpr_appear', function(event) {
 	      // this element is now inside browser viewport
 	      var $this = $(this);
@@ -186,7 +149,7 @@ jQuery(document).ready(function($) {
 	    	$.wpr_force_appear(); // if it's right there on window.load
 	    });
 
-	}
+	}*/
 
 	/*
 		Add class to comment form

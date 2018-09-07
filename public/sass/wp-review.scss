@@ -517,7 +517,7 @@ textarea#wp_review_comment_pros, textarea#wp_review_comment_cons { height: 100px
 		}
 
 		.review-result {
-			letter-spacing: -2px;
+			// letter-spacing: -2px;
 
 			i, img.wp-review-image { padding-left: 4px; }
 		}
@@ -770,14 +770,6 @@ form.wp-review-comment-form > div, #commentform.wp-review-comment-form > div {
 	position: relative;
 	top: 0;
 	right: 0;
-}
-/**
- * Animation
- */
-.review-wrapper .review-result { transition: width 2s ease }
-.review-wrapper.delay-animation .review-result {
-	width: 0% !important;
-	transition: none;
 }
 
 /*

@@ -105,7 +105,7 @@ function wp_review_visitor_rating_shortcode( $atts ) {
 	$count = $post_reviews['count'];
 	?>
 	<div class="user-review-area wp-review-<?php echo esc_attr( $atts['id'] ); ?> review-wrapper">
-		<div class="visitor-rating-shortcode delay-animation">
+		<div class="visitor-rating-shortcode">
 			<?php echo wp_review_user_rating( $atts['id'] ); ?>
 			<div class="user-total-wrapper">
 				<span class="user-review-title"><?php esc_html_e( 'User Rating', 'wp-review' ); ?></span>
@@ -153,7 +153,7 @@ function wp_review_comments_rating_shortcode( $atts ) {
 	ob_start();
 	?>
 	<div class="user-review-area comments-review-area wp-review-<?php echo esc_attr( $atts['id'] ); ?> review-wrapper">
-		<div class="comments-rating-shortcode delay-animation">
+		<div class="comments-rating-shortcode">
 			<?php echo wp_review_user_comments_rating( $atts['id'] ); ?>
 		</div>
 		<div class="user-total-wrapper">
