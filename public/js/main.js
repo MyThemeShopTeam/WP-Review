@@ -41,103 +41,6 @@
 		return 1000;
 	};
 
-	wpreview.openPopup = function( popup ) {
-		if ( ! popup ) {
-			popup = '#wp-review-popup';
-		}
-
-		$.magnificPopup.open({
-			items: {
-				src: popup,
-				type: 'inline'
-			},
-			removalDelay: wpreview.getAnimateDuration( wpreview.popup.animation_out ),
-			callbacks: {
-				beforeOpen: function() {
-					this.st.mainClass = 'animated ' + wpreview.popup.animation_in;
-				},
-				beforeClose: function() {
-					var $wrap = this.wrap,
-						$bg   = $wrap.prev(),
-						$mfp  = $wrap.add( $bg );
-
-					$mfp.removeClass( wpreview.popup.animation_in ).addClass( wpreview.popup.animation_out );
-				}
-			}
-		});
-	};
-
-	wpreview.initPopup = function() {
-		if ( ! $( '#wp-review-popup' ).length ) {
-			return;
-		}
-
-		var popupShown = false,
-			expiration = parseInt( wpreview.popup.expiration ),
-			cookieName = wpreview.popup.cookie_name || 'wpr-popup';
-
-		function canShowPopup() {
-			if ( popupShown ) {
-				return false;
-			}
-			if ( expiration && Cookies.get( cookieName ) ) {
-				return false;
-			}
-			if ( wpreview.popup.screen_size_check && $( window ).width() <= parseInt( wpreview.popup.screen_width ) ) {
-				return false;
-			}
-			return true;
-		}
-
-		function showPopup() {
-			wpreview.openPopup( '#wp-review-popup' );
-
-			popupShown = true;
-
-			if ( expiration ) {
-				Cookies.set( cookieName, 1, {
-					expires: expiration // Number of days.
-				});
-			}
-		}
-
-		// Popup show on load.
-		if ( wpreview.popup.show_on_load ) {
-			var delay = parseInt( wpreview.popup.delay ) * 1000;
-			setTimeout( function() {
-				if ( ! canShowPopup() ) {
-					return;
-				}
-				showPopup();
-			}, delay );
-		}
-
-		// Popup show on reaching to bottom.
-		if ( wpreview.popup.show_on_reach_bottom && $( '#wp-review-content-bottom' ).length ) {
-			var offsetTop = $( '#wp-review-content-bottom' ).offset().top;
-
-			$( window ).on( 'scroll', function() {
-				if ( ! canShowPopup() ) {
-					return;
-				}
-				var scrollTop = $( window ).scrollTop();
-				if ( scrollTop >= offsetTop ) {
-					showPopup();
-				}
-			});
-		}
-
-		// Exit intent popup.
-		if ( wpreview.popup.exit_intent ) {
-			$( document ).exitIntent( function() {
-				if ( ! canShowPopup() ) {
-					return;
-				}
-				showPopup();
-			});
-		}
-	};
-
 	wpreview.loadReviews = function( $el, options ) {
 		$el.html( '<div class="loading"></div>' );
 		function onSuccess( response ) {
@@ -221,7 +124,6 @@
 
 	$( document ).ready( function() {
 		wpreview.initNotificationBar();
-		wpreview.initPopup(); // Maybe need to run on window load.
 		wpreview.ajaxReviewsLoading();
 		wpreview.initResponsiveTable();
 		wpreview.addVerifiedPurchase();

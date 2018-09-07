@@ -297,14 +297,6 @@
 
 	wpreview.pluginOptions = function() {
 
-		// Popup option.
-		$( 'div#wp_review_popup_enable' ).on( 'switch-on', function() {
-			$( '#wp-review-popup-options' ).fadeIn();
-		});
-		$( 'div#wp_review_popup_enable' ).on( 'switch-off', function() {
-			$( '#wp-review-popup-options' ).fadeOut();
-		});
-
 		// Hello bar enable.
 		$( '#wp_review_hello_bar_enable' ).on( 'switch-on', function() {
 			$( '.hide-if-hello-bar-disable' ).fadeIn();
@@ -332,15 +324,6 @@
 	};
 
 	wpreview.pluginMetaBoxes = function() {
-		// Popup option.
-		$( 'select#wp_review_popup_enable' ).on( 'change', function() {
-			var value = $( this ).val();
-			if ( 'custom' == value ) {
-				$( '#wp-review-popup-options' ).fadeIn();
-			} else {
-				$( '#wp-review-popup-options' ).fadeOut();
-			}
-		});
 
 		// Hello bar.
 		$( '#wp_review_hello_bar_override' ).on( 'change', function() {
@@ -654,13 +637,6 @@
 		});
 	};
 
-	wpreview.generatePopupCookieName = function() {
-		$( '#wp_review_generate_popup_cookie' ).on( 'click', function() {
-			$( 'input[name="wp_review_popup[cookie_name]"]' ).val( 'wpr-popup-' + Date.now() );
-			$( '#wp_review_generate_popup_cookie_message' ).fadeIn();
-		});
-	};
-
 	wpreview.formSwitchEvents = function() {
 		$( document ).on( 'change', '.wpr-switch__on', function() {
 			if ( $( this )[0].checked ) {
@@ -727,7 +703,6 @@
 		wpreview.pluginOptions();
 		wpreview.pluginMetaBoxes();
 		wpreview.boxTemplatesSelect();
-		wpreview.generatePopupCookieName();
 		wpreview.formSwitchEvents();
 		wpreview.importDemo();
 
@@ -988,13 +963,7 @@ jQuery(document).ready(function($) {
 		}
 	});
 
-	$( '#wp_review_popup_queryby' ).on( 'change', function() {
-		var value = $( this ).val() || 'category';
-		$( '.based-on-queryby' ).hide();
-		$( '.based-on-queryby[data-value="' + value + '"]' ).fadeIn();
-	});
-
-  if ( typeof wp !== 'undefined' && wp.media && wp.media.editor) {
+	if ( typeof wp !== 'undefined' && wp.media && wp.media.editor) {
 		$(document).on('click', '.wp-review-rating-image .set_rating_image, .wp-review-rating-image .img-wrapper i', function(e) {
 			e.preventDefault();
 			var button = $('.wp-review-rating-image .set_rating_image'),

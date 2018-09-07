@@ -38,11 +38,6 @@ function wp_review_render_meta_box_review_options( $post ) {
 	$author = get_post_meta( $post->ID, 'wp_review_author', true );
 
 	/*
-	 * Popup.
-	 */
-	$popup_config = wp_review_get_post_popup( $post->ID );
-
-	/*
 	 * Notification bar.
 	 */
 	$hello_bar_config = wp_review_get_post_hello_bar( $post->ID );
@@ -218,145 +213,27 @@ function wp_review_render_meta_box_review_options( $post ) {
 			</div>
 		</div><!-- End #review-box -->
 
-		<?php if(!wp_review_network_option('hide_popup_box_') && current_user_can('wp_review_popup')) { ?>
+		<?php if ( ! wp_review_network_option( 'hide_popup_box_' ) && current_user_can( 'wp_review_popup' ) ) { ?>
 		<div id="popup" class="tab-content wp-review-popup" style="display: none;">
 			<div class="wp-review-field">
 				<div class="wp-review-field-label">
 					<label for="wp_review_popup_enable"><?php esc_html_e( 'Enable', 'wp-review' ); ?></label>
+					<?php wp_review_print_pro_text(); ?>
 				</div>
 
 				<div class="wp-review-field-option">
-					<select name="wp_review_popup[enable]" id="wp_review_popup_enable">
-						<option value="default" <?php selected( $popup_config['enable'], 'default' ); ?>><?php esc_html_e( 'Use global options', 'wp-review' ); ?></option>
-						<option value="custom" <?php selected( $popup_config['enable'], 'custom' ); ?>><?php esc_html_e( 'Use custom options', 'wp-review' ); ?></option>
-						<option value="none" <?php selected( $popup_config['enable'], 'none' ); ?>><?php esc_html_e( 'None', 'wp-review' ); ?></option>
-					</select>
-				</div>
-			</div>
-
-			<?php $hide = 'custom' == $popup_config['enable'] ? '' : 'hidden'; ?>
-			<div id="wp-review-popup-options" class="<?php echo esc_attr( $hide ); ?>">
-				<div class="wp-review-field">
-					<div class="wp-review-field-label">
-						<label for="wp_review_popup_width"><?php esc_html_e( 'Popup width', 'wp-review' ); ?></label>
-					</div>
-
-					<div class="wp-review-field-option">
-						<input name="wp_review_popup[width]" id="wp_review_popup_width" type="text" value="<?php echo esc_attr( $popup_config['width'] ); ?>">
-					</div>
-				</div>
-
-				<div class="wp-review-field">
-					<div class="wp-review-field-label">
-						<label for="wp_review_popup_animation_in"><?php esc_html_e( 'Popup animation in', 'wp-review' ); ?></label>
-					</div>
-
-					<div class="wp-review-field-option">
-						<?php
-						wp_review_animations_dropdown(
-							'wp_review_popup_animation_in',
-							'wp_review_popup[animation_in]',
-							$popup_config['animation_in']
-						);
-						?>
-					</div>
-				</div>
-
-				<div class="wp-review-field">
-					<div class="wp-review-field-label">
-						<label for="wp_review_popup_animation_out"><?php esc_html_e( 'Popup animation out', 'wp-review' ); ?></label>
-					</div>
-
-					<div class="wp-review-field-option">
-						<?php
-						wp_review_animations_dropdown(
-							'wp_review_popup_animation_out',
-							'wp_review_popup[animation_out]',
-							$popup_config['animation_out'],
-							true
-						);
-						?>
-					</div>
-				</div>
-
-				<div class="wp-review-field">
-					<div class="wp-review-field-label">
-						<label for="wp_review_popup_overlay_color"><?php esc_html_e( 'Popup overlay color', 'wp-review' ); ?></label>
-					</div>
-
-					<div class="wp-review-field-option">
-						<input type="text" class="wp-review-color" name="wp_review_popup[overlay_color]" id="wp_review_popup_overlay_color" value="<?php echo esc_attr( $popup_config['overlay_color'] ); ?>" data-default-color="<?php echo esc_attr( $popup_config['overlay_color'] ); ?>">
-					</div>
-				</div>
-
-				<div class="wp-review-field">
-					<div class="wp-review-field-label">
-						<label for="wp_review_popup_overlay_opacity"><?php esc_html_e( 'Popup overlay opacity (0.1 - 1)', 'wp-review' ); ?></label>
-					</div>
-
-					<div class="wp-review-field-option">
-						<input type="text" class="wp-review-opacity small-text" name="wp_review_popup[overlay_opacity]" id="wp_review_popup_overlay_opacity" value="<?php echo esc_attr( $popup_config['overlay_opacity'] ); ?>">
-					</div>
-				</div>
-
-				<?php $post_types = get_post_types( array( 'public' => true ) ); ?>
-				<div class="wp-review-field">
-					<div class="wp-review-field-label">
-						<label for="wp_review_popup_post_type"><?php esc_html_e( 'Post type', 'wp-review' ); ?></label>
-					</div>
-
-					<div class="wp-review-field-option">
-						<select name="wp_review_popup[post_type]" id="wp_review_popup_post_type">
-							<option value=""><?php esc_html_e( 'Any', 'wp-review' ); ?></option>
-							<?php foreach ( $post_types as $key => $value ) : ?>
-								<option value="<?php echo esc_attr( $key ); ?>" <?php selected( $popup_config['post_type'], $key ); ?>><?php echo esc_html( $value ); ?></option>
-							<?php endforeach; ?>
+					<span class="wp-review-disabled inline-block has-bg">
+						<select name="wp_review_popup[enable]" id="wp_review_popup_enable">
+							<option value="default"><?php esc_html_e( 'Use global options', 'wp-review' ); ?></option>
+							<option value="custom"><?php esc_html_e( 'Use custom options', 'wp-review' ); ?></option>
+							<option value="none"><?php esc_html_e( 'None', 'wp-review' ); ?></option>
 						</select>
-					</div>
-				</div>
-
-				<div class="wp-review-field">
-					<div class="wp-review-field-label">
-						<label for="wp_review_popup_queryby"><?php esc_html_e( 'Popup content', 'wp-review' ); ?></label>
-					</div>
-
-					<div class="wp-review-field-option">
-						<select class="wp-review-opacity" name="wp_review_popup[queryby]" id="wp_review_popup_queryby" value="<?php echo esc_attr( $popup_config['queryby'] ); ?>">
-							<option value="same_category" <?php selected( $popup_config['queryby'], 'same_category' ); ?>><?php esc_html_e( 'From same category', 'wp-review' ); ?></option>
-							<option value="same_tag" <?php selected( $popup_config['queryby'], 'same_tag' ); ?>><?php esc_html_e( 'From same tag', 'wp-review' ); ?></option>
-							<option value="same_review_type" <?php selected( $popup_config['queryby'], 'same_review_type' ); ?>><?php esc_html_e( 'From same review type', 'wp-review' ); ?></option>
-							<option value="latest" <?php selected( $popup_config['queryby'], 'latest' ); ?>><?php esc_html_e( 'Latest reviews', 'wp-review' ); ?></option>
-						</select>
-					</div>
-				</div>
-
-				<div class="wp-review-field">
-					<div class="wp-review-field-label">
-						<label for="wp_review_popup_limit"><?php esc_html_e( 'Number of Reviews', 'wp-review' ); ?></label>
-					</div>
-
-					<div class="wp-review-field-option">
-						<input type="number" min="-1" step="1" class="small-text" name="wp_review_popup[limit]" id="wp_review_popup_limit" value="<?php echo intval( $popup_config['limit'] ); ?>">
-					</div>
-				</div>
-
-				<div class="wp-review-field">
-					<div class="wp-review-field-label">
-						<label for="wp_review_popup_orderby"><?php esc_html_e( 'Popup content order', 'wp-review' ); ?></label>
-					</div>
-
-					<div class="wp-review-field-option">
-						<select class="wp-review-opacity" name="wp_review_popup[orderby]" id="wp_review_popup_orderby" value="<?php echo esc_attr( $popup_config['orderby'] ); ?>">
-							<option value="random" <?php selected( $popup_config['orderby'], 'random' ); ?>><?php esc_html_e( 'Random', 'wp-review' ); ?></option>
-							<option value="popular" <?php selected( $popup_config['orderby'], 'popular' ); ?>><?php esc_html_e( 'Most popular', 'wp-review' ); ?></option>
-							<option value="rated" <?php selected( $popup_config['orderby'], 'rated' ); ?>><?php esc_html_e( 'Most rated', 'wp-review' ); ?></option>
-							<option value="latest" <?php selected( $popup_config['orderby'], 'latest' ); ?>><?php esc_html_e( 'Latest', 'wp-review' ); ?></option>
-						</select>
-					</div>
+					</span>
 				</div>
 			</div>
 		</div><!-- End #popup -->
 		<?php } ?>
+
 		<?php if(! wp_review_network_option('hide_notification_bar_') &&  current_user_can('wp_review_notification_bar')) { ?>
 		<div id="hello-bar" class="tab-content wp-review-hello-bar" style="display: none;">
 			<div class="wp-review-field">

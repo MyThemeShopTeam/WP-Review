@@ -3390,20 +3390,19 @@ function wp_review_network_option($key) {
 
 function wp_review_get_capabilities() {
 	return array(
-		'wp_review_global_options'				=> esc_html__( 'Global Options', 'wp-review' ),
-		'wp_review_popup'									=> esc_html__( 'Popup Box', 'wp-review' ),
-		'wp_review_notification_bar'			=> esc_html__( 'Notification bar', 'wp-review' ),
-		'wp_review_yelp_reviews'					=> esc_html__( 'Yelp Reviews', 'wp-review' ),
-		'wp_review_google_reviews'				=> esc_html__( 'Google Reviews', 'wp-review' ),
-		'wp_review_facebook_reviews'			=> esc_html__( 'Facebook Reviews', 'wp-review' ),
-		'wp_review_import_reviews'				=> esc_html__( 'Import Reviews', 'wp-review' ),
-		'wp_review_single_page'						=> esc_html__( 'Single Page Settings', 'wp-review' ),
-		'wp_review_features'							=> esc_html__( 'Review Features', 'wp-review' ),
-		'wp_review_links'									=> esc_html__( 'Review Links', 'wp-review' ),
-		'wp_review_description'						=> esc_html__( 'Review Description, Pros/Cons and Total Rating', 'wp-review' ),
-		'wp_review_user_reviews'					=> esc_html__( 'User Reviews', 'wp-review' ),
-		'wp_review_purge_visitor_ratings'	=> esc_html__( 'Purge Visitor Ratings', 'wp-review' ),
-		'wp_review_purge_comment_ratings'	=> esc_html__( 'Purge Comment Ratings', 'wp-review' )
+		'wp_review_global_options'        => esc_html__( 'Global Options', 'wp-review' ),
+		'wp_review_notification_bar'      => esc_html__( 'Notification bar', 'wp-review' ),
+		'wp_review_yelp_reviews'          => esc_html__( 'Yelp Reviews', 'wp-review' ),
+		'wp_review_google_reviews'        => esc_html__( 'Google Reviews', 'wp-review' ),
+		'wp_review_facebook_reviews'      => esc_html__( 'Facebook Reviews', 'wp-review' ),
+		'wp_review_import_reviews'        => esc_html__( 'Import Reviews', 'wp-review' ),
+		'wp_review_single_page'           => esc_html__( 'Single Page Settings', 'wp-review' ),
+		'wp_review_features'              => esc_html__( 'Review Features', 'wp-review' ),
+		'wp_review_links'                 => esc_html__( 'Review Links', 'wp-review' ),
+		'wp_review_description'           => esc_html__( 'Review Description, Pros/Cons and Total Rating', 'wp-review' ),
+		'wp_review_user_reviews'          => esc_html__( 'User Reviews', 'wp-review' ),
+		'wp_review_purge_visitor_ratings' => esc_html__( 'Purge Visitor Ratings', 'wp-review' ),
+		'wp_review_purge_comment_ratings' => esc_html__( 'Purge Comment Ratings', 'wp-review' )
 	);
 }
 
@@ -3435,18 +3434,17 @@ add_action( 'members_register_caps', function() {
 	}
 });
 
-add_action('admin_init', function(){
-	$wpr_compatibility = get_option('wp_review_compatibility');
-	if(!$wpr_compatibility) {
+add_action( 'admin_init', function() {
+	$wpr_compatibility = get_option( 'wp_review_compatibility' );
+	if ( ! $wpr_compatibility ) {
 		$role = get_role( 'administrator' );
-		if($role) {
-			foreach(wp_review_get_capabilities() as $key => $cap) {
-				$role->add_cap($key);
+		if ( $role ) {
+			foreach ( wp_review_get_capabilities() as $key => $cap ) {
+				$role->add_cap( $key );
 			}
 		}
-		$role = get_role('editor');
+		$role = get_role( 'editor' );
 		$editor_caps = array(
-			'wp_review_popup',
 			'wp_review_notification_bar',
 			'wp_review_single_page',
 			'wp_review_features',
@@ -3454,12 +3452,11 @@ add_action('admin_init', function(){
 			'wp_review_description',
 			'wp_review_user_reviews',
 			'wp_review_purge_visitor_ratings',
-			'wp_review_purge_comment_ratings'
-
+			'wp_review_purge_comment_ratings',
 		);
-		foreach($editor_caps as $cap) {
-			$role->add_cap($cap);
+		foreach ( $editor_caps as $cap ) {
+			$role->add_cap( $cap );
 		}
-		update_option('wp_review_compatibility', true);
+		update_option( 'wp_review_compatibility', true );
 	}
 });

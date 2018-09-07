@@ -161,9 +161,6 @@ if ( ! function_exists( 'wp_review_includes_libraries' ) ) :
 		/* Loads the form field class. */
 		require_once( WP_REVIEW_ADMIN . 'class-wp-review-form-field.php' );
 
-		/* Popup feature */
-		require_once( WP_REVIEW_INCLUDES . 'popup.php' );
-
 		/* Notification bar feature */
 		require_once( WP_REVIEW_INCLUDES . 'hello-bar.php' );
 

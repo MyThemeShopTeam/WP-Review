@@ -90,7 +90,6 @@ class WP_Review_Options {
 			}
 		}
 		register_setting( 'wpreview-settings-group', 'wp_review_options' );
-		register_setting( 'wpreview-settings-group', 'wp_review_popup' );
 		register_setting( 'wpreview-settings-group', 'wp_review_hello_bar' );
 	}
 

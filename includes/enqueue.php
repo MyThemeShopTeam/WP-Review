@@ -24,8 +24,6 @@ function wp_review_enqueue() {
 	$rating_types = wp_review_get_rating_types();
 
 	// Register.
-	wp_register_style( 'wp-review-popup', WP_REVIEW_ASSETS . 'css/popup.css', array(), '3.0.0' );
-
 	wp_register_style( 'magnificPopup', WP_REVIEW_ASSETS . 'css/magnific-popup.css', array(), '1.1.0' );
 	wp_register_script( 'magnificPopup', WP_REVIEW_ASSETS . 'js/jquery.magnific-popup.min.js', array( 'jquery' ), '1.1.0', true );
 
@@ -45,7 +43,6 @@ function wp_review_enqueue() {
 
 	wp_localize_script( 'wp_review-js', 'wpreview', array(
 		'ajaxurl' => admin_url( 'admin-ajax.php' ),
-		'popup'   => wp_review_get_popup_config(),
 		'rateAllFeatures' => __( 'Please rate all features', 'wp-review' ),
 		'verifiedPurchase' => __( '(Verified purchase)', 'wp-review' ),
 	) );
@@ -61,11 +58,6 @@ function wp_review_enqueue() {
 	wp_enqueue_script( 'magnificPopup' );
 	wp_enqueue_script( 'wp-review-exit-intent' );
 	wp_enqueue_style( 'wp_review-style' );
-
-	$popup_config = wp_review_get_popup_config();
-	if ( $popup_config['enable'] ) {
-		wp_enqueue_style( 'wp-review-popup' );
-	}
 }
 
 /**

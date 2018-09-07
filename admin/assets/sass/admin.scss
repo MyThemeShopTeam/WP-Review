@@ -834,12 +834,14 @@ input.wpr-switch__off:checked + label, input.wpr-switch__off:checked + label:hov
 	}
 
 	&.wp-review-disabled-select,
+	&.inline-block,
 	&.wp-review-disabled-color {
 		display: inline-block;
 	}
 
 	&.wpr-switch,
 	&.wp-review-disabled-color,
+	&.has-bg,
 	&.wp-review-disabled-slider {
 		&:before {
 			background-color: rgba(255,255,255,0.7);

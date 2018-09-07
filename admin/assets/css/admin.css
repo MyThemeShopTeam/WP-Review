@@ -338,8 +338,8 @@ input.wpr-switch__off:checked + label, input.wpr-switch__off:checked + label:hov
 
 .wp-review-disabled:before { content: " "; display: block; position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 100; }
 
-.wp-review-disabled.wp-review-disabled-select, .wp-review-disabled.wp-review-disabled-color { display: inline-block; }
+.wp-review-disabled.wp-review-disabled-select, .wp-review-disabled.inline-block, .wp-review-disabled.wp-review-disabled-color { display: inline-block; }
 
-.wp-review-disabled.wpr-switch:before, .wp-review-disabled.wp-review-disabled-color:before, .wp-review-disabled.wp-review-disabled-slider:before { background-color: rgba(255, 255, 255, 0.7); }
+.wp-review-disabled.wpr-switch:before, .wp-review-disabled.wp-review-disabled-color:before, .wp-review-disabled.has-bg:before, .wp-review-disabled.wp-review-disabled-slider:before { background-color: rgba(255, 255, 255, 0.7); }
 
 /*# sourceMappingURL=../sourcemaps/admin.css.map */
