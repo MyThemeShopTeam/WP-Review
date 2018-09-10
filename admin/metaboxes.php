@@ -788,7 +788,7 @@ function wp_review_render_meta_box_userReview( $post ) {
 			</div>
 
 			<div class="wp-review-field-option">
-				<span class="wp-review-disabled inline-block">
+				<span class="wp-review-disabled inline-block has-bg">
 					<select name="wp_review_user_can_rate_feature" id="wp_review_user_can_rate_feature" disabled>
 						<option value=""><?php esc_html_e( 'Give Overall Rating', 'wp-review' ); ?></option>
 						<option value="1"><?php esc_html_e( 'Rate Each Feature', 'wp-review' ); ?></option>
@@ -835,7 +835,7 @@ function wp_review_render_meta_box_userReview( $post ) {
 		</div>
 
 		<div class="wp-review-field-option">
-			<span class="wp-review-disabled inline-block">
+			<span class="wp-review-disabled inline-block has-bg">
 				<select name="wp_review_allow_comment_feedback" id="wp_review_allow_comment_feedback" disabled>
 					<option value=""><?php esc_html_e( 'Use global options', 'wp-review' ); ?></option>
 					<option value="yes"><?php esc_html_e( 'Yes', 'wp-review' ); ?></option>

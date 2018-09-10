@@ -379,7 +379,7 @@ $form_field = new WP_Review_Form_Field();
 			</div>
 
 			<div class="wp-review-field-option">
-				<span class="wp-review-disabled inline-block">
+				<span class="wp-review-disabled inline-block has-bg">
 					<select name="wp_review_options[record_ratings_by]" id="wp_review_record_ratings_by" disabled>
 						<option value="ip"><?php esc_html_e( 'Based on IP address', 'wp-review' ); ?></option>
 						<option value="cookie"><?php esc_html_e( 'Based on browser cookie', 'wp-review' ); ?></option>

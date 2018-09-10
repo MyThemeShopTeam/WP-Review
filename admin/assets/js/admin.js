@@ -382,6 +382,7 @@
 		});
 
 		$( '#wp_review_color' ).on( 'color-change', function( ev, colorEvent, ui ) {
+			postColor = $( '#wp_review_color' ).val();
 			onSwitchColor( ui.color.toString() );
 		});
 

@@ -122,7 +122,7 @@
 			</div>
 
 			<div class="wp-review-field-option">
-				<span class="wp-review-disabled inline-block">
+				<span class="wp-review-disabled inline-block has-bg">
 					<select name="wp_review_hello_bar[location]" id="wp_review_hello_bar_location" disabled>
 						<option value="top"><?php esc_html_e( 'Top', 'wp-review' ); ?></option>
 						<option value="bottom"><?php esc_html_e( 'Bottom', 'wp-review' ); ?></option>

@@ -194,7 +194,7 @@ function wp_review_render_meta_box_review_options( $post ) {
 
 				<div class="wp-review-field-option">
 					<span class="wp-review-disabled inline-block has-bg">
-						<select name="wp_review_popup[enable]" id="wp_review_popup_enable">
+						<select name="wp_review_popup[enable]" id="wp_review_popup_enable" disabled>
 							<option value="default"><?php esc_html_e( 'Use global options', 'wp-review' ); ?></option>
 							<option value="custom"><?php esc_html_e( 'Use custom options', 'wp-review' ); ?></option>
 							<option value="none"><?php esc_html_e( 'None', 'wp-review' ); ?></option>
@@ -214,7 +214,7 @@ function wp_review_render_meta_box_review_options( $post ) {
 				</div>
 
 				<div class="wp-review-field-option">
-					<span class="wp-review-disabled inline-block">
+					<span class="wp-review-disabled inline-block has-bg">
 						<select name="wp_review_hello_bar[enable]" id="wp_review_hello_bar_enable" disabled>
 							<option value="default"><?php esc_html_e( 'Use global options', 'wp-review' ); ?></option>
 							<option value="custom"><?php esc_html_e( 'Use custom options', 'wp-review' ); ?></option>
