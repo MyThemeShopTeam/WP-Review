@@ -181,7 +181,8 @@ function wp_review_render_meta_box_item( $post ) {
 
 	$review_templates = wp_review_get_box_templates();
 	$box_template = get_post_meta( $post->ID, 'wp_review_box_template', true );
-	if ( ! $box_template ) {
+
+	if ( ! $box_template || ! in_array( $box_template, array( 'default', 'aqua' ) ) ) {
 		$box_template = wp_review_option( 'box_template', 'default' );
 	}
 	$box_template_img = ! empty( $review_templates[ $box_template ] ) ? $review_templates[ $box_template ]['image'] : WP_REVIEW_ASSETS . 'images/largethumb.png';
@@ -999,6 +1000,10 @@ function wp_review_save_postdata( $post_id, $post ) {
 
 		if ( false === $new_meta_value ) {
 			$new_meta_value = '0';
+		}
+
+		if( 'wp_review_box_template' === $meta_key && !in_array( $new_meta_value, array( 'default', 'aqua' ) ) ) {
+			continue;
 		}
 
 		if ( current_user_can( 'delete_post_meta', $post_id ) && '' === $new_meta_value ) {
