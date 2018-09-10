@@ -535,13 +535,10 @@ $form_field = new WP_Review_Form_Field();
 			<div class="wp-review-field"<?php if ( empty( $displayed_fields['inactive_color'] ) ) echo ' style="display: none;"'; ?>>
 				<div class="wp-review-field-label">
 					<label for="wp_review_inactive_color"><?php esc_html_e( 'Inactive Review Color', 'wp-review' ); ?></label>
-					<?php wp_review_print_pro_text(); ?>
 				</div>
 
 				<div class="wp-review-field-option">
-					<span class="wp-review-disabled inline-block has-bg">
-						<input type="text" id="wp_review_inactive_color" class="wp-review-color" name="wp_review_options[colors][inactive_color]" value="<?php echo esc_attr( $inactive_color ); ?>" data-default-color="<?php echo esc_attr( $inactive_color ); ?>" disabled>
-					</span>
+					<input type="text" id="wp_review_inactive_color" class="wp-review-color" name="wp_review_options[colors][inactive_color]" value="<?php echo esc_attr( $inactive_color ); ?>" data-default-color="<?php echo esc_attr( $inactive_color ); ?>">
 				</div>
 			</div>
 
