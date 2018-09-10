@@ -6,23 +6,6 @@ and set different default settings.
 */
 
 /**
- * Filters list of icons.
- * Remember to enqueue your font and css files.
- *
- * @param  array $icons List of icons.
- * @return array
- */
-function mts_wp_review_icons( $icons ) {
-	$icons['icon-css-class'] = array(
-		'unicode' => '\f26e',
-		'name' => 'Icon title',
-	);
-
-	return $icons;
-}
-add_filter( 'wp_review_icons', 'mts_wp_review_icons' );
-
-/**
  * Changes number of posts to import per request.
  *
  * @param  int $numposts Number of posts.
@@ -67,7 +50,7 @@ add_filter( 'wp_review_metabox_item_fields', 'mts_wp_review_hide_item_metabox_fi
  * @return array
  */
 function mts_wp_review_hide_rating_types( $types ) {
-	unset( $types['thumbs'] );
+	unset( $types['point'] );
 	return $types;
 }
 add_filter( 'wp_review_rating_types', 'mts_wp_review_hide_rating_types' );
@@ -84,18 +67,6 @@ function mts_wp_review_new_review_colors($colors, $id) {
 	return $colors;
 }
 add_filter( 'wp_review_colors', 'mts_wp_review_new_review_colors', 10, 2 );
-
-/**
- * Filters default rating icon.
- *
- * @param  string $icon Rating icon.
- * @return string
- */
-function mts_wp_review_default_rating_icon( $icon ) {
-	$icon = 'fa fa-thumbs-up';
-	return $icon;
-}
-add_filter( 'wp_review_default_rating_icon', 'mts_wp_review_default_rating_icon' );
 
 /**
  * Sets location for selected or all reviews.
@@ -149,7 +120,7 @@ apply_filters( 'wp_review_color_output', 'mts_wp_review_color_output', 10, 3 );
 
 /**
  * Changes color css output for a specific template
- * Replace `amazon` with template name
+ * Replace `aqua` with template name
  * Eg: wp_review_box_template_dash_style.
  *
  * @param  string $output    CSS output, includes `<style` tag.
@@ -157,13 +128,13 @@ apply_filters( 'wp_review_color_output', 'mts_wp_review_color_output', 10, 3 );
  * @param  array  $colors    Review colors data.
  * @return string
  */
-function mts_wp_review_box_template_amazon_style( $output, $review_id, $colors ) {
+function mts_wp_review_box_template_aqua_style( $output, $review_id, $colors ) {
 	$css = ".wp-review-{$review_id} { color: {$colors['color']}; }";
 	// $output = str_replace( '<style type="text/css">', '<style type="text/css">' . $css, $output ); // Add to the top.
 	$output = str_replace( '</style>', $css . '</style>', $output ); // Add to the bottom.
 	return $output;
 }
-apply_filters( 'wp_review_box_template_amazon_style', 'mts_wp_review_box_template_amazon_style', 10, 3 );
+apply_filters( 'wp_review_box_template_aqua_style', 'mts_wp_review_box_template_aqua_style', 10, 3 );
 
 /**
  * Changes review item image size.
@@ -256,19 +227,6 @@ function mts_add_default_items( $items ) {
 	return $items;
 }
 add_filter( 'wp_review_default_criteria', 'mts_add_default_items' );
-
-/**
- * Shows/hides total review on thumbnail for all or specific post.
- *
- * @param bool  $show    Show or hide.
- * @param int   $post_id Post ID.
- * @param array $args    Custom arguments.
- * @return bool
- */
-function mts_wp_review_thumbnails_total( $show, $post_id, $args ) {
-	return false;
-}
-add_filter( 'wp_review_thumbnails_total', 'mts_wp_review_thumbnails_total', 10, 3 );
 
 /**
  * Customizes wp_review_show_total() output.
@@ -399,181 +357,6 @@ function mts_wp_review_get_data( $review, $post_id, $type, $total, $items ) {
 add_filter( 'wp_review_get_data', 'mts_wp_review_get_data', 10, 5 );
 
 /**
- * Changes schema nesting mode.
- *
- * @param  string $type Nesting mode. Accepts `type`, `rating` or `none`.
- * @return string
- */
-function mts_wp_review_schema_nesting_mode( $type ) {
-	return 'rating';
-}
-add_filter( 'wp_review_schema_nesting_mode', 'mts_wp_review_schema_nesting_mode' );
-
-/**
- * Forces schema nesting type to rating for some schema types
- * Apply for author reviews.
- *
- * @param  array $types Schema types.
- * @return array
- */
-function mts_wp_review_schema_force_nested_rating_types( $types ) {
-	$types[] = 'Recipe';
-	return $types;
-}
-add_filter( 'wp_review_schema_force_nested_rating_types', 'mts_wp_review_schema_force_nested_rating_types' );
-
-/**
- * Forces schema nesting type to rating for some schema types
- * Apply for visitor comments.
- *
- * @param  array $types Schema types.
- * @return array
- */
-function mts_wp_review_schema_force_nested_user_rating_types( $types ) {
-	$types[] = 'Movie';
-	return $types;
-}
-add_filter( 'wp_review_schema_force_nested_user_rating_types', 'mts_wp_review_schema_force_nested_user_rating_types' );
-
-/**
- * Changes review schema output.
- *
- * @param  string $output Schema output.
- * @param  array  $review Review data.
- * @return string
- */
-function mts_wp_review_get_schema( $output, $review ) {
-	// Modify the $output.
-	return $output;
-}
-add_filter( 'wp_review_get_schema', 'mts_wp_review_get_schema', 10, 2 );
-
-/**
- * Filters schema ISO-8601 duration items.
- *
- * @param  array $items List of items.
- * @return array
- */
-function mts_wp_reviev_schema_ISO_8601_duration_items( $items ) {
-	unset( $items['duration'] );
-	return $items;
-}
-add_filter( 'wp_reviev_schema_ISO_8601_duration_items', 'mts_wp_reviev_schema_ISO_8601_duration_items' );
-
-/**
- * Changes arguments of a schema type.
- *
- * @param  array $args          Arguments.
- * @param  array $review        Review data.
- * @param  bool  $nested_rating Nested rating or not.
- * @return array
- */
-function mts_wp_review_get_schema_type_args( $args, $review, $nested_rating ) {
-	return $args;
-}
-add_filter( 'wp_review_get_schema_type_args', 'mts_wp_review_get_schema_type_args', 10, 3 );
-
-/**
- * Changes output of a schema type.
- *
- * @param  string $output        Schema output.
- * @param  array  $args          Arguments.
- * @param  array  $review        Review data.
- * @param  bool   $nested_rating Nested rating or not.
- * @return string
- */
-function mts_wp_review_get_schema_type( $output, $args, $review, $nested_rating ) {
-	return $output;
-}
-add_filter( 'wp_review_get_schema_type', 'mts_wp_review_get_schema_type', 10, 4 );
-
-/**
- * Changes arguments of a schema type for rating.
- *
- * @param  array $args   Arguments.
- * @param  array $review Review data.
- * @return array
- */
-function mts_wp_review_get_schema_review_rating_args( $args, $review ) {
-	return $args;
-}
-add_filter( 'wp_review_get_schema_review_rating_args', 'mts_wp_review_get_schema_review_rating_args', 10, 2 );
-
-/**
- * Changes arguments of a schema type for nested review.
- *
- * @param  array $args   Arguments.
- * @param  array $review Review data.
- * @return array
- */
-function mts_wp_review_get_schema_nested_review_args( $args, $review ) {
-	return $args;
-}
-add_filter( 'wp_review_get_schema_nested_review_args', 'mts_wp_review_get_schema_nested_review_args', 10, 2 );
-
-/**
- * Changes arguments of a schema type for nested item.
- *
- * @param  array $args   Arguments.
- * @param  array $review Review data.
- * @return array
- */
-function mts_wp_review_get_schema_nested_item_args( $args, $review ) {
-	return $args;
-}
-add_filter( 'wp_review_get_schema_nested_item_args', 'mts_wp_review_get_schema_nested_item_args', 10, 2 );
-
-/**
- * Changes output of a schema type for rating.
- *
- * @param  string $output Schema output.
- * @param  array  $args   Arguments.
- * @param  array  $review Review data.
- * @return string
- */
-function mts_wp_review_get_schema_review_rating( $output, $args, $review ) {
-	return $output;
-}
-add_filter( 'wp_review_get_schema_review_rating', 'mts_wp_review_get_schema_review_rating', 10, 3 );
-
-/**
- * Changes arguments of a schema type for user rating.
- *
- * @param  array $args   Arguments.
- * @param  array $review Review data.
- * @return array
- */
-function mts_wp_review_get_schema_user_rating_args( $args, $review ) {
-	return $args;
-}
-add_filter( 'wp_review_get_schema_user_rating_args', 'mts_wp_review_get_schema_user_rating_args', 10, 2 );
-
-/**
- * Changes arguments of a schema type for nested user rating.
- *
- * @param  array $args   Arguments.
- * @param  array $review Review data.
- * @return array
- */
-function mts_wp_review_get_schema_nested_user_rating_args( $args, $review ) {
-	return $args;
-}
-add_filter( 'wp_review_get_schema_nested_user_rating_args', 'mts_wp_review_get_schema_nested_user_rating_args', 10, 2 );
-
-/**
- * Changes output of a schema type for user rating.
- *
- * @param  string $output Schema output.
- * @param  array  $args   Arguments.
- * @param  array  $review Review data.
- * @return string
- */
-function mts_wp_review_get_schema_user_rating( $output, $args, $review ) {
-	return $output;
-}
-add_filter( 'wp_review_get_schema_user_rating', 'mts_wp_review_get_schema_user_rating', 10, 3 );
-
-/**
  * Changes reviewed item name.
  *
  * @param  string $item_name Item name.
@@ -610,20 +393,6 @@ function mts_wp_review_reviews_query_args( $query_args, $options ) {
 	return $query_args;
 }
 add_filter( 'wp_review_reviews_query_args', 'mts_wp_review_reviews_query_args' );
-
-/**
- * Add other Thing schema types.
- *
- * @param array $schemas Schema types.
- * @return array
- *
- * @link https://schema.org/docs/full.html See types under Thing
- */
-function mts_wp_review_add_custom_schema_type( $schemas ) {
-	$schemas['VideoGame'] = 'Video Game';
-	return $schemas;
-}
-add_filter( 'wp_review_schema_types', 'mts_wp_review_add_custom_schema_type' );
 
 /**
  * Hide selected review types in metabox dropdown.
