@@ -1,32 +1,53 @@
 <?php
 /**
  * Star rating type output template
- * 
+ *
+ * @package   WP_Review
  * @since     2.0
+ * @version   3.0.0
  * @copyright Copyright (c) 2013, MyThemesShop
  * @author    MyThemesShop
  * @license   http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  */
 
-// Exit if accessed directly
-if ( ! defined( 'ABSPATH' ) ) exit;
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 global $wp_review_rating_types;
 
-// For now, enqueue in footer
+// For now, enqueue in footer.
 wp_enqueue_script( 'wp-review-percentage-input', trailingslashit( WP_REVIEW_URI ) . 'rating-types/percentage-input.js', array( 'jquery' ) );
 
-$class = 'review-percentage';
-if (!empty($rating['args']['class']))
-	$class .= ' '.sanitize_html_class( $rating['args']['class'] );
+$class = 'wp-review-rating-input review-percentage';
+if ( ! empty( $rating['args']['class'] ) ) {
+	$class .= ' ' . sanitize_html_class( $rating['args']['class'] );
+}
 
+$bg_color = '';
+
+if ( ! empty( $rating['colors']['inactive_color'] ) ) {
+	$inactive_color = $rating['colors']['inactive_color'];
+	$bg_color = "background-color: {$inactive_color};";
+}
 ?>
-<div class="<?php echo $class; ?>">
-	<div class="wp-review-loading-msg"><span class="animate-spin mts-icon-loader"></span><?php _e( 'Sending', 'wp-review' ); ?></div>
-	<div class="review-result-wrapper" data-originalrating="<?php echo esc_attr( $rating['value'] ); ?>">
-		<div class="review-result" style="width:<?php echo esc_attr( $rating['value'] ); ?>%; background-color: <?php echo esc_attr( $rating['color'] ); ?>;"></div>
+<div class="<?php echo esc_attr( $class ); ?>">
+	<div class="wp-review-loading-msg">
+		<?php wp_review_spinner(); ?>
+		<?php esc_html_e( 'Sending', 'wp-review' ); ?>
 	</div>
-	<div class="wp-review-your-rating" style="background-color: <?php echo esc_attr( $rating['colors']['bgcolor1'] ); ?>; color: <?php echo esc_attr( $rating['color'] ); ?>;"><?php printf(__('Your rating: %s', 'wp-review'), '<span class="wp-review-your-rating-value"></span>'); ?></div>
+
+	<div class="review-result-wrapper" data-originalrating="<?php echo esc_attr( $rating['value'] ); ?>" style="<?php echo esc_attr( $bg_color ); ?>">
+		<div class="review-result" style="width:<?php echo esc_attr( $rating['value'] ); ?>%; background-color: <?php echo esc_attr( $rating['color'] ); ?>; display: block; transition: none;"></div>
+	</div>
+
+	<div class="wp-review-your-rating" style="background-color: <?php echo esc_attr( $rating['colors']['color'] ); ?>; color: <?php echo esc_attr( $rating['colors']['inactive_color'] ); ?>;">
+		<?php
+		// Translators: rating value.
+		printf( esc_html__( '%s' ), '<span class="wp-review-your-rating-value"></span>' );
+		?>
+	</div>
 
 	<input type="hidden" class="wp-review-user-rating-val" name="wp-review-user-rating-val" value="<?php echo esc_attr( $rating['value'] ); ?>" />
 	<input type="hidden" class="wp-review-user-rating-nonce" value="<?php echo esc_attr( wp_create_nonce( 'wp-review-security' ) ); ?>" />

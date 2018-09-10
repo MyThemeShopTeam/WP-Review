@@ -4,7 +4,7 @@ Creator's website link: http://mythemeshop.com/plugins/wp-review/
 Tags: review, wp review, rating, wp rating, user rating, google rating, star rating, product review
 Requires at least: 4.0
 Tested up to: 4.9.6
-Stable tag: 4.0.17
+Stable tag: 5.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -32,6 +32,7 @@ You can also check <a rel="nfollow" href="https://mythemeshop.com/plugins/wp-rev
 * Stars, percentage and point rating system.
 * Supports Google Rich Snippets(schema.org)
 * 100% Fluid Responsive.
+* 2 Review box templates
 * Option to set Global Position.
 * Option to change Global Colors.
 * Option to change individual review Colors and Positions.
@@ -46,9 +47,9 @@ You can also check <a rel="nfollow" href="https://mythemeshop.com/plugins/wp-rev
 * Works with caching plugins and all majority of themes.
 * Easy to modify the CSS to better fit your theme style.
 * Support for adding your own custom fields.
-* Minimalist, lightweight, and efficient code means that your users wonít notice any hiccups.
+* Minimalist, lightweight, and efficient code means that your users won't notice any hiccups.
 * Position it above or below the content with ease and no coding.
-* Supports Shortcode [wp-review] to show review anywhere in post.
+* Supports Shortcode `[wp-review]` to show review anywhere in post.
 * Developer friendly - Useful filters are included! So you can use it in your themes.
 
 = Support =
@@ -102,18 +103,34 @@ Please disable all plugins and check if rating is working properly. Then you can
 
 == Changelog ==
 
-= v4.0.17 (July 17, 2018) =
+= v5.0.0 (Sep 10, 2018) =
+* Entire plugin re-written from scratch for better performance
+* Improved compatibility with Gutenberg plugin
+* Added an extra template design
+* Added an option to set inactive star color
+* Added an option to restrict ratings to registered users only
+* Added an option to allow multiple reviews per account
+* Added an option to select default review (No Review/ Star/ Point/ Percentage) type
+* Added an option to add links in the review box
+* Added an option to import demo review data
+* Added an option to Import Plugin Review Settings
+* Added an option to Export Plugin Review Settings
+* Added an option to show admin or user rating in the search results
+* Added class to hide placeholder image in the tabbed widget
+* Added support for WordPress multisite
+
+= v4.0.17 (Jul 17, 2018) =
 * Fixed Banner alignment issue on settings page
 * Fixed Single page settings JS console error
 * Removed margin from icon which was causing to break the design
 
-= v4.0.16 (June 30, 2018) =
+= v4.0.16 (Jun 30, 2018) =
 * Updated admin notices
 
-= v4.0.15 (June 28, 2018) =
+= v4.0.15 (Jun 28, 2018) =
 * Changed admin notices
 
-= v4.0.14 (June 13, 2018) =
+= v4.0.14 (Jun 13, 2018) =
 * Fixed text-domain issue translations
 
 = v4.0.13 (May 31, 2018) =
@@ -129,46 +146,36 @@ Please disable all plugins and check if rating is working properly. Then you can
 = v4.0.10 (May 23, 2017) =
 * Fixed shortcode attribute-related PHP warnings
 
-
 = v4.0.9 (Feb 11, 2017) =
 * Fixed color picker issue in the Theme Customizer
-
 
 = v4.0.8 (Feb 7, 2017) =
 * Improved support for older PHP versions
 
-
 = v4.0.7 (Mar 26, 2016) =
 * Fixed widget title issue
 
-
 = v4.0.6 (Mar 11, 2016) =
 * Embedded full video tutorial
-
 
 = v4.0.5 (Mar 9, 2016) =
 * Fixed: final rating can now be entered manually again
 * Fixed: removed unneeded code related to circle review type
 
-
 = v4.0.4 (Mar 7, 2016) =
 * Fixed: backlink option is not enabled by default anymore. Sorry for that!
-
 
 = v4.0.3 (Mar 5, 2016) =
 * Fixed decimals issue in Point reviews
 * Fixed bug preventing reviews to appear on Pages
 
-
 = v4.0.2 (Mar 4, 2016) =
 * Added back missing Widget Title field
-
 
 = v4.0.1 (Mar 1, 2016) =
 * Replaced anonymous functions for compatibility with older PHP versions
 * Added optional backlink
 * Removed unneeded Review Links metabox
-
 
 = v4.0.0 (Mar 1, 2016) =
 * Huge code improvement and optimization
@@ -181,74 +188,58 @@ Please disable all plugins and check if rating is working properly. Then you can
 * Various bug fixes and improvements
 * NOTE: After updating the plugin, existing user ratings must be migrated in Settings > WP Review Pro > Migrate Ratings
 
-
 = v3.3.5 (Sep 17, 2015) =
 * Fixed spelling mistake in notification
-
 
 = v3.3.4 (Sep 17, 2015) =
 * Fixed notification closing issue
 
-
 = v3.3.3 (Sep 17, 2015) =
 * Fixed function conflict with WP Subscribe Plugin
-
 
 = v3.3.2 (Sep 16, 2015) =
 * Switched to PHP 5 style constructor method for the widget class
 
-
 = v3.3.1 (May 5, 2015) =
 * Rating stars are showing on search engine results page
-
 
 = v3.3 (Mar 14, 2015) =
 * Fixed Google structured data testing tool errors and warnings
 
-
 = v3.2.9 (Feb 2, 2015) =
 * Fixed star rating issue on small screens.
-
 
 = v3.2.8 (Jan 20, 2015) =
 * Removed extra closing span tag in markup
 * Added Title option for widget
 
-
 = v3.2.7 (Oct 19, 2014) =
 * Added Title Length option for widget
 * Added Filter to control default title length
-
 
 = v3.2.6 (Oct 3, 2014) =
 * Added optional 'id' parameter for shortcode
 * Added filter to modify style output
 
-
 = v3.2.5 (Oct 1, 2014) =
 * Added loading animation in widget
 * Fixed minor bug in user ratings
-
 
 = v3.2.4 (Oct 1, 2014) =
 * Fixed text from review box appearing in widgets
 * Fixed PHP notice on reviews with only total rating and no criteria
 
-
 = v3.2.3 (Sept 24, 2014) =
 * Added version number to wp_enqueue_ functions
 * Added filter to remove banner from options page
 
-
 = v3.2.2 (Sept 12, 2014) =
 * Fixed Stars were not appearing in Tabbed widget.
-
 
 = v3.2.1 (Sept 11, 2014) =
 * Fixed error appearing when plugin settings weren't saved.
 * Fixed JS issues.
 * Fixed Tabbed Widget issue.
-
 
 = v3.2 (Sept 9, 2014) =
 * Added Options Panel for Global Option
@@ -268,12 +259,10 @@ Please disable all plugins and check if rating is working properly. Then you can
 * Fixed many small bugs.
 * Optimized code for better performance.
 
-
 = v3.1 (Mar 30, 2014) =
 * Fixed average star rating number issue.
 * Added New filter to exclude post types.
 * Updated filter list.
-
 
 = v3.0 (Mar 23, 2014) =
 * Major security updates
@@ -285,7 +274,6 @@ Please disable all plugins and check if rating is working properly. Then you can
 * Compatible with WordPress 3.9 Beta
 * Plugin will support the widget customizer coming up in WordPress 3.9
 
-
 = v2.0 (Mar 19, 2014) =
 * Fixed the, `'` switching in to `/` issue (http://bit.ly/PFMGAq)
 * Added `[wp-review]` shortcode to show the ratings anywhere in the content.
@@ -294,7 +282,6 @@ Please disable all plugins and check if rating is working properly. Then you can
 * For Developers Added new function for showing only total rating, it could be used in themes' archives. A custom class name can be passed to the function, for easier customization. See `wp_review_show_total()` function in includes/functions.php file. There's also a shortcode for it, just in case: [wp-review-total]
 * For Developers Added the default colors which appear in the meta boxes are now stored in an option. It can be modified directly with `update_option()`, or using the new `wp_review_set_default_colors()` function, which is also called on plugin activation to set the plugin's default colors.
 * Made small CSS and responsive improvements.
-
 
 = v1.0 (Feb 18, 2014) =
 * Official plugin release.

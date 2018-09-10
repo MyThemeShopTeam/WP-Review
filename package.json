@@ -1,0 +1,30 @@
+{
+  "name": "wp-review",
+  "version": "5.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "gulp",
+    "zip": "gulp zip"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MyThemeShopTeam/wp-review.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MyThemeShopTeam/wp-review/issues"
+  },
+  "homepage": "https://github.com/MyThemeShopTeam/wp-review#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^5.0.0",
+    "gulp-remove-empty-lines": "^0.1.0",
+    "gulp-sass": "^4.0.1",
+    "gulp-sourcemaps": "^2.6.4",
+    "gulp-zip": "^4.1.0"
+  },
+  "dependencies": {}
+}
