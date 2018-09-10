@@ -31,7 +31,7 @@ class WP_Review_Tab_Widget extends WP_Widget {
 			'width' => 200,
 			'height' => 350,
 		);
-		parent::__construct( 'wp_review_tab_widget', __( 'WP Review: Tab Widget', 'wp-review' ), $widget_ops, $control_ops );
+		parent::__construct( 'wp_review_tab_widget', __( 'WP Review Widget', 'wp-review' ), $widget_ops, $control_ops );
 	}
 
 	public function wp_review_tab_admin_scripts( $hook ) {
@@ -115,8 +115,10 @@ class WP_Review_Tab_Widget extends WP_Widget {
 					<?php esc_html_e( 'Most Voted', 'wp-review' ); ?>
 				</label>
 				<label class="alignleft" style="display: block; width: 50%; margin-bottom: 7px;" for="<?php echo $this->get_field_id("tabs"); ?>_recent_ratings">
-					<input type="checkbox" class="checkbox wp_review_tab_enable_recent_ratings" id="<?php echo $this->get_field_id("tabs"); ?>_recent_ratings" name="<?php echo $this->get_field_name("tabs"); ?>[recent_ratings]" value="1" <?php if (isset($tabs['recent_ratings'])) { checked(1, $tabs['recent_ratings'], true); } ?> />
+					<span class="wp-review-disabled inline-block">
+						<input type="checkbox" class="checkbox wp_review_tab_enable_recent_ratings" id="<?php echo $this->get_field_id("tabs"); ?>_recent_ratings" name="<?php echo $this->get_field_name("tabs"); ?>[recent_ratings]" value="1" disabled />
 						<?php esc_html_e( 'Recent Comments', 'wp-review' ); ?>
+					</span>
 				</label>
 				<label class="alignleft" style="display: block; width: 50%; margin-bottom: 7px;" for="<?php echo $this->get_field_id("tabs"); ?>_custom">
 					<input type="checkbox" class="checkbox wp_review_tab_enable_custom" id="<?php echo $this->get_field_id("tabs"); ?>_custom" name="<?php echo $this->get_field_name("tabs"); ?>[custom]" value="1" <?php if (isset( $tabs['custom'])) { checked( 1, $tabs['custom'], true ); } ?> />
@@ -129,29 +131,37 @@ class WP_Review_Tab_Widget extends WP_Widget {
 				<?php $hide = ! isset( $tabs['recent_ratings'] ) ? 'wpr-hide' : ''; ?>
 				<p class="wp_review_restrict_recent_review" <?php echo esc_attr( $hide ); ?>>
 					<label for="<?php echo esc_attr( $this->get_field_id( 'restrict_recent_reviews' ) ); ?>">
-						<input type="checkbox" class="checkbox" id="<?php echo esc_attr( $this->get_field_id( 'restrict_recent_reviews' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'restrict_recent_reviews' ) ); ?>" value="1" <?php if (isset($restrict_recent_reviews)) { checked(1, $restrict_recent_reviews, true); } ?> />
-						<?php esc_html_e( 'Restrict recent reviews to current post', 'wp-review' ); ?>
+						<span class="wp-review-disabled inline-block">
+							<input type="checkbox" class="checkbox" id="<?php echo esc_attr( $this->get_field_id( 'restrict_recent_reviews' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'restrict_recent_reviews' ) ); ?>" value="1" disabled />
+							<?php esc_html_e( 'Restrict recent reviews to current post', 'wp-review' ); ?>
+						</span>
 					</label>
 				</p>
 
 				<p class="wp_review_tab_top_rated_filter">
 					<label for="<?php echo $this->get_field_id('top_rated_posts'); ?>"><?php _e('Top Rated Posts By:', 'wp-review'); ?></label>
-					<select id="<?php echo $this->get_field_id('top_rated_posts'); ?>" name="<?php echo $this->get_field_name('top_rated_posts'); ?>" style="margin-left: 12px;">
-						<option value="visitors" <?php selected($top_rated_posts, 'visitors', true); ?>><?php _e('Visitors', 'wp-review'); ?></option>
-						<option value="comments" <?php selected($top_rated_posts, 'comments', true); ?>><?php _e('Comments', 'wp-review'); ?></option>
-					</select>
+					<?php wp_review_print_pro_text(); ?>
+
+					<span class="wp-review-disabled inline-block has-bg">
+						<select id="<?php echo $this->get_field_id('top_rated_posts'); ?>" name="<?php echo $this->get_field_name('top_rated_posts'); ?>" style="margin-left: 12px;" disabled>
+							<option value="visitors"><?php _e('Visitors', 'wp-review'); ?></option>
+							<option value="comments"><?php _e('Comments', 'wp-review'); ?></option>
+						</select>
+					</span>
 				</p>
 
 				<p class="wp_review_tab_review_type">
 					<label for="<?php echo esc_attr( $this->get_field_id( 'review_type' ) ); ?>"><?php esc_html_e( 'Review type:', 'wp-review' ); ?></label>
-					<select class="widefat" name="<?php echo esc_attr( $this->get_field_name( 'review_type' ) ); ?>[]" id="<?php echo esc_attr( $this->get_field_id( 'review_type' ) ); ?>" multiple>
+					<select name="<?php echo esc_attr( $this->get_field_name( 'review_type' ) ); ?>" id="<?php echo esc_attr( $this->get_field_id( 'review_type' ) ); ?>">
 						<?php
 						$review_types = wp_review_get_rating_types();
 						foreach ( $review_types as $name => $review_type ) {
+							$disabled = ! in_array( $name, array( 'star', 'point', 'percentage' ) );
 							printf(
-								'<option value="%1$s" %2$s>%3$s</option>',
+								'<option value="%1$s" %2$s %3$s>%4$s</option>',
 								esc_attr( $name ),
-								in_array( $name, $instance['review_type'] ) ? 'selected' : '',
+								selected( $name, $instance['review_type'], false ),
+								$disabled ? 'disabled' : '',
 								esc_html( $review_type['label'] )
 							);
 						}
@@ -160,8 +170,8 @@ class WP_Review_Tab_Widget extends WP_Widget {
 				</p>
 
 				<p>
-					<label for="<?php echo $this->get_field_id("allow_pagination"); ?>">
-						<input type="checkbox" class="checkbox" id="<?php echo $this->get_field_id("allow_pagination"); ?>" name="<?php echo $this->get_field_name("allow_pagination"); ?>" value="1" <?php if (isset( $allow_pagination)) { checked( 1, $allow_pagination, true ); } ?> />
+					<label for="<?php echo $this->get_field_id( 'allow_pagination' ); ?>">
+						<input type="checkbox" class="checkbox" id="<?php echo $this->get_field_id( 'allow_pagination' ); ?>" name="<?php echo $this->get_field_name( 'allow_pagination' ); ?>" value="1" <?php if (isset( $allow_pagination)) { checked( 1, $allow_pagination, true ); } ?> />
 						<?php _e( 'Allow pagination', 'wp-review' ); ?>
 					</label>
 				</p>
@@ -195,7 +205,7 @@ class WP_Review_Tab_Widget extends WP_Widget {
 					<select name="<?php echo esc_attr( $this->get_field_name( 'show_date' ) ); ?>" id="<?php echo esc_attr( $this->get_field_id( 'show_date' ) ); ?>" class="widefat">
 						<option value=""><?php esc_html_e( 'None', 'wp-review' ); ?></option>
 						<option value="1" <?php selected( $instance['show_date'], 1 ); ?>><?php esc_html_e( 'Post date', 'wp-review' ); ?></option>
-						<option value="2" <?php selected( $instance['show_date'], 2 ); ?>><?php esc_html_e( 'Number of reviews', 'wp-review' ); ?></option>
+						<option value="2" disabled><?php esc_html_e( 'Number of reviews', 'wp-review' ); ?></option>
 					</select>
 				</p>
 
@@ -273,7 +283,7 @@ class WP_Review_Tab_Widget extends WP_Widget {
 		$instance['tabs'] = $new_instance['tabs'];
 		$instance['tab_order'] = $new_instance['tab_order'];
 		$instance['tab_titles'] = wp_kses_post( $new_instance['tab_titles'] );
-		$instance['review_type'] = $new_instance['review_type'];
+		$instance['review_type'] = isset( $new_instance['review_type'] ) ? $new_instance['review_type'] : '';
 		$instance['allow_pagination'] = $new_instance['allow_pagination'];
 		$instance['post_num'] = $new_instance['post_num'];
 		$instance['title_length'] = $new_instance['title_length'];
@@ -406,152 +416,76 @@ class WP_Review_Tab_Widget extends WP_Widget {
 		$post_num = ( empty( $args['post_num'] ) || $args['post_num'] > 20 || $args['post_num'] < 1 ) ? 5 : intval( $args['post_num'] );
 		$review_type = ! empty( $args['review_type'] ) ? (array) $args['review_type'] : array();
 
-		// Recent ratings tab renders different than other tabs.
-		if ( 'recent_ratings' === $tab ) {
-			$comment_post_id = 0;
-			$offset = intval( $page - 1 ) * $post_num;
-			$restrict_reviews = $args['restrict_recent_reviews'];
-			if ( $restrict_reviews ) {
-				$comment_post_id = $args['current_post_id'];
+		// Normal tabs.
+		$query_args = array(
+			'post_num' => $post_num,
+			'page'     => $page,
+			'review_type' => $review_type,
+			'clear_cache' => ! empty( $args['clear_cache'] ),
+		);
+
+		if ( 'custom' === $tab ) {
+			$custom_reviews = array();
+			if ( ! empty( $args['custom_reviews'] ) ) {
+				$custom_reviews = explode( ',', $args['custom_reviews'] );
+				$custom_reviews = array_map( 'trim', $custom_reviews );
+				$custom_reviews = array_map( 'intval', $custom_reviews );
 			}
-			$comments = get_comments( array(
-				'type__in' => array( WP_REVIEW_COMMENT_TYPE_VISITOR, WP_REVIEW_COMMENT_TYPE_COMMENT ),
-				'number' => $post_num,
-				'status' => 'approve',
-				'offset' => $offset,
-				'post_id' => $comment_post_id,
-			));
-			$total_comments = get_comments(array(
-				'type__in' => array( WP_REVIEW_COMMENT_TYPE_VISITOR, WP_REVIEW_COMMENT_TYPE_COMMENT ),
-				'status' => 'approve',
-				'post_id' => $comment_post_id,
-				'count' => true,
-			));
-			$last_page = ceil( $total_comments / $post_num );
-			?>
-			<ul>
-				<?php
-				if ( $comments ) {
-					foreach ( $comments as $comment ) {
-						$comment_post_id = intval( $comment->comment_post_ID );
-						$comment_user_id = intval( $comment->user_id );
-						if ( $comment_user_id ) {
-							$user_data = get_user_by( 'ID', $comment_user_id );
-							$user_name = $user_data->display_name;
-							$user_email = $user_data->user_email;
-						} else {
-							$user_name = $comment->comment_author;
-							$user_email = $comment->comment_author_email;
-						}
-						$rating = get_comment_meta( $comment->comment_ID, 'wp_review_comment_rating', true );
-						if ( ! $rating ) {
-							$rating = get_comment_meta( $comment->comment_ID, 'wp_review_visitor_rating', true );
-						}
-						?>
-						<li>
-							<div class="wp_review_tab_thumbnail wp_review_tab_thumb_<?php echo esc_attr( $thumb_size ); ?>">
-								<img src="<?php echo get_avatar_url( $user_email ); ?>" alt="<?php echo get_the_title( $comment_post_id ); ?>" class="wp-post-image" />
-							</div>
-							<div class="title-right">
-								<div class="entry-title">
-									<a title="<?php echo get_the_title( $comment_post_id ); ?>" href="<?php echo get_the_permalink( $comment_post_id ); ?>">
-										<?php echo get_the_title( $comment_post_id ); ?>
-									</a>
-									<span>
-										<?php esc_html_e( 'reviewed by', 'wp-review' ); ?>
-										<?php echo esc_html( $user_name ); ?>
-									</span>
-								</div>
-								<p><?php echo esc_html( wp_trim_words( $comment->comment_content, $title_length ) ); ?></p>
-								<?php
-								$rating_args = array(
-									'in_widget'      => true,
-									'color'          => '#fff',
-									'inactive_color' => '#dedcdc',
-								);
-								echo wp_review_show_total( true, 'review-total-only ' . $thumb_size . '-thumb', $comment_post_id, $rating_args );
+			$query_args['ids'] = $custom_reviews;
+		} elseif ( 'toprated' === $tab ) {
+			$toprated_key = 'wp_review_total';
 
-								if ( 1 === $show_date ) :
-									$comment_time = strtotime( $comment->comment_date );
-									$comment_time = date( 'M j, Y', $comment_time );
-									?>
-									<div class="wp-review-tab-postmeta">
-										<?php echo $comment_time; ?>
-									</div> <!--end .entry-meta-->
-								<?php endif; ?>
-							</div>
-							<div class="clear"></div>
-						</li>
-					<?php } ?>
-				<?php } ?>
-			</ul>
-			<?php
-		} else {
-			// Normal tabs.
-			$query_args = array(
-				'post_num' => $post_num,
-				'page'     => $page,
-				'review_type' => $review_type,
-				'clear_cache' => ! empty( $args['clear_cache'] ),
-			);
-
-			if ( 'custom' === $tab ) {
-				$custom_reviews = array();
-				if ( ! empty( $args['custom_reviews'] ) ) {
-					$custom_reviews = explode( ',', $args['custom_reviews'] );
-					$custom_reviews = array_map( 'trim', $custom_reviews );
-					$custom_reviews = array_map( 'intval', $custom_reviews );
-				}
-				$query_args['ids'] = $custom_reviews;
-			} elseif ( 'toprated' === $tab ) {
-				$toprated_key = 'wp_review_total';
-
-				if ( ! empty( $args['top_rated_posts'] ) && 'comments' === $args['top_rated_posts'] ) {
-					$toprated_key = 'wp_review_comments_rating_value';
-				}
-
-				$query_args['toprated_key'] = $toprated_key;
+			if ( ! empty( $args['top_rated_posts'] ) && 'comments' === $args['top_rated_posts'] ) {
+				$toprated_key = 'wp_review_comments_rating_value';
 			}
 
-			$query = wp_review_get_reviews_query( $tab, $query_args );
-			?>
-			<ul>
-				<?php
-				$last_page = $query->max_num_pages;
-				while ( $query->have_posts() ) : $query->the_post(); ?>
-					<li>
-						<a title="<?php the_title(); ?>" rel="nofollow" href="<?php the_permalink(); ?>">
-							<div class="wp_review_tab_thumbnail wp_review_tab_thumb_<?php echo esc_attr( $thumb_size ); ?>">
-								<?php if ( has_post_thumbnail() ) : ?>
-									<?php the_post_thumbnail( 'wp_review_' . $thumb_size, array( 'title' => '' ) ); ?>
-								<?php else : ?>
-									<img src="<?php echo esc_url( WP_REVIEW_ASSETS . 'images/' . $thumb_size . 'thumb.png' ); ?>" alt="<?php the_title(); ?>" class="wp-post-image" />
-								<?php endif; ?>
-							</div>
-						</a>
-						<div class="title-right">
-							<div class="entry-title"><a title="<?php the_title(); ?>" href="<?php the_permalink(); ?>"><?php echo $this->post_title( $title_length ); ?></div></a>
-							<?php
-							$rating_args = array(
-								'in_widget'      => true,
-								'color'          => '#fff',
-								'inactive_color' => '#dedcdc',
-							);
-							wp_review_show_total( true, 'review-total-only ' . $thumb_size . '-thumb', null, $rating_args );
-
-							wp_review_extra_info( get_the_ID(), $show_date, array(
-								'date_format' => 'M j, Y',
-								'class'       => 'wp-review-tab-postmeta',
-							)); // Using `show_date` to keep compatibility.
-							?>
-						</div>
-						<div class="clear"></div>
-					</li>
-				<?php endwhile; wp_reset_postdata(); ?>
-			</ul>
-			<?php
+			$query_args['toprated_key'] = $toprated_key;
 		}
+
+		$query = wp_review_get_reviews_query( $tab, $query_args );
 		?>
+		<ul>
+			<?php
+			$last_page = $query->max_num_pages;
+			while ( $query->have_posts() ) : $query->the_post();
+				$classes = array( 'wp_review_tab_thumbnail' );
+				$classes[] = 'wp_review_tab_thumb_' . $thumb_size;
+				if ( ! has_post_thumbnail() ) {
+					$classes[] = 'wp-review-no-thumb';
+				}
+				$classes = implode( ' ', $classes );
+				?>
+				<li>
+					<a title="<?php the_title(); ?>" rel="nofollow" href="<?php the_permalink(); ?>">
+						<div class="<?php echo esc_attr( $classes ); ?>">
+							<?php if ( has_post_thumbnail() ) : ?>
+								<?php the_post_thumbnail( 'wp_review_' . $thumb_size, array( 'title' => '' ) ); ?>
+							<?php else : ?>
+								<img src="<?php echo esc_url( WP_REVIEW_ASSETS . 'images/' . $thumb_size . 'thumb.png' ); ?>" alt="<?php the_title(); ?>" class="wp-post-image" />
+							<?php endif; ?>
+						</div>
+					</a>
+					<div class="title-right">
+						<div class="entry-title"><a title="<?php the_title(); ?>" href="<?php the_permalink(); ?>"><?php echo $this->post_title( $title_length ); ?></div></a>
+						<?php
+						$rating_args = array(
+							'in_widget'      => true,
+							'color'          => '#fff',
+							'inactive_color' => '#dedcdc',
+						);
+						wp_review_show_total( true, 'review-total-only ' . $thumb_size . '-thumb', null, $rating_args );
+
+						wp_review_extra_info( get_the_ID(), $show_date, array(
+							'date_format' => 'M j, Y',
+							'class'       => 'wp-review-tab-postmeta',
+						)); // Using `show_date` to keep compatibility.
+						?>
+					</div>
+					<div class="clear"></div>
+				</li>
+			<?php endwhile; wp_reset_postdata(); ?>
+		</ul>
+
 		<div class="clear"></div>
 		<?php if ( $allow_pagination ) : ?>
 			<?php $this->tab_pagination( $page, $last_page ); ?>

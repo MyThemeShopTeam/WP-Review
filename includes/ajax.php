@@ -233,10 +233,16 @@ function wp_review_ajax_load_reviews() {
 	echo '<ul>';
 	while ( $query->have_posts() ) {
 		$query->the_post();
+		$classes   = array( 'thumbnail' );
+		$classes[] = 'thumb_' . $options['thumb_size'];
+		if ( ! has_post_thumbnail() ) {
+			$classes[] = 'wp-review-no-thumbnail';
+		}
+		$classes   = implode( ' ', $classes );
 		?>
 		<li class="item">
 			<a title="<?php the_title(); ?>" rel="nofollow" href="<?php the_permalink(); ?>">
-				<div class="thumbnail thumb_<?php echo esc_attr( $options['thumb_size'] ); ?>">
+				<div class="<?php echo esc_attr( $classes ); ?>">
 					<?php if ( has_post_thumbnail() ) : ?>
 						<?php the_post_thumbnail( 'wp_review_' . $options['thumb_size'] ); ?>
 					<?php else : ?>
