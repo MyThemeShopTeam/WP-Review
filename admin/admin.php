@@ -523,15 +523,48 @@ function wp_review_print_pro_text( $strip_br = false ) {
 function wp_review_print_pro_popup() {
 	?>
 	<div id="wp-review-pro-popup-notice" class="mfp-hide">
-		<h1><?php esc_html_e( 'Buy WP Review Pro', 'wp-review' ); ?></h1>
-		<img class="pro-image" src="<?php echo esc_url( WP_REVIEW_URI . 'admin/assets/images/wp-review-pro.jpg' ); ?>" />
-		<h2 class="pro-notice-header"><?php esc_html_e( 'Like WP Review Plugin? You will LOVE WP Review Pro!', 'wp-review' ); ?></h2>
-		<p>TODO: change this description</p>
-		<a class="button-primary" href="https://mythemeshop.com/plugins/wp-review-pro/" target="_blank"><?php esc_html_e( 'Buy WP Review Pro', 'wp-review' ); ?></a>
+		<div class="pro-popup-title"><?php esc_html_e( 'Buy WP Review Pro', 'wp-review' ); ?></div>
+		<div class="pro-popup-content">
+			<img class="pro-popup-image" src="<?php echo esc_url( WP_REVIEW_URI . 'admin/assets/images/wp-review-pro.jpg' ); ?>" />
+			<h2 class="pro-notice-header"><?php esc_html_e( 'Like WP Review Plugin? You will LOVE WP Review Pro!', 'wp-review' ); ?></h2>
+			<p>TODO: change this description</p>
+			<a class="button-primary" href="https://mythemeshop.com/plugins/wp-review-pro/" target="_blank"><?php esc_html_e( 'Buy WP Review Pro', 'wp-review' ); ?></a>
+		</div>
 	</div>
 
 	<style>
 		.mfp-hide { display: none !important; }
+		#wp-review-pro-popup-notice {
+			background: #FFF;
+			width: auto;
+			max-width: 630px;
+			margin: 20px auto;
+			position: relative;
+		}
+		#wp-review-pro-popup-notice .mfp-close { background-color: transparent; }
+		#wp-review-pro-popup-notice .pro-popup-title {
+			padding: 0 10px;
+			line-height: 29px;
+			font-weight: 600;
+			background: #fcfcfc;
+			border-bottom: 1px solid #ddd;
+		}
+		#wp-review-pro-popup-notice .pro-popup-content {
+			padding: 2px 15px 15px;
+			min-height: 195px;
+		}
+		#wp-review-pro-popup-notice .pro-popup-content:after {
+			content: " ";
+			display: block;
+			height: 0;
+			visibility: hidden;
+			clear: both;
+		}
+		#wp-review-pro-popup-notice .pro-popup-image {
+			width: 150px;
+			float: right;
+			margin: 10px;
+		}
 	</style>
 	<?php
 }

@@ -836,20 +836,3 @@ input.wpr-switch__off:checked + label, input.wpr-switch__off:checked + label:hov
 		opacity: 0.3;
 	}
 }
-
-#wp-review-pro-popup-notice {
-	@extend %clear-float-after;
-
-	position: relative;
-	background: #FFF;
-	padding: 20px;
-	width: auto;
-	max-width: 630px;
-	margin: 20px auto;
-
-	.pro-image {
-		width: 150px;
-		float: right;
-		margin: 10px;
-	}
-}

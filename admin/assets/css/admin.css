@@ -1,5 +1,3 @@
-#wp-review-pro-popup-notice:after { content: " "; display: block; height: 0; visibility: hidden; clear: both; }
-
 .border-box, .wpr-box-template-images { box-sizing: border-box; }
 
 .border-box *, .wpr-box-template-images * { box-sizing: border-box; }
@@ -341,9 +339,5 @@ input.wpr-switch__off:checked + label, input.wpr-switch__off:checked + label:hov
 .wp-review-disabled.inline-block { display: inline-block; }
 
 .wp-review-disabled.wpr-switch, .wp-review-disabled.has-bg { opacity: 0.3; }
-
-#wp-review-pro-popup-notice { position: relative; background: #FFF; padding: 20px; width: auto; max-width: 630px; margin: 20px auto; }
-
-#wp-review-pro-popup-notice .pro-image { width: 150px; float: right; margin: 10px; }
 
 /*# sourceMappingURL=../sourcemaps/admin.css.map */
