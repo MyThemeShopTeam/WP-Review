@@ -53,12 +53,12 @@ $rating_types = wp_review_get_rating_types();
 
 $classes = implode( ' ', $review['css_classes'] );
 
-if ( ! empty( $review['fontfamily'] ) ) : ?>
-	<link href="https://fonts.googleapis.com/css?family=Comfortaa:400,700" rel="stylesheet">
-	<style type="text/css">
-		.wp-review-<?php echo $review['post_id']; ?>.review-wrapper { font-family: 'Comfortaa', cursive; }
-	</style>
-<?php endif; ?>
+?>
+
+<link href="https://fonts.googleapis.com/css?family=Comfortaa:400,700" rel="stylesheet">
+<style type="text/css">
+	.wp-review-<?php echo $review['post_id']; ?>.review-wrapper { font-family: 'Comfortaa', cursive; }
+</style>
 
 <div id="review" class="<?php echo esc_attr( $classes ); ?>">
 	<?php if ( empty( $review['heading'] ) ) : ?>

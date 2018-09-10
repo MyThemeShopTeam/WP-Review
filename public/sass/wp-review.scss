@@ -1,9 +1,12 @@
+// compileCompressed: ../css/$1.css
+
 @import "util";
 
 .review-wrapper {
 	border: 1px solid #e7e7e7;
 	margin-bottom: 30px;
 	clear: both;
+	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
 
 	.review-list {
@@ -11,6 +14,7 @@
 		list-style: none;
 		padding: 0;
 		clear: both;
+		-webkit-box-sizing: border-box;
 		box-sizing: border-box;
 	}
 
@@ -34,6 +38,7 @@
 	border-bottom: 1px solid #e7e7e7;
 	margin: 0;
 	padding: 15px;
+	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
 	font-family: inherit;
 }
@@ -46,6 +51,7 @@
 	margin: 0;
 	overflow: hidden;
 	border-bottom: 1px solid;
+	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
 
 	li {
@@ -74,6 +80,7 @@
 .review-list {
 	li {
 		@extend %clear-float-after;
+		-webkit-box-sizing: border-box;
 		box-sizing: border-box;
 		border-bottom: 1px solid #e7e7e7;
 		padding: 10px 15px;
@@ -94,21 +101,29 @@
 }
 .review-desc {
 	padding: 10px 15px;
+	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
 }
 .review-desc p:last-child {
 	margin-bottom: 0;
 }
 .review-pros-cons {
+	display: -webkit-box;
+	display: -ms-flexbox;
 	display: flex;
+	-ms-flex-wrap: wrap;
 	flex-wrap: wrap;
 	padding: 10px 15px 30px;
 	clear: both;
+	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
 
 	.review-pros {
+		-webkit-box-flex: 0;
+		-ms-flex: 0 0 50%;
 		flex: 0 0 50%;
 		padding-right: 10px;
+		-webkit-box-sizing: border-box;
 		box-sizing: border-box;
 
 		p:last-of-type {
@@ -117,8 +132,11 @@
 	}
 
 	.review-cons {
+		-webkit-box-flex: 0;
+		-ms-flex: 0 0 50%;
 		flex: 0 0 50%;
 		padding-left: 10px;
+		-webkit-box-sizing: border-box;
 		box-sizing: border-box;
 
 		p:last-of-type {
@@ -206,6 +224,7 @@ textarea#wp_review_comment_pros, textarea#wp_review_comment_cons { height: 100px
 	padding: 10px 15px;
 	border-bottom: 1px solid #e7e7e7;
 	width: 100%;
+	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
 
 	.review-links {
@@ -250,6 +269,7 @@ textarea#wp_review_comment_pros, textarea#wp_review_comment_cons { height: 100px
 	padding-right: 0;
 	clear: both;
 	position: relative;
+	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
 	padding: 10px 15px 20px 15px;
 }
@@ -264,6 +284,7 @@ textarea#wp_review_comment_pros, textarea#wp_review_comment_cons { height: 100px
 	margin: 0;
 	padding: 35px 0 20px;
 	width: 100%;
+	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
 	overflow: hidden
 }
@@ -350,6 +371,7 @@ textarea#wp_review_comment_pros, textarea#wp_review_comment_cons { height: 100px
 .wp-review-user-rating.wp-review-user-rating-point.has-rated .review-result-wrapper, .wp-review-user-rating.wp-review-user-rating-percentage.has-rated .review-result-wrapper { cursor: default }
 .wp-review-comment-rating.wp-review-comment-rating-point .review-result-wrapper:hover .review-result, .wp-review-user-rating.wp-review-user-rating-point .review-result-wrapper:hover .review-result, .wp-review-comment-rating.wp-review-comment-rating-percentage .review-result-wrapper:hover .review-result, .wp-review-user-rating.wp-review-user-rating-percentage .review-result-wrapper:hover .review-result {
 	display: block;
+	-webkit-transition: none;
 	transition: none;
 }
 .review-point, .review-percentage {
@@ -376,7 +398,7 @@ textarea#wp_review_comment_pros, textarea#wp_review_comment_cons { height: 100px
 	right: 45%;
 }
 
-.column-wp_review_rating .wp-review-circle-rating { box-shadow: none; }
+.column-wp_review_rating .wp-review-circle-rating { -webkit-box-shadow: none; box-shadow: none; }
 .review-point:hover .wp-review-your-rating,
 .review-percentage:hover .wp-review-your-rating {
 	display: block;
@@ -466,12 +488,13 @@ textarea#wp_review_comment_pros, textarea#wp_review_comment_cons { height: 100px
 	}
 }
 .user-review-area {
-	border-bottom: 1px solid #e7e7e7;
+	border-top: 1px solid #e7e7e7;
 	padding: 10px 15px;
 	position: relative;
 	clear: both;
 	float: left;
 	width: 100%;
+	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
 	.wp-review-user-rating-star {
 		float: right;
@@ -705,6 +728,7 @@ form.wp-review-comment-form input, #commentform.wp-review-comment-form input, #c
 	height: 44px;
 	font-size: 16px;
 	padding-left: 2.5%;
+	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
 }
 .rtl form.wp-review-comment-form input, .rtl #commentform.wp-review-comment-form input {
@@ -719,6 +743,7 @@ form.wp-review-comment-form textarea, #commentform.wp-review-comment-form textar
 	max-width: 100%;
 	font-size: 16px;
 	padding-left: 2.5%;
+	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
 }
 .rtl form.wp-review-comment-form textarea, .rtl #commentform.wp-review-comment-form textarea {
@@ -849,7 +874,7 @@ form.wp-review-comment-form > div, #commentform.wp-review-comment-form > div {
 	.review-pros-cons .review-pros { padding-bottom: 20px; }
 }
 .rtl .review-total-box { unicode-bidi: isolate-override; }
-.rtl .wp-review-user-rating-total { unicode-bidi: isolate; }
+.rtl .wp-review-user-rating-total { unicode-bidi: -webkit-isolate; unicode-bidi: isolate; }
 .rtl .wp-review-user-rating-total + small { unicode-bidi: plaintext; }
 .rtl .review-links li a { margin: 0 0 0 10px }
 
@@ -867,6 +892,7 @@ form.wp-review-comment-form > div, #commentform.wp-review-comment-form > div {
 	background-color: #fff;
 
 	* {
+		-webkit-box-sizing: border-box;
 		box-sizing: border-box;
 	}
 
@@ -977,6 +1003,7 @@ form.wp-review-comment-form > div, #commentform.wp-review-comment-form > div {
 			border-right: 0.4em solid rgba(0, 0, 0, 0.2);
 			border-bottom: 0.4em solid rgba(0, 0, 0, 0.2);
 			border-left: 0.4em solid #000;
+			-webkit-animation: load8 0.5s infinite linear;
 			animation: load8 0.5s infinite linear;
 			border-radius: 50%;
 			width: 2em;
@@ -1015,6 +1042,7 @@ form.wp-review-comment-form > div, #commentform.wp-review-comment-form > div {
 		}
 
 		a {
+			-webkit-box-shadow: none;
 			box-shadow: none;
 			padding: 8px 15px;
 			background-color: rgba(0, 0, 0, 0.15);
@@ -1048,6 +1076,7 @@ form.wp-review-comment-form > div, #commentform.wp-review-comment-form > div {
 		list-style-type: none;
 
 		button {
+			-webkit-box-shadow: none;
 			box-shadow: none;
 			padding: 8px 15px;
 			background-color: rgba(0, 0, 0, 0.15);

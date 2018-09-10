@@ -527,8 +527,8 @@ function wp_review_print_pro_popup() {
 		<div class="pro-popup-content">
 			<img class="pro-popup-image" src="<?php echo esc_url( WP_REVIEW_URI . 'admin/assets/images/wp-review-pro.jpg' ); ?>" />
 			<h2 class="pro-notice-header"><?php esc_html_e( 'Like WP Review Plugin? You will LOVE WP Review Pro!', 'wp-review' ); ?></h2>
-			<p>TODO: change this description</p>
-			<a class="button-primary" href="https://mythemeshop.com/plugins/wp-review-pro/" target="_blank"><?php esc_html_e( 'Buy WP Review Pro', 'wp-review' ); ?></a>
+			<p><?php esc_html_e( '15 new review box templates, 15 new Schema types, commment reviews, user can rate each feature, review popups, review notification bars, custom width, 9 new custom widgets, Google reviews, Facebook reviews, Yelp reviews and much more...', 'wp-review' ); ?></p>
+			<a class="button-primary" href="https://mythemeshop.com/plugins/wp-review-pro/?utm_source=WP+Review&utm_medium=Popup&utm_content=WP+Review+Pro+LP&utm_campaign=WordPressOrg" target="_blank"><?php esc_html_e( 'Buy WP Review Pro', 'wp-review' ); ?></a>
 		</div>
 	</div>
 
