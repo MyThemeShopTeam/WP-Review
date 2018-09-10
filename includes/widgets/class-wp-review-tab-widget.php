@@ -334,7 +334,9 @@ class WP_Review_Tab_Widget extends WP_Widget {
 			'custom'    => $tab_titles['custom'],
 		);
 
-		array_multisort( $tab_order, $available_tabs );
+		$enabled_available_tabs = $available_tabs;
+		unset( $enabled_available_tabs['recent_ratings'] );
+		array_multisort( $tab_order, $enabled_available_tabs );
 		?>
 		<?php echo wp_kses_post( $before_widget ); ?>
 		<div class="wp_review_tab_widget_content" id="<?php echo esc_attr( $widget_id ); ?>_content">
