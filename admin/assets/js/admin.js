@@ -386,6 +386,11 @@
 			onSwitchColor( ui.color.toString() );
 		});
 
+		$( '#wp_review_inactive_color' ).on( 'color-change', function( ev, colorEvent, ui ) {
+			postInactiveColor = $( '#wp_review_inactive_color' ).val();
+			onSwitchInactiveColor( ui.color.toString() );
+		});
+
 		// Init select2.
 		$select.select2({
 			width: '250px',
