@@ -381,6 +381,10 @@
 			onSwitchInactiveColor( $( '#wpr-review-global-inactive-color-value' ).val() );
 		});
 
+		$( '#wp_review_color' ).on( 'color-change', function( ev, colorEvent, ui ) {
+			onSwitchColor( ui.color.toString() );
+		});
+
 		// Init select2.
 		$select.select2({
 			width: '250px',
@@ -614,7 +618,11 @@ jQuery(document).ready(function($) {
 	/**
 	 * Color picker setup
 	 */
-	$('.wp-review-color').wpColorPicker();
+	$('.wp-review-color').wpColorPicker({
+		change: function( event, ui ) {
+			$( event.target ).trigger( 'color-change', [ event, ui ] );
+		}
+	});
 
 	$('.wp-review-theme-defaults-msg .close-notice').click(function() {
 		$('.wp-review-theme-defaults-msg').remove();
