@@ -33,6 +33,8 @@ function wp_review_admin_style( $hook_suffix ) {
 
 	wp_enqueue_style( 'wp-review-admin-style', WP_REVIEW_URI . 'admin/assets/css/admin.css', array( 'wp-color-picker' ) );
 
+	wp_add_inline_style( 'wp-review-admin-style', '.column-wp_review_rating .pro-only-notice { display: none; }' );
+
 	wp_enqueue_style( 'magnificPopup', WP_REVIEW_ASSETS . 'css/magnific-popup.css', array(), '1.1.0' );
 	wp_enqueue_script( 'magnificPopup', WP_REVIEW_ASSETS . 'js/jquery.magnific-popup.min.js', array( 'jquery' ), '1.1.0', true );
 
