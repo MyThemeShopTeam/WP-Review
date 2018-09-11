@@ -113,7 +113,7 @@ function wp_review_render_meta_box_review_options( $post ) {
 							<select name="wp_review_rating_schema" id="wp_review_rating_schema">
 								<option value="author" <?php selected( 'author', $rating_schema ); ?>><?php esc_html_e( 'Author Review Rating', 'wp-review' ); ?></option>
 								<option value="visitors" <?php selected( 'visitors', $rating_schema ); ?>><?php esc_html_e( 'Visitors Aggregate Rating (if enabled)', 'wp-review' ); ?></option>
-								<option value="comments" <?php selected( 'comments', $rating_schema ); ?> disabled><?php esc_html_e( 'Comments Reviews Aggregate Rating (if enabled)', 'wp-review' ); ?></option>
+								<option value="comments" class="disabled"><?php esc_html_e( 'Comments Reviews Aggregate Rating (if enabled)', 'wp-review' ); ?></option>
 							</select>
 						</div>
 					</div>

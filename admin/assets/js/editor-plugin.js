@@ -13,138 +13,6 @@
 		return output;
 	};
 
-	var getComparisonTableButton = function( editor ) {
-		return {
-			text: wprVars.comparisonTable,
-			onclick: function() {
-				var dialog = editor.windowManager.open({
-					title: wprVars.comparisonTable,
-					body: [
-						{
-							type: 'textbox',
-							name: 'ids',
-							label: wprVars.reviewIds
-						}
-					],
-					buttons: [
-						{
-							id: 'wpr-insert-shortcode',
-							classes: 'widget btn primary first abs-layout-item',
-							text: wprVars.insert,
-							onclick: function() {
-								dialog.submit();
-							}
-						},
-						{
-							id: 'wpr-cancel-shortcode',
-							text: wprVars.cancel,
-							onclick: function() {
-								dialog.close();
-							}
-						}
-					],
-					onsubmit: function( e ) {
-						var name = 'wp-review-comparison-table',
-							attrs = e.data;
-
-						editor.insertContent( getShortcode( name, attrs ) );
-					}
-				});
-			}
-		};
-	};
-
-	function getPostsButton( editor ) {
-		return {
-			text: wprVars.reviewPosts,
-			onclick: function() {
-				var dialog = editor.windowManager.open({
-					title: wprVars.reviewPosts,
-					body: [
-						{
-							type: 'listbox',
-							name: 'text',
-							label: wprVars.queryType,
-							values: [
-								{ text: wprVars.recentReviews, value: 'recent' },
-								{ text: wprVars.topRated, value: 'toprated' },
-								{ text: wprVars.mostVoted, value: 'mostvoted' },
-								{ text: wprVars.categoryReviews, value: 'cat' }
-							],
-							value: 'recent'
-						},
-						{
-							type: 'textbox',
-							name: 'review_type',
-							label: wprVars.reviewTypesText,
-							tooltip: wprVars.separateByCommas
-						},
-						{
-							type: 'textbox',
-							name: 'cat',
-							label: wprVars.categoryIds,
-							tooltip: wprVars.separateByCommas
-						},
-						{
-							type: 'checkbox',
-							name: 'allow_pagination',
-							label: wprVars.allowPagination
-						},
-						{
-							type: 'textbox',
-							name: 'post_num',
-							label: wprVars.numberOfReviews,
-							value: 5
-						},
-						{
-							type: 'textbox',
-							name: 'title_length',
-							label: wprVars.titleLength
-						},
-						{
-							type: 'checkbox',
-							name: 'show_date',
-							label: wprVars.showDate
-						},
-						{
-							type: 'listbox',
-							name: 'thumb_size',
-							label: wprVars.thumbSize,
-							values: [
-								{ text: wprVars.small, value: 'small' },
-								{ text: wprVars.large, value: 'large' },
-							],
-							value: 'small'
-						}
-					],
-					buttons: [
-						{
-							id: 'wpr-insert-shortcode',
-							classes: 'widget btn primary first abs-layout-item',
-							text: wprVars.insert,
-							onclick: function() {
-								dialog.submit();
-							}
-						},
-						{
-							id: 'wpr-cancel-shortcode',
-							text: wprVars.cancel,
-							onclick: function() {
-								dialog.close();
-							}
-						}
-					],
-					onsubmit: function( e ) {
-						var name = 'wp-review-posts',
-							attrs = e.data;
-
-						editor.insertContent( getShortcode( name, attrs ) );
-					}
-				});
-			}
-		};
-	}
-
 	function getWPReviewButton( editor ) {
 		return {
 			text: wprVars.reviewBox,
@@ -271,48 +139,6 @@
 		};
 	}
 
-	function getCommentsRatingButton( editor ) {
-		return {
-			text: wprVars.commentsRating,
-			onclick: function() {
-				var dialog = editor.windowManager.open({
-					title: wprVars.commentsRating,
-					body: [
-						{
-							type: 'textbox',
-							name: 'id',
-							label: wprVars.reviewId,
-							tooltip: wprVars.leaveReviewIdEmpty
-						}
-					],
-					buttons: [
-						{
-							id: 'wpr-insert-shortcode',
-							classes: 'widget btn primary first abs-layout-item',
-							text: wprVars.insert,
-							onclick: function() {
-								dialog.submit();
-							}
-						},
-						{
-							id: 'wpr-cancel-shortcode',
-							text: wprVars.cancel,
-							onclick: function() {
-								dialog.close();
-							}
-						}
-					],
-					onsubmit: function( e ) {
-						var name = 'wp-review-comments-rating',
-							attrs = e.data;
-
-						editor.insertContent( getShortcode( name, attrs ) );
-					}
-				});
-			}
-		};
-	}
-
 	tinymce.create( 'tinymce.plugins.WPReviewPro', {
 		/**
 		 * Initializes the plugin, this will be executed after the plugin has been created.
@@ -328,11 +154,8 @@
 				icon: 'dashicons dashicons-before dashicons-star-filled',
 				menu: [
 					getWPReviewButton( ed ),
-					getPostsButton( ed ),
 					getReviewTotalButton( ed ),
-					getVisitorRatingButton( ed ),
-					getCommentsRatingButton( ed ),
-					getComparisonTableButton( ed )
+					getVisitorRatingButton( ed )
 				]
 			});
 		},

@@ -159,11 +159,6 @@ if ( ! function_exists( 'wp_review_includes_libraries' ) ) :
 		/* Loads the form field class. */
 		require_once( WP_REVIEW_ADMIN . 'class-wp-review-form-field.php' );
 
-		if ( class_exists( 'WooCommerce' ) ) {
-			/* WooCommerce integrate */
-			require_once( WP_REVIEW_INCLUDES . 'woocommerce.php' );
-		}
-
 		/* Loads the importer. */
 		require_once( WP_REVIEW_ADMIN . 'import.php' );
 

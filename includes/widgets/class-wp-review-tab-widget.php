@@ -291,7 +291,6 @@ class WP_Review_Tab_Widget extends WP_Widget {
 		extract( $args, EXTR_SKIP );
 		extract( $instance, EXTR_SKIP );
 		wp_enqueue_script( 'wp_review_tab_widget' );
-		wp_enqueue_script( 'jquery-knob' );
 		wp_enqueue_script( 'wp_review-js' );
 		wp_enqueue_style( 'wp_review-style' );
 		wp_enqueue_style( 'wp_review_tab_widget' );

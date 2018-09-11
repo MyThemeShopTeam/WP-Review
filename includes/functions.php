@@ -2443,26 +2443,6 @@ function wp_review_get_review_items( $post_id = null ) {
 
 
 /**
- * Shows review items.
- *
- * @since 3.0.0
- *
- * @param int $post_id Post ID.
- */
-function wp_review_review_items( $post_id = null ) {
-	if ( ! $post_id ) {
-		$post_id = get_the_ID();
-	}
-
-	$items = wp_review_get_review_items( $post_id );
-	if ( ! $items ) {
-		return;
-	}
-	wp_review_load_template( 'global/review-items.php', compact( 'items', 'post_id' ) );
-}
-
-
-/**
  * Gets review links.
  *
  * @since 3.0.0
