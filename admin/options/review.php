@@ -683,10 +683,10 @@ $form_field = new WP_Review_Form_Field();
 
 						$disabled = 'circle' === $key || 'thumbs' === $key;
 						printf(
-							'<option value="%1$s" %2$s %3$s>%4$s</option>',
+							'<option value="%1$s" class="%2$s" %3$s>%4$s</option>',
 							esc_attr( $key ),
-							selected( $review_type, $key, false ),
 							$disabled ? 'disabled' : '',
+							selected( $review_type, $key, false ),
 							esc_html( $value['label'] )
 						);
 					}

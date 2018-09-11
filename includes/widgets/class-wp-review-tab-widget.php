@@ -149,10 +149,10 @@ class WP_Review_Tab_Widget extends WP_Widget {
 						foreach ( $review_types as $name => $review_type ) {
 							$disabled = ! in_array( $name, array( 'star', 'point', 'percentage' ) );
 							printf(
-								'<option value="%1$s" %2$s %3$s>%4$s</option>',
+								'<option value="%1$s" class="%2$s" %3$s>%4$s</option>',
 								esc_attr( $name ),
-								selected( $name, $instance['review_type'], false ),
 								$disabled ? 'disabled' : '',
+								selected( $name, $instance['review_type'], false ),
 								esc_html( $review_type['label'] )
 							);
 						}

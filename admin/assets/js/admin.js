@@ -560,16 +560,45 @@
 			}
 		});
 
-		// Pro feature popup.
-		$( document ).on( 'click', '.wp-review-disabled, option[disabled]', function( ev ) {
-			ev.preventDefault();
-
+		function showProPopup() {
 			$.magnificPopup.open({
 				items: {
 					src: '#wp-review-pro-popup-notice',
 					type: 'inline'
 				}
 			});
+		}
+
+		$( document ).on( 'click', '#select2-wp_review_box_template-results li[aria-disabled="true"]', function() {
+			$( '#wp_review_box_template' ).select2( 'close' );
+			showProPopup();
+		});
+
+		$( document ).on( 'click', '#select2-wp_review_rating_icon-results li[aria-disabled="true"]', function() {
+			$( '#wp_review_rating_icon' ).select2( 'close' );
+			showProPopup();
+		});
+
+		// Pro feature popup.
+		$( document ).on( 'click', '.wp-review-disabled, option[disabled]', function( ev ) {
+			ev.preventDefault();
+			showProPopup();
+		});
+
+		$( 'select:not(.select2-hidden-accessible)' ).each( function() {
+			$( this ).attr( 'data-old-val', $( this ).val() );
+		});
+
+		$( document ).on( 'change', 'select:not(.select2-hidden-accessible)', function() {
+			var selectedIndex  = $( this ).prop( 'selectedIndex' ),
+				selectedOption = $( this ).find( 'option:eq(' + selectedIndex + ')' ),
+				oldVal         = $( this ).attr( 'data-old-val' );
+			if ( selectedOption.hasClass( 'disabled' ) ) {
+				$( this ).val( oldVal );
+				showProPopup();
+			} else {
+				$( this ).attr( 'data-old-val', $( this ).val() );
+			}
 		});
 
 		// WYSIWYG saving issue when using Gutenberg.

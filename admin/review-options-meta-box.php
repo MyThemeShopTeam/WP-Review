@@ -60,12 +60,12 @@ function wp_review_render_meta_box_review_options( $post ) {
 						foreach ( $available_types as $key => $available_type ) {
 							$disabled = 'circle' === $key || 'thumbs' === $key;
 							printf(
-								'<option value="%1$s" data-max="%2$s" data-decimals="%3$s" %4$s %5$s>%6$s</option>',
+								'<option value="%1$s" data-max="%2$s" data-decimals="%3$s" class="%4$s" %5$s>%6$s</option>',
 								esc_attr( $key ),
 								intval( $available_type['max'] ),
 								intval( $available_type['decimals'] ),
-								selected( $type, $key, false ),
 								$disabled ? 'disabled' : '',
+								selected( $type, $key, false ),
 								esc_html( $available_type['label'] )
 							);
 						}
