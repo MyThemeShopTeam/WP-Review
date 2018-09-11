@@ -573,7 +573,7 @@
 		});
 
 		// WYSIWYG saving issue when using Gutenberg.
-		if ( 'function' === typeof wp.data.subscribe ) {
+		if ( 'undefined' !== typeof wp.data && 'function' === typeof wp.data.subscribe ) {
 			wp.data.subscribe( function() {
 				window.tinyMCE.triggerSave();
 			});
