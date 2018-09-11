@@ -414,11 +414,11 @@
 		$( document ).on( 'mouseenter', '#select2-wp_review_box_template-results li', function() {
 			$( '#wp_review_box_template_preview' ).addClass( 'loading' ).show();
 			$( '#wp_review_box_template_preview_img' ).attr( 'src', $( this ).find( 'span' ).attr( 'data-img' ) );
-            $( '#wp_review_box_template_preview_img' ).imagesLoaded().progress( function( instance, image ) {
-            	if ( image.isLoaded ) {
-                    $( '#wp_review_box_template_preview' ).removeClass( 'loading' );
+			$( '#wp_review_box_template_preview_img' ).imagesLoaded().progress( function( instance, image ) {
+				if ( image.isLoaded ) {
+					$( '#wp_review_box_template_preview' ).removeClass( 'loading' );
 				}
-            });
+			});
 		});
 
 		$select.on( 'select2:close', function() {
@@ -571,6 +571,13 @@
 				}
 			});
 		});
+
+		// WYSIWYG saving issue when using Gutenberg.
+		if ( 'function' === typeof wp.data.subscribe ) {
+			wp.data.subscribe( function() {
+				window.tinyMCE.triggerSave();
+			});
+		}
 	});
 })( jQuery, Cookies );
 
@@ -710,14 +717,14 @@ jQuery(document).ready(function($) {
 			frame.on( 'insert', function(selection) {
 
 				var state = frame.state();
-		    selection = selection || state.get('selection');
-		    if (! selection) return;
-		    // We set multiple to false so only get one image from the uploader
-		    var attachment = selection.first();
-		    var display = state.display(attachment).toJSON();  // <-- additional properties
-		    attachment = attachment.toJSON();
-		    // Do something with attachment.id and/or attachment.url here
-		    var imgurl = attachment.sizes[display.size].url;
+			selection = selection || state.get('selection');
+			if (! selection) return;
+			// We set multiple to false so only get one image from the uploader
+			var attachment = selection.first();
+			var display = state.display(attachment).toJSON();  // <-- additional properties
+			attachment = attachment.toJSON();
+			// Do something with attachment.id and/or attachment.url here
+			var imgurl = attachment.sizes[display.size].url;
 				var attachments = frame.state().get( 'selection' ).toJSON();
 				if ( attachments[0] ) {
 					$( '#' + id + '-preview' ).html( '<img src="' + imgurl + '" class="wpr_image_upload_img" />' );
@@ -770,16 +777,16 @@ jQuery(document).ready(function($) {
 				$(button).hide();
 			}).open();
 		});
-  }
+	}
 
-  if($(document).find('#multisite_settings').length > 0) {
-  	$(document).on('change', '#wp-review-select-site', function(){
-  		var site = $(this).val();
-  		$('.wp-review-subsite-wrapper').hide();
-  		$(document).find('#wp-review-site-'+site+'-fields').show();
-  	});
+	if($(document).find('#multisite_settings').length > 0) {
+		$(document).on('change', '#wp-review-select-site', function(){
+			var site = $(this).val();
+			$('.wp-review-subsite-wrapper').hide();
+			$(document).find('#wp-review-site-'+site+'-fields').show();
+		});
 
-  	// Multisite general settings.
+		// Multisite general settings.
 		$( '.wp-review-multisite-general-settings div.wpr-switch' ).on( 'switch-on', function() {
 			$('.wp-review-multisite-global-options').fadeOut();
 		});
@@ -787,13 +794,13 @@ jQuery(document).ready(function($) {
 			$('.wp-review-multisite-global-options').fadeIn();
 		});
 
-  	// Multisite post settings.
+		// Multisite post settings.
 		$( '.wp-review-multisite-posts-options div.wpr-switch' ).on( 'switch-on', function() {
 			$(this).parents('.wp-review-multisite-posts-options').next('#wp-review-multisite-posts-options').fadeOut();
 		});
 		$( '.wp-review-multisite-posts-options div.wpr-switch' ).on( 'switch-off', function() {
 			$(this).parents('.wp-review-multisite-posts-options').next('#wp-review-multisite-posts-options').fadeIn();
 		});
-  }
+	}
 
 });
