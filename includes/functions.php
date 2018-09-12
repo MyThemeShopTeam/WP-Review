@@ -41,7 +41,7 @@ function wp_review_option( $name, $default = null ) {
 function wp_review_get_default_colors() {
 	return apply_filters( 'wp_review_default_colors', array(
 		'color' => '#1e73be',
-		'inactive_color' => '',
+		'inactive_color' => '#95bae0',
 		'fontcolor' => '#555555',
 		'bgcolor1' => '#e7e7e7',
 		'bgcolor2' => '#ffffff',
@@ -2417,7 +2417,7 @@ function wp_review_get_review_items( $post_id = null ) {
 	$post_inactive_color = get_post_meta( $post_id, 'wp_review_inactive_color', true );
 
 	$default_color = $custom_colors && $post_color ? $post_color : ( ! empty( $global_colors['color'] ) ? $global_colors['color'] : '' );
-	$default_inactive = $custom_colors && $post_inactive_color ? $post_inactive_color : ( ! empty( $global_colors['inactive_color'] ) ? $global_colors['inactive_color'] : '' );
+	$default_inactive = $custom_colors && $post_inactive_color ? $post_inactive_color : ( ! empty( $global_colors['inactive_color'] ) ? $global_colors['inactive_color'] : '#95bae0' );
 	foreach ( $items as $index => $item ) {
 		if ( empty( $item['id'] ) || is_numeric( $item['id'] ) ) {
 			$items[ $index ]['id'] = sanitize_title( $item['wp_review_item_title'] ) . '_' . wp_generate_password( 6 );
