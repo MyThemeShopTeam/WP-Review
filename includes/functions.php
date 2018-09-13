@@ -956,7 +956,7 @@ function wp_review_register_default_rating_types() {
 	wp_review_register_rating_type( 'star', array(
 		'label'               => __( 'Star', 'wp-review' ),
 		'max'                 => 5,
-		'decimals'            => 2,
+		'decimals'            => 1,
 		'value_text'          => _x( '%s Stars', 'star rating value text', 'wp-review' ),
 		'value_text_singular' => _x( '%s Star', 'star rating value text singular', 'wp-review' ),
 		'input_template'      => WP_REVIEW_DIR . 'rating-types/star-input.php',
@@ -966,7 +966,7 @@ function wp_review_register_default_rating_types() {
 	wp_review_register_rating_type( 'point', array(
 		'label'               => __( 'Point', 'wp-review' ),
 		'max'                 => 10,
-		'decimals'            => 2,
+		'decimals'            => 1,
 		'value_text'          => _x( '%s/10', 'point rating value text', 'wp-review' ),
 		'value_text_singular' => _x( '%s/10', 'point rating value text singular', 'wp-review' ),
 		'input_template'      => WP_REVIEW_DIR . 'rating-types/point-input.php',
@@ -976,7 +976,7 @@ function wp_review_register_default_rating_types() {
 	wp_review_register_rating_type( 'percentage', array(
 		'label'               => __( 'Percentage', 'wp-review' ),
 		'max'                 => 100,
-		'decimals'            => 2,
+		'decimals'            => 1,
 		'value_text'          => _x( '%s%%', 'percentage rating value text', 'wp-review' ),
 		'value_text_singular' => _x( '%s%%', 'percentage rating value text singular', 'wp-review' ),
 		'input_template'      => WP_REVIEW_DIR . 'rating-types/percentage-input.php',
