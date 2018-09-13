@@ -22,16 +22,20 @@ function wp_review_admin_style( $hook_suffix ) {
 		return;
 	}
 
+	if ( 'customize' === get_current_screen()->id ) {
+		return;
+	}
+
 	wp_enqueue_style( 'fontawesome', WP_REVIEW_ASSETS . 'css/font-awesome.min.css', array(), '4.7.0' );
 
-	wp_register_script( 'jquery-knob', trailingslashit( WP_REVIEW_ASSETS ) . 'js/jquery.knob.min.js', array( 'jquery' ), '1.1', true );
-
-	wp_enqueue_script( 'select2', WP_REVIEW_URI . 'admin/assets/js/select2.min.js', array( 'jquery' ), '4.0.4', true );
-	wp_enqueue_style( 'select2', WP_REVIEW_URI . 'admin/assets/css/select2.min.css', array(), '4.0.4' );
+	wp_enqueue_script( 'select2', WP_REVIEW_URI . 'admin/assets/js/select2.min.js', array( 'jquery' ), '4.0.6-rc.0', true );
+	wp_enqueue_style( 'select2', WP_REVIEW_URI . 'admin/assets/css/select2.min.css', array(), '4.0.6-rc.0' );
 
 	wp_enqueue_style( 'wp_review-style', trailingslashit( WP_REVIEW_ASSETS ) . 'css/wp-review.css', array(), WP_REVIEW_PLUGIN_VERSION, 'all' );
 
 	wp_enqueue_style( 'wp-review-admin-style', WP_REVIEW_URI . 'admin/assets/css/admin.css', array( 'wp-color-picker' ) );
+
+	wp_add_inline_style( 'wp-review-admin-style', '.column-wp_review_rating .pro-only-notice { display: none; }' );
 
 	wp_enqueue_style( 'magnificPopup', WP_REVIEW_ASSETS . 'css/magnific-popup.css', array(), '1.1.0' );
 	wp_enqueue_script( 'magnificPopup', WP_REVIEW_ASSETS . 'js/jquery.magnific-popup.min.js', array( 'jquery' ), '1.1.0', true );
@@ -39,14 +43,12 @@ function wp_review_admin_style( $hook_suffix ) {
 	wp_enqueue_media();
 	add_thickbox();
 
-	wp_enqueue_script( 'jquery-knob', WP_REVIEW_ASSETS . 'js/jquery.knob.min.js', array( 'jquery' ), '1.2.12', true );
-
 	wp_register_script( 'js-cookie', WP_REVIEW_ASSETS . 'js/js.cookie.min.js', array(), '2.1.4', true );
 
 	wp_enqueue_script(
 		'wp-review-rating-inputs',
 		WP_REVIEW_URI . 'admin/assets/js/rating-inputs.js',
-		array( 'jquery-knob', 'jquery-ui-slider' ),
+		array( 'jquery-ui-slider' ),
 		'3.0.0',
 		true
 	);
@@ -118,7 +120,6 @@ function wp_review_admin_style( $hook_suffix ) {
 			'geocodes'                     => __( 'Geocodes', 'wp-review' ),
 			'pageId'                       => __( 'Page ID', 'wp-review' ),
 			'generateToken'                => __( 'Generate token', 'wp-review' ),
-			'comparisonTable'              => __( 'Comparison table', 'wp-review' ),
 			'reviewIds'                    => __( 'Review IDs (separate by commas)', 'wp-review' ),
 			'reviewPosts'                  => __( 'Review posts', 'wp-review' ),
 			'queryType'                    => __( 'Query type', 'wp-review' ),
@@ -139,7 +140,6 @@ function wp_review_admin_style( $hook_suffix ) {
 			'reviewBox'                    => __( 'Review box', 'wp-review' ),
 			'reviewTotal'                  => __( 'Review total', 'wp-review' ),
 			'visitorRating'                => __( 'Visitor rating', 'wp-review' ),
-			'commentsRating'               => __( 'Comments rating', 'wp-review' ),
 			'reviewId'                     => __( 'Review ID', 'wp-review' ),
 			'leaveReviewIdEmpty'           => __( 'Leave empty to use current review ID', 'wp-review' ),
 			'insert'                       => __( 'Insert', 'wp-review' ),

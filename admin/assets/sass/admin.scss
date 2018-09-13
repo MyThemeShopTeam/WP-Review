@@ -836,3 +836,7 @@ input.wpr-switch__off:checked + label, input.wpr-switch__off:checked + label:hov
 		opacity: 0.3;
 	}
 }
+
+option.disabled {
+	color: #aaa;
+}

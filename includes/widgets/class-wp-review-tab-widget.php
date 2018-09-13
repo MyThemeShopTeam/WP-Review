@@ -149,10 +149,10 @@ class WP_Review_Tab_Widget extends WP_Widget {
 						foreach ( $review_types as $name => $review_type ) {
 							$disabled = ! in_array( $name, array( 'star', 'point', 'percentage' ) );
 							printf(
-								'<option value="%1$s" %2$s %3$s>%4$s</option>',
+								'<option value="%1$s" class="%2$s" %3$s>%4$s</option>',
 								esc_attr( $name ),
-								selected( $name, $instance['review_type'], false ),
 								$disabled ? 'disabled' : '',
+								selected( $name, $instance['review_type'], false ),
 								esc_html( $review_type['label'] )
 							);
 						}
@@ -196,7 +196,7 @@ class WP_Review_Tab_Widget extends WP_Widget {
 					<select name="<?php echo esc_attr( $this->get_field_name( 'show_date' ) ); ?>" id="<?php echo esc_attr( $this->get_field_id( 'show_date' ) ); ?>" class="widefat">
 						<option value=""><?php esc_html_e( 'None', 'wp-review' ); ?></option>
 						<option value="1" <?php selected( $instance['show_date'], 1 ); ?>><?php esc_html_e( 'Post date', 'wp-review' ); ?></option>
-						<option value="2" disabled><?php esc_html_e( 'Number of reviews', 'wp-review' ); ?></option>
+						<option value="2" class="disabled"><?php esc_html_e( 'Number of reviews', 'wp-review' ); ?></option>
 					</select>
 				</p>
 
@@ -291,7 +291,6 @@ class WP_Review_Tab_Widget extends WP_Widget {
 		extract( $args, EXTR_SKIP );
 		extract( $instance, EXTR_SKIP );
 		wp_enqueue_script( 'wp_review_tab_widget' );
-		wp_enqueue_script( 'jquery-knob' );
 		wp_enqueue_script( 'wp_review-js' );
 		wp_enqueue_style( 'wp_review-style' );
 		wp_enqueue_style( 'wp_review_tab_widget' );

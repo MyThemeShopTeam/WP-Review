@@ -85,42 +85,6 @@
 		}
 	};
 
-	// Circle input.
-	$.fn.wprCircleInput = function( method ) {
-		var methods = {
-			init: function( options ) {
-				var _this = this;
-				options = $.extend( {}, defaults, this.data(), options );
-				if ( typeof options.ready == 'function' ) {
-					options.ready.call( this, options )
-				}
-				options._this = this;
-
-				this.knob({
-					fgColor: options.color,
-					inputColor: options.color,
-					bgColor: options.inactiveColor,
-					width: options.width,
-					height: options.width,
-					displayInput: options.displayInput,
-					step: 0.01,
-					change: function( value ) {
-						triggerCallback( options, value );
-					}
-				});
-			}
-		};
-
-		if ( ! method || typeof method == 'object'  ) {
-			methods.init.apply( this, arguments );
-			return;
-		}
-		if ( methods[ method ] ) {
-			methods[ method ].apply( this, Array.prototype.slice.call( arguments, 1 ) );
-			return;
-		}
-	};
-
 	// Percentage input.
 	$.fn.wprPercentageInput = function( method ) {
 		var methods = {

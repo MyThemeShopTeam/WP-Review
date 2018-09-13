@@ -340,4 +340,6 @@ input.wpr-switch__off:checked + label, input.wpr-switch__off:checked + label:hov
 
 .wp-review-disabled.wpr-switch, .wp-review-disabled.has-bg { opacity: 0.3; }
 
+option.disabled { color: #aaa; }
+
 /*# sourceMappingURL=../sourcemaps/admin.css.map */

@@ -41,7 +41,7 @@ function wp_review_option( $name, $default = null ) {
 function wp_review_get_default_colors() {
 	return apply_filters( 'wp_review_default_colors', array(
 		'color' => '#1e73be',
-		'inactive_color' => '',
+		'inactive_color' => '#95bae0',
 		'fontcolor' => '#555555',
 		'bgcolor1' => '#e7e7e7',
 		'bgcolor2' => '#ffffff',
@@ -58,7 +58,15 @@ function wp_review_get_default_colors() {
  * @return array
  */
 function wp_review_get_global_colors() {
-	return wp_review_option( 'colors', wp_review_get_default_colors() );
+	$colors         = wp_review_option( 'colors' );
+	$default_colors = wp_review_get_default_colors();
+	$fields         = array( 'color', 'inactive_color', 'fontcolor', 'bgcolor1', 'bgcolor2', 'bordercolor' );
+	foreach ( $fields as $key ) {
+		if ( empty( $colors[ $key ] && ! empty( $default_colors[ $key ] ) ) ) {
+			$colors[ $key ] = $default_colors[ $key ];
+		}
+	}
+	return $colors;
 }
 
 
@@ -948,7 +956,7 @@ function wp_review_register_default_rating_types() {
 	wp_review_register_rating_type( 'star', array(
 		'label'               => __( 'Star', 'wp-review' ),
 		'max'                 => 5,
-		'decimals'            => 2,
+		'decimals'            => 1,
 		'value_text'          => _x( '%s Stars', 'star rating value text', 'wp-review' ),
 		'value_text_singular' => _x( '%s Star', 'star rating value text singular', 'wp-review' ),
 		'input_template'      => WP_REVIEW_DIR . 'rating-types/star-input.php',
@@ -958,7 +966,7 @@ function wp_review_register_default_rating_types() {
 	wp_review_register_rating_type( 'point', array(
 		'label'               => __( 'Point', 'wp-review' ),
 		'max'                 => 10,
-		'decimals'            => 2,
+		'decimals'            => 1,
 		'value_text'          => _x( '%s/10', 'point rating value text', 'wp-review' ),
 		'value_text_singular' => _x( '%s/10', 'point rating value text singular', 'wp-review' ),
 		'input_template'      => WP_REVIEW_DIR . 'rating-types/point-input.php',
@@ -968,7 +976,7 @@ function wp_review_register_default_rating_types() {
 	wp_review_register_rating_type( 'percentage', array(
 		'label'               => __( 'Percentage', 'wp-review' ),
 		'max'                 => 100,
-		'decimals'            => 2,
+		'decimals'            => 1,
 		'value_text'          => _x( '%s%%', 'percentage rating value text', 'wp-review' ),
 		'value_text_singular' => _x( '%s%%', 'percentage rating value text singular', 'wp-review' ),
 		'input_template'      => WP_REVIEW_DIR . 'rating-types/percentage-input.php',
@@ -1589,10 +1597,7 @@ function wp_review_get_review_data( $post_id = null, $args = array() ) {
  * @return array
  */
 function wp_review_get_colors( $post_id ) {
-	$color_options = wp_review_option( 'colors', array() );
-	if ( empty( $color_options['color'] ) ) {
-		$color_options['color'] = '#333';
-	}
+	$color_options = wp_review_get_global_colors();
 	$custom_colors = get_post_meta( $post_id, 'wp_review_custom_colors', true );
 
 	$colors = array();
@@ -2417,7 +2422,7 @@ function wp_review_get_review_items( $post_id = null ) {
 	$post_inactive_color = get_post_meta( $post_id, 'wp_review_inactive_color', true );
 
 	$default_color = $custom_colors && $post_color ? $post_color : ( ! empty( $global_colors['color'] ) ? $global_colors['color'] : '' );
-	$default_inactive = $custom_colors && $post_inactive_color ? $post_inactive_color : ( ! empty( $global_colors['inactive_color'] ) ? $global_colors['inactive_color'] : '' );
+	$default_inactive = $custom_colors && $post_inactive_color ? $post_inactive_color : ( ! empty( $global_colors['inactive_color'] ) ? $global_colors['inactive_color'] : '#95bae0' );
 	foreach ( $items as $index => $item ) {
 		if ( empty( $item['id'] ) || is_numeric( $item['id'] ) ) {
 			$items[ $index ]['id'] = sanitize_title( $item['wp_review_item_title'] ) . '_' . wp_generate_password( 6 );
@@ -2439,26 +2444,6 @@ function wp_review_get_review_items( $post_id = null ) {
 	}
 
 	return $items;
-}
-
-
-/**
- * Shows review items.
- *
- * @since 3.0.0
- *
- * @param int $post_id Post ID.
- */
-function wp_review_review_items( $post_id = null ) {
-	if ( ! $post_id ) {
-		$post_id = get_the_ID();
-	}
-
-	$items = wp_review_get_review_items( $post_id );
-	if ( ! $items ) {
-		return;
-	}
-	wp_review_load_template( 'global/review-items.php', compact( 'items', 'post_id' ) );
 }
 
 
@@ -2553,11 +2538,11 @@ add_action( 'template_redirect', 'wp_review_clear_cache_via_url' );
  * @return WP_Query
  */
 function wp_review_get_reviews_query( $type, $options ) {
-	$key = sprintf(
-		'wp_review_%1$s_%2$s_reviews_query',
+	$key = 'wp_review_' . md5( sprintf(
+		'%1$s_%2$s_reviews_query',
 		$type,
 		serialize( $options )
-	);
+	) );
 
 	if ( ! empty( $options['clear_cache'] ) ) {
 		delete_transient( $key );

@@ -3,7 +3,7 @@
  * Plugin Name: WP Review
  * Plugin URI: http://mythemeshop.com/plugins/wp-review/
  * Description: Create reviews! Choose from stars, percentages or points for review scores. Supports Retina Display, WPMU and Unlimited Color Schemes.
- * Version: 5.0.1
+ * Version: 5.0.2
  * Author: MyThemesShop
  * Author URI: http://mythemeshop.com/
  * Text Domain: wp-review
@@ -45,7 +45,7 @@ if ( version_compare( phpversion(), '5.6', '<' ) ) {
 }
 
 /* Plugin version */
-define( 'WP_REVIEW_PLUGIN_VERSION', '5.0.1' );
+define( 'WP_REVIEW_PLUGIN_VERSION', '5.0.2' );
 
 /* Sets the custom db table name. */
 define( 'MTS_WP_REVIEW_DB_TABLE', 'mts_wp_reviews' );
@@ -158,11 +158,6 @@ if ( ! function_exists( 'wp_review_includes_libraries' ) ) :
 
 		/* Loads the form field class. */
 		require_once( WP_REVIEW_ADMIN . 'class-wp-review-form-field.php' );
-
-		if ( class_exists( 'WooCommerce' ) ) {
-			/* WooCommerce integrate */
-			require_once( WP_REVIEW_INCLUDES . 'woocommerce.php' );
-		}
 
 		/* Loads the importer. */
 		require_once( WP_REVIEW_ADMIN . 'import.php' );

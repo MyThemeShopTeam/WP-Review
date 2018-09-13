@@ -53,6 +53,7 @@
     list-style-type: none;
     float: left;
     width: 100%;
+    -webkit-box-sizing: border-box;
     box-sizing: border-box;
     margin: 0;
     padding: 10px 15px 15px;
@@ -82,6 +83,7 @@
     position: relative;
 }
 .wp_review_tab_widget_content .entry-title {
+    font-size: inherit;
     font-weight: bold;
     margin: 0;
     padding: 0;
@@ -163,8 +165,9 @@
 .review-total-only.small-thumb {
     font-size: 13px;
     font-weight: bold;
-    padding: 1px 4px;
+    padding: 1px 0;
     float: left;
+    -webkit-box-sizing: border-box;
     box-sizing: border-box;
     margin-top: 3px;
 }

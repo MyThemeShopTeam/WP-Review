@@ -14,6 +14,7 @@ add_action( 'add_meta_boxes', 'wp_review_add_meta_boxes' );
 
 /* Saves the meta box custom data. */
 add_action( 'save_post', 'wp_review_save_postdata', 10, 2 );
+add_action( 'save_post', 'wp_review_clear_query_cache', 10, 2 );
 
 require_once plugin_dir_path( __FILE__ ) . 'review-options-meta-box.php';
 
@@ -118,7 +119,7 @@ function wp_review_render_meta_box_item( $post ) {
 
 	$global_colors = wp_review_get_global_colors();
 	$global_color = ! empty( $global_colors['color'] ) ? $global_colors['color'] : '';
-	$global_inactive_color = ! empty( $global_colors['inactive_color'] ) ? $global_colors['inactive_color'] : '';
+	$global_inactive_color = ! empty( $global_colors['inactive_color'] ) ? $global_colors['inactive_color'] : '#95bae0';
 
 	/* Retrieve an existing value from the database. */
 	$custom_colors   = get_post_meta( $post->ID, 'wp_review_custom_colors', true );
@@ -145,7 +146,7 @@ function wp_review_render_meta_box_item( $post ) {
 		$color = ! empty( $global_colors['color'] ) ? $global_colors['color'] : '';
 	}
 	if ( ! $inactive_color ) {
-		$inactive_color = ! empty( $global_colors['inactive_color'] ) ? $global_colors['inactive_color'] : '';
+		$inactive_color = ! empty( $global_colors['inactive_color'] ) ? $global_colors['inactive_color'] : '#95bae0';
 	}
 
 	if ( '' == $location ) {
@@ -764,10 +765,10 @@ function wp_review_render_meta_box_userReview( $post ) {
 
 						$disabled = 'circle' === $key || 'thumbs' === $key;
 						printf(
-							'<option value="%1$s" %2$s %3$s>%4$s</option>',
+							'<option value="%1$s" class="%2$s" %3$s>%4$s</option>',
 							esc_attr( $key ),
-							selected( $type, $key, false ),
 							$disabled ? 'disabled' : '',
+							selected( $type, $key, false ),
 							esc_html( $available_type['label'] )
 						);
 					}
@@ -963,7 +964,7 @@ function wp_review_save_postdata( $post_id, $post ) {
 
 	$default_colors = wp_review_option( 'colors', array() );
 	$default_color = ! empty( $default_colors['color'] ) ? $default_colors['color'] : '#333333';
-	$default_inactive = ! empty( $default_colors['inactive_color'] ) ? $default_colors['inactive_color'] : '';
+	$default_inactive = ! empty( $default_colors['inactive_color'] ) ? $default_colors['inactive_color'] : '#95bae0';
 
 	if ( $meta['wp_review_color'] === $default_color ) {
 		$meta['wp_review_color'] = '';
@@ -1035,7 +1036,17 @@ function wp_review_save_postdata( $post_id, $post ) {
 		delete_post_meta( $post_id, 'wp_review_userReview', $_POST['wp_review_userReview'] );
 		delete_post_meta( $post_id, 'wp_review_item', $old );
 	}
+}
 
+/**
+ * Clears transients
+ *
+ * @param int $post_id Post ID.
+ */
+function wp_review_clear_query_cache( $post_id, $post ) {
+	global $wpdb;
+	$where = $wpdb->prepare( 'WHERE option_name REGEXP %s', '_transient(_timeout)?_wp_review_[0-9a-f]{32}' );
+	$wpdb->query( "DELETE FROM {$wpdb->prefix}options {$where}" );
 }
 
 /**
@@ -1047,7 +1058,7 @@ function wp_review_save_review_items_data( $post_id ) {
 	$old = get_post_meta( $post_id, 'wp_review_item', true );
 	$global_colors = wp_review_get_global_colors();
 	$global_color = ! empty( $global_colors['color'] ) ? $global_colors['color'] : '';
-	$global_inactive = ! empty( $global_colors['inactive_color'] ) ? $global_colors['inactive_color'] : '';
+	$global_inactive = ! empty( $global_colors['inactive_color'] ) ? $global_colors['inactive_color'] : '#95bae0';
 	$post_color = get_post_meta( $post_id, 'wp_review_color', true );
 	$post_inactive_color = get_post_meta( $post_id, 'wp_review_inactive_color', true );
 	$custom_colors = get_post_meta( $post_id, 'wp_review_custom_colors', true );

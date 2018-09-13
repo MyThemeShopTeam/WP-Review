@@ -21,7 +21,7 @@ if ( ! empty( $rating['args']['class'] ) ) {
 
 $rating_icon = wp_review_get_rating_icon();
 $rating_image = wp_review_get_rating_image();
-$inactive_color = ! empty( $rating['colors']['inactive_color'] ) ? $rating['colors']['inactive_color'] : '';
+$inactive_color = ! empty( $rating['colors']['inactive_color'] ) ? $rating['colors']['inactive_color'] : '#95bae0';
 $rating_value = isset( $rating['value'] ) ? floatval( $rating['value'] ) : 0;
 $rating_color = isset( $rating['color'] ) ? $rating['color'] : '';
 ?>
@@ -50,5 +50,5 @@ $rating_color = isset( $rating['color'] ) ? $rating['color'] : '';
 		</div><!-- .review-result -->
 
 	</div><!-- .review-result-wrapper -->
-	
+
 </div><!-- .review-star -->

@@ -7,11 +7,7 @@
 
 ?>
 <p>
-	<object type="application/x-shockwave-flash" style="width:450px; height:366px;" data="//www.youtube.com/v/NzMe-QY_WZY?version=3">
-		<param name="movie" value="//www.youtube.com/v/NzMe-QY_WZY?version=3" />
-		<param name="allowFullScreen" value="true" />
-		<param name="allowscriptaccess" value="always" />
-	</object>
+	<iframe width="560" height="315" src="https://www.youtube.com/embed/NzMe-QY_WZY" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 </p>
 <p>
 	<?php _e( 'All support for this plugin is provided through our forums. If you have not registered yet, you can do so here for ​<strong>FREE​</strong>: ', 'wp-review' ); ?>

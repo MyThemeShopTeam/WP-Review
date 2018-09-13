@@ -324,7 +324,7 @@ textarea#wp_review_comment_pros, textarea#wp_review_comment_cons { height: 100px
 	right: auto;
 	top: auto;
 }
-.review-list .review-star, .user-review-area .review-star, .review-total-circle .review-star, .wp-review-point-type .review-total-circle .review-star, .wp-review-percentage-type .review-total-circle .review-star, .review-list .wp-review-user-feature-rating-star {
+.review-list .review-star, .user-review-area .review-star, .wp-review-point-type .review-total-circle .review-star, .wp-review-percentage-type .review-total-circle .review-star, .review-list .wp-review-user-feature-rating-star {
 	float: right;
 }
  .rtl .review-list .review-star,  .rtl .user-review-area .review-star,  .rtl .review-total-circle .review-star, .rtl .wp-review-point-type .review-total-circle .review-star, .rtl .wp-review-percentage-type .review-total-circle .review-star {
@@ -385,7 +385,7 @@ textarea#wp_review_comment_pros, textarea#wp_review_comment_cons { height: 100px
 	font-size: 12px;
 	line-height: 18px;
 	background: #f0f0f0;
-	color: #444;
+	color: #fff;
 	pointer-events: none;
 	z-index: 999;
 	display: none;
@@ -521,6 +521,7 @@ textarea#wp_review_comment_pros, textarea#wp_review_comment_cons { height: 100px
 .user-total-wrapper .user-review-title {
 	font-weight: bold;
 	margin: 0;
+	display: inline-block;
 }
 .wp-review-user-rating {
 	.review-result-wrapper {
@@ -1087,14 +1088,6 @@ form.wp-review-comment-form > div, #commentform.wp-review-comment-form > div {
 				background-color: rgba(255, 255, 255, 0.45);
 			}
 		}
-	}
-}
-
-.wp-review-user-feature-rating-circle {
-	float: right;
-
-	.wp-review-circle-rating-send {
-		display: none;
 	}
 }
 

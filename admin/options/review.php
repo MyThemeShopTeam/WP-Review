@@ -99,7 +99,7 @@ $link_texts = ! empty( $options['default_link_text'] ) ? $options['default_link_
 $link_urls = ! empty( $options['default_link_url'] ) ? $options['default_link_url'] : array();
 $location  = wp_review_option( 'review_location' );
 $color     = ! empty( $options['colors']['color'] ) ? $options['colors']['color'] : '';
-$inactive_color  = ! empty( $options['colors']['inactive_color'] ) ? $options['colors']['inactive_color'] : '';
+$inactive_color  = ! empty( $options['colors']['inactive_color'] ) ? $options['colors']['inactive_color'] : '#95bae0';
 $fontcolor = ! empty( $options['colors']['fontcolor'] ) ? $options['colors']['fontcolor'] : '';
 $bgcolor1  = ! empty( $options['colors']['bgcolor1'] ) ? $options['colors']['bgcolor1'] : '';
 $bgcolor2  = ! empty( $options['colors']['bgcolor2'] ) ? $options['colors']['bgcolor2'] : '';
@@ -683,10 +683,10 @@ $form_field = new WP_Review_Form_Field();
 
 						$disabled = 'circle' === $key || 'thumbs' === $key;
 						printf(
-							'<option value="%1$s" %2$s %3$s>%4$s</option>',
+							'<option value="%1$s" class="%2$s" %3$s>%4$s</option>',
 							esc_attr( $key ),
-							selected( $review_type, $key, false ),
 							$disabled ? 'disabled' : '',
+							selected( $review_type, $key, false ),
 							esc_html( $value['label'] )
 						);
 					}
