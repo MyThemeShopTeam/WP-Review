@@ -22,10 +22,14 @@ function wp_review_admin_style( $hook_suffix ) {
 		return;
 	}
 
+	if ( 'customize' === get_current_screen()->id ) {
+		return;
+	}
+
 	wp_enqueue_style( 'fontawesome', WP_REVIEW_ASSETS . 'css/font-awesome.min.css', array(), '4.7.0' );
 
-	wp_enqueue_script( 'select2', WP_REVIEW_URI . 'admin/assets/js/select2.min.js', array( 'jquery' ), '4.0.4', true );
-	wp_enqueue_style( 'select2', WP_REVIEW_URI . 'admin/assets/css/select2.min.css', array(), '4.0.4' );
+	wp_enqueue_script( 'select2', WP_REVIEW_URI . 'admin/assets/js/select2.min.js', array( 'jquery' ), '4.0.6-rc.0', true );
+	wp_enqueue_style( 'select2', WP_REVIEW_URI . 'admin/assets/css/select2.min.css', array(), '4.0.6-rc.0' );
 
 	wp_enqueue_style( 'wp_review-style', trailingslashit( WP_REVIEW_ASSETS ) . 'css/wp-review.css', array(), WP_REVIEW_PLUGIN_VERSION, 'all' );
 
