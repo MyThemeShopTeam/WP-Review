@@ -58,7 +58,15 @@ function wp_review_get_default_colors() {
  * @return array
  */
 function wp_review_get_global_colors() {
-	return wp_review_option( 'colors', wp_review_get_default_colors() );
+	$colors         = wp_review_option( 'colors' );
+	$default_colors = wp_review_get_default_colors();
+	$fields         = array( 'color', 'inactive_color', 'fontcolor', 'bgcolor1', 'bgcolor2', 'bordercolor' );
+	foreach ( $fields as $key ) {
+		if ( empty( $colors[ $key ] && ! empty( $default_colors[ $key ] ) ) ) {
+			$colors[ $key ] = $default_colors[ $key ];
+		}
+	}
+	return $colors;
 }
 
 
