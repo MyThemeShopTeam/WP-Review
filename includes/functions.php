@@ -2538,11 +2538,11 @@ add_action( 'template_redirect', 'wp_review_clear_cache_via_url' );
  * @return WP_Query
  */
 function wp_review_get_reviews_query( $type, $options ) {
-	$key = sprintf(
-		'wp_review_%1$s_%2$s_reviews_query',
+	$key = 'wp_review_' . md5( sprintf(
+		'%1$s_%2$s_reviews_query',
 		$type,
 		serialize( $options )
-	);
+	) );
 
 	if ( ! empty( $options['clear_cache'] ) ) {
 		delete_transient( $key );

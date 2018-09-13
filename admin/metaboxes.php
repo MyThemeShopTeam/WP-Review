@@ -14,6 +14,7 @@ add_action( 'add_meta_boxes', 'wp_review_add_meta_boxes' );
 
 /* Saves the meta box custom data. */
 add_action( 'save_post', 'wp_review_save_postdata', 10, 2 );
+add_action( 'save_post', 'wp_review_clear_query_cache', 10, 2 );
 
 require_once plugin_dir_path( __FILE__ ) . 'review-options-meta-box.php';
 
@@ -1035,7 +1036,17 @@ function wp_review_save_postdata( $post_id, $post ) {
 		delete_post_meta( $post_id, 'wp_review_userReview', $_POST['wp_review_userReview'] );
 		delete_post_meta( $post_id, 'wp_review_item', $old );
 	}
+}
 
+/**
+ * Clears transients
+ *
+ * @param int $post_id Post ID.
+ */
+function wp_review_clear_query_cache( $post_id, $post ) {
+	global $wpdb;
+	$where = $wpdb->prepare( 'WHERE option_name REGEXP %s', '_transient(_timeout)?_wp_review_[0-9a-f]{32}' );
+	$wpdb->query( "DELETE FROM {$wpdb->prefix}options {$where}" );
 }
 
 /**
