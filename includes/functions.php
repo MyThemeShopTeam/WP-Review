@@ -1597,10 +1597,7 @@ function wp_review_get_review_data( $post_id = null, $args = array() ) {
  * @return array
  */
 function wp_review_get_colors( $post_id ) {
-	$color_options = wp_review_option( 'colors', array() );
-	if ( empty( $color_options['color'] ) ) {
-		$color_options['color'] = '#333';
-	}
+	$color_options = wp_review_get_global_colors();
 	$custom_colors = get_post_meta( $post_id, 'wp_review_custom_colors', true );
 
 	$colors = array();
