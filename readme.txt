@@ -103,11 +103,18 @@ Please disable all plugins and check if rating is working properly. Then you can
 
 == Changelog ==
 
-= v5.0.2 (Sep 12, 2018) =
+= v5.0.2 (Sep 14, 2018) =
 * Fixed JS Console error on the settings page
 * Fixed PHP errors if someone downgrades from premium to free version
 * Fixed Gutenberg issue where Description field was not saving
+* Fixed default inactive color in the global Settings
+* Fixed empty default colors in the single post's custom layout option
+* Fixed color issue in the review box
+* Removed plugin related scripts from Customizer page
 * Removed unused code
+* Reverted total review's max decimal value from 2 to 1
+* Updated select2 script
+* Minor CSS improvements
 
 = v5.0.1 (Sep 10, 2018) =
 * Fixed demo data import issue
