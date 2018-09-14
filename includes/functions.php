@@ -62,8 +62,8 @@ function wp_review_get_global_colors() {
 	$default_colors = wp_review_get_default_colors();
 	$fields         = array( 'color', 'inactive_color', 'fontcolor', 'bgcolor1', 'bgcolor2', 'bordercolor' );
 	foreach ( $fields as $key ) {
-		if ( empty( $colors[ $key ] && ! empty( $default_colors[ $key ] ) ) ) {
-			$colors[ $key ] = $default_colors[ $key ];
+		if ( empty( $colors[ $key ] ) ) {
+			$colors[ $key ] = isset( $default_colors[ $key ] ) ? $default_colors[ $key ] : '';
 		}
 	}
 	return $colors;
@@ -2416,13 +2416,13 @@ function wp_review_get_review_items( $post_id = null ) {
 		return '';
 	}
 
-	$global_colors = wp_review_get_global_colors();
-	$custom_colors = get_post_meta( $post_id, 'wp_review_custom_colors', true );
-	$post_color = get_post_meta( $post_id, 'wp_review_color', true );
+	$global_colors       = wp_review_get_global_colors();
+	$custom_colors       = get_post_meta( $post_id, 'wp_review_custom_colors', true );
+	$post_color          = get_post_meta( $post_id, 'wp_review_color', true );
 	$post_inactive_color = get_post_meta( $post_id, 'wp_review_inactive_color', true );
 
-	$default_color = $custom_colors && $post_color ? $post_color : ( ! empty( $global_colors['color'] ) ? $global_colors['color'] : '' );
-	$default_inactive = $custom_colors && $post_inactive_color ? $post_inactive_color : ( ! empty( $global_colors['inactive_color'] ) ? $global_colors['inactive_color'] : '#95bae0' );
+	$default_color    = $custom_colors && $post_color ? $post_color : $global_colors['color'];
+	$default_inactive = $custom_colors && $post_inactive_color ? $post_inactive_color : $global_colors['inactive_color'];
 	foreach ( $items as $index => $item ) {
 		if ( empty( $item['id'] ) || is_numeric( $item['id'] ) ) {
 			$items[ $index ]['id'] = sanitize_title( $item['wp_review_item_title'] ) . '_' . wp_generate_password( 6 );

@@ -118,8 +118,8 @@ function wp_review_render_meta_box_item( $post ) {
 	}
 
 	$global_colors = wp_review_get_global_colors();
-	$global_color = ! empty( $global_colors['color'] ) ? $global_colors['color'] : '';
-	$global_inactive_color = ! empty( $global_colors['inactive_color'] ) ? $global_colors['inactive_color'] : '#95bae0';
+	$global_color = $global_colors['color'];
+	$global_inactive_color = $global_colors['inactive_color'];
 
 	/* Retrieve an existing value from the database. */
 	$custom_colors   = get_post_meta( $post->ID, 'wp_review_custom_colors', true );
@@ -143,26 +143,26 @@ function wp_review_render_meta_box_item( $post ) {
 	$bordercolor = get_post_meta( $post->ID, 'wp_review_bordercolor', true );
 
 	if ( ! $color ) {
-		$color = ! empty( $global_colors['color'] ) ? $global_colors['color'] : '';
+		$color = $global_color;
 	}
 	if ( ! $inactive_color ) {
-		$inactive_color = ! empty( $global_colors['inactive_color'] ) ? $global_colors['inactive_color'] : '#95bae0';
+		$inactive_color = $global_inactive_color;
 	}
 
 	if ( '' == $location ) {
 		$location = ! empty( $options['location'] ) ? $options['location'] : $default_location;
 	}
 	if ( '' == $fontcolor ) {
-		$fontcolor = ! empty( $global_colors['fontcolor'] ) ? $global_colors['fontcolor'] : '';
+		$fontcolor = $global_colors['fontcolor'];
 	}
 	if ( '' == $bgcolor1 ) {
-		$bgcolor1 = ! empty( $global_colors['bgcolor1'] ) ? $global_colors['bgcolor1'] : '';
+		$bgcolor1 = $global_colors['bgcolor1'];
 	}
 	if ( '' == $bgcolor2 ) {
-		$bgcolor2 = ! empty( $global_colors['bgcolor2'] ) ? $global_colors['bgcolor2'] : '';
+		$bgcolor2 = $global_colors['bgcolor2'];
 	}
 	if ( '' == $bordercolor ) {
-		$bordercolor = ! empty( $global_colors['bordercolor'] ) ? $global_colors['bordercolor'] : '';
+		$bordercolor = $global_colors['bordercolor'];
 	}
 
 	$fields = array(
@@ -962,9 +962,9 @@ function wp_review_save_postdata( $post_id, $post ) {
 		'wp_review_box_template'           => filter_input( INPUT_POST, 'wp_review_box_template', FILTER_SANITIZE_STRING ),
 	);
 
-	$default_colors = wp_review_option( 'colors', array() );
-	$default_color = ! empty( $default_colors['color'] ) ? $default_colors['color'] : '#333333';
-	$default_inactive = ! empty( $default_colors['inactive_color'] ) ? $default_colors['inactive_color'] : '#95bae0';
+	$default_colors   = wp_review_get_global_colors();
+	$default_color    = $default_colors['color'];
+	$default_inactive = $default_colors['inactive_color'];
 
 	if ( $meta['wp_review_color'] === $default_color ) {
 		$meta['wp_review_color'] = '';
@@ -1056,12 +1056,13 @@ function wp_review_clear_query_cache( $post_id, $post ) {
  */
 function wp_review_save_review_items_data( $post_id ) {
 	$old = get_post_meta( $post_id, 'wp_review_item', true );
-	$global_colors = wp_review_get_global_colors();
-	$global_color = ! empty( $global_colors['color'] ) ? $global_colors['color'] : '';
-	$global_inactive = ! empty( $global_colors['inactive_color'] ) ? $global_colors['inactive_color'] : '#95bae0';
-	$post_color = get_post_meta( $post_id, 'wp_review_color', true );
+	$global_colors   = wp_review_get_global_colors();
+	$global_color    = $global_colors['color'];
+	$global_inactive = $global_colors['inactive_color'];
+
+	$post_color          = get_post_meta( $post_id, 'wp_review_color', true );
 	$post_inactive_color = get_post_meta( $post_id, 'wp_review_inactive_color', true );
-	$custom_colors = get_post_meta( $post_id, 'wp_review_custom_colors', true );
+	$custom_colors       = get_post_meta( $post_id, 'wp_review_custom_colors', true );
 
 	if ( ! empty( $_POST['wp_review_item_title'] ) ) {
 		$title = $_POST['wp_review_item_title'];
