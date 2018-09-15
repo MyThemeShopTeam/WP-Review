@@ -2597,7 +2597,7 @@ function wp_review_get_reviews_query( $type, $options ) {
 	}
 
 	$query_args['ignore_sticky_posts'] = true;
-	$query_args['post_type'] = 'post';
+	$query_args['post_type'] = isset( $options['post_type'] ) ? $options['post_type'] : 'post';
 	$query_args['post_status'] = 'publish';
 	$query_args['posts_per_page'] = intval( $options['post_num'] );
 	$query_args['paged'] = intval( $options['page'] );
