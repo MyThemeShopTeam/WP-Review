@@ -103,6 +103,11 @@ Please disable all plugins and check if rating is working properly. Then you can
 
 == Changelog ==
 
+= v5.0.3 (Sep 17, 2018) =
+* Fixed PHP notice relates to inactive color
+* Fixed wrong inactive color in the review box
+* Supported custom post types in widget
+
 = v5.0.2 (Sep 14, 2018) =
 * Fixed JS Console error on the settings page
 * Fixed PHP errors if someone downgrades from premium to free version
