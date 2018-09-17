@@ -615,16 +615,26 @@ function wp_review_render_meta_box_desc( $post ) {
 	<?php
 }
 
+/**
+ * Maps default link texts and urls.
+ *
+ * @since 5.0.3 Move this function out of `wp_review_render_meta_box_reviewLinks()`
+ *
+ * @param string $text Link text.
+ * @param string $url  Link url.
+ * @return array
+ */
+function wp_review_get_default_links( $text, $url ) {
+	return array(
+		'text' => $text,
+		'url' => $url,
+	);
+}
+
 function wp_review_render_meta_box_reviewLinks( $post ) {
 
 	wp_nonce_field( basename( __FILE__ ), 'wp-review-links-options-nonce' );
 
-	function wp_review_get_default_links( $text, $url ) {
-		return array(
-			'text' => $text,
-			'url' => $url,
-		);
-	}
 	wp_review_switch_to_main();
 	$options = get_option( 'wp_review_options' );
 	if (is_multisite() ) restore_current_blog();
