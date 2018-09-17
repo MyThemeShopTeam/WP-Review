@@ -412,8 +412,9 @@ class WP_Review_Tab_Widget extends WP_Widget {
 
 		// Normal tabs.
 		$query_args = array(
-			'post_num' => $post_num,
-			'page'     => $page,
+			'post_type'   => 'any',
+			'post_num'    => $post_num,
+			'page'        => $page,
 			'review_type' => $review_type,
 			'clear_cache' => ! empty( $args['clear_cache'] ),
 		);

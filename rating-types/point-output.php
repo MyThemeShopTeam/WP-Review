@@ -22,7 +22,7 @@ if ( ! empty( $rating['args']['class'] ) ) {
 	$class .= ' ' . sanitize_html_class( $rating['args']['class'] );
 }
 
-$inactive_color = ! empty( $rating['colors']['inactive_color'] ) ? $rating['colors']['inactive_color'] : '#95bae0';
+$inactive_color = ! empty( $rating['colors']['inactive_color'] ) ? $rating['colors']['inactive_color'] : '';
 $bar_text_color = ! empty( $rating['colors']['bar_text_color'] ) ? $rating['colors']['bar_text_color'] : $rating['colors']['bgcolor1'];
 ?>
 <div class="<?php echo esc_attr( $class ); ?>">
