@@ -4,7 +4,7 @@ Creator's website link: http://mythemeshop.com/plugins/wp-review/
 Tags: review, wp review, rating, wp rating, user rating, google rating, star rating, product review
 Requires at least: 4.0
 Tested up to: 4.9.8
-Stable tag: 5.0.2
+Stable tag: 5.0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -106,7 +106,8 @@ Please disable all plugins and check if rating is working properly. Then you can
 = v5.0.3 (Sep 17, 2018) =
 * Fixed PHP notice relates to inactive color
 * Fixed wrong inactive color in the review box
-* Supported custom post types in widget
+* Fixed custom post types not showing in the review widget
+* Fixed 500 error happening with the Gutenberg
 
 = v5.0.2 (Sep 14, 2018) =
 * Fixed JS Console error on the settings page
