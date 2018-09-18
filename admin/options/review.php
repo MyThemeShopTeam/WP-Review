@@ -695,7 +695,7 @@ $form_field = new WP_Review_Form_Field();
 			</div>
 		</div>
 
-		<div class="wp-review-field">
+		<div class="wp-review-field"<?php if ( empty( $displayed_fields['location'] ) ) echo ' style="display: none;"'; ?>>
 			<div class="wp-review-field-label">
 				<label for="wp_review_location"><?php esc_html_e( 'Review Location', 'wp-review' ); ?></label>
 			</div>
