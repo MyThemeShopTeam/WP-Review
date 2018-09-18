@@ -282,7 +282,7 @@ function wp_review_render_meta_box_item( $post ) {
 		</div>
 	</script>
 
-	<div class="wp-review-field">
+	<div class="wp-review-field"<?php if ( empty( $displayed_fields['disable_features'] ) ) echo ' style="display: none;"'; ?>>
 		<div class="wp-review-field-label">
 			<label><?php esc_html_e( 'Hide Features', 'wp-review' ); ?></label>
 			<?php wp_review_print_pro_text(); ?>
@@ -298,7 +298,7 @@ function wp_review_render_meta_box_item( $post ) {
 			?>
 		</div>
 	</div>
-	<div class="wp-review-field">
+	<div class="wp-review-field"<?php if ( empty( $displayed_fields['custom_location'] ) ) echo ' style="display: none;"'; ?>>
 		<div class="wp-review-field-label">
 			<label><?php esc_html_e( 'Custom Location', 'wp-review' ); ?></label>
 		</div>
@@ -314,7 +314,7 @@ function wp_review_render_meta_box_item( $post ) {
 		</div>
 	</div>
 
-	<div class="wp-review-location-options"<?php if ( empty( $custom_location ) ) echo ' style="display: none;"'; ?>>
+	<div class="wp-review-location-options"<?php if ( empty( $custom_location ) || empty( $displayed_fields['location'] ) ) echo ' style="display: none;"'; ?>>
 		<div class="wp-review-field">
 			<div class="wp-review-field-label">
 				<label for="wp_review_location"><?php esc_html_e( 'Review Location', 'wp-review' ); ?></label>
@@ -336,7 +336,7 @@ function wp_review_render_meta_box_item( $post ) {
 		</div>
 	</div>
 
-	<div class="wp-review-field">
+	<div class="wp-review-field"<?php if ( empty( $displayed_fields['custom_colors'] ) ) echo ' style="display: none;"'; ?>>
 		<div class="wp-review-field-label">
 			<label><?php esc_html_e( 'Custom Layout', 'wp-review' ); ?></label>
 		</div>
