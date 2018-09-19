@@ -607,6 +607,12 @@
 				window.tinyMCE.triggerSave();
 			});
 		}
+
+		// Fix conflict with color picker in Avada theme.
+		if ( $( '.pyre_field.avada-color' ).length ) {
+			$( '.wp-review-color' ).closest( '.wp-review-field-option' ).addClass( 'pyre_field' );
+			$( '.input-color, .input-inactive-color' ).closest( '.col-2' ).addClass( 'pyre_field' );
+		}
 	});
 })( jQuery, Cookies );
 
