@@ -104,7 +104,7 @@ Please disable all plugins and check if rating is working properly. Then you can
 == Changelog ==
 
 = v5.0.5 (Sep 19, 2018) =
-* Fix colorpicker conflict with Avada theme
+* Fixed colorpicker conflict with Avada theme
 
 = v5.0.4 (Sep 18, 2018) =
 * Added missing options in the `wp_review_metabox_item_fields` filter
