@@ -103,8 +103,10 @@ Please disable all plugins and check if rating is working properly. Then you can
 
 == Changelog ==
 
-= v5.0.6 (Sep 25, 2018) =
-* Fixed default global settings not getting applied in the single post
+= v5.0.6 (Sep 24, 2018) =
+* Fixed few global settings were getting applied in the single post
+* Changed rating color to yellow for all the backend data
+* Fixed small bug related to extra semicolon 
 
 = v5.0.5 (Sep 19, 2018) =
 * Fixed colorpicker conflict with Avada theme
