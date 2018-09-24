@@ -748,7 +748,7 @@ add_filter( 'admin_comment_types_dropdown', 'wp_review_add_to_comment_table_drop
  * 3 - Both
  */
 function wp_review_get_user_rating_setup( $post_id ) {
-	$default = WP_REVIEW_REVIEW_DISABLED;
+	$default = wp_review_option( 'default_user_review_type', WP_REVIEW_REVIEW_DISABLED );
 	$user_reviews = (int) get_post_meta( $post_id, 'wp_review_userReview', true );
 	$enabled = ! $user_reviews ? $default : $user_reviews;
 	if ( is_array( $user_reviews ) ) {
