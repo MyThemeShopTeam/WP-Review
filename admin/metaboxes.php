@@ -715,7 +715,7 @@ function wp_review_render_meta_box_userReview( $post ) {
 
 	$type = get_post_meta( $post->ID, 'wp_review_user_review_type', true );
 	if ( ! $type ) {
-		$type = wp_review_option( 'review_type', 'none' );;
+		$type = wp_review_option( 'review_type', 'none' );
 	}
 	//$available_types = apply_filters( 'wp_review_metabox_user_rating_types', wp_review_get_review_types( 'user' ) );
 	$available_types = wp_review_get_rating_types();
