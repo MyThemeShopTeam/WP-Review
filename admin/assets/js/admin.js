@@ -237,12 +237,6 @@
 			}
 		});
 
-		$( document ).on( 'change', '#wp-review-userReview-disable', function() {
-			if ( $( this ).prop( 'checked' ) ) {
-				$( '#wp_review_rating_schema' ).val( 'author' ).trigger( 'change' );
-			}
-		});
-
 		/**
 		 * Toggle meta box
 		 */

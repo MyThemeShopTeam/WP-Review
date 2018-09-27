@@ -1504,7 +1504,6 @@ function wp_review_get_review_data( $post_id = null, $args = array() ) {
 	$data['show_schema_data'] = get_post_meta( $post_id, 'wp_review_show_schema_data', true );
 
 	$data['rating_schema'] = wp_review_get_rating_schema( $post_id );
-	var_dump( $data['rating_schema'] );
 
 	$data['links'] = wp_review_get_review_links( $post_id );
 
@@ -2330,9 +2329,9 @@ function wp_review_get_rating_schema( $post_id ) {
 	if ( '' === $value ) {
 		$value = 'visitors';
 	}
-	if ( wp_review_get_user_rating_setup( $post_id ) == WP_REVIEW_REVIEW_DISABLED ) {
+	// if ( wp_review_get_user_rating_setup( $post_id ) == WP_REVIEW_REVIEW_DISABLED ) {
 		$value = 'author';
-	}
+	// }
 	return $value;
 }
 
