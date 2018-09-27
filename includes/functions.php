@@ -749,10 +749,10 @@ add_filter( 'admin_comment_types_dropdown', 'wp_review_add_to_comment_table_drop
  */
 function wp_review_get_user_rating_setup( $post_id ) {
 	$default = wp_review_option( 'default_user_review_type', WP_REVIEW_REVIEW_DISABLED );
-	$user_reviews = (int) get_post_meta( $post_id, 'wp_review_userReview', true );
-	$enabled = ! $user_reviews ? $default : $user_reviews;
+	$user_reviews = get_post_meta( $post_id, 'wp_review_userReview', true );
+	$enabled = '' === $user_reviews ? $default : (int) $user_reviews;
 	if ( is_array( $user_reviews ) ) {
-		$enabled = $user_reviews[0];
+		$enabled = (int) $user_reviews[0];
 	}
 
 	// Reviews through comments: enabled by default.
@@ -1503,7 +1503,8 @@ function wp_review_get_review_data( $post_id = null, $args = array() ) {
 
 	$data['show_schema_data'] = get_post_meta( $post_id, 'wp_review_show_schema_data', true );
 
-	$data['rating_schema'] = get_post_meta( $post_id, 'wp_review_rating_schema', true );
+	$data['rating_schema'] = wp_review_get_rating_schema( $post_id );
+	var_dump( $data['rating_schema'] );
 
 	$data['links'] = wp_review_get_review_links( $post_id );
 
@@ -2328,6 +2329,9 @@ function wp_review_get_rating_schema( $post_id ) {
 	$value = get_post_meta( $post_id, 'wp_review_rating_schema', true );
 	if ( '' === $value ) {
 		$value = 'visitors';
+	}
+	if ( wp_review_get_user_rating_setup( $post_id ) == WP_REVIEW_REVIEW_DISABLED ) {
+		$value = 'author';
 	}
 	return $value;
 }
