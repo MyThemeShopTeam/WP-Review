@@ -1903,40 +1903,40 @@ function wp_review_get_schema( $review ) {
 
 	$output = '';
 
-	$nesting_mode = apply_filters( 'wp_review_schema_nesting_mode', 'type' );// type, rating, none
+	$nesting_mode = apply_filters( 'wp_review_schema_nesting_mode', 'type' ); // type, rating, none.
 
-	// Force rating nesting in certain types ( weird results in testing tool otherwise )
+	// Force rating nesting in certain types ( weird results in testing tool otherwise ).
 	if ( in_array( $review['schema'], apply_filters( 'wp_review_schema_force_nested_rating_types', array( 'Movie', 'Book' ) ) ) ) {
 		$nesting_mode = 'rating';
 	}
 
-	// If type requires nested aggregateRating don't nest it in aggregateRating
-	if ( in_array( $review['schema'], apply_filters( 'wp_review_schema_force_nested_user_rating_types', array('SoftwareApplication', 'Recipe') ) ) && in_array( $review['rating_schema'], array( 'visitors' ) ) ) {
+	// If type requires nested aggregateRating don't nest it in aggregateRating.
+	if ( in_array( $review['schema'], apply_filters( 'wp_review_schema_force_nested_user_rating_types', array( 'SoftwareApplication', 'Recipe' ) ) ) && in_array( $review['rating_schema'], array( 'visitors' ) ) ) {
 		$nesting_mode = 'rating';
 	}
 
 	switch ( $nesting_mode ) {
 
-		case 'type': // schema.org typed element ( Movie, Recipe, etc) nested in review/aggregateRating type
+		case 'type': // schema.org typed element ( Movie, Recipe, etc) nested in review/aggregateRating type.
 			if ( in_array( $review['rating_schema'], array( 'visitors' ) ) ) {
 				$output .= wp_review_get_schema_user_rating( $review, true );
 			} else {
 				$output .= wp_review_get_schema_review_rating( $review, true );
 			}
-		break;
+			break;
 
-		case 'rating': // review/aggregateRating type nested in specific type ( Movie, Recipe, etc)
+		case 'rating': // review/aggregateRating type nested in specific type ( Movie, Recipe, etc).
 			$output .= wp_review_get_schema_type( $review, true );
-		break;
+			break;
 
-		case 'none': // separated reviewed item type ( Movie, Recipe, etc) and review/aggregateRating
+		case 'none': // separated reviewed item type ( Movie, Recipe, etc) and review/aggregateRating.
 			$output .= wp_review_get_schema_type( $review );
 			if ( in_array( $review['rating_schema'], array( 'visitors' ) ) ) {
 				$output .= wp_review_get_schema_user_rating( $review );
 			} else {
 				$output .= wp_review_get_schema_review_rating( $review );
 			}
-		break;
+			break;
 	}
 
 	return apply_filters( 'wp_review_get_schema', $output, $review );
@@ -1945,11 +1945,11 @@ function wp_review_get_schema( $review ) {
 
 function wp_review_get_schema_type( $review, $nested_rating = false ) {
 
-	if ( empty( $review['schema'] ) || 'Thing' === $review['schema'] || !isset( $review['schema_data'] ) ) return;
+	if ( empty( $review['schema'] ) || 'Thing' === $review['schema'] || ! isset( $review['schema_data'] ) ) return;
 
 	$args = array(
-		"@context" => "http://schema.org",
-		"@type" => $review['schema'],
+		'@context' => 'http://schema.org',
+		'@type'    => $review['schema'],
 	);
 
 	$ldjson_data = wp_review_get_ldjson_data( $review['schema'], $review['schema_data'][ $review['schema'] ], $review );
@@ -1963,16 +1963,16 @@ function wp_review_get_schema_type( $review, $nested_rating = false ) {
 			if ( ! empty( $data['omit'] ) ) {
 				continue;
 			}
-			if ( isset( $review['schema_data'][ $review['schema'] ][ $data['name'] ] ) && !empty( $review['schema_data'][ $review['schema'] ][ $data['name'] ] ) ) {
+			if ( isset( $review['schema_data'][ $review['schema'] ][ $data['name'] ] ) && ! empty( $review['schema_data'][ $review['schema'] ][ $data['name'] ] ) ) {
 				if ( isset( $data['multiline'] ) && $data['multiline'] ) {
-					$review['schema_data'][ $review['schema'] ][ $data['name'] ] = preg_split('/\r\n|[\r\n]/', $review['schema_data'][ $review['schema'] ][ $data['name'] ] );
+					$review['schema_data'][ $review['schema'] ][ $data['name'] ] = preg_split( '/\r\n|[\r\n]/', $review['schema_data'][ $review['schema'] ][ $data['name'] ] );
 				}
 				if ( isset( $data['part_of'] ) ) {
 					$args[ $data['part_of'] ]["@type"] = $data['@type'];
 					if ( 'image' === $data['type'] ) {
 						$args[ $data['part_of'] ][ $data['name'] ] = $review['schema_data'][ $review['schema'] ][ $data['name'] ]['url'];
 					} elseif ( in_array( $data['name'], apply_filters( 'wp_reviev_schema_ISO_8601_duration_items', array( 'prepTime', 'cookTime', 'totalTime', 'duration' ) ) ) ) {
-						$args[ $data['part_of'] ][ $data['name'] ] = 'PT'.$review['schema_data'][ $review['schema'] ][ $data['name'] ];
+						$args[ $data['part_of'] ][ $data['name'] ] = 'PT' . $review['schema_data'][ $review['schema'] ][ $data['name'] ];
 					} else {
 						$args[ $data['part_of'] ][ $data['name'] ] = $review['schema_data'][ $review['schema'] ][ $data['name'] ];
 					}
@@ -1980,7 +1980,7 @@ function wp_review_get_schema_type( $review, $nested_rating = false ) {
 					if ( 'image' === $data['type'] ) {
 						$args[ $data['name'] ] = $review['schema_data'][ $review['schema'] ][ $data['name'] ]['url'];
 					} elseif ( in_array( $data['name'], apply_filters( 'wp_reviev_schema_ISO_8601_duration_items', array( 'prepTime', 'cookTime', 'totalTime', 'duration' ) ) ) ) {
-						$args[ $data['name'] ] = 'PT'.$review['schema_data'][ $review['schema'] ][ $data['name'] ];
+						$args[ $data['name'] ] = 'PT' . $review['schema_data'][ $review['schema'] ][ $data['name'] ];
 					} else {
 						$args[ $data['name'] ] = $review['schema_data'][ $review['schema'] ][ $data['name'] ];
 					}
@@ -2033,25 +2033,25 @@ function wp_review_get_schema_review_rating( $review, $nested_item = false ) {
 		$item_reviewed = wp_review_get_schema_nested_item_args( $review );
 	} else {
 		$item_reviewed = array(
-			"@type" => "Thing",
-			"name" => esc_html( wp_review_get_reviewed_item_name( $review ) )
+			'@type' => 'Thing',
+			'name'  => esc_html( wp_review_get_reviewed_item_name( $review ) ),
 		);
 	}
 
 	$args = array(
-		"@context" => "http://schema.org",
-		"@type"    => "Review",
-		"itemReviewed" => $item_reviewed,
-		"reviewRating" => array(
-			"@type" => "Rating",
-			"ratingValue" => $review['total'],
-			"bestRating" => $wp_review_rating_types[ $review['type'] ]['max']
+		'@context'     => 'http://schema.org',
+		'@type'        => 'Review',
+		'itemReviewed' => $item_reviewed,
+		'reviewRating' => array(
+			'@type'       => 'Rating',
+			'ratingValue' => (string) wp_review_normalize_rating_value( $review['total'], $review['type'] ),
+			'bestRating'  => $wp_review_rating_types[ $review['type'] ]['max'],
 		),
-		"author" => array(
-			"@type" => "Person",
-			"name"  => esc_html( $review['author'] )
+		'author'       => array(
+			'@type' => 'Person',
+			'name'  => esc_html( $review['author'] ),
 		),
-		"reviewBody" => esc_html( $review['desc'] )
+		'reviewBody'   => esc_html( $review['desc'] ),
 	);
 
 	$args = apply_filters( 'wp_review_get_schema_review_rating_args', $args, $review );
@@ -2087,7 +2087,7 @@ function wp_review_get_schema_user_rating( $review, $nested_item = false ) {
 			'@context'     => 'http://schema.org',
 			'@type'        => 'aggregateRating',
 			'itemReviewed' => $item_reviewed,
-			'ratingValue'  => wp_review_normalize_rating_value( $total, $review['type'] ),
+			'ratingValue'  => (string) wp_review_normalize_rating_value( $total, $review['type'] ),
 			'bestRating'   => $wp_review_rating_types[ $review['user_review_type'] ]['max'],
 			'ratingCount'  => $count,
 		);
@@ -2126,9 +2126,9 @@ function wp_review_get_schema_nested_user_rating_args( $review ) {
 	if ( 0 < (int) $review['user_review_count'] ) {
 		$args = array(
 			'@type'       => 'aggregateRating',
-			'ratingValue' => wp_review_normalize_rating_value( $review['user_review_total'], $review['type'] ),
+			'ratingValue' => (string) wp_review_normalize_rating_value( $review['user_review_total'], $review['type'] ),
 			'bestRating'  => $wp_review_rating_types[ $review['user_review_type'] ]['max'],
-			'ratingCount' => $review['user_review_count']
+			'ratingCount' => $review['user_review_count'],
 		);
 	}
 
@@ -2139,17 +2139,17 @@ function wp_review_get_schema_nested_review_args( $review ) {
 	global $wp_review_rating_types;
 
 	$args = array(
-		"@type"    => "Review",
-		"reviewRating" => array(
-			"@type" => "Rating",
-			"ratingValue" => $review['total'],
-			"bestRating" => $wp_review_rating_types[ $review['type'] ]['max'],
+		'@type'        => 'Review',
+		'reviewRating' => array(
+			'@type'       => 'Rating',
+			'ratingValue' => (string) wp_review_normalize_rating_value( $review['total'], $review['type'] ),
+			'bestRating'  => $wp_review_rating_types[ $review['type'] ]['max'],
 		),
-		"author" => array(
-			"@type" => "Person",
-			"name"  => esc_html( $review['author'] )
+		'author'       => array(
+			'@type' => 'Person',
+			'name'  => esc_html( $review['author'] ),
 		),
-		"reviewBody" => esc_html( $review['desc'] )
+		'reviewBody'   => esc_html( $review['desc'] ),
 	);
 
 	return apply_filters( 'wp_review_get_schema_nested_review_args', $args, $review );
@@ -2958,9 +2958,7 @@ function wp_review_normalize_rating_value( $value, $type ) {
 	if ( ! $rating_type ) {
 		return $value;
 	}
-	$value = floatval( $value );
-	$num = pow( 10, $rating_type['decimals'] );
-	return round( $value * $num ) / $num;
+	return round( floatval( $value ), $rating_type['decimals'] );
 }
 
 
