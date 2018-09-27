@@ -2327,11 +2327,11 @@ function wp_review_is_enable( $post_id = null ) {
 function wp_review_get_rating_schema( $post_id ) {
 	$value = get_post_meta( $post_id, 'wp_review_rating_schema', true );
 	if ( '' === $value ) {
-		$value = 'visitors';
-	}
-	// if ( wp_review_get_user_rating_setup( $post_id ) == WP_REVIEW_REVIEW_DISABLED ) {
 		$value = 'author';
-	// }
+	}
+	if ( wp_review_get_user_rating_setup( $post_id ) == WP_REVIEW_REVIEW_DISABLED ) {
+		$value = 'author';
+	}
 	return $value;
 }
 
