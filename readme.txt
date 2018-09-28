@@ -104,8 +104,8 @@ Please disable all plugins and check if rating is working properly. Then you can
 == Changelog ==
 
 = v5.0.7 (Sep 29, 2018) =
-* Fixed total rating value decimal issue
-* Fixed author rating schema issue in the old posts
+* Fixed decimal issue in the total rating value of schema data
+* Fixed author rating schema issue in the old posts (if visitor rating is disabled)
 
 = v5.0.6 (Sep 24, 2018) =
 * Fixed few global settings were getting applied in the single post
