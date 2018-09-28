@@ -4,7 +4,7 @@ Creator's website link: http://mythemeshop.com/plugins/wp-review/
 Tags: review, wp review, rating, wp rating, user rating, google rating, star rating, product review
 Requires at least: 4.0
 Tested up to: 4.9.8
-Stable tag: 5.0.6
+Stable tag: 5.0.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -103,10 +103,14 @@ Please disable all plugins and check if rating is working properly. Then you can
 
 == Changelog ==
 
+= v5.0.7 (Sep 29, 2018) =
+* Fixed decimal issue in the total rating value of schema data
+* Fixed author rating schema issue in the old posts (if visitor rating is disabled)
+
 = v5.0.6 (Sep 24, 2018) =
 * Fixed few global settings were getting applied in the single post
 * Changed rating color to yellow for all the backend data
-* Fixed small bug related to extra semicolon 
+* Fixed small bug related to extra semicolon
 
 = v5.0.5 (Sep 19, 2018) =
 * Fixed colorpicker conflict with Avada theme
