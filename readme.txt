@@ -104,7 +104,7 @@ Please disable all plugins and check if rating is working properly. Then you can
 == Changelog ==
 
 = v5.0.8 (Oct 3, 2018) =
-* Fixed custom fields are added when review is never enabled
+* - Fixed adding unnecessary custom field values if the review is not enabled in the post
 
 = v5.0.7 (Sep 29, 2018) =
 * Fixed decimal issue in the total rating value of schema data
@@ -131,12 +131,12 @@ Please disable all plugins and check if rating is working properly. Then you can
 * Fixed JS Console error on the settings page
 * Fixed PHP errors if someone downgrades from premium to free version
 * Fixed Gutenberg issue where Description field was not saving
-* Fixed default inactive color in the global Settings
+* Fixed default inactive color in the Global Settings
 * Fixed empty default colors in the single post's custom layout option
 * Fixed color issue in the review box
 * Removed plugin related scripts from Customizer page
 * Removed unused code
-* Reverted total review's max decimal value from 2 to 1
+* Reverted total review's maxed decimal value from 2 to 1
 * Updated select2 script
 * Minor CSS improvements
 
@@ -160,9 +160,9 @@ Please disable all plugins and check if rating is working properly. Then you can
 * Added support for WordPress multisite
 
 = v4.0.17 (Jul 17, 2018) =
-* Fixed Banner alignment issue on settings page
+* Fixed Banner alignment issue on the settings page
 * Fixed Single page settings JS console error
-* Removed margin from icon which was causing to break the design
+* Removed margin from the icon which was caused to break the design
 
 = v4.0.16 (Jun 30, 2018) =
 * Updated admin notices
@@ -203,11 +203,11 @@ Please disable all plugins and check if rating is working properly. Then you can
 * Fixed: removed unneeded code related to circle review type
 
 = v4.0.4 (Mar 7, 2016) =
-* Fixed: backlink option is not enabled by default anymore. Sorry for that!
+* Fixed: backlink option is not enabled by default anymore. Sorry about that!
 
 = v4.0.3 (Mar 5, 2016) =
 * Fixed decimals issue in Point reviews
-* Fixed bug preventing reviews to appear on Pages
+* Fixed bug preventing reviews from appearing on Pages
 
 = v4.0.2 (Mar 4, 2016) =
 * Added back missing Widget Title field
@@ -267,14 +267,14 @@ Please disable all plugins and check if rating is working properly. Then you can
 
 = v3.2.4 (Oct 1, 2014) =
 * Fixed text from review box appearing in widgets
-* Fixed PHP notice on reviews with only total rating and no criteria
+* Fixed PHP notice on reviews with the only total rating and no criteria
 
 = v3.2.3 (Sept 24, 2014) =
 * Added version number to wp_enqueue_ functions
 * Added filter to remove banner from options page
 
 = v3.2.2 (Sept 12, 2014) =
-* Fixed Stars were not appearing in Tabbed widget.
+* Fixed Stars were not appearing in Tabbed Widget.
 
 = v3.2.1 (Sept 11, 2014) =
 * Fixed error appearing when plugin settings weren't saved.
@@ -284,7 +284,7 @@ Please disable all plugins and check if rating is working properly. Then you can
 = v3.2 (Sept 9, 2014) =
 * Added Options Panel for Global Option
 * Added option to set Global Colors.
-* Added option to Global position.
+* Added option to the Global position.
 * Added option to add Global Features.
 * Added option to change review description title (Summary).
 * Added option to hide Description and Total Rating.
@@ -306,7 +306,7 @@ Please disable all plugins and check if rating is working properly. Then you can
 
 = v3.0 (Mar 23, 2014) =
 * Major security updates
-* New AJAXified Tab widget for Popular and Recent reviews, try it, you gonna love it.
+* New AJAXified Tab widget for Popular and Recent reviews, try it, you going to love it.
 * Language file updated fully.
 * Added a nonce (a security token) to ensure that the user actually voted from the review
 * More developer possibilities
@@ -315,9 +315,9 @@ Please disable all plugins and check if rating is working properly. Then you can
 * Plugin will support the widget customizer coming up in WordPress 3.9
 
 = v2.0 (Mar 19, 2014) =
-* Fixed the, `'` switching in to `/` issue (http://bit.ly/PFMGAq)
+* Fixed the, `'` switching into `/` issue (http://bit.ly/PFMGAq)
 * Added `[wp-review]` shortcode to show the ratings anywhere in the content.
-* Added an option to not show review automatically in the Review Location dropdown.
+* Added an option to not show review automatically in the Review Location drop-down.
 * Added support for Custom post types and pages.
 * For Developers Added new function for showing only total rating, it could be used in themes' archives. A custom class name can be passed to the function, for easier customization. See `wp_review_show_total()` function in includes/functions.php file. There's also a shortcode for it, just in case: [wp-review-total]
 * For Developers Added the default colors which appear in the meta boxes are now stored in an option. It can be modified directly with `update_option()`, or using the new `wp_review_set_default_colors()` function, which is also called on plugin activation to set the plugin's default colors.

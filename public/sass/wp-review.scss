@@ -1,5 +1,8 @@
-// compileCompressed: ../css/$1.css
-
+// compile: ../css/$1.css
+/*
+ * WP Review by MyThemeShop
+ * https://mythemeshop.com/plugins/wp-review/
+ */
 @import "util";
 
 .review-wrapper {
@@ -52,6 +55,7 @@
 	overflow: hidden;
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
+	width: 100%;
 
 	li {
 		display: inline-block; margin-bottom: 10px;
