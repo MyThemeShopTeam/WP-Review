@@ -2456,7 +2456,7 @@ function wp_review_get_review_items( $post_id = null ) {
  * @since 3.0.0
  *
  * @param int $post_id Post ID.
- * @return float
+ * @return array
  */
 function wp_review_get_review_links( $post_id = null ) {
 	if ( ! $post_id ) {
@@ -2464,8 +2464,15 @@ function wp_review_get_review_links( $post_id = null ) {
 	}
 
 	$links = get_post_meta( $post_id, 'wp_review_links', true );
+	$links = $links ? (array) $links : array();
 
-	return $links ? (array) $links : array();
+	$return_links = array();
+	foreach ( $links as $review_link ) {
+		if ( ! empty( $review_link['text'] ) ) {
+			$return_links[] = $review_link;
+		}
+	}
+	return $return_links;
 }
 
 

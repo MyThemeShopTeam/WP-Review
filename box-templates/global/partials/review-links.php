@@ -13,14 +13,22 @@ if ( empty( $review['links'] ) || ! is_array( $review['links'] ) ) {
 }
 ?>
 <ul class="review-links">
-	<?php foreach ( $review['links'] as $link ) :
-		$link = wp_parse_args( $link, array(
-			'url'  => '',
-			'text' => '',
-		));
+	<?php
+	foreach ( $review['links'] as $review_link ) :
+		$review_link = wp_parse_args(
+			$review_link,
+			array(
+				'url'  => '',
+				'text' => '',
+			)
+		);
+
+		if ( empty( $review_link['text'] ) ) {
+			continue;
+		}
 		?>
 		<li>
-			<a href="<?php echo esc_url( $link['url'] ); ?>" target="_blank"><?php echo wp_kses_post( $link['text'] ); ?></a>
+			<a href="<?php echo esc_url( $review_link['url'] ); ?>" target="_blank"><?php echo wp_kses_post( $review_link['text'] ); ?></a>
 		</li>
 	<?php endforeach; ?>
 </ul>

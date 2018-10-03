@@ -932,8 +932,6 @@ function wp_review_save_postdata( $post_id, $post ) {
 		return;
 	}
 
-
-
 	/* Check the user's permissions. */
 	if ( isset($_POST['post_type']) && 'page' == $_POST['post_type'] ) {
 		if ( ! current_user_can( 'edit_page', $post_id ) ) {
@@ -945,12 +943,21 @@ function wp_review_save_postdata( $post_id, $post ) {
 		}
 	}
 
+	$type = filter_input( INPUT_POST, 'wp_review_type', FILTER_SANITIZE_STRING );
+	if ( ! $type ) {
+		$type = wp_review_option( 'review_type', 'none' );
+	}
+	update_post_meta( $post_id, 'wp_review_type', $type );
+	// Do not save review data if never enable it.
+	if ( 'none' === $type && ! get_post_meta( $post_id, 'wp_review_bgcolor1', true ) ) {
+		return $post_id;
+	}
+
 	$meta = array(
 		'wp_review_custom_location'        => filter_input( INPUT_POST, 'wp_review_custom_location', FILTER_SANITIZE_STRING ),
 		'wp_review_custom_colors'          => filter_input( INPUT_POST, 'wp_review_custom_colors', FILTER_SANITIZE_STRING ),
 		'wp_review_custom_author'          => filter_input( INPUT_POST, 'wp_review_custom_author', FILTER_SANITIZE_STRING ),
 		'wp_review_location'               => filter_input( INPUT_POST, 'wp_review_location', FILTER_SANITIZE_STRING ),
-		'wp_review_type'                   => filter_input( INPUT_POST, 'wp_review_type', FILTER_SANITIZE_STRING ),
 		'wp_review_heading'                => filter_input( INPUT_POST, 'wp_review_heading', FILTER_SANITIZE_STRING ),
 		'wp_review_desc_title'             => filter_input( INPUT_POST, 'wp_review_desc_title', FILTER_SANITIZE_STRING ),
 		'wp_review_desc'                   => ! empty( $_POST['wp_review_desc'] ) ? wp_kses_post( wp_unslash( $_POST['wp_review_desc'] ) ) : '',
@@ -982,10 +989,6 @@ function wp_review_save_postdata( $post_id, $post ) {
 
 	if ( $meta['wp_review_inactive_color'] === $default_inactive ) {
 		$meta['wp_review_inactive_color'] = '';
-	}
-
-	if ( ! $meta['wp_review_type'] ) {
-		$meta['wp_review_type'] = wp_review_option( 'review_type', 'none' );
 	}
 
 	foreach ( $meta as $meta_key => $new_meta_value ) {
@@ -1039,7 +1042,6 @@ function wp_review_save_postdata( $post_id, $post ) {
 	/**
 	 * Delete all data when switched to 'No Review' type.
 	 */
-	$type = $meta['wp_review_type']; //get_post_meta( $post_id, 'wp_review_type', true );
 	if ( 'none' === $type ) {
 		delete_post_meta( $post_id, 'wp_review_desc', $_POST['wp_review_desc'] );
 		delete_post_meta( $post_id, 'wp_review_heading', $_POST['wp_review_heading'] );
