@@ -1042,7 +1042,6 @@ function wp_review_save_postdata( $post_id, $post ) {
 	/**
 	 * Delete all data when switched to 'No Review' type.
 	 */
-	$type = $meta['wp_review_type']; //get_post_meta( $post_id, 'wp_review_type', true );
 	if ( 'none' === $type ) {
 		delete_post_meta( $post_id, 'wp_review_desc', $_POST['wp_review_desc'] );
 		delete_post_meta( $post_id, 'wp_review_heading', $_POST['wp_review_heading'] );

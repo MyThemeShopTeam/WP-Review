@@ -104,7 +104,8 @@ Please disable all plugins and check if rating is working properly. Then you can
 == Changelog ==
 
 = v5.0.8 (Oct 3, 2018) =
-* - Fixed adding unnecessary custom field values if the review is not enabled in the post
+* Fixed adding unnecessary custom field values if the review is not enabled in the post
+* Removed blank review links section
 
 = v5.0.7 (Sep 29, 2018) =
 * Fixed decimal issue in the total rating value of schema data
