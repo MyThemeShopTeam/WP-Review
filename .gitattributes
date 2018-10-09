@@ -10,6 +10,7 @@ package.json export-ignore
 package-lock.json export-ignore
 prepros-6.config export-ignore
 npm-debug.log export-ignore
+phpcs.xml.dist export-ignore
 
 # Plugin folder ignore
 admin/assets/sass export-ignore
