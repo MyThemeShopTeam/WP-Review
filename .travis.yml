@@ -1,0 +1,108 @@
+# Travis CI configuration file.
+# @link https://travis-ci.org/
+
+# Declare project language and PHP versions to test against.
+# @link http://about.travis-ci.org/docs/user/languages/php/
+language: php
+
+# Ditch sudo and use containers.
+# @link https://docs.travis-ci.com/user/ci-environment/
+sudo: false
+
+# Tell Travis CI which distro to use
+dist: trusty
+
+branches:
+  only:
+    - master
+    - trunk
+    - /^release\/*/
+    - /^hotfix\/\d+\.\d+(\.\d+)?(-\S*)?$/
+    - /^feature\/*/
+
+env:
+  global:
+    WP_VERSION=latest
+    WP_MULTISITE=0
+
+# Create a matrix for testing against multiple PHP and WordPress versions.
+# We do this as the Rank Math plugin should be available
+# to all versions core supports.
+matrix:
+  fast_finish: true
+  include:
+    - php: 7.2
+    - php: 7.2
+      env: WP_VERSION=latest WP_MULTISITE=1
+    - php: 7.2
+      env: WP_VERSION=4.8
+    - php: 7.2
+      env: WP_VERSION=4.7.5
+    - php: 7.2
+      env: WP_VERSION=4.6
+    - php: 7.1
+    - php: 7.1
+      env: WP_VERSION=4.0
+    - php: 7.0
+    - php: 7.0
+      env: WP_VERSION=4.0
+    - php: 5.6
+    - php: 5.6
+      env: WP_VERSION=4.0
+    - php: 5.6
+      env: WP_VERSION=trunk
+    - php: 5.6
+      env: WP_TRAVISCI=phpcs
+
+  allow_failures:
+    - env: WP_TRAVISCI=phpcs
+
+cache:
+  directories:
+    - $HOME/.npm
+    - node_modules
+    - $HOME/.composer/cache
+    - vendor
+    
+install:
+  - composer install -o --prefer-dist --no-interaction
+
+before_script:
+  # Remove Xdebug for a huge performance increase:
+  - |
+    if [ -f ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini ]; then
+      phpenv config-rm xdebug.ini
+    else
+      echo "xdebug.ini does not exist"
+    fi
+  - export PATH="$HOME/.composer/vendor/bin:$PATH"
+  # Install phpunuit test suite
+  - |
+    if [[ ! -z "$WP_VERSION" ]] ; then
+      bash bin/install-wp-tests.sh wordpress_test root '' localhost $WP_VERSION
+      composer global require "phpunit/phpunit=4.8.*|5.7.*"
+    fi
+  # Install WordPress Coding Standards
+  - |
+    if [[ "$WP_TRAVISCI" == "phpcs" ]] ; then
+      composer global require wp-coding-standards/wpcs
+      phpcs --config-set installed_paths $HOME/.composer/vendor/wp-coding-standards/wpcs
+    fi
+
+script:
+  - |
+    if [[ ! -z "$WP_VERSION" ]] ; then
+      phpunit
+      WP_MULTISITE=1 phpunit
+    fi
+  - |
+    if [[ "$WP_TRAVISCI" == "phpcs" ]] ; then
+      # PHP Linting
+      find . \( -name '*.php' \) -exec php -lf {} \;
+      phpcs
+    fi
+
+notifications:
+  slack:
+    secure: rCaX810sEJKdxKZUAIPPKEYnxj6z7mRdENodLJL9mzwwm1BLjJTgIrmQcG+rmHqNV7CwtvoWel0D7SgRzV38caNPD1ZmhWqN1r80LJZL2gbHlcQQiC72vm/oMUFLyEIpMBVK7oCCwh5bGV8Oug5I2ddVaR6+L38sp5deR22DpFPK41sz/y1hL4PV5kHOO8JrddZfwOKSr3RX3XXZP4F+U9G2nSOnDUzravQOv7c9MHOGLA9JlURFbdiIPB/xtyMe2Lw8Pc89t0sKIqnnRy7i2D017h4KAV3ja64Blad27hC6FHgXP9DYQWbeP+Wp6iwZkTtj7v3OH3kZNqxwFfhrTluodpGN3vjrqvdVSD6WY0u5HIMG3yREcyONHs8lwzSuJddPcqxxyfpCRDcOiPXUN61FZ7SnjMbMDQdI4RImelGYQRm3l9UrSvt46XWpobZElmz2OAfSGXX5XVAURLudonP3DkZA0OcqSqelbZoRiiqEQap22Jwx7Puh2rWlfNI0Oo14vJbsSyFVJLu/TolZSS3ZW/MwpYHZSn2a+k1pzH64J7wTAStvvT1uwiI5S2bzMUKiFlUtAFagGHGksTe4YqW5Q1WNr1uGmbDcOdjUjbezFA3P9XWrkfdaQPYC7TY5mAk/1zDvRu1XO2/3Rp9RF0meg5EOa7+VzxalV2gy+PI=
+  email: false
