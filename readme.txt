@@ -103,6 +103,10 @@ Please disable all plugins and check if rating is working properly. Then you can
 
 == Changelog ==
 
+= v5.0.9 (Oct 10, 2018) =
+* Removed unnecessary scripts from the non WP Review admin pages
+* Fixed no space between HTML attributes
+
 = v5.0.8 (Oct 3, 2018) =
 * Fixed adding unnecessary custom field values if the review is not enabled in the post
 * Removed blank review links section
