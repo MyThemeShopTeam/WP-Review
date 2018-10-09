@@ -15,9 +15,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$percentage = wp_review_get_rating_type_data( 'percentage' );
+$percentage   = wp_review_get_rating_type_data( 'percentage' );
 $rating_value = isset( $rating['value'] ) ? $rating['value'] : 0;
-$value = wp_review_normalize_rating_value( $rating_value, 'percentage' );
+$value        = wp_review_normalize_rating_value( $rating_value, 'percentage' );
 
 $class = 'review-percentage';
 if ( ! empty( $rating['args']['class'] ) ) {
@@ -28,7 +28,7 @@ $inactive_color = ! empty( $rating['colors']['inactive_color'] ) ? $rating['colo
 $bar_text_color = ! empty( $rating['colors']['bar_text_color'] ) ? $rating['colors']['bar_text_color'] : $rating['colors']['bgcolor1'];
 ?>
 <div class="<?php echo esc_attr( $class ); ?>">
-	<div class="review-result-wrapper"<?php if ( $inactive_color ) echo "style=\"background-color: {$inactive_color}\""; ?>>
+	<div class="review-result-wrapper"<?php if ( $inactive_color ) echo " style=\"background-color: {$inactive_color};\""; // phpcs:ignore ?>>
 		<div class="review-result" style="width:<?php echo esc_attr( $value ); ?>%; background-color: <?php echo esc_attr( $rating['color'] ); ?>;"></div>
 		<div class="review-result-text" style="color: <?php echo esc_attr( $bar_text_color ); ?>;"><?php echo sprintf( wp_kses_post( $percentage['value_text'] ), floatval( $value ) ); ?></div>
 	</div>
