@@ -63,9 +63,6 @@ cache:
     - node_modules
     - $HOME/.composer/cache
     - vendor
-    
-install:
-  - composer install -o --prefer-dist --no-interaction
 
 before_script:
   # Remove Xdebug for a huge performance increase:
