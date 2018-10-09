@@ -18,7 +18,7 @@
  * @param string $hook_suffix Admin page hook suffix.
  */
 function wp_review_admin_style( $hook_suffix ) {
-	if ( ! in_array( $hook_suffix, array( 'post-new.php', 'edit-comments.php', 'post.php', 'edit.php', 'widgets.php', 'settings_page_wp-review/admin/options' ) ) ) {
+	if ( ! in_array( $hook_suffix, array( 'post-new.php', 'edit-comments.php', 'post.php', 'edit.php', 'widgets.php', 'settings_page_wp-review/admin/options' ), true ) ) {
 		return;
 	}
 
@@ -26,14 +26,39 @@ function wp_review_admin_style( $hook_suffix ) {
 		return;
 	}
 
-	wp_enqueue_style( 'fontawesome', WP_REVIEW_ASSETS . 'css/font-awesome.min.css', array(), '4.7.0' );
+	if ( 'settings_page_wp-review/admin/options' === $hook_suffix ) {
+		wp_enqueue_style( 'fontawesome', WP_REVIEW_ASSETS . 'css/font-awesome.min.css', array(), '4.7.0' );
 
-	wp_enqueue_script( 'select2', WP_REVIEW_URI . 'admin/assets/js/select2.min.js', array( 'jquery' ), '4.0.6-rc.0', true );
-	wp_enqueue_style( 'select2', WP_REVIEW_URI . 'admin/assets/css/select2.min.css', array(), '4.0.6-rc.0' );
+		wp_enqueue_style( 'jquery-ui', WP_REVIEW_URI . 'admin/assets/css/jquery-ui.min.css', array(), '1.12.1' );
 
-	wp_enqueue_style( 'wp_review-style', trailingslashit( WP_REVIEW_ASSETS ) . 'css/wp-review.css', array(), WP_REVIEW_PLUGIN_VERSION, 'all' );
+		wp_enqueue_script( 'js-cookie', WP_REVIEW_ASSETS . 'js/js.cookie.min.js', array(), '2.1.4', true );
 
-	wp_enqueue_style( 'wp-review-admin-style', WP_REVIEW_URI . 'admin/assets/css/admin.css', array( 'wp-color-picker' ) );
+		wp_enqueue_script( 'wp-review-admin-import', WP_REVIEW_URI . 'admin/assets/js/admin.import.js', array( 'jquery', 'wp-util' ), WP_REVIEW_PLUGIN_VERSION, true );
+
+		wp_localize_script(
+			'wp-review-admin-import',
+			'wprImportVars',
+			array(
+				// translators: import source.
+				'confirm'              => __( 'Are you sure you want to import from %s?', 'wp-review' ),
+				'server_error'         => __( 'The server responded with an error. Try again.', 'wp-review' ),
+				'confirmOptionsImport' => __( 'Are you sure you want to import options? All current options will be lost.', 'wp-review' ),
+				'importOptionsNonce'   => wp_create_nonce( 'wp-review-import-options' ),
+			)
+		);
+	}
+
+	if ( in_array( $hook_suffix, array( 'settings_page_wp-review/admin/options', 'post.php', 'post-new.php' ), true ) ) {
+		wp_enqueue_script( 'select2', WP_REVIEW_URI . 'admin/assets/js/select2.min.js', array( 'jquery' ), '4.0.6-rc.0', true );
+		wp_enqueue_style( 'select2', WP_REVIEW_URI . 'admin/assets/css/select2.min.css', array(), '4.0.6-rc.0' );
+	}
+
+	// Load frontend css but not on the post editor screen.
+	if ( stripos( 'post.php', $hook_suffix ) === false ) {
+		wp_enqueue_style( 'wp_review-style', trailingslashit( WP_REVIEW_ASSETS ) . 'css/wp-review.css', array(), WP_REVIEW_PLUGIN_VERSION, 'all' );
+	}
+
+	wp_enqueue_style( 'wp-review-admin-style', WP_REVIEW_URI . 'admin/assets/css/admin.css', array( 'wp-color-picker' ), WP_REVIEW_PLUGIN_VERSION );
 
 	$inline_css = '.column-wp_review_rating .pro-only-notice, .latestPost-review-wrapper .pro-only-notice { display: none; }';
 	wp_add_inline_style( 'wp-review-admin-style', $inline_css );
@@ -41,18 +66,17 @@ function wp_review_admin_style( $hook_suffix ) {
 	wp_enqueue_style( 'magnificPopup', WP_REVIEW_ASSETS . 'css/magnific-popup.css', array(), '1.1.0' );
 	wp_enqueue_script( 'magnificPopup', WP_REVIEW_ASSETS . 'js/jquery.magnific-popup.min.js', array( 'jquery' ), '1.1.0', true );
 
-	wp_enqueue_media();
-	add_thickbox();
+	if ( in_array( $hook_suffix, array( 'post.php', 'post-new.php' ), true ) ) {
+		wp_enqueue_script( 'wp-review-rating-inputs', WP_REVIEW_URI . 'admin/assets/js/rating-inputs.js', array( 'jquery-ui-slider' ), WP_REVIEW_PLUGIN_VERSION, true );
 
-	wp_register_script( 'js-cookie', WP_REVIEW_ASSETS . 'js/js.cookie.min.js', array(), '2.1.4', true );
-
-	wp_enqueue_script(
-		'wp-review-rating-inputs',
-		WP_REVIEW_URI . 'admin/assets/js/rating-inputs.js',
-		array( 'jquery-ui-slider' ),
-		'3.0.0',
-		true
-	);
+		wp_enqueue_script(
+			'wp-review-review-items',
+			WP_REVIEW_URI . 'admin/assets/js/review-items.js',
+			array( 'backbone', 'wp-review-admin-script', 'jquery-ui-sortable' ),
+			WP_REVIEW_PLUGIN_VERSION,
+			true
+		);
+	}
 
 	wp_enqueue_script(
 		'wp-review-admin-script',
@@ -65,28 +89,10 @@ function wp_review_admin_style( $hook_suffix ) {
 			'jquery-ui-sortable',
 			'jquery-ui-datepicker',
 			'wp-util',
-			'wp-review-rating-inputs',
-			'js-cookie',
 			'magnificPopup',
 			'imagesloaded',
 		),
-		'3.0.0',
-		true
-	);
-
-	wp_enqueue_script(
-		'wp-review-admin-import',
-		WP_REVIEW_URI . 'admin/assets/js/admin.import.js',
-		array( 'jquery', 'wp-util' ),
-		'3.0.0',
-		true
-	);
-
-	wp_enqueue_script(
-		'wp-review-review-items',
-		WP_REVIEW_URI . 'admin/assets/js/review-items.js',
-		array( 'backbone', 'wp-review-admin-script', 'jquery-ui-sortable' ),
-		'3.0.6',
+		WP_REVIEW_PLUGIN_VERSION,
 		true
 	);
 
@@ -155,29 +161,6 @@ function wp_review_admin_style( $hook_suffix ) {
 			'importDemoDone'               => __( 'Importing proccess finished!', 'wp-review' ),
 		)
 	);
-
-	wp_localize_script(
-		'wp-review-admin-import',
-		'wprImportVars',
-		array(
-			'confirm'              => __( 'Are you sure you want to import from %s?', 'wp-review' ),
-			'server_error'         => __( 'The server responded with an error. Try again.', 'wp-review' ),
-			'confirmOptionsImport' => __( 'Are you sure you want to import options? All current options will be lost.', 'wp-review' ),
-			'importOptionsNonce'   => wp_create_nonce( 'wp-review-import-options' ),
-		)
-	);
-
-	wp_enqueue_style(
-		'jquery-ui',
-		WP_REVIEW_URI . 'admin/assets/css/jquery-ui.min.css',
-		array(),
-		'1.12.1'
-	);
-
-	// Load frontend css but not on the post editor screen.
-	if ( stripos( 'post.php', $hook_suffix ) === false ) {
-		wp_enqueue_style( 'wp_review-style', trailingslashit( WP_REVIEW_ASSETS ) . 'css/wp-review.css', array(), WP_REVIEW_PLUGIN_VERSION, 'all' );
-	}
 }
 
 add_action( 'admin_enqueue_scripts', 'wp_review_admin_style' );

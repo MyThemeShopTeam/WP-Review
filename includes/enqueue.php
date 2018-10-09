@@ -21,8 +21,6 @@ add_action( 'wp_enqueue_scripts', 'wp_review_enqueue', 12 );
  * @since 3.0.0 Add font awesome.
  */
 function wp_review_enqueue() {
-	$rating_types = wp_review_get_rating_types();
-
 	// Register.
 	wp_register_style( 'magnificPopup', WP_REVIEW_ASSETS . 'css/magnific-popup.css', array(), '1.1.0' );
 	wp_register_script( 'magnificPopup', WP_REVIEW_ASSETS . 'js/jquery.magnific-popup.min.js', array( 'jquery' ), '1.1.0', true );

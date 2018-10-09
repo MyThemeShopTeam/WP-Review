@@ -5,12 +5,16 @@
 * Author: MyThemesShop
 * Author URI: http://mythemeshop.com/
 */
-( function( $, Cookies ) {
+( function( $ ) {
 	"use strict";
 
 	var wpreview = window.wpreview = window.wpreview || {};
 
 	wpreview.initSelect2 = function() {
+		if ( 'function' !== typeof $.fn.select2 ) {
+			return;
+		}
+
 		function addIcon( option ) {
 			if ( $( option.element ).attr( 'data-icon' ) ) {
 				return $( '<span><i class="' + $( option.element ).attr( 'data-icon' ) + '"></i> ' + option.text + '</span>' );
@@ -79,8 +83,11 @@
 		wpreview.tabs({
 			wrapper: '[data-vertical-tabs]',
 			activeElement: 'li',
-			active: $( '#setting-error-settings_updated' ).length ? Cookies.get( 'wpr-last-vtab' ) : '',
+			active: $( '#setting-error-settings_updated' ).length && 'undefined' !== typeof Cookies ? Cookies.get( 'wpr-last-vtab' ) : '',
 			activate: function( tab ) {
+				if ( 'undefined' === typeof Cookies ) {
+					return;
+				}
 				Cookies.set( 'wpr-last-vtab', tab );
 			}
 		});
@@ -90,9 +97,12 @@
 			title: '.nav-tab',
 			content: '.tab-content',
 			activeClass: 'nav-tab-active',
-			active: $( '#setting-error-settings_updated' ).length ? Cookies.get( 'wpr-last-htab' ) : '',
+			active: $( '#setting-error-settings_updated' ).length && 'undefined' !== typeof Cookies ? Cookies.get( 'wpr-last-htab' ) : '',
 			activate: function( tab ) {
 				if ( ! $( '#wpr-global-options' ).length ) {
+					return;
+				}
+				if ( 'undefined' === typeof Cookies ) {
 					return;
 				}
 				Cookies.set( 'wpr-last-htab', tab );
@@ -315,6 +325,10 @@
 	};
 
 	wpreview.boxTemplatesSelect = function() {
+		if ( 'function' !== typeof $.fn.select2 ) {
+			return;
+		}
+
 		var $select = $( 'select#wp_review_box_template' ),
 			globalColor = $( '#wpr-review-global-color-value' ).val(),
 			globalInactiveColor = $( '#wpr-review-global-inactive-color-value' ).val(),
@@ -620,7 +634,7 @@
 			$( '.input-color, .input-inactive-color' ).closest( '.col-2' ).addClass( 'pyre_field' );
 		}
 	});
-})( jQuery, Cookies );
+})( jQuery );
 
 jQuery(document).ready(function($) {
 
