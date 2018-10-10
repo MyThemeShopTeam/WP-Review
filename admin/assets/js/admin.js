@@ -201,9 +201,6 @@
 			}
 		});
 
-		// Remove Review schema from Rank Math plugin.
-		$( 'select#rank_math_rich_snippet option[value="review"]' ).remove();
-
 		$( document ).on( 'change', '#wp_review_rating_schema', function() {
 			var value = $( this ).val();
 			if ( 'author' === value ) {
@@ -261,7 +258,29 @@
 			} else {
 				$( this ).next( 'input[name="wp_review_type"]' ).val( selected_val );
 			}
+			rankMathRichSnippet();
 		}).change();
+
+		rankMathRichSnippet();
+
+		function rankMathRichSnippet() {
+
+			var rankMathSnippet = $( 'select#rank_math_rich_snippet');
+			if( ! rankMathSnippet.length ) {
+				return;
+			}
+
+			var ReviewType = $('#wp_review_type').val();
+			if( 'review' === rankMathSnippet.val() && 'none' !== ReviewType ) {
+				rankMathSnippet.val('off').trigger('change');
+			}
+			if( 'none' === ReviewType ) {
+				rankMathSnippet.find( 'option[value="review"]' ).show();
+			} else {
+				rankMathSnippet.find( 'option[value="review"]' ).hide();
+			}
+		}
+		
 	};
 
 	wpreview.linkChoices = function( options ) {
