@@ -6,6 +6,9 @@
  * @since 3.0.0
  */
 
+/**
+ * Class WP_Review_Demo_Importer
+ */
 class WP_Review_Demo_Importer {
 
 	/**

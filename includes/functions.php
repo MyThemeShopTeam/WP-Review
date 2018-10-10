@@ -87,7 +87,7 @@ function wp_review_get_default_location() {
  *
  * @since 3.0.0
  *
- * @return string
+ * @return array
  */
 function wp_review_get_default_criteria() {
 	$default_criteria = apply_filters( 'wp_review_default_criteria', array() );

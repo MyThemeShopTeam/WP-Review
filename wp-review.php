@@ -160,7 +160,7 @@ if ( ! function_exists( 'wp_review_includes_libraries' ) ) :
 		require_once( WP_REVIEW_ADMIN . 'class-wp-review-form-field.php' );
 
 		/* Loads the importer. */
-		require_once( WP_REVIEW_ADMIN . 'import.php' );
+		require_once( WP_REVIEW_ADMIN . 'class-wp-review-importer.php' );
 
 		/* Loads the demo importer. */
 		require_once( WP_REVIEW_ADMIN . 'demo-importer.php' );
