@@ -201,42 +201,8 @@
 			}
 		});
 
-		var richSnippetSelect = $('#rank_math_rich_snippet');
-
-		$( document ).on( 'change', 'select#wp_review_schema', function() {
-			var $this = $( this ),
-				value = $this.val(),
-				targetSelector = '#wp_review_schema_type_' + value;
-
-			$( '.wp_review_schema_type_options' ).hide();
-			$( '#wp_review_schema_type_options_wrap' ).hide();
-
-			if ( value ) {
-				$( targetSelector ).show();
-				if ( 'none' !== value ) {
-					$( '#wp_review_schema_type_options_wrap' ).show();
-
-					if(richSnippetSelect.length)
-						richSnippetSelect.val('off').trigger('change');
-				}
-			}
-
-		});
-
-		if(richSnippetSelect.length) {
-
-			var wpReviewSchemaSelect = $('select#wp_review_schema');
-
-			if(wpReviewSchemaSelect.val() !== 'none') {
-				richSnippetSelect.val('off').trigger('change');
-			}
-
-			richSnippetSelect.on( 'change', function() {
-				if( 'off' !== $(this).val() ) {
-					wpReviewSchemaSelect.val( 'none' ).trigger( 'change' );
-				}
-			}).trigger( 'change' );
-		}
+		// Remove Review schema from Rank Math plugin.
+		$( 'select#rank_math_rich_snippet option[value="review"]' ).remove();
 
 		$( document ).on( 'change', '#wp_review_rating_schema', function() {
 			var value = $( this ).val();
