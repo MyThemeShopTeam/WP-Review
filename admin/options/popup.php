@@ -14,11 +14,13 @@
 
 	<div class="wp-review-field-option">
 		<?php
-		$form_field->render_switch( array(
-			'id'       => 'wp_review_popup_enable',
-			'name'     => 'wp_review_popup[enable]',
-			'disabled' => true,
-		) );
+		$form_field->render_switch(
+			array(
+				'id'       => 'wp_review_popup_enable',
+				'name'     => 'wp_review_popup[enable]',
+				'disabled' => true,
+			)
+		);
 		?>
 	</div>
 </div>
@@ -148,13 +150,15 @@
 		<div class="wp-review-field-option">
 			<span class="wp-review-disabled inline-block has-bg">
 				<?php
-				wp_dropdown_categories( array(
-					'show_option_all' => esc_html__( 'All categories', 'wp-review' ),
-					'orderby'         => 'name',
-					'hide_empty'      => false,
-					'name'            => 'wp_review_popup[category]',
-					'id'              => 'wp_review_popup_category',
-				) );
+				wp_dropdown_categories(
+					array(
+						'show_option_all' => esc_html__( 'All categories', 'wp-review' ),
+						'orderby'         => 'name',
+						'hide_empty'      => false,
+						'name'            => 'wp_review_popup[category]',
+						'id'              => 'wp_review_popup_category',
+					)
+				);
 				?>
 			</span>
 		</div>

@@ -1,14 +1,23 @@
 <?php
 
+/**
+ * Overrides comments count.
+ */
 function wp_review_override_comments_count() {
 	remove_filter( 'get_comments_number', 'mts_comment_count', 0 );
 	add_filter( 'get_comments_number', 'wp_review_comment_count', 0 );
 }
 add_action( 'after_setup_theme', 'wp_review_override_comments_count', 30 );
 
+/**
+ * Gets comment count.
+ *
+ * @param $count
+ * @return int
+ */
 function wp_review_comment_count( $count ) {
 	if ( ! is_admin() ) {
-		$comments = get_comments( 'status=approve&post_id=' . get_the_ID() );
+		$comments         = get_comments( 'status=approve&post_id=' . get_the_ID() );
 		$comments_by_type = separate_comments( $comments );
 		if ( isset( $comments_by_type['comment'] ) ) {
 			$wp_review_comments_count = isset( $comments_by_type['wp_review_comment'] ) ? count( $comments_by_type['wp_review_comment'] ) : 0;
@@ -31,7 +40,15 @@ function wp_review_comment_add_meta_box() {
 	if ( ! $type ) {
 		$type = 'star';
 	}
-	add_meta_box( 'wp-review-comment-rating', sprintf(__( 'WP Review Rating (%s)', 'wp-review' ), $wp_review_rating_types[$type]['label']), 'wp_review_comment_meta_box_fields', 'comment', 'normal', 'high' );
+	add_meta_box(
+		'wp-review-comment-rating',
+		// translators: rating label.
+		sprintf( __( 'WP Review Rating (%s)', 'wp-review' ), $wp_review_rating_types[ $type ]['label'] ),
+		'wp_review_comment_meta_box_fields',
+		'comment',
+		'normal',
+		'high'
+	);
 }
 add_action( 'add_meta_boxes_comment', 'wp_review_comment_add_meta_box' );
 
@@ -42,7 +59,7 @@ function wp_review_comment_meta_box_fields( $comment ) {
 	} else {
 		$rating = get_comment_meta( $comment_id, WP_REVIEW_VISITOR_RATING_METAKEY, true );
 	}
-	$title = get_comment_meta( $comment_id, WP_REVIEW_COMMENT_TITLE_METAKEY, true );
+	$title        = get_comment_meta( $comment_id, WP_REVIEW_COMMENT_TITLE_METAKEY, true );
 	$rating_items = get_comment_meta( $comment_id, WP_REVIEW_COMMENT_FEATURES_RATING_METAKEY, true );
 	wp_nonce_field( 'wp_review_comment_rating_update', 'wp_review_comment_rating_update', false );
 	?>
@@ -64,7 +81,8 @@ function wp_review_comment_meta_box_fields( $comment ) {
 		</div>
 	</div>
 
-	<?php if ( ! empty( $rating_items ) ) :
+	<?php
+	if ( ! empty( $rating_items ) ) :
 		$items = wp_review_get_review_items( $comment->comment_post_ID );
 		foreach ( $items as $item_id => $item ) :
 			$value = ! empty( $rating_items[ $item_id ] ) ? $rating_items[ $item_id ] : 0;
@@ -81,34 +99,36 @@ function wp_review_comment_meta_box_fields( $comment ) {
 	<?php endif; ?>
 
 	<?php
-	$comment_qualifier = get_comment_meta( $comment_id, 'wp_review_comment_qualifier', true );
-	$comment_image = get_comment_meta( $comment_id, 'wp_review_comment_attachment_url', true );
+	$comment_qualifier  = get_comment_meta( $comment_id, 'wp_review_comment_qualifier', true );
+	$comment_image      = get_comment_meta( $comment_id, 'wp_review_comment_attachment_url', true );
 	$comment_image_name = 'wp_review_comment_attachment_url';
-	if(!$comment_image) {
+	if ( ! $comment_image ) {
 		$comment_image = get_comment_meta( $comment_id, 'wp_review_comment_attachment_src', true );
-		if($comment_image) {
+		if ( $comment_image ) {
 			$comment_image_name = 'wp_review_comment_attachment_src';
 		}
 	}
 
-	if($comment_qualifier) {
+	if ( $comment_qualifier ) {
 		?>
 		<div class="wp-review-field">
 			<div class="wp-review-field-label">
-				<label for="wp_review_comment_qualifier"><?php echo apply_filters('wp_review_comment_qualifier', __('Does Product Matches the Description?', 'wp-review')); ?></label>
+				<label for="wp_review_comment_qualifier"><?php echo apply_filters( 'wp_review_comment_qualifier', __( 'Does Product Matches the Description?', 'wp-review' ) ); ?></label>
 			</div>
 			<div class="wp-review-field-option">
 				<select id="wp_review_comment_qualifier" name="wp_review_comment_qualifier">
-					<option value=""><?php _e('Select', 'wp-review'); ?></option>
-					<option value="yes" <?php selected($comment_qualifier, 'yes', true); ?>><?php _e('Yes', 'wp-review'); ?></option>
-					<option value="no" <?php selected($comment_qualifier, 'no', true); ?>><?php _e('No', 'wp-review'); ?></option>
+					<option value=""><?php _e( 'Select', 'wp-review' ); ?></option>
+					<option value="yes" <?php selected( $comment_qualifier, 'yes', true ); ?>><?php _e( 'Yes', 'wp-review' ); ?></option>
+					<option value="no" <?php selected( $comment_qualifier, 'no', true ); ?>><?php _e( 'No', 'wp-review' ); ?></option>
 				</select>
 			</div>
 		</div>
-	<?php }
-	if($comment_image) {
-		if(is_numeric($comment_image)) {
-			$comment_image = wp_get_attachment_url($comment_image);
+		<?php
+	}
+
+	if ( $comment_image ) {
+		if ( is_numeric( $comment_image ) ) {
+			$comment_image = wp_get_attachment_url( $comment_image );
 		}
 		?>
 		<div class="wp-review-field">
@@ -116,7 +136,7 @@ function wp_review_comment_meta_box_fields( $comment ) {
 				<label for="wp_review_comment_image"><?php esc_html_e( 'Comment Image', 'wp-review' ); ?></label>
 			</div>
 			<div class="wp-review-field-option">
-				<input type="text" name="<?php echo esc_attr($comment_image_name) ?>" value="<?php echo esc_attr($comment_image); ?>" />
+				<input type="text" name="<?php echo esc_attr( $comment_image_name ); ?>" value="<?php echo esc_attr( $comment_image ); ?>" />
 			</div>
 		</div>
 	<?php } ?>
@@ -145,9 +165,9 @@ function wp_review_comment_edit_comment( $comment_id ) {
 	$rating = filter_input( INPUT_POST, 'wp_review_comment_rating', FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION );
 
 	// if ( ! empty( $rating ) ) {
-		$comment = get_comment( $comment_id );
-		update_comment_meta( $comment_id, $meta_key, $rating );
-		wp_review_clear_cached_reviews( $comment );
+	$comment = get_comment( $comment_id );
+	update_comment_meta( $comment_id, $meta_key, $rating );
+	wp_review_clear_cached_reviews( $comment );
 	// }
 
 	if ( ! empty( $_POST['wp_review_comment_title'] ) ) {
@@ -281,8 +301,8 @@ function wp_review_comment_rating( $value, $comment_id = null, $args = array() )
 	if ( $value > $rating_type['max'] ) {
 		$value = $rating_type['max'];
 	}
-	$template = $rating_type['output_template'];
-	$comment_rating = true;
+	$template         = $rating_type['output_template'];
+	$comment_rating   = true;
 	$args['show_one'] = true;
 	set_query_var( 'rating', compact( 'value', 'type', 'args', 'comment_rating', 'post_id', 'color', 'colors' ) );
 	ob_start();
@@ -312,18 +332,21 @@ add_action( 'transition_comment_status', 'wp_review_update_comment_ratings', 10,
  */
 function wp_review_add_comments_list_view( $views ) {
 	foreach ( $views as $key => $view ) {
-		$view = str_replace( 'comment_type=' . WP_REVIEW_COMMENT_TYPE_COMMENT . '&', '', $view );
-		$view = str_replace( 'comment_type=' . WP_REVIEW_COMMENT_TYPE_VISITOR . '&', '', $view );
+		$view          = str_replace( 'comment_type=' . WP_REVIEW_COMMENT_TYPE_COMMENT . '&', '', $view );
+		$view          = str_replace( 'comment_type=' . WP_REVIEW_COMMENT_TYPE_VISITOR . '&', '', $view );
 		$views[ $key ] = $view;
 	}
 
 	// Visitor reviews.
-	$url = add_query_arg( 'comment_type', WP_REVIEW_COMMENT_TYPE_VISITOR );
-	$url = remove_query_arg( 'comment_status', $url );
-	$count = get_comments( array(
-		'count' => true,
-		'type'  => WP_REVIEW_COMMENT_TYPE_VISITOR,
-	) );
+	$url   = add_query_arg( 'comment_type', WP_REVIEW_COMMENT_TYPE_VISITOR );
+	$url   = remove_query_arg( 'comment_status', $url );
+	$count = get_comments(
+		array(
+			'count' => true,
+			'type'  => WP_REVIEW_COMMENT_TYPE_VISITOR,
+		)
+	);
+
 	$views['visitor_reviews'] = sprintf(
 		'<a href="%1$s" class="%2$s" aria-current="page">%3$s <span class="count">(<span class="all-count">%4$s</span>)</span></a>',
 		esc_url( $url ),

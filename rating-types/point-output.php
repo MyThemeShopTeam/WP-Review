@@ -2,6 +2,7 @@
 /**
  * Star rating type output template
  *
+ * @package   WP_Review
  * @since     2.0
  * @copyright Copyright (c) 2013, MyThemesShop
  * @author    MyThemesShop

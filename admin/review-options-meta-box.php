@@ -11,7 +11,7 @@
  * @since 1.0
  */
 function wp_review_render_meta_box_review_options( $post ) {
-	global $post, $wp_review_rating_types;
+	global $post;
 
 	/* Add an nonce field so we can check for it later. */
 	wp_nonce_field( 'wp-review-meta-box-options', 'wp-review-review-options-nonce' );
@@ -27,7 +27,7 @@ function wp_review_render_meta_box_review_options( $post ) {
 	$heading = get_post_meta( $post->ID, 'wp_review_heading', true );
 	// $available_types = apply_filters('wp_review_metabox_types', wp_review_get_review_types() );
 	$available_types = wp_review_get_rating_types();
-	$schemas = wp_review_schema_types();
+	$schemas         = wp_review_schema_types();
 
 	$rating_schema = wp_review_get_rating_schema( $post->ID );
 	$custom_author = get_post_meta( $post->ID, 'wp_review_custom_author', true );
@@ -73,7 +73,12 @@ function wp_review_render_meta_box_review_options( $post ) {
 					</select>
 					<input type="hidden" name="wp_review_type" value="<?php echo esc_attr( $type_post_value ); ?>">
 
-					<span id="wp_review_id_hint"><?php printf( esc_html__( 'Review ID: %s', 'wp-review' ), '<strong>' . intval( $post->ID ) . '</strong>' ); ?></span>
+					<span id="wp_review_id_hint">
+						<?php
+						// translators: review ID.
+						printf( esc_html__( 'Review ID: %s', 'wp-review' ), '<strong>' . intval( $post->ID ) . '</strong>' );
+						?>
+					</span>
 				</div>
 			</div>
 
@@ -117,23 +122,25 @@ function wp_review_render_meta_box_review_options( $post ) {
 							</select>
 						</div>
 					</div>
-					<div id="wp_review_schema_author_wrapper"<?php if ( 'author' !== $rating_schema ) echo ' style="display: none;"'; ?>>
+					<div id="wp_review_schema_author_wrapper"<?php if ( 'author' !== $rating_schema ) echo ' style="display: none;"'; // phpcs:ignore ?>>
 						<div class="wp-review-field">
 							<div class="wp-review-field-label">
 								<label><?php esc_html_e( 'Custom Author', 'wp-review' ); ?></label>
 							</div>
 							<div class="wp-review-field-option">
 								<?php
-								$form_field->render_switch( array(
-									'id'    => 'wp_review_custom_author',
-									'name'  => 'wp_review_custom_author',
-									'value' => $custom_author,
-								) );
+								$form_field->render_switch(
+									array(
+										'id'    => 'wp_review_custom_author',
+										'name'  => 'wp_review_custom_author',
+										'value' => $custom_author,
+									)
+								);
 								?>
 							</div>
 						</div>
 
-						<div class="wp-review-author-options"<?php if ( empty( $custom_author ) ) echo ' style="display: none;"'; ?>>
+						<div class="wp-review-author-options"<?php if ( empty( $custom_author ) ) echo ' style="display: none;"'; // phpcs:ignore ?>>
 							<div class="wp-review-field">
 								<div class="wp-review-field-label">
 									<label for="wp_review_author"><?php esc_html_e( 'Review Author', 'wp-review' ); ?></label>
@@ -155,11 +162,13 @@ function wp_review_render_meta_box_review_options( $post ) {
 
 				<div class="wp-review-field-option">
 					<?php
-					$form_field->render_switch( array(
-						'id'       => 'wp_review_show_schema_data',
-						'name'     => 'wp_review_show_schema_data',
-						'disabled' => true,
-					) );
+					$form_field->render_switch(
+						array(
+							'id'       => 'wp_review_show_schema_data',
+							'name'     => 'wp_review_show_schema_data',
+							'disabled' => true,
+						)
+					);
 					?>
 				</div>
 			</div>
@@ -173,11 +182,13 @@ function wp_review_render_meta_box_review_options( $post ) {
 
 					<div class="wp-review-field-option">
 						<?php
-						$form_field->render_switch( array(
-							'id'       => 'wp_review_enable_embed',
-							'name'     => 'wp_review_enable_embed',
-							'disabled' => true,
-						) );
+						$form_field->render_switch(
+							array(
+								'id'       => 'wp_review_enable_embed',
+								'name'     => 'wp_review_enable_embed',
+								'disabled' => true,
+							)
+						);
 						?>
 					</div>
 				</div>
@@ -205,7 +216,7 @@ function wp_review_render_meta_box_review_options( $post ) {
 		</div><!-- End #popup -->
 		<?php } ?>
 
-		<?php if ( ! wp_review_network_option( 'hide_notification_bar_' ) &&  current_user_can( 'wp_review_notification_bar' ) ) { ?>
+		<?php if ( ! wp_review_network_option( 'hide_notification_bar_' ) && current_user_can( 'wp_review_notification_bar' ) ) { ?>
 		<div id="hello-bar" class="tab-content wp-review-hello-bar" style="display: none;">
 			<div class="wp-review-field">
 				<div class="wp-review-field-label">

@@ -14,8 +14,8 @@ $schema = wp_review_get_schema_type_data( $review['schema'] );
 if ( ! $schema ) {
 	return;
 }
-$fields = wp_review_get_schema_fields( $schema );
-$image = $reviewed_item_data = $url = '';
+$fields      = wp_review_get_schema_fields( $schema );
+$image       = $reviewed_item_data = $url = '';
 $schema_data = ! empty( $review['schema_data'][ $review['schema'] ] ) ? (array) $review['schema_data'][ $review['schema'] ] : array();
 ?>
 <div class="reviewed-item">
@@ -33,9 +33,9 @@ $schema_data = ! empty( $review['schema_data'][ $review['schema'] ] ) ? (array) 
 
 		if ( 'image' === $data['name'] && ! isset( $data['part_of'] ) ) {
 
-		    if ( ! empty( $schema_data['image']['id'] ) ) {
-			    $image = wp_get_attachment_image( $schema_data['image']['id'], apply_filters( 'wp_review_item_reviewed_image_size', 'medium' ) );
-		    }
+			if ( ! empty( $schema_data['image']['id'] ) ) {
+				$image = wp_get_attachment_image( $schema_data['image']['id'], apply_filters( 'wp_review_item_reviewed_image_size', 'medium' ) );
+			}
 			continue;
 		}
 
@@ -45,15 +45,15 @@ $schema_data = ! empty( $review['schema_data'][ $review['schema'] ] ) ? (array) 
 		}
 
 		if ( 'url' === $data['name'] && ! isset( $data['part_of'] ) ) {
-		    if ( ! empty( $schema_data['url'] ) ) {
-			    $more_text = ! empty( $schema_data['more_text'] ) ? $schema_data['more_text'] : __( '[ More ]', 'wp-review' );
-			    $link = '<a href="' . esc_url( $schema_data['url'] ) . '" class="reviewed-item-link">' . esc_html( $more_text ) . '</a>';
-			    if ( ! empty( $schema_data['use_button_style'] ) ) {
-			        $url = '<ul class="review-links" style="padding-left: 0; padding-right: 0;"><li>' . $link . '</li></ul>';
-                } else {
-				    $url = '<p>' . $link . '</p>';
-			    }
-		    }
+			if ( ! empty( $schema_data['url'] ) ) {
+				$more_text = ! empty( $schema_data['more_text'] ) ? $schema_data['more_text'] : __( '[ More ]', 'wp-review' );
+				$link      = '<a href="' . esc_url( $schema_data['url'] ) . '" class="reviewed-item-link">' . esc_html( $more_text ) . '</a>';
+				if ( ! empty( $schema_data['use_button_style'] ) ) {
+					$url = '<ul class="review-links" style="padding-left: 0; padding-right: 0;"><li>' . $link . '</li></ul>';
+				} else {
+					$url = '<p>' . $link . '</p>';
+				}
+			}
 			continue;
 		}
 

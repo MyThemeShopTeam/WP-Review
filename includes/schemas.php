@@ -7,52 +7,52 @@
  */
 
 return array(
-	'none' => array(
+	'none'                => array(
 		'label' => __( 'None', 'wp-review' ),
 	),
-	'Article' => array(
+	'Article'             => array(
 		'label' => __( 'Article', 'wp-review' ),
 	),
-	'Book' => array(
+	'Book'                => array(
 		'label' => __( 'Book', 'wp-review' ),
 	),
-	'Game' => array(
+	'Game'                => array(
 		'label' => __( 'Game', 'wp-review' ),
 	),
-	'Movie' => array(
+	'Movie'               => array(
 		'label' => __( 'Movie', 'wp-review' ),
 	),
-	'MusicRecording' => array(
+	'MusicRecording'      => array(
 		'label' => __( 'MusicRecording', 'wp-review' ),
 	),
-	'Painting' => array(
+	'Painting'            => array(
 		'label' => __( 'Painting', 'wp-review' ),
 	),
-	'Place' => array(
+	'Place'               => array(
 		'label' => __( 'Place', 'wp-review' ),
 	),
-	'Product' => array(
+	'Product'             => array(
 		'label' => __( 'Product', 'wp-review' ),
 	),
-	'Recipe' => array(
+	'Recipe'              => array(
 		'label' => __( 'Recipe', 'wp-review' ),
 	),
-	'Restaurant' => array(
+	'Restaurant'          => array(
 		'label' => __( 'Restaurant', 'wp-review' ),
 	),
 	'SoftwareApplication' => array(
 		'label' => __( 'SoftwareApplication', 'wp-review' ),
 	),
-	'Store' => array(
+	'Store'               => array(
 		'label' => __( 'Store', 'wp-review' ),
 	),
-	'Thing' => array(
+	'Thing'               => array(
 		'label' => __( 'Thing (Default)', 'wp-review' ),
 	),
-	'TVSeries' => array(
+	'TVSeries'            => array(
 		'label' => __( 'TVSeries', 'wp-review' ),
 	),
-	'WebSite' => array(
+	'WebSite'             => array(
 		'label' => __( 'WebSite', 'wp-review' ),
 	),
 );

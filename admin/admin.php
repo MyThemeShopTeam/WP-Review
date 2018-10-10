@@ -195,71 +195,71 @@ function wp_review_get_icons() {
  */
 function wp_review_get_animations_in() {
 	return array(
-		__( 'Attention Seekers', 'wp-review' ) => array(
-			'bounce' => __( 'bounce', 'wp-review' ),
-			'flash' => __( 'flash', 'wp-review' ),
-			'pulse' => __( 'pulse', 'wp-review' ),
+		__( 'Attention Seekers', 'wp-review' )  => array(
+			'bounce'     => __( 'bounce', 'wp-review' ),
+			'flash'      => __( 'flash', 'wp-review' ),
+			'pulse'      => __( 'pulse', 'wp-review' ),
 			'rubberBand' => __( 'rubberBand', 'wp-review' ),
-			'shake' => __( 'shake', 'wp-review' ),
-			'swing' => __( 'swing', 'wp-review' ),
-			'tada' => __( 'tada', 'wp-review' ),
-			'wobble' => __( 'wobble', 'wp-review' ),
-			'jello' => __( 'jello', 'wp-review' ),
+			'shake'      => __( 'shake', 'wp-review' ),
+			'swing'      => __( 'swing', 'wp-review' ),
+			'tada'       => __( 'tada', 'wp-review' ),
+			'wobble'     => __( 'wobble', 'wp-review' ),
+			'jello'      => __( 'jello', 'wp-review' ),
 		),
 		__( 'Bouncing Entrances', 'wp-review' ) => array(
-			'bounceIn' => __( 'bounceIn', 'wp-review' ),
-			'bounceInDown' => __( 'bounceInDown', 'wp-review' ),
-			'bounceInLeft' => __( 'bounceInLeft', 'wp-review' ),
+			'bounceIn'      => __( 'bounceIn', 'wp-review' ),
+			'bounceInDown'  => __( 'bounceInDown', 'wp-review' ),
+			'bounceInLeft'  => __( 'bounceInLeft', 'wp-review' ),
 			'bounceInRight' => __( 'bounceInRight', 'wp-review' ),
-			'bounceInUp' => __( 'bounceInUp', 'wp-review' ),
+			'bounceInUp'    => __( 'bounceInUp', 'wp-review' ),
 		),
-		__( 'Fading Entrances', 'wp-review' ) => array(
-			'fadeIn' => __( 'fadeIn', 'wp-review' ),
-			'fadeInDown' => __( 'fadeInDown', 'wp-review' ),
-			'fadeInDownBig' => __( 'fadeInDownBig', 'wp-review' ),
-			'fadeInLeft' => __( 'fadeInLeft', 'wp-review' ),
-			'fadeInLeftBig' => __( 'fadeInLeftBig', 'wp-review' ),
-			'fadeInRight' => __( 'fadeInRight', 'wp-review' ),
+		__( 'Fading Entrances', 'wp-review' )   => array(
+			'fadeIn'         => __( 'fadeIn', 'wp-review' ),
+			'fadeInDown'     => __( 'fadeInDown', 'wp-review' ),
+			'fadeInDownBig'  => __( 'fadeInDownBig', 'wp-review' ),
+			'fadeInLeft'     => __( 'fadeInLeft', 'wp-review' ),
+			'fadeInLeftBig'  => __( 'fadeInLeftBig', 'wp-review' ),
+			'fadeInRight'    => __( 'fadeInRight', 'wp-review' ),
 			'fadeInRightBig' => __( 'fadeInRightBig', 'wp-review' ),
-			'fadeInUp' => __( 'fadeInUp', 'wp-review' ),
-			'fadeInUpBig' => __( 'fadeInUpBig', 'wp-review' ),
+			'fadeInUp'       => __( 'fadeInUp', 'wp-review' ),
+			'fadeInUpBig'    => __( 'fadeInUpBig', 'wp-review' ),
 		),
-		__( 'Flippers', 'wp-review' ) => array(
-			'flip' => __( 'flip', 'wp-review' ),
-			'flipInX' => __( 'flipInX', 'wp-review' ),
-			'flipInY' => __( 'flipInY', 'wp-review' ),
+		__( 'Flippers', 'wp-review' )           => array(
+			'flip'     => __( 'flip', 'wp-review' ),
+			'flipInX'  => __( 'flipInX', 'wp-review' ),
+			'flipInY'  => __( 'flipInY', 'wp-review' ),
 			'flipOutX' => __( 'flipOutX', 'wp-review' ),
 			'flipOutY' => __( 'flipOutY', 'wp-review' ),
 		),
-		__( 'Lightspeed', 'wp-review' ) => array(
-			'lightSpeedIn' => __( 'lightSpeedIn', 'wp-review' ),
+		__( 'Lightspeed', 'wp-review' )         => array(
+			'lightSpeedIn'  => __( 'lightSpeedIn', 'wp-review' ),
 			'lightSpeedOut' => __( 'lightSpeedOut', 'wp-review' ),
 		),
 		__( 'Rotating Entrances', 'wp-review' ) => array(
-			'rotateIn' => __( 'rotateIn', 'wp-review' ),
-			'rotateInDownLeft' => __( 'rotateInDownLeft', 'wp-review' ),
+			'rotateIn'          => __( 'rotateIn', 'wp-review' ),
+			'rotateInDownLeft'  => __( 'rotateInDownLeft', 'wp-review' ),
 			'rotateInDownRight' => __( 'rotateInDownRight', 'wp-review' ),
-			'rotateInUpLeft' => __( 'rotateInUpLeft', 'wp-review' ),
-			'rotateInUpRight' => __( 'rotateInUpRight', 'wp-review' ),
+			'rotateInUpLeft'    => __( 'rotateInUpLeft', 'wp-review' ),
+			'rotateInUpRight'   => __( 'rotateInUpRight', 'wp-review' ),
 		),
-		__( 'Sliding Entrances', 'wp-review' ) => array(
-			'slideInUp' => __( 'slideInUp', 'wp-review' ),
-			'slideInDown' => __( 'slideInDown', 'wp-review' ),
-			'slideInLeft' => __( 'slideInLeft', 'wp-review' ),
+		__( 'Sliding Entrances', 'wp-review' )  => array(
+			'slideInUp'    => __( 'slideInUp', 'wp-review' ),
+			'slideInDown'  => __( 'slideInDown', 'wp-review' ),
+			'slideInLeft'  => __( 'slideInLeft', 'wp-review' ),
 			'slideInRight' => __( 'slideInRight', 'wp-review' ),
 		),
-		__( 'Zoom Entrances', 'wp-review' ) => array(
-			'zoomIn' => __( 'zoomIn', 'wp-review' ),
-			'zoomInDown' => __( 'zoomInDown', 'wp-review' ),
-			'zoomInLeft' => __( 'zoomInLeft', 'wp-review' ),
+		__( 'Zoom Entrances', 'wp-review' )     => array(
+			'zoomIn'      => __( 'zoomIn', 'wp-review' ),
+			'zoomInDown'  => __( 'zoomInDown', 'wp-review' ),
+			'zoomInLeft'  => __( 'zoomInLeft', 'wp-review' ),
 			'zoomInRight' => __( 'zoomInRight', 'wp-review' ),
-			'zoomInUp' => __( 'zoomInUp', 'wp-review' ),
+			'zoomInUp'    => __( 'zoomInUp', 'wp-review' ),
 		),
-		__( 'Specials', 'wp-review' ) => array(
-			'hinge' => __( 'hinge', 'wp-review' ),
+		__( 'Specials', 'wp-review' )           => array(
+			'hinge'        => __( 'hinge', 'wp-review' ),
 			'jackInTheBox' => __( 'jackInTheBox', 'wp-review' ),
-			'rollIn' => __( 'rollIn', 'wp-review' ),
-			'rollOut' => __( 'rollOut', 'wp-review' ),
+			'rollIn'       => __( 'rollIn', 'wp-review' ),
+			'rollOut'      => __( 'rollOut', 'wp-review' ),
 		),
 	);
 }
@@ -275,70 +275,70 @@ function wp_review_get_animations_in() {
 function wp_review_get_animations_out() {
 	return array(
 		__( 'Attention Seekers', 'wp-review' ) => array(
-			'bounce' => __( 'bounce', 'wp-review' ),
-			'flash' => __( 'flash', 'wp-review' ),
-			'pulse' => __( 'pulse', 'wp-review' ),
+			'bounce'     => __( 'bounce', 'wp-review' ),
+			'flash'      => __( 'flash', 'wp-review' ),
+			'pulse'      => __( 'pulse', 'wp-review' ),
 			'rubberBand' => __( 'rubberBand', 'wp-review' ),
-			'shake' => __( 'shake', 'wp-review' ),
-			'swing' => __( 'swing', 'wp-review' ),
-			'tada' => __( 'tada', 'wp-review' ),
-			'wobble' => __( 'wobble', 'wp-review' ),
-			'jello' => __( 'jello', 'wp-review' ),
+			'shake'      => __( 'shake', 'wp-review' ),
+			'swing'      => __( 'swing', 'wp-review' ),
+			'tada'       => __( 'tada', 'wp-review' ),
+			'wobble'     => __( 'wobble', 'wp-review' ),
+			'jello'      => __( 'jello', 'wp-review' ),
 		),
-		__( 'Bouncing Exits', 'wp-review' ) => array(
-			'bounceOut' => __( 'bounceOut', 'wp-review' ),
-			'bounceOutDown' => __( 'bounceOutDown', 'wp-review' ),
-			'bounceOutLeft' => __( 'bounceOutLeft', 'wp-review' ),
+		__( 'Bouncing Exits', 'wp-review' )    => array(
+			'bounceOut'      => __( 'bounceOut', 'wp-review' ),
+			'bounceOutDown'  => __( 'bounceOutDown', 'wp-review' ),
+			'bounceOutLeft'  => __( 'bounceOutLeft', 'wp-review' ),
 			'bounceOutRight' => __( 'bounceOutRight', 'wp-review' ),
-			'bounceOutUp' => __( 'bounceOutUp', 'wp-review' ),
+			'bounceOutUp'    => __( 'bounceOutUp', 'wp-review' ),
 		),
-		__( 'Fading Exits', 'wp-review' ) => array(
-			'fadeOut' => __( 'fadeOut', 'wp-review' ),
-			'fadeOutDown' => __( 'fadeOutDown', 'wp-review' ),
-			'fadeOutDownBig' => __( 'fadeOutDownBig', 'wp-review' ),
-			'fadeOutLeft' => __( 'fadeOutLeft', 'wp-review' ),
-			'fadeOutLeftBig' => __( 'fadeOutLeftBig', 'wp-review' ),
-			'fadeOutRight' => __( 'fadeOutRight', 'wp-review' ),
+		__( 'Fading Exits', 'wp-review' )      => array(
+			'fadeOut'         => __( 'fadeOut', 'wp-review' ),
+			'fadeOutDown'     => __( 'fadeOutDown', 'wp-review' ),
+			'fadeOutDownBig'  => __( 'fadeOutDownBig', 'wp-review' ),
+			'fadeOutLeft'     => __( 'fadeOutLeft', 'wp-review' ),
+			'fadeOutLeftBig'  => __( 'fadeOutLeftBig', 'wp-review' ),
+			'fadeOutRight'    => __( 'fadeOutRight', 'wp-review' ),
 			'fadeOutRightBig' => __( 'fadeOutRightBig', 'wp-review' ),
-			'fadeOutUp' => __( 'fadeOutUp', 'wp-review' ),
-			'fadeOutUpBig' => __( 'fadeOutUpBig', 'wp-review' ),
+			'fadeOutUp'       => __( 'fadeOutUp', 'wp-review' ),
+			'fadeOutUpBig'    => __( 'fadeOutUpBig', 'wp-review' ),
 		),
-		__( 'Flippers', 'wp-review' ) => array(
-			'flip' => __( 'flip', 'wp-review' ),
-			'flipInX' => __( 'flipInX', 'wp-review' ),
-			'flipInY' => __( 'flipInY', 'wp-review' ),
+		__( 'Flippers', 'wp-review' )          => array(
+			'flip'     => __( 'flip', 'wp-review' ),
+			'flipInX'  => __( 'flipInX', 'wp-review' ),
+			'flipInY'  => __( 'flipInY', 'wp-review' ),
 			'flipOutX' => __( 'flipOutX', 'wp-review' ),
 			'flipOutY' => __( 'flipOutY', 'wp-review' ),
 		),
-		__( 'Lightspeed', 'wp-review' ) => array(
-			'lightSpeedIn' => __( 'lightSpeedIn', 'wp-review' ),
+		__( 'Lightspeed', 'wp-review' )        => array(
+			'lightSpeedIn'  => __( 'lightSpeedIn', 'wp-review' ),
 			'lightSpeedOut' => __( 'lightSpeedOut', 'wp-review' ),
 		),
-		__( 'Rotating Exits', 'wp-review' ) => array(
-			'rotateOut' => __( 'rotateOut', 'wp-review' ),
-			'rotateOutDownLeft' => __( 'rotateOutDownLeft', 'wp-review' ),
+		__( 'Rotating Exits', 'wp-review' )    => array(
+			'rotateOut'          => __( 'rotateOut', 'wp-review' ),
+			'rotateOutDownLeft'  => __( 'rotateOutDownLeft', 'wp-review' ),
 			'rotateOutDownRight' => __( 'rotateOutDownRight', 'wp-review' ),
-			'rotateOutUpLeft' => __( 'rotateOutUpLeft', 'wp-review' ),
-			'rotateOutUpRight' => __( 'rotateOutUpRight', 'wp-review' ),
+			'rotateOutUpLeft'    => __( 'rotateOutUpLeft', 'wp-review' ),
+			'rotateOutUpRight'   => __( 'rotateOutUpRight', 'wp-review' ),
 		),
-		__( 'Sliding Exits', 'wp-review' ) => array(
-			'slideOutUp' => __( 'slideOutUp', 'wp-review' ),
-			'slideOutDown' => __( 'slideOutDown', 'wp-review' ),
-			'slideOutLeft' => __( 'slideOutLeft', 'wp-review' ),
+		__( 'Sliding Exits', 'wp-review' )     => array(
+			'slideOutUp'    => __( 'slideOutUp', 'wp-review' ),
+			'slideOutDown'  => __( 'slideOutDown', 'wp-review' ),
+			'slideOutLeft'  => __( 'slideOutLeft', 'wp-review' ),
 			'slideOutRight' => __( 'slideOutRight', 'wp-review' ),
 		),
-		__( 'Zoom Exits', 'wp-review' ) => array(
-			'zoomOut' => __( 'zoomOut', 'wp-review' ),
-			'zoomOutDown' => __( 'zoomOutDown', 'wp-review' ),
-			'zoomOutLeft' => __( 'zoomOutLeft', 'wp-review' ),
+		__( 'Zoom Exits', 'wp-review' )        => array(
+			'zoomOut'      => __( 'zoomOut', 'wp-review' ),
+			'zoomOutDown'  => __( 'zoomOutDown', 'wp-review' ),
+			'zoomOutLeft'  => __( 'zoomOutLeft', 'wp-review' ),
 			'zoomOutRight' => __( 'zoomOutRight', 'wp-review' ),
-			'zoomOutUp' => __( 'zoomOutUp', 'wp-review' ),
+			'zoomOutUp'    => __( 'zoomOutUp', 'wp-review' ),
 		),
-		__( 'Specials', 'wp-review' ) => array(
-			'hinge' => __( 'hinge', 'wp-review' ),
+		__( 'Specials', 'wp-review' )          => array(
+			'hinge'        => __( 'hinge', 'wp-review' ),
 			'jackInTheBox' => __( 'jackInTheBox', 'wp-review' ),
-			'rollIn' => __( 'rollIn', 'wp-review' ),
-			'rollOut' => __( 'rollOut', 'wp-review' ),
+			'rollIn'       => __( 'rollIn', 'wp-review' ),
+			'rollOut'      => __( 'rollOut', 'wp-review' ),
 		),
 	);
 }
@@ -404,8 +404,6 @@ function wp_review_print_select_options( $options, $value ) {
 function wpreview_plugin_settings_link( $links ) {
 	$hide = wp_review_network_option( 'hide_global_options_' );
 	if ( ! $hide ) {
-		$dir = explode( '/', WP_REVIEW_PLUGIN_BASE );
-		$dir = $dir[0];
 		$settings_link = '<a href="options-general.php?page=wp-review/admin/options.php">' . __( 'Settings', 'wp-review' ) . '</a>';
 		array_unshift( $links, $settings_link );
 	}

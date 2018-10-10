@@ -32,21 +32,21 @@ add_action( 'wp_ajax_nopriv_wpr-upload-comment-image', 'wp_review_upload_comment
 
 function wp_review_upload_comment_image() {
 
-	$files = array_filter( $_FILES['files'] );
+	$files         = array_filter( $_FILES['files'] );
 	$attachment_id = '';
-	if( !empty($files) ) {
-		$file_data['name'] = $files['name'][0];
-		$file_data['type'] = $files['type'][0];
+	if ( ! empty( $files ) ) {
+		$file_data['name']     = $files['name'][0];
+		$file_data['type']     = $files['type'][0];
 		$file_data['tmp_name'] = $files['tmp_name'][0];
-		$file_data['error'] = $files['error'][0];
-		$file_data['size'] = $files['size'][0];
+		$file_data['error']    = $files['error'][0];
+		$file_data['size']     = $files['size'][0];
 
 		// these files need to be included as dependencies when on the front end
-		require_once( ABSPATH . 'wp-admin/includes/image.php' );
-		require_once( ABSPATH . 'wp-admin/includes/file.php' );
-		require_once( ABSPATH . 'wp-admin/includes/media.php' );
+		require_once ABSPATH . 'wp-admin/includes/image.php';
+		require_once ABSPATH . 'wp-admin/includes/file.php';
+		require_once ABSPATH . 'wp-admin/includes/media.php';
 
-		$attachment_id = media_handle_sideload( $file_data, 0);
+		$attachment_id = media_handle_sideload( $file_data, 0 );
 		if ( is_wp_error( $attachment_id ) ) {
 			$attachment_id = false;
 		}
@@ -64,7 +64,7 @@ function mts_review_get_review() {
 
 	$post_id = intval( $_POST['post_id'] );
 	$user_id = is_user_logged_in() ? get_current_user_id() : 0;
-	$review = round( abs( filter_input( INPUT_POST, 'review' ) ), 2 );
+	$review  = round( abs( filter_input( INPUT_POST, 'review' ) ), 2 );
 
 	$review_text = $review;
 
@@ -86,18 +86,21 @@ function mts_review_get_review() {
 		! wp_review_has_reviewed( $post_id, $user_id, $uip, WP_REVIEW_COMMENT_TYPE_VISITOR ) &&
 		( is_user_logged_in() || ! wp_review_option( 'registered_only' ) )
 	) {
-		$insert = wp_insert_comment( array(
-			'user_id'           => $user_id,
-			'comment_type'      => WP_REVIEW_COMMENT_TYPE_VISITOR,
-			'comment_post_ID'   => $post_id,
-			'comment_parent'    => 0,
-			'comment_author_IP' => $uip,
-			'comment_content'   => sprintf( __( 'Visitor Rating: %s', 'wp-review' ), $review_text ),
-			'comment_agent'     => isset( $_SERVER['HTTP_USER_AGENT'] ) ? $_SERVER['HTTP_USER_AGENT'] : '',
-			'comment_date'      => current_time( 'mysql' ),
-			'comment_date_gmt'  => current_time( 'mysql', 1 ),
-			'comment_approved'  => 1,
-		) );
+		$insert = wp_insert_comment(
+			array(
+				'user_id'           => $user_id,
+				'comment_type'      => WP_REVIEW_COMMENT_TYPE_VISITOR,
+				'comment_post_ID'   => $post_id,
+				'comment_parent'    => 0,
+				'comment_author_IP' => $uip,
+				// translators: review text.
+				'comment_content'   => sprintf( __( 'Visitor Rating: %s', 'wp-review' ), $review_text ),
+				'comment_agent'     => isset( $_SERVER['HTTP_USER_AGENT'] ) ? $_SERVER['HTTP_USER_AGENT'] : '',
+				'comment_date'      => current_time( 'mysql' ),
+				'comment_date_gmt'  => current_time( 'mysql', 1 ),
+				'comment_approved'  => 1,
+			)
+		);
 
 		if ( $insert ) {
 			if ( update_comment_meta( $insert, WP_REVIEW_VISITOR_RATING_METAKEY, $review ) ) {
@@ -122,9 +125,9 @@ function mts_review_get_review() {
  */
 function wp_review_ajax_rate() {
 	check_ajax_referer( 'wp-review-security', 'nonce' );
-	$post_id = intval( $_POST['post_id'] );
-	$review = filter_input( INPUT_POST, 'review' );
-	$review = round( $review, 2 );
+	$post_id     = intval( $_POST['post_id'] );
+	$review      = filter_input( INPUT_POST, 'review' );
+	$review      = round( $review, 2 );
 	$review_data = array(
 		'total' => $review,
 	);
@@ -156,17 +159,19 @@ function wp_review_ajax_migrate_ratings() {
 			continue; // Skip 0-star ratings.
 		}
 
-		$insert = wp_insert_comment( array(
-			'user_id' => $review->user_id,
-			'comment_type' => WP_REVIEW_COMMENT_TYPE_VISITOR,
-			'comment_post_ID' => $review->post_id,
-			'comment_parent' => 0,
-			'comment_content' => sprintf( __( 'Visitor Rating: %s', 'wp-review' ), sprintf( __( '%s Stars' , 'wp-review' ), $review->rate ) ),
-			'comment_author_IP' => $review->user_ip,
-			'comment_date' => gmdate( 'Y-m-d H:i:s', ( strtotime( $review->date ) + ( get_option( 'gmt_offset' ) * HOUR_IN_SECONDS ) ) ),
-			'comment_date_gmt' => gmdate( 'Y-m-d H:i:s', strtotime( $review->date ) ),
-			'comment_approved' => 1,
-		) );
+		$insert = wp_insert_comment(
+			array(
+				'user_id'           => $review->user_id,
+				'comment_type'      => WP_REVIEW_COMMENT_TYPE_VISITOR,
+				'comment_post_ID'   => $review->post_id,
+				'comment_parent'    => 0,
+				'comment_content'   => sprintf( __( 'Visitor Rating: %s', 'wp-review' ), sprintf( __( '%s Stars' , 'wp-review' ), $review->rate ) ),
+				'comment_author_IP' => $review->user_ip,
+				'comment_date'      => gmdate( 'Y-m-d H:i:s', ( strtotime( $review->date ) + ( get_option( 'gmt_offset' ) * HOUR_IN_SECONDS ) ) ),
+				'comment_date_gmt'  => gmdate( 'Y-m-d H:i:s', strtotime( $review->date ) ),
+				'comment_approved'  => 1,
+			)
+		);
 
 		if ( $insert ) {
 			if ( update_comment_meta( $insert, WP_REVIEW_VISITOR_RATING_METAKEY, $review->rate ) ) {
@@ -182,19 +187,21 @@ function wp_review_ajax_migrate_ratings() {
 	//$migrated_rows = get_option( 'wp_review_migrated_rows', 0 );
 	update_option( 'wp_review_migrated_rows', $end );
 
-	$total_rows = $wpdb->get_var( 'SELECT COUNT(*) FROM '.$wpdb->base_prefix.'mts_wp_reviews WHERE blog_id = '.$current_blog_id );
+	$total_rows         = $wpdb->get_var( 'SELECT COUNT(*) FROM ' . $wpdb->base_prefix . 'mts_wp_reviews WHERE blog_id = ' . $current_blog_id );
 	$migration_finished = 0;
 	if ( $total_rows == $end ) {
 		update_option( 'wp_review_has_migrated', 1 );
 		$migration_finished = 1;
 	}
 
-	echo wp_json_encode( array(
-		'start'    => $start,
-		'lastrow'  => $end,
-		'rowsleft' => $total_rows - $end,
-		'finished' => $migration_finished,
-	) );
+	echo wp_json_encode(
+		array(
+			'start'    => $start,
+			'lastrow'  => $end,
+			'rowsleft' => $total_rows - $end,
+			'finished' => $migration_finished,
+		)
+	);
 
 	die();
 }
@@ -207,14 +214,17 @@ function wp_review_ajax_load_reviews() {
 	$options = $_POST; // WPCS: csrf ok.
 
 	// Options are same as widgets args to keep compatibility.
-	$options = wp_parse_args( $options, array(
-		'post_num'    => 5,
-		'page'        => 1,
-		'review_type' => '',
-		'thumb_size'  => 'small',
-		'cat'         => '',
-		'number_of_days' => '',
-	) );
+	$options = wp_parse_args(
+		$options,
+		array(
+			'post_num'       => 5,
+			'page'           => 1,
+			'review_type'    => '',
+			'thumb_size'     => 'small',
+			'cat'            => '',
+			'number_of_days' => '',
+		)
+	);
 
 	$type = ! empty( $options['_type'] ) ? $options['_type'] : 'recent';
 
@@ -224,9 +234,9 @@ function wp_review_ajax_load_reviews() {
 		wp_send_json_success( '' );
 	}
 
-	$page = ! empty( $options['page'] ) ? intval( $options['page'] ) : 1;
-	$last_page = $query->max_num_pages;
-	$in_widget = ! empty( $options['widget_id'] );
+	$page                 = ! empty( $options['page'] ) ? intval( $options['page'] ) : 1;
+	$last_page            = $query->max_num_pages;
+	$in_widget            = ! empty( $options['widget_id'] );
 	$GLOBALS['in_widget'] = $in_widget;
 
 	ob_start();
@@ -238,7 +248,7 @@ function wp_review_ajax_load_reviews() {
 		if ( ! has_post_thumbnail() ) {
 			$classes[] = 'wp-review-no-thumbnail';
 		}
-		$classes   = implode( ' ', $classes );
+		$classes = implode( ' ', $classes );
 		?>
 		<li class="item">
 			<a title="<?php the_title(); ?>" rel="nofollow" href="<?php the_permalink(); ?>">
@@ -300,19 +310,22 @@ function wp_review_ajax_load_reviews() {
  *
  * @since 3.0.8
  *
- * @param int    $post_id    Post ID.
- * @param int    $extra_info Extra info. 1 for date, 2 for reviews count, 0 for none.
- * @param string $class      Wrapper class.
+ * @param int   $post_id    Post ID.
+ * @param int   $extra_info Extra info. 1 for date, 2 for reviews count, 0 for none.
+ * @param array $args       Custom args.
  */
 function wp_review_extra_info( $post_id, $extra_info, array $args = array() ) {
 	if ( ! $extra_info ) {
 		return;
 	}
 
-	$args = wp_parse_args( $args, array(
-		'class'       => 'postmeta',
-		'date_format' => get_option( 'date_format' ),
-	));
+	$args = wp_parse_args(
+		$args,
+		array(
+			'class'       => 'postmeta',
+			'date_format' => get_option( 'date_format' ),
+		)
+	);
 
 	if ( 1 === $extra_info ) {
 		?>
@@ -355,8 +368,8 @@ function wp_review_ajax_visitor_features_rating() {
 		wp_send_json_error( __( 'Empty type data', 'wp-review' ) );
 	}
 	$post_id = intval( $_POST['post_id'] );
-	$rating = $_POST['rating']; // WPCS: sanitization ok.
-	$type = wp_kses( wp_unslash( $_POST['type'] ), array() );
+	$rating  = $_POST['rating']; // WPCS: sanitization ok.
+	$type    = wp_kses( wp_unslash( $_POST['type'] ), array() );
 
 	$total = 0;
 	$count = 0;
@@ -366,8 +379,8 @@ function wp_review_ajax_visitor_features_rating() {
 	}
 
 	$review_data = array(
-		'total' => $total / $count,
-		'type'  => $type,
+		'total'    => $total / $count,
+		'type'     => $type,
 		'features' => $rating,
 	);
 	wp_review_visitor_rate( $post_id, $review_data );

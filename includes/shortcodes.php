@@ -10,7 +10,7 @@ add_shortcode( 'wp-review', 'wp_review_shortcode' );
 add_shortcode( 'wp-review-total', 'wp_review_total_shortcode' );
 add_shortcode( 'wp-review-visitor-rating', 'wp_review_visitor_rating_shortcode' );
 
-// Aliasess.
+// Aliases.
 add_shortcode( 'wp_review', 'wp_review_shortcode' );
 add_shortcode( 'wp_review_total', 'wp_review_total_shortcode' );
 add_shortcode( 'wp_review_visitor_rating', 'wp_review_visitor_rating_shortcode' );
@@ -49,8 +49,8 @@ function wp_review_shortcode( $atts ) {
 function wp_review_total_shortcode( $atts ) {
 	$atts = shortcode_atts(
 		array(
-			'id'    => null,
-			'class' => 'review-total-only review-total-shortcode',
+			'id'      => null,
+			'class'   => 'review-total-only review-total-shortcode',
 			'context' => '',
 		),
 		$atts,
@@ -63,7 +63,7 @@ function wp_review_total_shortcode( $atts ) {
 
 	if ( 'product-rating' === $atts['context'] ) {
 		$args = array(
-			'color' => '#fff',
+			'color'          => '#fff',
 			'inactive_color' => '#dedcdc',
 			'context'        => 'product-rating',
 		);
@@ -96,8 +96,8 @@ function wp_review_visitor_rating_shortcode( $atts ) {
 
 	ob_start();
 	$post_reviews = mts_get_post_reviews( $atts['id'] );
-	$value = $post_reviews['rating'];
-	$count = $post_reviews['count'];
+	$value        = $post_reviews['rating'];
+	$count        = $post_reviews['count'];
 	?>
 	<div class="user-review-area wp-review-<?php echo esc_attr( $atts['id'] ); ?> review-wrapper">
 		<div class="visitor-rating-shortcode">

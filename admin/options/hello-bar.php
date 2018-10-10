@@ -23,11 +23,13 @@
 
 			<div class="wp-review-field-option">
 				<?php
-				$form_field->render_switch( array(
-					'id'       => 'wp_review_hello_bar_enable',
-					'name'     => 'wp_review_hello_bar[enable]',
-					'disabled' => true,
-				) );
+				$form_field->render_switch(
+					array(
+						'id'       => 'wp_review_hello_bar_enable',
+						'name'     => 'wp_review_hello_bar[enable]',
+						'disabled' => true,
+					)
+				);
 				?>
 			</div>
 		</div>
@@ -101,11 +103,13 @@
 				</div>
 				<div class="wp-review-field-option">
 					<?php
-					$form_field->render_switch( array(
-						'id'       => 'wp_review_hello_bar_target_blank',
-						'name'     => 'wp_review_hello_bar[target_blank]',
-						'disabled' => true,
-					) );
+					$form_field->render_switch(
+						array(
+							'id'       => 'wp_review_hello_bar_target_blank',
+							'name'     => 'wp_review_hello_bar[target_blank]',
+							'disabled' => true,
+						)
+					);
 					?>
 				</div>
 			</div>
