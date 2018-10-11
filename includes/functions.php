@@ -1862,6 +1862,11 @@ function wp_review_get_box_template_directory_uri() {
 }
 
 
+/**
+ * Gets box templates list.
+ *
+ * @return array
+ */
 function wp_review_get_box_templates_list() {
 
 	$default_paths = array(

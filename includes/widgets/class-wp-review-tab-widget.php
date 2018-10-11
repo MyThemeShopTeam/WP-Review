@@ -120,15 +120,15 @@ class WP_Review_Tab_Widget extends WP_Widget {
 
 			<div class="wp_review_tab_select_tabs">
 				<label class="alignleft" style="display: block; width: 50%; margin-bottom: 7px;" for="<?php echo $this->get_field_id( 'tabs' ); ?>_toprated">
-					<input type="checkbox" class="checkbox wp_review_tab_enable_toprated" id="<?php echo $this->get_field_id( 'tabs' ); ?>_toprated" name="<?php echo $this->get_field_name( 'tabs' ); ?>[toprated]" value="1" <?php if ( isset( $tabs['toprated'] ) ) checked( 1, $tabs['toprated'], true ); ?> />
+					<input type="checkbox" class="checkbox wp_review_tab_enable_toprated" id="<?php echo $this->get_field_id( 'tabs' ); ?>_toprated" name="<?php echo $this->get_field_name( 'tabs' ); ?>[toprated]" value="1" <?php if ( isset( $tabs['toprated'] ) ) checked( 1, $tabs['toprated'], true ); // phpcs:ignore ?> />
 					<?php esc_html_e( 'Top Rated', 'wp-review' ); ?>
 				</label>
 				<label class="alignleft" style="display: block; width: 50%; margin-bottom: 7px;" for="<?php echo $this->get_field_id( 'tabs' ); ?>_recent">
-					<input type="checkbox" class="checkbox wp_review_tab_enable_recent" id="<?php echo $this->get_field_id( 'tabs' ); ?>_recent" name="<?php echo $this->get_field_name( 'tabs' ); ?>[recent]" value="1" <?php if ( isset( $tabs['recent'] ) ) checked( 1, $tabs['recent'], true ); ?> />
+					<input type="checkbox" class="checkbox wp_review_tab_enable_recent" id="<?php echo $this->get_field_id( 'tabs' ); ?>_recent" name="<?php echo $this->get_field_name( 'tabs' ); ?>[recent]" value="1" <?php if ( isset( $tabs['recent'] ) ) checked( 1, $tabs['recent'], true ); // phpcs:ignore ?> />
 					<?php esc_html_e( 'Recent Reviews', 'wp-review' ); ?>
 				</label>
 				<label class="alignleft" style="display: block; width: 50%; margin-bottom: 7px;" for="<?php echo $this->get_field_id( 'tabs' ); ?>_mostvoted">
-					<input type="checkbox" class="checkbox wp_review_tab_enable_mostvoted" id="<?php echo $this->get_field_id( 'tabs' ); ?>_mostvoted" name="<?php echo $this->get_field_name( 'tabs' ); ?>[mostvoted]" value="1" <?php if ( isset( $tabs['mostvoted'] ) ) checked( 1, $tabs['mostvoted'], true ); ?> />
+					<input type="checkbox" class="checkbox wp_review_tab_enable_mostvoted" id="<?php echo $this->get_field_id( 'tabs' ); ?>_mostvoted" name="<?php echo $this->get_field_name( 'tabs' ); ?>[mostvoted]" value="1" <?php if ( isset( $tabs['mostvoted'] ) ) checked( 1, $tabs['mostvoted'], true ); // phpcs:ignore ?> />
 					<?php esc_html_e( 'Most Voted', 'wp-review' ); ?>
 				</label>
 				<label class="alignleft" style="display: block; width: 50%; margin-bottom: 7px;" for="<?php echo $this->get_field_id( 'tabs' ); ?>_custom">
