@@ -1,4 +1,9 @@
 <?php
+/**
+ * Comments related functions
+ *
+ * @package WP_Review
+ */
 
 /**
  * Overrides comments count.
@@ -10,9 +15,9 @@ function wp_review_override_comments_count() {
 add_action( 'after_setup_theme', 'wp_review_override_comments_count', 30 );
 
 /**
- * Gets comment count.
+ * Filters comment count.
  *
- * @param $count
+ * @param int $count Comment count.
  * @return int
  */
 function wp_review_comment_count( $count ) {
@@ -52,6 +57,11 @@ function wp_review_comment_add_meta_box() {
 }
 add_action( 'add_meta_boxes_comment', 'wp_review_comment_add_meta_box' );
 
+/**
+ * Shows comment meta box fields.
+ *
+ * @param object $comment Comment object.
+ */
 function wp_review_comment_meta_box_fields( $comment ) {
 	$comment_id = $comment->comment_ID;
 	if ( WP_REVIEW_COMMENT_TYPE_COMMENT === get_comment_type( $comment_id ) ) {
@@ -145,7 +155,9 @@ function wp_review_comment_meta_box_fields( $comment ) {
 }
 
 /**
- * Save our comment (from the admin area)
+ * Save our comment (from the admin area).
+ *
+ * @param int $comment_id Comment ID.
  */
 function wp_review_comment_edit_comment( $comment_id ) {
 	if (
@@ -164,11 +176,9 @@ function wp_review_comment_edit_comment( $comment_id ) {
 
 	$rating = filter_input( INPUT_POST, 'wp_review_comment_rating', FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION );
 
-	// if ( ! empty( $rating ) ) {
 	$comment = get_comment( $comment_id );
 	update_comment_meta( $comment_id, $meta_key, $rating );
 	wp_review_clear_cached_reviews( $comment );
-	// }
 
 	if ( ! empty( $_POST['wp_review_comment_title'] ) ) {
 		$title = sanitize_text_field( wp_unslash( $_POST['wp_review_comment_title'] ) );
@@ -258,7 +268,14 @@ function wp_review_comment_quick_edit_javascript() {
 }
 add_action( 'admin_footer-edit-comments.php', 'wp_review_comment_quick_edit_javascript' );
 
-function wp_review_comment_quick_edit_action($actions, $comment ) {
+/**
+ * Filters comment quick edit link.
+ *
+ * @param array  $actions Comments list table actions.
+ * @param object $comment Comment object.
+ * @return array
+ */
+function wp_review_comment_quick_edit_action( $actions, $comment ) {
 	$actions['quickedit'] = sprintf(
 		'<span class="quickedit hide-if-no-js"><a onclick="if (typeof(wpreview_expandedOpen) == \'function\') wpreview_expandedOpen(%1$s);" data-comment-id="%1$s" data-post-id="%2$s" data-action="edit" class="vim-q comment-inline" title="%3$s" href="#">%4$s</a></span>',
 		$comment->comment_ID,
@@ -270,7 +287,14 @@ function wp_review_comment_quick_edit_action($actions, $comment ) {
 }
 add_filter( 'comment_row_actions', 'wp_review_comment_quick_edit_action', 10, 2 );
 
-
+/**
+ * Gets comments rating template.
+ *
+ * @param float $value      Rating value.
+ * @param int   $comment_id Comment ID.
+ * @param array $args       Custom args.
+ * @return string
+ */
 function wp_review_comment_rating( $value, $comment_id = null, $args = array() ) {
 	global $post;
 
@@ -313,7 +337,13 @@ function wp_review_comment_rating( $value, $comment_id = null, $args = array() )
 }
 
 
-// Update user ratings total if comment status is changed
+/**
+ * Update user ratings total if comment status is changed.
+ *
+ * @param string $new_status New status.
+ * @param string $old_status Old status.
+ * @param object $comment    Comment object.
+ */
 function wp_review_update_comment_ratings( $new_status, $old_status, $comment ) {
 	if ( WP_REVIEW_COMMENT_TYPE_VISITOR === $comment->comment_type ) {
 		mts_get_post_reviews( $comment->comment_post_ID, true );

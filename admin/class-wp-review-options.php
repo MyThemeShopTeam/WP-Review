@@ -143,7 +143,7 @@ class WP_Review_Options {
 				$tabs[] = array(
 					'id'    => $key,
 					'title' => $tab['title'],
-					'icon'	=> 'fa fa-' . $tab['icon'],
+					'icon'  => 'fa fa-' . $tab['icon'],
 					'view'  => WP_REVIEW_ADMIN . 'options/' . $key . '.php',
 				);
 			}
@@ -153,7 +153,7 @@ class WP_Review_Options {
 			$tabs[] = array(
 				'id'    => 'multisite_settings',
 				'title' => __( 'Multisite Settings', 'wp-review' ),
-				'icon'	=> 'fa fa-sitemap',
+				'icon'  => 'fa fa-sitemap',
 				'view'  => WP_REVIEW_ADMIN . 'options/multisite.php',
 			);
 		}

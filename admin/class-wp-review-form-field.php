@@ -31,6 +31,7 @@ class WP_Review_Form_Field {
 				'disabled'  => false,
 			)
 		);
+
 		$switch_id   = $args['id'] ? $args['id'] : 'wpr-switch-' . mt_rand( 100, 999 );
 		$switch_name = $args['name'] ? $args['name'] : $switch_id;
 		$value       = intval( $args['value'] );

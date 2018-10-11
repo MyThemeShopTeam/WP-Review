@@ -241,7 +241,8 @@ function wp_review_show_total( $echo = true, $class = 'review-total-only', $post
 	$show_on_thumbnails_type = 'author';
 	$show_on_thumbnails_type = apply_filters( 'wp_review_thumbnails_total', $show_on_thumbnails_type, $post_id, $args ); // Will override option.
 
-	$rating = $total = '';
+	$rating = '';
+	$total  = '';
 	switch ( $show_on_thumbnails_type ) {
 		case 'author':
 			$total = get_post_meta( $post_id, 'wp_review_total', true );
@@ -533,13 +534,26 @@ function wp_review_on_change_comment_status( $new_status, $old_status, $comment 
 }
 add_action( 'transition_comment_status', 'wp_review_on_change_comment_status', 10, 3 );
 
-
+/**
+ * Comments rating callback for array_reduce().
+ *
+ * @param float  $carry   Rating.
+ * @param object $comment Comment object.
+ * @return float
+ */
 function wpreview_comment_ratings_callback( $carry, $comment ) {
 	$rating = get_comment_meta( $comment->comment_ID, WP_REVIEW_COMMENT_RATING_METAKEY, true );
 	$carry += floatval( $rating );
 	return $carry;
 }
 
+/**
+ * Visitors rating callback for array_reduce().
+ *
+ * @param float  $carry   Rating.
+ * @param object $comment Comment object.
+ * @return float
+ */
 function wpreview_visitor_ratings_callback( $carry, $comment ) {
 	$rating = get_comment_meta( $comment->comment_ID, WP_REVIEW_VISITOR_RATING_METAKEY, true );
 	$carry += floatval( $rating );
@@ -556,7 +570,7 @@ function wpreview_visitor_ratings_callback( $carry, $comment ) {
  * @param string $type    Rating type.
  * @return bool
  */
-function hasPreviousReview( $post_id, $user_id, $ip, $type = 'any' ) {
+function hasPreviousReview( $post_id, $user_id, $ip, $type = 'any' ) { // phpcs:ignore
 	_deprecated_function( __FUNCTION__, '3.0.0', 'wp_review_has_reviewed' );
 	return wp_review_has_reviewed( $post_id, $user_id, $ip, $type );
 }
@@ -625,10 +639,10 @@ function wp_review_has_reviewed_by_user_id( $post_id, $user_id, $ip, $type = 'an
 function wp_review_get_previous_review_comment( $comment ) {
 	$post_id    = $comment->comment_post_ID;
 	$query_args = array(
-		'post_id'    => $post_id,
-		'type_in'    => array( WP_REVIEW_COMMENT_TYPE_COMMENT ),
-		'meta_key'   => WP_REVIEW_COMMENT_RATING_METAKEY,
-		'meta_value' => 0,
+		'post_id'      => $post_id,
+		'type_in'      => array( WP_REVIEW_COMMENT_TYPE_COMMENT ),
+		'meta_key'     => WP_REVIEW_COMMENT_RATING_METAKEY,
+		'meta_value'   => 0,
 		'meta_compare' => '>',
 	);
 
@@ -656,7 +670,7 @@ function wp_review_get_previous_review_comment( $comment ) {
  * @param WP_Comment_Query $query Comment query.
  * @return WP_Comment_Query
  */
-function wp_review_add_comment_type_to_query( \WP_Comment_Query $query ) {
+function wp_review_add_comment_type_to_query( WP_Comment_Query $query ) {
 	$commenttype = get_query_var( 'wp_review_commenttype' );
 	if ( 'any' === $commenttype ) {
 		$query->query_vars['type__in'] = array( WP_REVIEW_COMMENT_TYPE_COMMENT, WP_REVIEW_COMMENT_TYPE_VISITOR );
@@ -681,14 +695,14 @@ function wp_review_filter_comment_by_ip( array $clauses ) {
 /**
  * Gets previous preview.
  *
- * @param $post_id
- * @param $user_id
- * @param $ip
- * @param string $type
- * @return bool|mixed
+ * @param int    $post_id Post ID.
+ * @param int    $user_id User ID.
+ * @param string $ip      IP Address.
+ * @param string $type    Review type.
+ * @return bool
  */
-function getPreviousReview( $post_id, $user_id, $ip, $type = 'any' ) {
-	if ( is_numeric( $post_id ) && $post_id > 0 ){
+function getPreviousReview( $post_id, $user_id, $ip, $type = 'any' ) { // phpcs:ignore
+	if ( is_numeric( $post_id ) && $post_id > 0 ) {
 		$args = array(
 			'post_id' => $post_id,
 			'user_id' => 0,
@@ -713,6 +727,12 @@ function getPreviousReview( $post_id, $user_id, $ip, $type = 'any' ) {
 	return false;
 }
 
+/**
+ * Sets theme defaults.
+ *
+ * @param array $new_options  New options.
+ * @param bool  $force_change Force changes.
+ */
 function wp_review_theme_defaults( $new_options, $force_change = false ) {
 	global $pagenow;
 	$opt_name = 'wp_review_options_' . wp_get_theme();
@@ -722,12 +742,17 @@ function wp_review_theme_defaults( $new_options, $force_change = false ) {
 	}
 	$options_updated = get_option( $opt_name );
 	// If the theme was just activated OR options weren't updated yet.
-	if ( empty( $options_updated ) || $options_updated != $new_options || $force_change || ( isset( $_GET['activated'] ) && $pagenow == 'themes.php' ) ) {
+	if ( empty( $options_updated ) || $options_updated != $new_options || $force_change || ( isset( $_GET['activated'] ) && 'themes.php' == $pagenow ) ) {
 		update_option( 'wp_review_options', array_merge( $options, $new_options ) );
 		update_option( $opt_name, $new_options );
 	}
 }
 
+/**
+ * Gets all image sizes.
+ *
+ * @return array
+ */
 function wp_review_get_all_image_sizes() {
 	global $_wp_additional_image_sizes;
 
@@ -749,9 +774,9 @@ function wp_review_get_all_image_sizes() {
 /**
  * Exclude review-type comments from being included in the comment query.
  *
- * @param WP_Comment_Query $query
+ * @param WP_Comment_Query $query Comment query.
  */
-function wp_review_exclude_review_comments( \WP_Comment_Query $query ) {
+function wp_review_exclude_review_comments( WP_Comment_Query $query ) {
 	if ( ! is_admin() && ( WP_REVIEW_COMMENT_TYPE_VISITOR !== $query->query_vars['type'] && ! in_array( WP_REVIEW_COMMENT_TYPE_VISITOR, (array) $query->query_vars['type__in'] ) ) ) {
 		$query->query_vars['type__not_in'] = array_merge(
 			is_array( $query->query_vars['type__not_in'] ) ? $query->query_vars['type__not_in'] : array(),
@@ -764,8 +789,7 @@ add_action( 'pre_get_comments', 'wp_review_exclude_review_comments', 15 );
 /**
  * Add "Reviews" to comments table view.
  *
- * @param array $comment_types
- *
+ * @param array $comment_types Comment types.
  * @return mixed
  */
 function wp_review_add_to_comment_table_dropdown( $comment_types ) {
@@ -818,9 +842,10 @@ function wp_review_get_user_rating_setup( $post_id ) {
 
 /**
  * Exclude visitor ratings when updating a post's comment count.
- * @param $post_id
- * @param $new
- * @param $old
+ *
+ * @param int    $post_id Post ID.
+ * @param object $new     New comment.
+ * @param object $old     Old comment.
  *
  * @internal param $comment_id
  * @internal param $comment
@@ -941,10 +966,10 @@ function wp_review_user_review( $post_id, $votable = true, $force_display = fals
 
 
 /**
- * Get the path to a template prioritizing theme directory first.
+ * Get the path to a rating template prioritizing theme directory first.
  *
- * @param string $type
- * @param string $default
+ * @param string $type    Rating type.
+ * @param string $default Default rating type.
  *
  * @return string
  */
@@ -997,6 +1022,9 @@ function wp_review_register_rating_type( $rating_type, $args ) {
 	return true;
 }
 
+/**
+ * Registers default rating types.
+ */
 function wp_review_register_default_rating_types() {
 	wp_review_register_rating_type(
 		'star',
@@ -1198,19 +1226,25 @@ function wp_review_get_post_box_template( $post_id = null ) {
 	$template  = wp_review_get_box_template( $post_id );
 	$template .= '.php';
 	if ( empty( $template ) || ! wp_review_locate_box_template( $template ) ) {
-		$template = 'default.php'; // fallback to default.php
+		$template = 'default.php'; // fallback to default.php.
 	}
 
 	return apply_filters( 'wp_review_get_box_template', $template, $post_id );
 }
 
-
+/**
+ * Gets template file path.
+ *
+ * @param string $template_name    Template file name.
+ * @param bool   $return_full_path Return full path or not.
+ * @return string
+ */
 function wp_review_locate_box_template( $template_name, $return_full_path = true ) {
 	// We look for box templates in:
 	// 1. plugins_dir/box-templates
 	// 2. theme_dir/wp-review
 	// 3. childtheme_dir/wp-review
-	// 4... Use filter to add more
+	// 4... Use filter to add more.
 	$default_paths  = array(
 		WP_REVIEW_DIR . 'box-templates',
 		get_template_directory() . '/wp-review',
@@ -1218,12 +1252,12 @@ function wp_review_locate_box_template( $template_name, $return_full_path = true
 	);
 	$template_paths = apply_filters( 'wp_review_box_template_paths', $default_paths );
 
-
 	$paths        = array_reverse( $template_paths );
 	$located      = '';
 	$path_partial = '';
 	foreach ( $paths as $path ) {
-		if ( file_exists( $full_path = trailingslashit( $path ) . $template_name ) ) {
+		$full_path = trailingslashit( $path ) . $template_name;
+		if ( file_exists( $full_path ) ) {
 			$located      = $full_path;
 			$path_partial = $path;
 			break;
@@ -1317,6 +1351,13 @@ function wp_review_rating( $value, $post_id = null, $args = array() ) {
 	return $review;
 }
 
+/**
+ * Gets user rating.
+ *
+ * @param int   $post_id Post ID.
+ * @param array $args    Custom args.
+ * @return string
+ */
 function wp_review_user_rating( $post_id = null, $args = array() ) {
 	$options = get_option( 'wp_review_options' );
 	$type    = wp_review_get_post_user_review_type( $post_id );
@@ -1489,7 +1530,13 @@ function wp_review_visitor_feature_rating( $post_id = null, $args = array() ) {
 	return $output;
 }
 
-
+/**
+ * Gets user comments rating.
+ *
+ * @param int   $post_id Post ID.
+ * @param array $args    Custom args.
+ * @return string
+ */
 function wp_review_user_comments_rating( $post_id = null, $args = array() ) {
 	$type = wp_review_get_post_user_review_type( $post_id );
 
@@ -1830,7 +1877,7 @@ function wp_review_get_box_templates_list() {
 		$path = trailingslashit( $path );
 		// Look for files containing our header 'Launcher template'.
 		$files = (array) wp_review_scandir( $path, 'php', 2 );
-		foreach ( $files as $file => $full_path ) { // echo ' <br> '.$file.' - '.$full_path;
+		foreach ( $files as $file => $full_path ) {
 			if ( ! $full_path || ! preg_match( '|WP Review:(.*)$|mi', file_get_contents( $full_path ), $header ) ) {
 				continue;
 			}
@@ -1845,10 +1892,10 @@ function wp_review_get_box_templates_list() {
 /**
  * Scans directory.
  *
- * @param $path
- * @param null $extensions
- * @param int $depth
- * @param string $relative_path
+ * @param string $path          Directory path.
+ * @param array  $extensions    Extensions.
+ * @param int    $depth         Depth.
+ * @param string $relative_path Relative path.
  * @return array|bool
  */
 function wp_review_scandir( $path, $extensions = null, $depth = 0, $relative_path = '' ) {
@@ -1904,8 +1951,8 @@ add_action( 'init', 'wp_review_add_admin_columns' );
 /**
  * Adds posts list columns.
  *
- * @param $columns
- * @return mixed
+ * @param array $columns Posts list columns.
+ * @return array
  */
 function wp_review_post_list_column( $columns ) {
 	$columns['wp_review_rating'] = __( 'Rating', 'wp-review' );
@@ -1915,8 +1962,8 @@ function wp_review_post_list_column( $columns ) {
 /**
  * Shows posts list column content.
  *
- * @param $column_name
- * @param $post_id
+ * @param string $column_name Column name.
+ * @param int    $post_id     Post ID.
  */
 function wp_review_post_list_column_content( $column_name, $post_id ) {
 	if ( 'wp_review_rating' === $column_name ) {
@@ -1966,8 +2013,8 @@ function wp_review_migrate_notice() {
 	$rows_left       = 0;
 	$migrated_rows   = get_option( 'wp_review_migrated_rows', 0 );
 	if ( ! $has_migrated && $wpdb->get_var( "SHOW TABLES LIKE '{$wpdb->base_prefix}mts_wp_reviews'" ) == "{$wpdb->base_prefix}mts_wp_reviews" ) {
-		// Table exists and not migrated (fully) yet
-		$total_rows = $wpdb->get_var( 'SELECT COUNT(*) FROM ' . $wpdb->base_prefix . 'mts_wp_reviews WHERE blog_id = ' . $current_blog_id );
+		// Table exists and not migrated (fully) yet.
+		$total_rows = $wpdb->get_var( 'SELECT COUNT(*) FROM ' . $wpdb->base_prefix . 'mts_wp_reviews WHERE blog_id = ' . $current_blog_id ); // WPCS: unprepared SQL ok.
 		$rows_left  = $total_rows - $migrated_rows;
 	}
 
@@ -1976,7 +2023,12 @@ function wp_review_migrate_notice() {
 	}
 	?>
 	<div class="updated notice-info wp-review-notice">
-		<p><?php printf( __( 'Thank you for updating WP Review Pro. Your existing user ratings will show up after importing them in %s.', 'wp-review' ), '<a href="' . admin_url( 'options-general.php?page=wp-review-pro%2Fadmin%2Foptions.php#migrate' ) . '">' . __( 'Settings &gt; WP Review Pro &gt; Migrate Ratings', 'wp-review' ) . '</a>' ); ?></p>
+		<p>
+			<?php
+			// translators: settings link.
+			printf( __( 'Thank you for updating WP Review Pro. Your existing user ratings will show up after importing them in %s.', 'wp-review' ), '<a href="' . admin_url( 'options-general.php?page=wp-review-pro%2Fadmin%2Foptions.php#migrate' ) . '">' . __( 'Settings &gt; WP Review Pro &gt; Migrate Ratings', 'wp-review' ) . '</a>' );
+			?>
+		</p>
 		<a class="notice-dismiss" href="<?php echo esc_url( add_query_arg( 'wp_review_migrate_notice_ignore', '1' ) ); ?>"></a>
 	</div>
 	<?php
@@ -2043,9 +2095,9 @@ function wp_review_get_schema( $review ) {
 /**
  * Gets schema type.
  *
- * @param $review
- * @param bool $nested_rating
- * @return mixed|void
+ * @param array $review        Review data.
+ * @param bool  $nested_rating Is nested rating or not.
+ * @return array
  */
 function wp_review_get_schema_type( $review, $nested_rating = false ) {
 
@@ -2077,7 +2129,7 @@ function wp_review_get_schema_type( $review, $nested_rating = false ) {
 					$args[ $data['part_of'] ]['@type'] = $data['@type'];
 					if ( 'image' === $data['type'] ) {
 						$args[ $data['part_of'] ][ $data['name'] ] = $review['schema_data'][ $review['schema'] ][ $data['name'] ]['url'];
-					} elseif ( in_array( $data['name'], apply_filters( 'wp_reviev_schema_ISO_8601_duration_items', array( 'prepTime', 'cookTime', 'totalTime', 'duration' ) ) ) ) {
+					} elseif ( in_array( $data['name'], apply_filters( 'wp_reviev_schema_ISO_8601_duration_items', array( 'prepTime', 'cookTime', 'totalTime', 'duration' ) ) ) ) { // phpcs:ignore
 						$args[ $data['part_of'] ][ $data['name'] ] = 'PT' . $review['schema_data'][ $review['schema'] ][ $data['name'] ];
 					} else {
 						$args[ $data['part_of'] ][ $data['name'] ] = $review['schema_data'][ $review['schema'] ][ $data['name'] ];
@@ -2085,7 +2137,7 @@ function wp_review_get_schema_type( $review, $nested_rating = false ) {
 				} else {
 					if ( 'image' === $data['type'] ) {
 						$args[ $data['name'] ] = $review['schema_data'][ $review['schema'] ][ $data['name'] ]['url'];
-					} elseif ( in_array( $data['name'], apply_filters( 'wp_reviev_schema_ISO_8601_duration_items', array( 'prepTime', 'cookTime', 'totalTime', 'duration' ) ) ) ) {
+					} elseif ( in_array( $data['name'], apply_filters( 'wp_reviev_schema_ISO_8601_duration_items', array( 'prepTime', 'cookTime', 'totalTime', 'duration' ) ) ) ) { // phpcs:ignore
 						$args[ $data['name'] ] = 'PT' . $review['schema_data'][ $review['schema'] ][ $data['name'] ];
 					} else {
 						$args[ $data['name'] ] = $review['schema_data'][ $review['schema'] ][ $data['name'] ];
@@ -2095,13 +2147,13 @@ function wp_review_get_schema_type( $review, $nested_rating = false ) {
 		}
 	}
 
-	// Nested aggregateRating is required in some types ( SoftwareApplication, Recipe )
+	// Nested aggregateRating is required in some types ( SoftwareApplication, Recipe ).
 	$force_user_rating = in_array( $review['schema'], apply_filters( 'wp_review_schema_force_nested_user_rating_types', array( 'SoftwareApplication', 'Recipe' ) ) );
 	if ( $force_user_rating ) {
 		if ( $review['user_review'] || $review['comments_review'] ) {
-			$aggregateRating = wp_review_get_schema_nested_user_rating_args( $review );
-			if ( ! empty( $aggregateRating ) ) {
-				$args['aggregateRating'] = $aggregateRating;
+			$aggregate_rating = wp_review_get_schema_nested_user_rating_args( $review );
+			if ( ! empty( $aggregate_rating ) ) {
+				$args['aggregateRating'] = $aggregate_rating;
 			}
 		}
 		if ( 'author' === $review['rating_schema'] ) {
@@ -2110,9 +2162,9 @@ function wp_review_get_schema_type( $review, $nested_rating = false ) {
 	} elseif ( $nested_rating ) {
 		if ( in_array( $review['rating_schema'], array( 'visitors' ) ) ) {
 			if ( $review['user_review'] || $review['comments_review'] ) {
-				$aggregateRating = wp_review_get_schema_nested_user_rating_args( $review );
-				if ( ! empty( $aggregateRating ) ) {
-					$args['aggregateRating'] = $aggregateRating;
+				$aggregate_rating = wp_review_get_schema_nested_user_rating_args( $review );
+				if ( ! empty( $aggregate_rating ) ) {
+					$args['aggregateRating'] = $aggregate_rating;
 				}
 			}
 		} else {
@@ -2132,14 +2184,14 @@ function wp_review_get_schema_type( $review, $nested_rating = false ) {
 /**
  * Gets schema review rating.
  *
- * @param $review
- * @param bool $nested_item
+ * @param array $review      Review data.
+ * @param bool  $nested_item Is nested item or not.
  * @return mixed|void
  */
 function wp_review_get_schema_review_rating( $review, $nested_item = false ) {
 
 	if ( ! $nested_item && in_array( $review['schema'], apply_filters( 'wp_review_schema_force_nested_user_rating_types', array( 'SoftwareApplication', 'Recipe' ) ) ) ) {
-		return; // Requires nested aggregateRating
+		return; // Requires nested aggregateRating.
 	}
 
 	global $wp_review_rating_types;
@@ -2181,8 +2233,8 @@ function wp_review_get_schema_review_rating( $review, $nested_item = false ) {
 /**
  * Gets schema user rating.
  *
- * @param $review
- * @param bool $nested_item
+ * @param array $review      Review data.
+ * @param bool  $nested_item Is nested item or not.
  * @return mixed|void
  */
 function wp_review_get_schema_user_rating( $review, $nested_item = false ) {
@@ -2232,7 +2284,7 @@ function wp_review_get_schema_user_rating( $review, $nested_item = false ) {
 /**
  * Gets reviewed item name.
  *
- * @param $review
+ * @param array $review Review data.
  * @return mixed|void
  */
 function wp_review_get_reviewed_item_name( $review ) {
@@ -2252,8 +2304,8 @@ function wp_review_get_reviewed_item_name( $review ) {
 /**
  * Gets schema nested user rating args.
  *
- * @param $review
- * @return mixed|void
+ * @param array $review Review data.
+ * @return array
  */
 function wp_review_get_schema_nested_user_rating_args( $review ) {
 
@@ -2274,8 +2326,8 @@ function wp_review_get_schema_nested_user_rating_args( $review ) {
 /**
  * Gets schema nested review args.
  *
- * @param $review
- * @return mixed|void
+ * @param array $review Review data.
+ * @return array
  */
 function wp_review_get_schema_nested_review_args( $review ) {
 	global $wp_review_rating_types;
@@ -2300,8 +2352,8 @@ function wp_review_get_schema_nested_review_args( $review ) {
 /**
  * Gets schema nested item args.
  *
- * @param $review
- * @return mixed|void
+ * @param array $review Review data.
+ * @return array
  */
 function wp_review_get_schema_nested_item_args( $review ) {
 
@@ -2329,7 +2381,7 @@ function wp_review_get_schema_nested_item_args( $review ) {
 						$args[ $data['part_of'] ]['@type'] = $data['@type'];
 						if ( 'image' === $data['type'] ) {
 							$args[ $data['part_of'] ][ $data['name'] ] = $schema_data[ $data['name'] ]['url'];
-						} elseif ( in_array( $data['name'], apply_filters( 'wp_reviev_schema_ISO_8601_duration_items', array( 'prepTime', 'cookTime', 'totalTime', 'duration' ) ) ) ) {
+						} elseif ( in_array( $data['name'], apply_filters( 'wp_reviev_schema_ISO_8601_duration_items', array( 'prepTime', 'cookTime', 'totalTime', 'duration' ) ) ) ) { // phpcs:ignore
 							$args[ $data['part_of'] ][ $data['name'] ] = 'PT' . $schema_data[ $data['name'] ];
 						} else {
 							$args[ $data['part_of'] ][ $data['name'] ] = $schema_data[ $data['name'] ];
@@ -2337,7 +2389,7 @@ function wp_review_get_schema_nested_item_args( $review ) {
 					} else {
 						if ( 'image' === $data['type'] ) {
 							$args[ $data['name'] ] = $schema_data[ $data['name'] ]['url'];
-						} elseif ( in_array( $data['name'], apply_filters( 'wp_reviev_schema_ISO_8601_duration_items', array( 'prepTime', 'cookTime', 'totalTime', 'duration' ) ) ) ) {
+						} elseif ( in_array( $data['name'], apply_filters( 'wp_reviev_schema_ISO_8601_duration_items', array( 'prepTime', 'cookTime', 'totalTime', 'duration' ) ) ) ) { // phpcs:ignore
 							$args[ $data['name'] ] = 'PT' . $schema_data[ $data['name'] ];
 						} else {
 							$args[ $data['name'] ] = $schema_data[ $data['name'] ];
@@ -2348,14 +2400,12 @@ function wp_review_get_schema_nested_item_args( $review ) {
 		}
 	}
 
-	// Nested aggregateRating is recommended in some types ( SoftwareApplication, Recipe )
+	// Nested aggregateRating is recommended in some types ( SoftwareApplication, Recipe ).
 	if ( in_array( $review['schema'], apply_filters( 'wp_review_schema_force_nested_user_rating_types', array( 'SoftwareApplication', 'Recipe' ) ) ) && ( $review['user_review'] || $review['comments_review'] ) ) {
-		//if ( in_array( $review['rating_schema'], array( 'visitors', 'comments') ) ) {
-		$aggregateRating = wp_review_get_schema_nested_user_rating_args( $review );
-		if ( ! empty( $aggregateRating ) ) {
-			$args['aggregateRating'] = $aggregateRating;
+		$aggregate_rating = wp_review_get_schema_nested_user_rating_args( $review );
+		if ( ! empty( $aggregate_rating ) ) {
+			$args['aggregateRating'] = $aggregate_rating;
 		}
-		//}
 	}
 
 	return apply_filters( 'wp_review_get_schema_nested_item_args', $args, $review );
@@ -2663,10 +2713,12 @@ function wp_review_transient_expired_time() {
  * @since 3.0.0
  */
 function wp_review_clear_cache() {
+	// phpcs:disable
 	// delete_transient( 'wp_review_recent_reviews_query' );
 	// delete_transient( 'wp_review_toprated_reviews_query' );
 	// delete_transient( 'wp_review_mostvoted_reviews_query' );
 	// delete_transient( 'wp_review_custom_reviews_query' );
+	// phpcs:enable
 }
 
 
@@ -2680,8 +2732,6 @@ function wp_review_clear_cache_via_url() {
 		return;
 	}
 	wp_review_clear_cache();
-	// wp_redirect( remove_query_arg( 'clear' ) );
-	// exit;
 }
 add_action( 'template_redirect', 'wp_review_clear_cache_via_url' );
 
@@ -3003,7 +3053,7 @@ function wp_review_visitor_rate( $post_id, $rating_data ) {
 				'comment_parent'    => 0,
 				'comment_author_IP' => $uip,
 				'comment_content'   => $comment_content,
-				'comment_agent'     => isset( $_SERVER['HTTP_USER_AGENT'] ) ? $_SERVER['HTTP_USER_AGENT']: '',
+				'comment_agent'     => isset( $_SERVER['HTTP_USER_AGENT'] ) ? $_SERVER['HTTP_USER_AGENT'] : '',
 				'comment_date'      => current_time( 'mysql' ),
 				'comment_date_gmt'  => current_time( 'mysql', 1 ),
 				'comment_approved'  => $approve_comment,
@@ -3143,9 +3193,15 @@ function wp_review_enqueue_rating_type_scripts( $type = 'output', array $rating_
 	}
 }
 
-// GDPR Compliant - Export User Information
-
+// GDPR Compliant - Export User Information.
 if ( ! function_exists( 'wp_review_data_exporter' ) ) {
+	/**
+	 * Exports review data.
+	 *
+	 * @param string $email_address Email address.
+	 * @param int    $page          Page number.
+	 * @return array
+	 */
 	function wp_review_data_exporter( $email_address, $page = 1 ) {
 		// Limit us to 500 comments at a time to avoid timing out.
 		$number         = 500;
@@ -3163,9 +3219,9 @@ if ( ! function_exists( 'wp_review_data_exporter' ) ) {
 		);
 
 		$comment_prop_to_export = array(
-			'comment_rating'    => __( 'Comment Rating', 'wp-review' ),
-			'features_rating'   => __( 'Features Ratings', 'wp-review' ),
-			'comment_title'     => __( 'Comment Title', 'wp-review' ),
+			'comment_rating'  => __( 'Comment Rating', 'wp-review' ),
+			'features_rating' => __( 'Features Ratings', 'wp-review' ),
+			'comment_title'   => __( 'Comment Title', 'wp-review' ),
 		);
 
 		foreach ( (array) $comments as $comment ) {
@@ -3218,12 +3274,12 @@ if ( ! function_exists( 'wp_review_data_exporter' ) ) {
 	}
 }
 
-// Filter function to register data exporter
+// Filter function to register data exporter.
 if ( ! function_exists( 'wp_review_register_data_exporter' ) ) {
 	/**
 	 * Registers data exporter.
 	 *
-	 * @param $exporters
+	 * @param array $exporters Exporters.
 	 * @return mixed
 	 */
 	function wp_review_register_data_exporter( $exporters ) {
@@ -3237,7 +3293,13 @@ if ( ! function_exists( 'wp_review_register_data_exporter' ) ) {
 
 add_filter( 'wp_privacy_personal_data_exporters', 'wp_review_register_data_exporter', 9 );
 
-//Function to switch to Network site, if global option is disabled in sub-site
+/**
+ * Switches to the main network site.
+ * Function to switch to Network site, if global option is disabled in sub-site.
+ *
+ * @param string $option Option name.
+ * @return bool
+ */
 function wp_review_switch_to_main( $option = '' ) {
 	$value = false;
 	if ( is_multisite() && ! is_main_site() ) {
@@ -3260,10 +3322,16 @@ function wp_review_switch_to_main( $option = '' ) {
 	return $value;
 }
 
-//Function to get option value from main-network site
+/**
+ * Gets network option.
+ * Function to get option value from main-network site.
+ *
+ * @param string $key Option key.
+ * @return mixed
+ */
 function wp_review_network_option( $key ) {
 	$value = false;
-	if( is_multisite() && ! is_main_site() ) {
+	if ( is_multisite() && ! is_main_site() ) {
 		$site_id = get_current_blog_id();
 		switch_to_blog( get_network()->site_id );
 		$options = get_option( 'wp_review_options' );

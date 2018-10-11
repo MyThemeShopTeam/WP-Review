@@ -7,8 +7,10 @@
  */
 
 /* Get review with Ajax */
-//add_action('wp_ajax_mts_review_get_review', 'mts_review_get_review');
-//add_action('wp_ajax_nopriv_mts_review_get_review', 'mts_review_get_review');
+
+/* add_action('wp_ajax_mts_review_get_review', 'mts_review_get_review'); */
+
+/* add_action('wp_ajax_nopriv_mts_review_get_review', 'mts_review_get_review'); */
 
 add_action( 'wp_ajax_wp_review_rate', 'wp_review_ajax_rate' );
 add_action( 'wp_ajax_nopriv_wp_review_rate', 'wp_review_ajax_rate' );
@@ -29,7 +31,6 @@ add_action( 'wp_ajax_nopriv_wpr-upload-comment-image', 'wp_review_upload_comment
 /**
  * Upload Comment Image with Ajax.
  */
-
 function wp_review_upload_comment_image() {
 
 	$files         = array_filter( $_FILES['files'] );
@@ -41,7 +42,7 @@ function wp_review_upload_comment_image() {
 		$file_data['error']    = $files['error'][0];
 		$file_data['size']     = $files['size'][0];
 
-		// these files need to be included as dependencies when on the front end
+		// These files need to be included as dependencies when on the front end.
 		require_once ABSPATH . 'wp-admin/includes/image.php';
 		require_once ABSPATH . 'wp-admin/includes/file.php';
 		require_once ABSPATH . 'wp-admin/includes/media.php';
@@ -151,7 +152,7 @@ function wp_review_ajax_migrate_ratings() {
 
 	$current_blog_id = get_current_blog_id();
 
-	$query = $wpdb->get_results( 'SELECT * FROM ' . $wpdb->base_prefix . 'mts_wp_reviews WHERE blog_id = ' . $current_blog_id . ' LIMIT ' . $limit . ' OFFSET ' . $start );
+	$query = $wpdb->get_results( 'SELECT * FROM ' . $wpdb->base_prefix . 'mts_wp_reviews WHERE blog_id = ' . $current_blog_id . ' LIMIT ' . $limit . ' OFFSET ' . $start ); // WPCS: unprepared SQL ok.
 
 	foreach ( $query as $review ) {
 
@@ -165,7 +166,15 @@ function wp_review_ajax_migrate_ratings() {
 				'comment_type'      => WP_REVIEW_COMMENT_TYPE_VISITOR,
 				'comment_post_ID'   => $review->post_id,
 				'comment_parent'    => 0,
-				'comment_content'   => sprintf( __( 'Visitor Rating: %s', 'wp-review' ), sprintf( __( '%s Stars' , 'wp-review' ), $review->rate ) ),
+				'comment_content'   => sprintf(
+					// translators: visitors rating.
+					__( 'Visitor Rating: %s', 'wp-review' ),
+					sprintf(
+						// translators: review rate.
+						__( '%s Stars', 'wp-review' ),
+						$review->rate
+					)
+				),
 				'comment_author_IP' => $review->user_ip,
 				'comment_date'      => gmdate( 'Y-m-d H:i:s', ( strtotime( $review->date ) + ( get_option( 'gmt_offset' ) * HOUR_IN_SECONDS ) ) ),
 				'comment_date_gmt'  => gmdate( 'Y-m-d H:i:s', strtotime( $review->date ) ),
@@ -183,11 +192,11 @@ function wp_review_ajax_migrate_ratings() {
 		}
 	}
 
-	$end = $start + count( $query ); //$wpdb->num_rows;
-	//$migrated_rows = get_option( 'wp_review_migrated_rows', 0 );
+	$end = $start + count( $query ); // $wpdb->num_rows;
+	// $migrated_rows = get_option( 'wp_review_migrated_rows', 0 );
 	update_option( 'wp_review_migrated_rows', $end );
 
-	$total_rows         = $wpdb->get_var( 'SELECT COUNT(*) FROM ' . $wpdb->base_prefix . 'mts_wp_reviews WHERE blog_id = ' . $current_blog_id );
+	$total_rows         = $wpdb->get_var( 'SELECT COUNT(*) FROM ' . $wpdb->base_prefix . 'mts_wp_reviews WHERE blog_id = ' . $current_blog_id ); // WPCS: unprepared SQL ok.
 	$migration_finished = 0;
 	if ( $total_rows == $end ) {
 		update_option( 'wp_review_has_migrated', 1 );
@@ -341,8 +350,10 @@ function wp_review_extra_info( $post_id, $extra_info, array $args = array() ) {
 	<div class="<?php echo esc_attr( $args['class'] ); ?>">
 		<?php
 		if ( ! $post_reviews['count'] ) {
+			// translators: number of reviews.
 			printf( __( '%s review', 'wp-review' ), 0 );
 		} else {
+			// translators: number of reviews.
 			printf( _n( '%s review', '%s reviews', $post_reviews['count'], 'wp-review' ), $post_reviews['count'] );
 		}
 		?>

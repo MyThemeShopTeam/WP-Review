@@ -3,13 +3,15 @@
  * The template for displaying the comments.
  *
  * This contains both the comments and the comment form.
+ *
+ * @package WP_Review
  */
 
-// Do not delete these lines
+// Do not delete these lines.
 if ( ! empty( $_SERVER['SCRIPT_FILENAME'] ) && 'comments.php' == basename( $_SERVER['SCRIPT_FILENAME'] ) ) {
-	die ( __('Please do not load this page directly. Thanks!', 'wp-review' ) );
+	die( __( 'Please do not load this page directly. Thanks!', 'wp-review' ) );
 }
- 
+
 if ( post_password_required() ) { ?>
 	<p class="nocomments"><?php _e( 'This post is password protected. Enter the password to view comments.', 'wp-review' ); ?></p>
 	<?php
@@ -69,4 +71,4 @@ if ( post_password_required() ) { ?>
 			?>
 		</div>
 	</div>
-<?php endif; // if you delete this the sky will fall on your head ?>
+<?php endif; // if you delete this the sky will fall on your head. ?>

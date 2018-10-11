@@ -417,7 +417,8 @@ $form_field = new WP_Review_Form_Field();
 			</div>
 		</div>
 
-		<?php /*<div class="wp-review-field">
+		<?php
+		/*<div class="wp-review-field">
 			<div class="wp-review-field-label">
 				<label><?php esc_html_e( 'Show text count with Star ratings', 'wp-review' ); ?></label>
 			</div>
@@ -431,7 +432,8 @@ $form_field = new WP_Review_Form_Field();
 				) );
 				?>
 			</div>
-		</div>*/ ?>
+		</div>*/
+		?>
 
 		<div class="wp-review-field">
 			<div class="wp-review-field-label">

@@ -57,9 +57,9 @@ function wp_review_add_meta_boxes() {
 
 				if ( ! $hide_review_links && current_user_can( 'wp_review_links' ) ) {
 					add_meta_box(
-						'wp-review-metabox-reviewLinks',
+						'wp-review-metabox-review-links',
 						__( 'Review Links', 'wp-review' ),
-						'wp_review_render_meta_box_reviewLinks',
+						'wp_review_render_meta_box_review_links',
 						$post_type,
 						'normal',
 						'high'
@@ -78,9 +78,9 @@ function wp_review_add_meta_boxes() {
 
 				if ( ! $hide_user_reviews && current_user_can( 'wp_review_user_reviews' ) ) {
 					add_meta_box(
-						'wp-review-metabox-userReview',
+						'wp-review-metabox-user-review',
 						__( 'User Reviews', 'wp-review' ),
-						'wp_review_render_meta_box_userReview',
+						'wp_review_render_meta_box_user_review',
 						$post_type,
 						'normal',
 						'high'
@@ -632,7 +632,7 @@ function wp_review_render_meta_box_desc( $post ) {
 /**
  * Maps default link texts and urls.
  *
- * @since 5.0.3 Move this function out of `wp_review_render_meta_box_reviewLinks()`
+ * @since 5.0.3 Move this function out of `wp_review_render_meta_box_review_links()`
  *
  * @param string $text Link text.
  * @param string $url  Link url.
@@ -650,7 +650,7 @@ function wp_review_get_default_links( $text, $url ) {
  *
  * @param WP_Post $post Post object.
  */
-function wp_review_render_meta_box_reviewLinks( $post ) {
+function wp_review_render_meta_box_review_links( $post ) {
 
 	wp_nonce_field( basename( __FILE__ ), 'wp-review-links-options-nonce' );
 
@@ -728,15 +728,15 @@ function wp_review_render_meta_box_reviewLinks( $post ) {
 	</table>
 
 	<a class="add-row button" data-target="#wp-review-links" href="#"><?php esc_html_e( 'Add another', 'wp-review' ); ?></a>
-<?php
+	<?php
 }
 
 /**
  * Renders user review meta box.
  *
- * @param $post WP_Post Post object.
+ * @param WP_Post $post Post object.
  */
-function wp_review_render_meta_box_userReview( $post ) {
+function wp_review_render_meta_box_user_review( $post ) {
 	/* Add an nonce field so we can check for it later. */
 	wp_nonce_field( basename( __FILE__ ), 'wp-review-userReview-nonce' );
 	$enabled = wp_review_get_user_rating_setup( $post->ID );
@@ -885,7 +885,9 @@ function wp_review_render_meta_box_userReview( $post ) {
 		</div>
 	</div>
 
-	<?php if ( current_user_can( 'wp_review_purge_visitor_ratings' ) ) { ?>
+	<?php
+	if ( current_user_can( 'wp_review_purge_visitor_ratings' ) ) {
+		?>
 		<p style="margin-top: 50px;">
 			<button
 				type="button"
@@ -1086,7 +1088,8 @@ function wp_review_save_postdata( $post_id, $post ) {
 /**
  * Clears transients
  *
- * @param int $post_id Post ID.
+ * @param int     $post_id Post ID.
+ * @param WP_Post $post    Post object.
  */
 function wp_review_clear_query_cache( $post_id, $post ) {
 	global $wpdb;

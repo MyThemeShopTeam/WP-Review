@@ -34,6 +34,11 @@ class WP_Review_Tab_Widget extends WP_Widget {
 		parent::__construct( 'wp_review_tab_widget', __( 'WP Review Widget', 'wp-review' ), $widget_ops, $control_ops );
 	}
 
+	/**
+	 * Enqueues admin scripts.
+	 *
+	 * @param string $hook Admin page hook.
+	 */
 	public function wp_review_tab_admin_scripts( $hook ) {
 		if ( 'widgets.php' !== $hook ) {
 			return;
@@ -42,6 +47,9 @@ class WP_Review_Tab_Widget extends WP_Widget {
 		wp_enqueue_script( 'wp_review_tab_widget_admin' );
 	}
 
+	/**
+	 * Registers scripts.
+	 */
 	public function wp_review_tab_register_scripts() {
 		// JS.
 		wp_register_script( 'wp_review_tab_widget', WP_REVIEW_ASSETS . 'js/wp-review-tab-widget.js', array( 'jquery' ), '3.0.0', true );
@@ -54,6 +62,11 @@ class WP_Review_Tab_Widget extends WP_Widget {
 		);
 	}
 
+	/**
+	 * Shows widget form.
+	 *
+	 * @param array $instance Widget instance.
+	 */
 	public function form( $instance ) {
 		$instance = wp_parse_args(
 			(array) $instance,
@@ -107,18 +120,18 @@ class WP_Review_Tab_Widget extends WP_Widget {
 
 			<div class="wp_review_tab_select_tabs">
 				<label class="alignleft" style="display: block; width: 50%; margin-bottom: 7px;" for="<?php echo $this->get_field_id( 'tabs' ); ?>_toprated">
-					<input type="checkbox" class="checkbox wp_review_tab_enable_toprated" id="<?php echo $this->get_field_id( 'tabs' ); ?>_toprated" name="<?php echo $this->get_field_name( 'tabs' ); ?>[toprated]" value="1" <?php if ( isset( $tabs['toprated'] ) ) { checked( 1, $tabs['toprated'], true ); } // phpcs:ignore ?> />
+					<input type="checkbox" class="checkbox wp_review_tab_enable_toprated" id="<?php echo $this->get_field_id( 'tabs' ); ?>_toprated" name="<?php echo $this->get_field_name( 'tabs' ); ?>[toprated]" value="1" <?php if ( isset( $tabs['toprated'] ) ) checked( 1, $tabs['toprated'], true ); ?> />
 					<?php esc_html_e( 'Top Rated', 'wp-review' ); ?>
 				</label>
 				<label class="alignleft" style="display: block; width: 50%; margin-bottom: 7px;" for="<?php echo $this->get_field_id( 'tabs' ); ?>_recent">
-					<input type="checkbox" class="checkbox wp_review_tab_enable_recent" id="<?php echo $this->get_field_id( 'tabs' ); ?>_recent" name="<?php echo $this->get_field_name( 'tabs' ); ?>[recent]" value="1" <?php if ( isset( $tabs['recent'] ) ) { checked( 1, $tabs['recent'], true ); } ?> />
+					<input type="checkbox" class="checkbox wp_review_tab_enable_recent" id="<?php echo $this->get_field_id( 'tabs' ); ?>_recent" name="<?php echo $this->get_field_name( 'tabs' ); ?>[recent]" value="1" <?php if ( isset( $tabs['recent'] ) ) checked( 1, $tabs['recent'], true ); ?> />
 					<?php esc_html_e( 'Recent Reviews', 'wp-review' ); ?>
 				</label>
 				<label class="alignleft" style="display: block; width: 50%; margin-bottom: 7px;" for="<?php echo $this->get_field_id( 'tabs' ); ?>_mostvoted">
-					<input type="checkbox" class="checkbox wp_review_tab_enable_mostvoted" id="<?php echo $this->get_field_id( 'tabs' ); ?>_mostvoted" name="<?php echo $this->get_field_name( 'tabs' ); ?>[mostvoted]" value="1" <?php if ( isset( $tabs['mostvoted'] ) ) { checked( 1, $tabs['mostvoted'], true ); } // phpcs:ignore ?> />
+					<input type="checkbox" class="checkbox wp_review_tab_enable_mostvoted" id="<?php echo $this->get_field_id( 'tabs' ); ?>_mostvoted" name="<?php echo $this->get_field_name( 'tabs' ); ?>[mostvoted]" value="1" <?php if ( isset( $tabs['mostvoted'] ) ) checked( 1, $tabs['mostvoted'], true ); ?> />
 					<?php esc_html_e( 'Most Voted', 'wp-review' ); ?>
 				</label>
-				<label class="alignleft" style="display: block; width: 50%; margin-bottom: 7px;" for="<?php echo $this->get_field_id("tabs"); ?>_custom">
+				<label class="alignleft" style="display: block; width: 50%; margin-bottom: 7px;" for="<?php echo $this->get_field_id( 'tabs' ); ?>_custom">
 					<input type="checkbox" class="checkbox wp_review_tab_enable_custom" id="<?php echo $this->get_field_id( 'tabs' ); ?>_custom" name="<?php echo $this->get_field_name( 'tabs' ); ?>[custom]" value="1" <?php if ( isset( $tabs['custom'] ) ) { checked( 1, $tabs['custom'], true ); } // phpcs:ignore ?> />
 					<?php esc_html_e( 'Custom', 'wp-review' ); ?>
 				</label>
@@ -330,10 +343,10 @@ class WP_Review_Tab_Widget extends WP_Widget {
 		$tab_titles = wp_parse_args(
 			$tab_titles,
 			array(
-				'toprated' => __( 'Top Rated', 'wp-review' ),
-				'recent' => __( 'Recent', 'wp-review' ),
+				'toprated'  => __( 'Top Rated', 'wp-review' ),
+				'recent'    => __( 'Recent', 'wp-review' ),
 				'mostvoted' => __( 'Most Voted', 'wp-review' ),
-				'custom' => __( 'Editor\'s choice', 'wp-review' ),
+				'custom'    => __( 'Editor\'s choice', 'wp-review' ),
 			)
 		);
 
@@ -506,7 +519,7 @@ class WP_Review_Tab_Widget extends WP_Widget {
 					</div>
 					<div class="clear"></div>
 				</li>
-			<?php
+				<?php
 			endwhile;
 			wp_reset_postdata();
 			?>

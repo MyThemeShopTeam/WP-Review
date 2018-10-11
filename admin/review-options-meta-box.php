@@ -9,6 +9,8 @@
  * Render the meta box.
  *
  * @since 1.0
+ *
+ * @param WP_Post $post Post object.
  */
 function wp_review_render_meta_box_review_options( $post ) {
 	global $post;
