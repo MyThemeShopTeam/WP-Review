@@ -57,7 +57,7 @@ function wp_review_add_meta_boxes() {
 
 				if ( ! $hide_review_links && current_user_can( 'wp_review_links' ) ) {
 					add_meta_box(
-						'wp-review-metabox-review-links',
+						'wp-review-metabox-reviewLinks',
 						__( 'Review Links', 'wp-review' ),
 						'wp_review_render_meta_box_review_links',
 						$post_type,
@@ -78,7 +78,7 @@ function wp_review_add_meta_boxes() {
 
 				if ( ! $hide_user_reviews && current_user_can( 'wp_review_user_reviews' ) ) {
 					add_meta_box(
-						'wp-review-metabox-user-review',
+						'wp-review-metabox-userReview',
 						__( 'User Reviews', 'wp-review' ),
 						'wp_review_render_meta_box_user_review',
 						$post_type,
