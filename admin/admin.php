@@ -29,8 +29,6 @@ function wp_review_admin_style( $hook_suffix ) {
 	if ( 'settings_page_wp-review/admin/options' === $hook_suffix ) {
 		wp_enqueue_style( 'fontawesome', WP_REVIEW_ASSETS . 'css/font-awesome.min.css', array(), '4.7.0' );
 
-		wp_enqueue_style( 'jquery-ui', WP_REVIEW_URI . 'admin/assets/css/jquery-ui.min.css', array(), '1.12.1' );
-
 		wp_enqueue_script( 'js-cookie', WP_REVIEW_ASSETS . 'js/js.cookie.min.js', array(), '2.1.4', true );
 
 		wp_enqueue_script( 'wp-review-admin-import', WP_REVIEW_URI . 'admin/assets/js/admin.import.js', array( 'jquery', 'wp-util' ), WP_REVIEW_PLUGIN_VERSION, true );
@@ -49,6 +47,8 @@ function wp_review_admin_style( $hook_suffix ) {
 	}
 
 	if ( in_array( $hook_suffix, array( 'settings_page_wp-review/admin/options', 'post.php', 'post-new.php' ), true ) ) {
+		wp_enqueue_style( 'jquery-ui', WP_REVIEW_URI . 'admin/assets/css/jquery-ui.min.css', array(), '1.12.1' );
+
 		wp_enqueue_script( 'select2', WP_REVIEW_URI . 'admin/assets/js/select2.min.js', array( 'jquery' ), '4.0.6-rc.0', true );
 		wp_enqueue_style( 'select2', WP_REVIEW_URI . 'admin/assets/css/select2.min.css', array(), '4.0.6-rc.0' );
 	}
