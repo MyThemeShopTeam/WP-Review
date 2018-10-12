@@ -75,15 +75,6 @@ function wp_review_comment_meta_box_fields( $comment ) {
 	?>
 	<div class="wp-review-field">
 		<div class="wp-review-field-label">
-			<label for="wp_review_comment_title"><?php esc_html_e( 'Review Title', 'wp-review' ); ?></label>
-		</div>
-		<div class="wp-review-field-option">
-			<input type="text" name="wp_review_comment_title" value="<?php echo esc_attr( $title ); ?>" id="wp_review_comment_title">
-		</div>
-	</div>
-
-	<div class="wp-review-field">
-		<div class="wp-review-field-label">
 			<label for="wp_review_comment_rating"><?php esc_html_e( 'Review total', 'wp-review' ); ?></label>
 		</div>
 		<div class="wp-review-field-option">
@@ -179,11 +170,6 @@ function wp_review_comment_edit_comment( $comment_id ) {
 	$comment = get_comment( $comment_id );
 	update_comment_meta( $comment_id, $meta_key, $rating );
 	wp_review_clear_cached_reviews( $comment );
-
-	if ( ! empty( $_POST['wp_review_comment_title'] ) ) {
-		$title = sanitize_text_field( wp_unslash( $_POST['wp_review_comment_title'] ) );
-		update_comment_meta( $comment_id, WP_REVIEW_COMMENT_TITLE_METAKEY, $title );
-	}
 
 	if ( ! empty( $_POST['wp_review_comment_pros'] ) ) {
 		update_comment_meta( $comment_id, 'wp_review_comment_pros', wp_kses_post( wp_unslash( $_POST['wp_review_comment_pros'] ) ) );
