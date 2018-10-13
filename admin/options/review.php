@@ -123,6 +123,9 @@ if ( '' === $items ) {
 if ( '' === $color ) {
 	$color = $default_colors['color'];
 }
+if ( '' === $inactive_color ) {
+	$inactive_color = $default_colors['inactive_color'];
+}
 if ( '' === $location ) {
 	$location = $default_location;
 }

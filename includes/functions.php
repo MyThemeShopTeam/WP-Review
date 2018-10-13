@@ -48,7 +48,7 @@ function wp_review_get_default_colors() {
 		'bordercolor'    => '#e7e7e7',
 	);
 
-	$custom_default_colors = apply_filters( 'wp_review_default_colors', array() );
+	$custom_default_colors = apply_filters( 'wp_review_default_colors', $default_colors );
 
 	return array_merge( $default_colors, $custom_default_colors );
 }
