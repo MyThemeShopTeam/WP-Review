@@ -155,6 +155,7 @@
 			this.collection.on( 'add', this.calculateTotal, this );
 			this.collection.on( 'change', this.calculateTotal, this );
 			this.collection.on( 'remove', this.calculateTotal, this );
+			this.collection.on( 'add change remove', this.updateAppAttr, this );
 		},
 
 		events: {
@@ -178,6 +179,10 @@
 		},
 
 		calculateTotal: function() {
+			if ( ! this.$el.attr( 'data-changed' ) ) {
+				return;
+			}
+
 			var total = 0,
 				count = this.collection.length;
 
@@ -210,6 +215,10 @@
 				item.set( 'type', type );
 			});
 			this.render();
+		},
+
+		updateAppAttr: function() {
+			this.$el.attr( 'data-changed', '1' );
 		}
 	});
 
