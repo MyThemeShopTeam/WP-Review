@@ -103,12 +103,12 @@ Please disable all plugins and check if rating is working properly. Then you can
 
 == Changelog ==
 
-= v5.0.9 (Oct 10, 2018) =
+= v5.1.0 (Oct 13, 2018) =
 * Removed unnecessary scripts from the non WP Review admin pages
-* Fixed no space between HTML attributes
-* Fixed compatibility issue with Rank Math plugin
 * Fixed total rating disappearing issue if there are no features
 * Fixed inactive color issue bug if color filter is used in the theme
+* Fixed no space between HTML attributes
+* Fixed compatibility issue with Rank Math plugin
 
 = v5.0.8 (Oct 3, 2018) =
 * Fixed adding unnecessary custom field values if the review is not enabled in the post
