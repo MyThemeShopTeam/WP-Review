@@ -39,17 +39,18 @@ function wp_review_option( $name, $default = null ) {
  * @return array
  */
 function wp_review_get_default_colors() {
-	return apply_filters(
-		'wp_review_default_colors',
-		array(
-			'color'          => '#1e73be',
-			'inactive_color' => '#95bae0',
-			'fontcolor'      => '#555555',
-			'bgcolor1'       => '#e7e7e7',
-			'bgcolor2'       => '#ffffff',
-			'bordercolor'    => '#e7e7e7',
-		)
+	$default_colors = array(
+		'color'          => '#1e73be',
+		'inactive_color' => '#95bae0',
+		'fontcolor'      => '#555555',
+		'bgcolor1'       => '#e7e7e7',
+		'bgcolor2'       => '#ffffff',
+		'bordercolor'    => '#e7e7e7',
 	);
+
+	$custom_default_colors = apply_filters( 'wp_review_default_colors', array() );
+
+	return array_merge( $default_colors, $custom_default_colors );
 }
 
 
