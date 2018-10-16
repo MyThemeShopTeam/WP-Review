@@ -2,41 +2,11 @@ const gulp = require('gulp');
 const sass = require('gulp-sass');
 const sourcemaps = require('gulp-sourcemaps');
 const autoprefixer = require('gulp-autoprefixer');
-const removeEmptyLines = require('gulp-remove-empty-lines');
-const zip = require('gulp-zip');
 
 const sassOptions = {
 	errLogToConsole: true,
-	outputStyle: 'compact'
+	outputStyle: 'compressed'
 };
-
-const zipSrc = [
-	'./',
-	'./**/*',
-
-	'!node_modules/',
-	'!node_modules/**/*',
-
-	'!admin/assets/sass/',
-	'!admin/assets/sass/**/*',
-
-	'!admin/assets/sourcemaps/',
-	'!admin/assets/sourcemaps/**/*',
-
-	'!public/sass/',
-	'!public/sass/**/*',
-
-	'!public/sourcemaps/',
-	'!public/sourcemaps/**/*',
-
-	'!.gitignore',
-	'!gulpfile.js',
-	'!package.json',
-	'!package-lock.json',
-	'!prepros-6.config',
-	'!.editorconfig',
-	'!npm-debug.log'
-];
 
 gulp.task('sass', function() {
 	return gulp
@@ -58,11 +28,4 @@ gulp.task('admin-sass', function() {
 		.pipe(gulp.dest('admin/assets/css'));
 });
 
-gulp.task('zip', function() {
-	return gulp
-		.src(zipSrc, { base: '../' })
-		.pipe(zip('wp-review.zip'))
-		.pipe(gulp.dest('../'));
-});
-
-gulp.task('default', ['sass', 'admin-sass']);
+gulp.task('default', gulp.series('sass', 'admin-sass'));

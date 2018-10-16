@@ -57,8 +57,8 @@ class WP_Review_Options {
 	/**
 	 * Adds classes to body tag.
 	 *
-	 * @param  array $classes Body classes.
-	 * @return array
+	 * @param string $classes Body classes.
+	 * @return string
 	 */
 	public function admin_body_classes( $classes ) {
 		$classes .= ' wp-review-admin-options';
@@ -137,23 +137,23 @@ class WP_Review_Options {
 
 		$tabs = array();
 
-		foreach($tabs_content as $key => $tab) {
-			$hide = wp_review_network_option($tab['multisite_enabled']);
-			if( current_user_can($tab['capability']) && !$hide ) {
+		foreach ( $tabs_content as $key => $tab ) {
+			$hide = wp_review_network_option( $tab['multisite_enabled'] );
+			if ( current_user_can( $tab['capability'] ) && ! $hide ) {
 				$tabs[] = array(
 					'id'    => $key,
 					'title' => $tab['title'],
-					'icon'	=> 'fa fa-'.$tab['icon'],
-					'view'  => WP_REVIEW_ADMIN . 'options/'.$key.'.php',
+					'icon'  => 'fa fa-' . $tab['icon'],
+					'view'  => WP_REVIEW_ADMIN . 'options/' . $key . '.php',
 				);
 			}
 		}
 
-		if(is_multisite() && is_main_site() && current_user_can('administrator')) {
+		if ( is_multisite() && is_main_site() && current_user_can( 'administrator' ) ) {
 			$tabs[] = array(
 				'id'    => 'multisite_settings',
 				'title' => __( 'Multisite Settings', 'wp-review' ),
-				'icon'	=> 'fa fa-sitemap',
+				'icon'  => 'fa fa-sitemap',
 				'view'  => WP_REVIEW_ADMIN . 'options/multisite.php',
 			);
 		}
@@ -196,5 +196,5 @@ class WP_Review_Options {
 	}
 }
 
-$page = new WP_Review_Options();
-$page->init();
+$options_page = new WP_Review_Options();
+$options_page->init();

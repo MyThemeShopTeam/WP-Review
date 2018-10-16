@@ -29,7 +29,7 @@ $bg_color = '';
 
 if ( ! empty( $rating['colors']['inactive_color'] ) ) {
 	$inactive_color = $rating['colors']['inactive_color'];
-	$bg_color = "background-color: {$inactive_color};";
+	$bg_color       = "background-color: {$inactive_color};";
 }
 ?>
 <div class="<?php echo esc_attr( $class ); ?>">
@@ -45,7 +45,7 @@ if ( ! empty( $rating['colors']['inactive_color'] ) ) {
 	<div class="wp-review-your-rating" style="background-color: <?php echo esc_attr( $rating['colors']['color'] ); ?>; color: <?php echo esc_attr( $rating['colors']['inactive_color'] ); ?>;">
 		<?php
 		// Translators: rating value.
-		printf( esc_html__( '%s' ), '<span class="wp-review-your-rating-value"></span>' );
+		printf( esc_html__( '%s', 'wp-review' ), '<span class="wp-review-your-rating-value"></span>' ); // phpcs:ignore
 		?>
 	</div>
 

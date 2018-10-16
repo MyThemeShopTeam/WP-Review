@@ -18,19 +18,23 @@ class WP_Review_Form_Field {
 	 * @return string
 	 */
 	public function render_switch( array $args = array() ) {
-		$args = wp_parse_args( $args, array(
-			'id'        => '',
-			'class'     => '',
-			'name'      => '',
-			'on_label'  => _x( 'Yes', 'switch label', 'wp-review' ),
-			'off_label' => _x( 'No', 'switch label', 'wp-review' ),
-			'value'     => 0,
-			'echo'      => true,
-			'disabled'  => false,
-		) );
-		$switch_id = $args['id'] ? $args['id'] : 'wpr-switch-' . mt_rand( 100, 999 );
+		$args = wp_parse_args(
+			$args,
+			array(
+				'id'        => '',
+				'class'     => '',
+				'name'      => '',
+				'on_label'  => _x( 'Yes', 'switch label', 'wp-review' ),
+				'off_label' => _x( 'No', 'switch label', 'wp-review' ),
+				'value'     => 0,
+				'echo'      => true,
+				'disabled'  => false,
+			)
+		);
+
+		$switch_id   = $args['id'] ? $args['id'] : 'wpr-switch-' . mt_rand( 100, 999 );
 		$switch_name = $args['name'] ? $args['name'] : $switch_id;
-		$value = intval( $args['value'] );
+		$value       = intval( $args['value'] );
 
 		if ( $args['disabled'] ) {
 			$args['class'] .= ' wp-review-disabled';

@@ -1,7 +1,15 @@
 <?php
+/**
+ * Review importer
+ *
+ * @package WP_Review
+ */
 
 defined( 'ABSPATH' ) || exit;
 
+/**
+ * Class WP_Review_Importer
+ */
 class WP_Review_Importer {
 
 	/**
@@ -11,6 +19,9 @@ class WP_Review_Importer {
 	 */
 	private $numposts;
 
+	/**
+	 * WP_Review_Importer constructor.
+	 */
 	public function __construct() {
 		add_action( 'wp_ajax_wp_review_import_options', array( $this, 'import_options' ) );
 		add_action( 'init', array( $this, 'extra_tasks' ) );

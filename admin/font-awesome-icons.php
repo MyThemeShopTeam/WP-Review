@@ -6,6 +6,7 @@
  * @since 3.0.0
  */
 
+// phpcs:disable
 return array(
 	'fa fa-star' => array( 'unicode' => '\f005', 'name' => 'Star' ),
 	'fa fa-500px' => array( 'unicode' => '\f26e', 'name' => '500px' ),
@@ -683,3 +684,4 @@ return array(
 	'fa fa-youtube-play' => array( 'unicode' => '\f16a', 'name' => 'Youtube play' ),
 	'fa fa-youtube-square' => array( 'unicode' => '\f166', 'name' => 'Youtube square' ),
 );
+// phpcs:enable

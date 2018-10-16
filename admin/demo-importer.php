@@ -6,15 +6,18 @@
  * @since 3.0.0
  */
 
-require_once( WP_REVIEW_ADMIN . 'demo-importer/class-wp-import.php' );
-require_once( WP_REVIEW_ADMIN . 'demo-importer/class-wp-review-demo-importer.php' );
+/**
+ * Require files.
+ */
+require_once WP_REVIEW_ADMIN . 'demo-importer/class-wp-import.php';
+require_once WP_REVIEW_ADMIN . 'demo-importer/class-wp-review-demo-importer.php';
 
 
 /**
  * Imports demo.
  */
 function wp_review_import_demo() {
-	$file = WP_REVIEW_INCLUDES . 'demo/demo-content.xml';
+	$file     = WP_REVIEW_INCLUDES . 'demo/demo-content.xml';
 	$importer = new WP_Review_Demo_Importer();
 	$importer->import( $file );
 }

@@ -8,18 +8,18 @@
 $options = get_option( 'wp_review_options' );
 
 $default_options = array(
-	'colors' => array(
-		'color'       => '',
+	'colors'                   => array(
+		'color'          => '',
 		'inactive_color' => '',
-		'fontcolor'   => '',
-		'bgcolor1'    => '',
-		'bgcolor2'    => '',
-		'bordercolor' => '',
+		'fontcolor'      => '',
+		'bgcolor1'       => '',
+		'bgcolor2'       => '',
+		'bordercolor'    => '',
 	),
-	'default_features'    => array(),
-	'default_link_texts'  => array(),
-	'default_link_urls'   => array(),
-	'default_schema_type' => 'Thing',
+	'default_features'         => array(),
+	'default_link_texts'       => array(),
+	'default_link_urls'        => array(),
+	'default_schema_type'      => 'Thing',
 	'default_user_review_type' => WP_REVIEW_REVIEW_DISABLED,
 	'image_sizes'              => array(),
 );
@@ -33,12 +33,12 @@ if ( empty( $options['image_sizes'] ) ) {
 	$options['image_sizes'] = array();
 }
 
-$opt_name = 'wp_review_options_' . wp_get_theme();
-$options_updated = get_option( $opt_name );
+$opt_name               = 'wp_review_options_' . wp_get_theme();
+$options_updated        = get_option( $opt_name );
 $suggest_theme_defaults = true;
-if ( ! empty( $_GET['wp-review-theme-defaults'] ) && empty( $_GET['settings-updated'] ) ) {
+if ( ! empty( $_GET['wp-review-theme-defaults'] ) && empty( $_GET['settings-updated'] ) ) { // WPCS: csrf ok.
 	wp_review_theme_defaults( $options_updated, true );
-	$options = get_option( 'wp_review_options' );
+	$options                = get_option( 'wp_review_options' );
 	$suggest_theme_defaults = false;
 }
 
@@ -48,34 +48,34 @@ if ( empty( $options_updated ) ) {
 }
 
 $opts_tmp = array_merge( $options, $options_updated );
-if ( $opts_tmp == $options ) {
+if ( $opts_tmp === $options ) {
 	$suggest_theme_defaults = false;
 }
 
 // Migrate.
 global $wpdb;
 $current_blog_id = get_current_blog_id();
-$total_rows = 0;
-$rows_left = 0;
-$migrated_rows = get_option( 'wp_review_migrated_rows', 0 );
-$has_migrated = get_option( 'wp_review_has_migrated', false );
-if ( ! $has_migrated && $wpdb->get_var( "SHOW TABLES LIKE '{$wpdb->base_prefix}mts_wp_reviews'" ) == "{$wpdb->base_prefix}mts_wp_reviews" ) {
+$total_rows      = 0;
+$rows_left       = 0;
+$migrated_rows   = get_option( 'wp_review_migrated_rows', 0 );
+$has_migrated    = get_option( 'wp_review_has_migrated', false );
+if ( ! $has_migrated && $wpdb->get_var( "SHOW TABLES LIKE '{$wpdb->base_prefix}mts_wp_reviews'" ) === "{$wpdb->base_prefix}mts_wp_reviews" ) {
 	// Table exists and not migrated (fully) yet.
-	$total_rows = $wpdb->get_var( "SELECT COUNT(*) FROM {$wpdb->base_prefix}mts_wp_reviews WHERE blog_id = {$current_blog_id}" );
-	$rows_left = $total_rows - $migrated_rows;
+	$total_rows = $wpdb->get_var( "SELECT COUNT(*) FROM {$wpdb->base_prefix}mts_wp_reviews WHERE blog_id = {$current_blog_id}" ); // WPCS: unprepared SQL ok.
+	$rows_left  = $total_rows - $migrated_rows;
 }
 
 $comment_form_integration = ( ! empty( $options['comment_form_integration'] ) ? $options['comment_form_integration'] : 'replace' );
-if ( 'replace' != $comment_form_integration ) {
+if ( 'replace' !== $comment_form_integration ) {
 	$comment_form_integration = 'extend';
 }
 
 $comments_template = ( ! empty( $options['comments_template'] ) ? $options['comments_template'] : 'theme' );
-if ( 'theme' != $comments_template ) {
+if ( 'theme' !== $comments_template ) {
 	$comments_template = 'plugin';
 }
 
-$default_colors = wp_review_get_default_colors();
+$default_colors   = wp_review_get_default_colors();
 $default_location = wp_review_get_default_location();
 $default_criteria = wp_review_get_default_criteria();
 
@@ -86,7 +86,7 @@ foreach ( $default_criteria as $item ) {
 		'wp_review_item_star'  => '',
 	);
 }
-$default_schema = $default_options['default_schema_type'];
+$default_schema           = $default_options['default_schema_type'];
 $default_user_review_type = empty( $options['default_user_review_type'] ) ? WP_REVIEW_REVIEW_DISABLED : $options['default_user_review_type'];
 
 $options['colors'] = apply_filters( 'wp_review_colors', $options['colors'], 0 );
@@ -94,48 +94,51 @@ if ( ! isset( $options['default'] ) ) {
 	$options['default'] = array();
 }
 /* Retrieve an existing value from the database. */
-$items = ! empty( $options['default_features'] ) ? $options['default_features'] : '';
-$link_texts = ! empty( $options['default_link_text'] ) ? $options['default_link_text'] : array();
-$link_urls = ! empty( $options['default_link_url'] ) ? $options['default_link_url'] : array();
-$location  = wp_review_option( 'review_location' );
-$color     = ! empty( $options['colors']['color'] ) ? $options['colors']['color'] : '';
-$inactive_color  = ! empty( $options['colors']['inactive_color'] ) ? $options['colors']['inactive_color'] : '';
-$fontcolor = ! empty( $options['colors']['fontcolor'] ) ? $options['colors']['fontcolor'] : '';
-$bgcolor1  = ! empty( $options['colors']['bgcolor1'] ) ? $options['colors']['bgcolor1'] : '';
-$bgcolor2  = ! empty( $options['colors']['bgcolor2'] ) ? $options['colors']['bgcolor2'] : '';
-$bordercolor  = ! empty( $options['colors']['bordercolor'] ) ? $options['colors']['bordercolor'] : '';
+$items          = ! empty( $options['default_features'] ) ? $options['default_features'] : '';
+$link_texts     = ! empty( $options['default_link_text'] ) ? $options['default_link_text'] : array();
+$link_urls      = ! empty( $options['default_link_url'] ) ? $options['default_link_url'] : array();
+$location       = wp_review_option( 'review_location' );
+$color          = ! empty( $options['colors']['color'] ) ? $options['colors']['color'] : '';
+$inactive_color = ! empty( $options['colors']['inactive_color'] ) ? $options['colors']['inactive_color'] : '';
+$fontcolor      = ! empty( $options['colors']['fontcolor'] ) ? $options['colors']['fontcolor'] : '';
+$bgcolor1       = ! empty( $options['colors']['bgcolor1'] ) ? $options['colors']['bgcolor1'] : '';
+$bgcolor2       = ! empty( $options['colors']['bgcolor2'] ) ? $options['colors']['bgcolor2'] : '';
+$bordercolor    = ! empty( $options['colors']['bordercolor'] ) ? $options['colors']['bordercolor'] : '';
 
 $force_user_ratings = wp_review_option( 'force_user_ratings' );
 
-$rating_icon = wp_review_option( 'rating_icon', apply_filters( 'wp_review_default_rating_icon', 'fa fa-star' ) );
+$rating_icon  = wp_review_option( 'rating_icon', apply_filters( 'wp_review_default_rating_icon', 'fa fa-star' ) );
 $rating_image = wp_review_option( 'rating_image' );
 
 $review_templates = wp_review_get_box_templates();
-$box_template = wp_review_option( 'box_template', 'default' );
+$box_template     = wp_review_option( 'box_template', 'default' );
 $box_template_img = ! empty( $review_templates[ $box_template ] ) ? $review_templates[ $box_template ]['image'] : WP_REVIEW_ASSETS . 'images/largethumb.png';
 
 $review_types = wp_review_get_rating_types();
-$review_type = wp_review_option( 'review_type', 'none' );
+$review_type  = wp_review_option( 'review_type', 'none' );
 
-if ( '' == $items ) {
+if ( '' === $items ) {
 	$items = $default_items;
 }
-if ( '' == $color ) {
+if ( '' === $color ) {
 	$color = $default_colors['color'];
 }
-if ( '' == $location ) {
+if ( '' === $inactive_color ) {
+	$inactive_color = $default_colors['inactive_color'];
+}
+if ( '' === $location ) {
 	$location = $default_location;
 }
-if ( '' == $fontcolor ) {
+if ( '' === $fontcolor ) {
 	$fontcolor = $default_colors['fontcolor'];
 }
-if ( '' == $bgcolor1 ) {
+if ( '' === $bgcolor1 ) {
 	$bgcolor1 = $default_colors['bgcolor1'];
 }
-if ( '' == $bgcolor2 ) {
+if ( '' === $bgcolor2 ) {
 	$bgcolor2 = $default_colors['bgcolor2'];
 }
-if ( '' == $bordercolor ) {
+if ( '' === $bordercolor ) {
 	$bordercolor = $default_colors['bordercolor'];
 }
 if ( empty( $width ) ) {
@@ -143,26 +146,29 @@ if ( empty( $width ) ) {
 }
 
 $fields = array(
-	'location' => true,
-	'color' => true,
-	'inactive_color' => true,
-	'fontcolor' => true,
-	'bgcolor1' => true,
-	'bgcolor2' => true,
-	'bordercolor' => true,
-	'custom_colors' => true,
+	'location'        => true,
+	'color'           => true,
+	'inactive_color'  => true,
+	'fontcolor'       => true,
+	'bgcolor1'        => true,
+	'bgcolor2'        => true,
+	'bordercolor'     => true,
+	'custom_colors'   => true,
 	'custom_location' => true,
 );
 
 $displayed_fields = apply_filters( 'wp_review_metabox_item_fields', $fields );
 
-$available_types = apply_filters( 'wp_review_metabox_types', array(
-	'star'       => __( 'Star', 'wp-review' ),
-	'point'      => __( 'Point', 'wp-review' ),
-	'percentage' => __( 'Percentage', 'wp-review' ),
-	'circle'     => __( 'Circle', 'wp-review' ),
-	'thumbs'     => __( 'Thumbs', 'wp-review' ),
-));
+$available_types = apply_filters(
+	'wp_review_metabox_types',
+	array(
+		'star'       => __( 'Star', 'wp-review' ),
+		'point'      => __( 'Point', 'wp-review' ),
+		'percentage' => __( 'Percentage', 'wp-review' ),
+		'circle'     => __( 'Circle', 'wp-review' ),
+		'thumbs'     => __( 'Thumbs', 'wp-review' ),
+	)
+);
 
 $form_field = new WP_Review_Form_Field();
 ?>
@@ -185,14 +191,15 @@ $form_field = new WP_Review_Form_Field();
 			echo '<p class="wp-review-filter-msg"><div class="dashicons dashicons-info"></div>' . esc_html__( 'There is a filter set for the review location that may modify the options below.', 'wp-review' ) . '</p>';
 		}
 
-		if ( $suggest_theme_defaults ) { ?>
-		<div class="wp-review-theme-defaults-msg updated settings-error">
-			<p class="wp-review-field">
-				<?php esc_html_e( 'The current theme provides default settings for the plugin.', 'wp-review' ); ?><br />
-			</p>
-			<a href="<?php echo admin_url( 'options-general.php?page=wp-review/admin/options.php&wp-review-theme-defaults=1' ); ?>" class="button button-primary"><?php esc_html_e( 'Set to theme defaults', 'wp-review' ); ?></a>
-			<a href="#" class="dashicons dashicons-no-alt close-notice"></a>
-		</div>
+		if ( $suggest_theme_defaults ) {
+			?>
+			<div class="wp-review-theme-defaults-msg updated settings-error">
+				<p class="wp-review-field">
+					<?php esc_html_e( 'The current theme provides default settings for the plugin.', 'wp-review' ); ?><br />
+				</p>
+				<a href="<?php echo admin_url( 'options-general.php?page=wp-review/admin/options.php&wp-review-theme-defaults=1' ); // WPCS: xss ok. ?>" class="button button-primary"><?php esc_html_e( 'Set to theme defaults', 'wp-review' ); ?></a>
+				<a href="#" class="dashicons dashicons-no-alt close-notice"></a>
+			</div>
 		<?php } ?>
 
 		<div class="wp-review-field">
@@ -202,11 +209,13 @@ $form_field = new WP_Review_Form_Field();
 
 			<div class="wp-review-field-option">
 				<?php
-				$form_field->render_switch( array(
-					'id'    => 'wp_review_registered_only',
-					'name'  => 'wp_review_options[registered_only]',
-					'value' => ! empty( $options['registered_only'] ),
-				) );
+				$form_field->render_switch(
+					array(
+						'id'    => 'wp_review_registered_only',
+						'name'  => 'wp_review_options[registered_only]',
+						'value' => ! empty( $options['registered_only'] ),
+					)
+				);
 				?>
 			</div>
 		</div>
@@ -219,11 +228,13 @@ $form_field = new WP_Review_Form_Field();
 
 			<div class="wp-review-field-option">
 				<?php
-				$form_field->render_switch( array(
-					'id'       => 'wp_review_show_on_thumbnails',
-					'name'     => 'wp_review_options[show_on_thumbnails]',
-					'disabled' => true,
-				) );
+				$form_field->render_switch(
+					array(
+						'id'       => 'wp_review_show_on_thumbnails',
+						'name'     => 'wp_review_options[show_on_thumbnails]',
+						'disabled' => true,
+					)
+				);
 				?>
 			</div>
 		</div>
@@ -236,11 +247,13 @@ $form_field = new WP_Review_Form_Field();
 
 			<div class="wp-review-field-option">
 				<?php
-				$form_field->render_switch( array(
-					'id'       => 'wp_review_global_user_rating',
-					'name'     => 'wp_review_options[global_user_rating]',
-					'disabled' => true,
-				) );
+				$form_field->render_switch(
+					array(
+						'id'       => 'wp_review_global_user_rating',
+						'name'     => 'wp_review_options[global_user_rating]',
+						'disabled' => true,
+					)
+				);
 				?>
 			</div>
 		</div>
@@ -254,11 +267,13 @@ $form_field = new WP_Review_Form_Field();
 
 				<div class="wp-review-field-option">
 					<?php
-					$form_field->render_switch( array(
-						'id'       => 'wp_review_replace_wc_rating',
-						'name'     => 'wp_review_options[replace_wc_rating]',
-						'disabled' => true,
-					) );
+					$form_field->render_switch(
+						array(
+							'id'       => 'wp_review_replace_wc_rating',
+							'name'     => 'wp_review_options[replace_wc_rating]',
+							'disabled' => true,
+						)
+					);
 					?>
 				</div>
 			</div>
@@ -272,11 +287,13 @@ $form_field = new WP_Review_Form_Field();
 
 			<div class="wp-review-field-option">
 				<?php
-				$form_field->render_switch( array(
-					'id'       => 'wp_review_dequeue_map_backend',
-					'name'     => 'wp_review_options[dequeue_map_backend]',
-					'disabled' => true,
-				) );
+				$form_field->render_switch(
+					array(
+						'id'       => 'wp_review_dequeue_map_backend',
+						'name'     => 'wp_review_options[dequeue_map_backend]',
+						'disabled' => true,
+					)
+				);
 				?>
 			</div>
 
@@ -357,11 +374,13 @@ $form_field = new WP_Review_Form_Field();
 
 			<div class="wp-review-field-option">
 				<?php
-				$form_field->render_switch( array(
-					'id'       => 'wp_review_require_rating',
-					'name'     => 'wp_review_options[require_rating]',
-					'disabled' => true,
-				) );
+				$form_field->render_switch(
+					array(
+						'id'       => 'wp_review_require_rating',
+						'name'     => 'wp_review_options[require_rating]',
+						'disabled' => true,
+					)
+				);
 				?>
 			</div>
 		</div>
@@ -374,11 +393,13 @@ $form_field = new WP_Review_Form_Field();
 
 			<div class="wp-review-field-option">
 				<?php
-				$form_field->render_switch( array(
-					'id'       => 'wp_review_allow_comment_feedback',
-					'name'     => 'wp_review_options[allow_comment_feedback]',
-					'disabled' => true,
-				) );
+				$form_field->render_switch(
+					array(
+						'id'       => 'wp_review_allow_comment_feedback',
+						'name'     => 'wp_review_options[allow_comment_feedback]',
+						'disabled' => true,
+					)
+				);
 				?>
 			</div>
 		</div>
@@ -399,7 +420,9 @@ $form_field = new WP_Review_Form_Field();
 			</div>
 		</div>
 
-		<?php /*<div class="wp-review-field">
+		<?php
+		// phpcs:disable
+		/*<div class="wp-review-field">
 			<div class="wp-review-field-label">
 				<label><?php esc_html_e( 'Show text count with Star ratings', 'wp-review' ); ?></label>
 			</div>
@@ -413,7 +436,9 @@ $form_field = new WP_Review_Form_Field();
 				) );
 				?>
 			</div>
-		</div>*/ ?>
+		</div>*/
+		// phpcs:enable
+		?>
 
 		<div class="wp-review-field">
 			<div class="wp-review-field-label">
@@ -422,11 +447,13 @@ $form_field = new WP_Review_Form_Field();
 
 			<div class="wp-review-field-option">
 				<?php
-				$form_field->render_switch( array(
-					'id'    => 'wp_review_multi_reviews_per_account',
-					'name'  => 'wp_review_options[multi_reviews_per_account]',
-					'value' => ! empty( $options['multi_reviews_per_account'] ),
-				) );
+				$form_field->render_switch(
+					array(
+						'id'    => 'wp_review_multi_reviews_per_account',
+						'name'  => 'wp_review_options[multi_reviews_per_account]',
+						'value' => ! empty( $options['multi_reviews_per_account'] ),
+					)
+				);
 				?>
 			</div>
 		</div>
@@ -439,11 +466,13 @@ $form_field = new WP_Review_Form_Field();
 
 			<div class="wp-review-field-option">
 				<?php
-				$form_field->render_switch( array(
-					'id'       => 'wp_review_comment_pros_cons',
-					'name'     => 'wp_review_options[comment_pros_cons]',
-					'disabled' => true,
-				) );
+				$form_field->render_switch(
+					array(
+						'id'       => 'wp_review_comment_pros_cons',
+						'name'     => 'wp_review_options[comment_pros_cons]',
+						'disabled' => true,
+					)
+				);
 				?>
 			</div>
 		</div>
@@ -456,15 +485,19 @@ $form_field = new WP_Review_Form_Field();
 
 			<div class="wp-review-field-option">
 				<?php
-				$form_field->render_switch( array(
-					'id'       => 'wp_review_approve_ratings',
-					'name'     => 'wp_review_options[approve_ratings]',
-					'disabled' => true,
-				) );
+				$form_field->render_switch(
+					array(
+						'id'       => 'wp_review_approve_ratings',
+						'name'     => 'wp_review_options[approve_ratings]',
+						'disabled' => true,
+					)
+				);
 				?>
 			</div>
 		</div>
-		<?php if(current_user_can('wp_review_purge_visitor_ratings')) { ?>
+		<?php
+		if ( current_user_can( 'wp_review_purge_visitor_ratings' ) ) {
+			?>
 			<p style="margin-top: 50px;">
 				<button
 					type="button"
@@ -522,7 +555,7 @@ $form_field = new WP_Review_Form_Field();
 
 		<div class="wp-review-color-options">
 
-			<div class="wp-review-field"<?php if ( empty( $displayed_fields['color'] ) ) echo ' style="display: none;"'; ?>>
+			<div class="wp-review-field"<?php if ( empty( $displayed_fields['color'] ) ) echo ' style="display: none;"'; // phpcS:ignore ?>>
 				<div class="wp-review-field-label">
 					<label for="wp_review_color"><?php esc_html_e( 'Review Color', 'wp-review' ); ?></label>
 				</div>
@@ -532,7 +565,7 @@ $form_field = new WP_Review_Form_Field();
 				</div>
 			</div>
 
-			<div class="wp-review-field"<?php if ( empty( $displayed_fields['inactive_color'] ) ) echo ' style="display: none;"'; ?>>
+			<div class="wp-review-field"<?php if ( empty( $displayed_fields['inactive_color'] ) ) echo ' style="display: none;"'; // phpcs:ignore ?>>
 				<div class="wp-review-field-label">
 					<label for="wp_review_inactive_color"><?php esc_html_e( 'Inactive Review Color', 'wp-review' ); ?></label>
 				</div>
@@ -542,7 +575,7 @@ $form_field = new WP_Review_Form_Field();
 				</div>
 			</div>
 
-			<div class="wp-review-field"<?php if ( empty( $displayed_fields['fontcolor'] ) ) echo ' style="display: none;"'; ?>>
+			<div class="wp-review-field"<?php if ( empty( $displayed_fields['fontcolor'] ) ) echo ' style="display: none;"'; // phpcs:ignore ?>>
 				<div class="wp-review-field-label">
 					<label for="wp_review_fontcolor"><?php esc_html_e( 'Font Color', 'wp-review' ); ?></label>
 				</div>
@@ -552,7 +585,7 @@ $form_field = new WP_Review_Form_Field();
 				</div>
 			</div>
 
-			<div class="wp-review-field"<?php if ( empty( $displayed_fields['bgcolor1'] ) ) echo ' style="display: none;"'; ?>>
+			<div class="wp-review-field"<?php if ( empty( $displayed_fields['bgcolor1'] ) ) echo ' style="display: none;"'; // phpcs:ignore ?>>
 				<div class="wp-review-field-label">
 					<label for="wp_review_bgcolor1"><?php esc_html_e( 'Heading Background Color', 'wp-review' ); ?></label>
 				</div>
@@ -562,7 +595,7 @@ $form_field = new WP_Review_Form_Field();
 				</div>
 			</div>
 
-			<div class="wp-review-field"<?php if ( empty( $displayed_fields['bgcolor2'] ) ) echo ' style="display: none;"'; ?>>
+			<div class="wp-review-field"<?php if ( empty( $displayed_fields['bgcolor2'] ) ) echo ' style="display: none;"'; //phpcs:ignore ?>>
 				<div class="wp-review-field-label">
 					<label for="wp_review_bgcolor2"><?php esc_html_e( 'Background Color', 'wp-review' ); ?></label>
 				</div>
@@ -572,7 +605,7 @@ $form_field = new WP_Review_Form_Field();
 				</div>
 			</div>
 
-			<div class="wp-review-field"<?php if ( empty( $displayed_fields['bordercolor'] ) ) echo ' style="display: none;"'; ?>>
+			<div class="wp-review-field"<?php if ( empty( $displayed_fields['bordercolor'] ) ) echo ' style="display: none;"'; // phpcs:ignore ?>>
 				<div class="wp-review-field-label">
 					<label for="wp_review_bordercolor"><?php esc_html_e( 'Border Color', 'wp-review' ); ?></label>
 				</div>
@@ -600,18 +633,20 @@ $form_field = new WP_Review_Form_Field();
 			<div class="wp-review-field-label">
 				<label><?php esc_html_e( 'Google Font', 'wp-review' ); ?></label><br>
 				<span class="description">
-					<?php _e( 'Many templates use Google Font, select <code>No</code> to use default theme font.', 'wp-review' ); ?>
+					<?php _e( 'Many templates use Google Font, select <code>No</code> to use default theme font.', 'wp-review' ); // WPCS: xss ok. ?>
 				</span>
 				<?php wp_review_print_pro_text(); ?>
 			</div>
 
 			<div class="wp-review-field-option">
 				<?php
-				$form_field->render_switch( array(
-					'id'       => 'wp_review_fontfamily',
-					'name'     => 'wp_review_options[fontfamily]',
-					'disabled' => true,
-				) );
+				$form_field->render_switch(
+					array(
+						'id'       => 'wp_review_fontfamily',
+						'name'     => 'wp_review_options[fontfamily]',
+						'disabled' => true,
+					)
+				);
 				?>
 			</div>
 		</div>
@@ -627,11 +662,13 @@ $form_field = new WP_Review_Form_Field();
 
 			<div class="wp-review-field-option">
 				<?php
-				$form_field->render_switch( array(
-					'id'       => 'wp_review_custom_comment_colors',
-					'name'     => 'wp_review_options[custom_comment_colors]',
-					'disabled' => true,
-				) );
+				$form_field->render_switch(
+					array(
+						'id'       => 'wp_review_custom_comment_colors',
+						'name'     => 'wp_review_options[custom_comment_colors]',
+						'disabled' => true,
+					)
+				);
 				?>
 			</div>
 		</div>
@@ -657,7 +694,7 @@ $form_field = new WP_Review_Form_Field();
 					?>
 				</select>
 			</div>
-			<a href="#" class="wpr-toggle-rating wp-review-disabled inline-block has-bg"><?php _e('Use Image', 'wp-review'); ?></a>
+			<a href="#" class="wpr-toggle-rating wp-review-disabled inline-block has-bg"><?php esc_html_e( 'Use Image', 'wp-review' ); ?></a>
 		</div>
 	</div>
 
@@ -695,7 +732,7 @@ $form_field = new WP_Review_Form_Field();
 			</div>
 		</div>
 
-		<div class="wp-review-field"<?php if ( empty( $displayed_fields['location'] ) ) echo ' style="display: none;"'; ?>>
+		<div class="wp-review-field"<?php if ( empty( $displayed_fields['location'] ) ) echo ' style="display: none;"'; // phpcs:ignore ?>>
 			<div class="wp-review-field-label">
 				<label for="wp_review_location"><?php esc_html_e( 'Review Location', 'wp-review' ); ?></label>
 			</div>
@@ -741,9 +778,9 @@ $form_field = new WP_Review_Form_Field();
 							<?php if ( ! empty( $item ) ) : ?>
 								<tr>
 									<td style="padding:0">
-										<input type="text" name="wp_review_options[default_features][]" value="<?php if ( ! empty( $item ) ) echo esc_attr( $item ); ?>" <?php echo $has_criteria_filter ? 'disabled="disabled" readonly="readonly"' : ''; ?> />
+										<input type="text" name="wp_review_options[default_features][]" value="<?php if ( ! empty( $item ) ) echo esc_attr( $item ); // phpcs:ignore ?>" <?php echo $has_criteria_filter ? 'disabled="disabled" readonly="readonly"' : ''; ?> />
 										<?php if ( ! $has_criteria_filter ) : ?>
-											<a class="button remove-row" href="#"><?php _e( 'Delete', 'wp-review' ); ?></a>
+											<a class="button remove-row" href="#"><?php esc_html_e( 'Delete', 'wp-review' ); ?></a>
 										<?php endif; ?>
 									</td>
 								</tr>
@@ -754,9 +791,9 @@ $form_field = new WP_Review_Form_Field();
 							<?php if ( ! empty( $item ) ) : ?>
 								<tr>
 									<td style="padding:0">
-										<input type="text" name="wp_review_options[default_features][]" value="<?php if ( ! empty( $item ) ) echo esc_attr( $item ); ?>" <?php echo $has_criteria_filter ? 'disabled="disabled" readonly="readonly"' : ''; ?> />
+										<input type="text" name="wp_review_options[default_features][]" value="<?php if ( ! empty( $item ) ) echo esc_attr( $item ); // phpcs:ignore ?>" <?php echo $has_criteria_filter ? 'disabled="disabled" readonly="readonly"' : ''; ?> />
 										<?php if ( ! $has_criteria_filter ) : ?>
-											<a class="button remove-row" href="#"><?php _e( 'Delete', 'wp-review' ); ?></a>
+											<a class="button remove-row" href="#"><?php esc_html_e( 'Delete', 'wp-review' ); ?></a>
 										<?php endif; ?>
 									</td>
 								</tr>
@@ -766,14 +803,14 @@ $form_field = new WP_Review_Form_Field();
 					<tr class="empty-row screen-reader-text">
 						<td style="padding:0">
 							<input class="focus-on-add" type="text" name="wp_review_options[default_features][]" />
-							<a class="button remove-row" href="#"><?php _e( 'Delete', 'wp-review' ); ?></a>
+							<a class="button remove-row" href="#"><?php esc_html_e( 'Delete', 'wp-review' ); ?></a>
 						</td>
 					</tr>
 				</table>
 				<?php if ( $has_criteria_filter ) : ?>
-					<p class="description"><?php _e( 'Default features are set by a filter function. Remove it to change.', 'wp-review' ); ?></p>
+					<p class="description"><?php esc_html_e( 'Default features are set by a filter function. Remove it to change.', 'wp-review' ); ?></p>
 				<?php else : ?>
-					<a class="add-row button" data-target="#wp-review-item" href="#"><?php _e( 'Add default feature', 'wp-review' ); ?></a>
+					<a class="add-row button" data-target="#wp-review-item" href="#"><?php esc_html_e( 'Add default feature', 'wp-review' ); ?></a>
 				<?php endif; ?>
 			</div>
 		</div>
@@ -785,14 +822,14 @@ $form_field = new WP_Review_Form_Field();
 
 			<div class="wp-review-field-option">
 				<table id="wp-review-link">
-					<?php if ( ! empty ( $link_texts ) ) : ?>
+					<?php if ( ! empty( $link_texts ) ) : ?>
 						<?php foreach ( $link_texts as $key => $text ) : ?>
 							<?php if ( ! empty( $text ) && ! empty( $link_urls[ $key ] ) ) : ?>
 								<tr>
 									<td style="padding:0">
 										<input type="text" name="wp_review_options[default_link_text][]" placeholder="Text" value="<?php echo esc_attr( $text ); ?>" />
 										<input type="url" name="wp_review_options[default_link_url][]" placeholder="URL" value="<?php echo esc_url( $link_urls[ $key ] ); ?>" />
-										<a class="button remove-row" href="#"><?php _e( 'Delete', 'wp-review' ); ?></a>
+										<a class="button remove-row" href="#"><?php esc_html_e( 'Delete', 'wp-review' ); ?></a>
 									</td>
 								</tr>
 							<?php endif; ?>
@@ -802,11 +839,11 @@ $form_field = new WP_Review_Form_Field();
 						<td style="padding:0">
 							<input class="focus-on-add" type="text" name="wp_review_options[default_link_text][]" placeholder="Text" />
 							<input type="url" name="wp_review_options[default_link_url][]" placeholder="URL" />
-							<a class="button remove-row" href="#"><?php _e( 'Delete', 'wp-review' ); ?></a>
+							<a class="button remove-row" href="#"><?php esc_html_e( 'Delete', 'wp-review' ); ?></a>
 						</td>
 					</tr>
 				</table>
-				<a class="add-row button" data-target="#wp-review-link" href="#"><?php _e( 'Add default link', 'wp-review' ); ?></a>
+				<a class="add-row button" data-target="#wp-review-link" href="#"><?php esc_html_e( 'Add default link', 'wp-review' ); ?></a>
 			</div>
 		</div>
 
@@ -853,11 +890,13 @@ $form_field = new WP_Review_Form_Field();
 
 			<div class="wp-review-field-option">
 				<?php
-				$form_field->render_switch( array(
-					'id'       => 'wp_review_enable_embed',
-					'name'     => 'wp_review_options[enable_embed]',
-					'disabled' => true,
-				) );
+				$form_field->render_switch(
+					array(
+						'id'       => 'wp_review_enable_embed',
+						'name'     => 'wp_review_options[enable_embed]',
+						'disabled' => true,
+					)
+				);
 				?>
 			</div>
 		</div>
@@ -870,11 +909,13 @@ $form_field = new WP_Review_Form_Field();
 
 			<div class="wp-review-field-option">
 				<?php
-				$form_field->render_switch( array(
-					'id'       => 'wp_review_embed_show_title',
-					'name'     => 'wp_review_options[embed_show_title]',
-					'disabled' => true,
-				) );
+				$form_field->render_switch(
+					array(
+						'id'       => 'wp_review_embed_show_title',
+						'name'     => 'wp_review_options[embed_show_title]',
+						'disabled' => true,
+					)
+				);
 				?>
 			</div>
 		</div>
@@ -887,11 +928,13 @@ $form_field = new WP_Review_Form_Field();
 
 			<div class="wp-review-field-option">
 				<?php
-				$form_field->render_switch( array(
-					'id'       => 'wp_review_embed_show_thumbnail',
-					'name'     => 'wp_review_options[embed_show_thumbnail]',
-					'disabled' => true,
-				) );
+				$form_field->render_switch(
+					array(
+						'id'       => 'wp_review_embed_show_thumbnail',
+						'name'     => 'wp_review_options[embed_show_thumbnail]',
+						'disabled' => true,
+					)
+				);
 				?>
 			</div>
 		</div>
@@ -904,11 +947,13 @@ $form_field = new WP_Review_Form_Field();
 
 			<div class="wp-review-field-option">
 				<?php
-				$form_field->render_switch( array(
-					'id'       => 'wp_review_embed_show_excerpt',
-					'name'     => 'wp_review_options[embed_show_excerpt]',
-					'disabled' => true,
-				) );
+				$form_field->render_switch(
+					array(
+						'id'       => 'wp_review_embed_show_excerpt',
+						'name'     => 'wp_review_options[embed_show_excerpt]',
+						'disabled' => true,
+					)
+				);
 				?>
 			</div>
 		</div>
@@ -921,11 +966,13 @@ $form_field = new WP_Review_Form_Field();
 
 			<div class="wp-review-field-option">
 				<?php
-				$form_field->render_switch( array(
-					'id'       => 'wp_review_embed_show_rating_box',
-					'name'     => 'wp_review_options[embed_show_rating_box]',
-					'disabled' => true,
-				) );
+				$form_field->render_switch(
+					array(
+						'id'       => 'wp_review_embed_show_rating_box',
+						'name'     => 'wp_review_options[embed_show_rating_box]',
+						'disabled' => true,
+					)
+				);
 				?>
 			</div>
 		</div>
@@ -938,11 +985,13 @@ $form_field = new WP_Review_Form_Field();
 
 			<div class="wp-review-field-option">
 				<?php
-				$form_field->render_switch( array(
-					'id'       => 'wp_review_embed_show_credit',
-					'name'     => 'wp_review_options[embed_show_credit]',
-					'disabled' => true,
-				) );
+				$form_field->render_switch(
+					array(
+						'id'       => 'wp_review_embed_show_credit',
+						'name'     => 'wp_review_options[embed_show_credit]',
+						'disabled' => true,
+					)
+				);
 				?>
 			</div>
 		</div>
@@ -952,7 +1001,12 @@ $form_field = new WP_Review_Form_Field();
 		<div id="review-migrate" class="settings-tab-migrate tab-content" style="display: none;">
 			<div id="settings-allow-migrate">
 				<p><?php esc_html_e( 'Here you can import your existing user ratings from WP Review 1.x and WP Review Pro 1.x.', 'wp-review' ); ?></p>
-				<p class="migrate-items"><?php printf( esc_html__( '%s ratings left to import.', 'wp-review' ), '<span id="migrate-items-num">' . $rows_left . '</span>' ); ?></p>
+				<p class="migrate-items">
+					<?php
+					// translators: number of rows left.
+					printf( esc_html__( '%s ratings left to import.', 'wp-review' ), '<span id="migrate-items-num">' . intval( $rows_left ) . '</span>' );
+					?>
+				</p>
 				<a href="#" class="button button-secondary" id="start-migrate" data-start="<?php echo esc_attr( $migrated_rows ); ?>"><?php esc_html_e( 'Start import', 'wp-review' ); ?></a>
 				<textarea id="wp-review-migrate-log"></textarea>
 			</div>

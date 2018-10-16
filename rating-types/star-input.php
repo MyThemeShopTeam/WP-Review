@@ -19,15 +19,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 wp_enqueue_script( 'wp-review-star-input', trailingslashit( WP_REVIEW_URI ) . 'rating-types/star-input.js', array( 'jquery' ) );
 
 // $feature_selector = empty( $rating['feature_id'] ) ? '' : "[data-feature-id=\"{$rating['feature_id']}\"]";
-
 $class = 'wp-review-rating-input review-star';
 if ( ! empty( $rating['args']['class'] ) ) {
 	$class .= sanitize_html_class( $rating['args']['class'] );
 }
 
-$rating_icon = wp_review_get_rating_icon();
-$rating_image = wp_review_get_rating_image();
-$id = 'wp-review-star-rating-' . mt_rand( 1000, 9999 );
+$rating_icon      = wp_review_get_rating_icon();
+$rating_image     = wp_review_get_rating_image();
+$id               = 'wp-review-star-rating-' . mt_rand( 1000, 9999 );
 $wrapper_selector = '#' . $id;
 ?>
 <div id="<?php echo esc_attr( $id ); ?>" class="<?php echo esc_attr( $class ); ?>" data-post-id="<?php echo esc_attr( $rating['post_id'] ); ?>" data-token="<?php echo esc_attr( wp_create_nonce( 'wp-review-security' ) ); ?>">
@@ -44,7 +43,7 @@ $wrapper_selector = '#' . $id;
 					'<span class="wpr-has-image" data-input-value="%1$s" title="%1$s/5"><img src="%2$s" class="wp-review-image" /></span>',
 					esc_attr( $i ),
 					$rating_image
-				);
+				); // WPCS: xss ok.
 			} else {
 				printf(
 					'<span data-input-value="%1$s" title="%1$s/5"><i class="%2$s"></i></span>',
