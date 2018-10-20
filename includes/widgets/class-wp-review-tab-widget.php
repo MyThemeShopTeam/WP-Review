@@ -166,14 +166,14 @@ class WP_Review_Tab_Widget extends WP_Widget {
 					<select name="<?php echo esc_attr( $this->get_field_name( 'review_type' ) ); ?>" id="<?php echo esc_attr( $this->get_field_id( 'review_type' ) ); ?>">
 						<?php
 						$review_types = wp_review_get_rating_types();
-						foreach ( $review_types as $name => $review_type ) {
-							$disabled = ! in_array( $name, array( 'star', 'point', 'percentage' ) );
+						foreach ( $review_types as $name => $type ) {
+							$disabled = ! in_array( $name, array( 'star', 'point', 'percentage' ), true );
 							printf(
 								'<option value="%1$s" class="%2$s" %3$s>%4$s</option>',
 								esc_attr( $name ),
 								$disabled ? 'disabled' : '',
-								selected( $name, $instance['review_type'], false ),
-								esc_html( $review_type['label'] )
+								selected( $name, $review_type, false ),
+								esc_html( $type['label'] )
 							);
 						}
 						?>
