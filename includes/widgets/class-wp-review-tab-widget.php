@@ -90,7 +90,7 @@ class WP_Review_Tab_Widget extends WP_Widget {
 					'custom'    => __( 'Editor\'s choice', 'wp-review' ),
 				),
 				'allow_pagination'        => 1,
-				'review_type'             => array(),
+				'review_type'             => '',
 				'post_num'                => '5',
 				'comment_num'             => '5',
 				'thumb_size'              => 'small',
@@ -113,7 +113,6 @@ class WP_Review_Tab_Widget extends WP_Widget {
 			$instance['tab_titles']['recent_ratings'] = __( 'Comments', 'wp-review' );
 		}
 		extract( $instance ); // phpcs:ignore
-		$review_type = (array) $review_type;
 		?>
 		<div class="wp_review_tab_options_form">
 			<h4><?php esc_html_e( 'Select Tabs', 'wp-review' ); ?></h4>
