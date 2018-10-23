@@ -103,6 +103,9 @@ Please disable all plugins and check if rating is working properly. Then you can
 
 == Changelog ==
 
+= v5.1.1 (Oct 23, 2018) =
+* Fixed PHP error in widget
+
 = v5.1.0 (Oct 17, 2018) =
 * Removed unnecessary scripts from the non WP Review admin pages
 * Fixed total rating disappearing issue if there are no features
