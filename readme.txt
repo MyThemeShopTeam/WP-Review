@@ -4,7 +4,7 @@ Creator's website link: http://mythemeshop.com/plugins/wp-review/
 Tags: review, wp review, rating, wp rating, user rating, google rating, star rating, product review
 Requires at least: 4.0
 Tested up to: 4.9.8
-Stable tag: 5.1.0
+Stable tag: 5.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -102,6 +102,9 @@ Please disable all plugins and check if rating is working properly. Then you can
 7. Percentage Review type
 
 == Changelog ==
+
+= v5.1.1 (Nov 1, 2018) =
+* Fixed PHP error in review widget
 
 = v5.1.0 (Oct 17, 2018) =
 * Removed unnecessary scripts from the non WP Review admin pages
