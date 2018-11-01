@@ -104,7 +104,7 @@ Please disable all plugins and check if rating is working properly. Then you can
 == Changelog ==
 
 = v5.1.1 (Nov 1, 2018) =
-* Fixed PHP error in review widget
+* Fixed PHP error in the review widget
 
 = v5.1.0 (Oct 17, 2018) =
 * Removed unnecessary scripts from the non WP Review admin pages
