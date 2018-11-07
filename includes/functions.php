@@ -3079,7 +3079,7 @@ function wp_review_visitor_rate( $post_id, $rating_data ) {
 					$output['html']    = wp_review_get_review_box( $post_id );
 					$output['reviews'] = $reviews;
 				} else {
-					$post_reviews           = mts_get_post_reviews( $post_id );
+					$post_reviews           = mts_get_post_reviews( $post_id, true );
 					$output['html']         = wp_review_rating( $post_reviews['rating'], $post_id, array( 'user_rating' => true ) );
 					$output['rating_total'] = $post_reviews['rating'];
 					$output['rating_count'] = $post_reviews['count'];
