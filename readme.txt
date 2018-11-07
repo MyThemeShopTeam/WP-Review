@@ -103,6 +103,9 @@ Please disable all plugins and check if rating is working properly. Then you can
 
 == Changelog ==
 
+= v5.1.2 (Nov 7, 2018) =
+* Fixed wrong total rating calculation
+
 = v5.1.1 (Nov 1, 2018) =
 * Fixed PHP error in the review widget
 
