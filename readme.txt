@@ -103,8 +103,8 @@ Please disable all plugins and check if rating is working properly. Then you can
 
 == Changelog ==
 
-= v5.1.3 (Nov 8, 2018) =
-* Fixed editor-plugin.js scripts loading on front-end, causes JS error
+= v5.1.3 (Nov 14, 2018) =
+* Fixed editor-plugin.js scripts loading in the front-end
 
 = v5.1.2 (Nov 7, 2018) =
 * Fixed wrong total rating calculation
