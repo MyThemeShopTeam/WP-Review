@@ -432,7 +432,9 @@ add_filter( 'mce_buttons', 'wp_review_editor_buttons' );
  * @return array
  */
 function wp_review_editor_js( $plugin_array ) {
-	$plugin_array['wp_review'] = WP_REVIEW_URI . 'admin/assets/js/editor-plugin.js';
+	if ( is_admin() ) {
+		$plugin_array['wp_review'] = WP_REVIEW_URI . 'admin/assets/js/editor-plugin.js';
+	}
 	return $plugin_array;
 }
 add_filter( 'mce_external_plugins', 'wp_review_editor_js' );
