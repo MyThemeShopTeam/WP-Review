@@ -104,7 +104,7 @@ Please disable all plugins and check if rating is working properly. Then you can
 == Changelog ==
 
 = v5.1.4 (Nov 22, 2018) =
-* Added separate thumb class in the front-end
+* Added unique class for each thumb layout
 
 = v5.1.3 (Nov 14, 2018) =
 * Fixed editor-plugin.js scripts loading in the front-end
