@@ -476,7 +476,7 @@ class WP_Review_Tab_Widget extends WP_Widget {
 
 		$query = wp_review_get_reviews_query( $tab, $query_args );
 		?>
-		<ul>
+		<ul class="review_thumb_<?php echo $thumb_size; ?>">
 			<?php
 			$last_page = $query->max_num_pages;
 			while ( $query->have_posts() ) :
