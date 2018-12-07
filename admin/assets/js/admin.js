@@ -552,7 +552,7 @@
 				ev.preventDefault();
 				ev.returnValue = false;
 				return false;
-			}
+			};
 
 			if ( ! up && -delta > scrollHeight - height - scrollTop ) {
 				// Scrolling down, but this will take us past the bottom.
@@ -848,4 +848,6 @@ $( window ).load( function() {
 			});
 		});
 	}
+
+	$( '#wp_review_type' ).trigger( 'change' );
 });
