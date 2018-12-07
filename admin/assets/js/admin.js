@@ -612,6 +612,19 @@
 			$( '.input-color, .input-inactive-color' ).closest( '.col-2' ).addClass( 'pyre_field' );
 		}
 	});
+
+	$( window ).load( function() {
+		// WYSIWYG saving issue when using Gutenberg.
+		if ( $( 'body.block-editor-page' ).length ) {
+			window.tinyMCE.editors.forEach( function( editor ) {
+				editor.on( 'change', function() {
+					editor.save();
+				});
+			});
+		}
+
+		$( '#wp_review_type' ).trigger( 'change' );
+	});
 })( jQuery );
 
 jQuery(document).ready(function($) {
@@ -836,18 +849,4 @@ jQuery(document).ready(function($) {
 		});
 	}
 
-});
-
-$( window ).load( function() {
-	// WYSIWYG saving issue when using Gutenberg.
-	if ( $( 'body.block-editor-page' ).length ) {
-		window.tinyMCE.editors.forEach( function( editor ) {
-			editor.on( 'change', function() {
-				console.log( editor );
-				editor.save();
-			});
-		});
-	}
-
-	$( '#wp_review_type' ).trigger( 'change' );
 });
