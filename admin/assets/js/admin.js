@@ -606,13 +606,6 @@
 			}
 		});
 
-		// WYSIWYG saving issue when using Gutenberg.
-		if ( 'undefined' !== typeof wp.data && 'function' === typeof wp.data.subscribe ) {
-			wp.data.subscribe( function() {
-				window.tinyMCE.triggerSave();
-			});
-		}
-
 		// Fix conflict with color picker in Avada theme.
 		if ( $( '.pyre_field.avada-color' ).length ) {
 			$( '.wp-review-color' ).closest( '.wp-review-field-option' ).addClass( 'pyre_field' );
@@ -843,4 +836,16 @@ jQuery(document).ready(function($) {
 		});
 	}
 
+});
+
+$( window ).load( function() {
+	// WYSIWYG saving issue when using Gutenberg.
+	if ( $( 'body.block-editor-page' ).length ) {
+		window.tinyMCE.editors.forEach( function( editor ) {
+			editor.on( 'change', function() {
+				console.log( editor );
+				editor.save();
+			});
+		});
+	}
 });
