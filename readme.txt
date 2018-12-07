@@ -3,8 +3,8 @@ Contributors: mythemeshop
 Creator's website link: http://mythemeshop.com/plugins/wp-review/
 Tags: review, wp review, rating, wp rating, user rating, google rating, star rating, product review
 Requires at least: 4.0
-Tested up to: 4.9.8
-Stable tag: 5.1.5
+Tested up to: 5.0
+Stable tag: 5.1.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -102,6 +102,10 @@ Please disable all plugins and check if rating is working properly. Then you can
 7. Percentage Review type
 
 == Changelog ==
+
+= v5.1.6 (Dec 7, 2018) =
+* Fixed meta boxes not hiding when set Review type to 'none'
+* Fixed WordPress 5.0 block editor conflict
 
 = v5.1.5 (Dec 4, 2018) =
 * Fixed missing files in the single page editor
