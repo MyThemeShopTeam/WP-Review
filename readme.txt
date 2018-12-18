@@ -1,7 +1,7 @@
 === WP Review ===
 Contributors: mythemeshop
 Creator's website link: http://mythemeshop.com/plugins/wp-review/
-Tags: review, wp review, rating, wp rating, user rating, google rating, star rating, product review
+Tags: review, schema.org, rating, schema, user rating, google rating, star rating, product review
 Requires at least: 4.0
 Tested up to: 5.0
 Stable tag: 5.1.6
