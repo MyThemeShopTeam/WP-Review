@@ -696,7 +696,7 @@ function wp_review_render_meta_box_review_links( $post ) {
 							<input type="text" class="widefat" name="wp_review_link_title[]" value="<?php echo esc_attr( $item['text'] ); ?>" />
 						</td>
 						<td>
-							<input type="url" class="widefat" name="wp_review_link_url[]" value="<?php echo esc_url( $item['url'] ); ?>" />
+							<input type="text" class="widefat" name="wp_review_link_url[]" value="<?php echo esc_url( $item['url'] ); ?>" />
 						</td>
 						<td><a class="button remove-row" href="#"><?php esc_html_e( 'Delete', 'wp-review' ); ?></a></td>
 					</tr>

@@ -3,8 +3,8 @@ Contributors: mythemeshop
 Creator's website link: http://mythemeshop.com/plugins/wp-review/
 Tags: review, schema.org, rating, schema, user rating, google rating, star rating, product review
 Requires at least: 4.0
-Tested up to: 5.0
-Stable tag: 5.1.6
+Tested up to: 5.0.2
+Stable tag: 5.1.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -102,6 +102,9 @@ Please disable all plugins and check if rating is working properly. Then you can
 7. Percentage Review type
 
 == Changelog ==
+
+= v5.1.7 (Dec 26, 2018) =
+* Added support for '#' in the review links
 
 = v5.1.6 (Dec 7, 2018) =
 * Fixed meta boxes not hiding when set Review type to 'none'
