@@ -104,7 +104,7 @@ Please disable all plugins and check if rating is working properly. Then you can
 == Changelog ==
 
 = v5.1.7 (Dec 26, 2018) =
-* Allowed anchor link in review links
+* Added support for '#' in the review links
 
 = v5.1.6 (Dec 7, 2018) =
 * Fixed meta boxes not hiding when set Review type to 'none'
