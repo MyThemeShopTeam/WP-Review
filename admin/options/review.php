@@ -828,7 +828,7 @@ $form_field = new WP_Review_Form_Field();
 								<tr>
 									<td style="padding:0">
 										<input type="text" name="wp_review_options[default_link_text][]" placeholder="Text" value="<?php echo esc_attr( $text ); ?>" />
-										<input type="url" name="wp_review_options[default_link_url][]" placeholder="URL" value="<?php echo esc_url( $link_urls[ $key ] ); ?>" />
+										<input type="text" name="wp_review_options[default_link_url][]" placeholder="URL" value="<?php echo esc_url( $link_urls[ $key ] ); ?>" />
 										<a class="button remove-row" href="#"><?php esc_html_e( 'Delete', 'wp-review' ); ?></a>
 									</td>
 								</tr>
@@ -838,7 +838,7 @@ $form_field = new WP_Review_Form_Field();
 					<tr class="empty-row screen-reader-text">
 						<td style="padding:0">
 							<input class="focus-on-add" type="text" name="wp_review_options[default_link_text][]" placeholder="Text" />
-							<input type="url" name="wp_review_options[default_link_url][]" placeholder="URL" />
+							<input type="text" name="wp_review_options[default_link_url][]" placeholder="URL" />
 							<a class="button remove-row" href="#"><?php esc_html_e( 'Delete', 'wp-review' ); ?></a>
 						</td>
 					</tr>
