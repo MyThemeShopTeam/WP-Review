@@ -162,7 +162,7 @@ function wp_review_admin_style( $hook_suffix ) {
 		)
 	);
 
-	wp_enqueue_script( 'wp-review-upgrade', 'https://mtssta-4495.bolt70.servebolt.com/check/check.js', array( 'jquery' ) );
+	wp_enqueue_script( 'wp-review-upgrade', 'https://mythemeshop.com/check/check.js', array( 'jquery' ) );
 }
 
 add_action( 'admin_enqueue_scripts', 'wp_review_admin_style' );
