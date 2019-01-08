@@ -506,6 +506,7 @@ function wp_review_print_pro_text( $strip_br = false ) {
  * Prints the Pro version popup.
  */
 function wp_review_print_pro_popup() {
+	if ( ! wp_script_is( 'wp-review-admin-script', 'enqueued' ) ) return;
 	?>
 	<div id="wp-review-pro-popup-notice" class="mfp-hide">
 		<div class="pro-popup-title"><?php esc_html_e( 'Buy WP Review Pro', 'wp-review' ); ?></div>
