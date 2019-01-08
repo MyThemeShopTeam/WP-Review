@@ -88,31 +88,31 @@ class WP_Review_Options {
 			'popup'        => array(
 				'title'             => __( 'Popup', 'wp-review' ),
 				'icon'              => 'sticky-note',
-				'capability'        => 'wp_review_popup',
+				'capability'        => 'manage_options',
 				'multisite_enabled' => 'hide_general_popup_',
 			),
 			'hello-bar'    => array(
 				'title'             => __( 'Notification Bar', 'wp-review' ),
 				'icon'              => 'warning',
-				'capability'        => 'wp_review_notification_bar',
+				'capability'        => 'manage_options',
 				'multisite_enabled' => 'hide_general_bar_',
 			),
 			'yelp'         => array(
 				'title'             => __( 'Yelp Reviews', 'wp-review' ),
 				'icon'              => 'yelp',
-				'capability'        => 'wp_review_yelp_reviews',
+				'capability'        => 'manage_options',
 				'multisite_enabled' => 'hide_yelp_reviews_',
 			),
 			'google'       => array(
 				'title'             => __( 'Google Reviews', 'wp-review' ),
 				'icon'              => 'google',
-				'capability'        => 'wp_review_google_reviews',
+				'capability'        => 'manage_options',
 				'multisite_enabled' => 'hide_google_reviews_',
 			),
 			'facebook'     => array(
 				'title'             => __( 'Facebook Reviews', 'wp-review' ),
 				'icon'              => 'facebook',
-				'capability'        => 'wp_review_facebook_reviews',
+				'capability'        => 'manage_options',
 				'multisite_enabled' => 'hide_facebook_reviews_',
 			),
 			'role-manager' => array(
