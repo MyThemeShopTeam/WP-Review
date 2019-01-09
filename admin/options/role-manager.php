@@ -15,7 +15,7 @@
 		$role_caps = $role['capabilities'];
 		?>
 		<div class="wp-review-field">
-			<div class="wp-review-field-label">
+			<div class="wp-review-disabled wp-review-field-label">
 				<label><strong><?php echo esc_html( $role['name'] ); ?></strong></label>
 				<?php wp_review_print_pro_text(); ?>
 			</div>

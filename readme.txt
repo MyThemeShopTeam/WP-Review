@@ -103,6 +103,10 @@ Please disable all plugins and check if rating is working properly. Then you can
 
 == Changelog ==
 
+= v5.1.8 (Jan 9, 2019) =
+* Removed popup content from non WP Review admin pages
+* Added an inline payment form for upgrading
+
 = v5.1.7 (Dec 26, 2018) =
 * Added support for '#' in the review links
 

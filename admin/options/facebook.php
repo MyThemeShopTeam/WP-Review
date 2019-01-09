@@ -17,7 +17,7 @@
 </div>
 
 <div class="wp-review-field">
-	<div class="wp-review-field-label">
+	<div class="wp-review-disabled wp-review-field-label">
 		<label for="wp_review_facebook_app_id"><?php esc_html_e( 'App ID', 'wp-review' ); ?></label>
 		<?php wp_review_print_pro_text(); ?>
 	</div>
@@ -30,7 +30,7 @@
 </div>
 
 <div class="wp-review-field">
-	<div class="wp-review-field-label">
+	<div class="wp-review-disabled wp-review-field-label">
 		<label for="wp_review_facebook_app_secret"><?php esc_html_e( 'App secret', 'wp-review' ); ?></label>
 		<?php wp_review_print_pro_text(); ?>
 	</div>

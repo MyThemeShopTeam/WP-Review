@@ -221,7 +221,7 @@ $form_field = new WP_Review_Form_Field();
 		</div>
 
 		<div class="wp-review-field">
-			<div class="wp-review-field-label">
+			<div class="wp-review-disabled wp-review-field-label">
 				<label><?php esc_html_e( 'Add total rating to thumbnails', 'wp-review' ); ?></label>
 				<?php wp_review_print_pro_text(); ?>
 			</div>
@@ -240,7 +240,7 @@ $form_field = new WP_Review_Form_Field();
 		</div>
 
 		<div class="wp-review-field">
-			<div class="wp-review-field-label">
+			<div class="wp-review-disabled wp-review-field-label">
 				<label><?php esc_html_e( 'Enable User rating in old posts', 'wp-review' ); ?></label>
 				<?php wp_review_print_pro_text(); ?>
 			</div>
@@ -260,7 +260,7 @@ $form_field = new WP_Review_Form_Field();
 
 		<?php if ( class_exists( 'WooCommerce' ) ) : ?>
 			<div class="wp-review-field">
-				<div class="wp-review-field-label">
+				<div class="wp-review-disabled wp-review-field-label">
 					<label><?php esc_html_e( 'Replace WooCommerce rating', 'wp-review' ); ?></label>
 					<?php wp_review_print_pro_text(); ?>
 				</div>
@@ -280,7 +280,7 @@ $form_field = new WP_Review_Form_Field();
 		<?php endif; ?>
 
 		<div class="wp-review-field">
-			<div class="wp-review-field-label">
+			<div class="wp-review-disabled wp-review-field-label">
 				<label><?php esc_html_e( 'Disable Map Script in the Backend', 'wp-review' ); ?></label>
 				<?php wp_review_print_pro_text(); ?>
 			</div>
@@ -301,7 +301,7 @@ $form_field = new WP_Review_Form_Field();
 		</div>
 
 		<div class="wp-review-field">
-			<div class="wp-review-field-label">
+			<div class="wp-review-disabled wp-review-field-label">
 				<label><?php esc_html_e( 'Comments template', 'wp-review' ); ?></label>
 				<?php wp_review_print_pro_text(); ?>
 			</div>
@@ -334,7 +334,7 @@ $form_field = new WP_Review_Form_Field();
 		</div>
 
 		<div class="wp-review-field">
-			<div class="wp-review-field-label">
+			<div class="wp-review-disabled wp-review-field-label">
 				<label><?php esc_html_e( 'Comment form integration', 'wp-review' ); ?></label>
 				<?php wp_review_print_pro_text(); ?>
 			</div>
@@ -367,7 +367,7 @@ $form_field = new WP_Review_Form_Field();
 		</div>
 
 		<div class="wp-review-field">
-			<div class="wp-review-field-label">
+			<div class="wp-review-disabled wp-review-field-label">
 				<label><?php esc_html_e( 'Require a rating when commenting', 'wp-review' ); ?></label>
 				<?php wp_review_print_pro_text(); ?>
 			</div>
@@ -386,7 +386,7 @@ $form_field = new WP_Review_Form_Field();
 		</div>
 
 		<div class="wp-review-field">
-			<div class="wp-review-field-label">
+			<div class="wp-review-disabled wp-review-field-label">
 				<label><?php esc_html_e( 'Allow comment feedback (helpful/unhelpful)', 'wp-review' ); ?></label>
 				<?php wp_review_print_pro_text(); ?>
 			</div>
@@ -405,7 +405,7 @@ $form_field = new WP_Review_Form_Field();
 		</div>
 
 		<div class="wp-review-field">
-			<div class="wp-review-field-label">
+			<div class="wp-review-disabled wp-review-field-label">
 				<label for="wp_review_record_ratings_by"><?php esc_html_e( 'Record User Ratings', 'wp-review' ); ?></label>
 				<?php wp_review_print_pro_text(); ?>
 			</div>
@@ -459,7 +459,7 @@ $form_field = new WP_Review_Form_Field();
 		</div>
 
 		<div class="wp-review-field">
-			<div class="wp-review-field-label">
+			<div class="wp-review-disabled wp-review-field-label">
 				<label><?php esc_html_e( 'Include Pros/Cons in comment reviews', 'wp-review' ); ?></label>
 				<?php wp_review_print_pro_text(); ?>
 			</div>
@@ -478,7 +478,7 @@ $form_field = new WP_Review_Form_Field();
 		</div>
 
 		<div class="wp-review-field">
-			<div class="wp-review-field-label">
+			<div class="wp-review-disabled wp-review-field-label">
 				<label><?php esc_html_e( 'Approve Comment Reviews without Moderation', 'wp-review' ); ?></label>
 				<?php wp_review_print_pro_text(); ?>
 			</div>
@@ -618,7 +618,7 @@ $form_field = new WP_Review_Form_Field();
 
 
 		<div class="wp-review-field">
-			<div class="wp-review-field-label">
+			<div class="wp-review-disabled wp-review-field-label">
 				<label for="wp_review_width"><?php esc_html_e( 'Review Box Width', 'wp-review' ); ?></label>
 				<?php wp_review_print_pro_text(); ?>
 			</div>
@@ -630,7 +630,7 @@ $form_field = new WP_Review_Form_Field();
 		</div>
 
 		<div class="wp-review-field">
-			<div class="wp-review-field-label">
+			<div class="wp-review-disabled wp-review-field-label">
 				<label><?php esc_html_e( 'Google Font', 'wp-review' ); ?></label><br>
 				<span class="description">
 					<?php _e( 'Many templates use Google Font, select <code>No</code> to use default theme font.', 'wp-review' ); // WPCS: xss ok. ?>
@@ -652,7 +652,7 @@ $form_field = new WP_Review_Form_Field();
 		</div>
 
 		<div class="wp-review-field">
-			<div class="wp-review-field-label">
+			<div class="wp-review-disabled wp-review-field-label">
 				<label><?php esc_html_e( 'Comment Rating Color', 'wp-review' ); ?></label><br>
 				<span class="description">
 					<?php esc_html_e( 'Use different color for ratings in comments', 'wp-review' ); ?>
@@ -752,7 +752,7 @@ $form_field = new WP_Review_Form_Field();
 		</div>
 
 		<div class="wp-review-field">
-			<div class="wp-review-field-label">
+			<div class="wp-review-disabled wp-review-field-label">
 				<label for="wp_review_schema"><?php esc_html_e( 'Review Schema', 'wp-review' ); ?></label>
 				<?php wp_review_print_pro_text(); ?>
 			</div>
@@ -883,7 +883,7 @@ $form_field = new WP_Review_Form_Field();
 		<p class="description"><?php esc_html_e( 'From here you can enable embed feature, which will show embed code in the frontend which site visitors can use to embed review on their site.', 'wp-review' ); ?></p>
 
 		<div class="wp-review-field">
-			<div class="wp-review-field-label">
+			<div class="wp-review-disabled wp-review-field-label">
 				<label><?php esc_html_e( 'Enable Embed', 'wp-review' ); ?></label>
 				<?php wp_review_print_pro_text(); ?>
 			</div>
@@ -902,7 +902,7 @@ $form_field = new WP_Review_Form_Field();
 		</div>
 
 		<div class="wp-review-field">
-			<div class="wp-review-field-label">
+			<div class="wp-review-disabled wp-review-field-label">
 				<label><?php esc_html_e( 'Show Title', 'wp-review' ); ?></label>
 				<?php wp_review_print_pro_text(); ?>
 			</div>
@@ -921,7 +921,7 @@ $form_field = new WP_Review_Form_Field();
 		</div>
 
 		<div class="wp-review-field">
-			<div class="wp-review-field-label">
+			<div class="wp-review-disabled wp-review-field-label">
 				<label><?php esc_html_e( 'Show Thumbnail', 'wp-review' ); ?></label>
 				<?php wp_review_print_pro_text(); ?>
 			</div>
@@ -940,7 +940,7 @@ $form_field = new WP_Review_Form_Field();
 		</div>
 
 		<div class="wp-review-field">
-			<div class="wp-review-field-label">
+			<div class="wp-review-disabled wp-review-field-label">
 				<label><?php esc_html_e( 'Show Excerpt', 'wp-review' ); ?></label>
 				<?php wp_review_print_pro_text(); ?>
 			</div>
@@ -959,7 +959,7 @@ $form_field = new WP_Review_Form_Field();
 		</div>
 
 		<div class="wp-review-field">
-			<div class="wp-review-field-label">
+			<div class="wp-review-disabled wp-review-field-label">
 				<label><?php esc_html_e( 'Show Rating Box', 'wp-review' ); ?></label>
 				<?php wp_review_print_pro_text(); ?>
 			</div>
@@ -978,7 +978,7 @@ $form_field = new WP_Review_Form_Field();
 		</div>
 
 		<div class="wp-review-field">
-			<div class="wp-review-field-label">
+			<div class="wp-review-disabled wp-review-field-label">
 				<label><?php esc_html_e( 'Show Credit', 'wp-review' ); ?></label>
 				<?php wp_review_print_pro_text(); ?>
 			</div>

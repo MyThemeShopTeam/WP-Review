@@ -246,7 +246,7 @@ function wp_review_render_meta_box_item( $post ) {
 
 	<script type="text/html" id="tmpl-wpr-review-item-color">
 		<div class="setting-row">
-			<div class="col-1">
+			<div class="wp-review-disabled col-1">
 				<label for="wpr-review-item-color-{{ data.id }}"><?php esc_html_e( 'Feature Color', 'wp-review' ); ?></label>
 				<?php wp_review_print_pro_text(); ?>
 			</div>
@@ -260,7 +260,7 @@ function wp_review_render_meta_box_item( $post ) {
 
 	<script type="text/html" id="tmpl-wpr-review-item-inactive-color">
 		<div class="setting-row">
-			<div class="col-1">
+			<div class="wp-review-disabled col-1">
 				<label for="wpr-review-item-inactive-color-{{ data.id }}"><?php esc_html_e( 'Inactive Color', 'wp-review' ); ?></label>
 				<?php wp_review_print_pro_text(); ?>
 			</div>
@@ -285,7 +285,7 @@ function wp_review_render_meta_box_item( $post ) {
 	</script>
 
 	<div class="wp-review-field"<?php if ( empty( $displayed_fields['disable_features'] ) ) echo ' style="display: none;"'; // phpcs:ignore ?>>
-		<div class="wp-review-field-label">
+		<div class="wp-review-disabled wp-review-field-label">
 			<label><?php esc_html_e( 'Hide Features', 'wp-review' ); ?></label>
 			<?php wp_review_print_pro_text(); ?>
 		</div>
@@ -455,7 +455,7 @@ function wp_review_render_meta_box_item( $post ) {
 		</div>
 
 		<div class="wp-review-field"<?php if ( empty( $displayed_fields['fontfamily'] ) ) echo ' style="display: none;"'; // phpcs:ignore ?>>
-			<div class="wp-review-field-label">
+			<div class="wp-review-disabled wp-review-field-label">
 				<label><?php esc_html_e( 'Google Font', 'wp-review' ); ?></label>
 				<?php wp_review_print_pro_text(); ?>
 			</div>
@@ -553,7 +553,7 @@ function wp_review_render_meta_box_desc( $post ) {
 
 		<div class="wpr-flex wpr-flex-wrap border-box">
 			<div class="wpr-col-1-2 pr-10">
-				<p class="pros-cons-title">
+				<p class="wp-review-disabled pros-cons-title">
 					<strong><?php esc_html_e( 'Pros', 'wp-review' ); ?></strong>
 					<?php wp_review_print_pro_text(); ?>
 				</p>
@@ -580,7 +580,7 @@ function wp_review_render_meta_box_desc( $post ) {
 			</div>
 
 			<div class="wpr-col-1-2 pl-10">
-				<p class="pros-cons-title">
+				<p class="wp-review-disabled pros-cons-title">
 					<strong><?php esc_html_e( 'Cons', 'wp-review' ); ?></strong>
 					<?php wp_review_print_pro_text(); ?>
 				</p>
@@ -609,7 +609,7 @@ function wp_review_render_meta_box_desc( $post ) {
 	</div>
 
 	<div class="wp-review-field">
-		<div class="wp-review-field-label">
+		<div class="wp-review-disabled wp-review-field-label">
 			<label><?php esc_html_e( 'Hide Description, Pros/Cons & Total Rating', 'wp-review' ); ?></label>
 			<?php wp_review_print_pro_text(); ?>
 		</div>
@@ -869,7 +869,7 @@ function wp_review_render_meta_box_user_review( $post ) {
 	</div>
 
 	<div class="wp-review-field">
-		<div class="wp-review-field-label">
+		<div class="wp-review-disabled wp-review-field-label">
 			<label for="wp_review_allow_comment_feedback"><?php esc_html_e( 'Comment Feedback (helpful/unhelpful)', 'wp-review' ); ?></label>
 			<?php wp_review_print_pro_text(); ?>
 		</div>

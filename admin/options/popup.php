@@ -7,7 +7,7 @@
 
 ?>
 <div class="wp-review-field">
-	<div class="wp-review-field-label">
+	<div class="wp-review-disabled wp-review-field-label">
 		<label><?php esc_html_e( 'Enable Popup', 'wp-review' ); ?></label>
 		<?php wp_review_print_pro_text(); ?>
 	</div>
@@ -28,7 +28,7 @@
 <div id="wp-review-popup-options">
 
 	<div class="wp-review-field">
-		<div class="wp-review-field-label">
+		<div class="wp-review-disabled wp-review-field-label">
 			<label for="wp_review_popup_width"><?php esc_html_e( 'Popup width', 'wp-review' ); ?></label>
 			<?php wp_review_print_pro_text(); ?>
 		</div>
@@ -41,7 +41,7 @@
 	</div>
 
 	<div class="wp-review-field">
-		<div class="wp-review-field-label">
+		<div class="wp-review-disabled wp-review-field-label">
 			<label for="wp_review_popup_animation_in"><?php esc_html_e( 'Popup animation in', 'wp-review' ); ?></label>
 			<?php wp_review_print_pro_text(); ?>
 		</div>
@@ -59,7 +59,7 @@
 	</div>
 
 	<div class="wp-review-field">
-		<div class="wp-review-field-label">
+		<div class="wp-review-disabled wp-review-field-label">
 			<label for="wp_review_popup_animation_out"><?php esc_html_e( 'Popup animation out', 'wp-review' ); ?></label>
 			<?php wp_review_print_pro_text(); ?>
 		</div>
@@ -78,7 +78,7 @@
 	</div>
 
 	<div class="wp-review-field">
-		<div class="wp-review-field-label">
+		<div class="wp-review-disabled wp-review-field-label">
 			<label for="wp_review_popup_overlay_color"><?php esc_html_e( 'Popup overlay color', 'wp-review' ); ?></label>
 			<?php wp_review_print_pro_text(); ?>
 		</div>
@@ -91,7 +91,7 @@
 	</div>
 
 	<div class="wp-review-field">
-		<div class="wp-review-field-label">
+		<div class="wp-review-disabled wp-review-field-label">
 			<label for="wp_review_popup_overlay_opacity"><?php esc_html_e( 'Popup overlay opacity', 'wp-review' ); ?></label>
 			<span class="description">(0.1 - 1)</span>
 			<?php wp_review_print_pro_text(); ?>
@@ -106,7 +106,7 @@
 
 	<?php $post_types = get_post_types( array( 'public' => true ) ); ?>
 	<div class="wp-review-field">
-		<div class="wp-review-field-label">
+		<div class="wp-review-disabled wp-review-field-label">
 			<label for="wp_review_popup_post_type"><?php esc_html_e( 'Post type', 'wp-review' ); ?></label>
 			<?php wp_review_print_pro_text(); ?>
 		</div>
@@ -124,7 +124,7 @@
 	</div>
 
 	<div class="wp-review-field">
-		<div class="wp-review-field-label">
+		<div class="wp-review-disabled wp-review-field-label">
 			<label for="wp_review_popup_queryby"><?php esc_html_e( 'Popup content', 'wp-review' ); ?></label>
 			<?php wp_review_print_pro_text(); ?>
 		</div>
@@ -142,7 +142,7 @@
 	</div>
 
 	<div class="wp-review-field based-on-queryby" data-value="category">
-		<div class="wp-review-field-label">
+		<div class="wp-review-disabled wp-review-field-label">
 			<label for="wp_review_popup_category"><?php esc_html_e( 'Choose category', 'wp-review' ); ?></label>
 			<?php wp_review_print_pro_text(); ?>
 		</div>
@@ -165,7 +165,7 @@
 	</div>
 
 	<div class="wp-review-field">
-		<div class="wp-review-field-label">
+		<div class="wp-review-disabled wp-review-field-label">
 			<label for="wp_review_popup_limit"><?php esc_html_e( 'Number of Reviews', 'wp-review' ); ?></label>
 			<?php wp_review_print_pro_text(); ?>
 		</div>
@@ -178,7 +178,7 @@
 	</div>
 
 	<div class="wp-review-field">
-		<div class="wp-review-field-label">
+		<div class="wp-review-disabled wp-review-field-label">
 			<label for="wp_review_popup_orderby"><?php esc_html_e( 'Popup content order', 'wp-review' ); ?></label>
 			<?php wp_review_print_pro_text(); ?>
 		</div>
@@ -197,7 +197,7 @@
 </div>
 
 <div class="wp-review-field">
-	<div class="wp-review-field-label">
+	<div class="wp-review-disabled wp-review-field-label">
 		<label for="wp_review_popup_expiration"><?php esc_html_e( 'Hide popup for', 'wp-review' ); ?></label>
 		<?php wp_review_print_pro_text(); ?>
 	</div>
@@ -267,7 +267,7 @@
 	</span>
 </div>
 
-<div class="wp-review-field">
+<div class="wp-review-disabled wp-review-field">
 	<button type="button" class="button" id="wp_review_generate_popup_cookie" disabled><?php esc_html_e( 'Generate new cookie', 'wp-review' ); ?></button>
 	<div class="description" style="margin-top: 10px; width: 100%;"><?php esc_html_e( 'Use this option to override old cookie.', 'wp-review' ); ?></div>
 	<?php wp_review_print_pro_text(); ?>
