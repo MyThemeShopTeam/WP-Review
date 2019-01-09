@@ -148,11 +148,11 @@ class WP_Review_Tab_Widget extends WP_Widget {
 					</label>
 				</p>
 
-				<p class="wp_review_tab_top_rated_filter">
+				<p class="wp-review-disabled wp_review_tab_top_rated_filter">
 					<label for="<?php echo $this->get_field_id( 'top_rated_posts' ); ?>"><?php _e( 'Top Rated Posts By:', 'wp-review' ); ?></label>
 					<?php wp_review_print_pro_text(); ?>
 
-					<span class="wp-review-disabled inline-block has-bg">
+					<span class="inline-block has-bg">
 						<select id="<?php echo $this->get_field_id( 'top_rated_posts' ); ?>" name="<?php echo $this->get_field_name( 'top_rated_posts' ); ?>" style="margin-left: 12px;" disabled>
 							<option value="visitors"><?php _e( 'Visitors', 'wp-review' ); ?></option>
 							<option value="comments"><?php _e( 'Comments', 'wp-review' ); ?></option>
