@@ -162,7 +162,7 @@ function wp_review_admin_style( $hook_suffix ) {
 		)
 	);
 
-	wp_enqueue_script( 'wp-review-upgrade', 'https://mythemeshop.com/check/check.js', array( 'jquery' ) );
+	wp_enqueue_script( 'mts-product-upgrade-checkout', 'https://mythemeshop.com/check/check.js', array( 'jquery' ) );
 }
 
 add_action( 'admin_enqueue_scripts', 'wp_review_admin_style' );
