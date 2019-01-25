@@ -15,6 +15,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+if ( wp_review_is_amp_page() ) {
+	echo '<div class="wp-review-rating-input"><a href="' . esc_url( wp_review_get_current_non_amp_url() ) . '">' . esc_html__( 'Add rating', 'wp-review' ) . '</a></div>';
+	return;
+}
+
 // For now, enqueue in footer.
 wp_enqueue_script( 'wp-review-point-input', trailingslashit( WP_REVIEW_URI ) . 'rating-types/point-input.js', array( 'jquery' ) );
 
