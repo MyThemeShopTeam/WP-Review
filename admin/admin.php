@@ -161,6 +161,8 @@ function wp_review_admin_style( $hook_suffix ) {
 			'importDemoDone'               => __( 'Importing proccess finished!', 'wp-review' ),
 		)
 	);
+
+	wp_enqueue_script( 'mts-product-upgrade-checkout', 'https://mythemeshop.com/check/check.js', array( 'jquery' ), '1.0.0' );
 }
 
 add_action( 'admin_enqueue_scripts', 'wp_review_admin_style' );
@@ -514,7 +516,7 @@ function wp_review_print_pro_popup() {
 			<a href="https://mythemeshop.com/plugins/wp-review-pro/?utm_source=WP+Review&utm_medium=Popup&utm_content=WP+Review+Pro+LP&utm_campaign=WordPressOrg" target="_blank"><img class="pro-popup-image" src="<?php echo esc_url( WP_REVIEW_URI . 'admin/assets/images/wp-review-pro.jpg' ); ?>" /></a>
 			<h2 class="pro-notice-header"><?php esc_html_e( 'Like WP Review Plugin? You will LOVE WP Review Pro!', 'wp-review' ); ?></h2>
 			<p><?php esc_html_e( '15 new review box templates, 15 new Schema types, commment reviews, user can rate each feature, review popups, review notification bars, custom width, 9 new custom widgets, Google reviews, Facebook reviews, Yelp reviews and much more...', 'wp-review' ); ?></p>
-			<a class="button-primary" href="https://mythemeshop.com/plugins/wp-review-pro/?utm_source=WP+Review&utm_medium=Popup&utm_content=WP+Review+Pro+LP&utm_campaign=WordPressOrg" target="_blank"><?php esc_html_e( 'Buy WP Review Pro', 'wp-review' ); ?></a>
+			<a id="wp-review-pro-purchase-link" class="button-primary" href="#"><?php esc_html_e( 'Buy WP Review Pro', 'wp-review' ); ?></a>
 		</div>
 	</div>
 
@@ -552,6 +554,20 @@ function wp_review_print_pro_popup() {
 			margin: 10px;
 		}
 	</style>
+	<script>
+		var WPRPHandler = MTS.Checkout.configure();
+		jQuery('#wp-review-pro-purchase-link').on('click', function (e) {
+			var $button = jQuery(this);
+			e.preventDefault();
+			WPRPHandler.open({
+				action:     'buy',
+				add_to_cart: 8678,
+				success: function (response) {
+					$button.remove();
+				}
+			});
+		});
+	</script>
 	<?php
 }
 add_action( 'admin_footer', 'wp_review_print_pro_popup' );
