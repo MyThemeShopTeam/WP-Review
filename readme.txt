@@ -103,6 +103,9 @@ Please disable all plugins and check if rating is working properly. Then you can
 
 == Changelog ==
 
+= v5.1.8 (Jan 26, 2019) =
+* Removed the conditions that check and disables the Schema added by Rank Math plugin.
+
 = v5.1.7 (Dec 26, 2018) =
 * Added support for '#' in the review links
 
