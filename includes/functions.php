@@ -2062,9 +2062,9 @@ function wp_review_get_schema( $review ) {
 		return '';
 	}
 
-	if ( empty( $review['total'] ) || ! floatval( $review['total'] ) ) {
+	/*if ( empty( $review['total'] ) || ! floatval( $review['total'] ) ) {
 		return '';
-	}
+	}*/
 
 	$output = '';
 
