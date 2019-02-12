@@ -105,13 +105,12 @@ Please disable all plugins and check if rating is working properly. Then you can
 
 = v5.1.9 (Feb 12, 2019) =
 * Added AMP support
-* Improved scripts loaded
-* Improved remote purchase coding
+* Added an inline payment form for upgrading
+* Removed popup content from non WP Review admin pages
 * Fixed schema does not print
 
-= v5.1.8 (Jan 9, 2019) =
-* Removed popup content from non WP Review admin pages
-* Added an inline payment form for upgrading
+= v5.1.8 (Jan 26, 2019) =
+* Removed the conditions that check and disables the Schema added by Rank Math plugin.
 
 = v5.1.7 (Dec 26, 2018) =
 * Added support for '#' in the review links
