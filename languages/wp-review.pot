@@ -10,632 +10,734 @@ msgstr ""
 "Language-Team: MyThemeShop\n"
 "Last-Translator: MyThemeShop\n"
 "X-Poedit-Basepath: ..\n"
-"X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
+"X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:"
+"1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;"
+"esc_html_x:1,2c\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"POT-Creation-Date: \n"
-"PO-Revision-Date: \n"
-"X-Generator: Poedit 2.1.1\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"POT-Creation-Date: 2019-02-12 15:33+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: Loco https://localise.biz/\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
+"Language: "
 
-#: admin/admin.php:98 admin/metaboxes.php:1181 admin/options/hello-bar.php:169
-msgid "Select Image"
+#: filter-list.php:422
+msgid "10 Stars"
 msgstr ""
 
-#: admin/admin.php:99
-msgid "Insert Image"
+#: filter-list.php:425 includes/ajax.php:174
+#, php-format
+msgid "%s Stars"
 msgstr ""
 
-#: admin/admin.php:100 admin/metaboxes.php:1184
-msgid "Remove Image"
+#: filter-list.php:426
+#, php-format
+msgid "%s Star"
 msgstr ""
 
-#: admin/admin.php:101
-msgid "Title"
+#: filter-list.php:441
+msgid "Custom template"
 msgstr ""
 
-#: admin/admin.php:102
-msgid "Search term"
+#: template-list.php:17 admin/metaboxes.php:366 admin/options/review.php:520
+msgid "Default"
 msgstr ""
 
-#: admin/admin.php:103
-msgid "Search location"
+#: template-list.php:37
+msgid "Amazon"
 msgstr ""
 
-#: admin/admin.php:104
-msgid "Limit"
+#: template-list.php:47
+msgid "Aqua"
 msgstr ""
 
-#: admin/admin.php:105
-msgid "Radius"
+#: template-list.php:57
+msgid "Blue"
 msgstr ""
 
-#: admin/admin.php:106
-msgid "Categories"
+#: template-list.php:67
+msgid "Darkside"
 msgstr ""
 
-#: admin/admin.php:107
-msgid "Locale"
+#: template-list.php:78
+msgid "Dash"
 msgstr ""
 
-#: admin/admin.php:108
-msgid "Offset"
+#: template-list.php:88
+msgid "Edge"
 msgstr ""
 
-#: admin/admin.php:109
-msgid "SortBy"
+#: template-list.php:98
+msgid "Enterprise"
 msgstr ""
 
-#: admin/admin.php:110
-msgid "Price range"
+#: template-list.php:108
+msgid "Facebook"
 msgstr ""
 
-#: admin/admin.php:111
-msgid "Open now"
+#: template-list.php:118
+msgid "Fizzy"
 msgstr ""
 
-#: admin/admin.php:112
-msgid "Attributes"
+#: template-list.php:128
+msgid "Gamer"
 msgstr ""
 
-#: admin/admin.php:113
-msgid "Business ID"
+#: template-list.php:138
+msgid "Gravity"
 msgstr ""
 
-#: admin/admin.php:114
-msgid "Location lookup"
+#: template-list.php:149
+msgid "Shell"
 msgstr ""
 
-#: admin/admin.php:115
-msgid "Place ID"
+#: template-list.php:159
+msgid "Tabbed layout"
 msgstr ""
 
-#: admin/admin.php:116
-msgid "Place type"
+#: template-list.php:169
+msgid "Tabbed layout 2"
 msgstr ""
 
-#: admin/admin.php:117
-msgid "All"
+#: template-list.php:179
+msgid "Xiaomi"
 msgstr ""
 
-#: admin/admin.php:118
-msgid "Establishments"
+#: template-list.php:189
+msgid "Zine"
 msgstr ""
 
-#: admin/admin.php:119
-msgid "Addresses"
+#. translators: PHP version.
+#: wp-review.php:37
+#, php-format
+msgid ""
+"<strong>WP Review</strong> requires PHP version 5.6 or above. You are "
+"running version %s. Please update PHP to run this plugin."
 msgstr ""
 
-#: admin/admin.php:120
-msgid "Geocodes"
-msgstr ""
-
-#: admin/admin.php:121
-msgid "Page ID"
-msgstr ""
-
-#: admin/admin.php:122
-msgid "Generate token"
-msgstr ""
-
-#: admin/admin.php:123
-msgid "Review IDs (separate by commas)"
-msgstr ""
-
-#: admin/admin.php:124
-msgid "Review posts"
-msgstr ""
-
-#: admin/admin.php:125
-msgid "Query type"
-msgstr ""
-
-#: admin/admin.php:126
-msgid "Recent reviews"
-msgstr ""
-
-#: admin/admin.php:127
-msgid "Top rated"
-msgstr ""
-
-#: admin/admin.php:128
-msgid "Most voted"
-msgstr ""
-
-#: admin/admin.php:129
-msgid "Category reviews"
-msgstr ""
-
-#: admin/admin.php:130
-msgid "Review types"
-msgstr ""
-
-#: admin/admin.php:131
-msgid "separate by commas"
-msgstr ""
-
-#: admin/admin.php:132
-msgid "Category IDs"
-msgstr ""
-
-#: admin/admin.php:133 includes/widgets/class-wp-review-tab-widget.php:166
-msgid "Allow pagination"
-msgstr ""
-
-#: admin/admin.php:134 includes/widgets/class-wp-review-tab-widget.php:199
-msgid "Number of reviews"
-msgstr ""
-
-#: admin/admin.php:135
-msgid "Title length (words)"
-msgstr ""
-
-#: admin/admin.php:136
-msgid "Thumb size"
-msgstr ""
-
-#: admin/admin.php:137 includes/widgets/class-wp-review-tab-widget.php:189
-msgid "Small"
-msgstr ""
-
-#: admin/admin.php:138 includes/widgets/class-wp-review-tab-widget.php:190
-msgid "Large"
-msgstr ""
-
-#: admin/admin.php:139
-msgid "Show date"
-msgstr ""
-
-#: admin/admin.php:140
-msgid "Review box"
-msgstr ""
-
-#: admin/admin.php:141 includes/comments.php:60
-msgid "Review total"
-msgstr ""
-
-#: admin/admin.php:142
-msgid "Visitor rating"
-msgstr ""
-
-#: admin/admin.php:143
-msgid "Review ID"
-msgstr ""
-
-#: admin/admin.php:144
-msgid "Leave empty to use current review ID"
-msgstr ""
-
-#: admin/admin.php:145
-msgid "Insert"
-msgstr ""
-
-#: admin/admin.php:146
-msgid "Cancel"
-msgstr ""
-
-#: admin/admin.php:152
-msgid "Are you sure you want to do this?"
-msgstr ""
-
-#: admin/admin.php:153
-msgid "Are you sure you want to import demo?"
-msgstr ""
-
-#: admin/admin.php:154
-msgid "Importing proccess finished!"
-msgstr ""
-
-#: admin/admin.php:162
+#: admin/admin.php:41
 #, php-format
 msgid "Are you sure you want to import from %s?"
 msgstr ""
 
-#: admin/admin.php:163
+#: admin/admin.php:42
 msgid "The server responded with an error. Try again."
 msgstr ""
 
-#: admin/admin.php:164
-msgid "Are you sure you want to import options? All current options will be lost."
+#: admin/admin.php:43
+msgid ""
+"Are you sure you want to import options? All current options will be lost."
 msgstr ""
 
-#: admin/admin.php:214 admin/admin.php:293
+#: admin/admin.php:105 admin/metaboxes.php:1244 admin/options/hello-bar.php:173
+msgid "Select Image"
+msgstr ""
+
+#: admin/admin.php:106
+msgid "Insert Image"
+msgstr ""
+
+#: admin/admin.php:107 admin/metaboxes.php:1247
+msgid "Remove Image"
+msgstr ""
+
+#: admin/admin.php:108
+msgid "Title"
+msgstr ""
+
+#: admin/admin.php:109
+msgid "Search term"
+msgstr ""
+
+#: admin/admin.php:110
+msgid "Search location"
+msgstr ""
+
+#: admin/admin.php:111
+msgid "Limit"
+msgstr ""
+
+#: admin/admin.php:112
+msgid "Radius"
+msgstr ""
+
+#: admin/admin.php:113
+msgid "Categories"
+msgstr ""
+
+#: admin/admin.php:114
+msgid "Locale"
+msgstr ""
+
+#: admin/admin.php:115
+msgid "Offset"
+msgstr ""
+
+#: admin/admin.php:116
+msgid "SortBy"
+msgstr ""
+
+#: admin/admin.php:117
+msgid "Price range"
+msgstr ""
+
+#: admin/admin.php:118
+msgid "Open now"
+msgstr ""
+
+#: admin/admin.php:119
+msgid "Attributes"
+msgstr ""
+
+#: admin/admin.php:120
+msgid "Business ID"
+msgstr ""
+
+#: admin/admin.php:121
+msgid "Location lookup"
+msgstr ""
+
+#: admin/admin.php:122
+msgid "Place ID"
+msgstr ""
+
+#: admin/admin.php:123
+msgid "Place type"
+msgstr ""
+
+#: admin/admin.php:124
+msgid "All"
+msgstr ""
+
+#: admin/admin.php:125
+msgid "Establishments"
+msgstr ""
+
+#: admin/admin.php:126
+msgid "Addresses"
+msgstr ""
+
+#: admin/admin.php:127
+msgid "Geocodes"
+msgstr ""
+
+#: admin/admin.php:128
+msgid "Page ID"
+msgstr ""
+
+#: admin/admin.php:129
+msgid "Generate token"
+msgstr ""
+
+#: admin/admin.php:130
+msgid "Review IDs (separate by commas)"
+msgstr ""
+
+#: admin/admin.php:131
+msgid "Review posts"
+msgstr ""
+
+#: admin/admin.php:132
+msgid "Query type"
+msgstr ""
+
+#: admin/admin.php:133
+msgid "Recent reviews"
+msgstr ""
+
+#: admin/admin.php:134
+msgid "Top rated"
+msgstr ""
+
+#: admin/admin.php:135
+msgid "Most voted"
+msgstr ""
+
+#: admin/admin.php:136
+msgid "Category reviews"
+msgstr ""
+
+#: admin/admin.php:137
+msgid "Review types"
+msgstr ""
+
+#: admin/admin.php:138
+msgid "separate by commas"
+msgstr ""
+
+#: admin/admin.php:139
+msgid "Category IDs"
+msgstr ""
+
+#: admin/admin.php:140 includes/widgets/class-wp-review-tab-widget.php:185
+msgid "Allow pagination"
+msgstr ""
+
+#: admin/admin.php:141 includes/widgets/class-wp-review-tab-widget.php:218
+msgid "Number of reviews"
+msgstr ""
+
+#: admin/admin.php:142
+msgid "Title length (words)"
+msgstr ""
+
+#: admin/admin.php:143
+msgid "Thumb size"
+msgstr ""
+
+#: admin/admin.php:144 includes/widgets/class-wp-review-tab-widget.php:208
+msgid "Small"
+msgstr ""
+
+#: admin/admin.php:145 includes/widgets/class-wp-review-tab-widget.php:209
+msgid "Large"
+msgstr ""
+
+#: admin/admin.php:146
+msgid "Show date"
+msgstr ""
+
+#: admin/admin.php:147
+msgid "Review box"
+msgstr ""
+
+#: admin/admin.php:148 includes/comments.php:78
+msgid "Review total"
+msgstr ""
+
+#: admin/admin.php:149
+msgid "Visitor rating"
+msgstr ""
+
+#: admin/admin.php:150
+msgid "Review ID"
+msgstr ""
+
+#: admin/admin.php:151
+msgid "Leave empty to use current review ID"
+msgstr ""
+
+#: admin/admin.php:152
+msgid "Insert"
+msgstr ""
+
+#: admin/admin.php:153
+msgid "Cancel"
+msgstr ""
+
+#: admin/admin.php:159
+msgid "Are you sure you want to do this?"
+msgstr ""
+
+#: admin/admin.php:160
+msgid "Are you sure you want to import demo?"
+msgstr ""
+
+#: admin/admin.php:161
+msgid "Importing proccess finished!"
+msgstr ""
+
+#: admin/admin.php:200 admin/admin.php:279
 msgid "Attention Seekers"
 msgstr ""
 
-#: admin/admin.php:215 admin/admin.php:294
+#: admin/admin.php:201 admin/admin.php:280
 msgid "bounce"
 msgstr ""
 
-#: admin/admin.php:216 admin/admin.php:295
+#: admin/admin.php:202 admin/admin.php:281
 msgid "flash"
 msgstr ""
 
-#: admin/admin.php:217 admin/admin.php:296
+#: admin/admin.php:203 admin/admin.php:282
 msgid "pulse"
 msgstr ""
 
-#: admin/admin.php:218 admin/admin.php:297
+#: admin/admin.php:204 admin/admin.php:283
 msgid "rubberBand"
 msgstr ""
 
-#: admin/admin.php:219 admin/admin.php:298
+#: admin/admin.php:205 admin/admin.php:284
 msgid "shake"
 msgstr ""
 
-#: admin/admin.php:220 admin/admin.php:299
+#: admin/admin.php:206 admin/admin.php:285
 msgid "swing"
 msgstr ""
 
-#: admin/admin.php:221 admin/admin.php:300
+#: admin/admin.php:207 admin/admin.php:286
 msgid "tada"
 msgstr ""
 
-#: admin/admin.php:222 admin/admin.php:301
+#: admin/admin.php:208 admin/admin.php:287
 msgid "wobble"
 msgstr ""
 
-#: admin/admin.php:223 admin/admin.php:302
+#: admin/admin.php:209 admin/admin.php:288
 msgid "jello"
 msgstr ""
 
-#: admin/admin.php:225
+#: admin/admin.php:211
 msgid "Bouncing Entrances"
 msgstr ""
 
-#: admin/admin.php:226
+#: admin/admin.php:212
 msgid "bounceIn"
 msgstr ""
 
-#: admin/admin.php:227
+#: admin/admin.php:213
 msgid "bounceInDown"
 msgstr ""
 
-#: admin/admin.php:228
+#: admin/admin.php:214
 msgid "bounceInLeft"
 msgstr ""
 
-#: admin/admin.php:229
+#: admin/admin.php:215
 msgid "bounceInRight"
 msgstr ""
 
-#: admin/admin.php:230
+#: admin/admin.php:216
 msgid "bounceInUp"
 msgstr ""
 
-#: admin/admin.php:232
+#: admin/admin.php:218
 msgid "Fading Entrances"
 msgstr ""
 
-#: admin/admin.php:233
+#: admin/admin.php:219
 msgid "fadeIn"
 msgstr ""
 
-#: admin/admin.php:234
+#: admin/admin.php:220
 msgid "fadeInDown"
 msgstr ""
 
-#: admin/admin.php:235
+#: admin/admin.php:221
 msgid "fadeInDownBig"
 msgstr ""
 
-#: admin/admin.php:236
+#: admin/admin.php:222
 msgid "fadeInLeft"
 msgstr ""
 
-#: admin/admin.php:237
+#: admin/admin.php:223
 msgid "fadeInLeftBig"
 msgstr ""
 
-#: admin/admin.php:238
+#: admin/admin.php:224
 msgid "fadeInRight"
 msgstr ""
 
-#: admin/admin.php:239
+#: admin/admin.php:225
 msgid "fadeInRightBig"
 msgstr ""
 
-#: admin/admin.php:240
+#: admin/admin.php:226
 msgid "fadeInUp"
 msgstr ""
 
-#: admin/admin.php:241
+#: admin/admin.php:227
 msgid "fadeInUpBig"
 msgstr ""
 
-#: admin/admin.php:243 admin/admin.php:322
+#: admin/admin.php:229 admin/admin.php:308
 msgid "Flippers"
 msgstr ""
 
-#: admin/admin.php:244 admin/admin.php:323
+#: admin/admin.php:230 admin/admin.php:309
 msgid "flip"
 msgstr ""
 
-#: admin/admin.php:245 admin/admin.php:324
+#: admin/admin.php:231 admin/admin.php:310
 msgid "flipInX"
 msgstr ""
 
-#: admin/admin.php:246 admin/admin.php:325
+#: admin/admin.php:232 admin/admin.php:311
 msgid "flipInY"
 msgstr ""
 
-#: admin/admin.php:247 admin/admin.php:326
+#: admin/admin.php:233 admin/admin.php:312
 msgid "flipOutX"
 msgstr ""
 
-#: admin/admin.php:248 admin/admin.php:327
+#: admin/admin.php:234 admin/admin.php:313
 msgid "flipOutY"
 msgstr ""
 
-#: admin/admin.php:250 admin/admin.php:329
+#: admin/admin.php:236 admin/admin.php:315
 msgid "Lightspeed"
 msgstr ""
 
-#: admin/admin.php:251 admin/admin.php:330
+#: admin/admin.php:237 admin/admin.php:316
 msgid "lightSpeedIn"
 msgstr ""
 
-#: admin/admin.php:252 admin/admin.php:331
+#: admin/admin.php:238 admin/admin.php:317
 msgid "lightSpeedOut"
 msgstr ""
 
-#: admin/admin.php:254
+#: admin/admin.php:240
 msgid "Rotating Entrances"
 msgstr ""
 
-#: admin/admin.php:255
+#: admin/admin.php:241
 msgid "rotateIn"
 msgstr ""
 
-#: admin/admin.php:256
+#: admin/admin.php:242
 msgid "rotateInDownLeft"
 msgstr ""
 
-#: admin/admin.php:257
+#: admin/admin.php:243
 msgid "rotateInDownRight"
 msgstr ""
 
-#: admin/admin.php:258
+#: admin/admin.php:244
 msgid "rotateInUpLeft"
 msgstr ""
 
-#: admin/admin.php:259
+#: admin/admin.php:245
 msgid "rotateInUpRight"
 msgstr ""
 
-#: admin/admin.php:261
+#: admin/admin.php:247
 msgid "Sliding Entrances"
 msgstr ""
 
-#: admin/admin.php:262
+#: admin/admin.php:248
 msgid "slideInUp"
 msgstr ""
 
-#: admin/admin.php:263
+#: admin/admin.php:249
 msgid "slideInDown"
 msgstr ""
 
-#: admin/admin.php:264
+#: admin/admin.php:250
 msgid "slideInLeft"
 msgstr ""
 
-#: admin/admin.php:265
+#: admin/admin.php:251
 msgid "slideInRight"
 msgstr ""
 
-#: admin/admin.php:267
+#: admin/admin.php:253
 msgid "Zoom Entrances"
 msgstr ""
 
-#: admin/admin.php:268
+#: admin/admin.php:254
 msgid "zoomIn"
 msgstr ""
 
-#: admin/admin.php:269
+#: admin/admin.php:255
 msgid "zoomInDown"
 msgstr ""
 
-#: admin/admin.php:270
+#: admin/admin.php:256
 msgid "zoomInLeft"
 msgstr ""
 
-#: admin/admin.php:271
+#: admin/admin.php:257
 msgid "zoomInRight"
 msgstr ""
 
-#: admin/admin.php:272
+#: admin/admin.php:258
 msgid "zoomInUp"
 msgstr ""
 
-#: admin/admin.php:274 admin/admin.php:353
+#: admin/admin.php:260 admin/admin.php:339
 msgid "Specials"
 msgstr ""
 
-#: admin/admin.php:275 admin/admin.php:354
+#: admin/admin.php:261 admin/admin.php:340
 msgid "hinge"
 msgstr ""
 
-#: admin/admin.php:276 admin/admin.php:355
+#: admin/admin.php:262 admin/admin.php:341
 msgid "jackInTheBox"
 msgstr ""
 
-#: admin/admin.php:277 admin/admin.php:356
+#: admin/admin.php:263 admin/admin.php:342
 msgid "rollIn"
 msgstr ""
 
-#: admin/admin.php:278 admin/admin.php:357
+#: admin/admin.php:264 admin/admin.php:343
 msgid "rollOut"
 msgstr ""
 
-#: admin/admin.php:304
+#: admin/admin.php:290
 msgid "Bouncing Exits"
 msgstr ""
 
-#: admin/admin.php:305
+#: admin/admin.php:291
 msgid "bounceOut"
 msgstr ""
 
-#: admin/admin.php:306
+#: admin/admin.php:292
 msgid "bounceOutDown"
 msgstr ""
 
-#: admin/admin.php:307
+#: admin/admin.php:293
 msgid "bounceOutLeft"
 msgstr ""
 
-#: admin/admin.php:308
+#: admin/admin.php:294
 msgid "bounceOutRight"
 msgstr ""
 
-#: admin/admin.php:309
+#: admin/admin.php:295
 msgid "bounceOutUp"
 msgstr ""
 
-#: admin/admin.php:311
+#: admin/admin.php:297
 msgid "Fading Exits"
 msgstr ""
 
-#: admin/admin.php:312
+#: admin/admin.php:298
 msgid "fadeOut"
 msgstr ""
 
-#: admin/admin.php:313
+#: admin/admin.php:299
 msgid "fadeOutDown"
 msgstr ""
 
-#: admin/admin.php:314
+#: admin/admin.php:300
 msgid "fadeOutDownBig"
 msgstr ""
 
-#: admin/admin.php:315
+#: admin/admin.php:301
 msgid "fadeOutLeft"
 msgstr ""
 
-#: admin/admin.php:316
+#: admin/admin.php:302
 msgid "fadeOutLeftBig"
 msgstr ""
 
-#: admin/admin.php:317
+#: admin/admin.php:303
 msgid "fadeOutRight"
 msgstr ""
 
-#: admin/admin.php:318
+#: admin/admin.php:304
 msgid "fadeOutRightBig"
 msgstr ""
 
-#: admin/admin.php:319
+#: admin/admin.php:305
 msgid "fadeOutUp"
 msgstr ""
 
-#: admin/admin.php:320
+#: admin/admin.php:306
 msgid "fadeOutUpBig"
 msgstr ""
 
-#: admin/admin.php:333
+#: admin/admin.php:319
 msgid "Rotating Exits"
 msgstr ""
 
-#: admin/admin.php:334
+#: admin/admin.php:320
 msgid "rotateOut"
 msgstr ""
 
-#: admin/admin.php:335
+#: admin/admin.php:321
 msgid "rotateOutDownLeft"
 msgstr ""
 
-#: admin/admin.php:336
+#: admin/admin.php:322
 msgid "rotateOutDownRight"
 msgstr ""
 
-#: admin/admin.php:337
+#: admin/admin.php:323
 msgid "rotateOutUpLeft"
 msgstr ""
 
-#: admin/admin.php:338
+#: admin/admin.php:324
 msgid "rotateOutUpRight"
 msgstr ""
 
-#: admin/admin.php:340
+#: admin/admin.php:326
 msgid "Sliding Exits"
 msgstr ""
 
-#: admin/admin.php:341
+#: admin/admin.php:327
 msgid "slideOutUp"
 msgstr ""
 
-#: admin/admin.php:342
+#: admin/admin.php:328
 msgid "slideOutDown"
 msgstr ""
 
-#: admin/admin.php:343
+#: admin/admin.php:329
 msgid "slideOutLeft"
 msgstr ""
 
-#: admin/admin.php:344
+#: admin/admin.php:330
 msgid "slideOutRight"
 msgstr ""
 
-#: admin/admin.php:346
+#: admin/admin.php:332
 msgid "Zoom Exits"
 msgstr ""
 
-#: admin/admin.php:347
+#: admin/admin.php:333
 msgid "zoomOut"
 msgstr ""
 
-#: admin/admin.php:348
+#: admin/admin.php:334
 msgid "zoomOutDown"
 msgstr ""
 
-#: admin/admin.php:349
+#: admin/admin.php:335
 msgid "zoomOutLeft"
 msgstr ""
 
-#: admin/admin.php:350
+#: admin/admin.php:336
 msgid "zoomOutRight"
 msgstr ""
 
-#: admin/admin.php:351
+#: admin/admin.php:337
 msgid "zoomOutUp"
 msgstr ""
 
-#: admin/admin.php:374
+#: admin/admin.php:360
 msgid "No Animation"
 msgstr ""
 
-#: admin/admin.php:425
+#: admin/admin.php:409
 msgid "Settings"
 msgstr ""
 
-#: admin/admin.php:517
+#: admin/admin.php:503
 msgid "Pro feature"
 msgstr ""
 
-#: admin/admin.php:527 admin/admin.php:532
+#: admin/admin.php:514 admin/admin.php:519
 msgid "Buy WP Review Pro"
 msgstr ""
 
-#: admin/admin.php:530
+#: admin/admin.php:517
 msgid "Like WP Review Plugin? You will LOVE WP Review Pro!"
 msgstr ""
 
-#: admin/admin.php:531
-msgid "15 new review box templates, 15 new Schema types, commment reviews, user can rate each feature, review popups, review notification bars, custom width, 9 new custom widgets, Google reviews, Facebook reviews, Yelp reviews and much more..."
+#: admin/admin.php:518
+msgid ""
+"15 new review box templates, 15 new Schema types, commment reviews, user can "
+"rate each feature, review popups, review notification bars, custom width, 9 "
+"new custom widgets, Google reviews, Facebook reviews, Yelp reviews and much "
+"more..."
 msgstr ""
 
-#: admin/class-wp-review-form-field.php:25
+#: admin/class-wp-review-form-field.php:27
 msgctxt "switch label"
 msgid "Yes"
 msgstr ""
 
-#: admin/class-wp-review-form-field.php:26
+#: admin/class-wp-review-form-field.php:28
 msgctxt "switch label"
 msgid "No"
 msgstr ""
 
 #: admin/class-wp-review-options.php:38 admin/class-wp-review-options.php:39
-#: admin/options/review.php:309 includes/functions.php:3124
+#: admin/options/review.php:326
 msgid "WP Review"
 msgstr ""
 
@@ -643,11 +745,11 @@ msgstr ""
 msgid "Global"
 msgstr ""
 
-#: admin/class-wp-review-options.php:89 admin/review-options-meta-box.php:43
+#: admin/class-wp-review-options.php:89 admin/review-options-meta-box.php:45
 msgid "Popup"
 msgstr ""
 
-#: admin/class-wp-review-options.php:95 admin/review-options-meta-box.php:46
+#: admin/class-wp-review-options.php:95 admin/review-options-meta-box.php:48
 msgid "Notification Bar"
 msgstr ""
 
@@ -667,7 +769,7 @@ msgstr ""
 msgid "Role Manager"
 msgstr ""
 
-#: admin/class-wp-review-options.php:125 includes/functions.php:3105
+#: admin/class-wp-review-options.php:125
 msgid "Import Reviews"
 msgstr ""
 
@@ -683,1145 +785,307 @@ msgstr ""
 msgid "WP Review Settings"
 msgstr ""
 
-#: admin/demo-importer.php:30 admin/demo-importer.php:35
+#: admin/demo-importer.php:33 admin/demo-importer.php:38
 msgid "Processing, please wait&hellip;"
 msgstr ""
 
-#: admin/demo-importer.php:36
+#: admin/demo-importer.php:39
 msgid "Ok"
 msgstr ""
 
-#: admin/demo-importer/class-wp-import.php:115
-#: admin/demo-importer/class-wp-import.php:124
-#: admin/demo-importer/class-wp-import.php:175
-#: admin/demo-importer/class-wp-import.php:179
-#: admin/demo-importer/class-wp-import.php:188
-msgid "Sorry, there has been an error."
-msgstr ""
-
-#: admin/demo-importer/class-wp-import.php:116
-msgid "The file does not exist, please try again."
-msgstr ""
-
-#: admin/demo-importer/class-wp-import.php:159
-msgid "All done."
-msgstr ""
-
-#: admin/demo-importer/class-wp-import.php:159
-msgid "Have fun!"
-msgstr ""
-
-#: admin/demo-importer/class-wp-import.php:160
-msgid "Remember to update the passwords and roles of imported users."
-msgstr ""
-
-#: admin/demo-importer/class-wp-import.php:180
-#, php-format
-msgid "The export file could not be found at <code>%s</code>. It is likely that this was caused by a permissions problem."
-msgstr ""
-
-#: admin/demo-importer/class-wp-import.php:196
-#, php-format
-msgid "This WXR file (version %s) may not be supported by this version of the importer. Please consider updating."
-msgstr ""
-
-#: admin/demo-importer/class-wp-import.php:221
-#, php-format
-msgid "Failed to import author %s. Their posts will be attributed to the current user."
-msgstr ""
-
-#: admin/demo-importer/class-wp-import.php:247
-msgid "Assign Authors"
-msgstr ""
-
-#: admin/demo-importer/class-wp-import.php:248
-msgid "To make it easier for you to edit and save the imported content, you may want to reassign the author of the imported item to an existing user of this site. For example, you may want to import all the entries as <code>admin</code>s entries."
-msgstr ""
-
-#: admin/demo-importer/class-wp-import.php:250
-#, php-format
-msgid "If a new user is created by WordPress, a new password will be randomly generated and the new user&#8217;s role will be set as %s. Manually changing the new user&#8217;s details will be necessary."
-msgstr ""
-
-#: admin/demo-importer/class-wp-import.php:260
-msgid "Import Attachments"
-msgstr ""
-
-#: admin/demo-importer/class-wp-import.php:263
-msgid "Download and import file attachments"
-msgstr ""
-
-#: admin/demo-importer/class-wp-import.php:267 includes/functions.php:1412
-msgid "Submit"
-msgstr ""
-
-#: admin/demo-importer/class-wp-import.php:280
-msgid "Import author:"
-msgstr ""
-
-#: admin/demo-importer/class-wp-import.php:291
-msgid "or create new user with login name:"
-msgstr ""
-
-#: admin/demo-importer/class-wp-import.php:294
-msgid "as a new user:"
-msgstr ""
-
-#: admin/demo-importer/class-wp-import.php:302
-msgid "assign posts to an existing user:"
-msgstr ""
-
-#: admin/demo-importer/class-wp-import.php:304
-msgid "or assign posts to an existing user:"
-msgstr ""
-
-#: admin/demo-importer/class-wp-import.php:305
-msgid "- Select -"
-msgstr ""
-
-#: admin/demo-importer/class-wp-import.php:355
-#, php-format
-msgid "Failed to create new user for %s. Their posts will be attributed to the current user."
-msgstr ""
-
-#: admin/demo-importer/class-wp-import.php:407
-#, php-format
-msgid "Failed to import category %s"
-msgstr ""
-
-#: admin/demo-importer/class-wp-import.php:450
-#, php-format
-msgid "Failed to import post tag %s"
-msgstr ""
-
-#: admin/demo-importer/class-wp-import.php:499
-#: admin/demo-importer/class-wp-import.php:721
-#, php-format
-msgid "Failed to import %s %s"
-msgstr ""
-
-#: admin/demo-importer/class-wp-import.php:588
-#, php-format
-msgid "Failed to import &#8220;%s&#8221;: Invalid post type %s"
-msgstr ""
-
-#: admin/demo-importer/class-wp-import.php:625
-#, php-format
-msgid "%s &#8220;%s&#8221; already exists."
-msgstr ""
-
-#: admin/demo-importer/class-wp-import.php:687
-#, php-format
-msgid "Failed to import %s &#8220;%s&#8221;"
-msgstr ""
-
-#: admin/demo-importer/class-wp-import.php:853
-msgid "Menu item skipped due to missing menu slug"
-msgstr ""
-
-#: admin/demo-importer/class-wp-import.php:860
-#, php-format
-msgid "Menu item skipped due to invalid menu slug: %s"
-msgstr ""
-
-#: admin/demo-importer/class-wp-import.php:923
-msgid "Fetching attachments is not enabled"
-msgstr ""
-
-#: admin/demo-importer/class-wp-import.php:936
-msgid "Invalid file type"
-msgstr ""
-
-#: admin/demo-importer/class-wp-import.php:986
-msgid "Remote server did not respond"
-msgstr ""
-
-#: admin/demo-importer/class-wp-import.php:994
-#, php-format
-msgid "Remote server returned error response %1$d %2$s"
-msgstr ""
-
-#: admin/demo-importer/class-wp-import.php:1001
-msgid "Remote file is incorrect size"
-msgstr ""
-
-#: admin/demo-importer/class-wp-import.php:1006
-msgid "Zero size file downloaded"
-msgstr ""
-
-#: admin/demo-importer/class-wp-import.php:1012
-#, php-format
-msgid "Remote file is too large, limit is %s"
-msgstr ""
-
-#: admin/demo-importer/class-wp-import.php:1112
-msgid "Import WordPress"
-msgstr ""
-
-#: admin/demo-importer/class-wp-import.php:1119
-#, php-format
-msgid "A new version of this importer is available. Please update to version %s to ensure compatibility with newer export files."
-msgstr ""
-
-#: admin/demo-importer/class-wp-import.php:1134
-msgid "Howdy! Upload your WordPress eXtended RSS (WXR) file and we&#8217;ll import the posts, pages, comments, custom fields, categories, and tags into this site."
-msgstr ""
-
-#: admin/demo-importer/class-wp-import.php:1135
-msgid "Choose a WXR (.xml) file to upload, then click Upload file and import."
-msgstr ""
-
-#: admin/demo-importer/parsers.php:42 admin/demo-importer/parsers.php:72
-#: admin/demo-importer/parsers.php:80
-msgid "There was an error when reading this WXR file"
-msgstr ""
-
-#: admin/demo-importer/parsers.php:43
-msgid "Details are shown above. The importer will now try again with a different parser..."
-msgstr ""
-
-#: admin/demo-importer/parsers.php:84 admin/demo-importer/parsers.php:89
-#: admin/demo-importer/parsers.php:306 admin/demo-importer/parsers.php:502
-msgid "This does not appear to be a WXR file, missing/invalid WXR version number"
-msgstr ""
-
-#: admin/metaboxes.php:39
+#: admin/metaboxes.php:40
 msgid "Review"
 msgstr ""
 
-#: admin/metaboxes.php:49
+#: admin/metaboxes.php:50
 msgid "Review Item"
 msgstr ""
 
-#: admin/metaboxes.php:60 includes/functions.php:3108
+#: admin/metaboxes.php:61
 msgid "Review Links"
 msgstr ""
 
-#: admin/metaboxes.php:70
+#: admin/metaboxes.php:71
 msgid "Review Description"
 msgstr ""
 
-#: admin/metaboxes.php:81 includes/functions.php:3110
+#: admin/metaboxes.php:82
 msgid "User Reviews"
 msgstr ""
 
-#: admin/metaboxes.php:205
+#: admin/metaboxes.php:208
 msgid "Add item"
 msgstr ""
 
-#: admin/metaboxes.php:211
+#: admin/metaboxes.php:214
 msgid "Total"
 msgstr ""
 
-#: admin/metaboxes.php:230 admin/metaboxes.php:667 admin/metaboxes.php:679
-#: admin/metaboxes.php:689 admin/options/review.php:746
-#: admin/options/review.php:759 admin/options/review.php:769
-#: admin/options/review.php:795 admin/options/review.php:805
+#: admin/metaboxes.php:233 admin/metaboxes.php:701 admin/metaboxes.php:713
+#: admin/metaboxes.php:723 admin/options/review.php:783
+#: admin/options/review.php:796 admin/options/review.php:806
+#: admin/options/review.php:832 admin/options/review.php:842
 msgid "Delete"
 msgstr ""
 
-#: admin/metaboxes.php:236
+#: admin/metaboxes.php:239
 msgid "Feature Name"
 msgstr ""
 
-#: admin/metaboxes.php:247
+#: admin/metaboxes.php:250
 msgid "Feature Color"
 msgstr ""
 
-#: admin/metaboxes.php:261
+#: admin/metaboxes.php:264
 msgid "Inactive Color"
 msgstr ""
 
-#: admin/metaboxes.php:275
+#: admin/metaboxes.php:278
 msgid "Feature Score"
 msgstr ""
 
-#: admin/metaboxes.php:286 admin/options/multisite.php:244
+#: admin/metaboxes.php:289 admin/options/multisite.php:267
 msgid "Hide Features"
 msgstr ""
 
-#: admin/metaboxes.php:302
+#: admin/metaboxes.php:307
 msgid "Custom Location"
 msgstr ""
 
-#: admin/metaboxes.php:319 admin/options/review.php:700
+#: admin/metaboxes.php:326 admin/options/review.php:737
 msgid "Review Location"
 msgstr ""
 
-#: admin/metaboxes.php:324 admin/options/review.php:705
+#: admin/metaboxes.php:331 admin/options/review.php:742
 msgid "After Content"
 msgstr ""
 
-#: admin/metaboxes.php:325 admin/options/review.php:706
+#: admin/metaboxes.php:332 admin/options/review.php:743
 msgid "Before Content"
 msgstr ""
 
-#: admin/metaboxes.php:326 admin/options/review.php:707
+#: admin/metaboxes.php:333 admin/options/review.php:744
 msgid "Custom (use shortcode)"
 msgstr ""
 
-#: admin/metaboxes.php:332
+#: admin/metaboxes.php:339
 msgid "Copy &amp; paste this shortcode in the content."
 msgstr ""
 
-#: admin/metaboxes.php:340
+#: admin/metaboxes.php:347
 msgid "Custom Layout"
 msgstr ""
 
-#: admin/metaboxes.php:357 admin/options/review.php:487 template-list.php:17
-msgid "Default"
-msgstr ""
-
-#: admin/metaboxes.php:390 admin/options/review.php:527
+#: admin/metaboxes.php:399 admin/options/review.php:560
 msgid "Review Color"
 msgstr ""
 
-#: admin/metaboxes.php:400 admin/options/review.php:537
+#: admin/metaboxes.php:409 admin/options/review.php:570
 msgid "Inactive Review Color"
 msgstr ""
 
-#: admin/metaboxes.php:410 admin/options/review.php:547
+#: admin/metaboxes.php:419 admin/options/review.php:580
 msgid "Font Color"
 msgstr ""
 
-#: admin/metaboxes.php:420 admin/options/review.php:557
+#: admin/metaboxes.php:429 admin/options/review.php:590
 msgid "Heading Background Color"
 msgstr ""
 
-#: admin/metaboxes.php:430 admin/options/review.php:567
+#: admin/metaboxes.php:439 admin/options/review.php:600
 msgid "Background Color"
 msgstr ""
 
-#: admin/metaboxes.php:440 admin/options/review.php:577
+#: admin/metaboxes.php:449 admin/options/review.php:610
 msgid "Border Color"
 msgstr ""
 
-#: admin/metaboxes.php:450 admin/options/review.php:601
+#: admin/metaboxes.php:459 admin/options/review.php:634
 msgid "Google Font"
 msgstr ""
 
-#: admin/metaboxes.php:468
+#: admin/metaboxes.php:479
 msgid "Custom Width"
 msgstr ""
 
-#: admin/metaboxes.php:499 includes/functions.php:1482
+#: admin/metaboxes.php:512
 msgid "Summary"
 msgstr ""
 
-#: admin/metaboxes.php:507
+#: admin/metaboxes.php:520
 msgid "Description title"
 msgstr ""
 
-#: admin/metaboxes.php:517
+#: admin/metaboxes.php:530
 msgid "Description content"
 msgstr ""
 
-#: admin/metaboxes.php:544
+#: admin/metaboxes.php:557
 msgid "Pros"
 msgstr ""
 
-#: admin/metaboxes.php:571
+#: admin/metaboxes.php:584
 msgid "Cons"
 msgstr ""
 
-#: admin/metaboxes.php:600
+#: admin/metaboxes.php:613
 msgid "Hide Description, Pros/Cons & Total Rating"
 msgstr ""
 
-#: admin/metaboxes.php:645 admin/options/hello-bar.php:39
+#: admin/metaboxes.php:679 admin/options/hello-bar.php:41
 msgid "Text"
 msgstr ""
 
-#: admin/metaboxes.php:646
+#: admin/metaboxes.php:680
 msgid "URL"
 msgstr ""
 
-#: admin/metaboxes.php:696
+#: admin/metaboxes.php:730
 msgid "Add another"
 msgstr ""
 
-#: admin/metaboxes.php:719 admin/options/review.php:821
+#: admin/metaboxes.php:759 admin/options/review.php:858
 msgid "Disabled"
 msgstr ""
 
-#: admin/metaboxes.php:726 admin/options/review.php:826
+#: admin/metaboxes.php:766 admin/options/review.php:863
 msgid "Visitor Rating Only"
 msgstr ""
 
-#: admin/metaboxes.php:733 admin/options/review.php:831
+#: admin/metaboxes.php:773 admin/options/review.php:868
 msgid "Comment Rating Only"
 msgstr ""
 
-#: admin/metaboxes.php:741 admin/options/review.php:837
+#: admin/metaboxes.php:781 admin/options/review.php:874
 msgid "Both"
 msgstr ""
 
-#: admin/metaboxes.php:749
-msgid "If you are changing User Rating Type & post already have user ratings, please edit or remove existing ratings."
+#: admin/metaboxes.php:789
+msgid ""
+"If you are changing User Rating Type & post already have user ratings, "
+"please edit or remove existing ratings."
 msgstr ""
 
-#: admin/metaboxes.php:753
+#: admin/metaboxes.php:793
 msgid "User Rating Type"
 msgstr ""
 
-#: admin/metaboxes.php:784
+#: admin/metaboxes.php:824
 msgid "User can:"
 msgstr ""
 
-#: admin/metaboxes.php:791
+#: admin/metaboxes.php:831
 msgid "Give Overall Rating"
 msgstr ""
 
-#: admin/metaboxes.php:792
+#: admin/metaboxes.php:832
 msgid "Rate Each Feature"
 msgstr ""
 
-#: admin/metaboxes.php:803
+#: admin/metaboxes.php:843
 msgid "Hide Visitors Rating in Review Box"
 msgstr ""
 
-#: admin/metaboxes.php:821
+#: admin/metaboxes.php:863
 msgid "Product Price"
 msgstr ""
 
-#: admin/metaboxes.php:831
+#: admin/metaboxes.php:873
 msgid "Comment Feedback (helpful/unhelpful)"
 msgstr ""
 
-#: admin/metaboxes.php:838 admin/review-options-meta-box.php:198
-#: admin/review-options-meta-box.php:219
+#: admin/metaboxes.php:880 admin/review-options-meta-box.php:211
+#: admin/review-options-meta-box.php:232
 msgid "Use global options"
 msgstr ""
 
-#: admin/metaboxes.php:839 includes/comments.php:103
+#: admin/metaboxes.php:881 includes/comments.php:122
 msgid "Yes"
 msgstr ""
 
-#: admin/metaboxes.php:840 includes/comments.php:104
+#: admin/metaboxes.php:882 includes/comments.php:123
 msgid "No"
 msgstr ""
 
-#: admin/metaboxes.php:853 admin/options/review.php:474
+#: admin/metaboxes.php:897 admin/options/review.php:507
 msgid "Processing..."
 msgstr ""
 
-#: admin/metaboxes.php:855 admin/options/review.php:475
+#: admin/metaboxes.php:899 admin/options/review.php:508
 msgid "Purge visitor ratings"
 msgstr ""
 
-#: admin/metaboxes.php:856
+#: admin/metaboxes.php:900
 msgid "Click to remove all visitor ratings of this post."
 msgstr ""
 
-#. translators: Facebook App link.
-#: admin/options/facebook.php:13
-#, php-format
-msgid "%s to create Facebook App. Remember to add your domain to app."
-msgstr ""
-
-#: admin/options/facebook.php:14 admin/options/google.php:26
-#: admin/options/yelp.php:27
-msgid "Click here"
-msgstr ""
-
-#: admin/options/facebook.php:21
-msgid "App ID"
-msgstr ""
-
-#: admin/options/facebook.php:34
-msgid "App secret"
-msgstr ""
-
-#: admin/options/facebook.php:45
-msgid "Please re-generate access token in shortcodes and widgets each time you change App ID or App secret."
-msgstr ""
-
-#: admin/options/google.php:11 admin/options/yelp.php:12
-msgid "API Key"
-msgstr ""
-
-#. translators: Google API link.
-#: admin/options/google.php:25
-#, php-format
-msgid "%s to get Google API key."
-msgstr ""
-
-#: admin/options/hello-bar.php:11
-msgid "Content"
-msgstr ""
-
-#: admin/options/hello-bar.php:12 admin/options/review.php:172
-#: admin/options/review.php:483
-msgid "Styling"
-msgstr ""
-
-#: admin/options/hello-bar.php:16
-msgid "Content Settings"
-msgstr ""
-
-#: admin/options/hello-bar.php:20
-msgid "Enable Global Notification Bar"
-msgstr ""
-
-#: admin/options/hello-bar.php:51
-msgid "Star Rating"
-msgstr ""
-
-#: admin/options/hello-bar.php:63 filter-list.php:225
-msgid "Price"
-msgstr ""
-
-#: admin/options/hello-bar.php:75
-msgid "Button label"
-msgstr ""
-
-#: admin/options/hello-bar.php:80
-msgid "Buy Now"
-msgstr ""
-
-#: admin/options/hello-bar.php:87
-msgid "Button URL"
-msgstr ""
-
-#: admin/options/hello-bar.php:99
-msgid "Open link in new tab"
-msgstr ""
-
-#: admin/options/hello-bar.php:116
-msgid "Styling Settings"
-msgstr ""
-
-#: admin/options/hello-bar.php:120
-msgid "Location"
-msgstr ""
-
-#: admin/options/hello-bar.php:127
-msgid "Top"
-msgstr ""
-
-#: admin/options/hello-bar.php:128
-msgid "Bottom"
-msgstr ""
-
-#: admin/options/hello-bar.php:136
-msgid "Max container(px/%)"
-msgstr ""
-
-#: admin/options/hello-bar.php:149
-msgid "Background color"
-msgstr ""
-
-#: admin/options/hello-bar.php:162
-msgid "Background image"
-msgstr ""
-
-#: admin/options/hello-bar.php:177
-msgid "Text color"
-msgstr ""
-
-#: admin/options/hello-bar.php:190
-msgid "Star color"
-msgstr ""
-
-#: admin/options/hello-bar.php:203
-msgid "Button background color"
-msgstr ""
-
-#: admin/options/hello-bar.php:216
-msgid "Button text color"
-msgstr ""
-
-#: admin/options/help.php:13
-msgid "All support for this plugin is provided through our forums. If you have not registered yet, you can do so here for ​<strong>FREE​</strong>: "
-msgstr ""
-
-#: admin/options/help.php:17
-msgid "Check our free WordPress video tutorials here: "
-msgstr ""
-
-#: admin/options/help.php:19
-msgid "(no registration required)"
-msgstr ""
-
-#: admin/options/help.php:22
-msgid "Thank you for using our plugin."
-msgstr ""
-
-#: admin/options/help.php:26
-msgid "Get Support"
-msgstr ""
-
-#: admin/options/import.php:12
-msgid "Demo data import"
-msgstr ""
-
-#: admin/options/import.php:16 admin/options/import.php:38
-#: admin/options/import.php:65
-msgid "Import"
-msgstr ""
-
-#: admin/options/import.php:17
-msgid "Click above button to import demo data, imported data will be saved as new draft posts."
-msgstr ""
-
-#: admin/options/import.php:23
-msgid "Select plugin"
-msgstr ""
-
-#: admin/options/import.php:45
-msgid "Warning"
-msgstr ""
-
-#: admin/options/import.php:46
-msgid "This action is IRREVERSIBLE! Take a backup of your database before proceeding."
-msgstr ""
-
-#: admin/options/import.php:57
-msgid "Import settings"
-msgstr ""
-
-#: admin/options/import.php:61
-msgid "Import code"
-msgstr ""
-
-#: admin/options/import.php:63
-msgid "Insert your backup code below and hit Import to restore your plugin options from a backup."
-msgstr ""
-
-#: admin/options/import.php:72
-msgid "Export settings"
-msgstr ""
-
-#: admin/options/import.php:76
-msgid "Show export code"
-msgstr ""
-
-#: admin/options/multisite.php:12
-msgid "Site: "
-msgstr ""
-
-#: admin/options/multisite.php:17
-msgid "Select site"
-msgstr ""
-
-#: admin/options/multisite.php:42 admin/options/review.php:181
-msgid "General Settings"
-msgstr ""
-
-#: admin/options/multisite.php:45
-msgid "Hide global options panel"
-msgstr ""
-
-#: admin/options/multisite.php:63
-msgid "Hide Popup"
-msgstr ""
-
-#: admin/options/multisite.php:80 admin/options/multisite.php:227
-msgid "Hide Notification Bar"
-msgstr ""
-
-#: admin/options/multisite.php:97
-msgid "Hide Yelp Reviews"
-msgstr ""
-
-#: admin/options/multisite.php:114
-msgid "Hide Facebook Reviews"
-msgstr ""
-
-#: admin/options/multisite.php:131
-msgid "Hide Google Reviews"
-msgstr ""
-
-#: admin/options/multisite.php:148
-msgid "Hide Role Manager"
-msgstr ""
-
-#: admin/options/multisite.php:164
-msgid "Hide Import"
-msgstr ""
-
-#: admin/options/multisite.php:180
-msgid "Post Settings"
-msgstr ""
-
-#: admin/options/multisite.php:190
-msgid "Hide reviews in single editor"
-msgstr ""
-
-#: admin/options/multisite.php:210
-msgid "Hide Popup Box"
-msgstr ""
-
-#: admin/options/multisite.php:261
-msgid "Hide Review Links"
-msgstr ""
-
-#: admin/options/multisite.php:277
-msgid "Hide Review Description, Pros/Cons & Total Rating"
-msgstr ""
-
-#: admin/options/multisite.php:294
-msgid "Hide User Reviews"
-msgstr ""
-
-#: admin/options/popup.php:11
-msgid "Enable Popup"
-msgstr ""
-
-#: admin/options/popup.php:30
-msgid "Popup width"
-msgstr ""
-
-#: admin/options/popup.php:43
-msgid "Popup animation in"
-msgstr ""
-
-#: admin/options/popup.php:61
-msgid "Popup animation out"
-msgstr ""
-
-#: admin/options/popup.php:80
-msgid "Popup overlay color"
-msgstr ""
-
-#: admin/options/popup.php:93
-msgid "Popup overlay opacity"
-msgstr ""
-
-#: admin/options/popup.php:108
-msgid "Post type"
-msgstr ""
-
-#: admin/options/popup.php:115
-msgid "Any"
-msgstr ""
-
-#: admin/options/popup.php:126
-msgid "Popup content"
-msgstr ""
-
-#: admin/options/popup.php:133
-msgid "From category"
-msgstr ""
-
-#: admin/options/popup.php:134
-msgid "From tag"
-msgstr ""
-
-#: admin/options/popup.php:135
-msgid "From review type"
-msgstr ""
-
-#: admin/options/popup.php:136
-msgid "Latest reviews"
-msgstr ""
-
-#: admin/options/popup.php:144
-msgid "Choose category"
-msgstr ""
-
-#: admin/options/popup.php:152
-msgid "All categories"
-msgstr ""
-
-#: admin/options/popup.php:165
-msgid "Number of Reviews"
-msgstr ""
-
-#: admin/options/popup.php:178
-msgid "Popup content order"
-msgstr ""
-
-#: admin/options/popup.php:185
-msgid "Random"
-msgstr ""
-
-#: admin/options/popup.php:186
-msgid "Most popular"
-msgstr ""
-
-#: admin/options/popup.php:187
-msgid "Most rated"
-msgstr ""
-
-#: admin/options/popup.php:188
-msgid "Latest"
-msgstr ""
-
-#: admin/options/popup.php:197
-msgid "Hide popup for"
-msgstr ""
-
-#: admin/options/popup.php:204
-msgid "day(s)."
-msgstr ""
-
-#: admin/options/popup.php:208
-msgid "Set to 0 if you want to show popup on each page load."
-msgstr ""
-
-#. translators: number input.
-#: admin/options/popup.php:218
-#, php-format
-msgid "Show popup after %s second(s)"
-msgstr ""
-
-#: admin/options/popup.php:227
-msgid "Set to 0 if you want to show popup instantly."
-msgstr ""
-
-#: admin/options/popup.php:234
-msgid "Show popup when visitor reaches the end of the content (only on single posts or pages)"
-msgstr ""
-
-#: admin/options/popup.php:244
-msgid "Show popup when visitor is about to leave (exit intent)"
-msgstr ""
-
-#. translators: width input.
-#: admin/options/popup.php:257
-#, php-format
-msgid "Show popup on screens larger than %s pixels"
-msgstr ""
-
-#: admin/options/popup.php:267
-msgid "Generate new cookie"
-msgstr ""
-
-#: admin/options/popup.php:268
-msgid "Use this option to override old cookie."
-msgstr ""
-
-#: admin/options/review.php:160 includes/functions.php:957
-msgid "Star"
-msgstr ""
-
-#: admin/options/review.php:161 includes/functions.php:967
-msgid "Point"
-msgstr ""
-
-#: admin/options/review.php:162 includes/functions.php:977
-msgid "Percentage"
-msgstr ""
-
-#: admin/options/review.php:163 includes/functions.php:987
-msgid "Circle"
-msgstr ""
-
-#: admin/options/review.php:164 includes/functions.php:997
-msgid "Thumbs"
-msgstr ""
-
-#: admin/options/review.php:171
-msgid "General"
-msgstr ""
-
-#: admin/options/review.php:173 admin/options/review.php:665
-msgid "Defaults"
-msgstr ""
-
-#: admin/options/review.php:174 admin/options/review.php:845
-msgid "Embed"
-msgstr ""
-
-#: admin/options/review.php:176
-msgid "Migrate Ratings"
-msgstr ""
-
-#: admin/options/review.php:185
-msgid "There is a filter set for the review location that may modify the options below."
-msgstr ""
-
-#: admin/options/review.php:191
-msgid "The current theme provides default settings for the plugin."
-msgstr ""
-
-#: admin/options/review.php:193
-msgid "Set to theme defaults"
-msgstr ""
-
-#: admin/options/review.php:200
-msgid "Restrict rating to registered users only"
-msgstr ""
-
-#: admin/options/review.php:216
-msgid "Add total rating to thumbnails"
-msgstr ""
-
-#: admin/options/review.php:233
-msgid "Enable User rating in old posts"
-msgstr ""
-
-#: admin/options/review.php:251
-msgid "Replace WooCommerce rating"
-msgstr ""
-
-#: admin/options/review.php:269
-msgid "Disable Map Script in the Backend"
-msgstr ""
-
-#: admin/options/review.php:283
-msgid "If map script is conflicting with other plugin in the single post editor, please enable this option."
-msgstr ""
-
-#: admin/options/review.php:288
-msgid "Comments template"
-msgstr ""
-
-#: admin/options/review.php:298
-msgid "Theme"
-msgstr ""
-
-#: admin/options/review.php:302
-msgid "Use theme comments template. Might need customization of comments.php"
-msgstr ""
-
-#: admin/options/review.php:313
-msgid "Use WP Review comments template. Better chances for out of the box integration."
-msgstr ""
-
-#: admin/options/review.php:321
-msgid "Comment form integration"
-msgstr ""
-
-#: admin/options/review.php:331
-msgid "Replace"
-msgstr ""
-
-#: admin/options/review.php:335
-msgid "Replace form fields."
-msgstr ""
-
-#: admin/options/review.php:342
-msgid "Extend"
-msgstr ""
-
-#: admin/options/review.php:346
-msgid "Add new fields without modifying the default fields."
-msgstr ""
-
-#: admin/options/review.php:354
-msgid "Require a rating when commenting"
-msgstr ""
-
-#: admin/options/review.php:371
-msgid "Allow comment feedback (helpful/unhelpful)"
-msgstr ""
-
-#: admin/options/review.php:388
-msgid "Record User Ratings"
-msgstr ""
-
-#: admin/options/review.php:395
-msgid "Based on IP address"
-msgstr ""
-
-#: admin/options/review.php:396
-msgid "Based on browser cookie"
-msgstr ""
-
-#: admin/options/review.php:420
-msgid "Allow multiple reviews per account"
-msgstr ""
-
-#: admin/options/review.php:436
-msgid "Include Pros/Cons in comment reviews"
-msgstr ""
-
-#: admin/options/review.php:453
-msgid "Approve Comment Reviews without Moderation"
-msgstr ""
-
-#: admin/options/review.php:476
-msgid "Click to remove all visitor ratings of all posts."
-msgstr ""
-
-#: admin/options/review.php:519
-msgid "There is a filter set for the review colors that may modify the options below."
-msgstr ""
-
-#: admin/options/review.php:589
-msgid "Review Box Width"
-msgstr ""
-
-#: admin/options/review.php:603
-msgid "Many templates use Google Font, select <code>No</code> to use default theme font."
-msgstr ""
-
-#: admin/options/review.php:621
-msgid "Comment Rating Color"
-msgstr ""
-
-#: admin/options/review.php:623
-msgid "Use different color for ratings in comments"
-msgstr ""
-
-#: admin/options/review.php:641
-msgid "Rating icon"
-msgstr ""
-
-#: admin/options/review.php:660
-msgid "Use Image"
-msgstr ""
-
-#: admin/options/review.php:672
-msgid "Review type"
-msgstr ""
-
-#: admin/options/review.php:677
-msgid "No Review"
-msgstr ""
-
-#: admin/options/review.php:712
-msgid "Copy & paste this shortcode in the post content."
-msgstr ""
-
-#: admin/options/review.php:719
-msgid "Review Schema"
-msgstr ""
-
-#: admin/options/review.php:734
-msgid "Features"
-msgstr ""
-
-#: admin/options/review.php:774
-msgid "Default features are set by a filter function. Remove it to change."
-msgstr ""
-
-#: admin/options/review.php:776
-msgid "Add default feature"
-msgstr ""
-
-#: admin/options/review.php:783
-msgid "Links"
-msgstr ""
-
-#: admin/options/review.php:809
-msgid "Add default link"
-msgstr ""
-
-#: admin/options/review.php:815
-msgid "User Ratings"
-msgstr ""
-
-#: admin/options/review.php:846
-msgid "From here you can enable embed feature, which will show embed code in the frontend which site visitors can use to embed review on their site."
-msgstr ""
-
-#: admin/options/review.php:850
-msgid "Enable Embed"
-msgstr ""
-
-#: admin/options/review.php:867
-msgid "Show Title"
-msgstr ""
-
-#: admin/options/review.php:884
-msgid "Show Thumbnail"
-msgstr ""
-
-#: admin/options/review.php:901
-msgid "Show Excerpt"
-msgstr ""
-
-#: admin/options/review.php:918
-msgid "Show Rating Box"
-msgstr ""
-
-#: admin/options/review.php:935
-msgid "Show Credit"
-msgstr ""
-
-#: admin/options/review.php:954
-msgid "Here you can import your existing user ratings from WP Review 1.x and WP Review Pro 1.x."
-msgstr ""
-
-#: admin/options/review.php:955
-#, php-format
-msgid "%s ratings left to import."
-msgstr ""
-
-#: admin/options/review.php:956
-msgid "Start import"
-msgstr ""
-
-#: admin/options/review.php:959
-msgid "Ratings have already been migrated."
-msgstr ""
-
-#. translators: Yelp App link.
-#: admin/options/yelp.php:26
-#, php-format
-msgid "%s to get Yelp API Key."
-msgstr ""
-
-#: admin/review-options-meta-box.php:41
+#: admin/review-options-meta-box.php:43
 msgid "Review Box"
 msgstr ""
 
-#: admin/review-options-meta-box.php:53
+#: admin/review-options-meta-box.php:55
 msgid "Review Type"
 msgstr ""
 
-#: admin/review-options-meta-box.php:58
+#: admin/review-options-meta-box.php:60
 msgid "No review"
 msgstr ""
 
-#: admin/review-options-meta-box.php:76
+#: admin/review-options-meta-box.php:81
 #, php-format
 msgid "Review ID: %s"
 msgstr ""
 
-#: admin/review-options-meta-box.php:82
+#: admin/review-options-meta-box.php:89
 msgid "Review Heading"
 msgstr ""
 
-#: admin/review-options-meta-box.php:94
+#: admin/review-options-meta-box.php:101
 msgid "Reviewed Item Schema"
 msgstr ""
 
-#: admin/review-options-meta-box.php:110
+#: admin/review-options-meta-box.php:117
 msgid "Rating Schema"
 msgstr ""
 
-#: admin/review-options-meta-box.php:114
+#: admin/review-options-meta-box.php:121
 msgid "Author Review Rating"
 msgstr ""
 
-#: admin/review-options-meta-box.php:115
+#: admin/review-options-meta-box.php:122
 msgid "Visitors Aggregate Rating (if enabled)"
 msgstr ""
 
-#: admin/review-options-meta-box.php:116
+#: admin/review-options-meta-box.php:123
 msgid "Comments Reviews Aggregate Rating (if enabled)"
 msgstr ""
 
-#: admin/review-options-meta-box.php:123
+#: admin/review-options-meta-box.php:130
 msgid "Custom Author"
 msgstr ""
 
-#: admin/review-options-meta-box.php:139
+#: admin/review-options-meta-box.php:148
 msgid "Review Author"
 msgstr ""
 
-#: admin/review-options-meta-box.php:152
+#: admin/review-options-meta-box.php:161
 msgid "Display Schema Data in the Box (if available)"
 msgstr ""
 
-#: admin/review-options-meta-box.php:170
+#: admin/review-options-meta-box.php:181
 msgid "Show Embed Code"
 msgstr ""
 
-#: admin/review-options-meta-box.php:191 admin/review-options-meta-box.php:212
+#: admin/review-options-meta-box.php:204 admin/review-options-meta-box.php:225
 msgid "Enable"
 msgstr ""
 
-#: admin/review-options-meta-box.php:199 admin/review-options-meta-box.php:220
+#: admin/review-options-meta-box.php:212 admin/review-options-meta-box.php:233
 msgid "Use custom options"
 msgstr ""
 
-#: admin/review-options-meta-box.php:200 admin/review-options-meta-box.php:221
-#: includes/schemas.php:11 includes/widgets/class-wp-review-tab-widget.php:197
+#: admin/review-options-meta-box.php:213 admin/review-options-meta-box.php:234
+#: includes/schemas.php:11 includes/widgets/class-wp-review-tab-widget.php:216
 msgid "None"
 msgstr ""
 
@@ -1830,7 +1094,6 @@ msgid "Overall"
 msgstr ""
 
 #: box-templates/aqua.php:135 box-templates/default.php:142
-#: includes/functions.php:1332
 msgid "User Review"
 msgstr ""
 
@@ -1840,312 +1103,117 @@ msgid_plural "votes"
 msgstr[0] ""
 msgstr[1] ""
 
-#: box-templates/global/partials/review-schema.php:49
-msgid "[ More ]"
-msgstr ""
-
-#: comments/comments.php:10
+#: comments/comments.php:12
 msgid "Please do not load this page directly. Thanks!"
 msgstr ""
 
-#: comments/comments.php:14
+#: comments/comments.php:16
 msgid "This post is password protected. Enter the password to view comments."
 msgstr ""
 
-#: comments/comments.php:22
+#: comments/comments.php:24
 msgid "No Responses"
 msgstr ""
 
-#: comments/comments.php:22
+#: comments/comments.php:24
 msgid "One Response"
 msgstr ""
 
-#: comments/comments.php:22
+#: comments/comments.php:24
 msgid "% Comments"
 msgstr ""
 
-#: comments/comments.php:49
+#: comments/comments.php:55
 msgid "Leave a Reply"
 msgstr ""
 
-#: comments/comments.php:52
+#: comments/comments.php:58
 msgid "Post Comment"
 msgstr ""
 
-#: comments/comments.php:53
+#: comments/comments.php:59
 msgid "Comment*"
 msgstr ""
 
-#: comments/comments.php:57
+#: comments/comments.php:63
 msgid "Name*"
 msgstr ""
 
-#: comments/comments.php:58
+#: comments/comments.php:64
 msgid "Email*"
 msgstr ""
 
-#: comments/comments.php:59
+#: comments/comments.php:65
 msgid "Website"
 msgstr ""
 
-#: comments/comments.php:61
-msgid "Save my name, email, and website in this browser for the next time I comment."
-msgstr ""
-
-#: filter-list.php:222
-msgid "Audio"
-msgstr ""
-
-#: filter-list.php:223
-msgid "Visual"
-msgstr ""
-
-#: filter-list.php:224
-msgid "UX"
-msgstr ""
-
-#: filter-list.php:407
-msgid "Enable Reviews"
-msgstr ""
-
-#: filter-list.php:422
-msgid "10 Stars"
-msgstr ""
-
-#: filter-list.php:425 includes/ajax.php:164
-#, php-format
-msgid "%s Stars"
-msgstr ""
-
-#: filter-list.php:426
-#, php-format
-msgid "%s Star"
-msgstr ""
-
-#: filter-list.php:441
-msgid "Custom template"
-msgstr ""
-
-#: includes/ajax.php:95 includes/ajax.php:164 includes/functions.php:2817
+#: includes/ajax.php:98 includes/ajax.php:171
 #, php-format
 msgid "Visitor Rating: %s"
 msgstr ""
 
-#: includes/ajax.php:331 includes/ajax.php:333
+#: includes/ajax.php:354 includes/ajax.php:357
 #, php-format
 msgid "%s review"
 msgid_plural "%s reviews"
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/ajax.php:349
+#: includes/ajax.php:373
 msgid "Empty post ID"
 msgstr ""
 
-#: includes/ajax.php:352
+#: includes/ajax.php:376
 msgid "Empty rating data"
 msgstr ""
 
-#: includes/ajax.php:355
+#: includes/ajax.php:379
 msgid "Empty type data"
 msgstr ""
 
-#: includes/ajax.php:395 includes/ajax.php:407
+#: includes/ajax.php:419 includes/ajax.php:431
 msgid "Completed!"
 msgstr ""
 
-#: includes/comments.php:34
+#: includes/comments.php:51
 #, php-format
 msgid "WP Review Rating (%s)"
 msgstr ""
 
-#: includes/comments.php:51
-msgid "Review Title"
-msgstr ""
-
-#: includes/comments.php:98
+#: includes/comments.php:117
 msgid "Does Product Matches the Description?"
 msgstr ""
 
-#: includes/comments.php:102
+#: includes/comments.php:121
 msgid "Select"
 msgstr ""
 
-#: includes/comments.php:116
+#: includes/comments.php:137
 msgid "Comment Image"
 msgstr ""
 
-#: includes/comments.php:192
+#: includes/comments.php:208
 msgid "Review Total"
 msgstr ""
 
-#: includes/comments.php:246
+#: includes/comments.php:269
 msgid "Edit this item inline"
 msgstr ""
 
-#: includes/comments.php:247
+#: includes/comments.php:270
 msgid "Quick Edit"
 msgstr ""
 
-#: includes/comments.php:331
+#: includes/comments.php:370
 msgid "Visitor reviews"
 msgstr ""
 
-#: includes/enqueue.php:38
+#: includes/enqueue.php:34
 msgid "Please rate all features"
 msgstr ""
 
-#: includes/enqueue.php:39
+#: includes/enqueue.php:35
 msgid "(Verified purchase)"
-msgstr ""
-
-#: includes/functions.php:131 includes/functions.php:132
-msgid "WP Review Small"
-msgstr ""
-
-#: includes/functions.php:729
-msgid "Comment Reviews"
-msgstr ""
-
-#: includes/functions.php:730
-msgid "Visitor Reviews"
-msgstr ""
-
-#: includes/functions.php:960
-#, php-format
-msgctxt "star rating value text"
-msgid "%s Stars"
-msgstr ""
-
-#: includes/functions.php:961
-#, php-format
-msgctxt "star rating value text singular"
-msgid "%s Star"
-msgstr ""
-
-#: includes/functions.php:970
-#, php-format
-msgctxt "point rating value text"
-msgid "%s/10"
-msgstr ""
-
-#: includes/functions.php:971
-#, php-format
-msgctxt "point rating value text singular"
-msgid "%s/10"
-msgstr ""
-
-#: includes/functions.php:980
-#, php-format
-msgctxt "percentage rating value text"
-msgid "%s%%"
-msgstr ""
-
-#: includes/functions.php:981
-#, php-format
-msgctxt "percentage rating value text singular"
-msgid "%s%%"
-msgstr ""
-
-#: includes/functions.php:990
-#, php-format
-msgctxt "circle rating value text"
-msgid "%s"
-msgstr ""
-
-#: includes/functions.php:991
-#, php-format
-msgctxt "circle rating value text singular"
-msgid "%s"
-msgstr ""
-
-#: includes/functions.php:1000
-#, php-format
-msgctxt "thumbs rating value text"
-msgid "%s/100"
-msgstr ""
-
-#: includes/functions.php:1001
-#, php-format
-msgctxt "thumbs rating value text singular"
-msgid "%s/100"
-msgstr ""
-
-#: includes/functions.php:1824
-msgid "Rating"
-msgstr ""
-
-#: includes/functions.php:1837
-msgid "No Rating"
-msgstr ""
-
-#: includes/functions.php:1887
-#, php-format
-msgid "Thank you for updating WP Review Pro. Your existing user ratings will show up after importing them in %s."
-msgstr ""
-
-#: includes/functions.php:1887
-msgid "Settings &gt; WP Review Pro &gt; Migrate Ratings"
-msgstr ""
-
-#: includes/functions.php:2687
-#: includes/widgets/class-wp-review-tab-widget.php:497
-msgid "&laquo; Previous"
-msgstr ""
-
-#: includes/functions.php:2691
-#: includes/widgets/class-wp-review-tab-widget.php:500
-msgid "Next &raquo;"
-msgstr ""
-
-#: includes/functions.php:2865
-msgid "Your rating is awaiting moderation."
-msgstr ""
-
-#: includes/functions.php:3003
-msgid "Comment Rating"
-msgstr ""
-
-#: includes/functions.php:3004
-msgid "Features Ratings"
-msgstr ""
-
-#: includes/functions.php:3005
-msgid "Comment Title"
-msgstr ""
-
-#: includes/functions.php:3044
-#: includes/widgets/class-wp-review-tab-widget.php:93
-#: includes/widgets/class-wp-review-tab-widget.php:139
-msgid "Comments"
-msgstr ""
-
-#: includes/functions.php:3061
-msgid "WordPress Comments"
-msgstr ""
-
-#: includes/functions.php:3104
-msgid "Global Options"
-msgstr ""
-
-#: includes/functions.php:3106
-msgid "Single Page Settings"
-msgstr ""
-
-#: includes/functions.php:3107
-msgid "Review Features"
-msgstr ""
-
-#: includes/functions.php:3109
-msgid "Review Description, Pros/Cons and Total Rating"
-msgstr ""
-
-#: includes/functions.php:3111
-msgid "Purge Visitor Ratings"
-msgstr ""
-
-#: includes/functions.php:3112
-msgid "Purge Comment Ratings"
 msgstr ""
 
 #: includes/schemas.php:14
@@ -2217,6 +1285,690 @@ msgstr ""
 msgid "(%s vote)"
 msgstr ""
 
+#: rating-types/circle-input.php:9 rating-types/circle-output.php:9
+#: rating-types/thumbs-input.php:9 rating-types/thumbs-output.php:9
+msgid "This rating type is not supported in the WP Review Free version"
+msgstr ""
+
+#: rating-types/percentage-input.php:19 rating-types/point-input.php:19
+#: rating-types/star-input.php:19
+msgid "Add rating"
+msgstr ""
+
+#: rating-types/percentage-input.php:43 rating-types/point-input.php:40
+#: rating-types/star-input.php:40
+msgid "Sending"
+msgstr ""
+
+#: rating-types/percentage-input.php:53 rating-types/point-input.php:50
+#, php-format
+msgid "%s"
+msgstr ""
+
+#. translators: Facebook App link.
+#: admin/options/facebook.php:13
+#, php-format
+msgid "%s to create Facebook App. Remember to add your domain to app."
+msgstr ""
+
+#: admin/options/facebook.php:14 admin/options/google.php:26
+#: admin/options/yelp.php:27
+msgid "Click here"
+msgstr ""
+
+#: admin/options/facebook.php:21
+msgid "App ID"
+msgstr ""
+
+#: admin/options/facebook.php:34
+msgid "App secret"
+msgstr ""
+
+#: admin/options/facebook.php:45
+msgid ""
+"Please re-generate access token in shortcodes and widgets each time you "
+"change App ID or App secret."
+msgstr ""
+
+#: admin/options/google.php:11 admin/options/yelp.php:12
+msgid "API Key"
+msgstr ""
+
+#. translators: Google API link.
+#: admin/options/google.php:25
+#, php-format
+msgid "%s to get Google API key."
+msgstr ""
+
+#: admin/options/hello-bar.php:11
+msgid "Content"
+msgstr ""
+
+#: admin/options/hello-bar.php:12 admin/options/review.php:178
+#: admin/options/review.php:516
+msgid "Styling"
+msgstr ""
+
+#: admin/options/hello-bar.php:16
+msgid "Content Settings"
+msgstr ""
+
+#: admin/options/hello-bar.php:20
+msgid "Enable Global Notification Bar"
+msgstr ""
+
+#: admin/options/hello-bar.php:53
+msgid "Star Rating"
+msgstr ""
+
+#: admin/options/hello-bar.php:65
+msgid "Price"
+msgstr ""
+
+#: admin/options/hello-bar.php:77
+msgid "Button label"
+msgstr ""
+
+#: admin/options/hello-bar.php:82
+msgid "Buy Now"
+msgstr ""
+
+#: admin/options/hello-bar.php:89
+msgid "Button URL"
+msgstr ""
+
+#: admin/options/hello-bar.php:101
+msgid "Open link in new tab"
+msgstr ""
+
+#: admin/options/hello-bar.php:120
+msgid "Styling Settings"
+msgstr ""
+
+#: admin/options/hello-bar.php:124
+msgid "Location"
+msgstr ""
+
+#: admin/options/hello-bar.php:131
+msgid "Top"
+msgstr ""
+
+#: admin/options/hello-bar.php:132
+msgid "Bottom"
+msgstr ""
+
+#: admin/options/hello-bar.php:140
+msgid "Max container(px/%)"
+msgstr ""
+
+#: admin/options/hello-bar.php:153
+msgid "Background color"
+msgstr ""
+
+#: admin/options/hello-bar.php:166
+msgid "Background image"
+msgstr ""
+
+#: admin/options/hello-bar.php:181
+msgid "Text color"
+msgstr ""
+
+#: admin/options/hello-bar.php:194
+msgid "Star color"
+msgstr ""
+
+#: admin/options/hello-bar.php:207
+msgid "Button background color"
+msgstr ""
+
+#: admin/options/hello-bar.php:220
+msgid "Button text color"
+msgstr ""
+
+#: admin/options/help.php:13
+msgid ""
+"All support for this plugin is provided through our forums. If you have not "
+"registered yet, you can do so here for ​<strong>FREE​</strong>: "
+msgstr ""
+
+#: admin/options/help.php:17
+msgid "Check our free WordPress video tutorials here: "
+msgstr ""
+
+#: admin/options/help.php:19
+msgid "(no registration required)"
+msgstr ""
+
+#: admin/options/help.php:22
+msgid "Thank you for using our plugin."
+msgstr ""
+
+#: admin/options/import.php:12
+msgid "Demo data import"
+msgstr ""
+
+#: admin/options/import.php:16 admin/options/import.php:38
+#: admin/options/import.php:65
+msgid "Import"
+msgstr ""
+
+#: admin/options/import.php:17
+msgid ""
+"Click above button to import demo data, imported data will be saved as new "
+"draft posts."
+msgstr ""
+
+#: admin/options/import.php:23
+msgid "Select plugin"
+msgstr ""
+
+#: admin/options/import.php:45
+msgid "Warning"
+msgstr ""
+
+#: admin/options/import.php:46
+msgid ""
+"This action is IRREVERSIBLE! Take a backup of your database before "
+"proceeding."
+msgstr ""
+
+#: admin/options/import.php:57
+msgid "Import settings"
+msgstr ""
+
+#: admin/options/import.php:61
+msgid "Import code"
+msgstr ""
+
+#: admin/options/import.php:63
+msgid ""
+"Insert your backup code below and hit Import to restore your plugin options "
+"from a backup."
+msgstr ""
+
+#: admin/options/import.php:72
+msgid "Export settings"
+msgstr ""
+
+#: admin/options/import.php:76
+msgid "Show export code"
+msgstr ""
+
+#: admin/options/multisite.php:12
+msgid "Site: "
+msgstr ""
+
+#: admin/options/multisite.php:17
+msgid "Select site"
+msgstr ""
+
+#: admin/options/multisite.php:43 admin/options/review.php:187
+msgid "General Settings"
+msgstr ""
+
+#: admin/options/multisite.php:46
+msgid "Hide global options panel"
+msgstr ""
+
+#: admin/options/multisite.php:66
+msgid "Hide Popup"
+msgstr ""
+
+#: admin/options/multisite.php:85 admin/options/multisite.php:248
+msgid "Hide Notification Bar"
+msgstr ""
+
+#: admin/options/multisite.php:104
+msgid "Hide Yelp Reviews"
+msgstr ""
+
+#: admin/options/multisite.php:123
+msgid "Hide Facebook Reviews"
+msgstr ""
+
+#: admin/options/multisite.php:142
+msgid "Hide Google Reviews"
+msgstr ""
+
+#: admin/options/multisite.php:161
+msgid "Hide Role Manager"
+msgstr ""
+
+#: admin/options/multisite.php:179
+msgid "Hide Import"
+msgstr ""
+
+#: admin/options/multisite.php:197
+msgid "Post Settings"
+msgstr ""
+
+#: admin/options/multisite.php:207
+msgid "Hide reviews in single editor"
+msgstr ""
+
+#: admin/options/multisite.php:229
+msgid "Hide Popup Box"
+msgstr ""
+
+#: admin/options/multisite.php:286
+msgid "Hide Review Links"
+msgstr ""
+
+#: admin/options/multisite.php:304
+msgid "Hide Review Description, Pros/Cons & Total Rating"
+msgstr ""
+
+#: admin/options/multisite.php:323
+msgid "Hide User Reviews"
+msgstr ""
+
+#: admin/options/popup.php:11
+msgid "Enable Popup"
+msgstr ""
+
+#: admin/options/popup.php:32
+msgid "Popup width"
+msgstr ""
+
+#: admin/options/popup.php:45
+msgid "Popup animation in"
+msgstr ""
+
+#: admin/options/popup.php:63
+msgid "Popup animation out"
+msgstr ""
+
+#: admin/options/popup.php:82
+msgid "Popup overlay color"
+msgstr ""
+
+#: admin/options/popup.php:95
+msgid "Popup overlay opacity"
+msgstr ""
+
+#: admin/options/popup.php:110
+msgid "Post type"
+msgstr ""
+
+#: admin/options/popup.php:117
+msgid "Any"
+msgstr ""
+
+#: admin/options/popup.php:128
+msgid "Popup content"
+msgstr ""
+
+#: admin/options/popup.php:135
+msgid "From category"
+msgstr ""
+
+#: admin/options/popup.php:136
+msgid "From tag"
+msgstr ""
+
+#: admin/options/popup.php:137
+msgid "From review type"
+msgstr ""
+
+#: admin/options/popup.php:138
+msgid "Latest reviews"
+msgstr ""
+
+#: admin/options/popup.php:146
+msgid "Choose category"
+msgstr ""
+
+#: admin/options/popup.php:155
+msgid "All categories"
+msgstr ""
+
+#: admin/options/popup.php:169
+msgid "Number of Reviews"
+msgstr ""
+
+#: admin/options/popup.php:182
+msgid "Popup content order"
+msgstr ""
+
+#: admin/options/popup.php:189
+msgid "Random"
+msgstr ""
+
+#: admin/options/popup.php:190
+msgid "Most popular"
+msgstr ""
+
+#: admin/options/popup.php:191
+msgid "Most rated"
+msgstr ""
+
+#: admin/options/popup.php:192
+msgid "Latest"
+msgstr ""
+
+#: admin/options/popup.php:201
+msgid "Hide popup for"
+msgstr ""
+
+#: admin/options/popup.php:208
+msgid "day(s)."
+msgstr ""
+
+#: admin/options/popup.php:212
+msgid "Set to 0 if you want to show popup on each page load."
+msgstr ""
+
+#. translators: number input.
+#: admin/options/popup.php:222
+#, php-format
+msgid "Show popup after %s second(s)"
+msgstr ""
+
+#: admin/options/popup.php:231
+msgid "Set to 0 if you want to show popup instantly."
+msgstr ""
+
+#: admin/options/popup.php:238
+msgid ""
+"Show popup when visitor reaches the end of the content (only on single posts "
+"or pages)"
+msgstr ""
+
+#: admin/options/popup.php:248
+msgid "Show popup when visitor is about to leave (exit intent)"
+msgstr ""
+
+#. translators: width input.
+#: admin/options/popup.php:261
+#, php-format
+msgid "Show popup on screens larger than %s pixels"
+msgstr ""
+
+#: admin/options/popup.php:271
+msgid "Generate new cookie"
+msgstr ""
+
+#: admin/options/popup.php:272
+msgid "Use this option to override old cookie."
+msgstr ""
+
+#: admin/options/review.php:165
+msgid "Star"
+msgstr ""
+
+#: admin/options/review.php:166
+msgid "Point"
+msgstr ""
+
+#: admin/options/review.php:167
+msgid "Percentage"
+msgstr ""
+
+#: admin/options/review.php:168
+msgid "Circle"
+msgstr ""
+
+#: admin/options/review.php:169
+msgid "Thumbs"
+msgstr ""
+
+#: admin/options/review.php:177
+msgid "General"
+msgstr ""
+
+#: admin/options/review.php:179 admin/options/review.php:702
+msgid "Defaults"
+msgstr ""
+
+#: admin/options/review.php:180 admin/options/review.php:882
+msgid "Embed"
+msgstr ""
+
+#: admin/options/review.php:182
+msgid "Migrate Ratings"
+msgstr ""
+
+#: admin/options/review.php:191
+msgid ""
+"There is a filter set for the review location that may modify the options "
+"below."
+msgstr ""
+
+#: admin/options/review.php:198
+msgid "The current theme provides default settings for the plugin."
+msgstr ""
+
+#: admin/options/review.php:200
+msgid "Set to theme defaults"
+msgstr ""
+
+#: admin/options/review.php:207
+msgid "Restrict rating to registered users only"
+msgstr ""
+
+#: admin/options/review.php:225
+msgid "Add total rating to thumbnails"
+msgstr ""
+
+#: admin/options/review.php:244
+msgid "Enable User rating in old posts"
+msgstr ""
+
+#: admin/options/review.php:264
+msgid "Replace WooCommerce rating"
+msgstr ""
+
+#: admin/options/review.php:284
+msgid "Disable Map Script in the Backend"
+msgstr ""
+
+#: admin/options/review.php:300
+msgid ""
+"If map script is conflicting with other plugin in the single post editor, "
+"please enable this option."
+msgstr ""
+
+#: admin/options/review.php:305
+msgid "Comments template"
+msgstr ""
+
+#: admin/options/review.php:315
+msgid "Theme"
+msgstr ""
+
+#: admin/options/review.php:319
+msgid "Use theme comments template. Might need customization of comments.php"
+msgstr ""
+
+#: admin/options/review.php:330
+msgid ""
+"Use WP Review comments template. Better chances for out of the box "
+"integration."
+msgstr ""
+
+#: admin/options/review.php:338
+msgid "Comment form integration"
+msgstr ""
+
+#: admin/options/review.php:348
+msgid "Replace"
+msgstr ""
+
+#: admin/options/review.php:352
+msgid "Replace form fields."
+msgstr ""
+
+#: admin/options/review.php:359
+msgid "Extend"
+msgstr ""
+
+#: admin/options/review.php:363
+msgid "Add new fields without modifying the default fields."
+msgstr ""
+
+#: admin/options/review.php:371
+msgid "Require a rating when commenting"
+msgstr ""
+
+#: admin/options/review.php:390
+msgid "Allow comment feedback (helpful/unhelpful)"
+msgstr ""
+
+#: admin/options/review.php:409
+msgid "Record User Ratings"
+msgstr ""
+
+#: admin/options/review.php:416
+msgid "Based on IP address"
+msgstr ""
+
+#: admin/options/review.php:417
+msgid "Based on browser cookie"
+msgstr ""
+
+#: admin/options/review.php:445
+msgid "Allow multiple reviews per account"
+msgstr ""
+
+#: admin/options/review.php:463
+msgid "Include Pros/Cons in comment reviews"
+msgstr ""
+
+#: admin/options/review.php:482
+msgid "Approve Comment Reviews without Moderation"
+msgstr ""
+
+#: admin/options/review.php:509
+msgid "Click to remove all visitor ratings of all posts."
+msgstr ""
+
+#: admin/options/review.php:552
+msgid ""
+"There is a filter set for the review colors that may modify the options "
+"below."
+msgstr ""
+
+#: admin/options/review.php:622
+msgid "Review Box Width"
+msgstr ""
+
+#: admin/options/review.php:636
+msgid ""
+"Many templates use Google Font, select <code>No</code> to use default theme "
+"font."
+msgstr ""
+
+#: admin/options/review.php:656
+msgid "Comment Rating Color"
+msgstr ""
+
+#: admin/options/review.php:658
+msgid "Use different color for ratings in comments"
+msgstr ""
+
+#: admin/options/review.php:678
+msgid "Rating icon"
+msgstr ""
+
+#: admin/options/review.php:697
+msgid "Use Image"
+msgstr ""
+
+#: admin/options/review.php:709
+msgid "Review type"
+msgstr ""
+
+#: admin/options/review.php:714
+msgid "No Review"
+msgstr ""
+
+#: admin/options/review.php:749
+msgid "Copy & paste this shortcode in the post content."
+msgstr ""
+
+#: admin/options/review.php:756
+msgid "Review Schema"
+msgstr ""
+
+#: admin/options/review.php:771
+msgid "Features"
+msgstr ""
+
+#: admin/options/review.php:811
+msgid "Default features are set by a filter function. Remove it to change."
+msgstr ""
+
+#: admin/options/review.php:813
+msgid "Add default feature"
+msgstr ""
+
+#: admin/options/review.php:820
+msgid "Links"
+msgstr ""
+
+#: admin/options/review.php:846
+msgid "Add default link"
+msgstr ""
+
+#: admin/options/review.php:852
+msgid "User Ratings"
+msgstr ""
+
+#: admin/options/review.php:883
+msgid ""
+"From here you can enable embed feature, which will show embed code in the "
+"frontend which site visitors can use to embed review on their site."
+msgstr ""
+
+#: admin/options/review.php:887
+msgid "Enable Embed"
+msgstr ""
+
+#: admin/options/review.php:906
+msgid "Show Title"
+msgstr ""
+
+#: admin/options/review.php:925
+msgid "Show Thumbnail"
+msgstr ""
+
+#: admin/options/review.php:944
+msgid "Show Excerpt"
+msgstr ""
+
+#: admin/options/review.php:963
+msgid "Show Rating Box"
+msgstr ""
+
+#: admin/options/review.php:982
+msgid "Show Credit"
+msgstr ""
+
+#: admin/options/review.php:1003
+msgid ""
+"Here you can import your existing user ratings from WP Review 1.x and WP "
+"Review Pro 1.x."
+msgstr ""
+
+#: admin/options/review.php:1007
+#, php-format
+msgid "%s ratings left to import."
+msgstr ""
+
+#: admin/options/review.php:1010
+msgid "Start import"
+msgstr ""
+
+#: admin/options/review.php:1013
+msgid "Ratings have already been migrated."
+msgstr ""
+
+#. translators: Yelp App link.
+#: admin/options/yelp.php:26
+#, php-format
+msgid "%s to get Yelp API Key."
+msgstr ""
+
 #: includes/widgets/class-wp-review-tab-widget.php:28
 msgid "Display Reviews in tabbed format."
 msgstr ""
@@ -2225,182 +1977,128 @@ msgstr ""
 msgid "WP Review Widget"
 msgstr ""
 
-#: includes/widgets/class-wp-review-tab-widget.php:68
-#: includes/widgets/class-wp-review-tab-widget.php:104
-#: includes/widgets/class-wp-review-tab-widget.php:220
-#: includes/widgets/class-wp-review-tab-widget.php:245
-#: includes/widgets/class-wp-review-tab-widget.php:312
+#: includes/widgets/class-wp-review-tab-widget.php:87
+#: includes/widgets/class-wp-review-tab-widget.php:123
+#: includes/widgets/class-wp-review-tab-widget.php:239
+#: includes/widgets/class-wp-review-tab-widget.php:263
+#: includes/widgets/class-wp-review-tab-widget.php:345
 msgid "Top Rated"
 msgstr ""
 
-#: includes/widgets/class-wp-review-tab-widget.php:69
-#: includes/widgets/class-wp-review-tab-widget.php:224
-#: includes/widgets/class-wp-review-tab-widget.php:249
-#: includes/widgets/class-wp-review-tab-widget.php:313
+#: includes/widgets/class-wp-review-tab-widget.php:88
+#: includes/widgets/class-wp-review-tab-widget.php:243
+#: includes/widgets/class-wp-review-tab-widget.php:267
+#: includes/widgets/class-wp-review-tab-widget.php:346
 msgid "Recent"
 msgstr ""
 
-#: includes/widgets/class-wp-review-tab-widget.php:70
-#: includes/widgets/class-wp-review-tab-widget.php:112
-#: includes/widgets/class-wp-review-tab-widget.php:228
-#: includes/widgets/class-wp-review-tab-widget.php:253
-#: includes/widgets/class-wp-review-tab-widget.php:314
+#: includes/widgets/class-wp-review-tab-widget.php:89
+#: includes/widgets/class-wp-review-tab-widget.php:131
+#: includes/widgets/class-wp-review-tab-widget.php:247
+#: includes/widgets/class-wp-review-tab-widget.php:271
+#: includes/widgets/class-wp-review-tab-widget.php:347
 msgid "Most Voted"
 msgstr ""
 
-#: includes/widgets/class-wp-review-tab-widget.php:71
-#: includes/widgets/class-wp-review-tab-widget.php:315
+#: includes/widgets/class-wp-review-tab-widget.php:90
+#: includes/widgets/class-wp-review-tab-widget.php:348
 msgid "Editor's choice"
 msgstr ""
 
-#: includes/widgets/class-wp-review-tab-widget.php:99
+#: includes/widgets/class-wp-review-tab-widget.php:113
+#: includes/widgets/class-wp-review-tab-widget.php:158
+msgid "Comments"
+msgstr ""
+
+#: includes/widgets/class-wp-review-tab-widget.php:118
 msgid "Select Tabs"
 msgstr ""
 
-#: includes/widgets/class-wp-review-tab-widget.php:108
+#: includes/widgets/class-wp-review-tab-widget.php:127
 msgid "Recent Reviews"
 msgstr ""
 
-#: includes/widgets/class-wp-review-tab-widget.php:116
-#: includes/widgets/class-wp-review-tab-widget.php:237
-#: includes/widgets/class-wp-review-tab-widget.php:261
+#: includes/widgets/class-wp-review-tab-widget.php:135
+#: includes/widgets/class-wp-review-tab-widget.php:255
+#: includes/widgets/class-wp-review-tab-widget.php:279
 msgid "Custom"
 msgstr ""
 
-#: includes/widgets/class-wp-review-tab-widget.php:127
+#: includes/widgets/class-wp-review-tab-widget.php:146
 msgid "Restrict recent reviews to current post"
 msgstr ""
 
-#: includes/widgets/class-wp-review-tab-widget.php:133
+#: includes/widgets/class-wp-review-tab-widget.php:152
 msgid "Top Rated Posts By:"
 msgstr ""
 
-#: includes/widgets/class-wp-review-tab-widget.php:138
+#: includes/widgets/class-wp-review-tab-widget.php:157
 msgid "Visitors"
 msgstr ""
 
-#: includes/widgets/class-wp-review-tab-widget.php:145
+#: includes/widgets/class-wp-review-tab-widget.php:164
 msgid "Review type:"
 msgstr ""
 
-#: includes/widgets/class-wp-review-tab-widget.php:171
+#: includes/widgets/class-wp-review-tab-widget.php:190
 msgid "Number of reviews to show:"
 msgstr ""
 
-#: includes/widgets/class-wp-review-tab-widget.php:178
-msgid "Title length (words):"
-msgstr ""
-
-#: includes/widgets/class-wp-review-tab-widget.php:187
+#: includes/widgets/class-wp-review-tab-widget.php:206
 msgid "Thumbnail size:"
 msgstr ""
 
-#: includes/widgets/class-wp-review-tab-widget.php:195
+#: includes/widgets/class-wp-review-tab-widget.php:214
 msgid "Extra information"
 msgstr ""
 
-#: includes/widgets/class-wp-review-tab-widget.php:198
+#: includes/widgets/class-wp-review-tab-widget.php:217
 msgid "Post date"
 msgstr ""
 
-#: includes/widgets/class-wp-review-tab-widget.php:204
+#: includes/widgets/class-wp-review-tab-widget.php:223
 msgid "Reviews on Custom tab:"
 msgstr ""
 
-#: includes/widgets/class-wp-review-tab-widget.php:214
+#: includes/widgets/class-wp-review-tab-widget.php:233
 msgid "Tab Titles"
 msgstr ""
 
-#: includes/widgets/class-wp-review-tab-widget.php:214
+#: includes/widgets/class-wp-review-tab-widget.php:233
 msgid "Tab Order"
 msgstr ""
 
-#: includes/widgets/class-wp-review-tab-widget.php:233
-#: includes/widgets/class-wp-review-tab-widget.php:257
+#: includes/widgets/class-wp-review-tab-widget.php:251
+#: includes/widgets/class-wp-review-tab-widget.php:275
 msgid "Recent Ratings"
 msgstr ""
 
-#: rating-types/circle-input.php:1 rating-types/circle-output.php:1
-#: rating-types/thumbs-input.php:1 rating-types/thumbs-output.php:1
-msgid "This rating type is not supported in the WP Review Free version"
+#: includes/widgets/class-wp-review-tab-widget.php:549
+msgid "&laquo; Previous"
 msgstr ""
 
-#: rating-types/percentage-input.php:38 rating-types/point-input.php:35
-#: rating-types/star-input.php:36
-msgid "Sending"
+#: includes/widgets/class-wp-review-tab-widget.php:552
+msgid "Next &raquo;"
 msgstr ""
 
-#: rating-types/percentage-input.php:48 rating-types/point-input.php:45
-#, php-format
-msgid "%s"
+#: box-templates/global/partials/review-schema.php:49
+msgid "[ More ]"
 msgstr ""
 
-#: template-list.php:35
-msgid "Amazon"
+#. Description of the plugin
+msgid ""
+"Create reviews! Choose from stars, percentages or points for review scores. "
+"Supports Retina Display, WPMU and Unlimited Color Schemes."
 msgstr ""
 
-#: template-list.php:45
-msgid "Aqua"
+#. URI of the plugin
+msgid "http://mythemeshop.com/plugins/wp-review/"
 msgstr ""
 
-#: template-list.php:55
-msgid "Blue"
+#. Author of the plugin
+msgid "MyThemeShop"
 msgstr ""
 
-#: template-list.php:65
-msgid "Darkside"
-msgstr ""
-
-#: template-list.php:76
-msgid "Dash"
-msgstr ""
-
-#: template-list.php:86
-msgid "Edge"
-msgstr ""
-
-#: template-list.php:96
-msgid "Enterprise"
-msgstr ""
-
-#: template-list.php:106
-msgid "Facebook"
-msgstr ""
-
-#: template-list.php:116
-msgid "Fizzy"
-msgstr ""
-
-#: template-list.php:126
-msgid "Gamer"
-msgstr ""
-
-#: template-list.php:136
-msgid "Gravity"
-msgstr ""
-
-#: template-list.php:147
-msgid "Shell"
-msgstr ""
-
-#: template-list.php:157
-msgid "Tabbed layout"
-msgstr ""
-
-#: template-list.php:167
-msgid "Tabbed layout 2"
-msgstr ""
-
-#: template-list.php:177
-msgid "Xiaomi"
-msgstr ""
-
-#: template-list.php:187
-msgid "Zine"
-msgstr ""
-
-#. translators: PHP version.
-#: wp-review.php:37
-#, php-format
-msgid "<strong>WP Review</strong> requires PHP version 5.6 or above. You are running version %s. Please update PHP to run this plugin."
+#. Author URI of the plugin
+msgid "http://mythemeshop.com/"
 msgstr ""
