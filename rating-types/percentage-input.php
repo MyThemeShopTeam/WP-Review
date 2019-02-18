@@ -15,6 +15,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+if ( wp_review_is_amp_page() ) {
+	echo '<div class="wp-review-rating-input"><a href="' . esc_url( wp_review_get_current_non_amp_url() ) . '#review">' . esc_html__( 'Add rating', 'wp-review' ) . '</a></div>';
+	return;
+}
+
 global $wp_review_rating_types;
 
 // For now, enqueue in footer.

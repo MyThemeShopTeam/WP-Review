@@ -178,10 +178,20 @@ function wp_review_inject_data( $content ) {
 
 	$location = apply_filters( 'wp_review_location', $location, $post_id );
 
-	if ( empty( $location ) || 'custom' == $location || ! is_main_query() || ! in_the_loop() || ! is_singular() ) {
+	if ( ! $location || 'custom' === $location ) {
 		return $content;
 	}
+
+	if ( ! is_singular() || ! is_main_query() ) {
+		return $content;
+	}
+
+	if ( ! wp_review_is_amp_page() && ! in_the_loop() ) {
+		return $content;
+	}
+
 	$review = wp_review_get_review_box();
+
 	if ( 'bottom' == $location ) {
 		global $multipage, $numpages, $page;
 		if ( $multipage ) {
@@ -592,10 +602,16 @@ function wp_review_has_reviewed( $post_id, $user_id, $ip = null, $type = 'any' )
 	if ( ! $ip ) {
 		$ip = wp_review_get_user_ip();
 	}
-	if ( ! wp_review_option( 'multi_reviews_per_account' ) && wp_review_has_reviewed_by_user_id( $post_id, $user_id, $ip, $type ) ) {
-		return true;
+
+	if ( is_user_logged_in() && wp_review_option( 'multi_reviews_per_account' ) ) {
+		return false; // Allow multiple reviews per account.
 	}
-	return false;
+
+	if ( is_user_logged_in() ) {
+		return wp_review_has_reviewed_by_user_id( $post_id, $user_id, $ip, $type );
+	}
+
+	return wp_review_has_reviewed_by_ip( $post_id, $user_id, $ip, $type );
 }
 
 
@@ -625,6 +641,35 @@ function wp_review_has_reviewed_by_user_id( $post_id, $user_id, $ip, $type = 'an
 		$args['type'] = $type;
 	}
 	$count = intval( get_comments( $args ) );
+	return $count > 0;
+}
+
+
+/**
+ * Check if user has reviewed this post previously by ip address.
+ *
+ * @since 3.0.0
+ *
+ * @param int    $post_id Post ID.
+ * @param int    $user_id User ID.
+ * @param string $ip      User IP.
+ * @param string $type    Rating type.
+ * @return bool
+ */
+function wp_review_has_reviewed_by_ip( $post_id, $user_id, $ip, $type = 'any' ) {
+	$args = array(
+		'post_id' => $post_id,
+		'count'   => true,
+	);
+	if ( 'any' === $type ) {
+		$args['type_in'] = array( WP_REVIEW_COMMENT_TYPE_COMMENT, WP_REVIEW_COMMENT_TYPE_VISITOR );
+	} else {
+		$args['type'] = $type;
+	}
+	set_query_var( 'wp_review_ip', $ip );
+	add_filter( 'comments_clauses', 'wp_review_filter_comment_by_ip' );
+	$count = intval( get_comments( $args ) );
+	remove_filter( 'comments_clauses', 'wp_review_filter_comment_by_ip' );
 	return $count > 0;
 }
 
@@ -2052,9 +2097,9 @@ function wp_review_get_schema( $review ) {
 		return '';
 	}
 
-	if ( empty( $review['total'] ) || ! floatval( $review['total'] ) ) {
+	/*if ( empty( $review['total'] ) || ! floatval( $review['total'] ) ) {
 		return '';
-	}
+	}*/
 
 	$output = '';
 
@@ -3436,3 +3481,114 @@ add_action(
 		}
 	}
 );
+
+/**
+ * Checks if is in amp page.
+ *
+ * @since 3.2.4
+ *
+ * @return bool
+ */
+function wp_review_is_amp_page() {
+	if ( function_exists( 'is_amp_endpoint' ) ) {
+		return is_amp_endpoint();
+	}
+	if ( function_exists( 'ampforwp_is_amp_endpoint' ) ) {
+		return ampforwp_is_amp_endpoint();
+	}
+	return false;
+}
+
+/**
+ * Gets the current URL.
+ *
+ * @since 3.2.4
+ *
+ * @return string
+ */
+function wp_review_get_current_url() {
+	global $wp;
+	return home_url( $wp->request );
+}
+
+/**
+ * Gets the current non-AMP URL.
+ *
+ * @since 3.2.4
+ *
+ * @return string
+ */
+function wp_review_get_current_non_amp_url() {
+	$current_url = wp_review_get_current_url();
+	if ( function_exists( 'amp_remove_endpoint' ) ) {
+		return amp_remove_endpoint( $current_url );
+	}
+	return $current_url;
+}
+
+/**
+ * Adds AMP CSS.
+ *
+ * @since 3.2.4
+ */
+function wp_review_add_amp_css() {
+	if ( file_exists( WP_REVIEW_DIR . 'public/css/amp.css' ) ) {
+		echo file_get_contents( WP_REVIEW_DIR . 'public/css/amp.css' );
+	}
+}
+add_action( 'amp_post_template_css', 'wp_review_add_amp_css' );
+
+/**
+ * Adds AMP template data.
+ *
+ * @since 3.2.4
+ *
+ * @param array $data Template data.
+ * @return array
+ */
+function wp_review_add_amp_template_data( $data ) {
+	$data['font_urls']['FontAwesome'] = 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css';
+	return $data;
+}
+add_filter( 'amp_post_template_data', 'wp_review_add_amp_template_data' );
+
+/**
+ * Adds custom styles for better-amp plugin.
+ *
+ * @since 3.2.4
+ */
+function wp_review_add_better_amp_custom_styles() {
+	if ( ! file_exists( WP_REVIEW_DIR . 'public/css/amp.css' ) ) {
+		return;
+	}
+	better_amp_add_inline_style( file_get_contents( WP_REVIEW_DIR . 'public/css/amp.css' ), 'wp_review_css' );
+}
+add_action( 'better-amp/template/enqueue-scripts', 'wp_review_add_better_amp_custom_styles', 100 );
+
+/**
+ * Adds custom styles for weeblramp plugin.
+ *
+ * @since 3.2.4
+ */
+function wp_review_weeblramp_theme_css( $css ) {
+	if ( ! file_exists( WP_REVIEW_DIR . 'public/css/amp.css' ) ) {
+		return $css;
+	}
+	$css .= file_get_contents( WP_REVIEW_DIR . 'public/css/amp.css' );
+	return $css;
+}
+add_filter( 'weeblramp_theme_css', 'wp_review_weeblramp_theme_css' );
+add_filter( 'weeblramp_the_content', 'wp_review_inject_data' );
+add_filter( 'weeblramp_wpautop_function', '__return_false' );
+
+/**
+ * Adds amp data for weeblramp plugin.
+ *
+ * @since 3.2.4
+ */
+function wp_review_weeblramp_get_request_data( $data ) {
+	$data['custom_links'] .= '<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />';
+	remove_filter( 'the_content', 'wp_review_inject_data' );
+	return $data;
+}
+add_filter( 'weeblramp_get_request_data', 'wp_review_weeblramp_get_request_data' );

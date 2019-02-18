@@ -16,7 +16,7 @@
 		<h3><?php esc_html_e( 'Content Settings', 'wp-review' ); ?></h3>
 
 		<div class="wp-review-field">
-			<div class="wp-review-field-label">
+			<div class="wp-review-disabled wp-review-field-label">
 				<label><?php esc_html_e( 'Enable Global Notification Bar', 'wp-review' ); ?></label>
 				<?php wp_review_print_pro_text(); ?>
 			</div>
@@ -37,7 +37,7 @@
 		<div class="hide-if-hello-bar-disable">
 
 			<div class="wp-review-field">
-				<div class="wp-review-field-label">
+				<div class="wp-review-disabled wp-review-field-label">
 					<label for="wp_review_text"><?php esc_html_e( 'Text', 'wp-review' ); ?></label>
 					<?php wp_review_print_pro_text(); ?>
 				</div>
@@ -49,7 +49,7 @@
 			</div>
 
 			<div class="wp-review-field">
-				<div class="wp-review-field-label">
+				<div class="wp-review-disabled wp-review-field-label">
 					<label for="wp_review_star_rating"><?php esc_html_e( 'Star Rating', 'wp-review' ); ?></label>
 					<?php wp_review_print_pro_text(); ?>
 				</div>
@@ -61,7 +61,7 @@
 			</div>
 
 			<div class="wp-review-field">
-				<div class="wp-review-field-label">
+				<div class="wp-review-disabled wp-review-field-label">
 					<label for="wp_review_price"><?php esc_html_e( 'Price', 'wp-review' ); ?></label>
 					<?php wp_review_print_pro_text(); ?>
 				</div>
@@ -73,7 +73,7 @@
 			</div>
 
 			<div class="wp-review-field">
-				<div class="wp-review-field-label">
+				<div class="wp-review-disabled wp-review-field-label">
 					<label for="wp_review_button_label"><?php esc_html_e( 'Button label', 'wp-review' ); ?></label>
 					<?php wp_review_print_pro_text(); ?>
 				</div>
@@ -85,7 +85,7 @@
 			</div>
 
 			<div class="wp-review-field">
-				<div class="wp-review-field-label">
+				<div class="wp-review-disabled wp-review-field-label">
 					<label for="wp_review_button_url"><?php esc_html_e( 'Button URL', 'wp-review' ); ?></label>
 					<?php wp_review_print_pro_text(); ?>
 				</div>
@@ -97,7 +97,7 @@
 			</div>
 
 			<div class="wp-review-field">
-				<div class="wp-review-field-label">
+				<div class="wp-review-disabled wp-review-field-label">
 					<label><?php esc_html_e( 'Open link in new tab', 'wp-review' ); ?></label>
 					<?php wp_review_print_pro_text(); ?>
 				</div>
@@ -120,7 +120,7 @@
 		<h3><?php esc_html_e( 'Styling Settings', 'wp-review' ); ?></h3>
 
 		<div class="wp-review-field">
-			<div class="wp-review-field-label">
+			<div class="wp-review-disabled wp-review-field-label">
 				<label for="wp_review_hello_bar_location"><?php esc_html_e( 'Location', 'wp-review' ); ?></label>
 				<?php wp_review_print_pro_text(); ?>
 			</div>
@@ -136,7 +136,7 @@
 		</div>
 
 		<div class="wp-review-field">
-			<div class="wp-review-field-label">
+			<div class="wp-review-disabled wp-review-field-label">
 				<label for="wp_review_max_container"><?php esc_html_e( 'Max container(px/%)', 'wp-review' ); ?></label>
 				<?php wp_review_print_pro_text(); ?>
 			</div>
@@ -149,7 +149,7 @@
 		</div>
 
 		<div class="wp-review-field">
-			<div class="wp-review-field-label">
+			<div class="wp-review-disabled wp-review-field-label">
 				<label for="wp_review_bg_color"><?php esc_html_e( 'Background color', 'wp-review' ); ?></label>
 				<?php wp_review_print_pro_text(); ?>
 			</div>
@@ -162,7 +162,7 @@
 		</div>
 
 		<div class="wp-review-field">
-			<div class="wp-review-field-label">
+			<div class="wp-review-disabled wp-review-field-label">
 				<label for="wp_review_bg_image"><?php esc_html_e( 'Background image', 'wp-review' ); ?></label>
 				<?php wp_review_print_pro_text(); ?>
 			</div>
@@ -177,7 +177,7 @@
 		</div>
 
 		<div class="wp-review-field">
-			<div class="wp-review-field-label">
+			<div class="wp-review-disabled wp-review-field-label">
 				<label for="wp_review_text_color"><?php esc_html_e( 'Text color', 'wp-review' ); ?></label>
 				<?php wp_review_print_pro_text(); ?>
 			</div>
@@ -190,7 +190,7 @@
 		</div>
 
 		<div class="wp-review-field">
-			<div class="wp-review-field-label">
+			<div class="wp-review-disabled wp-review-field-label">
 				<label for="wp_review_star_color"><?php esc_html_e( 'Star color', 'wp-review' ); ?></label>
 				<?php wp_review_print_pro_text(); ?>
 			</div>
@@ -203,7 +203,7 @@
 		</div>
 
 		<div class="wp-review-field">
-			<div class="wp-review-field-label">
+			<div class="wp-review-disabled wp-review-field-label">
 				<label for="wp_review_button_bg_color"><?php esc_html_e( 'Button background color', 'wp-review' ); ?></label>
 				<?php wp_review_print_pro_text(); ?>
 			</div>
@@ -216,7 +216,7 @@
 		</div>
 
 		<div class="wp-review-field">
-			<div class="wp-review-field-label">
+			<div class="wp-review-disabled wp-review-field-label">
 				<label for="wp_review_button_text_color"><?php esc_html_e( 'Button text color', 'wp-review' ); ?></label>
 				<?php wp_review_print_pro_text(); ?>
 			</div>

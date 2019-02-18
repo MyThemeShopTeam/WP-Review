@@ -3,8 +3,8 @@ Contributors: mythemeshop
 Creator's website link: http://mythemeshop.com/plugins/wp-review/
 Tags: review, schema.org, rating, schema, user rating, google rating, star rating, product review
 Requires at least: 4.0
-Tested up to: 5.0.2
-Stable tag: 5.1.7
+Tested up to: 5.0.3
+Stable tag: 5.2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -102,6 +102,13 @@ Please disable all plugins and check if rating is working properly. Then you can
 7. Percentage Review type
 
 == Changelog ==
+
+= v5.2.0 (Feb 18, 2019) =
+* Added AMP support
+* Added an inline payment form for upgrading
+* Removed popup content from non WP Review admin pages
+* Restricted one review per IP address
+* Fixed: visitor's rich snippet code was not printing if there were no feature items present
 
 = v5.1.8 (Jan 26, 2019) =
 * Removed the conditions that check and disables the Schema added by Rank Math plugin.

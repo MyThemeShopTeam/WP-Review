@@ -97,7 +97,7 @@ function wp_review_render_meta_box_review_options( $post ) {
 			<div id="wp_review_schema_options_wrapper">
 
 				<div class="wp-review-field" id="wp_review_schema_group">
-					<div class="wp-review-field-label">
+					<div class="wp-review-disabled wp-review-field-label">
 						<label for="wp_review_schema"><?php esc_html_e( 'Reviewed Item Schema', 'wp-review' ); ?></label>
 						<?php wp_review_print_pro_text(); ?>
 					</div>
@@ -157,7 +157,7 @@ function wp_review_render_meta_box_review_options( $post ) {
 			</div><!-- End #wp_review_schema_options_wrapper -->
 
 			<div class="wp-review-field" id="wp_review_show_schema_data_wrapper">
-				<div class="wp-review-field-label">
+				<div class="wp-review-disabled wp-review-field-label">
 					<label><?php esc_html_e( 'Display Schema Data in the Box (if available)', 'wp-review' ); ?></label>
 					<?php wp_review_print_pro_text(); ?>
 				</div>
@@ -177,7 +177,7 @@ function wp_review_render_meta_box_review_options( $post ) {
 
 			<div id="wp_review_embed_options_wrapper">
 				<div class="wp-review-field">
-					<div class="wp-review-field-label">
+					<div class="wp-review-disabled wp-review-field-label">
 						<label><?php esc_html_e( 'Show Embed Code', 'wp-review' ); ?></label>
 						<?php wp_review_print_pro_text(); ?>
 					</div>
