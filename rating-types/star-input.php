@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( wp_review_is_amp_page() ) {
-	echo '<div class="wp-review-rating-input"><a href="' . esc_url( wp_review_get_current_non_amp_url() ) . '">' . esc_html__( 'Add rating', 'wp-review' ) . '</a></div>';
+	echo '<div class="wp-review-rating-input"><a href="' . esc_url( wp_review_get_current_non_amp_url() ) . '#review">' . esc_html__( 'Add rating', 'wp-review' ) . '</a></div>';
 	return;
 }
 
