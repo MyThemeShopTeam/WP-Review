@@ -107,6 +107,7 @@ Please disable all plugins and check if rating is working properly. Then you can
 * Added AMP support
 * Added an inline payment form for upgrading
 * Removed popup content from non WP Review admin pages
+* Restricted one review per IP address
 * Fixed schema does not print
 
 = v5.1.8 (Jan 26, 2019) =

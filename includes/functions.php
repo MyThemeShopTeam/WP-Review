@@ -602,10 +602,16 @@ function wp_review_has_reviewed( $post_id, $user_id, $ip = null, $type = 'any' )
 	if ( ! $ip ) {
 		$ip = wp_review_get_user_ip();
 	}
-	if ( ! wp_review_option( 'multi_reviews_per_account' ) && wp_review_has_reviewed_by_user_id( $post_id, $user_id, $ip, $type ) ) {
-		return true;
+
+	if ( is_user_logged_in() && wp_review_option( 'multi_reviews_per_account' ) ) {
+		return false; // Allow multiple reviews per account.
 	}
-	return false;
+
+	if ( is_user_logged_in() ) {
+		return wp_review_has_reviewed_by_user_id( $post_id, $user_id, $ip, $type );
+	}
+
+	return wp_review_has_reviewed_by_ip( $post_id, $user_id, $ip, $type );
 }
 
 
@@ -635,6 +641,35 @@ function wp_review_has_reviewed_by_user_id( $post_id, $user_id, $ip, $type = 'an
 		$args['type'] = $type;
 	}
 	$count = intval( get_comments( $args ) );
+	return $count > 0;
+}
+
+
+/**
+ * Check if user has reviewed this post previously by ip address.
+ *
+ * @since 3.0.0
+ *
+ * @param int    $post_id Post ID.
+ * @param int    $user_id User ID.
+ * @param string $ip      User IP.
+ * @param string $type    Rating type.
+ * @return bool
+ */
+function wp_review_has_reviewed_by_ip( $post_id, $user_id, $ip, $type = 'any' ) {
+	$args = array(
+		'post_id' => $post_id,
+		'count'   => true,
+	);
+	if ( 'any' === $type ) {
+		$args['type_in'] = array( WP_REVIEW_COMMENT_TYPE_COMMENT, WP_REVIEW_COMMENT_TYPE_VISITOR );
+	} else {
+		$args['type'] = $type;
+	}
+	set_query_var( 'wp_review_ip', $ip );
+	add_filter( 'comments_clauses', 'wp_review_filter_comment_by_ip' );
+	$count = intval( get_comments( $args ) );
+	remove_filter( 'comments_clauses', 'wp_review_filter_comment_by_ip' );
 	return $count > 0;
 }
 
