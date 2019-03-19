@@ -38,14 +38,13 @@ class WPR_Review_Notice {
 	 * Shows the notice.
 	 */
 	public function show_notice() {
-		if ( ! $this->should_show() ) {
-			return;
-		}
+		//if ( ! $this->should_show() ) {
+			//return;
+		//}
 		?>
 		<div id="wpr-review-notice" class="notice is-dismissible wpr-review-notice">
-			<img src="<?php echo esc_url( WP_REVIEW_URI . 'admin/assets/images/wp-review-pro.jpg' ); ?>" alt="">
-			<p><?php esc_html_e( 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla tempus lacinia interdum.', 'wp-review' ); ?></p>
-			<p><?php esc_html_e( 'Etiam fringilla condimentum fermentum. Cras vestibulum tempor ligula sit amet fermentum. Vestibulum tempor purus eu elit mattis, vel ultrices urna convallis.', 'wp-review' ); ?></p>
+			<div class="wp-review-star dashicons dashicons-star-filled"></div>
+			<p><?php esc_html_e( 'Hey, we noticed you have created over 10 reviews from WP Review - that’s awesome! Could you please do us a BIG favor and give it a 5-star rating on WordPress to help us spread the word and boost our motivation?', 'wp-review' ); ?></p>
 			<div class="wpr-review-notice-btns">
 				<a href="https://wordpress.org/support/plugin/wp-review/reviews/?filter=5#new-post" class="button button-primary wpr-review-notice-btn-dismiss" target="_blank">
 					<?php esc_html_e( 'Ok, you deserve it', 'wp-review' ); ?>
@@ -65,6 +64,7 @@ class WPR_Review_Notice {
 			.wpr-review-notice {
 				padding-left: 0;
 				padding-top: 10px;
+				border: 3px solid #f44336;
 			}
 			.wpr-review-notice:after {
 				content: " ";
@@ -73,17 +73,20 @@ class WPR_Review_Notice {
 				display: block;
 				clear: both;
 			}
-			.wpr-review-notice img {
-				width: 100px;
-				height: 100px;
-				padding: 20px 30px 30px;
+			.wpr-review-notice .wp-review-star {
+				font-size: 58px;
+				width: 90px;
+				height: 90px;
+				line-height: 90px;
 				float: left;
+				margin: 5px 15px 15px 15px;
+				color: #FFC107;
+				background: #F44336;
+				text-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+				border-radius: 10px;
 			}
 			.wpr-review-notice p {
-				font-size: 1.2em;
-			}
-			.wpr-review-notice-btns {
-				padding-top: 10px;
+				font-size: 14px;
 			}
 			.wpr-review-notice-btns a,
 			.wpr-review-notice-btns button {
@@ -120,7 +123,7 @@ class WPR_Review_Notice {
 			return false;
 		}
 		$query = wp_review_get_reviews_query( 'latest', array( 'post_num' => $this->review_count ) );
-		return intval( $query->found_posts ) === $this->review_count;
+		return;
 	}
 }
 
