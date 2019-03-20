@@ -24,7 +24,7 @@ class WPR_Review_Notice {
 	 *
 	 * @var int
 	 */
-	private $review_count;
+	private $review_count = 10;
 
 	/**
 	 * Initializes class.
