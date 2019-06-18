@@ -2,46 +2,22 @@
 /**
  * WP Review: Aqua
  * Description: Aqua Review Box template for WP Review
- * Version: 1.0.0
+ * Version: 5.2.1
  * Author: MyThemesShop
  * Author URI: http://mythemeshop.com/
  *
  * @package   WP_Review
  * @since     3.0.0
+ * @version   5.2.1
  * @copyright Copyright (c) 2017, MyThemesShop
  * @author    MyThemesShop
  * @license   http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+ *
+ * @var array $review
  */
 
-/*
- *	Available items in $review array:
- *
- *		'post_id',
-		'type',
-		'heading',
-		'author',
-		'items',
-		'hide_desc',
-		'desc',
-		'desc_title',
-		'pros',
-		'cons',
-		'total',
-		'colors',
-		'width',
-		'align',
-		'schema',
-		'schema_data',
-		'show_schema_data',
-		'rating_schema',
-		'links',
-		'user_review',
-		'user_review_type',
-		'user_review_total',
-		'user_review_count',
-		'user_has_reviewed',
-		'comments_review'
- *
+/**
+ * Use print_r( $review ); to inspect the $review array.
  */
 
 // Exit if accessed directly.
@@ -152,8 +128,7 @@ $classes = implode( ' ', $review['css_classes'] );
 		<?php if ( $review['desc'] ) : ?>
 			<div class="review-desc">
 				<p class="review-summary-title"><strong><?php echo $review['desc_title']; ?></strong></p>
-				<?php // echo do_shortcode( shortcode_unautop( wp_kses_post( wpautop( $review['desc'] ) ) ) ); ?>
-				<?php echo apply_filters( 'wp_review_desc', $review['desc'], $review['post_id'] ); ?>
+				<?php echo do_shortcode( apply_filters( 'wp_review_desc', $review['desc'], $review['post_id'] ) ); ?>
 			</div>
 		<?php endif; ?>
 

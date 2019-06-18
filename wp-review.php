@@ -45,7 +45,7 @@ if ( version_compare( phpversion(), '5.6', '<' ) ) {
 }
 
 /* Plugin version */
-define( 'WP_REVIEW_PLUGIN_VERSION', '5.2.0' );
+define( 'WP_REVIEW_PLUGIN_VERSION', '5.2.1' );
 
 /* Sets the custom db table name. */
 define( 'MTS_WP_REVIEW_DB_TABLE', 'mts_wp_reviews' );
