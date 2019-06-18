@@ -876,6 +876,20 @@ $form_field = new WP_Review_Form_Field();
 				</label>
 			</div>
 		</div>
+
+		<div class="wp-review-field">
+			<div class="wp-review-field-label">
+				<label for="wp_review_user_can_rate_feature"><?php esc_html_e( 'User can:', 'wp-review' ); ?></label><br>
+				<?php wp_review_print_pro_text( true ); ?>
+			</div>
+
+			<div class="wp-review-field-option">
+				<select name="wp_review_options[user_can_rate_feature]" id="wp_review_user_can_rate_feature" class="wp-review-disabled">
+					<option value="" disabled><?php esc_html_e( 'Give Overall Rating', 'wp-review' ); ?></option>
+					<option value="1" disabled><?php esc_html_e( 'Rate Each Feature', 'wp-review' ); ?></option>
+				</select>
+			</div>
+		</div>
 	</div>
 
 	<div id="review-embed" class="settings-tab-embed tab-content" style="display: none;">
