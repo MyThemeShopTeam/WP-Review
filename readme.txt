@@ -3,8 +3,8 @@ Contributors: mythemeshop
 Creator's website link: http://mythemeshop.com/plugins/wp-review/
 Tags: review, schema.org, rating, schema, user rating, google rating, star rating, product review
 Requires at least: 4.0
-Tested up to: 5.0.3
-Stable tag: 5.2.0
+Tested up to: 5.2.1
+Stable tag: 5.2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -102,6 +102,11 @@ Please disable all plugins and check if rating is working properly. Then you can
 7. Percentage Review type
 
 == Changelog ==
+
+= v5.2.1 (Jun 18, 2019) =
+* Added shortcode support in review description
+* Added a way to help users easily leave a review, with a dismissible notice
+* Fixed conflict with Woodmart plugin
 
 = v5.2.0 (Feb 18, 2019) =
 * Added AMP support

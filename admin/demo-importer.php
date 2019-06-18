@@ -9,7 +9,6 @@
 /**
  * Require files.
  */
-require_once WP_REVIEW_ADMIN . 'demo-importer/class-wp-import.php';
 require_once WP_REVIEW_ADMIN . 'demo-importer/class-wp-review-demo-importer.php';
 
 

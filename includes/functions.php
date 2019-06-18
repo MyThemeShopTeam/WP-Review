@@ -2814,8 +2814,8 @@ function wp_review_get_reviews_query( $type, $options ) {
 		return $query;
 	}
 
-	$options['review_type'] = $options['review_type'] ? (array) $options['review_type'] : array();
-	$options['cat']         = $options['cat'] ? (array) $options['cat'] : array();
+	$options['review_type'] = ! empty( $options['review_type'] ) ? (array) $options['review_type'] : array();
+	$options['cat']         = ! empty( $options['cat'] ) ? (array) $options['cat'] : array();
 
 	switch ( $type ) {
 		case 'mostvoted':
@@ -2859,8 +2859,14 @@ function wp_review_get_reviews_query( $type, $options ) {
 	$query_args['ignore_sticky_posts'] = true;
 	$query_args['post_type']           = isset( $options['post_type'] ) ? $options['post_type'] : 'post';
 	$query_args['post_status']         = 'publish';
-	$query_args['posts_per_page']      = intval( $options['post_num'] );
-	$query_args['paged']               = intval( $options['page'] );
+
+	if ( ! empty( $options['post_num'] ) ) {
+		$query_args['posts_per_page'] = intval( $options['post_num'] );
+	}
+
+	if ( ! empty( $options['page'] ) ) {
+		$query_args['paged'] = intval( $options['page'] );
+	}
 
 	if ( ! empty( $options['number_of_days'] ) && intval( $options['number_of_days'] ) ) {
 		$date_str                 = $options['number_of_days'] > 1 ? '%s days ago' : '%s day ago';

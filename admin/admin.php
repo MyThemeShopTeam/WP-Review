@@ -100,6 +100,7 @@ function wp_review_admin_style( $hook_suffix ) {
 		'wp-review-admin-script',
 		'wprVars',
 		array(
+			'nonce'                        => wp_create_nonce( 'wp_review_admin' ),
 			'ratingPermissionsCommentOnly' => WP_REVIEW_REVIEW_COMMENT_ONLY,
 			'ratingPermissionsBoth'        => WP_REVIEW_REVIEW_ALLOW_BOTH,
 			'imgframe_title'               => __( 'Select Image', 'wp-review' ),

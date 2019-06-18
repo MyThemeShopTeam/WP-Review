@@ -18,6 +18,9 @@ class WP_Review_Demo_Importer {
 	 */
 	public function import( $file ) {
 		add_filter( 'wp_import_post_data_processed', array( $this, 'filter_post_data' ) );
+		if ( ! class_exists( 'WP_Import' ) ) {
+			require_once WP_REVIEW_ADMIN . 'demo-importer/class-wp-import.php';
+		}
 		$importer = new WP_Import();
 		$importer->import( $file );
 		remove_filter( 'wp_import_post_data_processed', array( $this, 'filter_post_data' ) );
