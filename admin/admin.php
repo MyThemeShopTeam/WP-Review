@@ -76,6 +76,14 @@ function wp_review_admin_style( $hook_suffix ) {
 			WP_REVIEW_PLUGIN_VERSION,
 			true
 		);
+
+		wp_enqueue_script(
+			'rank-math-compatible',
+			WP_REVIEW_URI . 'admin/assets/js/rank-math-compatible.js',
+			array( 'rank-math-post-metabox' ),
+			WP_REVIEW_PLUGIN_VERSION,
+			true
+		);
 	}
 
 	wp_enqueue_script(
