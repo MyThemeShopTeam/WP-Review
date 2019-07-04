@@ -1,5 +1,5 @@
 /* global RankMath */
-$( document ).ready( function() {
+$( window ).on( 'load', function() {
 
   rankMathCompatible = function() {
     RankMath.app.registerPlugin( 'rank-math-review-analysis', { status: 'ready' } );
@@ -11,12 +11,18 @@ $( document ).ready( function() {
 
   // Analyze Review fields content.
   rankMathCompatible.prototype.reviewDescription = function( content ) {
-    return content + $( '#wp_review_desc' ).val();
+    return content + tinyMCE.editors['wp_review_desc'].getContent();
   };
 
   // Analyze Review fields title.
   rankMathCompatible.prototype.reviewTitle = function( title ) {
     return title + $( '#wp_review_desc_title' ).val();
+  };
+
+  rankMathCompatible.prototype.events = function(data) {
+    tinyMCE.editors.wp_review_desc.on( 'change', function() {
+      RankMath.app.refresh()
+    });
   };
 
   new rankMathCompatible();
