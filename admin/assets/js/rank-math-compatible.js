@@ -2,7 +2,7 @@
 var rankMathCompatible = function() {
 	this.init();
 	this.hooks();
-	this.events( this );
+  setTimeout( this.events.bind( this ), 1500 )
 }
 
 rankMathCompatible.prototype.init = function() {
@@ -18,10 +18,9 @@ rankMathCompatible.prototype.init = function() {
 }
 
 rankMathCompatible.prototype.hooks = function() {
-	RankMathApp.registerPlugin( this.pluginName, { status: 'ready' } );
+	RankMathApp.registerPlugin( this.pluginName );
 	wp.hooks.addFilter( 'rank_math_content', this.pluginName, $.proxy( this.reviewDescription, this ) );
   wp.hooks.addFilter( 'rank_math_title', this.pluginName, $.proxy( this.reviewTitle, this ) );
-	// RankMathApp.addFilter( 'rank_math_title', this.pluginName, $.proxy( this.reviewTitle, this ) );
 }
 
 rankMathCompatible.prototype.getContent = function() {
@@ -42,7 +41,6 @@ rankMathCompatible.prototype.getTitle = function() {
 
 // Analyze Review fields content.
 rankMathCompatible.prototype.reviewDescription = function( content ) {
-  console.log('filter called from WP Review plugin...')
 	return content + this.getContent();
 };
 
@@ -51,22 +49,35 @@ rankMathCompatible.prototype.reviewTitle = function( title ) {
 	return title + this.getTitle();
 };
 
-rankMathCompatible.prototype.events = function( self ) {
-	$.each( self.fields.content, function( key, value ) {
+rankMathCompatible.prototype.events = function() {
+  var self = this
+	$.each( this.fields.content, function( key, value ) {
 		if ( 'editor' === value && undefined !== tinyMCE.editors[key] ) {
-			tinyMCE.editors[key].on( 'change', function() {
-    		RankMathApp.pluginReloaded( self.pluginName );
-			});
+      tinyMCE.editors[key].on( 'keyup change', self.debounce( ( event ) => {
+        RankMathApp.reloadPlugin( self.pluginName );
+      }, 500 ));
 		}
     $( '#' + key ).on( 'change', function() {
-      console.log('this is changing...')
-    	RankMathApp.pluginReloaded( self.pluginName );
+    	RankMathApp.reloadPlugin( self.pluginName );
     });
   });
-
 };
- $( document ).on( 'ready', function () {
-  setTimeout(function(){
-    new rankMathCompatible();
-  }, 1500);
+
+rankMathCompatible.prototype.debounce = function( func, wait, immediate ) {
+ var timeout;
+  return function() {
+    var context = this, args = arguments;
+    var later = function() {
+      timeout = null;
+      if (!immediate) func.apply(context, args);
+    }
+    var callNow = immediate && !timeout;
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+    if (callNow) func.apply(context, args);
+  }
+}
+
+$( document ).on( 'ready', function () {
+  new rankMathCompatible();
 });
