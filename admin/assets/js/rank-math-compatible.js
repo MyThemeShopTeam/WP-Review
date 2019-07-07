@@ -41,28 +41,24 @@
 		var self = this
 
 		$.each( self.fields.content, function( key, value ) {
-			if ( 'editor' === value && undefined !== tinyMCE.editors[ key ] ) {
-				tinyMCE.editors[ key ].on( 'keyup change', self.debounce( function() {
-					RankMathApp.reloadPlugin( self.pluginName )
-				}, 500 ) )
-			} else {
-				$( '#' + key ).on( 'change', self.debounce( function() {
-					RankMathApp.reloadPlugin( self.pluginName )
-				}, 500 ) )
-			}
+			self.bindEvent( key, value, self )
 		})
 
 		$.each( self.fields.title, function( key, value ) {
-			if ( 'editor' === value && undefined !== tinyMCE.editors[ key ] ) {
-				tinyMCE.editors[ key ].on( 'keyup change', self.debounce( function() {
-					RankMathApp.reloadPlugin( self.pluginName )
-				}, 500 ) )
-			} else {
-				$( '#' + key ).on( 'change', self.debounce( function() {
-					RankMathApp.reloadPlugin( self.pluginName )
-				}, 500 ) )
-			}
+			self.bindEvent( key, value, self )
 		})
+	}
+
+	RankMathIntegration.prototype.bindEvent = function( id, type, self ) {
+		if ( 'editor' === type && undefined !== tinyMCE.editors[ id ] ) {
+			tinyMCE.editors[ id ].on( 'keyup change', self.debounce( function() {
+				RankMathApp.reloadPlugin( self.pluginName )
+			}, 500 ) )
+		} else {
+			$( '#' + id ).on( 'change', self.debounce( function() {
+				RankMathApp.reloadPlugin( self.pluginName )
+			}, 500 ) )
+		}
 	}
 
 	/**
