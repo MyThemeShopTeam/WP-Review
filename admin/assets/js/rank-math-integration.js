@@ -1,8 +1,11 @@
-/* global RankMath */
+/**
+ * Rank Math SEO Integration
+ * Analyze content of 'Review Headline' & 'Description Content' fields
+ */
 ;( function( $ ) {
 
 	/**
-	 * RankMath integration class.
+	 * RankMath integration class
 	 */
 	var RankMathIntegration = function() {
 		this.init()
@@ -16,35 +19,35 @@
 	RankMathIntegration.prototype.init = function() {
 		this.pluginName = 'rank-math-review-analysis'
 		this.fields     = {
+			title: {
+				'wp_review_heading' : 'text'
+			},
 			content: {
 				'wp_review_desc': 'editor'
-			},
-			title: {
-				'wp_review_desc_title' : 'text'
 			}
 		}
 	}
 
 	/**
-	 * Hook into rank math app eco-system
+	 * Hook into Rank Math App eco-system
 	 */
 	RankMathIntegration.prototype.hooks = function() {
 		RankMathApp.registerPlugin( this.pluginName )
-		wp.hooks.addFilter( 'rank_math_content', this.pluginName, $.proxy( this.reviewDescription, this ) )
 		wp.hooks.addFilter( 'rank_math_title', this.pluginName, $.proxy( this.reviewTitle, this ) )
+		wp.hooks.addFilter( 'rank_math_content', this.pluginName, $.proxy( this.reviewDescription, this ) )
 	}
 
 	/**
-	 * Capture events from plugins to refresh rank math analysis
+	 * Capture events from plugins to refresh Rank Math analysis
 	 */
 	RankMathIntegration.prototype.events = function() {
 		var self = this
 
-		$.each( self.fields.content, function( key, value ) {
+		$.each( self.fields.title, function( key, value ) {
 			self.bindEvent( key, value, self )
 		})
 
-		$.each( self.fields.title, function( key, value ) {
+		$.each( self.fields.content, function( key, value ) {
 			self.bindEvent( key, value, self )
 		})
 	}
@@ -70,29 +73,21 @@
 	}
 
 	/**
-	 * Analyze Review fields content
+	 * Gather 'Review Heading' field data for analysis
 	 *
-	 * @param {String} content System content.
-	 *
-	 * @return {String} Our plugin content concatenated
+	 * @return {String}
 	 */
-	RankMathIntegration.prototype.reviewDescription = function( content ) {
-		return content + this.getContent()
+	RankMathIntegration.prototype.getTitle = function() {
+		var title = ''
+		$.each( this.fields.title, function( key, value ) {
+			title = '\n' + $( '#' + key ).val()
+		})
+
+		return title
 	}
 
 	/**
-	 * Analyze Review fields title
-	 *
-	 * @param {String} title System title.
-	 *
-	 * @return {String} Our plugin title concatenated
-	 */
-	RankMathIntegration.prototype.reviewTitle = function( title ) {
-		return title + this.getTitle()
-	}
-
-	/**
-	 * Gather content from plugin fields for analysis.
+	 * Gather 'Description Content' field data for analysis
 	 *
 	 * @return {String}
 	 */
@@ -106,17 +101,25 @@
 	}
 
 	/**
-	 * Gather title from plugin fields for analysis.
+	 * Analyze 'Review Heading' field
 	 *
-	 * @return {String}
+	 * @param {String} title System title.
+	 *
+	 * @return {String} Our plugin title concatenated
 	 */
-	RankMathIntegration.prototype.getTitle = function() {
-		var title = ''
-		$.each( this.fields.title, function( key, value ) {
-			title = '\n' + $( '#' + key ).val()
-		})
+	RankMathIntegration.prototype.reviewTitle = function( title ) {
+		return title + this.getTitle()
+	}
 
-		return title
+	/**
+	 * Analyze 'Description Content' field
+	 *
+	 * @param {String} content System content.
+	 *
+	 * @return {String} Our plugin content concatenated
+	 */
+	RankMathIntegration.prototype.reviewDescription = function( content ) {
+		return content + this.getContent()
 	}
 
 	/**
@@ -148,6 +151,9 @@
 		}
 	}
 
+	/**
+	 * Start Analysing Custom Fields.
+	 */
 	$( document ).on( 'ready', function () {
 		new RankMathIntegration()
 	})

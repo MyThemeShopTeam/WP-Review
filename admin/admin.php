@@ -79,7 +79,7 @@ function wp_review_admin_style( $hook_suffix ) {
 
 		wp_enqueue_script(
 			'rank-math-compatible',
-			WP_REVIEW_URI . 'admin/assets/js/rank-math-compatible.js',
+			WP_REVIEW_URI . 'admin/assets/js/rank-math-integration.js',
 			array( 'rank-math-post-metabox' ),
 			WP_REVIEW_PLUGIN_VERSION,
 			true
