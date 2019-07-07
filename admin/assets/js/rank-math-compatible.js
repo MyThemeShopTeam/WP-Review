@@ -54,11 +54,11 @@
 			tinyMCE.editors[ id ].on( 'keyup change', self.debounce( function() {
 				RankMathApp.reloadPlugin( self.pluginName )
 			}, 500 ) )
-		} else {
-			$( '#' + id ).on( 'change', self.debounce( function() {
-				RankMathApp.reloadPlugin( self.pluginName )
-			}, 500 ) )
 		}
+
+		$( '#' + id ).on( 'change', self.debounce( function() {
+			RankMathApp.reloadPlugin( self.pluginName )
+		}, 500 ) )
 	}
 
 	/**
