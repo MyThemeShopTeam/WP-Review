@@ -44,11 +44,11 @@
 			if ( 'editor' === value && undefined !== tinyMCE.editors[ key ] ) {
 				tinyMCE.editors[ key ].on( 'keyup change', self.debounce( function() {
 					RankMathApp.reloadPlugin( self.pluginName )
-				}, 500 )
+				}, 500 ) )
 			} else {
 				$( '#' + key ).on( 'change', self.debounce( function() {
 					RankMathApp.reloadPlugin( self.pluginName )
-				}, 500 )
+				}, 500 ) )
 			}
 		})
 	}
