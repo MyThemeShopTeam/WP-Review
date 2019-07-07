@@ -29,9 +29,9 @@
 	 * Hook into rank math app eco-system
 	 */
 	RankMathIntegration.prototype.hooks = function() {
-		RankMath.app.registerPlugin( this.pluginName, { status: 'ready' } )
-		RankMath.app.addFilter( 'content', $.proxy( this.reviewDescription, this ), this.pluginName )
-		RankMath.app.addFilter( 'title', $.proxy( this.reviewTitle, this ), this.pluginName )
+		RankMathApp.registerPlugin( this.pluginName, { status: 'ready' } )
+		RankMathApp.addFilter( 'content', $.proxy( this.reviewDescription, this ), this.pluginName )
+		RankMathApp.addFilter( 'title', $.proxy( this.reviewTitle, this ), this.pluginName )
 	}
 
 	/**
@@ -43,11 +43,11 @@
 		$.each( self.fields.content, function( key, value ) {
 			if ( 'editor' === value && undefined !== tinyMCE.editors[ key ] ) {
 				tinyMCE.editors[ key ].on( 'change', function() {
-					RankMath.app.pluginReloaded( self.pluginName )
+					RankMathApp.pluginReloaded( self.pluginName )
 				})
 			} else {
 				$( '#' + key ).on( 'change', function() {
-					RankMath.app.pluginReloaded( self.pluginName )
+					RankMathApp.pluginReloaded( self.pluginName )
 				})
 			}
 		})
