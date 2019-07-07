@@ -45,7 +45,8 @@
 				tinyMCE.editors[ key ].on( 'keyup change', self.debounce( function() {
 					RankMathApp.reloadPlugin( self.pluginName )
 				}, 500 ) )
-			} else {
+			}
+			if ( 'text' === value ) {
 				$( '#' + key ).on( 'change', self.debounce( function() {
 					RankMathApp.reloadPlugin( self.pluginName )
 				}, 500 ) )
