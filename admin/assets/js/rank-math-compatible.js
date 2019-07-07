@@ -56,7 +56,7 @@
 			}, 500 ) )
 		}
 
-		$( '#' + id ).on( 'change', self.debounce( function() {
+		$( '#' + id ).on( 'input change', self.debounce( function() {
 			RankMathApp.reloadPlugin( self.pluginName )
 		}, 500 ) )
 	}
