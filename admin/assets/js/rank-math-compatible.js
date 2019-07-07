@@ -50,6 +50,14 @@
 	}
 
 	RankMathIntegration.prototype.bindEvent = function( id, type, self ) {
+
+		tinymce.on( 'AddEditor', function ( event ) {
+			if ( id === event.editor.id ) {
+				event.editor.on( 'keyup change', self.debounce( function() {
+					RankMathApp.reloadPlugin( self.pluginName )
+				}, 500 ) )
+			}
+		} )
 		if ( 'editor' === type && undefined !== tinyMCE.editors[ id ] ) {
 			tinyMCE.editors[ id ].on( 'keyup change', self.debounce( function() {
 				RankMathApp.reloadPlugin( self.pluginName )
