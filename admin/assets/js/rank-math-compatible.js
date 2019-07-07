@@ -7,7 +7,7 @@
 	var RankMathIntegration = function() {
 		this.init()
 		this.hooks()
-		this.events()
+		setTimeout( this.events.bind( this ), 1500 )
 	}
 
 	/**
@@ -29,9 +29,9 @@
 	 * Hook into rank math app eco-system
 	 */
 	RankMathIntegration.prototype.hooks = function() {
-		RankMathApp.registerPlugin( this.pluginName, { status: 'ready' } )
-		RankMathApp.addFilter( 'content', $.proxy( this.reviewDescription, this ), this.pluginName )
-		RankMathApp.addFilter( 'title', $.proxy( this.reviewTitle, this ), this.pluginName )
+		RankMathApp.registerPlugin( this.pluginName )
+		wp.hooks.addFilter( 'rank_math_content', this.pluginName, $.proxy( this.reviewDescription, this ) )
+		wp.hooks.addFilter( 'rank_math_title', this.pluginName, $.proxy( this.reviewTitle, this ) )
 	}
 
 	/**
@@ -42,13 +42,13 @@
 
 		$.each( self.fields.content, function( key, value ) {
 			if ( 'editor' === value && undefined !== tinyMCE.editors[ key ] ) {
-				tinyMCE.editors[ key ].on( 'change', function() {
-					RankMathApp.pluginReloaded( self.pluginName )
-				})
+				tinyMCE.editors[ key ].on( 'keyup change', self.debounce( function() {
+					RankMathApp.reloadPlugin( self.pluginName )
+				}, 500 )
 			} else {
-				$( '#' + key ).on( 'change', function() {
-					RankMathApp.pluginReloaded( self.pluginName )
-				})
+				$( '#' + key ).on( 'change', self.debounce( function() {
+					RankMathApp.reloadPlugin( self.pluginName )
+				}, 500 )
 			}
 		})
 	}
@@ -103,7 +103,36 @@
 		return title
 	}
 
-	$( window ).on( 'load', function() {
+	/**
+	 * Debounce function
+	 *
+	 * @param {Callback} func
+	 * @param {Integer}  wait
+	 * @param {Boolean}  immediate
+	 */
+	RankMathIntegration.prototype.debounce = function( func, wait, immediate ) {
+		var timeout
+		return function() {
+			var context = this,
+				args = arguments;
+
+			var later = function() {
+				timeout = null
+				if ( ! immediate ) {
+					func.apply( context, args )
+				}
+			}
+
+			var callNow = immediate && ! timeout
+			clearTimeout( timeout )
+			timeout = setTimeout( later, wait )
+			if ( callNow ) {
+				func.apply( context, args )
+			}
+		}
+	}
+
+	$( document ).on( 'ready', function () {
 		new RankMathIntegration()
 	})
 
