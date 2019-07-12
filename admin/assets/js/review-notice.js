@@ -15,7 +15,7 @@
 	}
 
 	$( document ).ready( function() {
-		$( '.wpr-review-notice-btn-dismiss' ).on( 'click', function() {
+		$( '.wpr-review-notice-btn-dismiss, #wpr-review-notice .notice-dismiss' ).on( 'click', function() {
 			dismiss();
 		});
 		$( '.wpr-review-notice-btn-later' ).on( 'click', function() {
