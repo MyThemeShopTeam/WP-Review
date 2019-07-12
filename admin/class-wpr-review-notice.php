@@ -38,15 +38,15 @@ class WPR_Review_Notice {
 	 * Shows the notice.
 	 */
 	public function show_notice() {
-		//if ( ! $this->should_show() ) {
-			//return;
-		//}
+		if ( ! $this->should_show() ) {
+			return;
+		}
 		?>
 		<div id="wpr-review-notice" class="notice is-dismissible wpr-review-notice">
 			<div class="wp-review-star dashicons dashicons-star-filled"></div>
 			<p><?php esc_html_e( 'Hey, we noticed you have created over 10 reviews from WP Review - that’s awesome! Could you please do us a BIG favor and give it a 5-star rating on WordPress to help us spread the word and boost our motivation?', 'wp-review' ); ?></p>
 			<div class="wpr-review-notice-btns">
-				<a href="https://wordpress.org/support/plugin/wp-review/reviews/?filter=5#new-post" class="button button-primary wpr-review-notice-btn-dismiss" target="_blank">
+				<a href="https://wordpress.org/support/plugin/wp-review/reviews/?rate=5#new-post" class="button button-primary wpr-review-notice-btn-dismiss" target="_blank">
 					<?php esc_html_e( 'Ok, you deserve it', 'wp-review' ); ?>
 				</a>
 				<button type="button" class="button button-link wpr-review-notice-btn-later">
@@ -123,7 +123,7 @@ class WPR_Review_Notice {
 			return false;
 		}
 		$query = wp_review_get_reviews_query( 'latest', array( 'post_num' => $this->review_count ) );
-		return;
+		return intval( $query->found_posts ) === $this->review_count;
 	}
 }
 

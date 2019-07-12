@@ -5,32 +5,10 @@
 * Author: MyThemesShop
 * Author URI: http://mythemeshop.com/
 */
-( function( $, wpreview, Cookies ) {
+( function( $ ) {
 	"use strict";
 
-	wpreview.getAnimateDuration = function( animation ) {
-		if ( ! animation ) {
-			return 0;
-		}
-		switch ( animation ) {
-			case 'flipOutX':
-			case 'flipOutY':
-			case 'bounceIn':
-			case 'bounceOut':
-				return 750;
-
-			case 'hinge':
-				return 2000;
-		}
-
-		return 1000;
-	};
-
 	$( document ).ready( function() {
-		$( '.wp_review_comment.verified cite, .wp_review_comment.verified .fn' ).after( '<em> ' + wpreview.verifiedPurchase + '</em>' );
-
-		// $( '[data-ui-tabs]' ).tabs();
-
 		$( '[data-wp-review-tabs] .tab-title:first-child' ).addClass( 'active' );
 		$( '[data-wp-review-tabs] .tab-content:first-of-type' ).fadeIn();
 
@@ -45,16 +23,8 @@
 			$tabs.find( '.tab-content' ).hide();
 			$tabs.find( href ).fadeIn();
 		});
-
-		$( '#commentform' ).on( 'submit', function( ev ) {
-			$( this ).find( '.wpr-error' ).remove();
-			if ( $( this ).hasClass( 'wpr-uncompleted-rating' ) ) {
-				$( this ).append( '<div class="wpr-error">' + wpreview.rateAllFeatures + '</div>' );
-				ev.preventDefault();
-			}
-		});
 	});
-})( jQuery, window.wpreview || {}, Cookies );
+})( jQuery );
 
 function wp_review_rate( $elem ) {// rating, postId, nonce ) {
 	var rating = $elem.find('.wp-review-user-rating-val').val();

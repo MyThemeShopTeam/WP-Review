@@ -112,13 +112,6 @@
 
 	wpreview.pluginOptions = function() {
 
-		// Custom comment color.
-		$( '#wp_review_custom_comment_colors' ).on( 'switch-on', function() {
-			$('#wp_review_comment_color_wrapper').show();
-		});
-		$( '#wp_review_custom_comment_colors' ).on( 'switch-off', function() {
-			$('#wp_review_comment_color_wrapper').hide();
-		});
 	};
 
 	wpreview.pluginMetaBoxes = function() {
@@ -139,28 +132,12 @@
 			$('.wp-review-color-options').hide();
 		});
 
-		// Custom width.
-		$( '#wp_review_custom_width' ).on( 'switch-on', function() {
-			$('.wp-review-width-options').show();
-		});
-		$( '#wp_review_custom_width' ).on( 'switch-off', function() {
-			$('.wp-review-width-options').hide();
-		});
-
 		// Custom author.
 		$( '#wp_review_custom_author' ).on( 'switch-on', function() {
 			$('.wp-review-author-options').show();
 		});
 		$( '#wp_review_custom_author' ).on( 'switch-off', function() {
 			$('.wp-review-author-options').hide();
-		});
-
-		// Hide description.
-		$( '#wp_review_hide_desc' ).on( 'switch-on', function() {
-			$( '#wp_review_desc_settings' ).fadeOut();
-		});
-		$( '#wp_review_hide_desc' ).on( 'switch-off', function() {
-			$( '#wp_review_desc_settings' ).fadeIn();
 		});
 
 		// Disable features.
@@ -184,20 +161,6 @@
 			if ( $(this)[0].checked ) {
 				$postbox.find( '.show-if-comment, .show-if-disabled' ).hide();
 				$postbox.find( '.show-if-visitor, .show-if-both' ).show();
-			}
-		});
-		$( '#wp-review-userReview-comment' ).on( 'change', function() {
-			var $postbox = $( this ).closest( '.postbox' );
-			if ( $(this)[0].checked ) {
-				$postbox.find( '.show-if-visitor, .show-if-disabled' ).hide();
-				$postbox.find( '.show-if-comment, .show-if-both' ).show();
-			}
-		});
-		$( '#wp-review-userReview-both' ).on( 'change', function() {
-			var $postbox = $( this ).closest( '.postbox' );
-			if ( $(this)[0].checked ) {
-				$postbox.find( '.show-if-disabled' ).hide();
-				$postbox.find( '.show-if-comment, .show-if-visitor, .show-if-both' ).show();
 			}
 		});
 
@@ -679,16 +642,6 @@ jQuery(document).ready(function($) {
 		}
 	});
 
-	$('td.wp_review_comment_rating, #wp-review-comment-rating').each(function(){
-		var $features = $(this).find('.wp-review-rating-feature');
-		var maxWidth = 0;
-		$features.each(function(){
-			var width = $(this).outerWidth();
-			if ( width > maxWidth ) maxWidth = width;
-		});
-		$features.width( maxWidth + 10 );
-	});
-
 	if ($('#wp-review-migrate-log').length) {
 		var $migrate_log = $('#wp-review-migrate-log');
 		var migrate_started = false;
@@ -697,7 +650,7 @@ jQuery(document).ready(function($) {
 		var migrate_finished = false;
 		var updatelog = function( text ) {
 			$migrate_log.css('display', 'block').val(function(index, old) { return text + "\n" + old });
-		}
+		};
 		var ajax_migrate = function( startindex ) {
 			$.ajax({
 				url: ajaxurl,

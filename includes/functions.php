@@ -1755,7 +1755,6 @@ function wp_review_get_colors( $post_id ) {
 	$colors                    = array();
 	$colors['custom_colors']   = $custom_colors;
 	$colors['custom_location'] = get_post_meta( $post_id, 'wp_review_custom_location', true );
-	$colors['custom_width']    = get_post_meta( $post_id, 'wp_review_custom_width', true );
 	$colors['color']           = get_post_meta( $post_id, 'wp_review_color', true );
 	$colors['inactive_color']  = get_post_meta( $post_id, 'wp_review_inactive_color', true );
 	$colors['type']            = wp_review_get_post_review_type( $post_id );

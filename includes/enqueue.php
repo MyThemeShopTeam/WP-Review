@@ -30,9 +30,7 @@ function wp_review_enqueue() {
 		'wp_review-js',
 		'wpreview',
 		array(
-			'ajaxurl'          => admin_url( 'admin-ajax.php' ),
-			'rateAllFeatures'  => __( 'Please rate all features', 'wp-review' ),
-			'verifiedPurchase' => __( '(Verified purchase)', 'wp-review' ),
+			'ajaxurl' => admin_url( 'admin-ajax.php' ),
 		)
 	);
 
