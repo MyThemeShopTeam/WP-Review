@@ -2814,6 +2814,7 @@ function wp_review_get_reviews_query( $type, $options ) {
 	}
 
 	$options['review_type'] = ! empty( $options['review_type'] ) ? (array) $options['review_type'] : array();
+	$options['post_status'] = ! empty( $options['post_status'] ) ? $options['post_status'] : 'publish';
 	$options['cat']         = ! empty( $options['cat'] ) ? (array) $options['cat'] : array();
 
 	switch ( $type ) {
@@ -2857,7 +2858,6 @@ function wp_review_get_reviews_query( $type, $options ) {
 
 	$query_args['ignore_sticky_posts'] = true;
 	$query_args['post_type']           = isset( $options['post_type'] ) ? $options['post_type'] : 'post';
-	$query_args['post_status']         = 'publish';
 
 	if ( ! empty( $options['post_num'] ) ) {
 		$query_args['posts_per_page'] = intval( $options['post_num'] );

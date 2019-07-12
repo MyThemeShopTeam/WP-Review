@@ -122,8 +122,14 @@ class WPR_Review_Notice {
 		if ( get_transient( $this->dismiss_transient_key ) ) {
 			return false;
 		}
-		$query = wp_review_get_reviews_query( 'latest', array( 'post_num' => $this->review_count ) );
-		return intval( $query->found_posts ) === $this->review_count;
+		$query = wp_review_get_reviews_query(
+			'latest',
+			array(
+				'post_num'    => $this->review_count,
+				'post_status' => 'any',
+			)
+		);
+		return intval( $query->post_count ) === $this->review_count;
 	}
 }
 
