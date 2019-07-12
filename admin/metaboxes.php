@@ -475,8 +475,9 @@ function wp_review_render_meta_box_item( $post ) {
 	</div>
 
 	<div class="wp-review-field">
-		<div class="wp-review-field-label">
+		<div class="wp-review-disabled wp-review-field-label">
 			<label><?php esc_html_e( 'Custom Width', 'wp-review' ); ?></label>
+			<?php wp_review_print_pro_text(); ?>
 		</div>
 
 		<div class="wp-review-field-option">
@@ -996,7 +997,6 @@ function wp_review_save_postdata( $post_id, $post ) {
 		'wp_review_heading'          => filter_input( INPUT_POST, 'wp_review_heading', FILTER_SANITIZE_STRING ),
 		'wp_review_desc_title'       => filter_input( INPUT_POST, 'wp_review_desc_title', FILTER_SANITIZE_STRING ),
 		'wp_review_desc'             => ! empty( $_POST['wp_review_desc'] ) ? wp_kses_post( wp_unslash( $_POST['wp_review_desc'] ) ) : '',
-		'wp_review_hide_desc'        => filter_input( INPUT_POST, 'wp_review_hide_desc', FILTER_SANITIZE_STRING ),
 		'wp_review_userReview'       => filter_input( INPUT_POST, 'wp_review_userReview', FILTER_SANITIZE_STRING ),
 		'wp_review_total'            => filter_input( INPUT_POST, 'wp_review_total', FILTER_SANITIZE_STRING ),
 		'wp_review_color'            => filter_input( INPUT_POST, 'wp_review_color', FILTER_SANITIZE_STRING ),
