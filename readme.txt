@@ -104,7 +104,7 @@ Please disable all plugins and check if rating is working properly. Then you can
 == Changelog ==
 
 = v5.2.4 (Jul 12, 2019) =
-* Fixed notice is not dismissed permanently
+* Fixed an issue with the notice not getting dismissed. Should not happen anymore. Closed and it shouldn't show anymore.
 
 = v5.2.3 (Jul 12, 2019) =
 * Remove unused code
