@@ -25,37 +25,6 @@ add_action( 'wp_ajax_nopriv_wpr-visitor-features-rating', 'wp_review_ajax_visito
 
 add_action( 'wp_ajax_wpr-purge-ratings', 'wp_review_ajax_purge_ratings' );
 
-add_action( 'wp_ajax_wpr-upload-comment-image', 'wp_review_upload_comment_image' );
-add_action( 'wp_ajax_nopriv_wpr-upload-comment-image', 'wp_review_upload_comment_image' );
-
-/**
- * Upload Comment Image with Ajax.
- */
-function wp_review_upload_comment_image() {
-
-	$files         = array_filter( $_FILES['files'] );
-	$attachment_id = '';
-	if ( ! empty( $files ) ) {
-		$file_data['name']     = $files['name'][0];
-		$file_data['type']     = $files['type'][0];
-		$file_data['tmp_name'] = $files['tmp_name'][0];
-		$file_data['error']    = $files['error'][0];
-		$file_data['size']     = $files['size'][0];
-
-		// These files need to be included as dependencies when on the front end.
-		require_once ABSPATH . 'wp-admin/includes/image.php';
-		require_once ABSPATH . 'wp-admin/includes/file.php';
-		require_once ABSPATH . 'wp-admin/includes/media.php';
-
-		$attachment_id = media_handle_sideload( $file_data, 0 );
-		if ( is_wp_error( $attachment_id ) ) {
-			$attachment_id = false;
-		}
-	}
-	echo $attachment_id;
-	die();
-}
-
 /**
  * Get review with Ajax.
  */
@@ -141,15 +110,18 @@ function wp_review_ajax_rate() {
  * Migrates ratings.
  */
 function wp_review_ajax_migrate_ratings() {
-	$start = isset( $_POST['start'] ) ? intval( $_POST['start'] ) : 0;
-	$limit = 100;
+	if ( ! current_user_can( 'manage_options' ) ) {
+		return;
+	}
 
 	if ( get_option( 'wp_review_has_migrated', false ) ) {
 		return;
 	}
 
 	global $wpdb;
-
+	
+	$start = isset( $_POST['start'] ) ? intval( $_POST['start'] ) : 0;
+	$limit = 100;
 	$current_blog_id = get_current_blog_id();
 
 	$query = $wpdb->get_results( 'SELECT * FROM ' . $wpdb->base_prefix . 'mts_wp_reviews WHERE blog_id = ' . $current_blog_id . ' LIMIT ' . $limit . ' OFFSET ' . $start ); // WPCS: unprepared SQL ok.
