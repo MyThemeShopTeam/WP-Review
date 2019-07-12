@@ -38,9 +38,9 @@ class WPR_Review_Notice {
 	 * Shows the notice.
 	 */
 	public function show_notice() {
-		//if ( ! $this->should_show() ) {
-			//return;
-		//}
+		if ( ! $this->should_show() ) {
+			return;
+		}
 		?>
 		<div id="wpr-review-notice" class="notice is-dismissible wpr-review-notice">
 			<div class="wp-review-star dashicons dashicons-star-filled"></div>
@@ -123,7 +123,7 @@ class WPR_Review_Notice {
 			return false;
 		}
 		$query = wp_review_get_reviews_query( 'latest', array( 'post_num' => $this->review_count ) );
-		return;
+		return intval( $query->found_posts ) === $this->review_count;
 	}
 }
 
