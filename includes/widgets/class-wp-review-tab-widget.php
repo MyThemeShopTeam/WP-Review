@@ -453,6 +453,7 @@ class WP_Review_Tab_Widget extends WP_Widget {
 			'post_num'    => $post_num,
 			'page'        => $page,
 			'review_type' => $review_type,
+			'post_status' => 'publish',
 			'clear_cache' => ! empty( $args['clear_cache'] ),
 		);
 
