@@ -2814,23 +2814,24 @@ function wp_review_get_reviews_query( $type, $options ) {
 	}
 
 	$options['review_type'] = ! empty( $options['review_type'] ) ? (array) $options['review_type'] : array();
-	$options['post_status'] = ! empty( $options['post_status'] ) ? $options['post_status'] : 'publish';
 	$options['cat']         = ! empty( $options['cat'] ) ? (array) $options['cat'] : array();
 
 	switch ( $type ) {
 		case 'mostvoted':
 			$query_args = array(
-				'orderby'  => 'meta_value_num',
-				'meta_key' => 'wp_review_review_count',
-				'order'    => 'desc',
+				'orderby'     => 'meta_value_num',
+				'meta_key'    => 'wp_review_review_count',
+				'order'       => 'desc',
+				'post_status' => 'publish',
 			);
 			break;
 
 		case 'toprated':
 			$query_args = array(
-				'orderby'  => 'meta_value_num',
-				'meta_key' => ! empty( $options['toprated_key'] ) ? $options['toprated_key'] : 'wp_review_total',
-				'order'    => 'desc',
+				'orderby'     => 'meta_value_num',
+				'meta_key'    => ! empty( $options['toprated_key'] ) ? $options['toprated_key'] : 'wp_review_total',
+				'order'       => 'desc',
+				'post_status' => 'publish',
 			);
 			break;
 
@@ -2839,20 +2840,23 @@ function wp_review_get_reviews_query( $type, $options ) {
 				'orderby'      => 'date',
 				'order'        => 'desc',
 				'category__in' => $options['cat'],
+				'post_status'  => 'publish',
 			);
 			break;
 
 		case 'custom':
 			$query_args = array(
-				'post__in' => $options['ids'],
-				'orderby'  => 'post__in',
+				'post__in'     => $options['ids'],
+				'orderby'      => 'post__in',
+				'post_status' => 'publish',
 			);
 			break;
 
 		default:
 			$query_args = array(
-				'orderby' => 'date',
-				'order'   => 'desc',
+				'orderby'     => 'date',
+				'order'       => 'desc',
+				'post_status' => 'publish',
 			);
 	}
 

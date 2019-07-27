@@ -4,7 +4,7 @@ Creator's website link: http://mythemeshop.com/plugins/wp-review/
 Tags: review, schema.org, rating, schema, user rating, google rating, star rating, product review
 Requires at least: 4.0
 Tested up to: 5.2.2
-Stable tag: 5.2.4
+Stable tag: 5.2.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -25,7 +25,7 @@ Check the live demos of different Review types offered
 * <a rel="nofollow" href="http://demo.mythemeshop.com/point/modo-etiam-paulum-ad-dexteram-de-via-declinavi/"><strong>Point Review</strong></a>
 * <a rel="nofollow" href="http://demo.mythemeshop.com/point/sed-nonne-merninisti-licere-mihi-ista-probare/"><strong>Percentage Review</strong></a>
 
-You can also check <a rel="nfollow" href="https://mythemeshop.com/plugins/wp-review-pro/">WP Review Pro</a> which is one of the best <a rel="nofollow" href="https://mythemeshop.com/plugins/">Premium WordPress Plugins</a> for creating extraordinary reviews on your <a rel="nofollow" href="https://mythemeshop.com/blog/">WordPress blog</a> and website.
+You can also check <a rel="nofollow" href="https://mythemeshop.com/plugins/wp-review-pro/">WP Review Pro</a> which is one of the best <a rel="nofollow" href="https://mythemeshop.com/plugins/">Premium WordPress Plugins</a> for creating extraordinary reviews on your <a rel="nofollow" href="https://mythemeshop.com/blog/">WordPress blog</a> and website.
 
 = Why WP Review from <a rel="nofollow" href="http://mythemeshop.com/">MyThemeShop</a>: =
 * Fastest review plugin.
@@ -102,6 +102,9 @@ Please disable all plugins and check if rating is working properly. Then you can
 7. Percentage Review type
 
 == Changelog ==
+
+= v5.2.5 (Jul 26, 2019) =
+* Fixed review drafts showing up in the Widget
 
 = v5.2.4 (Jul 12, 2019) =
 * Fixed an issue with the notice not getting dismissed. Should not happen anymore. Closed and it shouldn't show anymore.
