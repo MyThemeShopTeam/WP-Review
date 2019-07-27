@@ -104,7 +104,7 @@ Please disable all plugins and check if rating is working properly. Then you can
 == Changelog ==
 
 = v5.2.5 (Jul 26, 2019) =
-* Fixed draft reviews show up in Widget
+* Fixed review drafts showing up in the Widget
 
 = v5.2.4 (Jul 12, 2019) =
 * Fixed an issue with the notice not getting dismissed. Should not happen anymore. Closed and it shouldn't show anymore.
