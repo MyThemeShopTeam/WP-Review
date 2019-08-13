@@ -13,11 +13,18 @@
 class WPR_Review_Notice {
 
 	/**
-	 * Dismiss transient key.
+	 * Dismiss key.
 	 *
 	 * @var string
 	 */
-	private $dismiss_transient_key = 'wpr_review_notice_dismiss';
+	private $dismiss_key = 'wpr_review_notice_dismiss';
+	
+	/**
+	 * Show on later date key.
+	 *
+	 * @var string
+	 */
+	private $dismiss_later_key = 'wpr_review_notice_later';
 
 	/**
 	 * Show the notice if number of reviews >= this value.
@@ -109,9 +116,9 @@ class WPR_Review_Notice {
 	public function handle_dismiss() {
 		$later = ! empty( $_POST['later'] );
 		if ( $later ) {
-			set_transient( $this->dismiss_transient_key, 1, MONTH_IN_SECONDS );
+			update_option( $this->dismiss_later_key, time() + MONTH_IN_SECONDS );
 		} else {
-			set_transient( $this->dismiss_transient_key, 1 );
+			update_option( $this->dismiss_key, '1' );
 		}
 	}
 
@@ -119,9 +126,20 @@ class WPR_Review_Notice {
 	 * Checks if should show the notice.
 	 */
 	private function should_show() {
-		if ( get_transient( $this->dismiss_transient_key ) ) {
+		// Backwards compatibility for transients used in versions <= 5.2.5
+		if ( get_transient( 'wpr_review_notice_dismiss' ) ) {
 			return false;
 		}
+
+		if ( get_option( $this->dismiss_key ) ) {
+			return false;
+		}
+
+		$later_date = absint( get_option( $this->dismiss_later_key ) );
+		if ( $later_date > time() ) {
+			return false;
+		}
+
 		$query = wp_review_get_reviews_query(
 			'latest',
 			array(
