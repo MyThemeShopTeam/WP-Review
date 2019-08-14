@@ -4,7 +4,7 @@ Creator's website link: http://mythemeshop.com/plugins/wp-review/
 Tags: review, schema.org, rating, schema, user rating, google rating, star rating, product review
 Requires at least: 4.0
 Tested up to: 5.2.2
-Stable tag: 5.2.6
+Stable tag: 5.2.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -102,6 +102,11 @@ Please disable all plugins and check if rating is working properly. Then you can
 7. Percentage Review type
 
 == Changelog ==
+
+= v5.2.7 (Aug 14, 2019) =
+* Fixed button review box button styling in AMP pages
+* Fixed one rare PHP error
+* Improved notice dismiss functionality for old users
 
 = v5.2.6 (Aug 13, 2019) =
 * Fixed the notice reappearing issue if transients are cleared or expired

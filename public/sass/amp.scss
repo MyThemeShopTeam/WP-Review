@@ -153,6 +153,38 @@
 	}
 }
 
+.review-links {
+	list-style: none;
+	padding: 15px 15px 8px !important;
+	margin: 0 !important;
+	overflow: hidden;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	width: 100%;
+
+	li {
+		display: inline-block;
+		margin-bottom: 10px;
+
+		a {
+			display: block;
+			padding: 4px 10px;
+			margin: 0 10px 0 0;
+			border: 1px solid;
+			border-radius: 5px;
+			outline: 0;
+		}
+	}
+
+	li:last-child a {
+		margin-right: 0;
+	}
+
+	.review-links:not(:last-child) a {
+		margin-right: 10px;
+	}
+}
+
 .review-star {
 	.review-result-wrapper {
 		position: relative;

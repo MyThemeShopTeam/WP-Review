@@ -126,17 +126,19 @@ class WPR_Review_Notice {
 	 * Checks if should show the notice.
 	 */
 	private function should_show() {
-		// Backwards compatibility for transients used in versions <= 5.2.5
-		if ( get_transient( 'wpr_review_notice_dismiss' ) ) {
-			return false;
-		}
-
+		
 		if ( get_option( $this->dismiss_key ) ) {
 			return false;
 		}
 
 		$later_date = absint( get_option( $this->dismiss_later_key ) );
 		if ( $later_date > time() ) {
+			return false;
+		}
+		
+		// Backwards compatibility for transients used in versions <= 5.2.5
+		if ( get_transient( 'wpr_review_notice_dismiss' ) ) {
+			update_option( $this->dismiss_key, '1' );
 			return false;
 		}
 

@@ -3182,7 +3182,7 @@ function wp_review_schema_types() {
  */
 function wp_review_get_schema_type_data( $type ) {
 	$types = wp_review_schema_types();
-	if ( ! isset( $types ) ) {
+	if ( ! isset( $types[ $type ] ) ) {
 		return false;
 	}
 	return $types[ $type ];
