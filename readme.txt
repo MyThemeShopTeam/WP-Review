@@ -104,7 +104,7 @@ Please disable all plugins and check if rating is working properly. Then you can
 == Changelog ==
 
 = v5.2.8 (Aug 21, 2019) =
-* - Fixed "The text contains 'CSS !important', which is disallowed." error
+* Fixed "The text contains 'CSS !important', which is disallowed." error
 
 = v5.2.7 (Aug 14, 2019) =
 * Fixed button review box button styling in AMP pages
