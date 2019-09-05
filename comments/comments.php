@@ -21,7 +21,27 @@ if ( post_password_required() ) { ?>
 <!-- You can start editing here. -->
 <?php if ( have_comments() ) : ?>
 	<div id="comments">
-		<h4 class="total-comments"><?php comments_number( __( 'No Responses', 'wp-review' ), __( 'One Response', 'wp-review' ), __( '% Comments', 'wp-review' ) ); ?></h4>
+		<h4 class="total-comments">
+			<?php
+			$comments_number = intval( get_comments_number() );
+			if ( 1 === $comments_number ) {
+				esc_html_e( 'One Response', 'wp-review' );
+			} else {
+				printf(
+					/* translators: number of comments */
+					_nx(
+						'%1$s Comment',
+						'%1$s Comments',
+						$comments_number,
+						'comments title',
+						'wp-review'
+					),
+					number_format_i18n( $comments_number )
+				);
+			}
+			?>
+		</h4>
+
 		<ol class="commentlist">
 			<?php
 			if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) { // Are there comments to navigate through.
