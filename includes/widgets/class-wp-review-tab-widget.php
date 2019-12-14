@@ -298,7 +298,7 @@ class WP_Review_Tab_Widget extends WP_Widget {
 		$instance                            = $old_instance;
 		$instance['tabs']                    = $new_instance['tabs'];
 		$instance['tab_order']               = $new_instance['tab_order'];
-		$instance['tab_titles']              = wp_kses_post( $new_instance['tab_titles'] );
+		$instance['tab_titles']              = $new_instance['tab_titles'];
 		$instance['review_type']             = isset( $new_instance['review_type'] ) ? $new_instance['review_type'] : '';
 		$instance['allow_pagination']        = $new_instance['allow_pagination'];
 		$instance['post_num']                = $new_instance['post_num'];
