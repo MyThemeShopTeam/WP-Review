@@ -3,8 +3,8 @@ Contributors: mythemeshop
 Creator's website link: http://mythemeshop.com/plugins/wp-review/
 Tags: review, schema.org, rating, schema, user rating, google rating, star rating, product review
 Requires at least: 4.0
-Tested up to: 5.2.3
-Stable tag: 5.2.8
+Tested up to: 5.3.1
+Stable tag: 5.2.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -102,6 +102,10 @@ Please disable all plugins and check if rating is working properly. Then you can
 7. Percentage Review type
 
 == Changelog ==
+
+= v5.2.9 (Dec 14, 2019) =
+* Improved comments number translation
+* Fixed widget tab titles do not get saved
 
 = v5.2.8 (Aug 21, 2019) =
 * Fixed "The text contains 'CSS !important', which is disallowed." error
