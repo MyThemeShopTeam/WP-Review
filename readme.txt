@@ -105,7 +105,7 @@ Please disable all plugins and check if rating is working properly. Then you can
 
 = v5.2.9 (Dec 14, 2019) =
 * Improved comments number translation
-* Fixed widget tab titles do not get saved
+* Fixed an issue where widget tab titles are not saving
 
 = v5.2.8 (Aug 21, 2019) =
 * Fixed "The text contains 'CSS !important', which is disallowed." error
