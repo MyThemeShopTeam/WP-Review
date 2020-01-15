@@ -752,15 +752,14 @@ $form_field = new WP_Review_Form_Field();
 		</div>
 
 		<div class="wp-review-field">
-			<div class="wp-review-disabled wp-review-field-label">
+			<div class="wp-review-field-label">
 				<label for="wp_review_schema"><?php esc_html_e( 'Review Schema', 'wp-review' ); ?></label>
-				<?php wp_review_print_pro_text(); ?>
 			</div>
 
 			<div class="wp-review-field-option">
 				<select name="wp_review_options[default_schema_type]" id="wp_review_schema">
 					<?php foreach ( $schemas as $key => $arr ) : ?>
-						<option value="<?php echo esc_attr( $key ); ?>" <?php selected( $key, $default_schema ); ?> disabled><?php echo esc_html( $arr['label'] ); ?></option>
+						<option value="<?php echo esc_attr( $key ); ?>" <?php selected( $key, $default_schema ); ?>><?php echo esc_html( $arr['label'] ); ?></option>
 					<?php endforeach; ?>
 				</select>
 			</div>

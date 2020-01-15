@@ -26,6 +26,9 @@ function wp_review_render_meta_box_review_options( $post ) {
 	}
 	$type = $type_post_value;
 
+	$schema      = wp_review_get_review_schema( $post->ID );
+	$schema_data = get_post_meta( $post->ID, 'wp_review_schema_options', true );
+
 	$heading = get_post_meta( $post->ID, 'wp_review_heading', true );
 	// $available_types = apply_filters('wp_review_metabox_types', wp_review_get_review_types() );
 	$available_types = wp_review_get_rating_types();
@@ -97,38 +100,54 @@ function wp_review_render_meta_box_review_options( $post ) {
 			<div id="wp_review_schema_options_wrapper">
 
 				<div class="wp-review-field" id="wp_review_schema_group">
-					<div class="wp-review-disabled wp-review-field-label">
+					<div class="wp-review-field-label">
 						<label for="wp_review_schema"><?php esc_html_e( 'Reviewed Item Schema', 'wp-review' ); ?></label>
-						<?php wp_review_print_pro_text(); ?>
 					</div>
 
 					<div class="wp-review-field-option">
 						<select name="wp_review_schema" id="wp_review_schema">
 							<?php foreach ( $schemas as $key => $arr ) : ?>
-								<option value="<?php echo esc_attr( $key ); ?>" <?php selected( $key, 'Thing' ); ?> disabled><?php echo esc_html( $arr['label'] ); ?></option>
+								<option value="<?php echo esc_attr( $key ); ?>" <?php selected( $key, $schema ); ?>><?php echo esc_html( $arr['label'] ); ?></option>
 							<?php endforeach; ?>
 						</select>
 					</div>
 				</div>
 
-				<div id="wp_review_schema_type_options_wrap">
+				<div id="wp_review_schema_type_options_wrap"<?php if ( '' === $schema || 'none' === $schema ) echo ' style="display:none;"'; // phpcs:ignore ?>>
+
+					<?php foreach ( $schemas as $type => $arr ) : ?>
+						<div class="wp_review_schema_type_options" id="wp_review_schema_type_<?php echo esc_attr( $type ); ?>" <?php if ( $type !== $schema ) echo 'style="display:none;"'; // phpcs:ignore ?>>
+							<?php if ( isset( $arr['fields'] ) ) : ?>
+								<?php foreach ( $arr['fields'] as $data ) : ?>
+									<div class="wp-review-field">
+										<?php $values = isset( $schema_data[ $type ] ) ? $schema_data[ $type ] : array(); ?>
+										<?php wp_review_schema_field( $data, $values, $type ); ?>
+									</div>
+								<?php endforeach; ?>
+							<?php endif; ?>
+						</div>
+					<?php endforeach; ?>
+
 					<div class="wp-review-field" id="wp_review_schema_rating_group">
 						<div class="wp-review-field-label">
 							<label for="wp_review_rating_schema"><?php esc_html_e( 'Rating Schema', 'wp-review' ); ?></label>
 						</div>
+
 						<div class="wp-review-field-option">
 							<select name="wp_review_rating_schema" id="wp_review_rating_schema">
 								<option value="author" <?php selected( 'author', $rating_schema ); ?>><?php esc_html_e( 'Author Review Rating', 'wp-review' ); ?></option>
 								<option value="visitors" <?php selected( 'visitors', $rating_schema ); ?>><?php esc_html_e( 'Visitors Aggregate Rating (if enabled)', 'wp-review' ); ?></option>
-								<option value="comments" class="disabled"><?php esc_html_e( 'Comments Reviews Aggregate Rating (if enabled)', 'wp-review' ); ?></option>
+								<option value="comments" disabled><?php esc_html_e( 'Comments Reviews Aggregate Rating (if enabled)', 'wp-review' ); ?></option>
 							</select>
 						</div>
 					</div>
+
 					<div id="wp_review_schema_author_wrapper"<?php if ( 'author' !== $rating_schema ) echo ' style="display: none;"'; // phpcs:ignore ?>>
 						<div class="wp-review-field">
 							<div class="wp-review-field-label">
 								<label><?php esc_html_e( 'Custom Author', 'wp-review' ); ?></label>
 							</div>
+
 							<div class="wp-review-field-option">
 								<?php
 								$form_field->render_switch(
@@ -147,6 +166,7 @@ function wp_review_render_meta_box_review_options( $post ) {
 								<div class="wp-review-field-label">
 									<label for="wp_review_author"><?php esc_html_e( 'Review Author', 'wp-review' ); ?></label>
 								</div>
+
 								<div class="wp-review-field-option">
 									<input type="text" name="wp_review_author" id="wp_review_author" value="<?php echo esc_attr( $author ); ?>">
 								</div>
