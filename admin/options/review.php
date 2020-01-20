@@ -86,7 +86,7 @@ foreach ( $default_criteria as $item ) {
 		'wp_review_item_star'  => '',
 	);
 }
-$default_schema           = $default_options['default_schema_type'];
+$default_schema           = wp_review_option( 'default_schema_type' ) ? wp_review_option( 'default_schema_type' ) : $default_options['default_schema_type'];
 $default_user_review_type = empty( $options['default_user_review_type'] ) ? WP_REVIEW_REVIEW_DISABLED : $options['default_user_review_type'];
 
 $options['colors'] = apply_filters( 'wp_review_colors', $options['colors'], 0 );
