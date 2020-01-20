@@ -122,8 +122,8 @@ return array(
 		),
 	),
 	'Course'              => array(
-		'label'      => __( 'Course', 'wp-review' ),
-		'fields'     => array(
+		'label'  => __( 'Course', 'wp-review' ),
+		'fields' => array(
 			array(
 				'name'    => 'name',
 				'label'   => __( 'Name', 'wp-review' ),
@@ -265,7 +265,7 @@ return array(
 			),
 			array(
 				'name'    => 'author',
-				'label'   => __( 'Book Author', 'wp-review' ),
+				'label'   => __( 'Author', 'wp-review' ),
 				'type'    => 'text',
 				'default' => '',
 			),
@@ -356,7 +356,7 @@ return array(
 			),
 			array(
 				'name'    => 'author',
-				'label'   => __( 'Book Author', 'wp-review' ),
+				'label'   => __( 'Author', 'wp-review' ),
 				'type'    => 'text',
 				'default' => '',
 			),
@@ -431,7 +431,7 @@ return array(
 			),
 			array(
 				'name'    => 'author',
-				'label'   => __( 'Book Author', 'wp-review' ),
+				'label'   => __( 'Author', 'wp-review' ),
 				'type'    => 'text',
 				'default' => '',
 			),
@@ -649,7 +649,7 @@ return array(
 			),
 			array(
 				'name'    => 'author',
-				'label'   => __( 'Book Author', 'wp-review' ),
+				'label'   => __( 'Author', 'wp-review' ),
 				'type'    => 'text',
 				'default' => '',
 			),
@@ -953,7 +953,7 @@ return array(
 			),
 			array(
 				'name'    => 'author',
-				'label'   => __( 'Book Author', 'wp-review' ),
+				'label'   => __( 'Author', 'wp-review' ),
 				'type'    => 'text',
 				'default' => '',
 			),
@@ -1036,7 +1036,7 @@ return array(
 			),
 			array(
 				'name'    => 'author',
-				'label'   => __( 'Book Author', 'wp-review' ),
+				'label'   => __( 'Author', 'wp-review' ),
 				'type'    => 'text',
 				'default' => '',
 			),
@@ -1125,7 +1125,7 @@ return array(
 			),
 			array(
 				'name'    => 'author',
-				'label'   => __( 'Book Author', 'wp-review' ),
+				'label'   => __( 'Author', 'wp-review' ),
 				'type'    => 'text',
 				'default' => '',
 			),
@@ -1290,12 +1290,12 @@ return array(
 				'@type'       => 'Offer',
 			),
 			array(
-				'name'        => 'priceValidUntil',
-				'label'       => __( 'Valid until', 'wp-review' ),
-				'type'        => 'date',
-				'default'     => '',
-				'part_of'     => 'offers',
-				'@type'       => 'Offer',
+				'name'    => 'priceValidUntil',
+				'label'   => __( 'Valid until', 'wp-review' ),
+				'type'    => 'date',
+				'default' => '',
+				'part_of' => 'offers',
+				'@type'   => 'Offer',
 			),
 		),
 	),
@@ -1324,12 +1324,6 @@ return array(
 				'name'    => 'image',
 				'label'   => __( 'Image', 'wp-review' ),
 				'type'    => 'image',
-				'default' => '',
-			),
-			array(
-				'name'    => 'author',
-				'label'   => __( 'Book Author', 'wp-review' ),
-				'type'    => 'text',
 				'default' => '',
 			),
 			array(
@@ -1581,7 +1575,7 @@ return array(
 			),
 			array(
 				'name'    => 'author',
-				'label'   => __( 'Book Author', 'wp-review' ),
+				'label'   => __( 'Author', 'wp-review' ),
 				'type'    => 'text',
 				'default' => '',
 			),
@@ -1693,7 +1687,7 @@ return array(
 			),
 			array(
 				'name'    => 'author',
-				'label'   => __( 'Book Author', 'wp-review' ),
+				'label'   => __( 'Author', 'wp-review' ),
 				'type'    => 'text',
 				'default' => '',
 			),
