@@ -575,12 +575,12 @@ return array(
 				'@type'       => 'Offer',
 			),
 			array(
-				'name'        => 'validFrom',
-				'label'       => __( 'Offer valid from', 'wp-review' ),
-				'type'        => 'date',
-				'default'     => '',
-				'part_of'     => 'offers',
-				'@type'       => 'Offer',
+				'name'    => 'validFrom',
+				'label'   => __( 'Offer valid from', 'wp-review' ),
+				'type'    => 'date',
+				'default' => '',
+				'part_of' => 'offers',
+				'@type'   => 'Offer',
 			),
 			array(
 				'name'    => 'availability',
@@ -655,7 +655,7 @@ return array(
 			),
 		),
 	),
-	'Hotel'       => array(
+	'Hotel'               => array(
 		'label'  => __( 'Hotel', 'wp-review' ),
 		'fields' => array(
 			array(
@@ -801,95 +801,6 @@ return array(
 			),
 		),
 	),
-	/*'HowTo'                => array(
-		'label'  => __( 'HowTo', 'wp-review' ),
-		'fields' => array(
-			array(
-				'name'    => 'name',
-				'label'   => __( 'Name', 'wp-review' ),
-				'type'    => 'text',
-				'default' => '',
-			),
-			array(
-				'name'    => 'description',
-				'label'   => __( 'Description', 'wp-review' ),
-				'type'    => 'textarea',
-				'default' => '',
-			),
-			array(
-				'name'    => 'image',
-				'label'   => __( 'Game Image', 'wp-review' ),
-				'type'    => 'image',
-				'default' => '',
-			),
-			array(
-				'name'    => 'more_text',
-				'label'   => __( 'More link text', 'wp-review' ),
-				'type'    => 'text',
-				'default' => __( '[ More ]', 'wp-review' ),
-				'omit'    => true,
-			),
-			array(
-				'name'    => 'url',
-				'label'   => __( 'More link URL', 'wp-review' ),
-				'type'    => 'text',
-				'default' => '',
-			),
-			array(
-				'name'      => 'use_button_style',
-				'label'     => __( 'Use button style', 'wp-review' ),
-				'type'      => 'switch',
-				'default'   => false,
-				'omit'      => true,
-				'on_label'  => __( 'Button', 'wp-review' ),
-				'off_label' => __( 'Link', 'wp-review' ),
-			),
-			array(
-				'name'    => 'totalTime',
-				'label'   => __( 'Total time', 'wp-review' ),
-				'type'    => 'text',
-				'default' => '',
-				'info'    => __( 'Format: 1H30M. H - Hours, M - Minutes', 'wp-review' ),
-			),
-			array(
-				'name'        => 'estimated_cost',
-				'label'       => __( 'Estimated cost', 'wp-review' ),
-				'type'        => 'text',
-				'default'     => '',
-				'part_of'     => 'estimatedCost',
-				'@type'       => 'MonetaryAmount',
-				'custom_name' => 'value',
-			),
-			array(
-				'name'        => 'currency',
-				'label'       => __( 'Currency', 'wp-review' ),
-				'type'        => 'text',
-				'default'     => '',
-				'part_of'     => 'estimatedCost',
-				'@type'       => 'MonetaryAmount',
-			),
-			array(
-				'name' => 'tool',
-				'label' => __( 'Tools', 'wp-review' ),
-				'type'  => 'textarea',
-				'default' => '',
-				'info'    => __( 'Place one tool per line', 'wp-review' ),
-			),
-			array(
-				'name' => 'supply',
-				'label' => __( 'Supplies', 'wp-review' ),
-				'type'  => 'textarea',
-				'default' => '',
-				'info'    => __( 'Place one supply per line', 'wp-review' ),
-			),
-			array(
-				'name' => 'step',
-				'label' => __( 'Steps', 'wp-review' ),
-				'type'  => 'how_to_step',
-				'default' => '',
-			),
-		),
-	),*/
 	'Movie'               => array(
 		'label'  => __( 'Movie', 'wp-review' ),
 		'fields' => array(

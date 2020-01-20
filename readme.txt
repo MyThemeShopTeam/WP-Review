@@ -30,7 +30,26 @@ You can also check <a rel="nofollow" href="https://mythemeshop.com/plugins/wp-re
 = Why WP Review from <a rel="nofollow" href="http://mythemeshop.com/">MyThemeShop</a>: =
 * Fastest review plugin.
 * Stars, percentage and point rating system.
-* Supports Google Rich Snippets(schema.org)
+* Supports 19 Different Schema Types(schema.org)
+  * Book
+  * Course
+  * CreativeWorkSeason
+  * CreativeWorkSeries
+  * Episode
+  * Event
+  * Game
+  * Hotel
+  * LocalBusiness
+  * Movie
+  * MusicPlaylist
+  * MusicRecording
+  * Organization
+  * Product
+  * Recipe
+  * Restaurant
+  * SoftwareApplication
+  * Store
+  * TVSeries
 * 100% Fluid Responsive.
 * 2 Review box templates
 * Option to set Global Position.
@@ -102,6 +121,28 @@ Please disable all plugins and check if rating is working properly. Then you can
 7. Percentage Review type
 
 == Changelog ==
+
+= v5.3.0 (Jan 20, 2020) =
+* Added support for 19 different schema types, this update will fix the [Google SERP rating issue](https://webmasters.googleblog.com/2019/09/making-review-rich-results-more-helpful.html). Please make sure to edit old posts and change the default Schema Type.
+	-- Book
+	-- Course
+	-- CreativeWorkSeason
+	-- CreativeWorkSeries
+	-- Episode
+	-- Event
+	-- Game
+	-- Hotel
+	-- LocalBusiness
+	-- Movie
+	-- MusicPlaylist
+	-- MusicRecording
+	-- Organization
+	-- Product
+	-- Recipe
+	-- Restaurant
+	-- SoftwareApplication
+	-- Store
+	-- TVSeries
 
 = v5.2.9 (Dec 14, 2019) =
 * Improved comments number translation
