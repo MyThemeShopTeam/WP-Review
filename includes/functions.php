@@ -925,7 +925,10 @@ function wp_review_get_review_schema( $post_id ) {
 	$schemas = wp_review_schema_types();
 
 	if ( empty( $schema ) || ! isset( $schemas[ $schema ] ) ) {
-		$schema = 'Thing';
+		$schema = wp_review_option( 'default_schema_type', 'none' );
+		if ( in_array( $schema, array_keys( wp_review_get_deprecated_schema_types() ) ) ) {
+			$schema = 'none';
+		}
 	}
 
 	return $schema;
@@ -2096,28 +2099,24 @@ function wp_review_get_schema( $review ) {
 		return '';
 	}
 
-	/*if ( empty( $review['total'] ) || ! floatval( $review['total'] ) ) {
-		return '';
-	}*/
-
 	$output = '';
 
-	$nesting_mode = apply_filters( 'wp_review_schema_nesting_mode', 'type' ); // type, rating, none.
+	$nesting_mode = apply_filters( 'wp_review_schema_nesting_mode', 'type' );// type, rating, none.
 
 	// Force rating nesting in certain types ( weird results in testing tool otherwise ).
-	if ( in_array( $review['schema'], apply_filters( 'wp_review_schema_force_nested_rating_types', array( 'Movie', 'Book' ) ) ) ) {
+	if ( in_array( $review['schema'], apply_filters( 'wp_review_schema_force_nested_rating_types', array( 'Movie', 'Book' ) ), true ) ) {
 		$nesting_mode = 'rating';
 	}
 
 	// If type requires nested aggregateRating don't nest it in aggregateRating.
-	if ( in_array( $review['schema'], apply_filters( 'wp_review_schema_force_nested_user_rating_types', array( 'SoftwareApplication', 'Recipe' ) ) ) && in_array( $review['rating_schema'], array( 'visitors' ) ) ) {
+	if ( in_array( $review['schema'], apply_filters( 'wp_review_schema_force_nested_user_rating_types', array( 'SoftwareApplication', 'Recipe' ) ), true ) && in_array( $review['rating_schema'], array( 'visitors', 'comments' ), true ) ) {
 		$nesting_mode = 'rating';
 	}
 
 	switch ( $nesting_mode ) {
 
 		case 'type': // schema.org typed element ( Movie, Recipe, etc) nested in review/aggregateRating type.
-			if ( in_array( $review['rating_schema'], array( 'visitors' ) ) ) {
+			if ( in_array( $review['rating_schema'], array( 'visitors', 'comments' ), true ) ) {
 				$output .= wp_review_get_schema_user_rating( $review, true );
 			} else {
 				$output .= wp_review_get_schema_review_rating( $review, true );
@@ -2130,7 +2129,7 @@ function wp_review_get_schema( $review ) {
 
 		case 'none': // separated reviewed item type ( Movie, Recipe, etc) and review/aggregateRating.
 			$output .= wp_review_get_schema_type( $review );
-			if ( in_array( $review['rating_schema'], array( 'visitors' ) ) ) {
+			if ( in_array( $review['rating_schema'], array( 'visitors', 'comments' ), true ) ) {
 				$output .= wp_review_get_schema_user_rating( $review );
 			} else {
 				$output .= wp_review_get_schema_review_rating( $review );
@@ -2143,11 +2142,11 @@ function wp_review_get_schema( $review ) {
 }
 
 /**
- * Gets schema type.
+ * Gets review schema.
  *
- * @param array $review        Review data.
+ * @param array $review Review data.
  * @param bool  $nested_rating Is nested rating or not.
- * @return array
+ * @return string
  */
 function wp_review_get_schema_type( $review, $nested_rating = false ) {
 
@@ -2171,26 +2170,28 @@ function wp_review_get_schema_type( $review, $nested_rating = false ) {
 			if ( ! empty( $data['omit'] ) ) {
 				continue;
 			}
-			if ( isset( $review['schema_data'][ $review['schema'] ][ $data['name'] ] ) && ! empty( $review['schema_data'][ $review['schema'] ][ $data['name'] ] ) ) {
+			$name = ! empty( $data['custom_name'] ) ? strip_tags( $data['custom_name'] ) : $data['name'];
+
+			if ( isset( $review['schema_data'][ $review['schema'] ][ $name ] ) && ! empty( $review['schema_data'][ $review['schema'] ][ $name ] ) ) {
 				if ( isset( $data['multiline'] ) && $data['multiline'] ) {
-					$review['schema_data'][ $review['schema'] ][ $data['name'] ] = preg_split( '/\r\n|[\r\n]/', $review['schema_data'][ $review['schema'] ][ $data['name'] ] );
+					$review['schema_data'][ $review['schema'] ][ $name ] = preg_split( '/\r\n|[\r\n]/', $review['schema_data'][ $review['schema'] ][ $name ] );
 				}
 				if ( isset( $data['part_of'] ) ) {
 					$args[ $data['part_of'] ]['@type'] = $data['@type'];
 					if ( 'image' === $data['type'] ) {
-						$args[ $data['part_of'] ][ $data['name'] ] = $review['schema_data'][ $review['schema'] ][ $data['name'] ]['url'];
-					} elseif ( in_array( $data['name'], apply_filters( 'wp_reviev_schema_ISO_8601_duration_items', array( 'prepTime', 'cookTime', 'totalTime', 'duration' ) ) ) ) { // phpcs:ignore
-						$args[ $data['part_of'] ][ $data['name'] ] = 'PT' . $review['schema_data'][ $review['schema'] ][ $data['name'] ];
+						$args[ $data['part_of'] ][ $name ] = $review['schema_data'][ $review['schema'] ][ $name ]['url'];
+					} elseif ( in_array( $name, apply_filters( 'wp_reviev_schema_ISO_8601_duration_items', array( 'prepTime', 'cookTime', 'totalTime', 'duration' ) ) ) ) { // phpcs:ignore
+						$args[ $data['part_of'] ][ $name ] = 'PT' . $review['schema_data'][ $review['schema'] ][ $name ];
 					} else {
-						$args[ $data['part_of'] ][ $data['name'] ] = $review['schema_data'][ $review['schema'] ][ $data['name'] ];
+						$args[ $data['part_of'] ][ $name ] = $review['schema_data'][ $review['schema'] ][ $name ];
 					}
 				} else {
 					if ( 'image' === $data['type'] ) {
-						$args[ $data['name'] ] = $review['schema_data'][ $review['schema'] ][ $data['name'] ]['url'];
-					} elseif ( in_array( $data['name'], apply_filters( 'wp_reviev_schema_ISO_8601_duration_items', array( 'prepTime', 'cookTime', 'totalTime', 'duration' ) ) ) ) { // phpcs:ignore
-						$args[ $data['name'] ] = 'PT' . $review['schema_data'][ $review['schema'] ][ $data['name'] ];
+						$args[ $name ] = $review['schema_data'][ $review['schema'] ][ $name ]['url'];
+					} elseif ( in_array( $name, apply_filters( 'wp_reviev_schema_ISO_8601_duration_items', array( 'prepTime', 'cookTime', 'totalTime', 'duration' ) ) ) ) { // phpcs:ignore
+						$args[ $name ] = 'PT' . $review['schema_data'][ $review['schema'] ][ $name ];
 					} else {
-						$args[ $data['name'] ] = $review['schema_data'][ $review['schema'] ][ $data['name'] ];
+						$args[ $name ] = $review['schema_data'][ $review['schema'] ][ $name ];
 					}
 				}
 			}
@@ -2198,7 +2199,7 @@ function wp_review_get_schema_type( $review, $nested_rating = false ) {
 	}
 
 	// Nested aggregateRating is required in some types ( SoftwareApplication, Recipe ).
-	$force_user_rating = in_array( $review['schema'], apply_filters( 'wp_review_schema_force_nested_user_rating_types', array( 'SoftwareApplication', 'Recipe' ) ) );
+	$force_user_rating = in_array( $review['schema'], apply_filters( 'wp_review_schema_force_nested_user_rating_types', array( 'SoftwareApplication', 'Recipe' ) ), true );
 	if ( $force_user_rating ) {
 		if ( $review['user_review'] || $review['comments_review'] ) {
 			$aggregate_rating = wp_review_get_schema_nested_user_rating_args( $review );
@@ -2207,10 +2208,13 @@ function wp_review_get_schema_type( $review, $nested_rating = false ) {
 			}
 		}
 		if ( 'author' === $review['rating_schema'] ) {
-			$args['review'] = wp_review_get_schema_nested_review_args( $review );
+			$review_rating = wp_review_get_schema_nested_review_args( $review );
+			if ( ! empty( $review_rating ) ) {
+				$args['review'] = $review_rating;
+			}
 		}
 	} elseif ( $nested_rating ) {
-		if ( in_array( $review['rating_schema'], array( 'visitors' ) ) ) {
+		if ( in_array( $review['rating_schema'], array( 'visitors', 'comments' ), true ) ) {
 			if ( $review['user_review'] || $review['comments_review'] ) {
 				$aggregate_rating = wp_review_get_schema_nested_user_rating_args( $review );
 				if ( ! empty( $aggregate_rating ) ) {
@@ -2218,7 +2222,26 @@ function wp_review_get_schema_type( $review, $nested_rating = false ) {
 				}
 			}
 		} else {
-			$args['review'] = wp_review_get_schema_nested_review_args( $review );
+			$review_rating = wp_review_get_schema_nested_review_args( $review );
+			if ( ! empty( $review_rating ) ) {
+				$args['review'] = $review_rating;
+			}
+		}
+	}
+
+	if ( 'Product' === $review['schema'] ) {
+		// Product type recommends both review and aggregateRating.
+		if ( empty( $args['review'] ) ) {
+			$review_rating = wp_review_get_schema_nested_review_args( $review );
+			if ( ! empty( $review_rating ) ) {
+				$args['review'] = $review_rating;
+			}
+		}
+		if ( empty( $args['aggregateRating'] ) ) {
+			$aggregate_rating = wp_review_get_schema_nested_user_rating_args( $review );
+			if ( ! empty( $aggregate_rating ) ) {
+				$args['aggregateRating'] = $aggregate_rating;
+			}
 		}
 	}
 
@@ -2232,11 +2255,11 @@ function wp_review_get_schema_type( $review, $nested_rating = false ) {
 }
 
 /**
- * Gets schema review rating.
+ * Gets schema for review rating.
  *
- * @param array $review      Review data.
+ * @param array $review Review data.
  * @param bool  $nested_item Is nested item or not.
- * @return mixed|void
+ * @return string
  */
 function wp_review_get_schema_review_rating( $review, $nested_item = false ) {
 
@@ -2261,8 +2284,9 @@ function wp_review_get_schema_review_rating( $review, $nested_item = false ) {
 		'itemReviewed' => $item_reviewed,
 		'reviewRating' => array(
 			'@type'       => 'Rating',
-			'ratingValue' => (string) wp_review_normalize_rating_value( $review['total'], $review['type'] ),
+			'ratingValue' => $review['total'],
 			'bestRating'  => $wp_review_rating_types[ $review['type'] ]['max'],
+			'worstRating' => 0,
 		),
 		'author'       => array(
 			'@type' => 'Person',
@@ -2281,11 +2305,11 @@ function wp_review_get_schema_review_rating( $review, $nested_item = false ) {
 }
 
 /**
- * Gets schema user rating.
+ * Gets schema for user rating.
  *
- * @param array $review      Review data.
+ * @param array $review Review data.
  * @param bool  $nested_item Is nested item or not.
- * @return mixed|void
+ * @return string
  */
 function wp_review_get_schema_user_rating( $review, $nested_item = false ) {
 
@@ -2304,8 +2328,14 @@ function wp_review_get_schema_user_rating( $review, $nested_item = false ) {
 		);
 	}
 
-	$total = $review['user_review_total'];
-	$count = $review['user_review_count'];
+	if ( 'comments' === $review['rating_schema'] ) {
+		$comment_reviews = mts_get_post_comments_reviews( $review['post_id'] );
+		$total           = $comment_reviews['rating'];
+		$count           = $comment_reviews['count'];
+	} else {
+		$total = $review['user_review_total'];
+		$count = $review['user_review_count'];
+	}
 
 	$args = array();
 	if ( 0 < (int) $count ) {
@@ -2313,9 +2343,10 @@ function wp_review_get_schema_user_rating( $review, $nested_item = false ) {
 			'@context'     => 'http://schema.org',
 			'@type'        => 'aggregateRating',
 			'itemReviewed' => $item_reviewed,
-			'ratingValue'  => (string) wp_review_normalize_rating_value( $total, $review['type'] ),
+			'ratingValue'  => $total,
 			'bestRating'   => $wp_review_rating_types[ $review['user_review_type'] ]['max'],
 			'ratingCount'  => $count,
+			'worstRating'  => 0,
 		);
 	}
 
@@ -2335,7 +2366,7 @@ function wp_review_get_schema_user_rating( $review, $nested_item = false ) {
  * Gets reviewed item name.
  *
  * @param array $review Review data.
- * @return mixed|void
+ * @return string
  */
 function wp_review_get_reviewed_item_name( $review ) {
 
@@ -2361,13 +2392,29 @@ function wp_review_get_schema_nested_user_rating_args( $review ) {
 
 	global $wp_review_rating_types;
 	$args = array();
-	if ( 0 < (int) $review['user_review_count'] ) {
-		$args = array(
-			'@type'       => 'aggregateRating',
-			'ratingValue' => (string) wp_review_normalize_rating_value( $review['user_review_total'], $review['type'] ),
-			'bestRating'  => $wp_review_rating_types[ $review['user_review_type'] ]['max'],
-			'ratingCount' => $review['user_review_count'],
-		);
+	if ( 'comments' === $review['rating_schema'] ) {
+		$comment_reviews       = mts_get_post_comments_reviews( $review['post_id'] );
+		$comments_review_total = $comment_reviews['rating'];
+		$comments_review_count = $comment_reviews['count'];
+		if ( 0 < (int) $comments_review_count ) {
+			$args = array(
+				'@type'       => 'aggregateRating',
+				'ratingValue' => $comments_review_total,
+				'bestRating'  => $wp_review_rating_types[ $review['user_review_type'] ]['max'],
+				'ratingCount' => $comments_review_count,
+				'worstRating' => 0,
+			);
+		}
+	} else {
+		if ( 0 < (int) $review['user_review_count'] ) {
+			$args = array(
+				'@type'       => 'aggregateRating',
+				'ratingValue' => $review['user_review_total'],
+				'bestRating'  => $wp_review_rating_types[ $review['user_review_type'] ]['max'],
+				'ratingCount' => $review['user_review_count'],
+				'worstRating' => 0,
+			);
+		}
 	}
 
 	return apply_filters( 'wp_review_get_schema_nested_user_rating_args', $args, $review );
@@ -2380,14 +2427,20 @@ function wp_review_get_schema_nested_user_rating_args( $review ) {
  * @return array
  */
 function wp_review_get_schema_nested_review_args( $review ) {
+
+	if ( ! boolval( $review['total'] ) ) {
+		return apply_filters( 'wp_review_get_schema_nested_review_args', array(), $review );
+	}
+
 	global $wp_review_rating_types;
 
 	$args = array(
 		'@type'        => 'Review',
 		'reviewRating' => array(
 			'@type'       => 'Rating',
-			'ratingValue' => (string) wp_review_normalize_rating_value( $review['total'], $review['type'] ),
+			'ratingValue' => $review['total'],
 			'bestRating'  => $wp_review_rating_types[ $review['type'] ]['max'],
+			'worstRating' => 0,
 		),
 		'author'       => array(
 			'@type' => 'Person',
@@ -2423,29 +2476,55 @@ function wp_review_get_schema_nested_item_args( $review ) {
 				if ( ! empty( $data['omit'] ) ) {
 					continue;
 				}
+
 				if ( isset( $schema_data[ $data['name'] ] ) && ! empty( $schema_data[ $data['name'] ] ) ) {
+					$value = $schema_data[ $data['name'] ];
+					$name  = ! empty( $data['custom_name'] ) ? strip_tags( $data['custom_name'] ) : $data['name'];
+
 					if ( isset( $data['multiline'] ) && $data['multiline'] ) {
-						$schema_data[ $data['name'] ] = preg_split( '/\r\n|[\r\n]/', $schema_data[ $data['name'] ] );
+						$value = preg_split( '/\r\n|[\r\n]/', $value );
 					}
+
 					if ( isset( $data['part_of'] ) ) {
 						$args[ $data['part_of'] ]['@type'] = $data['@type'];
 						if ( 'image' === $data['type'] ) {
-							$args[ $data['part_of'] ][ $data['name'] ] = $schema_data[ $data['name'] ]['url'];
-						} elseif ( in_array( $data['name'], apply_filters( 'wp_reviev_schema_ISO_8601_duration_items', array( 'prepTime', 'cookTime', 'totalTime', 'duration' ) ) ) ) { // phpcs:ignore
-							$args[ $data['part_of'] ][ $data['name'] ] = 'PT' . $schema_data[ $data['name'] ];
+							$args[ $data['part_of'] ][ $name ] = $value['url'];
+						} elseif ( in_array( $name, apply_filters( 'wp_reviev_schema_ISO_8601_duration_items', array( 'prepTime', 'cookTime', 'totalTime', 'duration' ) ) ) ) { // phpcs:ignore
+							$args[ $data['part_of'] ][ $name ] = 'PT' . $value;
 						} else {
-							$args[ $data['part_of'] ][ $data['name'] ] = $schema_data[ $data['name'] ];
+							$args[ $data['part_of'] ][ $name ] = $value;
 						}
 					} else {
 						if ( 'image' === $data['type'] ) {
-							$args[ $data['name'] ] = $schema_data[ $data['name'] ]['url'];
-						} elseif ( in_array( $data['name'], apply_filters( 'wp_reviev_schema_ISO_8601_duration_items', array( 'prepTime', 'cookTime', 'totalTime', 'duration' ) ) ) ) { // phpcs:ignore
-							$args[ $data['name'] ] = 'PT' . $schema_data[ $data['name'] ];
+							$args[ $name ] = $value['url'];
+						} elseif ( in_array( $name, apply_filters( 'wp_reviev_schema_ISO_8601_duration_items', array( 'prepTime', 'cookTime', 'totalTime', 'duration' ) ) ) ) { // phpcs:ignore
+							$args[ $name ] = 'PT' . $value;
 						} else {
-							$args[ $data['name'] ] = $schema_data[ $data['name'] ];
+							$args[ $name ] = $value;
 						}
 					}
 				}
+			}
+		}
+	}
+
+	// Add aggregateRating to Recipe.
+	if ( 'Recipe' === $review['schema'] ) {
+		$args['aggregateRating'] = $review['total'];
+	}
+
+	if ( 'Product' === $review['schema'] ) {
+		// Product type recommends both review and aggregateRating.
+		if ( empty( $args['review'] ) ) {
+			$review_rating = wp_review_get_schema_nested_review_args( $review );
+			if ( ! empty( $review_rating ) ) {
+				$args['review'] = $review_rating;
+			}
+		}
+		if ( empty( $args['aggregateRating'] ) ) {
+			$aggregate_rating = wp_review_get_schema_nested_user_rating_args( $review );
+			if ( ! empty( $aggregate_rating ) ) {
+				$args['aggregateRating'] = $aggregate_rating;
 			}
 		}
 	}
@@ -2477,12 +2556,19 @@ function wp_review_get_ldjson_data( $type, $data, $review ) {
 
 	switch ( $type ) {
 		case 'Article':
+			$headline = ! empty( $data['headline'] ) ? $data['headline'] : '';
+
+			// Limit headline length to 110 characters.
+			if ( strlen( $headline ) > 110 ) {
+				$headline = substr( $headline, 0, 109 ) . '&hellip;';
+			}
+
 			$ldjson_data = array(
 				'mainEntityOfPage' => array(
 					'@type' => 'Webpage',
 					'@id'   => get_permalink( $post_id ),
 				),
-				'headline'         => ! empty( $data['headline'] ) ? $data['headline'] : '',
+				'headline'         => $headline,
 				'image'            => array(
 					'@type' => 'ImageObject',
 					'url'   => ! empty( $data['image']['url'] ) ? esc_url( $data['image']['url'] ) : '',
@@ -3173,6 +3259,86 @@ function wp_review_schema_types() {
 
 
 /**
+ * Gets supported schema types.
+ *
+ * @return array
+ */
+function wp_review_get_supported_schema_types() {
+	static $result = null;
+	if ( is_null( $result ) ) {
+		$schemas   = wp_review_schema_types();
+		$supported = array();
+		foreach ( $schemas as $key => $value ) {
+			if ( empty( $value['deprecated'] ) ) {
+				$supported[ $key ] = $value;
+			}
+		}
+		$result = $supported;
+	}
+	return $result;
+}
+
+
+/**
+ * Gets deprecated schema types.
+ *
+ * @return array
+ */
+function wp_review_get_deprecated_schema_types() {
+	static $result = null;
+	if ( is_null( $result ) ) {
+		$schemas = wp_review_schema_types();
+		$result = wp_list_filter( $schemas, array( 'deprecated' => true ) );
+	}
+	return $result;
+}
+
+
+/**
+ * Checks if there are any posts use deprecated schema type.
+ *
+ * @return bool
+ */
+function wp_review_has_deprecated_schema_posts() {
+	$query = new WP_Query(
+		array(
+			'post_type'              => 'any',
+			'posts_per_page'         => 1,
+			'update_post_term_cache' => false,
+			'fields'                 => 'ids',
+			'ignore_sticky_posts'    => true,
+			'cache_results'          => false,
+			'meta_query'             => array(
+				'relation' => 'OR',
+				array(
+					'key'     => 'wp_review_schema',
+					'value'   => array( 'Article', 'Painting', 'Place', 'Thing', 'WebSite' ),
+					'compare' => 'IN',
+				),
+				array(
+					'key'     => 'wp_review_schema',
+					'compare' => 'NOT EXISTS',
+				),
+			),
+		)
+	);
+	return $query->have_posts();
+}
+
+
+/**
+ * Checks if a schema type is deprecated or not.
+ *
+ * @param string $type Schema type.
+ * @return bool
+ */
+function wp_review_schema_is_deprecated( $type ) {
+	$deprecated = wp_review_get_deprecated_schema_types();
+	return ! empty( $deprecated[ $type ] );
+}
+
+
+/**
  * Gets schema type data.
  *
  * @since 3.0.0
@@ -3182,7 +3348,7 @@ function wp_review_schema_types() {
  */
 function wp_review_get_schema_type_data( $type ) {
 	$types = wp_review_schema_types();
-	if ( ! isset( $types[ $type ] ) ) {
+	if ( ! isset( $types ) ) {
 		return false;
 	}
 	return $types[ $type ];
@@ -3216,6 +3382,227 @@ function wp_review_get_schema_fields( $schema ) {
 function wp_review_nl2list( $str ) {
 	$lines = explode( "\n", $str );
 	return '<li>' . implode( '</li><li>', $lines ) . '</li>';
+}
+
+/**
+ * Shows Google Place Review schema.
+ *
+ * @since 3.0.4
+ *
+ * @param array $review Review data.
+ * @param array $place  Place data.
+ */
+function wp_review_google_place_review_schema( $review, $place ) {
+	$markup = array(
+		'@context'     => 'http://schema.org',
+		'@type'        => 'Review',
+		'reviewBody'   => $review['text'],
+		'author'       => array(
+			'@type' => 'Person',
+			'name'  => $review['author_name'],
+			'url'   => $review['author_url'],
+			'image' => $review['profile_photo_url'],
+		),
+		'itemReviewed' => array(
+			'@type' => 'LocalBusiness',
+			'name'  => $place['name'],
+			'url'   => $place['url'],
+		),
+		'reviewRating' => array(
+			'@type'       => 'Rating',
+			'ratingValue' => $review['rating'],
+			'bestRating'  => 5,
+			'worstRating' => 0,
+		),
+	);
+
+	/**
+	 * Allow changing schema markup for Google place review.
+	 *
+	 * @since 3.0.4
+	 *
+	 * @param array $markup Schema markup.
+	 * @param array $review Review data.
+	 * @param array $place  Place data.
+	 */
+	$markup = apply_filters( 'wp_review_google_place_review_schema_markup', $markup, $review, $place );
+
+	printf( '<script type="application/ld+json">%s</script>', wp_json_encode( $markup ) );
+}
+
+
+/**
+ * Shows Yelp schema.
+ *
+ * @since 3.0.4
+ *
+ * @param array $business Business data.
+ */
+function wp_review_yelp_schema( $business ) {
+	$markup = array(
+		'@context'        => 'http://schema.org',
+		'@type'           => 'LocalBusiness',
+		'name'            => $business['name'],
+		'url'             => $business['url'],
+		'image'           => $business['image_url'],
+		'address'         => implode( ', ', $business['location']['display_address'] ),
+		'priceRange'      => $business['price'],
+		'telephone'       => $business['phone'],
+		'aggregateRating' => array(
+			'@type'       => 'AggregateRating',
+			'ratingValue' => $business['rating'],
+			'ratingCount' => $business['review_count'],
+			'bestRating'  => 5,
+			'worstRating' => 0,
+		),
+	);
+
+	/**
+	 * Allow changing schema markup for Yelp.
+	 *
+	 * @since 3.0.4
+	 *
+	 * @param array $markup   Schema markup.
+	 * @param array $business Business data.
+	 */
+	$markup = apply_filters( 'wp_review_yelp_schema_markup', $markup, $business );
+
+	printf( '<script type="application/ld+json">%s</script>', wp_json_encode( $markup ) );
+}
+
+
+/**
+ * Shows Yelp review schema.
+ *
+ * @since 3.0.4
+ *
+ * @param array $review   Review data.
+ * @param array $business Business data.
+ */
+function wp_review_yelp_review_schema( $review, $business ) {
+	$markup = array(
+		'@context'     => 'http://schema.org',
+		'@type'        => 'Review',
+		'reviewBody'   => $review['text'],
+		'author'       => array(
+			'@type' => 'Person',
+			'name'  => $review['user']['name'],
+			'image' => $review['user']['image_url'],
+		),
+		'itemReviewed' => array(
+			'@type'      => 'LocalBusiness',
+			'name'       => $business['name'],
+			'url'        => $business['url'],
+			'image'      => $business['image_url'],
+			'address'    => implode( ', ', $business['location']['display_address'] ),
+			'priceRange' => $business['price'],
+			'telephone'  => $business['phone'],
+		),
+		'reviewRating' => array(
+			'@type'       => 'Rating',
+			'ratingValue' => $review['rating'],
+			'bestRating'  => 5,
+			'worstRating' => 0,
+		),
+	);
+
+	/**
+	 * Allow changing schema markup for Yelp review.
+	 *
+	 * @since 3.0.4
+	 *
+	 * @param array $markup   Schema markup.
+	 * @param array $review   Review data.
+	 * @param array $business Business data.
+	 */
+	$markup = apply_filters( 'wp_review_yelp_review_schema_markup', $markup, $review, $business );
+
+	printf( '<script type="application/ld+json">%s</script>', wp_json_encode( $markup ) );
+}
+
+
+/**
+ * Shows Facebook page schema.
+ *
+ * @since 3.0.4
+ *
+ * @param array $page Page data.
+ */
+function wp_review_facebook_page_schema( $page ) {
+	if ( empty( $page->overall_star_rating ) ) {
+		return;
+	}
+	$markup = array(
+		'@context'        => 'http://schema.org',
+		'@type'           => 'LocalBusiness',
+		'name'            => $page->name,
+		'url'             => "https://facebook.com/{$page->id}",
+		'aggregateRating' => array(
+			'@type'       => 'AggregateRating',
+			'ratingValue' => $page->overall_star_rating,
+			'ratingCount' => $page->rating_count,
+			'bestRating'  => 5,
+			'worstRating' => 0,
+		),
+	);
+
+	/**
+	 * Allow changing schema markup for Facebook page.
+	 *
+	 * @since 3.0.4
+	 *
+	 * @param array $markup Schema markup.
+	 * @param array $page   Page data.
+	 */
+	$markup = apply_filters( 'wp_review_facebook_page_schema_markup', $markup, $page );
+
+	printf( '<script type="application/ld+json">%s</script>', wp_json_encode( $markup ) );
+}
+
+
+/**
+ * Shows Facebook page review schema.
+ *
+ * @since 3.0.4
+ *
+ * @param object $review Review data.
+ * @param array  $page   Page data.
+ */
+function wp_review_facebook_page_review_schema( $review, $page ) {
+	$markup = array(
+		'@context'     => 'http://schema.org',
+		'@type'        => 'Review',
+		'reviewBody'   => $review->review_text,
+		'author'       => array(
+			'@type' => 'Person',
+			'name'  => ! empty( $review->reviewer ) ? $review->reviewer->name : '',
+			'image' => ! empty( $review->reviewer ) ? wp_review_fb_user_avatar_url( $review->reviewer->id ) : '',
+		),
+		'itemReviewed' => array(
+			'@type' => 'LocalBusiness',
+			'name'  => $page->name,
+			'url'   => "https://facebook.com/{$page->id}",
+		),
+		'reviewRating' => array(
+			'@type'       => 'Rating',
+			'ratingValue' => $review->rating,
+			'bestRating'  => 5,
+			'worstRating' => 0,
+		),
+	);
+
+	/**
+	 * Allow changing schema markup for Facebook page review.
+	 *
+	 * @since 3.0.4
+	 *
+	 * @param array $markup Schema markup.
+	 * @param array $review Review data.
+	 * @param array $page   Page data.
+	 */
+	$markup = apply_filters( 'wp_review_facebook_page_review_schema_markup', $markup, $review, $page );
+
+	printf( '<script type="application/ld+json">%s</script>', wp_json_encode( $markup ) );
 }
 
 

@@ -148,6 +148,34 @@
 			$( '#wpr-review-items-app' ).fadeIn();
 		});
 
+		$( document ).on( 'change', 'select#wp_review_schema', function() {
+			var $this = $( this ),
+				value = $this.val(),
+				targetSelector = '#wp_review_schema_type_' + value,
+				notice = $( '#wpr-deprecated-schema-notice' );
+
+			$( '.wp_review_schema_type_options' ).hide();
+			$( '#wp_review_schema_type_options_wrap' ).hide();
+
+			if ( value ) {
+				$( targetSelector ).show();
+				if ( 'none' !== value ) {
+					$( '#wp_review_schema_type_options_wrap' ).show();
+				}
+			}
+
+			notice.toggle( -1 !== [ 'Thing', 'Article', 'Painting', 'Place', 'WebSite' ].indexOf( value ) );
+		});
+
+		$( document ).on( 'change', '#wp_review_rating_schema', function() {
+			var value = $( this ).val();
+			if ( 'author' === value ) {
+				$( '#wp_review_schema_author_wrapper' ).show();
+			} else {
+				$( '#wp_review_schema_author_wrapper' ).hide();
+			}
+		});
+
 		// User reviews.
 		$( '#wp-review-userReview-disable' ).on( 'change', function() {
 			var $postbox = $( this ).closest( '.postbox' );
@@ -222,7 +250,7 @@
 				$( this ).next( 'input[name="wp_review_type"]' ).val( selected_val );
 			}
 		}).change();
-		
+
 	};
 
 	wpreview.linkChoices = function( options ) {
