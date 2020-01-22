@@ -3975,7 +3975,7 @@ function wp_review_weeblramp_theme_css( $css ) {
 }
 add_filter( 'weeblramp_theme_css', 'wp_review_weeblramp_theme_css' );
 add_filter( 'weeblramp_the_content', 'wp_review_inject_data' );
-add_filter( 'weeblramp_wpautop_function', '__return_false' );
+// add_filter( 'weeblramp_wpautop_function', '__return_false' );
 
 /**
  * Adds amp data for weeblramp plugin.
