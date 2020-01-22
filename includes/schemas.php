@@ -80,7 +80,7 @@ return array(
 			),
 			array(
 				'name'    => 'publisher',
-				'label'   => __( 'Publisher - Orgnization', 'wp-review' ),
+				'label'   => __( 'Publisher', 'wp-review' ),
 				'type'    => 'text',
 				'default' => '',
 				'part_of' => 'publisher',
@@ -126,13 +126,13 @@ return array(
 		'fields' => array(
 			array(
 				'name'    => 'name',
-				'label'   => __( 'Name', 'wp-review' ),
+				'label'   => __( 'Course Name', 'wp-review' ),
 				'type'    => 'text',
 				'default' => '',
 			),
 			array(
 				'name'    => 'description',
-				'label'   => __( 'Description', 'wp-review' ),
+				'label'   => __( 'Course Description', 'wp-review' ),
 				'type'    => 'textarea',
 				'default' => '',
 			),
@@ -160,13 +160,13 @@ return array(
 			),
 			array(
 				'name'    => 'author',
-				'label'   => __( 'Author', 'wp-review' ),
+				'label'   => __( 'Course Author', 'wp-review' ),
 				'type'    => 'text',
 				'default' => '',
 			),
 			array(
 				'name'        => 'provider',
-				'label'       => __( 'Provider', 'wp-review' ),
+				'label'       => __( 'Course Provider', 'wp-review' ),
 				'type'        => 'text',
 				'default'     => '',
 				'part_of'     => 'provider',
@@ -201,7 +201,7 @@ return array(
 			),
 			array(
 				'name'    => 'image',
-				'label'   => __( 'Movie Image', 'wp-review' ),
+				'label'   => __( 'Image', 'wp-review' ),
 				'type'    => 'image',
 				'default' => '',
 			),
@@ -310,7 +310,7 @@ return array(
 			),
 			array(
 				'name'    => 'image',
-				'label'   => __( 'Movie Image', 'wp-review' ),
+				'label'   => __( 'Image', 'wp-review' ),
 				'type'    => 'image',
 				'default' => '',
 			),
@@ -367,19 +367,19 @@ return array(
 		'fields' => array(
 			array(
 				'name'    => 'name',
-				'label'   => __( 'Title', 'wp-review' ),
+				'label'   => __( 'Episode Title', 'wp-review' ),
 				'type'    => 'text',
 				'default' => '',
 			),
 			array(
 				'name'    => 'description',
-				'label'   => __( 'Description', 'wp-review' ),
+				'label'   => __( 'Episode Description', 'wp-review' ),
 				'type'    => 'textarea',
 				'default' => '',
 			),
 			array(
 				'name'    => 'image',
-				'label'   => __( 'Movie Image', 'wp-review' ),
+				'label'   => __( 'Episode Image', 'wp-review' ),
 				'type'    => 'image',
 				'default' => '',
 			),
@@ -431,7 +431,7 @@ return array(
 			),
 			array(
 				'name'    => 'author',
-				'label'   => __( 'Author', 'wp-review' ),
+				'label'   => __( 'Episode Author', 'wp-review' ),
 				'type'    => 'text',
 				'default' => '',
 			),
@@ -609,13 +609,13 @@ return array(
 		'fields' => array(
 			array(
 				'name'    => 'name',
-				'label'   => __( 'Game title', 'wp-review' ),
+				'label'   => __( 'Game Title', 'wp-review' ),
 				'type'    => 'text',
 				'default' => '',
 			),
 			array(
 				'name'    => 'description',
-				'label'   => __( 'Game description', 'wp-review' ),
+				'label'   => __( 'Game Description', 'wp-review' ),
 				'type'    => 'textarea',
 				'default' => '',
 			),
@@ -649,7 +649,7 @@ return array(
 			),
 			array(
 				'name'    => 'author',
-				'label'   => __( 'Author', 'wp-review' ),
+				'label'   => __( 'Game Author', 'wp-review' ),
 				'type'    => 'text',
 				'default' => '',
 			),
@@ -660,19 +660,19 @@ return array(
 		'fields' => array(
 			array(
 				'name'    => 'name',
-				'label'   => __( 'Name', 'wp-review' ),
+				'label'   => __( 'Hotel Name', 'wp-review' ),
 				'type'    => 'text',
 				'default' => '',
 			),
 			array(
 				'name'    => 'description',
-				'label'   => __( 'Description', 'wp-review' ),
+				'label'   => __( 'Hotel Description', 'wp-review' ),
 				'type'    => 'textarea',
 				'default' => '',
 			),
 			array(
 				'name'    => 'image',
-				'label'   => __( 'Image', 'wp-review' ),
+				'label'   => __( 'Hotel Image', 'wp-review' ),
 				'type'    => 'image',
 				'default' => '',
 			),
@@ -718,12 +718,12 @@ return array(
 			),
 			array(
 				'name'  => 'address',
-				'label' => __( 'Address', 'wp-review' ),
+				'label' => __( 'Hotel Address', 'wp-review' ),
 				'type'  => 'text',
 			),
 			array(
 				'name'  => 'telephone',
-				'label' => __( 'Telephone', 'wp-review' ),
+				'label' => __( 'Hotel Telephone', 'wp-review' ),
 				'type'  => 'text',
 			),
 		),
@@ -733,13 +733,13 @@ return array(
 		'fields' => array(
 			array(
 				'name'    => 'name',
-				'label'   => __( 'Name', 'wp-review' ),
+				'label'   => __( 'Business Name', 'wp-review' ),
 				'type'    => 'text',
 				'default' => '',
 			),
 			array(
 				'name'    => 'description',
-				'label'   => __( 'Description', 'wp-review' ),
+				'label'   => __( 'Business Description', 'wp-review' ),
 				'type'    => 'textarea',
 				'default' => '',
 			),
@@ -791,12 +791,12 @@ return array(
 			),
 			array(
 				'name'  => 'address',
-				'label' => __( 'Address', 'wp-review' ),
+				'label' => __( 'Business Address', 'wp-review' ),
 				'type'  => 'text',
 			),
 			array(
 				'name'  => 'telephone',
-				'label' => __( 'Telephone', 'wp-review' ),
+				'label' => __( 'Business Telephone', 'wp-review' ),
 				'type'  => 'text',
 			),
 		),
@@ -1047,19 +1047,19 @@ return array(
 		'fields' => array(
 			array(
 				'name'    => 'name',
-				'label'   => __( 'Name', 'wp-review' ),
+				'label'   => __( 'Organization Name', 'wp-review' ),
 				'type'    => 'text',
 				'default' => '',
 			),
 			array(
 				'name'    => 'description',
-				'label'   => __( 'Description', 'wp-review' ),
+				'label'   => __( 'Organization Description', 'wp-review' ),
 				'type'    => 'textarea',
 				'default' => '',
 			),
 			array(
 				'name'    => 'image',
-				'label'   => __( 'Image', 'wp-review' ),
+				'label'   => __( 'Organization Image', 'wp-review' ),
 				'type'    => 'image',
 				'default' => '',
 			),
@@ -1221,19 +1221,19 @@ return array(
 			),
 			array(
 				'name'    => 'author',
-				'label'   => __( 'Author', 'wp-review' ),
+				'label'   => __( 'Recipe Author', 'wp-review' ),
 				'type'    => 'text',
 				'default' => '',
 			),
 			array(
 				'name'    => 'description',
-				'label'   => __( 'Description', 'wp-review' ),
+				'label'   => __( 'Recipe Description', 'wp-review' ),
 				'type'    => 'textarea',
 				'default' => '',
 			),
 			array(
 				'name'    => 'image',
-				'label'   => __( 'Image', 'wp-review' ),
+				'label'   => __( 'Recipe Image', 'wp-review' ),
 				'type'    => 'image',
 				'default' => '',
 			),
@@ -1260,7 +1260,7 @@ return array(
 			),
 			array(
 				'name'    => 'recipeCategory',
-				'label'   => __( 'Type', 'wp-review' ),
+				'label'   => __( 'Recipe Type', 'wp-review' ),
 				'type'    => 'text',
 				'default' => '',
 				'info'    => __( 'Type of dish, for example "appetizer", "entree", or "dessert"', 'wp-review' ),
@@ -1543,12 +1543,12 @@ return array(
 			),
 			array(
 				'name'  => 'address',
-				'label' => __( 'Address', 'wp-review' ),
+				'label' => __( 'Store Address', 'wp-review' ),
 				'type'  => 'text',
 			),
 			array(
 				'name'  => 'telephone',
-				'label' => __( 'Telephone', 'wp-review' ),
+				'label' => __( 'Store Telephone', 'wp-review' ),
 				'type'  => 'text',
 			),
 		),
