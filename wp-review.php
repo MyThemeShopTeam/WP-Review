@@ -7,6 +7,7 @@
  * Author: MyThemeShop
  * Author URI: http://mythemeshop.com/
  * Text Domain: wp-review
+ * MTS Product Type: Free
  *
  * @since     1.0
  * @copyright Copyright (c) 2013, MyThemesShop
