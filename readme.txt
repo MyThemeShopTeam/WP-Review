@@ -1,9 +1,9 @@
-=== WP Review ===
+=== WordPress Review Plugin: The Ultimate Solution for Building a Review Website ===
 Contributors: mythemeshop
 Creator's website link: http://mythemeshop.com/plugins/wp-review/
 Tags: review, schema.org, rating, schema, user rating, google rating, star rating, product review
-Requires at least: 4.5
-Tested up to: 5.4.0
+Requires at least: 4.9
+Tested up to: 5.4
 Stable tag: 5.3.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -11,89 +11,90 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Create reviews! Choose from Stars, Percentages or Points for review scores. Supports Retina Display, WPMU & Unlimited Color Schemes.
 
 == Description ==
-[youtube https://www.youtube.com/watch?v=IvJUHKNYAMc]
+Does your website run on WordPress? Does it feature reviews of products, services, or anything else for that matter? At MyThemeShop, we know how important it is to have interactive smart reviews on your website with ratings, structured data, shortcodes, user comments, and affiliate buttons.
 
-= Complete Setup Tutorial =
-[youtube https://www.youtube.com/watch?v=NzMe-QY_WZY]
+In this regard, we have created a [WordPress Review plugin](https://mythemeshop.com/plugins/wordpress-review/) with all the premium features, You would require to run a full-fledged review website.
 
-Did you always want to increase the user interaction on your website by rating products/services/anything? We at <a rel="nofollow" href="http://mythemeshop.com/">MyThemeShop</a> understand your need, & created a premium Review plugin. We are now distributing it for FREE to give back to the WordPress community. We have been given so much by the WordPress community, it's time to give back.
+## What Can WP Review Plugin Do for You
 
-**WP Review plugin** is an easy yet powerful way to review content easily, without affecting the speed of your site. If you're a blogger, you probably occasionally review or rank products, services, tools, recipes, or other content on your site. <a rel="nofollow" href="https://mythemeshop.com/plugins/wp-review/">WP Review plugin</a> is a customizable and lightweight way to create reviews, using stars, percentage or point rating, and it includes support for translation, WPMU, Google rich snippets and unlimited colors. Just install it and follow the simple configuration instructions to place it in your desired location.
+* WP Review plugin offers an all-inclusive solution for you to create a full-blown review website in any niche without any design or technical skills.
+* It helps you create high-converting information-packed reviews that help potential customers make purchasing decisions.
+* It boosts your SEO efforts by adding [19 different schema types](https://demo.mythemeshop.com/wp-review-pro/rich-snippets/). Schema makes it easy for search engines to parse and interpret web pages more effectively so they can return informative results to users.
+* The interactive reviews would help boost conversions on your website hence increasing your overall revenue.
 
-Check the live demos of different Review types offered
-* <a rel="nofollow" href="http://demo.mythemeshop.com/point/fatebuntur-stoici-haec-omnia-dicta-esse-praeclare/"><strong>Star Review</strong></a>
-* <a rel="nofollow" href="http://demo.mythemeshop.com/point/modo-etiam-paulum-ad-dexteram-de-via-declinavi/"><strong>Point Review</strong></a>
-* <a rel="nofollow" href="http://demo.mythemeshop.com/point/sed-nonne-merninisti-licere-mihi-ista-probare/"><strong>Percentage Review</strong></a>
+## Why Use Reviews On Your Website?
 
-You can also check <a rel="nofollow" href="https://mythemeshop.com/plugins/wp-review-pro/">WP Review Pro</a> which is one of the best <a rel="nofollow" href="https://mythemeshop.com/plugins/">Premium WordPress Plugins</a> for creating extraordinary reviews on your <a rel="nofollow" href="https://mythemeshop.com/blog/">WordPress blog</a> and website.
+**Improved CTR**
 
-= Why WP Review from <a rel="nofollow" href="http://mythemeshop.com/">MyThemeShop</a>: =
-* Fastest review plugin.
-* Stars, percentage and point rating system.
-* Supports 19 Different Schema Types(schema.org)
-  * Book
-  * Course
-  * CreativeWorkSeason
-  * CreativeWorkSeries
-  * Episode
-  * Event
-  * Game
-  * Hotel
-  * LocalBusiness
-  * Movie
-  * MusicPlaylist
-  * MusicRecording
-  * Organization
-  * Product
-  * Recipe
-  * Restaurant
-  * SoftwareApplication
-  * Store
-  * TVSeries
-* 100% Fluid Responsive.
-* 2 Review box templates
-* Option to set Global Position.
-* Option to change Global Colors.
-* Option to change individual review Colors and Positions.
-* Included tabbed widget to show recent reviews and popular reviews.
-* WP Multisite and Multiuser (WPMU / WPMS / WordPress MU) compatible.
-* Design it as you want, unlimited color options.
-* Easily use it in both Free and <a rel="nofollow" href="https://mythemeshop.com/themes/">Premium WordPress Themes.
-* Translation Ready.
-* Reviews are displayed to visitors in a friendly format.
-* Completely customizable, including which fields to ask for, require, and show.
-* Minimal design but could be instantly made modern.
-* Works with caching plugins and all majority of themes.
-* Easy to modify the CSS to better fit your theme style.
-* Support for adding your own custom fields.
-* Minimalist, lightweight, and efficient code means that your users won't notice any hiccups.
-* Position it above or below the content with ease and no coding.
-* Supports Shortcode `[wp-review]` to show review anywhere in post.
-* Developer friendly - Useful filters are included! So you can use it in your themes.
+Using reviews, especially star ratings would help you increase your website CTR. Google and other search engines pick the star ratings and show them in the search results. This would increase the chances of your website getting more clicks from the search engines.
 
-= Support =
-All support for this plugin is provided through our forums. If you have not registered yet, you can do so for FREE by <a rel="nofollow" href="https://mythemeshop.com/#signup">**signing up**</a> on our website.
+**Improves Conversion Rate**
 
-You can also check our <a rel="nofollow" href="https://mythemeshop.com/wordpress-101/">WordPress Training videos</a>
+Reviews help the users skim through the content and make an informed decision while making an online purchase. For eg: while reading the comparison of two mobile phones of the same price range, you would prefer to buy one with better reviews and more star ratings.
 
-If you still feel stuck, please feel free to open a new thread on our <a rel="nofollow" href="https://community.mythemeshop.com/forum/11-free-plugin-support/">Support Forum</a>. A member of our support team will be happy to help.
+**Better Content Presentation**
 
-= Developer Zone =
-Yes, this plugin is so developer friendly, so you could use it with any theme you develop. Define default CSS, custom position, one line integration in your theme's code.
+By using a review box, you are improving the overall design and content structure. The content looks both appealing and better structured for grasping the important details without reading the whole article or post.
 
-Show average review in your theme using below function:
-`<?php if (function_exists('wp_review_show_total')) wp_review_show_total(); ?>`
+**Improved search engine results**
 
-You can find full list of the available filters here https://github.com/MyThemeShopTeam/WP-Review/blob/master/filter-list.php
+Gone are the days when optimized alt-tags and stuffing keywords would boost your keyword rankings. Google is constantly updating its algorithms and online reviews are quickly becoming a core part of SEO.
 
-GitHub link: https://github.com/MyThemeShopTeam/WP-Review/
+Using [rich snippets](https://mythemeshop.com/blog/google-rich-snippets/), Google has developed a way to understand reviews just as customers would. Reviews or star ratings immensely help in **improving the CTR** . This would help in increasing the traffic on your website.
 
-You can also use the WP Review plugin for creating product reviews and pair it up with a <a rel="nofollow" href="https://mythemeshop.com/theme-category/wordpress-ecommerce-themes/">WordPress Ecommerce Theme</a> to increase the trust of new users on your website.
+**Great Styling in One-Click**
+
+Customize the look and feel of your review section to make it look professional. You can choose different styling options. With **unlimited color choices**, you can choose and create combinations that would perfectly blend with your [WordPress theme](https://mythemeshop.com/themes/schema/) design.
+
+You can also choose from the two available templates and customize them to blend with your reviews and most importantly with your website’s design.
+
+These templates are created with a **mobile-first approach**to load on all mobile devices. Not only that, the plugins work fine with the caching plugins and all majority WordPress themes.
+
+**Easy and Fast to Add Reviews**
+
+All you have to do is fill the information you need to display and select a method to display the reviews in any custom post type or page.
+
+By default, WP Review plugin can be configured in global settings to either insert your review box at the start or at the end of your post.
+
+However, with the **custom location-enabled**, the review box can be inserted in a location different from the one defined in the global settings. You can choose to insert the review box after content, before content, or use the custom shortcode option. The shortcode option allows you to insert the review box anywhere on the page.
+
+**Schema Support for Search Engines**
+
+The WP Review supports 19 different Schema types so that the search engines can easily understand the content on your website.
+
+This increases the probability of your website to get more visibility on the SERPs which would directly have a positive impact on the overall organic traffic of your website.
+
+**Visitor Ratings**
+
+Visitor ratings can help you improvise your content during a span of time. For eg: you have originally rated a product 4.5 stars but during the course of time, you see that the average visitor ratings are just 3.5. In such a case, you have got a clear indication to change the original product ratings.
 
 
-= Feedback =
-If you like this plugin, then please consider leaving us a good rating and a review feedback</a>.
-If would like, you can follow us on <a rel="nofollow" href="https://plus.google.com/+Mythemeshop/">Google+</a>, <a rel="nofollow" href="https://twitter.com/MyThemeShopTeam">Twitter</a>, and <a rel="nofollow" href="https://www.facebook.com/MyThemeShop">Facebook</a>
+## Multiple Review Rating Types
+
+The WP review plugin is amazingly easy to use and allows you to deliver professional looking reviews. You have the option to choose different types of review systems. You can use stars, percentage, and point ratings.
+
+*   **_[Star rating](https://demo.mythemeshop.com/point/fatebuntur-stoici-haec-omnia-dicta-esse-praeclare/)_:** The most common rating system. You can use it for rating any product or service. It follows a 5 point system where you can rate a product out of five.
+*   **_[Point rating](https://demo.mythemeshop.com/point/modo-etiam-paulum-ad-dexteram-de-via-declinavi/):_**Useful system for creating in-depth reviews or when rating feature-rich products. Using this, you can rate a product out of 10.
+*   **_[Percentage rating](https://demo.mythemeshop.com/point/sed-nonne-merninisti-licere-mihi-ista-probare/):_** The best rating system for granular analysis of a product’s features. __ Ideal for products with numerous features. Using this, you can assign a percentage out of 100 to a specific product.
+
+
+## All the Right Perks Included
+
+**No coding required**
+
+Just copy and paste the shortcode shown by WP Review and insert it where you want the review box to appear on the page.
+
+**Regular updates**
+
+Get new features regularly installed on your website. Just one click and your plugin is as good as new.
+
+**High-quality code**
+
+The plugin’s architecture together with the code has been uncompromisingly optimized to guarantee a fantastic user experience for you and your users. No slow load times and no single security vulnerability.
+
+**Premium support**
+
+Get your questions answered and issues solved by a dedicated team of WordPress experts. Support is available every day throughout the year.
 
 == Installation ==
 
@@ -106,9 +107,37 @@ This section describes how to install the plugin and get it working.
 
 == Frequently Asked Questions ==
 
-= User rating not working =
+= Is WP Review compatible with my WordPress Theme? =
 
-Please disable all plugins and check if rating is working properly. Then you can enable all plugins one by one to find out which plugin is conflicting with WP Rating plugin.
+Yes. WP Review is created by following WordPress's standard plugin code guidelines. That means that WP Review is compatible with all WordPress themes that are coded in a standard way.
+
+= What are Rich Snippets? =
+
+Also referred to as rich results, these are normal search results with a bit of more information. Rich Results include reviews, events, and recipes.
+
+= How does a rich result help? =
+
+People love rich results because they stand out from other search results. They have a higher click-through rate (CTR). This means more traffic from that search result.
+
+= Which content types are supported? =
+
+WP Review plugin supports 19 types of Schema Markups. Ranging from books, recipes, software application, music, and literally everything else.
+
+= How does schema help with SEO? =
+
+To be clear, schema markup is not a ranking factor with regards to SEO. It is a code you add to your HTML to improve how Google and other search engines understand and represent your content/page in SERPs. In short, it increases the probability of your site getting ranked better on the SERPs.
+
+= Won’t the plugin slow down my website? =
+
+Absolutely not! The [MyThemeShop](https://mythemeshop.com/) team is well known for developing cleanly coded and superfast themes and plugins. We follow WordPress best practices, the major reason why our plugin is listed on the WordPress repository.
+
+= Will I get any support? =
+
+We provide support to our premium members. You’d have to purchase the license to use the[ paid version](https://mythemeshop.com/plugins/wordpress-review/) of WP Review after which, you can raise a ticket from our[ support forum](https://community.mythemeshop.com/).
+
+= How do I update the plugin? =
+
+There are two ways you can do this. You can update the plugin by downloading a fresh copy from the WordPress repository or, you can also update from your WordPress dashboard by going to Plugins -> Installed Plugins -> WP Review and clicking on “_update now_”. Please note that you would get the “_update now_” option only when there is any new update available for the plugin.
 
 == Screenshots ==
 
