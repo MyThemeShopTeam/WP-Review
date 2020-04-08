@@ -2399,7 +2399,7 @@ function wp_review_get_schema_nested_user_rating_args( $review ) {
 		if ( 0 < (int) $comments_review_count ) {
 			$args = array(
 				'@type'       => 'aggregateRating',
-				'ratingValue' => $comments_review_total,
+				'ratingValue' => wp_review_normalize_rating_value( $comments_review_total ),
 				'bestRating'  => $wp_review_rating_types[ $review['user_review_type'] ]['max'],
 				'ratingCount' => $comments_review_count,
 				'worstRating' => 0,
@@ -2409,7 +2409,7 @@ function wp_review_get_schema_nested_user_rating_args( $review ) {
 		if ( 0 < (int) $review['user_review_count'] ) {
 			$args = array(
 				'@type'       => 'aggregateRating',
-				'ratingValue' => $review['user_review_total'],
+				'ratingValue' => wp_review_normalize_rating_value( $review['user_review_total'] ),
 				'bestRating'  => $wp_review_rating_types[ $review['user_review_type'] ]['max'],
 				'ratingCount' => $review['user_review_count'],
 				'worstRating' => 0,
@@ -2438,7 +2438,7 @@ function wp_review_get_schema_nested_review_args( $review ) {
 		'@type'        => 'Review',
 		'reviewRating' => array(
 			'@type'       => 'Rating',
-			'ratingValue' => $review['total'],
+			'ratingValue' => wp_review_normalize_rating_value( $review['total'] ),
 			'bestRating'  => $wp_review_rating_types[ $review['type'] ]['max'],
 			'worstRating' => 0,
 		),
@@ -2510,7 +2510,7 @@ function wp_review_get_schema_nested_item_args( $review ) {
 
 	// Add aggregateRating to Recipe.
 	if ( 'Recipe' === $review['schema'] ) {
-		$args['aggregateRating'] = $review['total'];
+		$args['aggregateRating'] = wp_review_normalize_rating_value( $review['total'] );
 	}
 
 	if ( 'Product' === $review['schema'] ) {
@@ -3975,7 +3975,7 @@ function wp_review_weeblramp_theme_css( $css ) {
 }
 add_filter( 'weeblramp_theme_css', 'wp_review_weeblramp_theme_css' );
 add_filter( 'weeblramp_the_content', 'wp_review_inject_data' );
-add_filter( 'weeblramp_wpautop_function', '__return_false' );
+// add_filter( 'weeblramp_wpautop_function', '__return_false' );
 
 /**
  * Adds amp data for weeblramp plugin.
