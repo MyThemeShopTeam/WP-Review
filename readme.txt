@@ -2,7 +2,7 @@
 Contributors: mythemeshop
 Creator's website link: http://mythemeshop.com/plugins/wp-review/
 Tags: review, schema.org, rating, schema, user rating, google rating, star rating, product review
-Requires at least: 4.0
+Requires at least: 4.5
 Tested up to: 5.4.0
 Stable tag: 5.3.1
 License: GPLv2 or later
@@ -124,8 +124,8 @@ Please disable all plugins and check if rating is working properly. Then you can
 
 = v5.3.1 (Apr 8, 2020) =
 * Improved Weeblramp plugin integration
-* Fixed wrong decimal of rating value in the schema
-* Fixed wrong schema settings title
+* Fixed wrong decimal of rating value in the schema output
+* Fixed some wrong option labels in the Schema Types
 
 = v5.3.0 (Jan 20, 2020) =
 * Added support for 19 different schema types, this update will fix the [Google SERP rating issue](https://webmasters.googleblog.com/2019/09/making-review-rich-results-more-helpful.html). Please make sure to edit old posts and change the default Schema Type.
