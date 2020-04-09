@@ -3615,7 +3615,7 @@ function wp_review_facebook_page_review_schema( $review, $page ) {
  * @param  string $type  Rating type.
  * @return float
  */
-function wp_review_normalize_rating_value( $value, $type ) {
+function wp_review_normalize_rating_value( $value, $type = 'star' ) {
 	$rating_type = wp_review_get_rating_type_data( $type );
 	if ( ! $rating_type ) {
 		return $value;

@@ -3,7 +3,7 @@
  * Plugin Name: WP Review
  * Plugin URI: http://mythemeshop.com/plugins/wp-review/
  * Description: Create reviews! Choose from stars, percentages or points for review scores. Supports Retina Display, WPMU and Unlimited Color Schemes.
- * Version: 5.3.1
+ * Version: 5.3.2
  * Author: MyThemeShop
  * Author URI: http://mythemeshop.com/
  * Text Domain: wp-review
@@ -46,7 +46,7 @@ if ( version_compare( phpversion(), '5.6', '<' ) ) {
 }
 
 /* Plugin version */
-define( 'WP_REVIEW_PLUGIN_VERSION', '5.3.1' );
+define( 'WP_REVIEW_PLUGIN_VERSION', '5.3.2' );
 
 /* Sets the custom db table name. */
 define( 'MTS_WP_REVIEW_DB_TABLE', 'mts_wp_reviews' );
