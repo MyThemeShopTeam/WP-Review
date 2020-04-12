@@ -4,7 +4,7 @@ Creator's website link: http://mythemeshop.com/plugins/wp-review/
 Tags: review, schema.org, rating, schema, user rating, google rating, star rating, product review
 Requires at least: 4.9
 Tested up to: 5.4
-Stable tag: 5.3.2
+Stable tag: 5.3.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -150,6 +150,10 @@ There are two ways you can do this. You can update the plugin by downloading a f
 7. Percentage Review type
 
 == Changelog ==
+
+= v5.3.3 (Apr 12, 2020) =
+* Fixed content layout breaking in some installations
+
 
 = v5.3.2 (Apr 9, 2020) =
 * Fixed `Fatal error: Uncaught ArgumentCountError` appearing on some installations

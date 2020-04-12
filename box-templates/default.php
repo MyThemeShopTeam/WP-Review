@@ -140,7 +140,7 @@ ob_start();
 <style type="text/css">
 	.wp-review-<?php echo $review['post_id']; ?>.review-wrapper {
 		width: <?php echo $review['width']; ?>%;
-		float: <?php echo $review['align']; ?>;
+		overflow: hidden;
 	}
 	.wp-review-<?php echo $review['post_id']; ?>.review-wrapper,
 	.wp-review-<?php echo $review['post_id']; ?> .review-title,
