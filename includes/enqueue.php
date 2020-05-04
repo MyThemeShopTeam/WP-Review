@@ -30,7 +30,8 @@ function wp_review_enqueue() {
 		'wp_review-js',
 		'wpreview',
 		array(
-			'ajaxurl' => admin_url( 'admin-ajax.php' ),
+			'ajaxurl'              => admin_url( 'admin-ajax.php' ),
+			'loginRequiredMessage' => __( 'You must log in to add your review', 'wp-review' ),
 		)
 	);
 

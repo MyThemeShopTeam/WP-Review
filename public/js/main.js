@@ -23,6 +23,23 @@
 			$tabs.find( '.tab-content' ).hide();
 			$tabs.find( href ).fadeIn();
 		});
+
+		// Show login required message.
+		$( document ).on( 'click', '.wpr-login-required', function( ev ) {
+			ev.preventDefault();
+
+			var $this = $( this ),
+				$message = $this.children( '.wpr-login-required-message' );
+
+			if ( ! $message.length ) {
+				$message = $( '<div class="wpr-login-required-message">' + wpreview.loginRequiredMessage + '</div>' );
+				$this.append( $message );
+			}
+
+			$message.show();
+
+			return false;
+		});
 	});
 })( jQuery );
 

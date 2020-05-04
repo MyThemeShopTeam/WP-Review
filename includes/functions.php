@@ -1426,7 +1426,18 @@ function wp_review_user_rating( $post_id = null, $args = array() ) {
 		$user_id = get_current_user_id();
 	}
 
-	if ( wp_review_has_reviewed( $post_id, $user_id, wp_review_get_user_ip(), WP_REVIEW_COMMENT_TYPE_VISITOR ) || ( ! is_user_logged_in() && ! empty( $options['registered_only'] ) ) ) {
+	$user_reviewed  = wp_review_has_reviewed( $post_id, $user_id, wp_review_get_user_ip(), WP_REVIEW_COMMENT_TYPE_VISITOR );
+	$login_required = ! is_user_logged_in() && ! empty( $options['registered_only'] );
+
+	if ( $user_reviewed || $login_required ) {
+		$class_name = '';
+		if ( $user_reviewed ) {
+			$class_name .= ' wpr-user-reviewed';
+		}
+		if ( $login_required ) {
+			$class_name .= ' wpr-login-required';
+		}
+
 		$output = wp_review_rating(
 			$value,
 			$post_id,
@@ -1434,6 +1445,7 @@ function wp_review_user_rating( $post_id = null, $args = array() ) {
 				'user_rating'    => true,
 				'positive_count' => $args['positive_count'],
 				'negative_count' => $args['negative_count'],
+				'class'          => $class_name,
 			)
 		); // Return just output template.
 		return $output;
