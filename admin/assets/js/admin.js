@@ -583,7 +583,7 @@
 		}
 	});
 
-	$( window ).load( function() {
+	$( window ).on( 'load', function() {
 		// WYSIWYG saving issue when using Gutenberg.
 		if ( $( 'body.block-editor-page' ).length ) {
 			window.tinyMCE.editors.forEach( function( editor ) {
