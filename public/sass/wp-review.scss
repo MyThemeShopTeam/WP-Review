@@ -328,14 +328,30 @@ textarea#wp_review_comment_pros, textarea#wp_review_comment_cons { height: 100px
 	right: auto;
 	top: auto;
 }
-.review-list .review-star, .user-review-area .review-star, .wp-review-point-type .review-total-circle .review-star, .wp-review-percentage-type .review-total-circle .review-star, .review-list .wp-review-user-feature-rating-star {
+
+.review-list .review-star,
+.user-review-area .review-star,
+.wp-review-point-type .review-total-circle .review-star,
+.wp-review-percentage-type .review-total-circle .review-star,
+.review-list .wp-review-user-feature-rating-star {
 	float: right;
+	text-align: right;
 }
- .rtl .review-list .review-star,  .rtl .user-review-area .review-star,  .rtl .review-total-circle .review-star, .rtl .wp-review-point-type .review-total-circle .review-star, .rtl .wp-review-percentage-type .review-total-circle .review-star {
+
+.wpr-login-required-message {
+	font-size: 80%;
+}
+
+.rtl .review-list .review-star,
+.rtl .user-review-area .review-star,
+.rtl .review-total-circle .review-star,
+.rtl .wp-review-point-type .review-total-circle .review-star,
+.rtl .wp-review-percentage-type .review-total-circle .review-star {
 	float: left;
 	margin-right: 10px;
 	margin-left: 0;
- }
+}
+
 /**
  * Bar & Percentage Point
  */
