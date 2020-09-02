@@ -2256,6 +2256,12 @@ function wp_review_get_schema_type( $review, $nested_rating = false ) {
 		}
 	}
 
+	if ( 'Recipe' === $review['schema'] ) {
+		if ( isset( $args['video'] ) && ( empty( $args['video']['name'] ) || empty( $args['video']['description'] ) || empty( $args['video']['thumbnailUrl'] ) || empty( $args['video']['uploadDate'] ) ) ) {
+			unset( $args['video'] );
+		}
+	}
+
 	$args = apply_filters( 'wp_review_get_schema_type_args', $args, $review, $nested_rating );
 
 	$output  = '<script type="application/ld+json">' . PHP_EOL;
@@ -2522,6 +2528,9 @@ function wp_review_get_schema_nested_item_args( $review ) {
 	// Add aggregateRating to Recipe.
 	if ( 'Recipe' === $review['schema'] ) {
 		$args['aggregateRating'] = wp_review_normalize_rating_value( $review['total'] );
+		if ( isset( $args['video'] ) && ( empty( $args['video']['name'] ) || empty( $args['video']['description'] ) || empty( $args['video']['thumbnailUrl'] ) || empty( $args['video']['uploadDate'] ) ) ) {
+			unset( $args['video'] );
+		}
 	}
 
 	if ( 'Product' === $review['schema'] ) {
