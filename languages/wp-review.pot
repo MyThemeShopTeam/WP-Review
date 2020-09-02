@@ -15,7 +15,7 @@ msgstr ""
 "esc_html_x:1,2c\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
-"POT-Creation-Date: 2020-04-07 17:11+0000\n"
+"POT-Creation-Date: 2020-09-02 16:50+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: Loco https://localise.biz/\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -90,7 +90,7 @@ msgstr ""
 msgid "Zine"
 msgstr ""
 
-#. translators: PHP version.
+#. PHP version.
 #: wp-review.php:38
 #, php-format
 msgid ""
@@ -102,7 +102,7 @@ msgstr ""
 msgid "10 Stars"
 msgstr ""
 
-#. translators: review rate.
+#. review rate.
 #: filter-list.php:425 includes/ajax.php:146
 #, php-format
 msgid "%s Stars"
@@ -123,11 +123,12 @@ msgid "Add rating"
 msgstr ""
 
 #: rating-types/point-input.php:40 rating-types/star-input.php:40
-#: rating-types/percentage-input.php:43
+#: rating-types/percentage-input.php:41
 msgid "Sending"
 msgstr ""
 
-#: rating-types/point-input.php:50 rating-types/percentage-input.php:53
+#. rating value.
+#: rating-types/point-input.php:50 rating-types/percentage-input.php:51
 #, php-format
 msgid "%s"
 msgstr ""
@@ -149,6 +150,7 @@ msgstr ""
 msgid "One Response"
 msgstr ""
 
+#. number of comments
 #: comments/comments.php:32
 #, php-format
 msgctxt "comments title"
@@ -185,19 +187,20 @@ msgstr ""
 msgid "User Rating"
 msgstr ""
 
+#. reviews count.
 #: includes/shortcodes.php:113
 #, php-format
 msgid "(%s vote)"
 msgstr ""
 
-#. translators: review text.
-#. translators: visitors rating.
+#. review text.
+#. visitors rating.
 #: includes/ajax.php:67 includes/ajax.php:143
 #, php-format
 msgid "Visitor Rating: %s"
 msgstr ""
 
-#. translators: number of reviews.
+#. number of reviews.
 #: includes/ajax.php:326 includes/ajax.php:329
 #, php-format
 msgid "%s review"
@@ -221,50 +224,54 @@ msgstr ""
 msgid "Completed!"
 msgstr ""
 
-#. translators: rating label.
-#: includes/comments.php:51
+#. rating label.
+#: includes/comments.php:53
 #, php-format
 msgid "WP Review Rating (%s)"
 msgstr ""
 
-#: includes/comments.php:78 admin/admin.php:111
+#: includes/comments.php:80 admin/admin.php:111
 msgid "Review total"
 msgstr ""
 
-#: includes/comments.php:117
+#: includes/comments.php:119
 msgid "Does Product Matches the Description?"
 msgstr ""
 
-#: includes/comments.php:121
+#: includes/comments.php:123
 msgid "Select"
 msgstr ""
 
-#: includes/comments.php:122 admin/metaboxes.php:882
+#: includes/comments.php:124 admin/metaboxes.php:882
 msgid "Yes"
 msgstr ""
 
-#: includes/comments.php:123 admin/metaboxes.php:883
+#: includes/comments.php:125 admin/metaboxes.php:883
 msgid "No"
 msgstr ""
 
-#: includes/comments.php:137
+#: includes/comments.php:139
 msgid "Comment Image"
 msgstr ""
 
-#: includes/comments.php:208
+#: includes/comments.php:210
 msgid "Review Total"
 msgstr ""
 
-#: includes/comments.php:269
+#: includes/comments.php:271
 msgid "Edit this item inline"
 msgstr ""
 
-#: includes/comments.php:270
+#: includes/comments.php:272
 msgid "Quick Edit"
 msgstr ""
 
-#: includes/comments.php:370
+#: includes/comments.php:372
 msgid "Visitor reviews"
+msgstr ""
+
+#: includes/enqueue.php:34
+msgid "You must log in to add your review"
 msgstr ""
 
 #: includes/schemas.php:11 admin/review-options-meta-box.php:233
@@ -294,8 +301,8 @@ msgstr ""
 #: includes/schemas.php:630 includes/schemas.php:681 includes/schemas.php:754
 #: includes/schemas.php:827 includes/schemas.php:914 includes/schemas.php:973
 #: includes/schemas.php:1068 includes/schemas.php:1137
-#: includes/schemas.php:1370 includes/schemas.php:1436
-#: includes/schemas.php:1518 includes/schemas.php:1579
+#: includes/schemas.php:1372 includes/schemas.php:1438
+#: includes/schemas.php:1520 includes/schemas.php:1581
 msgid "More link text"
 msgstr ""
 
@@ -304,8 +311,8 @@ msgstr ""
 #: includes/schemas.php:632 includes/schemas.php:683 includes/schemas.php:756
 #: includes/schemas.php:829 includes/schemas.php:916 includes/schemas.php:975
 #: includes/schemas.php:1070 includes/schemas.php:1139
-#: includes/schemas.php:1372 includes/schemas.php:1438
-#: includes/schemas.php:1520 includes/schemas.php:1581
+#: includes/schemas.php:1374 includes/schemas.php:1440
+#: includes/schemas.php:1522 includes/schemas.php:1583
 #: box-templates/global/partials/review-schema.php:49
 msgid "[ More ]"
 msgstr ""
@@ -315,8 +322,8 @@ msgstr ""
 #: includes/schemas.php:637 includes/schemas.php:688 includes/schemas.php:761
 #: includes/schemas.php:834 includes/schemas.php:921 includes/schemas.php:980
 #: includes/schemas.php:1075 includes/schemas.php:1144
-#: includes/schemas.php:1377 includes/schemas.php:1443
-#: includes/schemas.php:1525 includes/schemas.php:1586
+#: includes/schemas.php:1379 includes/schemas.php:1445
+#: includes/schemas.php:1527 includes/schemas.php:1588
 msgid "More link URL"
 msgstr ""
 
@@ -325,8 +332,8 @@ msgstr ""
 #: includes/schemas.php:643 includes/schemas.php:694 includes/schemas.php:767
 #: includes/schemas.php:840 includes/schemas.php:927 includes/schemas.php:986
 #: includes/schemas.php:1081 includes/schemas.php:1150
-#: includes/schemas.php:1383 includes/schemas.php:1449
-#: includes/schemas.php:1531 includes/schemas.php:1592
+#: includes/schemas.php:1385 includes/schemas.php:1451
+#: includes/schemas.php:1533 includes/schemas.php:1594
 msgid "Use button style"
 msgstr ""
 
@@ -335,8 +342,8 @@ msgstr ""
 #: includes/schemas.php:647 includes/schemas.php:698 includes/schemas.php:771
 #: includes/schemas.php:844 includes/schemas.php:931 includes/schemas.php:990
 #: includes/schemas.php:1085 includes/schemas.php:1154
-#: includes/schemas.php:1387 includes/schemas.php:1453
-#: includes/schemas.php:1535 includes/schemas.php:1596
+#: includes/schemas.php:1389 includes/schemas.php:1455
+#: includes/schemas.php:1537 includes/schemas.php:1598
 msgid "Button"
 msgstr ""
 
@@ -345,8 +352,8 @@ msgstr ""
 #: includes/schemas.php:648 includes/schemas.php:699 includes/schemas.php:772
 #: includes/schemas.php:845 includes/schemas.php:932 includes/schemas.php:991
 #: includes/schemas.php:1086 includes/schemas.php:1155
-#: includes/schemas.php:1388 includes/schemas.php:1454
-#: includes/schemas.php:1536 includes/schemas.php:1597
+#: includes/schemas.php:1390 includes/schemas.php:1456
+#: includes/schemas.php:1538 includes/schemas.php:1599
 msgid "Link"
 msgstr ""
 
@@ -419,12 +426,12 @@ msgid "Title"
 msgstr ""
 
 #: includes/schemas.php:198 includes/schemas.php:307 includes/schemas.php:908
-#: includes/schemas.php:967 includes/schemas.php:1424 includes/schemas.php:1567
+#: includes/schemas.php:967 includes/schemas.php:1426 includes/schemas.php:1569
 msgid "Description"
 msgstr ""
 
-#: includes/schemas.php:204 includes/schemas.php:313 includes/schemas.php:1430
-#: includes/schemas.php:1573
+#: includes/schemas.php:204 includes/schemas.php:313 includes/schemas.php:1432
+#: includes/schemas.php:1575
 msgid "Image"
 msgstr ""
 
@@ -454,7 +461,7 @@ msgstr ""
 
 #: includes/schemas.php:268 includes/schemas.php:359 includes/schemas.php:867
 #: includes/schemas.php:950 includes/schemas.php:995 includes/schemas.php:1039
-#: includes/schemas.php:1489 includes/schemas.php:1601
+#: includes/schemas.php:1491 includes/schemas.php:1603
 msgid "Author"
 msgstr ""
 
@@ -540,7 +547,7 @@ msgstr ""
 msgid "Location name"
 msgstr ""
 
-#: includes/schemas.php:536 includes/schemas.php:1398
+#: includes/schemas.php:536 includes/schemas.php:1400
 msgid "Address"
 msgstr ""
 
@@ -548,15 +555,15 @@ msgstr ""
 msgid "Performer"
 msgstr ""
 
-#: includes/schemas.php:553 includes/schemas.php:1159 includes/schemas.php:1458
+#: includes/schemas.php:553 includes/schemas.php:1159 includes/schemas.php:1460
 msgid "Offer price"
 msgstr ""
 
-#: includes/schemas.php:554 includes/schemas.php:1160 includes/schemas.php:1459
+#: includes/schemas.php:554 includes/schemas.php:1160 includes/schemas.php:1461
 msgid "Fill \"0.0\" to show the free price"
 msgstr ""
 
-#: includes/schemas.php:562 includes/schemas.php:1168 includes/schemas.php:1467
+#: includes/schemas.php:562 includes/schemas.php:1168 includes/schemas.php:1469
 msgid "Currency"
 msgstr ""
 
@@ -608,8 +615,8 @@ msgstr ""
 msgid "Hotel Image"
 msgstr ""
 
-#: includes/schemas.php:703 includes/schemas.php:776 includes/schemas.php:1392
-#: includes/schemas.php:1540
+#: includes/schemas.php:703 includes/schemas.php:776 includes/schemas.php:1394
+#: includes/schemas.php:1542
 msgid "Price range"
 msgstr ""
 
@@ -681,7 +688,7 @@ msgstr ""
 msgid "MusicPlaylist"
 msgstr ""
 
-#: includes/schemas.php:902 includes/schemas.php:1418 includes/schemas.php:1561
+#: includes/schemas.php:902 includes/schemas.php:1420 includes/schemas.php:1563
 msgid "Name"
 msgstr ""
 
@@ -858,95 +865,95 @@ msgstr ""
 msgid "The number of calories"
 msgstr ""
 
-#: includes/schemas.php:1314
+#: includes/schemas.php:1315
 msgid "Video name"
 msgstr ""
 
-#: includes/schemas.php:1322
+#: includes/schemas.php:1324
 msgid "Video description"
 msgstr ""
 
-#: includes/schemas.php:1330
+#: includes/schemas.php:1332
 msgid "Video thumbnail URL"
 msgstr ""
 
-#: includes/schemas.php:1338
+#: includes/schemas.php:1340
 msgid "Video upload date"
 msgstr ""
 
-#: includes/schemas.php:1341
+#: includes/schemas.php:1343
 msgid "Y-m-d format"
 msgstr ""
 
-#: includes/schemas.php:1348
+#: includes/schemas.php:1350
 msgid "Restaurant"
 msgstr ""
 
-#: includes/schemas.php:1352
+#: includes/schemas.php:1354
 msgid "Restaurant Name"
 msgstr ""
 
-#: includes/schemas.php:1358
+#: includes/schemas.php:1360
 msgid "Restaurant Description"
 msgstr ""
 
-#: includes/schemas.php:1364
+#: includes/schemas.php:1366
 msgid "Restaurant Image"
 msgstr ""
 
-#: includes/schemas.php:1403
+#: includes/schemas.php:1405
 msgid "Cuisine"
 msgstr ""
 
-#: includes/schemas.php:1408
+#: includes/schemas.php:1410
 msgid "Telephone"
 msgstr ""
 
-#: includes/schemas.php:1414
+#: includes/schemas.php:1416
 msgid "SoftwareApplication"
 msgstr ""
 
-#: includes/schemas.php:1475
+#: includes/schemas.php:1477
 msgid "Operating System"
 msgstr ""
 
-#: includes/schemas.php:1478
+#: includes/schemas.php:1480
 msgid "For example, \"Windows 7\", \"OSX 10.6\", \"Android 1.6\""
 msgstr ""
 
-#: includes/schemas.php:1482
+#: includes/schemas.php:1484
 msgid "Application Category"
 msgstr ""
 
-#: includes/schemas.php:1485
+#: includes/schemas.php:1487
 msgid "For example, \"Game\", \"Multimedia\""
 msgstr ""
 
-#: includes/schemas.php:1496
+#: includes/schemas.php:1498
 msgid "Store"
 msgstr ""
 
-#: includes/schemas.php:1500
+#: includes/schemas.php:1502
 msgid "Store Name"
 msgstr ""
 
-#: includes/schemas.php:1506
+#: includes/schemas.php:1508
 msgid "Store Description"
 msgstr ""
 
-#: includes/schemas.php:1512
+#: includes/schemas.php:1514
 msgid "Store Image"
 msgstr ""
 
-#: includes/schemas.php:1546
+#: includes/schemas.php:1548
 msgid "Store Address"
 msgstr ""
 
-#: includes/schemas.php:1551
+#: includes/schemas.php:1553
 msgid "Store Telephone"
 msgstr ""
 
-#: includes/schemas.php:1557
+#: includes/schemas.php:1559
 msgid "TVSeries"
 msgstr ""
 
@@ -970,7 +977,7 @@ msgstr ""
 msgid "No review"
 msgstr ""
 
-#. translators: review ID.
+#. review ID.
 #: admin/review-options-meta-box.php:84
 #, php-format
 msgid "Review ID: %s"
@@ -1029,6 +1036,7 @@ msgstr ""
 msgid "Use custom options"
 msgstr ""
 
+#. Name of the plugin
 #: admin/class-wp-review-options.php:38 admin/class-wp-review-options.php:39
 #: admin/options/review.php:326
 msgid "WP Review"
@@ -1320,7 +1328,7 @@ msgstr ""
 msgid "I already did"
 msgstr ""
 
-#. translators: import source.
+#. import source.
 #: admin/admin.php:41
 #, php-format
 msgid "Are you sure you want to import from %s?"
@@ -2295,7 +2303,7 @@ msgid ""
 "Review Pro 1.x."
 msgstr ""
 
-#. translators: number of rows left.
+#. number of rows left.
 #: admin/options/review.php:1020
 #, php-format
 msgid "%s ratings left to import."
@@ -2313,7 +2321,7 @@ msgstr ""
 msgid "API Key"
 msgstr ""
 
-#. translators: Yelp App link.
+#. Yelp App link.
 #: admin/options/yelp.php:26
 #, php-format
 msgid "%s to get Yelp API Key."
@@ -2420,7 +2428,7 @@ msgstr ""
 msgid "Set to 0 if you want to show popup on each page load."
 msgstr ""
 
-#. translators: number input.
+#. number input.
 #: admin/options/popup.php:222
 #, php-format
 msgid "Show popup after %s second(s)"
@@ -2440,7 +2448,7 @@ msgstr ""
 msgid "Show popup when visitor is about to leave (exit intent)"
 msgstr ""
 
-#. translators: width input.
+#. width input.
 #: admin/options/popup.php:261
 #, php-format
 msgid "Show popup on screens larger than %s pixels"
@@ -2552,13 +2560,13 @@ msgstr ""
 msgid "Button text color"
 msgstr ""
 
-#. translators: Google API link.
+#. Google API link.
 #: admin/options/google.php:25
 #, php-format
 msgid "%s to get Google API key."
 msgstr ""
 
-#. translators: Facebook App link.
+#. Facebook App link.
 #: admin/options/facebook.php:13
 #, php-format
 msgid "%s to create Facebook App. Remember to add your domain to app."
