@@ -20,8 +20,6 @@ if ( wp_review_is_amp_page() ) {
 	return;
 }
 
-global $wp_review_rating_types;
-
 // For now, enqueue in footer.
 wp_enqueue_script( 'wp-review-percentage-input', trailingslashit( WP_REVIEW_URI ) . 'rating-types/percentage-input.js', array( 'jquery' ) );
 

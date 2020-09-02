@@ -40,15 +40,17 @@ function wp_review_comment_count( $count ) {
  * Add the title to our admin area, for editing, etc
  */
 function wp_review_comment_add_meta_box() {
-	global $wp_review_rating_types, $comment;
-	$type = wp_review_get_post_user_review_type( $comment->comment_post_ID );
+	global $comment;
+
+	$rating_types = wp_review_get_rating_types();
+	$type         = wp_review_get_post_user_review_type( $comment->comment_post_ID );
 	if ( ! $type ) {
 		$type = 'star';
 	}
 	add_meta_box(
 		'wp-review-comment-rating',
 		// translators: rating label.
-		sprintf( __( 'WP Review Rating (%s)', 'wp-review' ), $wp_review_rating_types[ $type ]['label'] ),
+		sprintf( __( 'WP Review Rating (%s)', 'wp-review' ), $rating_types[ $type ]['label'] ),
 		'wp_review_comment_meta_box_fields',
 		'comment',
 		'normal',
