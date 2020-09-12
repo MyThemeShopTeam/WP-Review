@@ -151,9 +151,9 @@ There are two ways you can do this. You can update the plugin by downloading a f
 
 == Changelog ==
 
-= v5.3.4 (Sep 2, 2020) =
+= v5.3.4 (Sep 12, 2020) =
 * Added a message if rating is not allowed for the guests
-* Fixed deprecated jQuery function in WordPress 5.5
+* Fixed deprecated jQuery function in the WordPress 5.5
 * Fixed filter `wp_review_rating_types` not working in some places
 * Fixed Recipe schema errors when video data is empty
 
