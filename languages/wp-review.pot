@@ -10,1315 +10,16 @@ msgstr ""
 "Language-Team: MyThemeShop\n"
 "Last-Translator: MyThemeShop\n"
 "X-Poedit-Basepath: ..\n"
-"X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:"
-"1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;"
-"esc_html_x:1,2c\n"
+"X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;"
+"_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;"
+"esc_html_e;esc_html_x:1,2c\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
-"POT-Creation-Date: 2020-04-07 17:11+0000\n"
+"POT-Creation-Date: 2020-09-12 18:25+0530\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: Loco https://localise.biz/\n"
+"X-Generator: Poedit 2.3.1\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
-"Language: "
-
-#: template-list.php:17 admin/metaboxes.php:366 admin/options/review.php:520
-msgid "Default"
-msgstr ""
-
-#: template-list.php:37
-msgid "Amazon"
-msgstr ""
-
-#: template-list.php:47
-msgid "Aqua"
-msgstr ""
-
-#: template-list.php:57
-msgid "Blue"
-msgstr ""
-
-#: template-list.php:67
-msgid "Darkside"
-msgstr ""
-
-#: template-list.php:78
-msgid "Dash"
-msgstr ""
-
-#: template-list.php:88
-msgid "Edge"
-msgstr ""
-
-#: template-list.php:98
-msgid "Enterprise"
-msgstr ""
-
-#: template-list.php:108
-msgid "Facebook"
-msgstr ""
-
-#: template-list.php:118
-msgid "Fizzy"
-msgstr ""
-
-#: template-list.php:128
-msgid "Gamer"
-msgstr ""
-
-#: template-list.php:138
-msgid "Gravity"
-msgstr ""
-
-#: template-list.php:149
-msgid "Shell"
-msgstr ""
-
-#: template-list.php:159
-msgid "Tabbed layout"
-msgstr ""
-
-#: template-list.php:169
-msgid "Tabbed layout 2"
-msgstr ""
-
-#: template-list.php:179
-msgid "Xiaomi"
-msgstr ""
-
-#: template-list.php:189
-msgid "Zine"
-msgstr ""
-
-#. translators: PHP version.
-#: wp-review.php:38
-#, php-format
-msgid ""
-"<strong>WP Review</strong> requires PHP version 5.6 or above. You are "
-"running version %s. Please update PHP to run this plugin."
-msgstr ""
-
-#: filter-list.php:422
-msgid "10 Stars"
-msgstr ""
-
-#. translators: review rate.
-#: filter-list.php:425 includes/ajax.php:146
-#, php-format
-msgid "%s Stars"
-msgstr ""
-
-#: filter-list.php:426
-#, php-format
-msgid "%s Star"
-msgstr ""
-
-#: filter-list.php:441
-msgid "Custom template"
-msgstr ""
-
-#: rating-types/point-input.php:19 rating-types/star-input.php:19
-#: rating-types/percentage-input.php:19
-msgid "Add rating"
-msgstr ""
-
-#: rating-types/point-input.php:40 rating-types/star-input.php:40
-#: rating-types/percentage-input.php:43
-msgid "Sending"
-msgstr ""
-
-#: rating-types/point-input.php:50 rating-types/percentage-input.php:53
-#, php-format
-msgid "%s"
-msgstr ""
-
-#: rating-types/thumbs-output.php:9 rating-types/thumbs-input.php:9
-#: rating-types/circle-output.php:9 rating-types/circle-input.php:9
-msgid "This rating type is not supported in the WP Review Free version"
-msgstr ""
-
-#: comments/comments.php:12
-msgid "Please do not load this page directly. Thanks!"
-msgstr ""
-
-#: comments/comments.php:16
-msgid "This post is password protected. Enter the password to view comments."
-msgstr ""
-
-#: comments/comments.php:28
-msgid "One Response"
-msgstr ""
-
-#: comments/comments.php:32
-#, php-format
-msgctxt "comments title"
-msgid "%1$s Comment"
-msgid_plural "%1$s Comments"
-msgstr[0] ""
-msgstr[1] ""
-
-#: comments/comments.php:75
-msgid "Leave a Reply"
-msgstr ""
-
-#: comments/comments.php:78
-msgid "Post Comment"
-msgstr ""
-
-#: comments/comments.php:79
-msgid "Comment*"
-msgstr ""
-
-#: comments/comments.php:83
-msgid "Name*"
-msgstr ""
-
-#: comments/comments.php:84
-msgid "Email*"
-msgstr ""
-
-#: comments/comments.php:85
-msgid "Website"
-msgstr ""
-
-#: includes/shortcodes.php:106
-msgid "User Rating"
-msgstr ""
-
-#: includes/shortcodes.php:113
-#, php-format
-msgid "(%s vote)"
-msgstr ""
-
-#. translators: review text.
-#. translators: visitors rating.
-#: includes/ajax.php:67 includes/ajax.php:143
-#, php-format
-msgid "Visitor Rating: %s"
-msgstr ""
-
-#. translators: number of reviews.
-#: includes/ajax.php:326 includes/ajax.php:329
-#, php-format
-msgid "%s review"
-msgid_plural "%s reviews"
-msgstr[0] ""
-msgstr[1] ""
-
-#: includes/ajax.php:345
-msgid "Empty post ID"
-msgstr ""
-
-#: includes/ajax.php:348
-msgid "Empty rating data"
-msgstr ""
-
-#: includes/ajax.php:351
-msgid "Empty type data"
-msgstr ""
-
-#: includes/ajax.php:391 includes/ajax.php:403
-msgid "Completed!"
-msgstr ""
-
-#. translators: rating label.
-#: includes/comments.php:51
-#, php-format
-msgid "WP Review Rating (%s)"
-msgstr ""
-
-#: includes/comments.php:78 admin/admin.php:111
-msgid "Review total"
-msgstr ""
-
-#: includes/comments.php:117
-msgid "Does Product Matches the Description?"
-msgstr ""
-
-#: includes/comments.php:121
-msgid "Select"
-msgstr ""
-
-#: includes/comments.php:122 admin/metaboxes.php:882
-msgid "Yes"
-msgstr ""
-
-#: includes/comments.php:123 admin/metaboxes.php:883
-msgid "No"
-msgstr ""
-
-#: includes/comments.php:137
-msgid "Comment Image"
-msgstr ""
-
-#: includes/comments.php:208
-msgid "Review Total"
-msgstr ""
-
-#: includes/comments.php:269
-msgid "Edit this item inline"
-msgstr ""
-
-#: includes/comments.php:270
-msgid "Quick Edit"
-msgstr ""
-
-#: includes/comments.php:370
-msgid "Visitor reviews"
-msgstr ""
-
-#: includes/schemas.php:11 admin/review-options-meta-box.php:233
-#: admin/review-options-meta-box.php:254
-#: includes/widgets/class-wp-review-tab-widget.php:216
-msgid "None"
-msgstr ""
-
-#: includes/schemas.php:14
-msgid "Book"
-msgstr ""
-
-#: includes/schemas.php:18
-msgid "Book Title"
-msgstr ""
-
-#: includes/schemas.php:24
-msgid "Book Description"
-msgstr ""
-
-#: includes/schemas.php:30
-msgid "Book Image"
-msgstr ""
-
-#: includes/schemas.php:36 includes/schemas.php:141 includes/schemas.php:210
-#: includes/schemas.php:319 includes/schemas.php:388 includes/schemas.php:493
-#: includes/schemas.php:630 includes/schemas.php:681 includes/schemas.php:754
-#: includes/schemas.php:827 includes/schemas.php:914 includes/schemas.php:973
-#: includes/schemas.php:1068 includes/schemas.php:1137
-#: includes/schemas.php:1370 includes/schemas.php:1436
-#: includes/schemas.php:1518 includes/schemas.php:1579
-msgid "More link text"
-msgstr ""
-
-#: includes/schemas.php:38 includes/schemas.php:143 includes/schemas.php:212
-#: includes/schemas.php:321 includes/schemas.php:390 includes/schemas.php:495
-#: includes/schemas.php:632 includes/schemas.php:683 includes/schemas.php:756
-#: includes/schemas.php:829 includes/schemas.php:916 includes/schemas.php:975
-#: includes/schemas.php:1070 includes/schemas.php:1139
-#: includes/schemas.php:1372 includes/schemas.php:1438
-#: includes/schemas.php:1520 includes/schemas.php:1581
-#: box-templates/global/partials/review-schema.php:49
-msgid "[ More ]"
-msgstr ""
-
-#: includes/schemas.php:43 includes/schemas.php:148 includes/schemas.php:217
-#: includes/schemas.php:326 includes/schemas.php:395 includes/schemas.php:500
-#: includes/schemas.php:637 includes/schemas.php:688 includes/schemas.php:761
-#: includes/schemas.php:834 includes/schemas.php:921 includes/schemas.php:980
-#: includes/schemas.php:1075 includes/schemas.php:1144
-#: includes/schemas.php:1377 includes/schemas.php:1443
-#: includes/schemas.php:1525 includes/schemas.php:1586
-msgid "More link URL"
-msgstr ""
-
-#: includes/schemas.php:49 includes/schemas.php:154 includes/schemas.php:223
-#: includes/schemas.php:332 includes/schemas.php:401 includes/schemas.php:506
-#: includes/schemas.php:643 includes/schemas.php:694 includes/schemas.php:767
-#: includes/schemas.php:840 includes/schemas.php:927 includes/schemas.php:986
-#: includes/schemas.php:1081 includes/schemas.php:1150
-#: includes/schemas.php:1383 includes/schemas.php:1449
-#: includes/schemas.php:1531 includes/schemas.php:1592
-msgid "Use button style"
-msgstr ""
-
-#: includes/schemas.php:53 includes/schemas.php:158 includes/schemas.php:227
-#: includes/schemas.php:336 includes/schemas.php:405 includes/schemas.php:510
-#: includes/schemas.php:647 includes/schemas.php:698 includes/schemas.php:771
-#: includes/schemas.php:844 includes/schemas.php:931 includes/schemas.php:990
-#: includes/schemas.php:1085 includes/schemas.php:1154
-#: includes/schemas.php:1387 includes/schemas.php:1453
-#: includes/schemas.php:1535 includes/schemas.php:1596
-msgid "Button"
-msgstr ""
-
-#: includes/schemas.php:54 includes/schemas.php:159 includes/schemas.php:228
-#: includes/schemas.php:337 includes/schemas.php:406 includes/schemas.php:511
-#: includes/schemas.php:648 includes/schemas.php:699 includes/schemas.php:772
-#: includes/schemas.php:845 includes/schemas.php:932 includes/schemas.php:991
-#: includes/schemas.php:1086 includes/schemas.php:1155
-#: includes/schemas.php:1388 includes/schemas.php:1454
-#: includes/schemas.php:1536 includes/schemas.php:1597
-msgid "Link"
-msgstr ""
-
-#: includes/schemas.php:58
-msgid "Book Author"
-msgstr ""
-
-#: includes/schemas.php:64
-msgid "Book Edition"
-msgstr ""
-
-#: includes/schemas.php:70
-msgid "Book Format"
-msgstr ""
-
-#: includes/schemas.php:83
-msgid "Publisher"
-msgstr ""
-
-#: includes/schemas.php:91
-msgid "Publisher Logo"
-msgstr ""
-
-#: includes/schemas.php:100 includes/schemas.php:410 includes/schemas.php:849
-msgid "Date published"
-msgstr ""
-
-#: includes/schemas.php:106
-msgid "Illustrator"
-msgstr ""
-
-#: includes/schemas.php:112
-msgid "ISBN"
-msgstr ""
-
-#: includes/schemas.php:118
-msgid "Number Of Pages"
-msgstr ""
-
-#: includes/schemas.php:125
-msgid "Course"
-msgstr ""
-
-#: includes/schemas.php:129
-msgid "Course Name"
-msgstr ""
-
-#: includes/schemas.php:135
-msgid "Course Description"
-msgstr ""
-
-#: includes/schemas.php:163
-msgid "Course Author"
-msgstr ""
-
-#: includes/schemas.php:169
-msgid "Course Provider"
-msgstr ""
-
-#: includes/schemas.php:178
-msgid "Provider Logo"
-msgstr ""
-
-#: includes/schemas.php:188
-msgid "CreativeWorkSeason"
-msgstr ""
-
-#: includes/schemas.php:192 includes/schemas.php:301 admin/admin.php:109
-msgid "Title"
-msgstr ""
-
-#: includes/schemas.php:198 includes/schemas.php:307 includes/schemas.php:908
-#: includes/schemas.php:967 includes/schemas.php:1424 includes/schemas.php:1567
-msgid "Description"
-msgstr ""
-
-#: includes/schemas.php:204 includes/schemas.php:313 includes/schemas.php:1430
-#: includes/schemas.php:1573
-msgid "Image"
-msgstr ""
-
-#: includes/schemas.php:232 includes/schemas.php:341 includes/schemas.php:515
-msgid "Start date"
-msgstr ""
-
-#: includes/schemas.php:238 includes/schemas.php:347 includes/schemas.php:521
-msgid "End date"
-msgstr ""
-
-#: includes/schemas.php:244
-msgid "Number of episodes"
-msgstr ""
-
-#: includes/schemas.php:250
-msgid "Season number"
-msgstr ""
-
-#: includes/schemas.php:256 includes/schemas.php:366
-msgid "Episode"
-msgstr ""
-
-#: includes/schemas.php:262 includes/schemas.php:428
-msgid "Part of series"
-msgstr ""
-
-#: includes/schemas.php:268 includes/schemas.php:359 includes/schemas.php:867
-#: includes/schemas.php:950 includes/schemas.php:995 includes/schemas.php:1039
-#: includes/schemas.php:1489 includes/schemas.php:1601
-msgid "Author"
-msgstr ""
-
-#: includes/schemas.php:274 includes/schemas.php:440
-msgid "Production company"
-msgstr ""
-
-#: includes/schemas.php:280 includes/schemas.php:446 includes/schemas.php:873
-msgid "Director(s)"
-msgstr ""
-
-#: includes/schemas.php:284 includes/schemas.php:450 includes/schemas.php:877
-msgid "Add one director per line"
-msgstr ""
-
-#: includes/schemas.php:288 includes/schemas.php:454 includes/schemas.php:881
-msgid "Actor(s)"
-msgstr ""
-
-#: includes/schemas.php:292 includes/schemas.php:458 includes/schemas.php:885
-msgid "Add one actor per line"
-msgstr ""
-
-#: includes/schemas.php:297
-msgid "CreativeWorkSeries"
-msgstr ""
-
-#: includes/schemas.php:353
-msgid "International Standard Serial Number (ISSN)"
-msgstr ""
-
-#: includes/schemas.php:370
-msgid "Episode Title"
-msgstr ""
-
-#: includes/schemas.php:376
-msgid "Episode Description"
-msgstr ""
-
-#: includes/schemas.php:382
-msgid "Episode Image"
-msgstr ""
-
-#: includes/schemas.php:416
-msgid "Episode number"
-msgstr ""
-
-#: includes/schemas.php:422
-msgid "Part of season"
-msgstr ""
-
-#: includes/schemas.php:434
-msgid "Episode Author"
-msgstr ""
-
-#: includes/schemas.php:462 includes/schemas.php:889 includes/schemas.php:942
-#: includes/schemas.php:1031
-msgid "Genre"
-msgstr ""
-
-#: includes/schemas.php:466 includes/schemas.php:893 includes/schemas.php:946
-#: includes/schemas.php:1035
-msgid "Add one item per line"
-msgstr ""
-
-#: includes/schemas.php:471
-msgid "Event"
-msgstr ""
-
-#: includes/schemas.php:475
-msgid "Event Title"
-msgstr ""
-
-#: includes/schemas.php:481
-msgid "Event Description"
-msgstr ""
-
-#: includes/schemas.php:487
-msgid "Event Image"
-msgstr ""
-
-#: includes/schemas.php:527
-msgid "Location name"
-msgstr ""
-
-#: includes/schemas.php:536 includes/schemas.php:1398
-msgid "Address"
-msgstr ""
-
-#: includes/schemas.php:544
-msgid "Performer"
-msgstr ""
-
-#: includes/schemas.php:553 includes/schemas.php:1159 includes/schemas.php:1458
-msgid "Offer price"
-msgstr ""
-
-#: includes/schemas.php:554 includes/schemas.php:1160 includes/schemas.php:1459
-msgid "Fill \"0.0\" to show the free price"
-msgstr ""
-
-#: includes/schemas.php:562 includes/schemas.php:1168 includes/schemas.php:1467
-msgid "Currency"
-msgstr ""
-
-#: includes/schemas.php:570 includes/schemas.php:1196
-msgid "Offer URL"
-msgstr ""
-
-#: includes/schemas.php:579
-msgid "Offer valid from"
-msgstr ""
-
-#: includes/schemas.php:587 includes/schemas.php:1176
-msgid "Availability"
-msgstr ""
-
-#: includes/schemas.php:608
-msgid "Game"
-msgstr ""
-
-#: includes/schemas.php:612
-msgid "Game Title"
-msgstr ""
-
-#: includes/schemas.php:618
-msgid "Game Description"
-msgstr ""
-
-#: includes/schemas.php:624
-msgid "Game Image"
-msgstr ""
-
-#: includes/schemas.php:652
-msgid "Game Author"
-msgstr ""
-
-#: includes/schemas.php:659
-msgid "Hotel"
-msgstr ""
-
-#: includes/schemas.php:663
-msgid "Hotel Name"
-msgstr ""
-
-#: includes/schemas.php:669
-msgid "Hotel Description"
-msgstr ""
-
-#: includes/schemas.php:675
-msgid "Hotel Image"
-msgstr ""
-
-#: includes/schemas.php:703 includes/schemas.php:776 includes/schemas.php:1392
-#: includes/schemas.php:1540
-msgid "Price range"
-msgstr ""
-
-#: includes/schemas.php:709 includes/schemas.php:782
-msgid "Payment accepted"
-msgstr ""
-
-#: includes/schemas.php:715 includes/schemas.php:788
-msgid "Currencies accepted"
-msgstr ""
-
-#: includes/schemas.php:721
-msgid "Hotel Address"
-msgstr ""
-
-#: includes/schemas.php:726
-msgid "Hotel Telephone"
-msgstr ""
-
-#: includes/schemas.php:732
-msgid "LocalBusiness"
-msgstr ""
-
-#: includes/schemas.php:736
-msgid "Business Name"
-msgstr ""
-
-#: includes/schemas.php:742
-msgid "Business Description"
-msgstr ""
-
-#: includes/schemas.php:748
-msgid "Business Image"
-msgstr ""
-
-#: includes/schemas.php:794
-msgid "Business Address"
-msgstr ""
-
-#: includes/schemas.php:799
-msgid "Business Telephone"
-msgstr ""
-
-#: includes/schemas.php:805
-msgid "Movie"
-msgstr ""
-
-#: includes/schemas.php:809
-msgid "Movie title"
-msgstr ""
-
-#: includes/schemas.php:815
-msgid "Movie description"
-msgstr ""
-
-#: includes/schemas.php:821
-msgid "Movie Image"
-msgstr ""
-
-#: includes/schemas.php:855
-msgid "Country"
-msgstr ""
-
-#: includes/schemas.php:861
-msgid "Duration"
-msgstr ""
-
-#: includes/schemas.php:898
-msgid "MusicPlaylist"
-msgstr ""
-
-#: includes/schemas.php:902 includes/schemas.php:1418 includes/schemas.php:1561
-msgid "Name"
-msgstr ""
-
-#: includes/schemas.php:936
-msgid "Number of tracks"
-msgstr ""
-
-#: includes/schemas.php:957
-msgid "MusicRecording"
-msgstr ""
-
-#: includes/schemas.php:961
-msgid "Track name"
-msgstr ""
-
-#: includes/schemas.php:1001
-msgid "Track Duration"
-msgstr ""
-
-#: includes/schemas.php:1007
-msgid "Album name"
-msgstr ""
-
-#: includes/schemas.php:1013
-msgid "Playlist name"
-msgstr ""
-
-#: includes/schemas.php:1019
-msgid "International Standard Recording Code"
-msgstr ""
-
-#: includes/schemas.php:1025
-msgid "Recording of"
-msgstr ""
-
-#: includes/schemas.php:1046
-msgid "Organization"
-msgstr ""
-
-#: includes/schemas.php:1050
-msgid "Organization Name"
-msgstr ""
-
-#: includes/schemas.php:1056
-msgid "Organization Description"
-msgstr ""
-
-#: includes/schemas.php:1062
-msgid "Organization Image"
-msgstr ""
-
-#: includes/schemas.php:1091
-msgid "Product"
-msgstr ""
-
-#: includes/schemas.php:1095
-msgid "Product Name"
-msgstr ""
-
-#: includes/schemas.php:1101
-msgid "Product Description"
-msgstr ""
-
-#: includes/schemas.php:1107
-msgid "Product Image"
-msgstr ""
-
-#: includes/schemas.php:1113
-msgid "Brand"
-msgstr ""
-
-#: includes/schemas.php:1119
-msgid "SKU"
-msgstr ""
-
-#: includes/schemas.php:1125
-msgid "MPN"
-msgstr ""
-
-#: includes/schemas.php:1131
-msgid "GTIN-8"
-msgstr ""
-
-#: includes/schemas.php:1205
-msgid "Valid until"
-msgstr ""
-
-#: includes/schemas.php:1214
-msgid "Recipe"
-msgstr ""
-
-#: includes/schemas.php:1218
-msgid "Recipe Name"
-msgstr ""
-
-#: includes/schemas.php:1224
-msgid "Recipe Author"
-msgstr ""
-
-#: includes/schemas.php:1230
-msgid "Recipe Description"
-msgstr ""
-
-#: includes/schemas.php:1236
-msgid "Recipe Image"
-msgstr ""
-
-#: includes/schemas.php:1242
-msgid "Preperation time"
-msgstr ""
-
-#: includes/schemas.php:1245 includes/schemas.php:1252
-#: includes/schemas.php:1259
-msgid "Format: 1H30M. H - Hours, M - Minutes"
-msgstr ""
-
-#: includes/schemas.php:1249
-msgid "Cook Time"
-msgstr ""
-
-#: includes/schemas.php:1256
-msgid "Total Time"
-msgstr ""
-
-#: includes/schemas.php:1263
-msgid "Recipe Type"
-msgstr ""
-
-#: includes/schemas.php:1266
-msgid "Type of dish, for example \"appetizer\", \"entree\", or \"dessert\""
-msgstr ""
-
-#: includes/schemas.php:1270
-msgid "Recipe Yield"
-msgstr ""
-
-#: includes/schemas.php:1273
-msgid "Quantity produced by the recipe, for example \"4 servings\""
-msgstr ""
-
-#: includes/schemas.php:1277
-msgid "Recipe Ingredients"
-msgstr ""
-
-#: includes/schemas.php:1281
-msgid "Recipe ingredients, add one item per line"
-msgstr ""
-
-#: includes/schemas.php:1285
-msgid "Recipe Instructions"
-msgstr ""
-
-#: includes/schemas.php:1288
-msgid "Steps to take"
-msgstr ""
-
-#: includes/schemas.php:1292
-msgid "Recipe Cuisine"
-msgstr ""
-
-#: includes/schemas.php:1298
-msgid "Keywords"
-msgstr ""
-
-#: includes/schemas.php:1301
-msgid "Separate by commas"
-msgstr ""
-
-#: includes/schemas.php:1305
-msgid "Calories"
-msgstr ""
-
-#: includes/schemas.php:1308
-msgid "The number of calories"
-msgstr ""
-
-#: includes/schemas.php:1314
-msgid "Video name"
-msgstr ""
-
-#: includes/schemas.php:1322
-msgid "Video description"
-msgstr ""
-
-#: includes/schemas.php:1330
-msgid "Video thumbnail URL"
-msgstr ""
-
-#: includes/schemas.php:1338
-msgid "Video upload date"
-msgstr ""
-
-#: includes/schemas.php:1341
-msgid "Y-m-d format"
-msgstr ""
-
-#: includes/schemas.php:1348
-msgid "Restaurant"
-msgstr ""
-
-#: includes/schemas.php:1352
-msgid "Restaurant Name"
-msgstr ""
-
-#: includes/schemas.php:1358
-msgid "Restaurant Description"
-msgstr ""
-
-#: includes/schemas.php:1364
-msgid "Restaurant Image"
-msgstr ""
-
-#: includes/schemas.php:1403
-msgid "Cuisine"
-msgstr ""
-
-#: includes/schemas.php:1408
-msgid "Telephone"
-msgstr ""
-
-#: includes/schemas.php:1414
-msgid "SoftwareApplication"
-msgstr ""
-
-#: includes/schemas.php:1475
-msgid "Operating System"
-msgstr ""
-
-#: includes/schemas.php:1478
-msgid "For example, \"Windows 7\", \"OSX 10.6\", \"Android 1.6\""
-msgstr ""
-
-#: includes/schemas.php:1482
-msgid "Application Category"
-msgstr ""
-
-#: includes/schemas.php:1485
-msgid "For example, \"Game\", \"Multimedia\""
-msgstr ""
-
-#: includes/schemas.php:1496
-msgid "Store"
-msgstr ""
-
-#: includes/schemas.php:1500
-msgid "Store Name"
-msgstr ""
-
-#: includes/schemas.php:1506
-msgid "Store Description"
-msgstr ""
-
-#: includes/schemas.php:1512
-msgid "Store Image"
-msgstr ""
-
-#: includes/schemas.php:1546
-msgid "Store Address"
-msgstr ""
-
-#: includes/schemas.php:1551
-msgid "Store Telephone"
-msgstr ""
-
-#: includes/schemas.php:1557
-msgid "TVSeries"
-msgstr ""
-
-#: admin/review-options-meta-box.php:46
-msgid "Review Box"
-msgstr ""
-
-#: admin/review-options-meta-box.php:48 admin/class-wp-review-options.php:89
-msgid "Popup"
-msgstr ""
-
-#: admin/review-options-meta-box.php:51 admin/class-wp-review-options.php:95
-msgid "Notification Bar"
-msgstr ""
-
-#: admin/review-options-meta-box.php:58
-msgid "Review Type"
-msgstr ""
-
-#: admin/review-options-meta-box.php:63
-msgid "No review"
-msgstr ""
-
-#. translators: review ID.
-#: admin/review-options-meta-box.php:84
-#, php-format
-msgid "Review ID: %s"
-msgstr ""
-
-#: admin/review-options-meta-box.php:92
-msgid "Review Heading"
-msgstr ""
-
-#: admin/review-options-meta-box.php:104
-msgid "Reviewed Item Schema"
-msgstr ""
-
-#: admin/review-options-meta-box.php:133
-msgid "Rating Schema"
-msgstr ""
-
-#: admin/review-options-meta-box.php:138
-msgid "Author Review Rating"
-msgstr ""
-
-#: admin/review-options-meta-box.php:139
-msgid "Visitors Aggregate Rating (if enabled)"
-msgstr ""
-
-#: admin/review-options-meta-box.php:140
-msgid "Comments Reviews Aggregate Rating (if enabled)"
-msgstr ""
-
-#: admin/review-options-meta-box.php:148
-msgid "Custom Author"
-msgstr ""
-
-#: admin/review-options-meta-box.php:167
-msgid "Review Author"
-msgstr ""
-
-#: admin/review-options-meta-box.php:181
-msgid "Display Schema Data in the Box (if available)"
-msgstr ""
-
-#: admin/review-options-meta-box.php:201
-msgid "Show Embed Code"
-msgstr ""
-
-#: admin/review-options-meta-box.php:224 admin/review-options-meta-box.php:245
-msgid "Enable"
-msgstr ""
-
-#: admin/review-options-meta-box.php:231 admin/review-options-meta-box.php:252
-#: admin/metaboxes.php:881
-msgid "Use global options"
-msgstr ""
-
-#: admin/review-options-meta-box.php:232 admin/review-options-meta-box.php:253
-msgid "Use custom options"
-msgstr ""
-
-#: admin/class-wp-review-options.php:38 admin/class-wp-review-options.php:39
-#: admin/options/review.php:326
-msgid "WP Review"
-msgstr ""
-
-#: admin/class-wp-review-options.php:83
-msgid "Global"
-msgstr ""
-
-#: admin/class-wp-review-options.php:101
-msgid "Yelp Reviews"
-msgstr ""
-
-#: admin/class-wp-review-options.php:107
-msgid "Google Reviews"
-msgstr ""
-
-#: admin/class-wp-review-options.php:113
-msgid "Facebook Reviews"
-msgstr ""
-
-#: admin/class-wp-review-options.php:119
-msgid "Role Manager"
-msgstr ""
-
-#: admin/class-wp-review-options.php:125
-msgid "Import Reviews"
-msgstr ""
-
-#: admin/class-wp-review-options.php:131
-msgid "Help"
-msgstr ""
-
-#: admin/class-wp-review-options.php:155
-msgid "Multisite Settings"
-msgstr ""
-
-#: admin/class-wp-review-options.php:170
-msgid "WP Review Settings"
-msgstr ""
-
-#: admin/metaboxes.php:40
-msgid "Review"
-msgstr ""
-
-#: admin/metaboxes.php:50
-msgid "Review Item"
-msgstr ""
-
-#: admin/metaboxes.php:61
-msgid "Review Links"
-msgstr ""
-
-#: admin/metaboxes.php:71
-msgid "Review Description"
-msgstr ""
-
-#: admin/metaboxes.php:82
-msgid "User Reviews"
-msgstr ""
-
-#: admin/metaboxes.php:208
-msgid "Add item"
-msgstr ""
-
-#: admin/metaboxes.php:214
-msgid "Total"
-msgstr ""
-
-#: admin/metaboxes.php:233 admin/metaboxes.php:702 admin/metaboxes.php:714
-#: admin/metaboxes.php:724 admin/options/review.php:782
-#: admin/options/review.php:795 admin/options/review.php:805
-#: admin/options/review.php:831 admin/options/review.php:841
-msgid "Delete"
-msgstr ""
-
-#: admin/metaboxes.php:239
-msgid "Feature Name"
-msgstr ""
-
-#: admin/metaboxes.php:250
-msgid "Feature Color"
-msgstr ""
-
-#: admin/metaboxes.php:264
-msgid "Inactive Color"
-msgstr ""
-
-#: admin/metaboxes.php:278
-msgid "Feature Score"
-msgstr ""
-
-#: admin/metaboxes.php:289 admin/options/multisite.php:267
-msgid "Hide Features"
-msgstr ""
-
-#: admin/metaboxes.php:307
-msgid "Custom Location"
-msgstr ""
-
-#: admin/metaboxes.php:326 admin/options/review.php:737
-msgid "Review Location"
-msgstr ""
-
-#: admin/metaboxes.php:331 admin/options/review.php:742
-msgid "After Content"
-msgstr ""
-
-#: admin/metaboxes.php:332 admin/options/review.php:743
-msgid "Before Content"
-msgstr ""
-
-#: admin/metaboxes.php:333 admin/options/review.php:744
-msgid "Custom (use shortcode)"
-msgstr ""
-
-#: admin/metaboxes.php:339
-msgid "Copy &amp; paste this shortcode in the content."
-msgstr ""
-
-#: admin/metaboxes.php:347
-msgid "Custom Layout"
-msgstr ""
-
-#: admin/metaboxes.php:399 admin/options/review.php:560
-msgid "Review Color"
-msgstr ""
-
-#: admin/metaboxes.php:409 admin/options/review.php:570
-msgid "Inactive Review Color"
-msgstr ""
-
-#: admin/metaboxes.php:419 admin/options/review.php:580
-msgid "Font Color"
-msgstr ""
-
-#: admin/metaboxes.php:429 admin/options/review.php:590
-msgid "Heading Background Color"
-msgstr ""
-
-#: admin/metaboxes.php:439 admin/options/review.php:600
-msgid "Background Color"
-msgstr ""
-
-#: admin/metaboxes.php:449 admin/options/review.php:610
-msgid "Border Color"
-msgstr ""
-
-#: admin/metaboxes.php:459 admin/options/review.php:634
-msgid "Google Font"
-msgstr ""
-
-#: admin/metaboxes.php:479
-msgid "Custom Width"
-msgstr ""
-
-#: admin/metaboxes.php:513
-msgid "Summary"
-msgstr ""
-
-#: admin/metaboxes.php:521
-msgid "Description title"
-msgstr ""
-
-#: admin/metaboxes.php:531
-msgid "Description content"
-msgstr ""
-
-#: admin/metaboxes.php:558
-msgid "Pros"
-msgstr ""
-
-#: admin/metaboxes.php:585
-msgid "Cons"
-msgstr ""
-
-#: admin/metaboxes.php:614
-msgid "Hide Description, Pros/Cons & Total Rating"
-msgstr ""
-
-#: admin/metaboxes.php:680 admin/options/hello-bar.php:41
-msgid "Text"
-msgstr ""
-
-#: admin/metaboxes.php:681
-msgid "URL"
-msgstr ""
-
-#: admin/metaboxes.php:731
-msgid "Add another"
-msgstr ""
-
-#: admin/metaboxes.php:760 admin/options/review.php:857
-msgid "Disabled"
-msgstr ""
-
-#: admin/metaboxes.php:767 admin/options/review.php:862
-msgid "Visitor Rating Only"
-msgstr ""
-
-#: admin/metaboxes.php:774 admin/options/review.php:867
-msgid "Comment Rating Only"
-msgstr ""
-
-#: admin/metaboxes.php:782 admin/options/review.php:873
-msgid "Both"
-msgstr ""
-
-#: admin/metaboxes.php:790
-msgid ""
-"If you are changing User Rating Type & post already have user ratings, "
-"please edit or remove existing ratings."
-msgstr ""
-
-#: admin/metaboxes.php:794
-msgid "User Rating Type"
-msgstr ""
-
-#: admin/metaboxes.php:825 admin/options/review.php:881
-msgid "User can:"
-msgstr ""
-
-#: admin/metaboxes.php:832 admin/options/review.php:887
-msgid "Give Overall Rating"
-msgstr ""
-
-#: admin/metaboxes.php:833 admin/options/review.php:888
-msgid "Rate Each Feature"
-msgstr ""
-
-#: admin/metaboxes.php:844
-msgid "Hide Visitors Rating in Review Box"
-msgstr ""
-
-#: admin/metaboxes.php:864
-msgid "Product Price"
-msgstr ""
-
-#: admin/metaboxes.php:874
-msgid "Comment Feedback (helpful/unhelpful)"
-msgstr ""
-
-#: admin/metaboxes.php:898 admin/options/review.php:507
-msgid "Processing..."
-msgstr ""
-
-#: admin/metaboxes.php:900 admin/options/review.php:508
-msgid "Purge visitor ratings"
-msgstr ""
-
-#: admin/metaboxes.php:901
-msgid "Click to remove all visitor ratings of this post."
-msgstr ""
-
-#: admin/metaboxes.php:1244 admin/admin.php:106 admin/options/hello-bar.php:173
-msgid "Select Image"
-msgstr ""
-
-#: admin/metaboxes.php:1247 admin/admin.php:108
-msgid "Remove Image"
-msgstr ""
-
-#: admin/class-wp-review-form-field.php:27
-msgctxt "switch label"
-msgid "Yes"
-msgstr ""
-
-#: admin/class-wp-review-form-field.php:28
-msgctxt "switch label"
-msgid "No"
-msgstr ""
-
-#: admin/class-wpr-review-notice.php:54
-msgid ""
-"Hey, we noticed you have created over 10 reviews from WP Review - that’s "
-"awesome! Could you please do us a BIG favor and give it a 5-star rating on "
-"WordPress to help us spread the word and boost our motivation?"
-msgstr ""
-
-#: admin/class-wpr-review-notice.php:57
-msgid "Ok, you deserve it"
-msgstr ""
-
-#: admin/class-wpr-review-notice.php:61
-msgid "Nope, maybe later"
-msgstr ""
-
-#: admin/class-wpr-review-notice.php:65
-msgid "I already did"
-msgstr ""
 
 #. translators: import source.
 #: admin/admin.php:41
@@ -1335,12 +36,28 @@ msgid ""
 "Are you sure you want to import options? All current options will be lost."
 msgstr ""
 
+#: admin/admin.php:106 admin/metaboxes.php:1244 admin/options/hello-bar.php:173
+msgid "Select Image"
+msgstr ""
+
 #: admin/admin.php:107
 msgid "Insert Image"
 msgstr ""
 
+#: admin/admin.php:108 admin/metaboxes.php:1247
+msgid "Remove Image"
+msgstr ""
+
+#: admin/admin.php:109 includes/schemas.php:192 includes/schemas.php:301
+msgid "Title"
+msgstr ""
+
 #: admin/admin.php:110
 msgid "Review box"
+msgstr ""
+
+#: admin/admin.php:111 includes/comments.php:80
+msgid "Review total"
 msgstr ""
 
 #: admin/admin.php:112
@@ -1763,6 +480,84 @@ msgid ""
 "more..."
 msgstr ""
 
+#: admin/class-wp-review-form-field.php:27
+msgctxt "switch label"
+msgid "Yes"
+msgstr ""
+
+#: admin/class-wp-review-form-field.php:28
+msgctxt "switch label"
+msgid "No"
+msgstr ""
+
+#: admin/class-wp-review-options.php:38 admin/class-wp-review-options.php:39
+#: admin/options/review.php:326 includes/functions.php:3847
+msgid "WP Review"
+msgstr ""
+
+#: admin/class-wp-review-options.php:83
+msgid "Global"
+msgstr ""
+
+#: admin/class-wp-review-options.php:89 admin/review-options-meta-box.php:48
+msgid "Popup"
+msgstr ""
+
+#: admin/class-wp-review-options.php:95 admin/review-options-meta-box.php:51
+msgid "Notification Bar"
+msgstr ""
+
+#: admin/class-wp-review-options.php:101
+msgid "Yelp Reviews"
+msgstr ""
+
+#: admin/class-wp-review-options.php:107
+msgid "Google Reviews"
+msgstr ""
+
+#: admin/class-wp-review-options.php:113
+msgid "Facebook Reviews"
+msgstr ""
+
+#: admin/class-wp-review-options.php:119
+msgid "Role Manager"
+msgstr ""
+
+#: admin/class-wp-review-options.php:125 includes/functions.php:3823
+msgid "Import Reviews"
+msgstr ""
+
+#: admin/class-wp-review-options.php:131
+msgid "Help"
+msgstr ""
+
+#: admin/class-wp-review-options.php:155
+msgid "Multisite Settings"
+msgstr ""
+
+#: admin/class-wp-review-options.php:170
+msgid "WP Review Settings"
+msgstr ""
+
+#: admin/class-wpr-review-notice.php:54
+msgid ""
+"Hey, we noticed you have created over 10 reviews from WP Review - that’s "
+"awesome! Could you please do us a BIG favor and give it a 5-star rating on "
+"WordPress to help us spread the word and boost our motivation?"
+msgstr ""
+
+#: admin/class-wpr-review-notice.php:57
+msgid "Ok, you deserve it"
+msgstr ""
+
+#: admin/class-wpr-review-notice.php:61
+msgid "Nope, maybe later"
+msgstr ""
+
+#: admin/class-wpr-review-notice.php:65
+msgid "I already did"
+msgstr ""
+
 #: admin/demo-importer.php:32 admin/demo-importer.php:37
 msgid "Processing, please wait&hellip;"
 msgstr ""
@@ -1771,146 +566,644 @@ msgstr ""
 msgid "Ok"
 msgstr ""
 
-#: box-templates/default.php:117 box-templates/aqua.php:111
-msgid "User Review"
+#: admin/demo-importer/class-wp-import.php:115
+#: admin/demo-importer/class-wp-import.php:124
+#: admin/demo-importer/class-wp-import.php:175
+#: admin/demo-importer/class-wp-import.php:179
+#: admin/demo-importer/class-wp-import.php:188
+msgid "Sorry, there has been an error."
 msgstr ""
 
-#: box-templates/default.php:126 box-templates/aqua.php:120
-msgid "vote"
-msgid_plural "votes"
-msgstr[0] ""
-msgstr[1] ""
-
-#: box-templates/aqua.php:64
-msgid "Overall"
+#: admin/demo-importer/class-wp-import.php:116
+msgid "The file does not exist, please try again."
 msgstr ""
 
-#: includes/widgets/class-wp-review-tab-widget.php:28
-msgid "Display Reviews in tabbed format."
+#: admin/demo-importer/class-wp-import.php:159
+msgid "All done."
 msgstr ""
 
-#: includes/widgets/class-wp-review-tab-widget.php:34
-msgid "WP Review Widget"
+#: admin/demo-importer/class-wp-import.php:159
+msgid "Have fun!"
 msgstr ""
 
-#: includes/widgets/class-wp-review-tab-widget.php:87
-#: includes/widgets/class-wp-review-tab-widget.php:123
-#: includes/widgets/class-wp-review-tab-widget.php:239
-#: includes/widgets/class-wp-review-tab-widget.php:263
-#: includes/widgets/class-wp-review-tab-widget.php:345
-msgid "Top Rated"
+#: admin/demo-importer/class-wp-import.php:160
+msgid "Remember to update the passwords and roles of imported users."
 msgstr ""
 
-#: includes/widgets/class-wp-review-tab-widget.php:88
-#: includes/widgets/class-wp-review-tab-widget.php:243
-#: includes/widgets/class-wp-review-tab-widget.php:267
-#: includes/widgets/class-wp-review-tab-widget.php:346
-msgid "Recent"
+#: admin/demo-importer/class-wp-import.php:180
+#, php-format
+msgid ""
+"The export file could not be found at <code>%s</code>. It is likely that "
+"this was caused by a permissions problem."
 msgstr ""
 
-#: includes/widgets/class-wp-review-tab-widget.php:89
-#: includes/widgets/class-wp-review-tab-widget.php:131
-#: includes/widgets/class-wp-review-tab-widget.php:247
-#: includes/widgets/class-wp-review-tab-widget.php:271
-#: includes/widgets/class-wp-review-tab-widget.php:347
-msgid "Most Voted"
+#: admin/demo-importer/class-wp-import.php:196
+#, php-format
+msgid ""
+"This WXR file (version %s) may not be supported by this version of the "
+"importer. Please consider updating."
 msgstr ""
 
-#: includes/widgets/class-wp-review-tab-widget.php:90
-#: includes/widgets/class-wp-review-tab-widget.php:348
-msgid "Editor's choice"
+#: admin/demo-importer/class-wp-import.php:221
+#, php-format
+msgid ""
+"Failed to import author %s. Their posts will be attributed to the current "
+"user."
 msgstr ""
 
-#: includes/widgets/class-wp-review-tab-widget.php:113
-#: includes/widgets/class-wp-review-tab-widget.php:158
-msgid "Comments"
+#: admin/demo-importer/class-wp-import.php:247
+msgid "Assign Authors"
 msgstr ""
 
-#: includes/widgets/class-wp-review-tab-widget.php:118
-msgid "Select Tabs"
+#: admin/demo-importer/class-wp-import.php:248
+msgid ""
+"To make it easier for you to edit and save the imported content, you may "
+"want to reassign the author of the imported item to an existing user of this "
+"site. For example, you may want to import all the entries as <code>admin</"
+"code>s entries."
 msgstr ""
 
-#: includes/widgets/class-wp-review-tab-widget.php:127
-msgid "Recent Reviews"
+#: admin/demo-importer/class-wp-import.php:250
+#, php-format
+msgid ""
+"If a new user is created by WordPress, a new password will be randomly "
+"generated and the new user&#8217;s role will be set as %s. Manually changing "
+"the new user&#8217;s details will be necessary."
 msgstr ""
 
-#: includes/widgets/class-wp-review-tab-widget.php:135
-#: includes/widgets/class-wp-review-tab-widget.php:255
-#: includes/widgets/class-wp-review-tab-widget.php:279
-msgid "Custom"
+#: admin/demo-importer/class-wp-import.php:260
+msgid "Import Attachments"
 msgstr ""
 
-#: includes/widgets/class-wp-review-tab-widget.php:146
-msgid "Restrict recent reviews to current post"
+#: admin/demo-importer/class-wp-import.php:263
+msgid "Download and import file attachments"
 msgstr ""
 
-#: includes/widgets/class-wp-review-tab-widget.php:152
-msgid "Top Rated Posts By:"
+#: admin/demo-importer/class-wp-import.php:267 includes/functions.php:1587
+msgid "Submit"
 msgstr ""
 
-#: includes/widgets/class-wp-review-tab-widget.php:157
-msgid "Visitors"
+#: admin/demo-importer/class-wp-import.php:280
+msgid "Import author:"
 msgstr ""
 
-#: includes/widgets/class-wp-review-tab-widget.php:164
-msgid "Review type:"
+#: admin/demo-importer/class-wp-import.php:291
+msgid "or create new user with login name:"
 msgstr ""
 
-#: includes/widgets/class-wp-review-tab-widget.php:185
-msgid "Allow pagination"
+#: admin/demo-importer/class-wp-import.php:294
+msgid "as a new user:"
 msgstr ""
 
-#: includes/widgets/class-wp-review-tab-widget.php:190
-msgid "Number of reviews to show:"
+#: admin/demo-importer/class-wp-import.php:302
+msgid "assign posts to an existing user:"
 msgstr ""
 
-#: includes/widgets/class-wp-review-tab-widget.php:206
-msgid "Thumbnail size:"
+#: admin/demo-importer/class-wp-import.php:304
+msgid "or assign posts to an existing user:"
 msgstr ""
 
-#: includes/widgets/class-wp-review-tab-widget.php:208
-msgid "Small"
+#: admin/demo-importer/class-wp-import.php:305
+msgid "- Select -"
 msgstr ""
 
-#: includes/widgets/class-wp-review-tab-widget.php:209
-msgid "Large"
+#: admin/demo-importer/class-wp-import.php:355
+#, php-format
+msgid ""
+"Failed to create new user for %s. Their posts will be attributed to the "
+"current user."
 msgstr ""
 
-#: includes/widgets/class-wp-review-tab-widget.php:214
-msgid "Extra information"
+#: admin/demo-importer/class-wp-import.php:407
+#, php-format
+msgid "Failed to import category %s"
 msgstr ""
 
-#: includes/widgets/class-wp-review-tab-widget.php:217
-msgid "Post date"
+#: admin/demo-importer/class-wp-import.php:450
+#, php-format
+msgid "Failed to import post tag %s"
 msgstr ""
 
-#: includes/widgets/class-wp-review-tab-widget.php:218
-msgid "Number of reviews"
+#: admin/demo-importer/class-wp-import.php:499
+#: admin/demo-importer/class-wp-import.php:721
+#, php-format
+msgid "Failed to import %s %s"
 msgstr ""
 
-#: includes/widgets/class-wp-review-tab-widget.php:223
-msgid "Reviews on Custom tab:"
+#: admin/demo-importer/class-wp-import.php:588
+#, php-format
+msgid "Failed to import &#8220;%s&#8221;: Invalid post type %s"
 msgstr ""
 
-#: includes/widgets/class-wp-review-tab-widget.php:233
-msgid "Tab Titles"
+#: admin/demo-importer/class-wp-import.php:625
+#, php-format
+msgid "%s &#8220;%s&#8221; already exists."
 msgstr ""
 
-#: includes/widgets/class-wp-review-tab-widget.php:233
-msgid "Tab Order"
+#: admin/demo-importer/class-wp-import.php:687
+#, php-format
+msgid "Failed to import %s &#8220;%s&#8221;"
 msgstr ""
 
-#: includes/widgets/class-wp-review-tab-widget.php:251
-#: includes/widgets/class-wp-review-tab-widget.php:275
-msgid "Recent Ratings"
+#: admin/demo-importer/class-wp-import.php:853
+msgid "Menu item skipped due to missing menu slug"
 msgstr ""
 
-#: includes/widgets/class-wp-review-tab-widget.php:549
-msgid "&laquo; Previous"
+#: admin/demo-importer/class-wp-import.php:860
+#, php-format
+msgid "Menu item skipped due to invalid menu slug: %s"
 msgstr ""
 
-#: includes/widgets/class-wp-review-tab-widget.php:552
-msgid "Next &raquo;"
+#: admin/demo-importer/class-wp-import.php:923
+msgid "Fetching attachments is not enabled"
+msgstr ""
+
+#: admin/demo-importer/class-wp-import.php:936
+msgid "Invalid file type"
+msgstr ""
+
+#: admin/demo-importer/class-wp-import.php:986
+msgid "Remote server did not respond"
+msgstr ""
+
+#: admin/demo-importer/class-wp-import.php:994
+#, php-format
+msgid "Remote server returned error response %1$d %2$s"
+msgstr ""
+
+#: admin/demo-importer/class-wp-import.php:1001
+msgid "Remote file is incorrect size"
+msgstr ""
+
+#: admin/demo-importer/class-wp-import.php:1006
+msgid "Zero size file downloaded"
+msgstr ""
+
+#: admin/demo-importer/class-wp-import.php:1012
+#, php-format
+msgid "Remote file is too large, limit is %s"
+msgstr ""
+
+#: admin/demo-importer/class-wp-import.php:1112
+msgid "Import WordPress"
+msgstr ""
+
+#: admin/demo-importer/class-wp-import.php:1119
+#, php-format
+msgid ""
+"A new version of this importer is available. Please update to version %s to "
+"ensure compatibility with newer export files."
+msgstr ""
+
+#: admin/demo-importer/class-wp-import.php:1134
+msgid ""
+"Howdy! Upload your WordPress eXtended RSS (WXR) file and we&#8217;ll import "
+"the posts, pages, comments, custom fields, categories, and tags into this "
+"site."
+msgstr ""
+
+#: admin/demo-importer/class-wp-import.php:1135
+msgid "Choose a WXR (.xml) file to upload, then click Upload file and import."
+msgstr ""
+
+#: admin/demo-importer/parsers.php:42 admin/demo-importer/parsers.php:72
+#: admin/demo-importer/parsers.php:80
+msgid "There was an error when reading this WXR file"
+msgstr ""
+
+#: admin/demo-importer/parsers.php:43
+msgid ""
+"Details are shown above. The importer will now try again with a different "
+"parser..."
+msgstr ""
+
+#: admin/demo-importer/parsers.php:84 admin/demo-importer/parsers.php:89
+#: admin/demo-importer/parsers.php:306 admin/demo-importer/parsers.php:502
+msgid ""
+"This does not appear to be a WXR file, missing/invalid WXR version number"
+msgstr ""
+
+#: admin/metaboxes.php:40
+msgid "Review"
+msgstr ""
+
+#: admin/metaboxes.php:50
+msgid "Review Item"
+msgstr ""
+
+#: admin/metaboxes.php:61 includes/functions.php:3826
+msgid "Review Links"
+msgstr ""
+
+#: admin/metaboxes.php:71
+msgid "Review Description"
+msgstr ""
+
+#: admin/metaboxes.php:82 includes/functions.php:3828
+msgid "User Reviews"
+msgstr ""
+
+#: admin/metaboxes.php:208
+msgid "Add item"
+msgstr ""
+
+#: admin/metaboxes.php:214
+msgid "Total"
+msgstr ""
+
+#: admin/metaboxes.php:233 admin/metaboxes.php:702 admin/metaboxes.php:714
+#: admin/metaboxes.php:724 admin/options/review.php:782
+#: admin/options/review.php:795 admin/options/review.php:805
+#: admin/options/review.php:831 admin/options/review.php:841
+msgid "Delete"
+msgstr ""
+
+#: admin/metaboxes.php:239
+msgid "Feature Name"
+msgstr ""
+
+#: admin/metaboxes.php:250
+msgid "Feature Color"
+msgstr ""
+
+#: admin/metaboxes.php:264
+msgid "Inactive Color"
+msgstr ""
+
+#: admin/metaboxes.php:278
+msgid "Feature Score"
+msgstr ""
+
+#: admin/metaboxes.php:289 admin/options/multisite.php:267
+msgid "Hide Features"
+msgstr ""
+
+#: admin/metaboxes.php:307
+msgid "Custom Location"
+msgstr ""
+
+#: admin/metaboxes.php:326 admin/options/review.php:737
+msgid "Review Location"
+msgstr ""
+
+#: admin/metaboxes.php:331 admin/options/review.php:742
+msgid "After Content"
+msgstr ""
+
+#: admin/metaboxes.php:332 admin/options/review.php:743
+msgid "Before Content"
+msgstr ""
+
+#: admin/metaboxes.php:333 admin/options/review.php:744
+msgid "Custom (use shortcode)"
+msgstr ""
+
+#: admin/metaboxes.php:339
+msgid "Copy &amp; paste this shortcode in the content."
+msgstr ""
+
+#: admin/metaboxes.php:347
+msgid "Custom Layout"
+msgstr ""
+
+#: admin/metaboxes.php:366 admin/options/review.php:520 template-list.php:17
+msgid "Default"
+msgstr ""
+
+#: admin/metaboxes.php:399 admin/options/review.php:560
+msgid "Review Color"
+msgstr ""
+
+#: admin/metaboxes.php:409 admin/options/review.php:570
+msgid "Inactive Review Color"
+msgstr ""
+
+#: admin/metaboxes.php:419 admin/options/review.php:580
+msgid "Font Color"
+msgstr ""
+
+#: admin/metaboxes.php:429 admin/options/review.php:590
+msgid "Heading Background Color"
+msgstr ""
+
+#: admin/metaboxes.php:439 admin/options/review.php:600
+msgid "Background Color"
+msgstr ""
+
+#: admin/metaboxes.php:449 admin/options/review.php:610
+msgid "Border Color"
+msgstr ""
+
+#: admin/metaboxes.php:459 admin/options/review.php:634
+msgid "Google Font"
+msgstr ""
+
+#: admin/metaboxes.php:479
+msgid "Custom Width"
+msgstr ""
+
+#: admin/metaboxes.php:513 includes/functions.php:1654
+msgid "Summary"
+msgstr ""
+
+#: admin/metaboxes.php:521
+msgid "Description title"
+msgstr ""
+
+#: admin/metaboxes.php:531
+msgid "Description content"
+msgstr ""
+
+#: admin/metaboxes.php:558
+msgid "Pros"
+msgstr ""
+
+#: admin/metaboxes.php:585
+msgid "Cons"
+msgstr ""
+
+#: admin/metaboxes.php:614
+msgid "Hide Description, Pros/Cons & Total Rating"
+msgstr ""
+
+#: admin/metaboxes.php:680 admin/options/hello-bar.php:41
+msgid "Text"
+msgstr ""
+
+#: admin/metaboxes.php:681
+msgid "URL"
+msgstr ""
+
+#: admin/metaboxes.php:731
+msgid "Add another"
+msgstr ""
+
+#: admin/metaboxes.php:760 admin/options/review.php:857
+msgid "Disabled"
+msgstr ""
+
+#: admin/metaboxes.php:767 admin/options/review.php:862
+msgid "Visitor Rating Only"
+msgstr ""
+
+#: admin/metaboxes.php:774 admin/options/review.php:867
+msgid "Comment Rating Only"
+msgstr ""
+
+#: admin/metaboxes.php:782 admin/options/review.php:873
+msgid "Both"
+msgstr ""
+
+#: admin/metaboxes.php:790
+msgid ""
+"If you are changing User Rating Type & post already have user ratings, "
+"please edit or remove existing ratings."
+msgstr ""
+
+#: admin/metaboxes.php:794
+msgid "User Rating Type"
+msgstr ""
+
+#: admin/metaboxes.php:825 admin/options/review.php:881
+msgid "User can:"
+msgstr ""
+
+#: admin/metaboxes.php:832 admin/options/review.php:887
+msgid "Give Overall Rating"
+msgstr ""
+
+#: admin/metaboxes.php:833 admin/options/review.php:888
+msgid "Rate Each Feature"
+msgstr ""
+
+#: admin/metaboxes.php:844
+msgid "Hide Visitors Rating in Review Box"
+msgstr ""
+
+#: admin/metaboxes.php:864
+msgid "Product Price"
+msgstr ""
+
+#: admin/metaboxes.php:874
+msgid "Comment Feedback (helpful/unhelpful)"
+msgstr ""
+
+#: admin/metaboxes.php:881 admin/review-options-meta-box.php:231
+#: admin/review-options-meta-box.php:252
+msgid "Use global options"
+msgstr ""
+
+#: admin/metaboxes.php:882 includes/comments.php:124
+msgid "Yes"
+msgstr ""
+
+#: admin/metaboxes.php:883 includes/comments.php:125
+msgid "No"
+msgstr ""
+
+#: admin/metaboxes.php:898 admin/options/review.php:507
+msgid "Processing..."
+msgstr ""
+
+#: admin/metaboxes.php:900 admin/options/review.php:508
+msgid "Purge visitor ratings"
+msgstr ""
+
+#: admin/metaboxes.php:901
+msgid "Click to remove all visitor ratings of this post."
+msgstr ""
+
+#. translators: Facebook App link.
+#: admin/options/facebook.php:13
+#, php-format
+msgid "%s to create Facebook App. Remember to add your domain to app."
+msgstr ""
+
+#: admin/options/facebook.php:14 admin/options/google.php:26
+#: admin/options/yelp.php:27
+msgid "Click here"
+msgstr ""
+
+#: admin/options/facebook.php:21
+msgid "App ID"
+msgstr ""
+
+#: admin/options/facebook.php:34
+msgid "App secret"
+msgstr ""
+
+#: admin/options/facebook.php:45
+msgid ""
+"Please re-generate access token in shortcodes and widgets each time you "
+"change App ID or App secret."
+msgstr ""
+
+#: admin/options/google.php:11 admin/options/yelp.php:12
+msgid "API Key"
+msgstr ""
+
+#. translators: Google API link.
+#: admin/options/google.php:25
+#, php-format
+msgid "%s to get Google API key."
+msgstr ""
+
+#: admin/options/hello-bar.php:11
+msgid "Content"
+msgstr ""
+
+#: admin/options/hello-bar.php:12 admin/options/review.php:178
+#: admin/options/review.php:516
+msgid "Styling"
+msgstr ""
+
+#: admin/options/hello-bar.php:16
+msgid "Content Settings"
+msgstr ""
+
+#: admin/options/hello-bar.php:20
+msgid "Enable Global Notification Bar"
+msgstr ""
+
+#: admin/options/hello-bar.php:53
+msgid "Star Rating"
+msgstr ""
+
+#: admin/options/hello-bar.php:65 filter-list.php:225
+msgid "Price"
+msgstr ""
+
+#: admin/options/hello-bar.php:77
+msgid "Button label"
+msgstr ""
+
+#: admin/options/hello-bar.php:82
+msgid "Buy Now"
+msgstr ""
+
+#: admin/options/hello-bar.php:89
+msgid "Button URL"
+msgstr ""
+
+#: admin/options/hello-bar.php:101
+msgid "Open link in new tab"
+msgstr ""
+
+#: admin/options/hello-bar.php:120
+msgid "Styling Settings"
+msgstr ""
+
+#: admin/options/hello-bar.php:124
+msgid "Location"
+msgstr ""
+
+#: admin/options/hello-bar.php:131
+msgid "Top"
+msgstr ""
+
+#: admin/options/hello-bar.php:132
+msgid "Bottom"
+msgstr ""
+
+#: admin/options/hello-bar.php:140
+msgid "Max container(px/%)"
+msgstr ""
+
+#: admin/options/hello-bar.php:153
+msgid "Background color"
+msgstr ""
+
+#: admin/options/hello-bar.php:166
+msgid "Background image"
+msgstr ""
+
+#: admin/options/hello-bar.php:181
+msgid "Text color"
+msgstr ""
+
+#: admin/options/hello-bar.php:194
+msgid "Star color"
+msgstr ""
+
+#: admin/options/hello-bar.php:207
+msgid "Button background color"
+msgstr ""
+
+#: admin/options/hello-bar.php:220
+msgid "Button text color"
+msgstr ""
+
+#: admin/options/help.php:13
+msgid ""
+"All support for this plugin is provided through our forums. If you have not "
+"registered yet, you can do so here for ​<strong>FREE​</strong>: "
+msgstr ""
+
+#: admin/options/help.php:17
+msgid "Check our free WordPress video tutorials here: "
+msgstr ""
+
+#: admin/options/help.php:19
+msgid "(no registration required)"
+msgstr ""
+
+#: admin/options/help.php:22
+msgid "Thank you for using our plugin."
+msgstr ""
+
+#: admin/options/help.php:26
+msgid "Get Support"
+msgstr ""
+
+#: admin/options/import.php:12
+msgid "Demo data import"
+msgstr ""
+
+#: admin/options/import.php:16 admin/options/import.php:38
+#: admin/options/import.php:65
+msgid "Import"
+msgstr ""
+
+#: admin/options/import.php:17
+msgid ""
+"Click above button to import demo data, imported data will be saved as new "
+"draft posts."
+msgstr ""
+
+#: admin/options/import.php:23
+msgid "Select plugin"
+msgstr ""
+
+#: admin/options/import.php:45
+msgid "Warning"
+msgstr ""
+
+#: admin/options/import.php:46
+msgid ""
+"This action is IRREVERSIBLE! Take a backup of your database before "
+"proceeding."
+msgstr ""
+
+#: admin/options/import.php:57
+msgid "Import settings"
+msgstr ""
+
+#: admin/options/import.php:61
+msgid "Import code"
+msgstr ""
+
+#: admin/options/import.php:63
+msgid ""
+"Insert your backup code below and hit Import to restore your plugin options "
+"from a backup."
+msgstr ""
+
+#: admin/options/import.php:72
+msgid "Export settings"
+msgstr ""
+
+#: admin/options/import.php:76
+msgid "Show export code"
 msgstr ""
 
 #: admin/options/multisite.php:12
@@ -1981,84 +1274,158 @@ msgstr ""
 msgid "Hide User Reviews"
 msgstr ""
 
-#: admin/options/import.php:12
-msgid "Demo data import"
+#: admin/options/popup.php:11
+msgid "Enable Popup"
 msgstr ""
 
-#: admin/options/import.php:16 admin/options/import.php:38
-#: admin/options/import.php:65
-msgid "Import"
+#: admin/options/popup.php:32
+msgid "Popup width"
 msgstr ""
 
-#: admin/options/import.php:17
+#: admin/options/popup.php:45
+msgid "Popup animation in"
+msgstr ""
+
+#: admin/options/popup.php:63
+msgid "Popup animation out"
+msgstr ""
+
+#: admin/options/popup.php:82
+msgid "Popup overlay color"
+msgstr ""
+
+#: admin/options/popup.php:95
+msgid "Popup overlay opacity"
+msgstr ""
+
+#: admin/options/popup.php:110
+msgid "Post type"
+msgstr ""
+
+#: admin/options/popup.php:117
+msgid "Any"
+msgstr ""
+
+#: admin/options/popup.php:128
+msgid "Popup content"
+msgstr ""
+
+#: admin/options/popup.php:135
+msgid "From category"
+msgstr ""
+
+#: admin/options/popup.php:136
+msgid "From tag"
+msgstr ""
+
+#: admin/options/popup.php:137
+msgid "From review type"
+msgstr ""
+
+#: admin/options/popup.php:138
+msgid "Latest reviews"
+msgstr ""
+
+#: admin/options/popup.php:146
+msgid "Choose category"
+msgstr ""
+
+#: admin/options/popup.php:155
+msgid "All categories"
+msgstr ""
+
+#: admin/options/popup.php:169
+msgid "Number of Reviews"
+msgstr ""
+
+#: admin/options/popup.php:182
+msgid "Popup content order"
+msgstr ""
+
+#: admin/options/popup.php:189
+msgid "Random"
+msgstr ""
+
+#: admin/options/popup.php:190
+msgid "Most popular"
+msgstr ""
+
+#: admin/options/popup.php:191
+msgid "Most rated"
+msgstr ""
+
+#: admin/options/popup.php:192
+msgid "Latest"
+msgstr ""
+
+#: admin/options/popup.php:201
+msgid "Hide popup for"
+msgstr ""
+
+#: admin/options/popup.php:208
+msgid "day(s)."
+msgstr ""
+
+#: admin/options/popup.php:212
+msgid "Set to 0 if you want to show popup on each page load."
+msgstr ""
+
+#. translators: number input.
+#: admin/options/popup.php:222
+#, php-format
+msgid "Show popup after %s second(s)"
+msgstr ""
+
+#: admin/options/popup.php:231
+msgid "Set to 0 if you want to show popup instantly."
+msgstr ""
+
+#: admin/options/popup.php:238
 msgid ""
-"Click above button to import demo data, imported data will be saved as new "
-"draft posts."
+"Show popup when visitor reaches the end of the content (only on single posts "
+"or pages)"
 msgstr ""
 
-#: admin/options/import.php:23
-msgid "Select plugin"
+#: admin/options/popup.php:248
+msgid "Show popup when visitor is about to leave (exit intent)"
 msgstr ""
 
-#: admin/options/import.php:45
-msgid "Warning"
+#. translators: width input.
+#: admin/options/popup.php:261
+#, php-format
+msgid "Show popup on screens larger than %s pixels"
 msgstr ""
 
-#: admin/options/import.php:46
-msgid ""
-"This action is IRREVERSIBLE! Take a backup of your database before "
-"proceeding."
+#: admin/options/popup.php:271
+msgid "Generate new cookie"
 msgstr ""
 
-#: admin/options/import.php:57
-msgid "Import settings"
+#: admin/options/popup.php:272
+msgid "Use this option to override old cookie."
 msgstr ""
 
-#: admin/options/import.php:61
-msgid "Import code"
-msgstr ""
-
-#: admin/options/import.php:63
-msgid ""
-"Insert your backup code below and hit Import to restore your plugin options "
-"from a backup."
-msgstr ""
-
-#: admin/options/import.php:72
-msgid "Export settings"
-msgstr ""
-
-#: admin/options/import.php:76
-msgid "Show export code"
-msgstr ""
-
-#: admin/options/review.php:165
+#: admin/options/review.php:165 includes/functions.php:1080
 msgid "Star"
 msgstr ""
 
-#: admin/options/review.php:166
+#: admin/options/review.php:166 includes/functions.php:1095
 msgid "Point"
 msgstr ""
 
-#: admin/options/review.php:167
+#: admin/options/review.php:167 includes/functions.php:1110
 msgid "Percentage"
 msgstr ""
 
-#: admin/options/review.php:168
+#: admin/options/review.php:168 includes/functions.php:1125
 msgid "Circle"
 msgstr ""
 
-#: admin/options/review.php:169
+#: admin/options/review.php:169 includes/functions.php:1140
 msgid "Thumbs"
 msgstr ""
 
 #: admin/options/review.php:177
 msgid "General"
-msgstr ""
-
-#: admin/options/review.php:178 admin/options/review.php:516
-#: admin/options/hello-bar.php:12
-msgid "Styling"
 msgstr ""
 
 #: admin/options/review.php:179 admin/options/review.php:702
@@ -2309,289 +1676,1306 @@ msgstr ""
 msgid "Ratings have already been migrated."
 msgstr ""
 
-#: admin/options/yelp.php:12 admin/options/google.php:11
-msgid "API Key"
-msgstr ""
-
 #. translators: Yelp App link.
 #: admin/options/yelp.php:26
 #, php-format
 msgid "%s to get Yelp API Key."
 msgstr ""
 
-#: admin/options/yelp.php:27 admin/options/google.php:26
-#: admin/options/facebook.php:14
-msgid "Click here"
+#: admin/review-options-meta-box.php:46
+msgid "Review Box"
 msgstr ""
 
-#: admin/options/popup.php:11
-msgid "Enable Popup"
+#: admin/review-options-meta-box.php:58
+msgid "Review Type"
 msgstr ""
 
-#: admin/options/popup.php:32
-msgid "Popup width"
+#: admin/review-options-meta-box.php:63
+msgid "No review"
 msgstr ""
 
-#: admin/options/popup.php:45
-msgid "Popup animation in"
-msgstr ""
-
-#: admin/options/popup.php:63
-msgid "Popup animation out"
-msgstr ""
-
-#: admin/options/popup.php:82
-msgid "Popup overlay color"
-msgstr ""
-
-#: admin/options/popup.php:95
-msgid "Popup overlay opacity"
-msgstr ""
-
-#: admin/options/popup.php:110
-msgid "Post type"
-msgstr ""
-
-#: admin/options/popup.php:117
-msgid "Any"
-msgstr ""
-
-#: admin/options/popup.php:128
-msgid "Popup content"
-msgstr ""
-
-#: admin/options/popup.php:135
-msgid "From category"
-msgstr ""
-
-#: admin/options/popup.php:136
-msgid "From tag"
-msgstr ""
-
-#: admin/options/popup.php:137
-msgid "From review type"
-msgstr ""
-
-#: admin/options/popup.php:138
-msgid "Latest reviews"
-msgstr ""
-
-#: admin/options/popup.php:146
-msgid "Choose category"
-msgstr ""
-
-#: admin/options/popup.php:155
-msgid "All categories"
-msgstr ""
-
-#: admin/options/popup.php:169
-msgid "Number of Reviews"
-msgstr ""
-
-#: admin/options/popup.php:182
-msgid "Popup content order"
-msgstr ""
-
-#: admin/options/popup.php:189
-msgid "Random"
-msgstr ""
-
-#: admin/options/popup.php:190
-msgid "Most popular"
-msgstr ""
-
-#: admin/options/popup.php:191
-msgid "Most rated"
-msgstr ""
-
-#: admin/options/popup.php:192
-msgid "Latest"
-msgstr ""
-
-#: admin/options/popup.php:201
-msgid "Hide popup for"
-msgstr ""
-
-#: admin/options/popup.php:208
-msgid "day(s)."
-msgstr ""
-
-#: admin/options/popup.php:212
-msgid "Set to 0 if you want to show popup on each page load."
-msgstr ""
-
-#. translators: number input.
-#: admin/options/popup.php:222
+#. translators: review ID.
+#: admin/review-options-meta-box.php:84
 #, php-format
-msgid "Show popup after %s second(s)"
+msgid "Review ID: %s"
 msgstr ""
 
-#: admin/options/popup.php:231
-msgid "Set to 0 if you want to show popup instantly."
+#: admin/review-options-meta-box.php:92
+msgid "Review Heading"
 msgstr ""
 
-#: admin/options/popup.php:238
-msgid ""
-"Show popup when visitor reaches the end of the content (only on single posts "
-"or pages)"
+#: admin/review-options-meta-box.php:104
+msgid "Reviewed Item Schema"
 msgstr ""
 
-#: admin/options/popup.php:248
-msgid "Show popup when visitor is about to leave (exit intent)"
+#: admin/review-options-meta-box.php:133
+msgid "Rating Schema"
 msgstr ""
 
-#. translators: width input.
-#: admin/options/popup.php:261
+#: admin/review-options-meta-box.php:138
+msgid "Author Review Rating"
+msgstr ""
+
+#: admin/review-options-meta-box.php:139
+msgid "Visitors Aggregate Rating (if enabled)"
+msgstr ""
+
+#: admin/review-options-meta-box.php:140
+msgid "Comments Reviews Aggregate Rating (if enabled)"
+msgstr ""
+
+#: admin/review-options-meta-box.php:148
+msgid "Custom Author"
+msgstr ""
+
+#: admin/review-options-meta-box.php:167
+msgid "Review Author"
+msgstr ""
+
+#: admin/review-options-meta-box.php:181
+msgid "Display Schema Data in the Box (if available)"
+msgstr ""
+
+#: admin/review-options-meta-box.php:201
+msgid "Show Embed Code"
+msgstr ""
+
+#: admin/review-options-meta-box.php:224 admin/review-options-meta-box.php:245
+msgid "Enable"
+msgstr ""
+
+#: admin/review-options-meta-box.php:232 admin/review-options-meta-box.php:253
+msgid "Use custom options"
+msgstr ""
+
+#: admin/review-options-meta-box.php:233 admin/review-options-meta-box.php:254
+#: includes/schemas.php:11 includes/widgets/class-wp-review-tab-widget.php:216
+msgid "None"
+msgstr ""
+
+#: box-templates/aqua.php:64
+msgid "Overall"
+msgstr ""
+
+#: box-templates/aqua.php:111 box-templates/default.php:117
+#: includes/functions.php:1507
+msgid "User Review"
+msgstr ""
+
+#: box-templates/aqua.php:120 box-templates/default.php:126
+msgid "vote"
+msgid_plural "votes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: box-templates/global/partials/review-schema.php:49 includes/schemas.php:38
+#: includes/schemas.php:143 includes/schemas.php:212 includes/schemas.php:321
+#: includes/schemas.php:390 includes/schemas.php:495 includes/schemas.php:632
+#: includes/schemas.php:683 includes/schemas.php:756 includes/schemas.php:829
+#: includes/schemas.php:916 includes/schemas.php:975 includes/schemas.php:1070
+#: includes/schemas.php:1139 includes/schemas.php:1374
+#: includes/schemas.php:1440 includes/schemas.php:1522
+#: includes/schemas.php:1583
+msgid "[ More ]"
+msgstr ""
+
+#: comments/comments.php:12
+msgid "Please do not load this page directly. Thanks!"
+msgstr ""
+
+#: comments/comments.php:16
+msgid "This post is password protected. Enter the password to view comments."
+msgstr ""
+
+#: comments/comments.php:28
+msgid "One Response"
+msgstr ""
+
+#: comments/comments.php:33
 #, php-format
-msgid "Show popup on screens larger than %s pixels"
+msgctxt "comments title"
+msgid "%1$s Comment"
+msgid_plural "%1$s Comments"
+msgstr[0] ""
+msgstr[1] ""
+
+#: comments/comments.php:75
+msgid "Leave a Reply"
 msgstr ""
 
-#: admin/options/popup.php:271
-msgid "Generate new cookie"
+#: comments/comments.php:78
+msgid "Post Comment"
 msgstr ""
 
-#: admin/options/popup.php:272
-msgid "Use this option to override old cookie."
+#: comments/comments.php:79
+msgid "Comment*"
 msgstr ""
 
-#: admin/options/help.php:13
+#: comments/comments.php:83
+msgid "Name*"
+msgstr ""
+
+#: comments/comments.php:84
+msgid "Email*"
+msgstr ""
+
+#: comments/comments.php:85
+msgid "Website"
+msgstr ""
+
+#: comments/comments.php:86
 msgid ""
-"All support for this plugin is provided through our forums. If you have not "
-"registered yet, you can do so here for ​<strong>FREE​</strong>: "
+"Save my name, email, and website in this browser for the next time I comment."
 msgstr ""
 
-#: admin/options/help.php:17
-msgid "Check our free WordPress video tutorials here: "
+#: filter-list.php:222
+msgid "Audio"
 msgstr ""
 
-#: admin/options/help.php:19
-msgid "(no registration required)"
+#: filter-list.php:223
+msgid "Visual"
 msgstr ""
 
-#: admin/options/help.php:22
-msgid "Thank you for using our plugin."
+#: filter-list.php:224
+msgid "UX"
 msgstr ""
 
-#: admin/options/hello-bar.php:11
-msgid "Content"
+#: filter-list.php:407
+msgid "Enable Reviews"
 msgstr ""
 
-#: admin/options/hello-bar.php:16
-msgid "Content Settings"
+#: filter-list.php:422
+msgid "10 Stars"
 msgstr ""
 
-#: admin/options/hello-bar.php:20
-msgid "Enable Global Notification Bar"
-msgstr ""
-
-#: admin/options/hello-bar.php:53
-msgid "Star Rating"
-msgstr ""
-
-#: admin/options/hello-bar.php:65
-msgid "Price"
-msgstr ""
-
-#: admin/options/hello-bar.php:77
-msgid "Button label"
-msgstr ""
-
-#: admin/options/hello-bar.php:82
-msgid "Buy Now"
-msgstr ""
-
-#: admin/options/hello-bar.php:89
-msgid "Button URL"
-msgstr ""
-
-#: admin/options/hello-bar.php:101
-msgid "Open link in new tab"
-msgstr ""
-
-#: admin/options/hello-bar.php:120
-msgid "Styling Settings"
-msgstr ""
-
-#: admin/options/hello-bar.php:124
-msgid "Location"
-msgstr ""
-
-#: admin/options/hello-bar.php:131
-msgid "Top"
-msgstr ""
-
-#: admin/options/hello-bar.php:132
-msgid "Bottom"
-msgstr ""
-
-#: admin/options/hello-bar.php:140
-msgid "Max container(px/%)"
-msgstr ""
-
-#: admin/options/hello-bar.php:153
-msgid "Background color"
-msgstr ""
-
-#: admin/options/hello-bar.php:166
-msgid "Background image"
-msgstr ""
-
-#: admin/options/hello-bar.php:181
-msgid "Text color"
-msgstr ""
-
-#: admin/options/hello-bar.php:194
-msgid "Star color"
-msgstr ""
-
-#: admin/options/hello-bar.php:207
-msgid "Button background color"
-msgstr ""
-
-#: admin/options/hello-bar.php:220
-msgid "Button text color"
-msgstr ""
-
-#. translators: Google API link.
-#: admin/options/google.php:25
+#. translators: review rate.
+#: filter-list.php:425 includes/ajax.php:146
 #, php-format
-msgid "%s to get Google API key."
+msgid "%s Stars"
 msgstr ""
 
-#. translators: Facebook App link.
-#: admin/options/facebook.php:13
+#: filter-list.php:426
 #, php-format
-msgid "%s to create Facebook App. Remember to add your domain to app."
+msgid "%s Star"
 msgstr ""
 
-#: admin/options/facebook.php:21
-msgid "App ID"
+#: filter-list.php:441
+msgid "Custom template"
 msgstr ""
 
-#: admin/options/facebook.php:34
-msgid "App secret"
+#. translators: review text.
+#. translators: visitors rating.
+#: includes/ajax.php:67 includes/ajax.php:143 includes/functions.php:3195
+#, php-format
+msgid "Visitor Rating: %s"
 msgstr ""
 
-#: admin/options/facebook.php:45
+#. translators: number of reviews.
+#: includes/ajax.php:326 includes/ajax.php:329
+#, php-format
+msgid "%s review"
+msgid_plural "%s reviews"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/ajax.php:345
+msgid "Empty post ID"
+msgstr ""
+
+#: includes/ajax.php:348
+msgid "Empty rating data"
+msgstr ""
+
+#: includes/ajax.php:351
+msgid "Empty type data"
+msgstr ""
+
+#: includes/ajax.php:391 includes/ajax.php:403
+msgid "Completed!"
+msgstr ""
+
+#. translators: rating label.
+#: includes/comments.php:53
+#, php-format
+msgid "WP Review Rating (%s)"
+msgstr ""
+
+#: includes/comments.php:119
+msgid "Does Product Matches the Description?"
+msgstr ""
+
+#: includes/comments.php:123
+msgid "Select"
+msgstr ""
+
+#: includes/comments.php:139
+msgid "Comment Image"
+msgstr ""
+
+#: includes/comments.php:210
+msgid "Review Total"
+msgstr ""
+
+#: includes/comments.php:271
+msgid "Edit this item inline"
+msgstr ""
+
+#: includes/comments.php:272
+msgid "Quick Edit"
+msgstr ""
+
+#: includes/comments.php:372
+msgid "Visitor reviews"
+msgstr ""
+
+#: includes/enqueue.php:34
+msgid "You must log in to add your review"
+msgstr ""
+
+#: includes/functions.php:141
+msgid "WP Review Small"
+msgstr ""
+
+#: includes/functions.php:142
+msgid "WP Review Large"
+msgstr ""
+
+#: includes/functions.php:841
+msgid "Comment Reviews"
+msgstr ""
+
+#: includes/functions.php:842
+msgid "Visitor Reviews"
+msgstr ""
+
+#. translators: rating value text.
+#: includes/functions.php:1084
+#, php-format
+msgctxt "star rating value text"
+msgid "%s Stars"
+msgstr ""
+
+#. translators: rating value singular text.
+#: includes/functions.php:1086
+#, php-format
+msgctxt "star rating value text singular"
+msgid "%s Star"
+msgstr ""
+
+#. translators: rating value text.
+#: includes/functions.php:1099
+#, php-format
+msgctxt "point rating value text"
+msgid "%s/10"
+msgstr ""
+
+#. translators: rating value singular text.
+#: includes/functions.php:1101
+#, php-format
+msgctxt "point rating value text singular"
+msgid "%s/10"
+msgstr ""
+
+#. translators: rating value text.
+#: includes/functions.php:1114
+#, php-format
+msgctxt "percentage rating value text"
+msgid "%s%%"
+msgstr ""
+
+#. translators: rating value singular text.
+#: includes/functions.php:1116
+#, php-format
+msgctxt "percentage rating value text singular"
+msgid "%s%%"
+msgstr ""
+
+#. translators: rating value text.
+#: includes/functions.php:1129
+#, php-format
+msgctxt "circle rating value text"
+msgid "%s"
+msgstr ""
+
+#. translators: rating value singular text.
+#: includes/functions.php:1131
+#, php-format
+msgctxt "circle rating value text singular"
+msgid "%s"
+msgstr ""
+
+#. translators: rating value text.
+#: includes/functions.php:1144
+#, php-format
+msgctxt "thumbs rating value text"
+msgid "%s/100"
+msgstr ""
+
+#. translators: rating value singular text.
+#: includes/functions.php:1146
+#, php-format
+msgctxt "thumbs rating value text singular"
+msgid "%s/100"
+msgstr ""
+
+#: includes/functions.php:2022
+msgid "Rating"
+msgstr ""
+
+#: includes/functions.php:2041
+msgid "No Rating"
+msgstr ""
+
+#. translators: settings link.
+#: includes/functions.php:2093
+#, php-format
 msgid ""
-"Please re-generate access token in shortcodes and widgets each time you "
-"change App ID or App secret."
+"Thank you for updating WP Review Pro. Your existing user ratings will show "
+"up after importing them in %s."
 msgstr ""
 
-#. Description of the plugin
+#: includes/functions.php:2093
+msgid "Settings &gt; WP Review Pro &gt; Migrate Ratings"
+msgstr ""
+
+#: includes/functions.php:3061
+#: includes/widgets/class-wp-review-tab-widget.php:549
+msgid "&laquo; Previous"
+msgstr ""
+
+#: includes/functions.php:3065
+#: includes/widgets/class-wp-review-tab-widget.php:552
+msgid "Next &raquo;"
+msgstr ""
+
+#: includes/functions.php:3249
+msgid "Your rating is awaiting moderation."
+msgstr ""
+
+#: includes/functions.php:3693
+msgid "Comment Rating"
+msgstr ""
+
+#: includes/functions.php:3694
+msgid "Features Ratings"
+msgstr ""
+
+#: includes/functions.php:3695
+msgid "Comment Title"
+msgstr ""
+
+#: includes/functions.php:3735
+#: includes/widgets/class-wp-review-tab-widget.php:113
+#: includes/widgets/class-wp-review-tab-widget.php:158
+msgid "Comments"
+msgstr ""
+
+#: includes/functions.php:3758
+msgid "WordPress Comments"
+msgstr ""
+
+#: includes/functions.php:3822
+msgid "Global Options"
+msgstr ""
+
+#: includes/functions.php:3824
+msgid "Single Page Settings"
+msgstr ""
+
+#: includes/functions.php:3825
+msgid "Review Features"
+msgstr ""
+
+#: includes/functions.php:3827
+msgid "Review Description, Pros/Cons and Total Rating"
+msgstr ""
+
+#: includes/functions.php:3829
+msgid "Purge Visitor Ratings"
+msgstr ""
+
+#: includes/functions.php:3830
+msgid "Purge Comment Ratings"
+msgstr ""
+
+#: includes/schemas.php:14
+msgid "Book"
+msgstr ""
+
+#: includes/schemas.php:18
+msgid "Book Title"
+msgstr ""
+
+#: includes/schemas.php:24
+msgid "Book Description"
+msgstr ""
+
+#: includes/schemas.php:30
+msgid "Book Image"
+msgstr ""
+
+#: includes/schemas.php:36 includes/schemas.php:141 includes/schemas.php:210
+#: includes/schemas.php:319 includes/schemas.php:388 includes/schemas.php:493
+#: includes/schemas.php:630 includes/schemas.php:681 includes/schemas.php:754
+#: includes/schemas.php:827 includes/schemas.php:914 includes/schemas.php:973
+#: includes/schemas.php:1068 includes/schemas.php:1137
+#: includes/schemas.php:1372 includes/schemas.php:1438
+#: includes/schemas.php:1520 includes/schemas.php:1581
+msgid "More link text"
+msgstr ""
+
+#: includes/schemas.php:43 includes/schemas.php:148 includes/schemas.php:217
+#: includes/schemas.php:326 includes/schemas.php:395 includes/schemas.php:500
+#: includes/schemas.php:637 includes/schemas.php:688 includes/schemas.php:761
+#: includes/schemas.php:834 includes/schemas.php:921 includes/schemas.php:980
+#: includes/schemas.php:1075 includes/schemas.php:1144
+#: includes/schemas.php:1379 includes/schemas.php:1445
+#: includes/schemas.php:1527 includes/schemas.php:1588
+msgid "More link URL"
+msgstr ""
+
+#: includes/schemas.php:49 includes/schemas.php:154 includes/schemas.php:223
+#: includes/schemas.php:332 includes/schemas.php:401 includes/schemas.php:506
+#: includes/schemas.php:643 includes/schemas.php:694 includes/schemas.php:767
+#: includes/schemas.php:840 includes/schemas.php:927 includes/schemas.php:986
+#: includes/schemas.php:1081 includes/schemas.php:1150
+#: includes/schemas.php:1385 includes/schemas.php:1451
+#: includes/schemas.php:1533 includes/schemas.php:1594
+msgid "Use button style"
+msgstr ""
+
+#: includes/schemas.php:53 includes/schemas.php:158 includes/schemas.php:227
+#: includes/schemas.php:336 includes/schemas.php:405 includes/schemas.php:510
+#: includes/schemas.php:647 includes/schemas.php:698 includes/schemas.php:771
+#: includes/schemas.php:844 includes/schemas.php:931 includes/schemas.php:990
+#: includes/schemas.php:1085 includes/schemas.php:1154
+#: includes/schemas.php:1389 includes/schemas.php:1455
+#: includes/schemas.php:1537 includes/schemas.php:1598
+msgid "Button"
+msgstr ""
+
+#: includes/schemas.php:54 includes/schemas.php:159 includes/schemas.php:228
+#: includes/schemas.php:337 includes/schemas.php:406 includes/schemas.php:511
+#: includes/schemas.php:648 includes/schemas.php:699 includes/schemas.php:772
+#: includes/schemas.php:845 includes/schemas.php:932 includes/schemas.php:991
+#: includes/schemas.php:1086 includes/schemas.php:1155
+#: includes/schemas.php:1390 includes/schemas.php:1456
+#: includes/schemas.php:1538 includes/schemas.php:1599
+msgid "Link"
+msgstr ""
+
+#: includes/schemas.php:58
+msgid "Book Author"
+msgstr ""
+
+#: includes/schemas.php:64
+msgid "Book Edition"
+msgstr ""
+
+#: includes/schemas.php:70
+msgid "Book Format"
+msgstr ""
+
+#: includes/schemas.php:83
+msgid "Publisher"
+msgstr ""
+
+#: includes/schemas.php:91
+msgid "Publisher Logo"
+msgstr ""
+
+#: includes/schemas.php:100 includes/schemas.php:410 includes/schemas.php:849
+msgid "Date published"
+msgstr ""
+
+#: includes/schemas.php:106
+msgid "Illustrator"
+msgstr ""
+
+#: includes/schemas.php:112
+msgid "ISBN"
+msgstr ""
+
+#: includes/schemas.php:118
+msgid "Number Of Pages"
+msgstr ""
+
+#: includes/schemas.php:125
+msgid "Course"
+msgstr ""
+
+#: includes/schemas.php:129
+msgid "Course Name"
+msgstr ""
+
+#: includes/schemas.php:135
+msgid "Course Description"
+msgstr ""
+
+#: includes/schemas.php:163
+msgid "Course Author"
+msgstr ""
+
+#: includes/schemas.php:169
+msgid "Course Provider"
+msgstr ""
+
+#: includes/schemas.php:178
+msgid "Provider Logo"
+msgstr ""
+
+#: includes/schemas.php:188
+msgid "CreativeWorkSeason"
+msgstr ""
+
+#: includes/schemas.php:198 includes/schemas.php:307 includes/schemas.php:908
+#: includes/schemas.php:967 includes/schemas.php:1426 includes/schemas.php:1569
+msgid "Description"
+msgstr ""
+
+#: includes/schemas.php:204 includes/schemas.php:313 includes/schemas.php:1432
+#: includes/schemas.php:1575
+msgid "Image"
+msgstr ""
+
+#: includes/schemas.php:232 includes/schemas.php:341 includes/schemas.php:515
+msgid "Start date"
+msgstr ""
+
+#: includes/schemas.php:238 includes/schemas.php:347 includes/schemas.php:521
+msgid "End date"
+msgstr ""
+
+#: includes/schemas.php:244
+msgid "Number of episodes"
+msgstr ""
+
+#: includes/schemas.php:250
+msgid "Season number"
+msgstr ""
+
+#: includes/schemas.php:256 includes/schemas.php:366
+msgid "Episode"
+msgstr ""
+
+#: includes/schemas.php:262 includes/schemas.php:428
+msgid "Part of series"
+msgstr ""
+
+#: includes/schemas.php:268 includes/schemas.php:359 includes/schemas.php:867
+#: includes/schemas.php:950 includes/schemas.php:995 includes/schemas.php:1039
+#: includes/schemas.php:1491 includes/schemas.php:1603
+msgid "Author"
+msgstr ""
+
+#: includes/schemas.php:274 includes/schemas.php:440
+msgid "Production company"
+msgstr ""
+
+#: includes/schemas.php:280 includes/schemas.php:446 includes/schemas.php:873
+msgid "Director(s)"
+msgstr ""
+
+#: includes/schemas.php:284 includes/schemas.php:450 includes/schemas.php:877
+msgid "Add one director per line"
+msgstr ""
+
+#: includes/schemas.php:288 includes/schemas.php:454 includes/schemas.php:881
+msgid "Actor(s)"
+msgstr ""
+
+#: includes/schemas.php:292 includes/schemas.php:458 includes/schemas.php:885
+msgid "Add one actor per line"
+msgstr ""
+
+#: includes/schemas.php:297
+msgid "CreativeWorkSeries"
+msgstr ""
+
+#: includes/schemas.php:353
+msgid "International Standard Serial Number (ISSN)"
+msgstr ""
+
+#: includes/schemas.php:370
+msgid "Episode Title"
+msgstr ""
+
+#: includes/schemas.php:376
+msgid "Episode Description"
+msgstr ""
+
+#: includes/schemas.php:382
+msgid "Episode Image"
+msgstr ""
+
+#: includes/schemas.php:416
+msgid "Episode number"
+msgstr ""
+
+#: includes/schemas.php:422
+msgid "Part of season"
+msgstr ""
+
+#: includes/schemas.php:434
+msgid "Episode Author"
+msgstr ""
+
+#: includes/schemas.php:462 includes/schemas.php:889 includes/schemas.php:942
+#: includes/schemas.php:1031
+msgid "Genre"
+msgstr ""
+
+#: includes/schemas.php:466 includes/schemas.php:893 includes/schemas.php:946
+#: includes/schemas.php:1035
+msgid "Add one item per line"
+msgstr ""
+
+#: includes/schemas.php:471
+msgid "Event"
+msgstr ""
+
+#: includes/schemas.php:475
+msgid "Event Title"
+msgstr ""
+
+#: includes/schemas.php:481
+msgid "Event Description"
+msgstr ""
+
+#: includes/schemas.php:487
+msgid "Event Image"
+msgstr ""
+
+#: includes/schemas.php:527
+msgid "Location name"
+msgstr ""
+
+#: includes/schemas.php:536 includes/schemas.php:1400
+msgid "Address"
+msgstr ""
+
+#: includes/schemas.php:544
+msgid "Performer"
+msgstr ""
+
+#: includes/schemas.php:553 includes/schemas.php:1159 includes/schemas.php:1460
+msgid "Offer price"
+msgstr ""
+
+#: includes/schemas.php:554 includes/schemas.php:1160 includes/schemas.php:1461
+msgid "Fill \"0.0\" to show the free price"
+msgstr ""
+
+#: includes/schemas.php:562 includes/schemas.php:1168 includes/schemas.php:1469
+msgid "Currency"
+msgstr ""
+
+#: includes/schemas.php:570 includes/schemas.php:1196
+msgid "Offer URL"
+msgstr ""
+
+#: includes/schemas.php:579
+msgid "Offer valid from"
+msgstr ""
+
+#: includes/schemas.php:587 includes/schemas.php:1176
+msgid "Availability"
+msgstr ""
+
+#: includes/schemas.php:608
+msgid "Game"
+msgstr ""
+
+#: includes/schemas.php:612
+msgid "Game Title"
+msgstr ""
+
+#: includes/schemas.php:618
+msgid "Game Description"
+msgstr ""
+
+#: includes/schemas.php:624
+msgid "Game Image"
+msgstr ""
+
+#: includes/schemas.php:652
+msgid "Game Author"
+msgstr ""
+
+#: includes/schemas.php:659
+msgid "Hotel"
+msgstr ""
+
+#: includes/schemas.php:663
+msgid "Hotel Name"
+msgstr ""
+
+#: includes/schemas.php:669
+msgid "Hotel Description"
+msgstr ""
+
+#: includes/schemas.php:675
+msgid "Hotel Image"
+msgstr ""
+
+#: includes/schemas.php:703 includes/schemas.php:776 includes/schemas.php:1394
+#: includes/schemas.php:1542
+msgid "Price range"
+msgstr ""
+
+#: includes/schemas.php:709 includes/schemas.php:782
+msgid "Payment accepted"
+msgstr ""
+
+#: includes/schemas.php:715 includes/schemas.php:788
+msgid "Currencies accepted"
+msgstr ""
+
+#: includes/schemas.php:721
+msgid "Hotel Address"
+msgstr ""
+
+#: includes/schemas.php:726
+msgid "Hotel Telephone"
+msgstr ""
+
+#: includes/schemas.php:732
+msgid "LocalBusiness"
+msgstr ""
+
+#: includes/schemas.php:736
+msgid "Business Name"
+msgstr ""
+
+#: includes/schemas.php:742
+msgid "Business Description"
+msgstr ""
+
+#: includes/schemas.php:748
+msgid "Business Image"
+msgstr ""
+
+#: includes/schemas.php:794
+msgid "Business Address"
+msgstr ""
+
+#: includes/schemas.php:799
+msgid "Business Telephone"
+msgstr ""
+
+#: includes/schemas.php:805
+msgid "Movie"
+msgstr ""
+
+#: includes/schemas.php:809
+msgid "Movie title"
+msgstr ""
+
+#: includes/schemas.php:815
+msgid "Movie description"
+msgstr ""
+
+#: includes/schemas.php:821
+msgid "Movie Image"
+msgstr ""
+
+#: includes/schemas.php:855
+msgid "Country"
+msgstr ""
+
+#: includes/schemas.php:861
+msgid "Duration"
+msgstr ""
+
+#: includes/schemas.php:898
+msgid "MusicPlaylist"
+msgstr ""
+
+#: includes/schemas.php:902 includes/schemas.php:1420 includes/schemas.php:1563
+msgid "Name"
+msgstr ""
+
+#: includes/schemas.php:936
+msgid "Number of tracks"
+msgstr ""
+
+#: includes/schemas.php:957
+msgid "MusicRecording"
+msgstr ""
+
+#: includes/schemas.php:961
+msgid "Track name"
+msgstr ""
+
+#: includes/schemas.php:1001
+msgid "Track Duration"
+msgstr ""
+
+#: includes/schemas.php:1007
+msgid "Album name"
+msgstr ""
+
+#: includes/schemas.php:1013
+msgid "Playlist name"
+msgstr ""
+
+#: includes/schemas.php:1019
+msgid "International Standard Recording Code"
+msgstr ""
+
+#: includes/schemas.php:1025
+msgid "Recording of"
+msgstr ""
+
+#: includes/schemas.php:1046
+msgid "Organization"
+msgstr ""
+
+#: includes/schemas.php:1050
+msgid "Organization Name"
+msgstr ""
+
+#: includes/schemas.php:1056
+msgid "Organization Description"
+msgstr ""
+
+#: includes/schemas.php:1062
+msgid "Organization Image"
+msgstr ""
+
+#: includes/schemas.php:1091
+msgid "Product"
+msgstr ""
+
+#: includes/schemas.php:1095
+msgid "Product Name"
+msgstr ""
+
+#: includes/schemas.php:1101
+msgid "Product Description"
+msgstr ""
+
+#: includes/schemas.php:1107
+msgid "Product Image"
+msgstr ""
+
+#: includes/schemas.php:1113
+msgid "Brand"
+msgstr ""
+
+#: includes/schemas.php:1119
+msgid "SKU"
+msgstr ""
+
+#: includes/schemas.php:1125
+msgid "MPN"
+msgstr ""
+
+#: includes/schemas.php:1131
+msgid "GTIN-8"
+msgstr ""
+
+#: includes/schemas.php:1205
+msgid "Valid until"
+msgstr ""
+
+#: includes/schemas.php:1214
+msgid "Recipe"
+msgstr ""
+
+#: includes/schemas.php:1218
+msgid "Recipe Name"
+msgstr ""
+
+#: includes/schemas.php:1224
+msgid "Recipe Author"
+msgstr ""
+
+#: includes/schemas.php:1230
+msgid "Recipe Description"
+msgstr ""
+
+#: includes/schemas.php:1236
+msgid "Recipe Image"
+msgstr ""
+
+#: includes/schemas.php:1242
+msgid "Preperation time"
+msgstr ""
+
+#: includes/schemas.php:1245 includes/schemas.php:1252
+#: includes/schemas.php:1259
+msgid "Format: 1H30M. H - Hours, M - Minutes"
+msgstr ""
+
+#: includes/schemas.php:1249
+msgid "Cook Time"
+msgstr ""
+
+#: includes/schemas.php:1256
+msgid "Total Time"
+msgstr ""
+
+#: includes/schemas.php:1263
+msgid "Recipe Type"
+msgstr ""
+
+#: includes/schemas.php:1266
+msgid "Type of dish, for example \"appetizer\", \"entree\", or \"dessert\""
+msgstr ""
+
+#: includes/schemas.php:1270
+msgid "Recipe Yield"
+msgstr ""
+
+#: includes/schemas.php:1273
+msgid "Quantity produced by the recipe, for example \"4 servings\""
+msgstr ""
+
+#: includes/schemas.php:1277
+msgid "Recipe Ingredients"
+msgstr ""
+
+#: includes/schemas.php:1281
+msgid "Recipe ingredients, add one item per line"
+msgstr ""
+
+#: includes/schemas.php:1285
+msgid "Recipe Instructions"
+msgstr ""
+
+#: includes/schemas.php:1288
+msgid "Steps to take"
+msgstr ""
+
+#: includes/schemas.php:1292
+msgid "Recipe Cuisine"
+msgstr ""
+
+#: includes/schemas.php:1298
+msgid "Keywords"
+msgstr ""
+
+#: includes/schemas.php:1301
+msgid "Separate by commas"
+msgstr ""
+
+#: includes/schemas.php:1305
+msgid "Calories"
+msgstr ""
+
+#: includes/schemas.php:1308
+msgid "The number of calories"
+msgstr ""
+
+#: includes/schemas.php:1315
+msgid "Video name"
+msgstr ""
+
+#: includes/schemas.php:1324
+msgid "Video description"
+msgstr ""
+
+#: includes/schemas.php:1332
+msgid "Video thumbnail URL"
+msgstr ""
+
+#: includes/schemas.php:1340
+msgid "Video upload date"
+msgstr ""
+
+#: includes/schemas.php:1343
+msgid "Y-m-d format"
+msgstr ""
+
+#: includes/schemas.php:1350
+msgid "Restaurant"
+msgstr ""
+
+#: includes/schemas.php:1354
+msgid "Restaurant Name"
+msgstr ""
+
+#: includes/schemas.php:1360
+msgid "Restaurant Description"
+msgstr ""
+
+#: includes/schemas.php:1366
+msgid "Restaurant Image"
+msgstr ""
+
+#: includes/schemas.php:1405
+msgid "Cuisine"
+msgstr ""
+
+#: includes/schemas.php:1410
+msgid "Telephone"
+msgstr ""
+
+#: includes/schemas.php:1416
+msgid "SoftwareApplication"
+msgstr ""
+
+#: includes/schemas.php:1477
+msgid "Operating System"
+msgstr ""
+
+#: includes/schemas.php:1480
+msgid "For example, \"Windows 7\", \"OSX 10.6\", \"Android 1.6\""
+msgstr ""
+
+#: includes/schemas.php:1484
+msgid "Application Category"
+msgstr ""
+
+#: includes/schemas.php:1487
+msgid "For example, \"Game\", \"Multimedia\""
+msgstr ""
+
+#: includes/schemas.php:1498
+msgid "Store"
+msgstr ""
+
+#: includes/schemas.php:1502
+msgid "Store Name"
+msgstr ""
+
+#: includes/schemas.php:1508
+msgid "Store Description"
+msgstr ""
+
+#: includes/schemas.php:1514
+msgid "Store Image"
+msgstr ""
+
+#: includes/schemas.php:1548
+msgid "Store Address"
+msgstr ""
+
+#: includes/schemas.php:1553
+msgid "Store Telephone"
+msgstr ""
+
+#: includes/schemas.php:1559
+msgid "TVSeries"
+msgstr ""
+
+#: includes/shortcodes.php:106
+msgid "User Rating"
+msgstr ""
+
+#: includes/shortcodes.php:113
+#, php-format
+msgid "(%s vote)"
+msgstr ""
+
+#: includes/widgets/class-wp-review-tab-widget.php:28
+msgid "Display Reviews in tabbed format."
+msgstr ""
+
+#: includes/widgets/class-wp-review-tab-widget.php:34
+msgid "WP Review Widget"
+msgstr ""
+
+#: includes/widgets/class-wp-review-tab-widget.php:87
+#: includes/widgets/class-wp-review-tab-widget.php:123
+#: includes/widgets/class-wp-review-tab-widget.php:239
+#: includes/widgets/class-wp-review-tab-widget.php:263
+#: includes/widgets/class-wp-review-tab-widget.php:345
+msgid "Top Rated"
+msgstr ""
+
+#: includes/widgets/class-wp-review-tab-widget.php:88
+#: includes/widgets/class-wp-review-tab-widget.php:243
+#: includes/widgets/class-wp-review-tab-widget.php:267
+#: includes/widgets/class-wp-review-tab-widget.php:346
+msgid "Recent"
+msgstr ""
+
+#: includes/widgets/class-wp-review-tab-widget.php:89
+#: includes/widgets/class-wp-review-tab-widget.php:131
+#: includes/widgets/class-wp-review-tab-widget.php:247
+#: includes/widgets/class-wp-review-tab-widget.php:271
+#: includes/widgets/class-wp-review-tab-widget.php:347
+msgid "Most Voted"
+msgstr ""
+
+#: includes/widgets/class-wp-review-tab-widget.php:90
+#: includes/widgets/class-wp-review-tab-widget.php:348
+msgid "Editor's choice"
+msgstr ""
+
+#: includes/widgets/class-wp-review-tab-widget.php:118
+msgid "Select Tabs"
+msgstr ""
+
+#: includes/widgets/class-wp-review-tab-widget.php:127
+msgid "Recent Reviews"
+msgstr ""
+
+#: includes/widgets/class-wp-review-tab-widget.php:135
+#: includes/widgets/class-wp-review-tab-widget.php:255
+#: includes/widgets/class-wp-review-tab-widget.php:279
+msgid "Custom"
+msgstr ""
+
+#: includes/widgets/class-wp-review-tab-widget.php:146
+msgid "Restrict recent reviews to current post"
+msgstr ""
+
+#: includes/widgets/class-wp-review-tab-widget.php:152
+msgid "Top Rated Posts By:"
+msgstr ""
+
+#: includes/widgets/class-wp-review-tab-widget.php:157
+msgid "Visitors"
+msgstr ""
+
+#: includes/widgets/class-wp-review-tab-widget.php:164
+msgid "Review type:"
+msgstr ""
+
+#: includes/widgets/class-wp-review-tab-widget.php:185
+msgid "Allow pagination"
+msgstr ""
+
+#: includes/widgets/class-wp-review-tab-widget.php:190
+msgid "Number of reviews to show:"
+msgstr ""
+
+#: includes/widgets/class-wp-review-tab-widget.php:197
+msgid "Title length (words):"
+msgstr ""
+
+#: includes/widgets/class-wp-review-tab-widget.php:206
+msgid "Thumbnail size:"
+msgstr ""
+
+#: includes/widgets/class-wp-review-tab-widget.php:208
+msgid "Small"
+msgstr ""
+
+#: includes/widgets/class-wp-review-tab-widget.php:209
+msgid "Large"
+msgstr ""
+
+#: includes/widgets/class-wp-review-tab-widget.php:214
+msgid "Extra information"
+msgstr ""
+
+#: includes/widgets/class-wp-review-tab-widget.php:217
+msgid "Post date"
+msgstr ""
+
+#: includes/widgets/class-wp-review-tab-widget.php:218
+msgid "Number of reviews"
+msgstr ""
+
+#: includes/widgets/class-wp-review-tab-widget.php:223
+msgid "Reviews on Custom tab:"
+msgstr ""
+
+#: includes/widgets/class-wp-review-tab-widget.php:233
+msgid "Tab Titles"
+msgstr ""
+
+#: includes/widgets/class-wp-review-tab-widget.php:233
+msgid "Tab Order"
+msgstr ""
+
+#: includes/widgets/class-wp-review-tab-widget.php:251
+#: includes/widgets/class-wp-review-tab-widget.php:275
+msgid "Recent Ratings"
+msgstr ""
+
+#: rating-types/circle-input.php:9 rating-types/circle-output.php:9
+#: rating-types/thumbs-input.php:9 rating-types/thumbs-output.php:9
+msgid "This rating type is not supported in the WP Review Free version"
+msgstr ""
+
+#: rating-types/percentage-input.php:19 rating-types/point-input.php:19
+#: rating-types/star-input.php:19
+msgid "Add rating"
+msgstr ""
+
+#: rating-types/percentage-input.php:41 rating-types/point-input.php:40
+#: rating-types/star-input.php:40
+msgid "Sending"
+msgstr ""
+
+#: rating-types/percentage-input.php:51 rating-types/point-input.php:50
+#, php-format
+msgid "%s"
+msgstr ""
+
+#: template-list.php:37
+msgid "Amazon"
+msgstr ""
+
+#: template-list.php:47
+msgid "Aqua"
+msgstr ""
+
+#: template-list.php:57
+msgid "Blue"
+msgstr ""
+
+#: template-list.php:67
+msgid "Darkside"
+msgstr ""
+
+#: template-list.php:78
+msgid "Dash"
+msgstr ""
+
+#: template-list.php:88
+msgid "Edge"
+msgstr ""
+
+#: template-list.php:98
+msgid "Enterprise"
+msgstr ""
+
+#: template-list.php:108
+msgid "Facebook"
+msgstr ""
+
+#: template-list.php:118
+msgid "Fizzy"
+msgstr ""
+
+#: template-list.php:128
+msgid "Gamer"
+msgstr ""
+
+#: template-list.php:138
+msgid "Gravity"
+msgstr ""
+
+#: template-list.php:149
+msgid "Shell"
+msgstr ""
+
+#: template-list.php:159
+msgid "Tabbed layout"
+msgstr ""
+
+#: template-list.php:169
+msgid "Tabbed layout 2"
+msgstr ""
+
+#: template-list.php:179
+msgid "Xiaomi"
+msgstr ""
+
+#: template-list.php:189
+msgid "Zine"
+msgstr ""
+
+#. translators: PHP version.
+#: wp-review.php:38
+#, php-format
 msgid ""
-"Create reviews! Choose from stars, percentages or points for review scores. "
-"Supports Retina Display, WPMU and Unlimited Color Schemes."
-msgstr ""
-
-#. URI of the plugin
-msgid "http://mythemeshop.com/plugins/wp-review/"
-msgstr ""
-
-#. Author of the plugin
-msgid "MyThemeShop"
-msgstr ""
-
-#. Author URI of the plugin
-msgid "http://mythemeshop.com/"
+"<strong>WP Review</strong> requires PHP version 5.6 or above. You are "
+"running version %s. Please update PHP to run this plugin."
 msgstr ""

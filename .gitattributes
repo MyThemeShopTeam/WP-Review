@@ -10,6 +10,7 @@ gulpfile.js export-ignore
 package.json export-ignore
 package-lock.json export-ignore
 prepros-6.config export-ignore
+prepros.config export-ignore
 npm-debug.log export-ignore
 phpcs.xml.dist export-ignore
 .github export-ignore

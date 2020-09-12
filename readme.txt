@@ -3,8 +3,8 @@ Contributors: mythemeshop
 Creator's website link: http://mythemeshop.com/plugins/wp-review/
 Tags: review, schema.org, rating, schema, user rating, google rating, star rating, product review
 Requires at least: 4.9
-Tested up to: 5.4
-Stable tag: 5.3.3
+Tested up to: 5.5.1
+Stable tag: 5.3.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -151,9 +151,14 @@ There are two ways you can do this. You can update the plugin by downloading a f
 
 == Changelog ==
 
+= v5.3.4 (Sep 12, 2020) =
+* Added a message if rating is not allowed for the guests
+* Fixed deprecated jQuery function in the WordPress 5.5
+* Fixed filter `wp_review_rating_types` not working in some places
+* Fixed Recipe schema errors when video data is empty
+
 = v5.3.3 (Apr 12, 2020) =
 * Fixed content layout breaking in some installations
-
 
 = v5.3.2 (Apr 9, 2020) =
 * Fixed `Fatal error: Uncaught ArgumentCountError` appearing on some installations
