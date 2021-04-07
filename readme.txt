@@ -151,8 +151,8 @@ There are two ways you can do this. You can update the plugin by downloading a f
 
 == Changelog ==
 
-= v5.3.5 (Apr 1, 2021) =
-* Improved and added some translate strings
+= v5.3.5 (Apr 7, 2021) =
+* Improved and added some missing translation strings
 
 = v5.3.4 (Sep 12, 2020) =
 * Added a message if rating is not allowed for the guests
