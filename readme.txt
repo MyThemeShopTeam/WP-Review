@@ -4,7 +4,7 @@ Creator's website link: http://mythemeshop.com/plugins/wp-review/
 Tags: review, schema.org, rating, schema, user rating, google rating, star rating, product review
 Requires at least: 4.9
 Tested up to: 5.7
-Stable tag: 5.3.5
+Stable tag: 5.3.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -150,6 +150,9 @@ There are two ways you can do this. You can update the plugin by downloading a f
 7. Percentage Review type
 
 == Changelog ==
+
+= v5.3.6 (July 19, 2022) =
+* Updated select2 library files
 
 = v5.3.5 (Apr 7, 2021) =
 * Improved and added some missing translation strings
